@@ -13,14 +13,18 @@ Reglas de marca: ver SISTEMA-DISENO-CARRUSELES-STLABS.md
 """
 import base64, pathlib, shutil, zipfile
 
-# ─────────────────────────────────────────────────────────────────────────────
-# 1. TOKENS DE MARCA
-# ─────────────────────────────────────────────────────────────────────────────
-VERDE="#00FFB2"; RED="#FF5247"; AMBER="#FF9D3C"
-NEG="#0A0A0A"; GRAF="#141414"; GRIS="#1E1E1E"; BLANCO="#F2F2F2"; GRAY="#9aa39c"
+REPO_ROOT = pathlib.Path(__file__).resolve().parent
+_LINUX_STLABS = pathlib.Path("/usr/share/fonts/truetype/stlabs/")
+_LINUX_GFONTS = pathlib.Path("/usr/share/fonts/truetype/google-fonts/")
+_LOCAL_FONTS = REPO_ROOT / "fonts"
 
-STLABS = "/usr/share/fonts/truetype/stlabs/"
-GFONTS = "/usr/share/fonts/truetype/google-fonts/"
+def _font_dir(linux_path: pathlib.Path) -> str:
+    if linux_path.exists():
+        return str(linux_path) + "/"
+    return str(_LOCAL_FONTS) + "/"
+
+STLABS = _font_dir(_LINUX_STLABS)
+GFONTS = _font_dir(_LINUX_GFONTS)
 
 # (familia, archivo, peso, estilo)
 FONT_FACES = [
@@ -38,13 +42,22 @@ FONT_FACES = [
 ]
 
 def _face(fam, path, w, style):
-    d = base64.b64encode(pathlib.Path(path).read_bytes()).decode()
+    p = pathlib.Path(path)
+    if not p.exists():
+        return ""
+    d = base64.b64encode(p.read_bytes()).decode()
     return (f"@font-face{{font-family:'{fam}';font-style:{style};font-weight:{w};"
             f"font-display:block;src:url(data:font/ttf;base64,{d}) format('truetype');}}")
 
 def embedded_fonts_css():
     """Devuelve el bloque @font-face con TODAS las fuentes de marca en base64."""
     return "".join(_face(*f) for f in FONT_FACES)
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 1. TOKENS DE MARCA
+# ─────────────────────────────────────────────────────────────────────────────
+VERDE="#00FFB2"; RED="#FF5247"; AMBER="#FF9D3C"
+NEG="#0A0A0A"; GRAF="#141414"; GRIS="#1E1E1E"; BLANCO="#F2F2F2"; GRAY="#9aa39c"
 
 # ─────────────────────────────────────────────────────────────────────────────
 # 2. CSS BASE (tokens + chrome + componentes + mecánicas)
@@ -232,22 +245,52 @@ def render(build_dir, html_name="carrusel.html"):
         br.close()
     return sorted((B/"png").glob("slide-*.png"))
 
-def package(build_dir, out_name, html_name="carrusel.html"):
-    """Embebe fuentes base64, copia PNGs, arma tira de preview + ZIP a /mnt/user-data/outputs/<out_name>/."""
+def package(build_dir, out_name, html_name="carrusel.html", output_dir=None, meta=None):
+    """Embebe fuentes base64, copia PNGs, arma tira de preview + ZIP.
+
+    output_dir: destino (default REPO/builds/<id> si meta, sino out_name)
+    meta: dict opcional → dispara registrar_carrusel() al finalizar
+    """
+    from stlabs_memory import REPO_ROOT, registrar_carrusel, resolve_build_id, validar_meta
+
     B = pathlib.Path(build_dir)
-    html = (B/html_name).read_text(encoding="utf-8").replace("<style>", "<style>"+embedded_fonts_css(), 1)
-    OUT = pathlib.Path("/mnt/user-data/outputs")/out_name; OUT.mkdir(parents=True, exist_ok=True)
-    final_html = OUT/f"{out_name}.html"; final_html.write_text(html, encoding="utf-8")
-    pngs = sorted((B/"png").glob("slide-*.png"))
-    for p in pngs: shutil.copy(p, OUT/p.name)
-    from PIL import Image
-    ims=[Image.open(p) for p in pngs]; w,h=ims[0].size; sc=400
-    strip=Image.new("RGB",(sc*len(ims),int(h*sc/w)),(10,10,10))
-    for i,im in enumerate(ims): strip.paste(im.resize((sc,int(h*sc/w))),(i*sc,0))
-    strip.save(OUT/"_preview-tira.png")
-    with zipfile.ZipFile(OUT/f"{out_name}.zip","w",zipfile.ZIP_DEFLATED) as zf:
-        for p in pngs: zf.write(p,p.name)
+    html = (B / html_name).read_text(encoding="utf-8").replace(
+        "<style>", "<style>" + embedded_fonts_css(), 1
+    )
+
+    if meta is not None:
+        validar_meta(meta)
+        resolve_build_id(meta, out_name)
+
+    if output_dir is None:
+        if meta is not None:
+            output_dir = REPO_ROOT / "builds" / meta["id"]
+        else:
+            legacy = pathlib.Path("/mnt/user-data/outputs") / out_name
+            output_dir = legacy if legacy.parent.exists() else REPO_ROOT / "builds" / out_name
+    OUT = pathlib.Path(output_dir)
+    OUT.mkdir(parents=True, exist_ok=True)
+    final_html = OUT / f"{out_name}.html"
+    final_html.write_text(html, encoding="utf-8")
+    pngs = sorted((B / "png").glob("slide-*.png"))
+    for p in pngs:
+        shutil.copy(p, OUT / p.name)
+    if pngs:
+        from PIL import Image
+
+        ims = [Image.open(p) for p in pngs]
+        w, h = ims[0].size
+        sc = 400
+        strip = Image.new("RGB", (sc * len(ims), int(h * sc / w)), (10, 10, 10))
+        for i, im in enumerate(ims):
+            strip.paste(im.resize((sc, int(h * sc / w))), (i * sc, 0))
+        strip.save(OUT / "_preview-tira.png")
+    with zipfile.ZipFile(OUT / f"{out_name}.zip", "w", zipfile.ZIP_DEFLATED) as zf:
+        for p in pngs:
+            zf.write(p, p.name)
         zf.write(final_html, final_html.name)
+    if meta is not None:
+        registrar_carrusel(OUT, meta)
     return OUT
 
 # Demo mínima
