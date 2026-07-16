@@ -52,13 +52,17 @@ b{color:#0A0A0A;}
 }
 .disp{font-family:var(--disp);font-weight:400;line-height:.88;letter-spacing:1px;color:#0A0A0A;text-align:left;}
 .pop{font-family:var(--pop);font-weight:800;line-height:1.05;color:#0A0A0A;text-align:left;}
+.cover-title{
+  font-family:var(--pop);font-weight:800;line-height:.95;letter-spacing:-1px;
+  color:#0A0A0A;text-align:left;text-transform:uppercase;
+}
 .body{font-family:var(--cond);font-size:34px;line-height:1.35;color:#3a3f3c;text-align:left;max-width:900px;}
 .body b{color:#0A0A0A;font-weight:700;}
 .rule{height:4px;width:120px;background:var(--verde);margin:28px 0 32px;border-radius:2px;}
 
 /* slide 1 cover */
 .s1{padding:88px 84px 0;height:100%;}
-.s1 .disp{font-size:128px;margin-top:18px;}
+.s1 .cover-title{font-size:92px;margin-top:18px;}
 .s1 .sub{font-family:var(--cond);font-size:36px;color:#4a524e;margin-top:28px;max-width:820px;text-align:left;}
 .s1-photo{
   position:absolute;right:-40px;bottom:140px;width:420px;height:520px;z-index:3;
@@ -130,7 +134,7 @@ b{color:#0A0A0A;}
 
 /* CTA final */
 .s6{padding:110px 84px 0;text-align:left;}
-.s6 .disp{font-size:110px;margin-top:12px;}
+.s6 .cover-title{font-size:88px;margin-top:12px;}
 .s6 .body{margin-top:28px;}
 .cta-box{
   margin-top:48px;padding:36px 32px;background:#0A0A0A;color:#F2F2F2;
@@ -149,7 +153,7 @@ def slide1():
         f"""
 <div class="s1">
   <div class="kicker">STLABS · REVOPS</div>
-  <h1 class="disp">TUS LEADS<br>NO SON<br><span class="gr">UN CHAT</span></h1>
+  <h1 class="cover-title">TUS LEADS<br>NO SON<br><span class="gr">UN CHAT</span></h1>
   <div class="kw-pill">COMENTÁ · {KEYWORD}</div>
   <p class="sub">Si tu seguimiento vive en el chat, estás perdiendo plata todos los días.</p>
 </div>
@@ -266,7 +270,7 @@ def slide6():
         f"""
 <div class="s6">
   <div class="kicker">AHORA</div>
-  <h2 class="disp">DEJÁ DE<br>PERDER<br><span class="gr">{KEYWORD}</span></h2>
+  <h2 class="cover-title">DEJÁ DE<br>PERDER<br><span class="gr">{KEYWORD}</span></h2>
   <div class="rule"></div>
   <p class="body">Si tu equipo vende por chat y pierde oportunidades, esto es para vos.</p>
   <div class="cta-box">
@@ -325,8 +329,8 @@ def main():
 
 | Fuente | Peso / estilo | Rol | Origen | Código / comando de carga |
 |---|---|---|---|---|
-| Bebas Neue | 400 | título display portada/CTA | `fonts/BebasNeue-Regular.ttf` (skill STLabs) | `@font-face{font-family:'Bebas Neue';src:url(data:font/ttf;base64,...) format('truetype');}` embebido en HTML |
-| Poppins | 800 | titulares de paso / quote | `fonts/Poppins-Bold.ttf` | `@font-face` base64 en HTML final |
+| Bebas Neue | 400 | números / acentos tipográficos | `fonts/BebasNeue-Regular.ttf` (skill STLabs) | `@font-face{font-family:'Bebas Neue';src:url(data:font/ttf;base64,...) format('truetype');}` embebido en HTML |
+| Poppins | 800 ExtraBold | títulos portada, CTA y pasos | `fonts/Poppins-ExtraBold.ttf` | `@font-face` base64 en HTML final |
 | Lora | 600 italic | palabra-acento `.ac` en verde | `fonts/Lora-Italic-Variable.ttf` | `@font-face` italic variable base64 |
 | Barlow Condensed | 400–700 | cuerpo / claims | `fonts/BarlowCondensed-*.ttf` | `@font-face` base64 |
 | IBM Plex Mono | 400–600 | kickers, footer, URL | `fonts/IBMPlexMono-*.ttf` | `@font-face` base64 |
