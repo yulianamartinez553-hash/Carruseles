@@ -1,0 +1,14 @@
+Carrusel STLabs — Tus Leads No Son Un Chat
+Modo fondo: BLANCO
+Textura: reticula_fina
+Familia: dossier_editorial
+Keyword: LEADS
+Slides: 6 (retina 2160×2700)
+
+Contenido de esta carpeta:
+- slide-01.png … slide-06.png
+- _preview-tira.png
+- STLabs-TusLeadsNoSonUnChat.html (fuentes embebidas)
+- STLabs-TusLeadsNoSonUnChat.zip
+- MANIFIESTO-FUENTES.md
+- manifest.json
