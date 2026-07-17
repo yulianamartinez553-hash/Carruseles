@@ -47,67 +47,70 @@ b{color:#0A0A0A;}
 .foot-brand .sep{color:var(--verde);opacity:.7;}
 .foot-brand .tag{color:var(--verde);}
 
-.pad{padding:120px 72px 0;}
+.pad{padding:100px 64px 0;}
 .kicker{font-family:var(--mono);font-size:18px;letter-spacing:2px;color:#6a736e;}
 
+/* Títulos: Impact + Anton a 100px, super/ultra heavy */
 .h-title{
-  font-family:var(--anton);font-weight:400;font-size:56px;line-height:1.02;
-  color:#0A0A0A;text-align:left;text-transform:uppercase;letter-spacing:.5px;
-  display:flex;gap:22px;align-items:flex-start;margin-top:28px;
+  font-family:var(--anton);font-weight:900;font-size:100px;line-height:.92;
+  color:#0A0A0A;text-align:left;text-transform:uppercase;letter-spacing:1px;
+  display:flex;gap:18px;align-items:flex-start;margin-top:18px;
+  -webkit-text-stroke:2px currentColor;paint-order:stroke fill;
 }
 .h-title .num{
   font-family:var(--impact);font-weight:900;color:var(--verde);
-  font-size:78px;line-height:.9;flex:0 0 auto;letter-spacing:0;
+  font-size:100px;line-height:.9;flex:0 0 auto;letter-spacing:0;
+  -webkit-text-stroke:2px var(--verde);paint-order:stroke fill;
 }
-.h-title .txt{flex:1;padding-top:6px;}
-.h-title .hl{color:var(--verde);}
+.h-title .txt{flex:1;padding-top:2px;-webkit-text-stroke:2px currentColor;paint-order:stroke fill;}
+.h-title .hl{color:var(--verde);-webkit-text-stroke:2px var(--verde);}
 
-.lead{font-family:var(--cond);font-size:32px;line-height:1.35;color:#3a3f3c;margin-top:28px;text-align:left;max-width:920px;}
+.lead{font-family:var(--cond);font-size:28px;line-height:1.3;color:#3a3f3c;margin-top:18px;text-align:left;max-width:920px;}
 .lead .hl{color:var(--verde);font-weight:700;}
 
-.bullets{margin-top:26px;display:flex;flex-direction:column;gap:14px;}
+.bullets{margin-top:16px;display:flex;flex-direction:column;gap:10px;}
 .bullets li{
-  list-style:none;font-family:var(--cond);font-size:30px;color:#2a2f2c;
+  list-style:none;font-family:var(--cond);font-size:26px;color:#2a2f2c;
   padding-left:28px;position:relative;text-align:left;
 }
 .bullets li::before{
-  content:'';position:absolute;left:0;top:12px;width:12px;height:12px;background:var(--verde);
+  content:'';position:absolute;left:0;top:10px;width:12px;height:12px;background:var(--verde);
 }
 
-.bullets-2col{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:10px 36px;}
+.bullets-2col{margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:8px 36px;}
 .bullets-2col li{
-  list-style:none;font-family:var(--cond);font-size:28px;color:#2a2f2c;
+  list-style:none;font-family:var(--cond);font-size:26px;color:#2a2f2c;
   padding-left:28px;position:relative;text-align:left;
 }
 .bullets-2col li::before{
-  content:'';position:absolute;left:0;top:12px;width:12px;height:12px;border-radius:50%;background:var(--verde);
+  content:'';position:absolute;left:0;top:10px;width:12px;height:12px;border-radius:50%;background:var(--verde);
 }
 
 .prompt{
-  margin-top:28px;border:2px solid var(--verde);border-radius:18px;padding:26px 28px;
+  margin-top:16px;border:2px solid var(--verde);border-radius:18px;padding:20px 22px;
   background:rgba(255,255,255,.88);box-shadow:0 12px 36px rgba(10,10,10,.06);
 }
 .prompt .ph{
-  font-family:var(--mono);font-size:16px;letter-spacing:2px;color:var(--verde);margin-bottom:12px;
+  font-family:var(--mono);font-size:15px;letter-spacing:2px;color:var(--verde);margin-bottom:10px;
 }
 .prompt .ph i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--verde);margin-right:5px;}
-.prompt p{font-family:var(--cond);font-size:28px;line-height:1.35;color:#1a1a1a;text-align:left;}
+.prompt p{font-family:var(--cond);font-size:24px;line-height:1.3;color:#1a1a1a;text-align:left;}
 
 /* ── COVER ── */
-.cover{padding:70px 64px 0;display:flex;flex-direction:column;align-items:center;text-align:center;}
-.cd-label{font-family:var(--mono);font-size:16px;letter-spacing:3px;color:#6a736e;margin-bottom:10px;}
+.cover{padding:56px 56px 0;display:flex;flex-direction:column;align-items:center;text-align:center;}
+.cd-label{font-family:var(--mono);font-size:16px;letter-spacing:3px;color:#6a736e;margin-bottom:8px;}
 .cd-wrap{
-  width:720px;padding:18px 22px 22px;border-radius:16px;
+  width:680px;padding:14px 20px 16px;border-radius:16px;
   border:2px solid rgba(0,255,178,.55);
   background:linear-gradient(180deg,#0f1412,#0a0a0a);
   box-shadow:0 0 40px rgba(0,255,178,.18), inset 0 0 30px rgba(0,255,178,.08);
 }
 .cd-digits{
-  font-family:var(--disp);font-size:110px;line-height:1;letter-spacing:8px;
+  font-family:var(--disp);font-size:96px;line-height:1;letter-spacing:8px;
   color:#FF5247;text-shadow:0 0 18px rgba(255,82,71,.55);
 }
 .fable-logo{
-  margin-top:48px;width:210px;height:210px;border-radius:36px;
+  margin-top:28px;width:170px;height:170px;border-radius:32px;
   background:radial-gradient(circle at 40% 30%, #1a1a1a, #0a0a0a);
   border:3px solid rgba(0,255,178,.7);
   box-shadow:0 20px 50px rgba(10,10,10,.2), 0 0 40px rgba(0,255,178,.2);
@@ -119,11 +122,12 @@ b{color:#0A0A0A;}
 }
 .fable-name{font-family:var(--anton);font-weight:400;font-size:34px;color:#F2F2F2;letter-spacing:2px;}
 .cover-title{
-  margin-top:40px;font-family:var(--impact);font-weight:900;font-size:82px;line-height:.96;
-  letter-spacing:1px;text-transform:uppercase;color:#0A0A0A;text-align:center;
+  margin-top:28px;font-family:var(--impact);font-weight:900;font-size:100px;line-height:.9;
+  letter-spacing:1.5px;text-transform:uppercase;color:#0A0A0A;text-align:center;
+  -webkit-text-stroke:2.5px currentColor;paint-order:stroke fill;
 }
-.cover-title .hl{color:var(--verde);}
-.cover-sub{margin-top:22px;font-family:var(--cond);font-size:34px;color:#3a3f3c;}
+.cover-title .hl{color:var(--verde);-webkit-text-stroke:2.5px var(--verde);}
+.cover-sub{margin-top:18px;font-family:var(--cond);font-size:32px;color:#3a3f3c;}
 
 /* ── boxes uso 05 ── */
 .box{margin-top:18px;border-radius:16px;padding:22px 24px;border:2px solid #ddd;background:#fff;text-align:left;}
@@ -159,21 +163,27 @@ b{color:#0A0A0A;}
   font-family:var(--pop);font-weight:800;font-size:14px;font-style:normal;
 }
 .value-box{
-  margin-top:34px;border:3px solid var(--verde);border-radius:16px;padding:26px;
+  margin-top:24px;border:3px solid var(--verde);border-radius:16px;padding:22px;
   background:#0A0A0A;text-align:center;
-  font-family:var(--anton);font-weight:400;font-size:36px;color:#F2F2F2;letter-spacing:1px;
+  font-family:var(--anton);font-weight:900;font-size:40px;color:#F2F2F2;letter-spacing:1px;
+  -webkit-text-stroke:1.5px #F2F2F2;paint-order:stroke fill;
 }
 
 /* ── CTA final ── */
-.cta{padding:90px 64px 0;display:flex;flex-direction:column;align-items:center;text-align:center;}
+.cta{padding:80px 64px 0;display:flex;flex-direction:column;align-items:center;text-align:center;}
 .cta .cd-wrap{margin-top:8px;}
-.cta-kicker{margin-top:54px;font-family:var(--mono);font-size:22px;letter-spacing:3px;color:#B8860B;}
-.cta-line{margin-top:18px;font-family:var(--impact);font-weight:900;font-size:76px;color:#0A0A0A;line-height:1;letter-spacing:1px;text-transform:uppercase;}
-.cta-kw{
-  margin-top:6px;font-family:var(--impact);font-weight:900;font-size:128px;line-height:.95;
-  color:var(--verde);letter-spacing:2px;text-transform:uppercase;
+.cta-kicker{margin-top:40px;font-family:var(--mono);font-size:22px;letter-spacing:3px;color:#B8860B;}
+.cta-line{
+  margin-top:14px;font-family:var(--impact);font-weight:900;font-size:100px;color:#0A0A0A;
+  line-height:.92;letter-spacing:1.5px;text-transform:uppercase;
+  -webkit-text-stroke:2.5px currentColor;paint-order:stroke fill;
 }
-.cta-sub{margin-top:22px;font-family:var(--cond);font-size:34px;color:#3a3f3c;max-width:820px;}
+.cta-kw{
+  margin-top:4px;font-family:var(--impact);font-weight:900;font-size:100px;line-height:.92;
+  color:var(--verde);letter-spacing:2px;text-transform:uppercase;
+  -webkit-text-stroke:2.5px var(--verde);paint-order:stroke fill;
+}
+.cta-sub{margin-top:18px;font-family:var(--cond);font-size:32px;color:#3a3f3c;max-width:820px;}
 .cta-sub .hl{color:var(--verde);font-weight:700;}
 """
 
@@ -316,7 +326,7 @@ def slide6():
         6,
         f"""
 {top("FABLE 5 · USO 05")}
-<div class="pad" style="padding-top:110px">
+<div class="pad" style="padding-top:96px">
   <div class="h-title"><div class="num">5</div><div class="txt">AUTOMATIZÁ UN PROCESO <span class="hl">COMPLETO</span></div></div>
   <p class="lead">No le pidas una tarea. <span class="hl">Pedile el sistema entero.</span></p>
   <div class="box bad"><div class="bl">× EN LUGAR DE</div><p>Escribí este correo.</p></div>
@@ -333,7 +343,7 @@ def slide7():
         f"""
 {top("FABLE 5 · CUÁNDO USARLO")}
 <div class="pad">
-  <div class="h-title" style="display:block;font-size:52px;margin-top:10px">
+  <div class="h-title" style="display:block;font-size:100px;margin-top:8px;line-height:.9">
     <div class="txt">FABLE 5 <span class="hl">NO ES</span> PARA PREGUNTAS SIMPLES</div>
   </div>
   <p class="lead">No gastes su capacidad en:</p>
