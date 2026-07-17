@@ -48,12 +48,9 @@ Campos obligatorios en `meta`: `fondo`, `familia_visual`, `origen`, `slides`, `k
 
 ## Tipografía default
 
-Títulos display por defecto:
+Títulos display por defecto: **Impact** del pack del repo [`impact-font.zip`](impact-font.zip) → `fonts/impact.ttf` · `var(--impact)` / `.title-heavy` (~100px).
 
-- **Impact** (Super-Heavy) — `fonts/Impact.ttf` · `var(--impact)` / `.title-impact`
-- **Anton** (Ultra-Heavy) — `fonts/Anton-Regular.ttf` · `var(--anton)` / `.title-anton`
-
-Ver [fonts/README.md](fonts/README.md) y el sistema de diseño § Tipografías.
+Licencia: `fonts/Befonts-License.txt`. Ver [fonts/README.md](fonts/README.md).
 
 ## Documentación
 

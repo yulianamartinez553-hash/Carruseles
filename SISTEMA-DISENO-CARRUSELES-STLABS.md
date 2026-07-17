@@ -36,29 +36,28 @@ Cuando Yuli sube imágenes, la tarea por defecto es **clonar el carrusel** con l
 
 ### Tipografías (todas base64-embebidas — CDN inaccesible en entorno bash)
 
-#### Defaults de título (obligatorio desde 2026-07-17)
-| Familia | Característica | Rol por defecto | Token CSS |
+#### Default de título (obligatorio — pack del repo)
+| Familia | Origen | Rol | Token CSS |
 |---|---|---|---|
-| **Impact** | Super-Heavy | Display / portada / CTA final | `--impact` · clase `.impact` / `.title-impact` |
-| **Anton** | Ultra-Heavy | Titulares monumentales / keyword | `--anton` · clase `.anton` / `.title-anton` |
+| **Impact** | `impact-font.zip` → `fonts/impact.ttf` | **Todos los títulos** display / portada / CTA (~100px, Super-Heavy) | `--impact` · `.impact` / `.title-heavy` |
 
-Stack display: `--disp: Impact, Anton, Bebas Neue` · Stack título: `--title: Anton, Impact, Poppins` · utilidad `.title-heavy`.
+Variantes del pack: `impacted.ttf`, `unicodeimpact.ttf`. Licencia: `fonts/Befonts-License.txt` (Personal Use · Befonts).
 
-> **Regla:** en carruseles nuevos, los títulos grandes usan **Impact** o **Anton** (no fuentes finas). Bebas / Poppins quedan como soporte o variación puntual, no como default de título.
+Stack: `--disp` / `--title` arrancan con **Impact**. Anton / Bebas / Poppins = soporte, no default.
 
 #### Stack completo
 | Familia | Peso | Rol |
 |---|---|---|
-| Impact | 400 / 900 | Display Super-Heavy (default portada/CTA) |
-| Anton | 400 / 900 | Display Ultra-Heavy (default titulares) |
+| Impact | 400 / 900 | **Default de título** Super-Heavy |
+| Impacted | 400 / 900 | Variante del pack Impact |
+| Anton | 400 / 900 | Soporte Ultra-Heavy |
 | Bebas Neue | 400 | Display alternativo, números |
 | Poppins | 700 / 800 | Titulares de paso (soporte) |
 | Barlow Condensed | 400–700 | Cuerpo, bullets, claims — **jamás título** |
 | IBM Plex Mono | 400–600 | Labels, PASO, footer, URL — **jamás título** |
 | Lora *itálica* | 400–700 | Palabras-acento editoriales, siempre en verde |
 
-Archivos en `fonts/`: `Impact.ttf`, `Anton-Regular.ttf`, más el stack previo.
-Rutas sistema (opcionales): `/usr/share/fonts/truetype/stlabs/` y `/usr/share/fonts/truetype/google-fonts/`
+Resolución del kit: `Word/` → `fonts/` → sistema. Pack canónico en la raíz: `impact-font.zip`.
 
 ### Voz
 Español argentino, voseo: Empezá, Elegí, Dejá, Hacé, Creá, Conectá, Comentá, Deslizá.

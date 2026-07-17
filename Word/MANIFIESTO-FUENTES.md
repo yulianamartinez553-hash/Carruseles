@@ -2,8 +2,7 @@
 
 | Fuente | Peso / estilo | Rol | Origen | Código / comando de carga |
 |---|---|---|---|---|
-| Impact | 900 Super-Heavy | títulos portada / CTA | `fonts/Impact.ttf` | `@font-face` base64 en HTML |
-| Anton | 400 Ultra-Heavy | títulos de usos / value box | `fonts/Anton-Regular.ttf` | `@font-face` base64 |
+| Impact | 900 Super-Heavy | **todos los títulos** (default repo) | `impact-font.zip` → `fonts/impact.ttf` | `@font-face` base64 en HTML |
 | Bebas Neue | 400 | dígitos countdown | `fonts/BebasNeue-Regular.ttf` | `@font-face` base64 |
 | Barlow Condensed | 400–700 | cuerpo, prompts, bullets | `fonts/BarlowCondensed-*.ttf` | `@font-face` base64 |
 | IBM Plex Mono | 400–600 | labels, footer | `fonts/IBMPlexMono-*.ttf` | `@font-face` base64 |

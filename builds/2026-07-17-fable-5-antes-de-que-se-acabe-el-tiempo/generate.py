@@ -52,7 +52,7 @@ b{color:#0A0A0A;}
 
 /* Títulos: Impact + Anton a 100px, super/ultra heavy */
 .h-title{
-  font-family:var(--anton);font-weight:900;font-size:100px;line-height:.92;
+  font-family:var(--impact);font-weight:900;font-size:100px;line-height:.92;
   color:#0A0A0A;text-align:left;text-transform:uppercase;letter-spacing:1px;
   display:flex;gap:18px;align-items:flex-start;margin-top:18px;
   -webkit-text-stroke:2px currentColor;paint-order:stroke fill;
@@ -120,7 +120,7 @@ b{color:#0A0A0A;}
   width:72px;height:72px;color:var(--verde);
   filter:drop-shadow(0 0 12px rgba(0,255,178,.55));
 }
-.fable-name{font-family:var(--anton);font-weight:400;font-size:34px;color:#F2F2F2;letter-spacing:2px;}
+.fable-name{font-family:var(--impact);font-weight:900;font-size:34px;color:#F2F2F2;letter-spacing:2px;}
 .cover-title{
   margin-top:28px;font-family:var(--impact);font-weight:900;font-size:100px;line-height:.9;
   letter-spacing:1.5px;text-transform:uppercase;color:#0A0A0A;text-align:center;
@@ -165,7 +165,7 @@ b{color:#0A0A0A;}
 .value-box{
   margin-top:24px;border:3px solid var(--verde);border-radius:16px;padding:22px;
   background:#0A0A0A;text-align:center;
-  font-family:var(--anton);font-weight:900;font-size:40px;color:#F2F2F2;letter-spacing:1px;
+  font-family:var(--impact);font-weight:900;font-size:40px;color:#F2F2F2;letter-spacing:1px;
   -webkit-text-stroke:1.5px #F2F2F2;paint-order:stroke fill;
 }
 
@@ -406,12 +406,21 @@ def main():
     out = package(BUILD, "STLabs-Fable5-AntesDelTiempo", meta=meta)
     print("Package:", out)
 
-    # Entrega limpia en Word/ (reemplaza contenido previo)
-    if WORD_DIR.exists():
-        for p in WORD_DIR.iterdir():
-            if p.is_file():
-                p.unlink()
+    # Entrega limpia en Word/ — preservar fuentes del pack Impact
+    KEEP = {".ttf", ".otf", ".woff", ".woff2"}
+    KEEP_NAMES = {"befonts-license.txt", "impact-font.zip"}
     WORD_DIR.mkdir(parents=True, exist_ok=True)
+    for p in list(WORD_DIR.iterdir()):
+        if not p.is_file():
+            continue
+        if p.suffix.lower() in KEEP or p.name.lower() in KEEP_NAMES:
+            continue
+        p.unlink()
+    # Asegurar pack Impact en Word/
+    for fname in ("impact.ttf", "impacted.ttf", "unicodeimpact.ttf", "Befonts-License.txt"):
+        src = REPO / "fonts" / fname
+        if src.exists():
+            shutil.copy2(src, WORD_DIR / fname)
     for name in (
         "STLabs-Fable5-AntesDelTiempo.html",
         "STLabs-Fable5-AntesDelTiempo.zip",
@@ -428,8 +437,7 @@ def main():
 
 | Fuente | Peso / estilo | Rol | Origen | Código / comando de carga |
 |---|---|---|---|---|
-| Impact | 900 Super-Heavy | títulos portada / CTA | `fonts/Impact.ttf` | `@font-face` base64 en HTML |
-| Anton | 400 Ultra-Heavy | títulos de usos / value box | `fonts/Anton-Regular.ttf` | `@font-face` base64 |
+| Impact | 900 Super-Heavy | **todos los títulos** (default repo) | `impact-font.zip` → `fonts/impact.ttf` | `@font-face` base64 en HTML |
 | Bebas Neue | 400 | dígitos countdown | `fonts/BebasNeue-Regular.ttf` | `@font-face` base64 |
 | Barlow Condensed | 400–700 | cuerpo, prompts, bullets | `fonts/BarlowCondensed-*.ttf` | `@font-face` base64 |
 | IBM Plex Mono | 400–600 | labels, footer | `fonts/IBMPlexMono-*.ttf` | `@font-face` base64 |

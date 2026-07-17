@@ -1,17 +1,20 @@
 ---
-description: Tipografías default STLabs — Impact + Anton en títulos
+description: Tipografía default STLabs — Impact del repo en títulos
 globs: "**/*"
 alwaysApply: true
 ---
 
 # Carruseles STLabs — Tipografía default
 
-En todo carrusel nuevo de este repo:
+**Fuente de títulos por defecto (obligatoria):** **Impact** del pack del repo.
 
-1. **Títulos display / portada / CTA** → **Impact** (Super-Heavy) o **Anton** (Ultra-Heavy)
-2. Usar tokens del kit: `var(--impact)`, `var(--anton)`, `var(--disp)`, `var(--title)` o clases `.impact` / `.anton` / `.title-heavy`
-3. **No** usar Barlow Condensed ni IBM Plex Mono como título
-4. Bebas Neue y Poppins quedan como soporte, no como default de título
-5. Embeber siempre desde `fonts/Impact.ttf` y `fonts/Anton-Regular.ttf` vía `stlabs_kit.embedded_fonts_css()`
+1. Pack canónico: `impact-font.zip` en la raíz → archivos en `fonts/impact.ttf` (también `Word/impact.ttf`)
+2. Títulos display / portada / CTA → **Impact** Super-Heavy, tamaño grande (~**100px**)
+3. Tokens: `var(--impact)` / `var(--title)` · clases `.impact` / `.title-impact` / `.title-heavy`
+4. Variantes del mismo pack: `impacted.ttf`, `unicodeimpact.ttf` (opcionales)
+5. **No** usar Barlow Condensed ni IBM Plex Mono como título
+6. Anton / Bebas / Poppins = soporte, no default de título
+7. Licencia: `fonts/Befonts-License.txt` · Personal Use (Befonts)
+8. Embeber siempre vía `stlabs_kit.embedded_fonts_css()` (resuelve `Word/` → `fonts/`)
 
 Referencia: `SISTEMA-DISENO-CARRUSELES-STLABS.md` § Tipografías.
