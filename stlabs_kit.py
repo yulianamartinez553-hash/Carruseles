@@ -25,9 +25,22 @@ def _font_dir(linux_path: pathlib.Path) -> str:
 
 STLABS = _font_dir(_LINUX_STLABS)
 GFONTS = _font_dir(_LINUX_GFONTS)
+LOCAL = str(_LOCAL_FONTS) + "/"
+
+def _resolve_font(*candidates: str) -> str:
+    """Prefiere el primer TTF existente (repo local → sistema)."""
+    for c in candidates:
+        if pathlib.Path(c).exists():
+            return c
+    return candidates[0]
 
 # (familia, archivo, peso, estilo)
+# Impact = Super-Heavy display · Anton = Ultra-Heavy display (defaults de título)
 FONT_FACES = [
+    ("Impact", _resolve_font(LOCAL+"Impact.ttf", STLABS+"Impact.ttf"), 400, "normal"),
+    ("Impact", _resolve_font(LOCAL+"Impact.ttf", STLABS+"Impact.ttf"), 900, "normal"),
+    ("Anton", _resolve_font(LOCAL+"Anton-Regular.ttf", GFONTS+"Anton-Regular.ttf"), 400, "normal"),
+    ("Anton", _resolve_font(LOCAL+"Anton-Regular.ttf", GFONTS+"Anton-Regular.ttf"), 900, "normal"),
     ("Poppins", GFONTS+"Poppins-Bold.ttf", 700, "normal"),
     ("Poppins", GFONTS+"Poppins-Bold.ttf", 800, "normal"),
     ("Bebas Neue", STLABS+"BebasNeue-Regular.ttf", 400, "normal"),
@@ -65,7 +78,10 @@ NEG="#0A0A0A"; GRAF="#141414"; GRIS="#1E1E1E"; BLANCO="#F2F2F2"; GRAY="#9aa39c"
 BASE_CSS = """
 :root{--verde:#00FFB2;--red:#FF5247;--am:#FF9D3C;--neg:#0A0A0A;--graf:#141414;--gris:#1E1E1E;
  --blanco:#F2F2F2;--gray:#9aa39c;
- --mono:'IBM Plex Mono',monospace;--cond:'Barlow Condensed',sans-serif;--disp:'Bebas Neue',sans-serif;
+ --impact:'Impact',sans-serif;--anton:'Anton',sans-serif;
+ --mono:'IBM Plex Mono',monospace;--cond:'Barlow Condensed',sans-serif;
+ --disp:'Impact','Anton','Bebas Neue',sans-serif;
+ --title:'Anton','Impact','Poppins',sans-serif;
  --pop:'Poppins',sans-serif;--serif:'Lora',serif;}
 *{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased;}
 body{background:#000;}
@@ -78,6 +94,10 @@ body{background:#000;}
 .gr{color:var(--verde);} .red{color:var(--red);} .am{color:var(--am);}
 .ac{font-family:var(--serif);font-style:italic;font-weight:600;color:var(--verde);}
 b{font-weight:700;color:#fff;}
+/* Display defaults: Impact Super-Heavy · Anton Ultra-Heavy */
+.impact,.title-impact{font-family:var(--impact);font-weight:900;letter-spacing:.5px;text-transform:uppercase;}
+.anton,.title-anton{font-family:var(--anton);font-weight:400;letter-spacing:.5px;text-transform:uppercase;}
+.title-heavy{font-family:var(--title);font-weight:900;letter-spacing:.5px;text-transform:uppercase;}
 
 /* retícula sutil opcional */
 .grid::before{content:'';position:absolute;inset:0;z-index:0;opacity:.4;
