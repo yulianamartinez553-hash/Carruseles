@@ -46,6 +46,15 @@ python scripts/demo_memory.py
 
 Campos obligatorios en `meta`: `fondo`, `familia_visual`, `origen`, `slides`, `keyword_portada`.
 
+## Tipografía default
+
+Títulos display por defecto:
+
+- **Impact** (Super-Heavy) — `fonts/Impact.ttf` · `var(--impact)` / `.title-impact`
+- **Anton** (Ultra-Heavy) — `fonts/Anton-Regular.ttf` · `var(--anton)` / `.title-anton`
+
+Ver [fonts/README.md](fonts/README.md) y el sistema de diseño § Tipografías.
+
 ## Documentación
 
 - Sistema de diseño: [SISTEMA-DISENO-CARRUSELES-STLABS.md](SISTEMA-DISENO-CARRUSELES-STLABS.md)
