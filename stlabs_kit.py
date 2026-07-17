@@ -29,7 +29,7 @@ GFONTS = _font_dir(_LINUX_GFONTS)
 # (familia, archivo, peso, estilo)
 FONT_FACES = [
     ("Poppins", GFONTS+"Poppins-Bold.ttf", 700, "normal"),
-    ("Poppins", GFONTS+"Poppins-Bold.ttf", 800, "normal"),
+    ("Poppins", GFONTS+"Poppins-ExtraBold.ttf", 800, "normal"),
     ("Bebas Neue", STLABS+"BebasNeue-Regular.ttf", 400, "normal"),
     ("IBM Plex Mono", STLABS+"IBMPlexMono-Regular.ttf", 400, "normal"),
     ("IBM Plex Mono", STLABS+"IBMPlexMono-Medium.ttf", 500, "normal"),
