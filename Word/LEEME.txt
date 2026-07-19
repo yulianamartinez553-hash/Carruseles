@@ -1,10 +1,5 @@
-Carrusel STLabs — Fable 5 Antes De Que Se Acabe El Tiempo
-Clon de referencia centeia.education → identidad sebastian.stlabs.ar
-Modo fondo: BLANCO · Textura: lino_tela · Familia: before_after
-Slides: 8 · Keyword: FABLE
-
-Archivos:
-- slide-01.png … slide-08.png (retina 2160×2700)
-- _preview-tira.png
-- STLabs-Fable5-AntesDelTiempo.html / .zip
-- MANIFIESTO-FUENTES.md · manifest.json
+Carrusel STLabs — Fable 5 Usos Que Parecen Trampa
+Clon de referencia (emanuelmdzz) → sebastian.stlabs.ar
+Fondo: BLANCO · Textura: reticula_fina · Familia: dossier_editorial
+Slides: 7 · Keyword: FABLE
+Claude portada: assets/claude.svg (recreación exacta del personaje naranja)

@@ -111,280 +111,365 @@ b{font-weight:700;color:#fff;}
 .ui-input{width:100%;margin-top:36px;background:#141414;border:1px solid #2e2e2e;border-radius:18px;padding:26px;font-family:var(--cond);font-size:36px;color:#6a6a6a;text-align:left;}
 .ui-btn{width:100%;margin-top:16px;background:var(--verde);color:#04130b;border-radius:18px;font-family:var(--cond);font-weight:700;font-size:38px;padding:26px;box-shadow:0 0 44px rgba(0,255,178,.5);}
 
-/* ── MODO BLANCO + LINO ── */
+:root{--coral:#E8916A;--coral-soft:#F3B89A;}
 .sheet{background:#e8e8e8;}
 .slide{
   color:#0A0A0A;
   background:
-    radial-gradient(50% 34% at 50% 0%, rgba(0,255,178,.09), transparent 58%),
+    radial-gradient(42% 30% at 90% 8%, rgba(232,145,106,.10), transparent 60%),
     linear-gradient(180deg,#FFFFFF 0%, #F7F7F5 100%);
 }
-.slide.lino::before{
-  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.35;
+.slide.grid::before{
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.9;
   background-image:
-    repeating-linear-gradient(0deg, rgba(10,10,10,.035) 0 1px, transparent 1px 3px),
-    repeating-linear-gradient(90deg, rgba(10,10,10,.028) 0 1px, transparent 1px 3px);
-  mix-blend-mode:multiply;
+    linear-gradient(rgba(10,10,10,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10,10,10,.045) 1px, transparent 1px);
+  background-size:48px 48px;
 }
-.web{color:var(--verde)!important;opacity:.95;}
-b{color:#0A0A0A;}
-
-.topbar{
-  position:absolute;top:56px;left:72px;right:72px;z-index:5;
-  display:flex;justify-content:space-between;align-items:center;
-  font-family:var(--mono);font-size:18px;letter-spacing:2px;color:#6a736e;
-}
-.foot-brand{
-  position:absolute;left:0;right:0;bottom:70px;z-index:6;text-align:center;
+.web{display:none!important;}
+.foot{
+  position:absolute;left:0;right:0;bottom:70px;z-index:8;text-align:center;
   font-family:var(--mono);font-size:22px;letter-spacing:1px;color:var(--verde);
 }
-.foot-brand .sep{color:var(--verde);opacity:.7;}
-.foot-brand .tag{color:var(--verde);}
-
-.pad{padding:100px 64px 0;}
-.kicker{font-family:var(--mono);font-size:18px;letter-spacing:2px;color:#6a736e;}
-
-/* Títulos: Impact + Anton a 100px, super/ultra heavy */
-.h-title{
-  font-family:var(--impact);font-weight:900;font-size:100px;line-height:.92;
-  color:#0A0A0A;text-align:left;text-transform:uppercase;letter-spacing:1px;
-  display:flex;gap:18px;align-items:flex-start;margin-top:18px;
-  -webkit-text-stroke:2px currentColor;paint-order:stroke fill;
+.swipe{
+  position:absolute;left:50%;transform:translateX(-50%);bottom:120px;z-index:8;
+  font-family:var(--mono);font-size:18px;letter-spacing:1px;color:#6a736e;
+  background:#fff;border:1px solid rgba(10,10,10,.12);border-radius:999px;
+  padding:10px 22px;box-shadow:0 8px 20px rgba(10,10,10,.06);
 }
-.h-title .num{
-  font-family:var(--impact);font-weight:900;color:var(--verde);
-  font-size:100px;line-height:.9;flex:0 0 auto;letter-spacing:0;
-  -webkit-text-stroke:2px var(--verde);paint-order:stroke fill;
+.wm{
+  position:absolute;right:40px;bottom:160px;z-index:1;pointer-events:none;
+  font-family:var(--impact);font-weight:900;font-size:280px;line-height:1;
+  color:rgba(10,10,10,.05);letter-spacing:-4px;
 }
-.h-title .txt{flex:1;padding-top:2px;-webkit-text-stroke:2px currentColor;paint-order:stroke fill;}
-.h-title .hl{color:var(--verde);-webkit-text-stroke:2px var(--verde);}
-
-.lead{font-family:var(--cond);font-size:28px;line-height:1.3;color:#3a3f3c;margin-top:18px;text-align:left;max-width:920px;}
-.lead .hl{color:var(--verde);font-weight:700;}
-
-.bullets{margin-top:16px;display:flex;flex-direction:column;gap:10px;}
-.bullets li{
-  list-style:none;font-family:var(--cond);font-size:26px;color:#2a2f2c;
-  padding-left:28px;position:relative;text-align:left;
-}
-.bullets li::before{
-  content:'';position:absolute;left:0;top:10px;width:12px;height:12px;background:var(--verde);
-}
-
-.bullets-2col{margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:8px 36px;}
-.bullets-2col li{
-  list-style:none;font-family:var(--cond);font-size:26px;color:#2a2f2c;
-  padding-left:28px;position:relative;text-align:left;
-}
-.bullets-2col li::before{
-  content:'';position:absolute;left:0;top:10px;width:12px;height:12px;border-radius:50%;background:var(--verde);
-}
-
-.prompt{
-  margin-top:16px;border:2px solid var(--verde);border-radius:18px;padding:20px 22px;
-  background:rgba(255,255,255,.88);box-shadow:0 12px 36px rgba(10,10,10,.06);
-}
-.prompt .ph{
-  font-family:var(--mono);font-size:15px;letter-spacing:2px;color:var(--verde);margin-bottom:10px;
-}
-.prompt .ph i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--verde);margin-right:5px;}
-.prompt p{font-family:var(--cond);font-size:24px;line-height:1.3;color:#1a1a1a;text-align:left;}
 
 /* ── COVER ── */
-.cover{padding:56px 56px 0;display:flex;flex-direction:column;align-items:center;text-align:center;}
-.cd-label{font-family:var(--mono);font-size:16px;letter-spacing:3px;color:#6a736e;margin-bottom:8px;}
-.cd-wrap{
-  width:680px;padding:14px 20px 16px;border-radius:16px;
-  border:2px solid rgba(0,255,178,.55);
-  background:linear-gradient(180deg,#0f1412,#0a0a0a);
-  box-shadow:0 0 40px rgba(0,255,178,.18), inset 0 0 30px rgba(0,255,178,.08);
-}
-.cd-digits{
-  font-family:var(--disp);font-size:96px;line-height:1;letter-spacing:8px;
-  color:#FF5247;text-shadow:0 0 18px rgba(255,82,71,.55);
-}
-.fable-logo{
-  margin-top:28px;width:170px;height:170px;border-radius:32px;
-  background:radial-gradient(circle at 40% 30%, #1a1a1a, #0a0a0a);
-  border:3px solid rgba(0,255,178,.7);
-  box-shadow:0 20px 50px rgba(10,10,10,.2), 0 0 40px rgba(0,255,178,.2);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
-}
-.fable-star{
-  width:72px;height:72px;color:var(--verde);
-  filter:drop-shadow(0 0 12px rgba(0,255,178,.55));
-}
-.fable-name{font-family:var(--impact);font-weight:900;font-size:34px;color:#F2F2F2;letter-spacing:2px;}
-.cover-title{
+.cover{padding:72px 64px 0;text-align:center;}
+.cover-k{font-family:var(--mono);font-size:18px;letter-spacing:3px;color:#6a736e;text-transform:uppercase;}
+.cover-h{
   margin-top:28px;font-family:var(--impact);font-weight:900;font-size:100px;line-height:.9;
-  letter-spacing:1.5px;text-transform:uppercase;color:#0A0A0A;text-align:center;
-  -webkit-text-stroke:2.5px currentColor;paint-order:stroke fill;
+  letter-spacing:1px;color:#0A0A0A;text-transform:none;
+  -webkit-text-stroke:2.5px #0A0A0A;paint-order:stroke fill;
 }
-.cover-title .hl{color:var(--verde);-webkit-text-stroke:2.5px var(--verde);}
-.cover-sub{margin-top:18px;font-family:var(--cond);font-size:32px;color:#3a3f3c;}
+.cover-line2{margin-top:10px;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;}
+.cover-script{
+  font-family:var(--serif);font-style:italic;font-weight:700;font-size:54px;color:var(--coral);
+}
+.trampa{
+  display:inline-block;background:var(--coral);color:#fff;border-radius:14px;
+  padding:8px 22px;font-family:var(--serif);font-weight:700;font-size:42px;line-height:1.1;
+}
+.cover-sub{
+  margin:22px auto 0;max-width:820px;font-family:var(--cond);font-size:30px;line-height:1.35;color:#3a3f3c;
+}
+.cover-sub b{color:#0A0A0A;}
 
-/* ── boxes uso 05 ── */
-.box{margin-top:18px;border-radius:16px;padding:22px 24px;border:2px solid #ddd;background:#fff;text-align:left;}
-.box .bl{font-family:var(--mono);font-size:16px;letter-spacing:2px;margin-bottom:10px;}
-.box p{font-family:var(--cond);font-size:28px;line-height:1.3;color:#1a1a1a;}
-.box.bad{border-color:rgba(255,82,71,.55);}
-.box.bad .bl{color:var(--red);}
-.box.good{border-color:rgba(0,255,178,.55);}
-.box.good .bl{color:var(--verde);}
-.box.promptish{border-color:var(--verde);margin-top:16px;}
-.box.promptish .bl{color:var(--verde);}
+.chart{
+  position:absolute;left:90px;right:90px;bottom:170px;height:420px;z-index:4;
+  display:flex;align-items:flex-end;justify-content:center;gap:28px;
+}
+.bar{
+  width:200px;border-radius:18px 18px 8px 8px;position:relative;
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
+  padding:0 12px 28px;box-shadow:0 16px 40px rgba(10,10,10,.10);
+}
+.bar.s{height:190px;background:#D8D8D6;}
+.bar.m{height:270px;background:#C4C4C1;}
+.bar.t{height:360px;background:var(--coral);}
+.bar .star{font-size:22px;color:#fff;margin-bottom:8px;line-height:1;}
+.bar.s .star,.bar.m .star{color:#5a5a5a;}
+.bar .name{font-family:var(--pop);font-weight:800;font-size:28px;color:#fff;}
+.bar.s .name,.bar.m .name{color:#2a2a2a;}
+.bar .tag{font-family:var(--mono);font-size:16px;letter-spacing:1px;color:rgba(255,255,255,.9);margin-top:4px;}
+.bar.s .tag,.bar.m .tag{color:#555;}
+.nuevo{
+  position:absolute;top:-14px;right:-10px;background:#fff;color:var(--coral);
+  border:2px solid var(--coral);border-radius:999px;padding:4px 12px;
+  font-family:var(--mono);font-size:14px;letter-spacing:1px;font-weight:600;
+}
+.claude{
+  position:absolute;top:-108px;left:50%;transform:translateX(-50%);
+  width:110px;height:120px;filter:drop-shadow(0 10px 18px rgba(0,0,0,.18));
+}
+.claude img{width:100%;height:100%;display:block;}
 
-/* ── cuándo usarlo ── */
-.neg{margin-top:22px;}
-.neg-item{display:flex;align-items:center;gap:14px;margin-top:12px;}
-.neg-x{
-  width:34px;height:34px;border-radius:50%;background:var(--red);color:#fff;
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--pop);font-weight:800;font-size:18px;flex:0 0 auto;
+/* ── USO slides ── */
+.uso{padding:88px 72px 0;text-align:left;}
+.uso-num{
+  font-family:var(--serif);font-style:italic;font-weight:700;font-size:54px;color:var(--coral);
+  display:inline-block;margin-right:12px;line-height:1;
 }
-.neg-item span{font-family:var(--cond);font-size:30px;color:#2a2f2c;text-align:left;}
-.pos{margin-top:28px;}
-.pos-intro{font-family:var(--cond);font-size:30px;color:#3a3f3c;text-align:left;}
-.pills{margin-top:16px;display:flex;flex-wrap:wrap;gap:12px;}
-.pill{
-  display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;
-  border:2px solid rgba(0,255,178,.55);background:rgba(0,255,178,.08);
-  font-family:var(--cond);font-size:26px;color:#0A0A0A;
+.uso-lab{font-family:var(--mono);font-size:18px;letter-spacing:2px;color:#8a918c;vertical-align:middle;}
+.uso-h{
+  margin-top:18px;font-family:var(--impact);font-weight:900;font-size:64px;line-height:.98;
+  letter-spacing:.5px;color:#0A0A0A;text-align:left;
+  -webkit-text-stroke:1.5px currentColor;paint-order:stroke fill;
 }
-.pill i{
-  width:22px;height:22px;border-radius:50%;background:var(--verde);color:#04130b;
-  display:inline-flex;align-items:center;justify-content:center;
-  font-family:var(--pop);font-weight:800;font-size:14px;font-style:normal;
+.uso-h .hl{color:var(--coral);-webkit-text-stroke:1.5px var(--coral);}
+.uso-p{
+  margin-top:18px;font-family:var(--cond);font-size:28px;line-height:1.35;color:#4a524e;
+  max-width:900px;text-align:left;
 }
-.value-box{
-  margin-top:24px;border:3px solid var(--verde);border-radius:16px;padding:22px;
-  background:#0A0A0A;text-align:center;
-  font-family:var(--impact);font-weight:900;font-size:40px;color:#F2F2F2;letter-spacing:1px;
-  -webkit-text-stroke:1.5px #F2F2F2;paint-order:stroke fill;
+.badge{
+  display:inline-flex;align-items:center;gap:10px;margin-top:16px;padding:10px 18px;
+  border:1.5px solid var(--coral);border-radius:999px;background:#fff;
+  font-family:var(--cond);font-size:24px;color:#2a2f2c;
+}
+.badge .hl{color:var(--coral);font-weight:700;}
+
+.prompt{
+  margin-top:36px;background:#fff;border:1.5px solid rgba(10,10,10,.12);border-radius:22px;
+  padding:22px 24px 18px;box-shadow:0 18px 44px rgba(10,10,10,.08);text-align:left;
+}
+.prompt-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
+.prompt-top .left{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:16px;color:#7a817c;}
+.prompt-top .ico{color:var(--coral);font-size:18px;}
+.copiar{
+  font-family:var(--mono);font-size:14px;letter-spacing:1px;color:var(--coral);
+  border:1px solid var(--coral);border-radius:8px;padding:6px 12px;
+}
+.prompt-body{
+  font-family:var(--cond);font-size:28px;line-height:1.4;color:#1a1a1a;text-align:left;
+}
+.prompt-body .gt{color:var(--coral);font-family:var(--mono);font-weight:600;margin-right:8px;}
+.prompt-body b{color:#0A0A0A;}
+.prompt-bot{
+  margin-top:18px;display:flex;justify-content:space-between;align-items:center;
+  font-family:var(--mono);font-size:16px;color:#8a918c;
+}
+.send{
+  width:36px;height:36px;border-radius:50%;background:var(--coral);color:#fff;
+  display:inline-flex;align-items:center;justify-content:center;font-size:18px;margin-left:10px;
 }
 
-/* ── CTA final ── */
-.cta{padding:80px 64px 0;display:flex;flex-direction:column;align-items:center;text-align:center;}
-.cta .cd-wrap{margin-top:8px;}
-.cta-kicker{margin-top:40px;font-family:var(--mono);font-size:22px;letter-spacing:3px;color:#B8860B;}
-.cta-line{
-  margin-top:14px;font-family:var(--impact);font-weight:900;font-size:100px;color:#0A0A0A;
-  line-height:.92;letter-spacing:1.5px;text-transform:uppercase;
-  -webkit-text-stroke:2.5px currentColor;paint-order:stroke fill;
+/* flow 04 */
+.flow{margin-top:40px;display:flex;align-items:center;justify-content:center;gap:22px;}
+.box-prd{
+  width:340px;background:#fff;border:1.5px solid rgba(10,10,10,.12);border-radius:18px;
+  padding:22px 24px;text-align:left;box-shadow:0 14px 36px rgba(10,10,10,.07);
+}
+.box-prd .lab{font-family:var(--mono);font-size:15px;color:#8a918c;margin-bottom:12px;}
+.box-prd li{
+  list-style:none;font-family:var(--cond);font-size:28px;color:#1a1a1a;margin-top:8px;
+}
+.box-prd li span{color:var(--coral);margin-right:8px;font-family:var(--mono);}
+.arrow{font-family:var(--impact);font-size:48px;color:var(--coral);}
+.box-app{
+  width:300px;background:var(--coral);border-radius:18px;padding:40px 28px;text-align:center;
+  box-shadow:0 18px 40px rgba(232,145,106,.35);color:#fff;
+}
+.box-app h3{font-family:var(--impact);font-weight:900;font-size:42px;letter-spacing:1px;}
+.box-app p{font-family:var(--mono);font-size:16px;margin-top:10px;opacity:.95;}
+
+/* panel 05 */
+.panel{
+  margin-top:32px;background:#141414;border-radius:22px;padding:22px 22px 20px;color:#F2F2F2;
+  box-shadow:0 22px 50px rgba(10,10,10,.18);text-align:left;
+}
+.panel-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;}
+.panel-top .l{font-family:var(--mono);font-size:15px;color:#9aa39c;display:flex;align-items:center;gap:8px;}
+.panel-top .l i{color:var(--coral);}
+.online{font-family:var(--mono);font-size:14px;color:#28c840;display:flex;align-items:center;gap:8px;}
+.online i{width:8px;height:8px;border-radius:50%;background:#28c840;display:inline-block;}
+.metrics{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+.metric{
+  background:#1E1E1E;border:1px solid #2a2a2a;border-radius:14px;padding:16px 14px;text-align:left;
+}
+.metric .lab{font-family:var(--mono);font-size:13px;color:#8a918c;letter-spacing:1px;}
+.metric .val{font-family:var(--impact);font-weight:900;font-size:48px;margin-top:6px;color:#F2F2F2;}
+.metric .val.hot{color:var(--coral);}
+.actions{margin-top:14px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+.act{
+  border:1px solid #333;border-radius:999px;padding:12px 10px;text-align:center;
+  font-family:var(--cond);font-size:20px;color:#d0d0d0;
+}
+.act i{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--coral);margin-right:6px;}
+
+/* CTA */
+.cta{padding:90px 64px 0;text-align:center;}
+.cta-q{
+  font-family:var(--serif);font-style:italic;font-weight:600;font-size:42px;color:#0A0A0A;line-height:1.2;
+}
+.cta-pill{
+  display:inline-block;margin-top:22px;padding:10px 20px;border-radius:999px;
+  background:#141414;color:#F2F2F2;font-family:var(--mono);font-size:16px;letter-spacing:2px;
 }
 .cta-kw{
-  margin-top:4px;font-family:var(--impact);font-weight:900;font-size:100px;line-height:.92;
-  color:var(--verde);letter-spacing:2px;text-transform:uppercase;
-  -webkit-text-stroke:2.5px var(--verde);paint-order:stroke fill;
+  margin-top:18px;font-family:var(--impact);font-weight:900;font-size:120px;line-height:.92;
+  letter-spacing:2px;color:var(--coral);
+  -webkit-text-stroke:2.5px var(--coral);paint-order:stroke fill;
+  text-shadow:0 0 40px rgba(232,145,106,.35);
 }
-.cta-sub{margin-top:18px;font-family:var(--cond);font-size:32px;color:#3a3f3c;max-width:820px;}
-.cta-sub .hl{color:var(--verde);font-weight:700;}
-</style></head><body><div class="sheet"><section class="slide lino">
+.cta-sub{
+  margin:18px auto 0;max-width:780px;font-family:var(--cond);font-size:28px;color:#3a3f3c;line-height:1.35;
+}
+.cta-sub b{color:#0A0A0A;}
+.profile{
+  margin:36px auto 0;width:720px;background:#fff;border-radius:22px;padding:22px 24px;
+  border:1px solid rgba(10,10,10,.08);box-shadow:0 22px 50px rgba(10,10,10,.12);text-align:left;
+}
+.profile .ph{font-family:var(--mono);font-size:16px;color:#0A0A0A;margin-bottom:14px;}
+.profile .ph .v{color:#3897f0;margin-left:4px;}
+.profile-row{display:flex;gap:22px;align-items:center;}
+.profile-row img{width:96px;height:96px;border-radius:50%;object-fit:cover;}
+.stats{display:flex;gap:22px;flex:1;}
+.stats div{text-align:center;}
+.stats b{display:block;font-family:var(--pop);font-weight:800;font-size:26px;color:#0A0A0A;}
+.stats span{font-family:var(--cond);font-size:18px;color:#6a736e;}
+.profile .name{margin-top:14px;font-family:var(--pop);font-weight:800;font-size:26px;}
+.profile .bio{margin-top:6px;font-family:var(--cond);font-size:22px;color:#4a524e;line-height:1.3;}
+.seguir{
+  margin-top:16px;background:var(--coral);color:#fff;border-radius:12px;padding:14px;
+  text-align:center;font-family:var(--pop);font-weight:800;font-size:24px;
+}
+</style></head><body><div class="sheet"><section class="slide grid">
 <div class="cover">
-  <div class="cd-label">CUENTA REGRESIVA AL IMPACTO</div>
-  <div class="cd-wrap"><div class="cd-digits">00:00:07</div></div>
-  <div class="fable-logo"><svg class="fable-star" viewBox="0 0 64 64" fill="currentColor" aria-hidden="true"><path d="M32 4l5.2 16.2H54l-13.4 9.8 5.1 16.2L32 36.4 18.3 46.2l5.1-16.2L10 20.2h16.8z"/></svg><div class="fable-name">FABLE 5</div></div>
-  <h1 class="cover-title">ANTES DE QUE<br><span class="hl">SE ACABE EL</span><br>TIEMPO</h1>
-  <p class="cover-sub">5 usos que tenés que probar ahora</p>
-</div>
-<div class="foot-brand">sebastian.stlabs.ar<span class="sep"> | </span><span class="tag">RevOps</span></div></section><section class="slide lino">
-<div class="topbar"><span>FABLE 5 · USO 01</span></div>
-<div class="pad">
-  <div class="h-title"><div class="num">1</div><div class="txt">CREÁ TU PROPIA <span class="hl">APP</span></div></div>
-  <p class="lead">No empieces con algo perfecto. Pedile que construya una primera versión funcional de esa herramienta que siempre necesitaste:</p>
-  <ul class="bullets">
-    <li>Gestor de tareas</li>
-    <li>Calendario</li>
-    <li>Sistema de notas</li>
-    <li>Temporizador de concentración</li>
-  </ul>
-  <div class="prompt"><div class="ph"><i></i><i></i><i></i> PROMPT</div><p>Creá una aplicación personal de productividad con lista de tareas, calendario, notas y temporizador de concentración. Conectá todas las funciones y seguí probando hasta que el flujo completo funcione.</p></div>
-</div>
-<div class="foot-brand">sebastian.stlabs.ar<span class="sep"> | </span><span class="tag">RevOps</span></div></section><section class="slide lino">
-<div class="topbar"><span>FABLE 5 · USO 02</span></div>
-<div class="pad">
-  <div class="h-title"><div class="num">2</div><div class="txt">CONSTRUÍ TU <span class="hl">CLON</span> DE CONTENIDO</div></div>
-  <p class="lead">Dale ejemplos reales de cómo escribís y pedile que identifique:</p>
-  <ul class="bullets">
-    <li>Tu tono</li>
-    <li>Tus expresiones</li>
-    <li>Tu estructura</li>
-    <li>Las palabras que nunca usarías</li>
-  </ul>
-  <p class="lead">Después va a ayudarte a preparar publicaciones, guiones y respuestas <span class="hl">sin sonar genérico</span>.</p>
-  <div class="prompt"><div class="ph"><i></i><i></i><i></i> PROMPT</div><p>Analizá estas 30 publicaciones y detectá mi tono, estructura, vocabulario y patrones. Creá una guía de estilo y usala para redactar una semana de contenido que suene como yo.</p></div>
-</div>
-<div class="foot-brand">sebastian.stlabs.ar<span class="sep"> | </span><span class="tag">RevOps</span></div></section><section class="slide lino">
-<div class="topbar"><span>FABLE 5 · USO 03</span></div>
-<div class="pad">
-  <div class="h-title"><div class="num">3</div><div class="txt">INVESTIGÁ <span class="hl">100 LEADS</span> DE UNA VEZ</div></div>
-  <p class="lead">En lugar de investigar posibles clientes uno por uno, creá un <span class="hl">sistema</span> que:</p>
-  <ul class="bullets">
-    <li>Encuentre empresas relevantes</li>
-    <li>Analice cada una</li>
-    <li>Identifique una oportunidad real</li>
-    <li>Prepare un mensaje personalizado</li>
-    <li>Compruebe el resultado antes de entregarlo</li>
-  </ul>
-  <div class="prompt"><div class="ph"><i></i><i></i><i></i> PROMPT</div><p>Encontrá 100 clientes potenciales para mi oferta. Investigá cada empresa, identificá una necesidad concreta y redactá un mensaje breve y personalizado. Sumá un segundo agente que compruebe cada dato antes de aprobarlo.</p></div>
-</div>
-<div class="foot-brand">sebastian.stlabs.ar<span class="sep"> | </span><span class="tag">RevOps</span></div></section><section class="slide lino">
-<div class="topbar"><span>FABLE 5 · USO 04</span></div>
-<div class="pad">
-  <div class="h-title"><div class="num">4</div><div class="txt">CONVERTÍ UN PROYECTO EN UN <span class="hl">PLAN EJECUTABLE</span></div></div>
-  <p class="lead">Dale una idea compleja y pedile que la convierta en:</p>
-  <ul class="bullets-2col">
-    <li>Fases</li>
-    <li>Decisiones clave</li>
-    <li>Riesgos</li>
-    <li>Tareas</li>
-    <li>Dependencias</li>
-    <li>Resultado final</li>
-  </ul>
-  <p class="lead" style="margin-top:22px">No solo vas a tener una lista. Vas a tener un <span class="hl">sistema que cualquier persona o agente</span> pueda ejecutar paso a paso.</p>
-  <div class="prompt"><div class="ph"><i></i><i></i><i></i> PROMPT</div><p>Planificá este proyecto completo. Dividí el trabajo en fases, tareas, decisiones, riesgos y preguntas pendientes. Hacé que el plan sea tan claro que otra persona pueda ejecutarlo sin contexto adicional.</p></div>
-</div>
-<div class="foot-brand">sebastian.stlabs.ar<span class="sep"> | </span><span class="tag">RevOps</span></div></section><section class="slide lino">
-<div class="topbar"><span>FABLE 5 · USO 05</span></div>
-<div class="pad" style="padding-top:96px">
-  <div class="h-title"><div class="num">5</div><div class="txt">AUTOMATIZÁ UN PROCESO <span class="hl">COMPLETO</span></div></div>
-  <p class="lead">No le pidas una tarea. <span class="hl">Pedile el sistema entero.</span></p>
-  <div class="box bad"><div class="bl">× EN LUGAR DE</div><p>Escribí este correo.</p></div>
-  <div class="box good"><div class="bl">✓ PROBÁ CON</div><p>Investigá el contexto, redactá el correo, comprobá los datos, adaptá el tono y prepará el seguimiento.</p></div>
-  <div class="box promptish"><div class="bl">••• PROMPT</div><p>Diseñá y ejecutá un flujo completo para esta tarea. Primero analizá el objetivo, después investigá la información necesaria, creá el resultado, revisalo con criterios claros y mejorá cualquier parte que no cumpla el estándar.</p></div>
-</div>
-<div class="foot-brand">sebastian.stlabs.ar<span class="sep"> | </span><span class="tag">RevOps</span></div></section><section class="slide lino">
-<div class="topbar"><span>FABLE 5 · CUÁNDO USARLO</span></div>
-<div class="pad">
-  <div class="h-title" style="display:block;font-size:100px;margin-top:8px;line-height:.9">
-    <div class="txt">FABLE 5 <span class="hl">NO ES</span> PARA PREGUNTAS SIMPLES</div>
+  <div class="cover-k">ANTHROPIC · SU MODELO MÁS POTENTE</div>
+  <h1 class="cover-h">5 usos de Fable 5</h1>
+  <div class="cover-line2">
+    <span class="cover-script">que parecen</span>
+    <span class="trampa">trampa</span>
   </div>
-  <p class="lead">No gastes su capacidad en:</p>
-  <div class="neg">
-    <div class="neg-item"><div class="neg-x">×</div><span>Resumir tres párrafos</span></div>
-    <div class="neg-item"><div class="neg-x">×</div><span>Corregir una frase</span></div>
-    <div class="neg-item"><div class="neg-x">×</div><span>Buscar una definición</span></div>
-    <div class="neg-item"><div class="neg-x">×</div><span>Escribir un correo básico</span></div>
+  <p class="cover-sub">Probé <b>el modelo nuevo de Anthropic</b> toda la semana. Esto no lo hace ningún otro.</p>
+</div>
+<div class="chart">
+  <div class="bar s"><div class="star">✦</div><div class="name">Sonnet</div><div class="tag">RÁPIDO</div></div>
+  <div class="bar m"><div class="star">✦</div><div class="name">Opus 4.8</div><div class="tag">POTENTE</div></div>
+  <div class="bar t">
+    <div class="claude"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTMwIiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEzMCI+CiAgPHJlY3QgeD0iMTgiIHk9IjIyIiB3aWR0aD0iODQiIGhlaWdodD0iODQiIHJ4PSIxOCIgcnk9IjE4IiBmaWxsPSIjRTg5MTZBIi8+CiAgPHJlY3QgeD0iMzQiIHk9IjgiIHdpZHRoPSIxNiIgaGVpZ2h0PSIyMiIgcng9IjQiIGZpbGw9IiNFODkxNkEiLz4KICA8cmVjdCB4PSI3MCIgeT0iOCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjIyIiByeD0iNCIgZmlsbD0iI0U4OTE2QSIvPgogIDwhLS0gb2pvczogJmx0OyAgJmd0OyAtLT4KICA8cGF0aCBkPSJNNDggNTYgTDM0IDcwIEw0OCA4NCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik03MiA1NiBMODYgNzAgTDcyIDg0IiBmaWxsPSJub25lIiBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CiAgPHJlY3QgeD0iNTAiIHk9Ijg4IiB3aWR0aD0iMjAiIGhlaWdodD0iOCIgcng9IjIiIGZpbGw9IiNGRkZGRkYiLz4KPC9zdmc+Cg==" alt="Claude"></div>
+    <div class="nuevo">NUEVO</div>
+    <div class="star">✦</div>
+    <div class="name">FABLE 5</div>
+    <div class="tag">OTRO NIVEL</div>
   </div>
-  <div class="pos">
-    <p class="pos-intro">Usalo para trabajos que necesiten:</p>
-    <div class="pills">
-      <span class="pill"><i>✓</i>Contexto</span>
-      <span class="pill"><i>✓</i>Planificación</span>
-      <span class="pill"><i>✓</i>Herramientas</span>
-      <span class="pill"><i>✓</i>Varias etapas</span>
-      <span class="pill"><i>✓</i>Revisión autónoma</span>
+</div>
+<div class="swipe">deslizá →</div><div class="foot">sebastian.stlabs.ar</div></section><section class="slide grid">
+<div class="uso">
+  <div><span class="uso-num">01</span><span class="uso-lab">USO</span></div>
+  <h2 class="uso-h">Recreá ese SaaS que <span class="hl">pagás por mes</span></h2>
+  <p class="uso-p">Le mostrás la herramienta que usás, estudia cómo funciona y te construye tu versión privada. Corre 100% en tu máquina, sin suscripción.</p>
+  
+<div class="prompt">
+  <div class="prompt-top">
+    <div class="left"><span class="ico">✶</span> prompt · fable 5</div>
+    <div class="copiar">COPIAR</div>
+  </div>
+  <div class="prompt-body"><span class="gt">&gt;</span>Estudiá cómo funciona esta app que uso para [tarea] y construí una <b>versión privada y local</b> que corra entera en mi máquina, con las funciones que uso de verdad.</div>
+  <div class="prompt-bot">
+    <span>+</span>
+    <span>Fable 5 <span class="send">↑</span></span>
+  </div>
+</div>
+
+</div>
+<div class="wm">01</div>
+<div class="swipe">deslizá →</div><div class="foot">sebastian.stlabs.ar</div></section><section class="slide grid">
+<div class="uso">
+  <div><span class="uso-num">02</span><span class="uso-lab">USO</span></div>
+  <h2 class="uso-h">Auditá cómo <span class="hl">usás Claude</span></h2>
+  <p class="uso-p">Apuntalo a tu historial de Claude Code. Encuentra dónde te trabás siempre y lo convierte en skills nuevas, automatizaciones y mejoras a tu CLAUDE.md.</p>
+  
+<div class="prompt">
+  <div class="prompt-top">
+    <div class="left"><span class="ico">✶</span> prompt · fable 5</div>
+    <div class="copiar">COPIAR</div>
+  </div>
+  <div class="prompt-body"><span class="gt">&gt;</span>Auditá mis sesiones recientes de Claude Code con subagentes. Agrupá dónde me trabo y proponé skills, automatizaciones y correcciones en el CLAUDE.md.</div>
+  <div class="prompt-bot">
+    <span>+</span>
+    <span>Fable 5 <span class="send">↑</span></span>
+  </div>
+</div>
+
+</div>
+<div class="wm">02</div>
+<div class="swipe">deslizá →</div><div class="foot">sebastian.stlabs.ar</div></section><section class="slide grid">
+<div class="uso">
+  <div><span class="uso-num">03</span><span class="uso-lab">USO</span></div>
+  <div class="badge">✓ Con 1M de contexto entra <span class="hl">tu proyecto entero</span></div>
+  <h2 class="uso-h">El mejor <span class="hl">caza-bugs</span> que probé</h2>
+  <p class="uso-p">Acá Fable 5 se despega del resto: encuentra bugs reales, no detalles cosméticos. Lanza revisores en paralelo y verifica cada hallazgo antes de reportarlo.</p>
+  
+<div class="prompt">
+  <div class="prompt-top">
+    <div class="left"><span class="ico">✶</span> prompt · fable 5</div>
+    <div class="copiar">COPIAR</div>
+  </div>
+  <div class="prompt-body"><span class="gt">&gt;</span>Cazá <b>bugs reales</b> en este proyecto. Lanzá revisores en paralelo, verificá cada hallazgo y rankealos por <b>severidad</b> con su plan de corrección.</div>
+  <div class="prompt-bot">
+    <span>+</span>
+    <span>Fable 5 <span class="send">↑</span></span>
+  </div>
+</div>
+
+</div>
+<div class="wm">03</div>
+<div class="swipe">deslizá →</div><div class="foot">sebastian.stlabs.ar</div></section><section class="slide grid">
+<div class="uso">
+  <div><span class="uso-num">04</span><span class="uso-lab">USO</span></div>
+  <div class="badge">◷ Corre <span class="hl">horas</span> sin supervisión</div>
+  <h2 class="uso-h">De un documento a la <span class="hl">app completa</span></h2>
+  <p class="uso-p">Le das la spec detallada de lo que querés y lo dejás correr solo por horas. Vuelve con la app entera, funcional y testeada.</p>
+  <div class="flow">
+    <div class="box-prd">
+      <div class="lab">PRD.MD</div>
+      <ul>
+        <li><span>#</span>objetivo</li>
+        <li><span>#</span>pantallas</li>
+        <li><span>#</span>reglas</li>
+        <li><span>#</span>tests</li>
+      </ul>
+    </div>
+    <div class="arrow">→</div>
+    <div class="box-app">
+      <h3>app lista</h3>
+      <p>1 spec · 0 niñera</p>
     </div>
   </div>
-  <div class="value-box">MÁS COMPLEJIDAD = MÁS VALOR</div>
 </div>
-<div class="foot-brand">sebastian.stlabs.ar<span class="sep"> | </span><span class="tag">RevOps</span></div></section><section class="slide lino">
+<div class="wm">04</div>
+<div class="swipe">deslizá →</div><div class="foot">sebastian.stlabs.ar</div></section><section class="slide grid">
+<div class="uso">
+  <div><span class="uso-num">05</span><span class="uso-lab">USO</span></div>
+  <h2 class="uso-h">Tu asistente con <span class="hl">panel propio</span></h2>
+  <p class="uso-p">Envolvé tu Claude Code en un panel con botones: el trabajo de todos los días queda a un click, con métricas que la terminal no muestra.</p>
+  <div class="panel">
+    <div class="panel-top">
+      <div class="l"><i>✶</i> PANEL · MI ASISTENTE</div>
+      <div class="online"><i></i>ONLINE</div>
+    </div>
+    <div class="metrics">
+      <div class="metric"><div class="lab">SKILLS</div><div class="val">17</div></div>
+      <div class="metric"><div class="lab">AUTOMATIZACIONES</div><div class="val hot">9</div></div>
+      <div class="metric"><div class="lab">CONTEXTO</div><div class="val">12%</div></div>
+    </div>
+    <div class="actions">
+      <div class="act"><i></i>rutina del día</div>
+      <div class="act"><i></i>revisar inbox</div>
+      <div class="act"><i></i>generar contenido</div>
+    </div>
+  </div>
+</div>
+<div class="wm">05</div>
+<div class="swipe">deslizá →</div><div class="foot">sebastian.stlabs.ar</div></section><section class="slide grid">
 <div class="cta">
-  <div class="cd-label">CUENTA REGRESIVA AL IMPACTO</div>
-  <div class="cd-wrap"><div class="cd-digits">00:00:07</div></div>
-  <div class="cta-kicker">EMPEZÁ HOY</div>
-  <div class="cta-line">Comentá</div>
-  <div class="cta-kw">FABLE</div>
-  <p class="cta-sub">y te enviamos los <span class="hl">5 prompts</span> para que empieces HOY.</p>
+  <p class="cta-q">¿Querés los 5 prompts listos para pegar?</p>
+  <div class="cta-pill">COMENTÁ</div>
+  <div class="cta-kw">“FABLE”</div>
+  <p class="cta-sub">Y te mando <b>los 5 prompts completos</b> + cuándo conviene usar Fable 5 (y cuándo no) por DM.</p>
+  <div class="profile">
+    <div class="ph">sebastian.stlabs.ar <span class="v">✓</span></div>
+    <div class="profile-row">
+      <img src="data:image/jpeg;base64,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" alt="Sebastián García">
+      <div class="stats">
+        <div><b>—</b><span>publicaciones</span></div>
+        <div><b>—</b><span>seguidores</span></div>
+        <div><b>—</b><span>seguidos</span></div>
+      </div>
+    </div>
+    <div class="name">Sebastián García</div>
+    <div class="bio">Te ayudo a construir sistemas de operación comercial con IA · RevOps · CRM · STLabs</div>
+    <div class="seguir">Seguir</div>
+  </div>
 </div>
-<div class="foot-brand">sebastian.stlabs.ar<span class="sep"> | </span><span class="tag">RevOps</span></div></section></div></body></html>
+<div class="foot">sebastian.stlabs.ar</div></section></div></body></html>
