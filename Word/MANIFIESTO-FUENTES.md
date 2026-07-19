@@ -8,5 +8,7 @@
 | IBM Plex Mono | 400–600 | labels, footer, COPIAR | `fonts/IBMPlexMono-*.ttf` | `@font-face` base64 |
 | Poppins | 800 | nombres en barras / perfil | `fonts/Poppins-Bold.ttf` | `@font-face` base64 |
 
-Claude de portada: recreación SVG fiel (`claude.svg`) — naranja Anthropic, sin alterar.
-Modo blanco · retícula fina · keyword FABLE · firma sebastian.stlabs.ar
+Acento: `#00FFB2` (reemplaza el naranja del original).
+Claude de portada: PNG recortado (`claude-crop.png`) — se mantiene naranja Anthropic.
+Perfil: `seb.jpg` · Sebastián García · sebastian.stlabs.ar
+Modo blanco · retícula fina · keyword FABLE

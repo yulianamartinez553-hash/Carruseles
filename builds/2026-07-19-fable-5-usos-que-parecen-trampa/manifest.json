@@ -6,6 +6,7 @@
   "origen": "screenshot",
   "keyword_portada": "FABLE",
   "modo_fondo": "blanco",
+  "acento": "#00FFB2",
   "feedback": {
     "estado": "borrador"
   },

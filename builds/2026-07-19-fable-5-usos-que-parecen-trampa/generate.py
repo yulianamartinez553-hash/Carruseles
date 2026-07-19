@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Clon Fable 5 Anthropic (emanuelmdzz) → STLabs · blanco · retícula · Impact."""
+"""Clon Fable 5 Anthropic → STLabs · blanco · retícula · Impact · acento #00FFB2."""
 from __future__ import annotations
 
 import base64
@@ -17,20 +17,25 @@ KEYWORD = "FABLE"
 TOTAL = 7
 WORD_DIR = REPO / "Word"
 SEB_URI = f"data:image/jpeg;base64,{base64.b64encode((REPO / 'seb.jpg').read_bytes()).decode()}"
-CLAUDE_SVG = (BUILD / "assets" / "claude.svg").read_text(encoding="utf-8")
-CLAUDE_URI = "data:image/svg+xml;base64," + base64.b64encode(CLAUDE_SVG.encode()).decode()
 
-# Acento coral del original (Claude / Anthropic) — fidelidad de clon
-CORAL = "#E8916A"
-CORAL_SOFT = "#F3B89A"
+# Claude: PNG recortado de la portada (naranja Anthropic — excepción al acento verde)
+CLAUDE_PNG = BUILD / "assets" / "claude-crop.png"
+if not CLAUDE_PNG.exists():
+    CLAUDE_PNG = BUILD / "assets" / "claude.png"
+CLAUDE_URI = "data:image/png;base64," + base64.b64encode(CLAUDE_PNG.read_bytes()).decode()
+
+# Acento STLabs: SIEMPRE reemplaza el naranja/coral del original
+VERDE = "#00FFB2"
+VERDE_SOFT = "rgba(0,255,178,.12)"
+INK_ON_VERDE = "#04130b"
 
 EXTRA_CSS = f"""
-:root{{--coral:{CORAL};--coral-soft:{CORAL_SOFT};}}
+:root{{--acento:{VERDE};--acento-ink:{INK_ON_VERDE};}}
 .sheet{{background:#e8e8e8;}}
 .slide{{
   color:#0A0A0A;
   background:
-    radial-gradient(42% 30% at 90% 8%, rgba(232,145,106,.10), transparent 60%),
+    radial-gradient(42% 30% at 90% 8%, {VERDE_SOFT}, transparent 60%),
     linear-gradient(180deg,#FFFFFF 0%, #F7F7F5 100%);
 }}
 .slide.grid::before{{
@@ -67,10 +72,10 @@ EXTRA_CSS = f"""
 }}
 .cover-line2{{margin-top:10px;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;}}
 .cover-script{{
-  font-family:var(--serif);font-style:italic;font-weight:700;font-size:54px;color:var(--coral);
+  font-family:var(--serif);font-style:italic;font-weight:700;font-size:54px;color:var(--acento);
 }}
 .trampa{{
-  display:inline-block;background:var(--coral);color:#fff;border-radius:14px;
+  display:inline-block;background:var(--acento);color:var(--acento-ink);border-radius:14px;
   padding:8px 22px;font-family:var(--serif);font-weight:700;font-size:42px;line-height:1.1;
 }}
 .cover-sub{{
@@ -89,28 +94,31 @@ EXTRA_CSS = f"""
 }}
 .bar.s{{height:190px;background:#D8D8D6;}}
 .bar.m{{height:270px;background:#C4C4C1;}}
-.bar.t{{height:360px;background:var(--coral);}}
+.bar.t{{height:360px;background:var(--acento);}}
 .bar .star{{font-size:22px;color:#fff;margin-bottom:8px;line-height:1;}}
 .bar.s .star,.bar.m .star{{color:#5a5a5a;}}
+.bar.t .star{{color:var(--acento-ink);}}
 .bar .name{{font-family:var(--pop);font-weight:800;font-size:28px;color:#fff;}}
 .bar.s .name,.bar.m .name{{color:#2a2a2a;}}
+.bar.t .name{{color:var(--acento-ink);}}
 .bar .tag{{font-family:var(--mono);font-size:16px;letter-spacing:1px;color:rgba(255,255,255,.9);margin-top:4px;}}
 .bar.s .tag,.bar.m .tag{{color:#555;}}
+.bar.t .tag{{color:var(--acento-ink);opacity:.85;}}
 .nuevo{{
-  position:absolute;top:-14px;right:-10px;background:#fff;color:var(--coral);
-  border:2px solid var(--coral);border-radius:999px;padding:4px 12px;
+  position:absolute;top:-14px;right:-10px;background:#fff;color:var(--acento);
+  border:2px solid var(--acento);border-radius:999px;padding:4px 12px;
   font-family:var(--mono);font-size:14px;letter-spacing:1px;font-weight:600;
 }}
 .claude{{
   position:absolute;top:-108px;left:50%;transform:translateX(-50%);
   width:110px;height:120px;filter:drop-shadow(0 10px 18px rgba(0,0,0,.18));
 }}
-.claude img{{width:100%;height:100%;display:block;}}
+.claude img{{width:100%;height:100%;object-fit:contain;display:block;}}
 
 /* ── USO slides ── */
 .uso{{padding:88px 72px 0;text-align:left;}}
 .uso-num{{
-  font-family:var(--serif);font-style:italic;font-weight:700;font-size:54px;color:var(--coral);
+  font-family:var(--serif);font-style:italic;font-weight:700;font-size:54px;color:var(--acento);
   display:inline-block;margin-right:12px;line-height:1;
 }}
 .uso-lab{{font-family:var(--mono);font-size:18px;letter-spacing:2px;color:#8a918c;vertical-align:middle;}}
@@ -119,17 +127,17 @@ EXTRA_CSS = f"""
   letter-spacing:.5px;color:#0A0A0A;text-align:left;
   -webkit-text-stroke:1.5px currentColor;paint-order:stroke fill;
 }}
-.uso-h .hl{{color:var(--coral);-webkit-text-stroke:1.5px var(--coral);}}
+.uso-h .hl{{color:var(--acento);-webkit-text-stroke:1.5px var(--acento);}}
 .uso-p{{
   margin-top:18px;font-family:var(--cond);font-size:28px;line-height:1.35;color:#4a524e;
   max-width:900px;text-align:left;
 }}
 .badge{{
   display:inline-flex;align-items:center;gap:10px;margin-top:16px;padding:10px 18px;
-  border:1.5px solid var(--coral);border-radius:999px;background:#fff;
+  border:1.5px solid var(--acento);border-radius:999px;background:#fff;
   font-family:var(--cond);font-size:24px;color:#2a2f2c;
 }}
-.badge .hl{{color:var(--coral);font-weight:700;}}
+.badge .hl{{color:var(--acento);font-weight:700;}}
 
 .prompt{{
   margin-top:36px;background:#fff;border:1.5px solid rgba(10,10,10,.12);border-radius:22px;
@@ -137,22 +145,22 @@ EXTRA_CSS = f"""
 }}
 .prompt-top{{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}}
 .prompt-top .left{{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:16px;color:#7a817c;}}
-.prompt-top .ico{{color:var(--coral);font-size:18px;}}
+.prompt-top .ico{{color:var(--acento);font-size:18px;}}
 .copiar{{
-  font-family:var(--mono);font-size:14px;letter-spacing:1px;color:var(--coral);
-  border:1px solid var(--coral);border-radius:8px;padding:6px 12px;
+  font-family:var(--mono);font-size:14px;letter-spacing:1px;color:var(--acento);
+  border:1px solid var(--acento);border-radius:8px;padding:6px 12px;
 }}
 .prompt-body{{
   font-family:var(--cond);font-size:28px;line-height:1.4;color:#1a1a1a;text-align:left;
 }}
-.prompt-body .gt{{color:var(--coral);font-family:var(--mono);font-weight:600;margin-right:8px;}}
+.prompt-body .gt{{color:var(--acento);font-family:var(--mono);font-weight:600;margin-right:8px;}}
 .prompt-body b{{color:#0A0A0A;}}
 .prompt-bot{{
   margin-top:18px;display:flex;justify-content:space-between;align-items:center;
   font-family:var(--mono);font-size:16px;color:#8a918c;
 }}
 .send{{
-  width:36px;height:36px;border-radius:50%;background:var(--coral);color:#fff;
+  width:36px;height:36px;border-radius:50%;background:var(--acento);color:var(--acento-ink);
   display:inline-flex;align-items:center;justify-content:center;font-size:18px;margin-left:10px;
 }}
 
@@ -166,14 +174,14 @@ EXTRA_CSS = f"""
 .box-prd li{{
   list-style:none;font-family:var(--cond);font-size:28px;color:#1a1a1a;margin-top:8px;
 }}
-.box-prd li span{{color:var(--coral);margin-right:8px;font-family:var(--mono);}}
-.arrow{{font-family:var(--impact);font-size:48px;color:var(--coral);}}
+.box-prd li span{{color:var(--acento);margin-right:8px;font-family:var(--mono);}}
+.arrow{{font-family:var(--impact);font-size:48px;color:var(--acento);}}
 .box-app{{
-  width:300px;background:var(--coral);border-radius:18px;padding:40px 28px;text-align:center;
-  box-shadow:0 18px 40px rgba(232,145,106,.35);color:#fff;
+  width:300px;background:var(--acento);border-radius:18px;padding:40px 28px;text-align:center;
+  box-shadow:0 18px 40px rgba(0,255,178,.35);color:var(--acento-ink);
 }}
 .box-app h3{{font-family:var(--impact);font-weight:900;font-size:42px;letter-spacing:1px;}}
-.box-app p{{font-family:var(--mono);font-size:16px;margin-top:10px;opacity:.95;}}
+.box-app p{{font-family:var(--mono);font-size:16px;margin-top:10px;opacity:.9;}}
 
 /* panel 05 */
 .panel{{
@@ -182,7 +190,7 @@ EXTRA_CSS = f"""
 }}
 .panel-top{{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;}}
 .panel-top .l{{font-family:var(--mono);font-size:15px;color:#9aa39c;display:flex;align-items:center;gap:8px;}}
-.panel-top .l i{{color:var(--coral);}}
+.panel-top .l i{{color:var(--acento);}}
 .online{{font-family:var(--mono);font-size:14px;color:#28c840;display:flex;align-items:center;gap:8px;}}
 .online i{{width:8px;height:8px;border-radius:50%;background:#28c840;display:inline-block;}}
 .metrics{{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}}
@@ -191,13 +199,13 @@ EXTRA_CSS = f"""
 }}
 .metric .lab{{font-family:var(--mono);font-size:13px;color:#8a918c;letter-spacing:1px;}}
 .metric .val{{font-family:var(--impact);font-weight:900;font-size:48px;margin-top:6px;color:#F2F2F2;}}
-.metric .val.hot{{color:var(--coral);}}
+.metric .val.hot{{color:var(--acento);}}
 .actions{{margin-top:14px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}}
 .act{{
   border:1px solid #333;border-radius:999px;padding:12px 10px;text-align:center;
   font-family:var(--cond);font-size:20px;color:#d0d0d0;
 }}
-.act i{{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--coral);margin-right:6px;}}
+.act i{{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--acento);margin-right:6px;}}
 
 /* CTA */
 .cta{{padding:90px 64px 0;text-align:center;}}
@@ -210,9 +218,9 @@ EXTRA_CSS = f"""
 }}
 .cta-kw{{
   margin-top:18px;font-family:var(--impact);font-weight:900;font-size:120px;line-height:.92;
-  letter-spacing:2px;color:var(--coral);
-  -webkit-text-stroke:2.5px var(--coral);paint-order:stroke fill;
-  text-shadow:0 0 40px rgba(232,145,106,.35);
+  letter-spacing:2px;color:var(--acento);
+  -webkit-text-stroke:2.5px var(--acento);paint-order:stroke fill;
+  text-shadow:0 0 40px rgba(0,255,178,.35);
 }}
 .cta-sub{{
   margin:18px auto 0;max-width:780px;font-family:var(--cond);font-size:28px;color:#3a3f3c;line-height:1.35;
@@ -232,8 +240,9 @@ EXTRA_CSS = f"""
 .stats span{{font-family:var(--cond);font-size:18px;color:#6a736e;}}
 .profile .name{{margin-top:14px;font-family:var(--pop);font-weight:800;font-size:26px;}}
 .profile .bio{{margin-top:6px;font-family:var(--cond);font-size:22px;color:#4a524e;line-height:1.3;}}
+.profile .bio em{{font-style:italic;font-weight:700;}}
 .seguir{{
-  margin-top:16px;background:var(--coral);color:#fff;border-radius:12px;padding:14px;
+  margin-top:16px;background:var(--acento);color:var(--acento-ink);border-radius:12px;padding:14px;
   text-align:center;font-family:var(--pop);font-weight:800;font-size:24px;
 }}
 """
@@ -419,7 +428,7 @@ def slide7():
       </div>
     </div>
     <div class="name">Sebastián García</div>
-    <div class="bio">Te ayudo a construir sistemas de operación comercial con IA · RevOps · CRM · STLabs</div>
+    <div class="bio"><em>Experto en ventas automatizadas</em><br>CRM y flujos de IA que trabajan por vos<br>sebastian.stlabs.ar</div>
     <div class="seguir">Seguir</div>
   </div>
 </div>
@@ -432,6 +441,7 @@ def main():
     slides = [slide1(), slide2(), slide3(), slide4(), slide5(), slide6(), slide7()]
     write_html(slides, BUILD / "carrusel.html", extra_css=EXTRA_CSS)
     print("HTML:", BUILD / "carrusel.html")
+    print("Claude asset:", CLAUDE_PNG)
     pngs = render(BUILD)
     print(f"Render OK: {len(pngs)}")
 
@@ -443,6 +453,7 @@ def main():
         "origen": "screenshot",
         "keyword_portada": KEYWORD,
         "modo_fondo": "blanco",
+        "acento": VERDE,
         "feedback": {"estado": "borrador"},
     }
     out = package(BUILD, "STLabs-Fable5-UsosTrampa", meta=meta)
@@ -470,8 +481,8 @@ def main():
         if src.exists():
             shutil.copy2(src, WORD_DIR / name)
 
-    # Claude asset copy for audit
-    shutil.copy2(BUILD / "assets" / "claude.svg", WORD_DIR / "claude.svg")
+    # Claude recortado (PNG) — no SVG recreado
+    shutil.copy2(CLAUDE_PNG, WORD_DIR / "claude-crop.png")
 
     (WORD_DIR / "MANIFIESTO-FUENTES.md").write_text(
         """# Manifiesto de fuentes — Fable 5 Usos Que Parecen Trampa
@@ -484,17 +495,20 @@ def main():
 | IBM Plex Mono | 400–600 | labels, footer, COPIAR | `fonts/IBMPlexMono-*.ttf` | `@font-face` base64 |
 | Poppins | 800 | nombres en barras / perfil | `fonts/Poppins-Bold.ttf` | `@font-face` base64 |
 
-Claude de portada: recreación SVG fiel (`claude.svg`) — naranja Anthropic, sin alterar.
-Modo blanco · retícula fina · keyword FABLE · firma sebastian.stlabs.ar
+Acento: `#00FFB2` (reemplaza el naranja del original).
+Claude de portada: PNG recortado (`claude-crop.png`) — se mantiene naranja Anthropic.
+Perfil: `seb.jpg` · Sebastián García · sebastian.stlabs.ar
+Modo blanco · retícula fina · keyword FABLE
 """,
         encoding="utf-8",
     )
     (WORD_DIR / "LEEME.txt").write_text(
         f"""Carrusel STLabs — Fable 5 Usos Que Parecen Trampa
-Clon de referencia (emanuelmdzz) → sebastian.stlabs.ar
+Identidad: sebastian.stlabs.ar · foto seb.jpg
 Fondo: BLANCO · Textura: reticula_fina · Familia: dossier_editorial
 Slides: {TOTAL} · Keyword: {KEYWORD}
-Claude portada: assets/claude.svg (recreación exacta del personaje naranja)
+Acento: #00FFB2 (reemplaza naranja del original)
+Claude portada: claude-crop.png (recorte PNG naranja, no recreación SVG)
 """,
         encoding="utf-8",
     )
