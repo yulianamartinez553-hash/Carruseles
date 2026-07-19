@@ -46,6 +46,12 @@ python scripts/demo_memory.py
 
 Campos obligatorios en `meta`: `fondo`, `familia_visual`, `origen`, `slides`, `keyword_portada`.
 
+## Tipografía default
+
+Títulos display por defecto: **Impact** del pack del repo [`impact-font.zip`](impact-font.zip) → `fonts/impact.ttf` · `var(--impact)` / `.title-heavy` (~100px).
+
+Licencia: `fonts/Befonts-License.txt`. Ver [fonts/README.md](fonts/README.md).
+
 ## Documentación
 
 - Sistema de diseño: [SISTEMA-DISENO-CARRUSELES-STLABS.md](SISTEMA-DISENO-CARRUSELES-STLABS.md)
