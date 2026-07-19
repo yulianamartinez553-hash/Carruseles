@@ -9,6 +9,6 @@
 | Poppins | 800 | nombres en barras / perfil | `fonts/Poppins-Bold.ttf` | `@font-face` base64 |
 
 Acento: `#00FFB2` (reemplaza el naranja del original).
-Claude de portada: PNG recortado (`claude-crop.png`) — se mantiene naranja Anthropic.
-Perfil: `seb.jpg` · Sebastián García · sebastian.stlabs.ar
+Claude de portada: `assets/claude.png` (bichito naranja default del repo).
+Perfil: `seb.jpg` · sebastiangarcia.ar · 61 / 420 / 451 · sebastian.stlabs.ar
 Modo blanco · retícula fina · keyword FABLE

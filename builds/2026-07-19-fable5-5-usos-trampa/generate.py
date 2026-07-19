@@ -18,8 +18,8 @@ TOTAL = 7
 WORD_DIR = REPO / "Word"
 SEB_URI = f"data:image/jpeg;base64,{base64.b64encode((REPO / 'seb.jpg').read_bytes()).decode()}"
 
-# Claude: PNG recortado de la portada (naranja Anthropic — excepción al acento verde)
-CLAUDE_PNG = BUILD / "assets" / "claude-crop.png"
+# Claude default del repo (bichito naranja cuadrado) — excepción al acento verde
+CLAUDE_PNG = REPO / "assets" / "claude.png"
 if not CLAUDE_PNG.exists():
     CLAUDE_PNG = BUILD / "assets" / "claude.png"
 CLAUDE_URI = "data:image/png;base64," + base64.b64encode(CLAUDE_PNG.read_bytes()).decode()
@@ -110,8 +110,8 @@ EXTRA_CSS = f"""
   font-family:var(--mono);font-size:14px;letter-spacing:1px;font-weight:600;
 }}
 .claude{{
-  position:absolute;top:-108px;left:50%;transform:translateX(-50%);
-  width:110px;height:120px;filter:drop-shadow(0 10px 18px rgba(0,0,0,.18));
+  position:absolute;top:-118px;left:50%;transform:translateX(-50%);
+  width:132px;height:124px;filter:drop-shadow(0 10px 18px rgba(0,0,0,.18));
 }}
 .claude img{{width:100%;height:100%;object-fit:contain;display:block;}}
 
@@ -418,16 +418,16 @@ def slide7():
   <div class="cta-kw">“{KEYWORD}”</div>
   <p class="cta-sub">Y te mando <b>los 5 prompts completos</b> + cuándo conviene usar Fable 5 (y cuándo no) por DM.</p>
   <div class="profile">
-    <div class="ph">sebastian.stlabs.ar <span class="v">✓</span></div>
+    <div class="ph">sebastiangarcia.ar <span class="v">✓</span></div>
     <div class="profile-row">
       <img src="{SEB_URI}" alt="Sebastián García">
       <div class="stats">
-        <div><b>—</b><span>publicaciones</span></div>
-        <div><b>—</b><span>seguidores</span></div>
-        <div><b>—</b><span>seguidos</span></div>
+        <div><b>61</b><span>publicaciones</span></div>
+        <div><b>420</b><span>seguidores</span></div>
+        <div><b>451</b><span>seguidos</span></div>
       </div>
     </div>
-    <div class="name">Sebastián García</div>
+    <div class="name">Sebastian Garcia</div>
     <div class="bio"><em>Experto en ventas automatizadas</em><br>CRM y flujos de IA que trabajan por vos<br>sebastian.stlabs.ar</div>
     <div class="seguir">Seguir</div>
   </div>
@@ -481,8 +481,12 @@ def main():
         if src.exists():
             shutil.copy2(src, WORD_DIR / name)
 
-    # Claude recortado (PNG) — no SVG recreado
-    shutil.copy2(CLAUDE_PNG, WORD_DIR / "claude-crop.png")
+    # Claude default del repo
+    shutil.copy2(CLAUDE_PNG, WORD_DIR / "claude.png")
+    for stale in ("claude-crop.png", "claude.svg"):
+        p = WORD_DIR / stale
+        if p.exists():
+            p.unlink()
 
     (WORD_DIR / "MANIFIESTO-FUENTES.md").write_text(
         """# Manifiesto de fuentes — Fable 5 Usos Que Parecen Trampa
@@ -496,19 +500,19 @@ def main():
 | Poppins | 800 | nombres en barras / perfil | `fonts/Poppins-Bold.ttf` | `@font-face` base64 |
 
 Acento: `#00FFB2` (reemplaza el naranja del original).
-Claude de portada: PNG recortado (`claude-crop.png`) — se mantiene naranja Anthropic.
-Perfil: `seb.jpg` · Sebastián García · sebastian.stlabs.ar
+Claude de portada: `assets/claude.png` (bichito naranja default del repo).
+Perfil: `seb.jpg` · sebastiangarcia.ar · 61 / 420 / 451 · sebastian.stlabs.ar
 Modo blanco · retícula fina · keyword FABLE
 """,
         encoding="utf-8",
     )
     (WORD_DIR / "LEEME.txt").write_text(
         f"""Carrusel STLabs — Fable 5 Usos Que Parecen Trampa
-Identidad: sebastian.stlabs.ar · foto seb.jpg
+Identidad: sebastiangarcia.ar · foto seb.jpg · stats 61/420/451
 Fondo: BLANCO · Textura: reticula_fina · Familia: dossier_editorial
 Slides: {TOTAL} · Keyword: {KEYWORD}
 Acento: #00FFB2 (reemplaza naranja del original)
-Claude portada: claude-crop.png (recorte PNG naranja, no recreación SVG)
+Claude portada: assets/claude.png (bichito naranja default)
 """,
         encoding="utf-8",
     )

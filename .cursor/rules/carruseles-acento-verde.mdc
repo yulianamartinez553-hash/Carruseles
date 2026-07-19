@@ -10,7 +10,10 @@ Al clonar o crear cualquier carrusel:
 
 1. El color principal / acento del original (naranja, azul, rosa, etc.) se reemplaza **SIEMPRE** por el verde STLabs **`#00FFB2`**.
 2. No conservar el acento del screenshot salvo pedido explícito.
-3. Excepción: el **logo/personaje Claude** se mantiene naranja (identidad Anthropic). Se **recorta** de la portada de referencia con PIL (PNG transparente). **Prohibido** redibujarlo en SVG/CSS ni inventar una versión propia.
-4. Si la portada de referencia no está en disco, pedir re-subida o usar `assets/referencia-portada.png` — no inventar Claude.
-5. Footer / URL: `sebastian.stlabs.ar` en verde `#00FFB2`.
-6. Referencia de perfil **siempre**: `seb.jpg` · Sebastián García · bio ventas automatizadas / CRM e IA · `sebastian.stlabs.ar` (perfil IG `sebastiangarcia.ar`).
+3. Excepción: el **bichito Claude** (`assets/claude.png`) se mantiene **naranja**. Es el asset default del repo. Usarlo en portadas; **no** redibujar otra versión ni inventar SVG.
+4. Footer / URL: `sebastian.stlabs.ar` en verde `#00FFB2`.
+5. Referencia de perfil **siempre** (`seb.jpg` + datos IG `sebastiangarcia.ar`):
+   - Nombre: Sebastian Garcia
+   - Stats: **61** publicaciones · **420** seguidores · **451** seguidos
+   - Bio: *Experto en ventas automatizadas* / CRM y flujos de IA que trabajan por vos
+   - Link: `sebastian.stlabs.ar`

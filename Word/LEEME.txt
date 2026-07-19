@@ -1,6 +1,6 @@
 Carrusel STLabs — Fable 5 Usos Que Parecen Trampa
-Identidad: sebastian.stlabs.ar · foto seb.jpg
+Identidad: sebastiangarcia.ar · foto seb.jpg · stats 61/420/451
 Fondo: BLANCO · Textura: reticula_fina · Familia: dossier_editorial
 Slides: 7 · Keyword: FABLE
 Acento: #00FFB2 (reemplaza naranja del original)
-Claude portada: claude-crop.png (recorte PNG naranja, no recreación SVG)
+Claude portada: assets/claude.png (bichito naranja default)
