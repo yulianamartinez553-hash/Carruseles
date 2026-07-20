@@ -1,0 +1,29 @@
+STLabs — Carrusel "Crear Una Web Con Claude Desde Cero"
+========================================================
+Clon del carrusel de referencia (8 slides) con identidad STLabs · sebastian.stlabs.ar
+Modo: BLANCO (fondo blanco en las 8 imágenes) · Textura retícula fina clara.
+
+CÓMO REGENERAR
+  python3 generate.py
+  (requiere: playwright + chromium, pillow. Fuentes en ../../fonts/,
+   imágenes en ../../assets/slide1-hero.png y ../../seb.jpg)
+
+ENTREGABLES (se generan al correr; están gitignoreados por peso)
+  STLabs-CrearWebConClaude.html  → HTML standalone con fuentes embebidas base64
+  STLabs-CrearWebConClaude.zip   → los 8 PNG + HTML
+  slide-01..08.png               → slides retina 2160×2700
+  _preview-tira.png              → tira de preview horizontal
+
+QUÉ SE CLONÓ / ADAPTÓ
+  - Título serif elegante y grueso (Playfair Display Black) graphite + acento verde
+    itálico, siguiendo el carácter serif de la referencia.
+  - Líneas de acento manuscritas (Caveat) en verde.
+  - Diagramas line-art recreados (flujo, mockup, super prompt, mockup→código,
+    escalera de fases, captura→fix) en graphite con acentos verdes.
+  - Slide 1: pantalla/dashboard de marca (assets/slide1-hero.png).
+  - Slide 8: foto real de Sebastián (seb.jpg) en el thumbnail; ráfaga de Claude
+    en naranja (intacta); "SUPERA AL 99%" en dorado.
+  - @ignaciorodriguezb_ y "guardá este post" + contador de slides → eliminados.
+    Firma sebastian.stlabs.ar (IBM Plex Mono verde) en cada slide.
+
+Ver MANIFIESTO-FUENTES.md para las tipografías y sus códigos de carga.
