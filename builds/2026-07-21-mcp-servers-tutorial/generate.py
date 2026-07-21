@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Clone: MCP Servers tutorial → STLabs · white · #00FFB2 · English."""
+"""Clone: MCP Servers tutorial → STLabs · blanco · #00FFB2 · español."""
 from __future__ import annotations
 
 import base64
@@ -74,18 +74,21 @@ EXTRA_CSS = f"""
   font-family:var(--mono);font-size:16px;letter-spacing:2px;padding:8px 14px;border-radius:6px;
 }}
 .h1{{
-  margin-top:18px;font-family:var(--impact);font-weight:900;font-size:92px;line-height:.92;
-  letter-spacing:1px;color:#0A0A0A;
-  -webkit-text-stroke:2px #0A0A0A;paint-order:stroke fill;
+  margin-top:18px;font-family:var(--impact);font-weight:900;font-size:84px;line-height:1.05;
+  letter-spacing:1px;color:#0A0A0A;position:relative;z-index:3;
+  -webkit-text-stroke:1.5px #0A0A0A;paint-order:stroke fill;
 }}
-.h1 .hl{{color:var(--acento);-webkit-text-stroke:2px var(--acento);}}
+.h1 .hl{{
+  display:inline-block;color:var(--acento);-webkit-text-stroke:1.5px var(--acento);
+  margin-top:6px;
+}}
 .h1 .script{{
-  display:block;font-family:var(--serif);font-style:italic;font-weight:700;
-  font-size:88px;color:var(--acento);-webkit-text-stroke:0;letter-spacing:0;
+  display:block;margin-top:8px;font-family:var(--serif);font-style:italic;font-weight:700;
+  font-size:80px;color:var(--acento);-webkit-text-stroke:0;letter-spacing:0;line-height:1.05;
 }}
-.sub{{margin-top:14px;font-family:var(--cond);font-size:30px;color:#3a3f3c;line-height:1.3;}}
+.sub{{margin-top:16px;font-family:var(--cond);font-size:30px;color:#3a3f3c;line-height:1.35;position:relative;z-index:3;}}
 .sub b,.body b{{color:#0A0A0A;}}
-.body{{margin-top:14px;font-family:var(--cond);font-size:28px;color:#4a524e;line-height:1.35;max-width:920px;}}
+.body{{margin-top:14px;font-family:var(--cond);font-size:28px;color:#4a524e;line-height:1.35;max-width:920px;position:relative;z-index:3;}}
 .note{{
   font-family:var(--serif);font-style:italic;font-weight:600;font-size:26px;color:var(--acento);
 }}
@@ -116,15 +119,15 @@ EXTRA_CSS = f"""
 .ico{{display:inline-flex;align-items:center;justify-content:center;color:var(--acento);}}
 .ico svg{{width:100%;height:100%;display:block;}}
 .ghost{{
-  position:absolute;right:40px;top:180px;z-index:0;pointer-events:none;
-  font-family:var(--impact);font-weight:900;font-size:420px;line-height:1;
-  color:rgba(0,255,178,.12);letter-spacing:-8px;
+  position:absolute;right:24px;top:520px;z-index:0;pointer-events:none;
+  font-family:var(--impact);font-weight:900;font-size:340px;line-height:1;
+  color:rgba(0,255,178,.08);letter-spacing:-8px;
 }}
 .hand{{
   font-family:var(--serif);font-style:italic;font-weight:700;font-size:24px;color:var(--acento);
 }}
 .arrow{{color:var(--acento);font-size:28px;font-weight:700;}}
-.pad{{padding:110px 64px 0;position:relative;z-index:2;text-align:left;}}
+.pad{{padding:110px 64px 0;position:relative;z-index:3;text-align:left;}}
 .center{{text-align:center;}}
 """
 
@@ -133,14 +136,14 @@ def wrap(idx: int, inner: str, swipe: bool = True) -> str:
     html = chrome(idx, inner, total=TOTAL, bridges=None, footer=False)
     extras = '<div class="foot">sebastian.stlabs.ar</div>'
     if swipe and idx < TOTAL:
-        extras = '<div class="swipe">SWIPE →</div>' + extras
+        extras = '<div class="swipe">deslizá →</div>' + extras
     return html.replace("</section>", extras + "</section>", 1)
 
 
 def meta_bar(n: int) -> str:
     return f"""
 <div class="meta">
-  <span>JULY 2026</span>
+  <span>JULIO 2026</span>
   <span class="brand">sebastian.stlabs.ar</span>
   <span>{n:02d}/{TOTAL:02d}</span>
 </div>
@@ -155,7 +158,7 @@ def slide1():
 <div class="pad center">
   <div class="tag">TUTORIAL</div>
   <h1 class="h1">MCP<span class="script">Servers</span></h1>
-  <p class="sub">What They Are + How to Set Them Up</p>
+  <p class="sub">Qué son + Cómo configurarlos</p>
 </div>
 <div style="position:absolute;left:70px;right:70px;bottom:170px;z-index:4;display:flex;gap:28px;align-items:flex-start;">
   <div class="win" style="flex:1.4;">
@@ -174,13 +177,13 @@ def slide1():
       <div class="tape" style="width:70px;height:22px;top:-8px;left:40px;"></div></div>
     <div class="card" style="padding:22px;text-align:center;">{ico("slack", 48)}<div style="margin-top:8px;font-family:var(--mono);font-size:14px;">Slack</div>
       <div class="tape" style="width:70px;height:22px;top:-8px;left:40px;transform:rotate(5deg);"></div></div>
-    <div class="card" style="padding:22px;text-align:center;">{ico("folder", 48)}<div style="margin-top:8px;font-family:var(--mono);font-size:14px;">Files</div>
+    <div class="card" style="padding:22px;text-align:center;">{ico("folder", 48)}<div style="margin-top:8px;font-family:var(--mono);font-size:14px;">Archivos</div>
       <div class="tape" style="width:70px;height:22px;top:-8px;left:40px;transform:rotate(-4deg);"></div></div>
   </div>
 </div>
 <div style="position:absolute;left:90px;bottom:280px;z-index:5;display:flex;align-items:center;gap:12px;">
   <img src="{CLAUDE_URI}" alt="Claude" style="width:72px;height:68px;object-fit:contain;filter:drop-shadow(0 8px 14px rgba(0,0,0,.15));">
-  <span class="hand">the file that connects everything</span>
+  <span class="hand">el archivo que conecta todo</span>
 </div>
 """,
     )
@@ -192,16 +195,16 @@ def slide2():
         f"""
 {meta_bar(2)}
 <div class="pad">
-  <div class="tag">THE BASICS</div>
-  <h1 class="h1">What is <span class="hl">MCP?</span></h1>
+  <div class="tag">LO BÁSICO</div>
+  <h1 class="h1">¿Qué es <span class="hl">MCP?</span></h1>
   <p class="sub"><b>Model Context Protocol.</b></p>
-  <p class="body">An open standard by Anthropic that lets AI connect to any external tool, database, or API.</p>
-  <p class="body">Think of it as <span class="note">USB-C for AI.</span><br>One plug, everything works.</p>
+  <p class="body">Un estándar abierto de Anthropic que deja que la IA se conecte a cualquier herramienta, base de datos o API externa.</p>
+  <p class="body">Pensalo como el <span class="note">USB-C de la IA.</span><br>Un conector, y todo funciona.</p>
 </div>
 <div style="position:absolute;left:80px;right:80px;bottom:180px;z-index:4;display:flex;align-items:center;justify-content:center;gap:18px;">
   <div class="card" style="padding:28px 32px;min-width:180px;text-align:center;">
     {ico("brain", 56)}
-    <div style="margin-top:10px;font-family:var(--pop);font-weight:800;font-size:28px;">AI</div>
+    <div style="margin-top:10px;font-family:var(--pop);font-weight:800;font-size:28px;">IA</div>
   </div>
   <div style="font-size:36px;color:var(--acento);">┄┄</div>
   <div class="card" style="padding:28px 26px;border:2px solid var(--acento);text-align:center;">
@@ -211,7 +214,7 @@ def slide2():
   <div style="display:flex;flex-direction:column;gap:12px;">
     <div class="card" style="padding:14px 22px;display:flex;align-items:center;gap:12px;">{ico("github", 28)}<b>GitHub</b></div>
     <div class="card" style="padding:14px 22px;display:flex;align-items:center;gap:12px;">{ico("slack", 28)}<b>Slack</b></div>
-    <div class="card" style="padding:14px 22px;display:flex;align-items:center;gap:12px;">{ico("db", 28)}<b>Database</b></div>
+    <div class="card" style="padding:14px 22px;display:flex;align-items:center;gap:12px;">{ico("db", 28)}<b>Base de datos</b></div>
   </div>
 </div>
 """,
@@ -224,37 +227,37 @@ def slide3():
         f"""
 {meta_bar(3)}
 <div class="pad center">
-  <div class="tag">ARCHITECTURE</div>
-  <h1 class="h1">How <span class="hl">MCP</span> Works</h1>
+  <div class="tag">ARQUITECTURA</div>
+  <h1 class="h1">Cómo funciona <span class="hl">MCP</span></h1>
 </div>
-<div style="position:absolute;left:120px;right:120px;top:320px;bottom:160px;z-index:4;display:flex;flex-direction:column;align-items:center;gap:10px;">
+<div style="position:absolute;left:120px;right:120px;top:340px;bottom:160px;z-index:4;display:flex;flex-direction:column;align-items:center;gap:10px;">
   <div class="card" style="width:520px;padding:22px 28px;display:flex;align-items:center;justify-content:space-between;">
     <div class="tape" style="width:80px;height:24px;top:-10px;left:30px;"></div>
     <div><div style="font-family:var(--pop);font-weight:800;font-size:28px;">HOST</div>
-    <div style="font-family:var(--cond);font-size:22px;color:#6a736e;">Your AI App</div></div>
+    <div style="font-family:var(--cond);font-size:22px;color:#6a736e;">Tu app de IA</div></div>
     {ico("brain", 48)}
   </div>
-  <div class="hand">asks ↓</div>
+  <div class="hand">pide ↓</div>
   <div class="card" style="width:520px;padding:22px 28px;display:flex;align-items:center;justify-content:space-between;">
     <div class="tape" style="width:80px;height:24px;top:-10px;right:40px;transform:rotate(7deg);"></div>
     <div><div style="font-family:var(--pop);font-weight:800;font-size:28px;">CLIENT</div>
-    <div style="font-family:var(--cond);font-size:22px;color:#6a736e;">The Connector</div></div>
+    <div style="font-family:var(--cond);font-size:22px;color:#6a736e;">El conector</div></div>
     {ico("plug", 48)}
   </div>
-  <div style="align-self:flex-end;margin-right:40px;" class="hand">← one client per server</div>
-  <div class="hand">calls ↓</div>
+  <div style="align-self:flex-end;margin-right:40px;" class="hand">← un cliente por servidor</div>
+  <div class="hand">llama ↓</div>
   <div class="card" style="width:520px;padding:22px 28px;display:flex;align-items:center;justify-content:space-between;">
     <div class="tape" style="width:80px;height:24px;top:-10px;left:50px;transform:rotate(-5deg);"></div>
     <div><div style="font-family:var(--pop);font-weight:800;font-size:28px;">SERVER</div>
-    <div style="font-family:var(--cond);font-size:22px;color:#6a736e;">The Tool</div></div>
+    <div style="font-family:var(--cond);font-size:22px;color:#6a736e;">La herramienta</div></div>
     {ico("wrench", 48)}
   </div>
   <div style="display:flex;gap:18px;margin-top:8px;">
     <div class="card" style="padding:12px 16px;border-radius:999px;">{ico("github", 22)} GitHub</div>
     <div class="card" style="padding:12px 16px;border-radius:999px;">{ico("code", 22)} Slack</div>
-    <div class="card" style="padding:12px 16px;border-radius:999px;">{ico("cloud", 22)} Files</div>
+    <div class="card" style="padding:12px 16px;border-radius:999px;">{ico("cloud", 22)} Archivos</div>
   </div>
-  <div class="hand" style="position:absolute;left:20px;top:120px;transform:rotate(-90deg);transform-origin:left center;">returns results ↑</div>
+  <div class="hand" style="position:absolute;left:20px;top:120px;transform:rotate(-90deg);transform-origin:left center;">devuelve resultados ↑</div>
 </div>
 """,
     )
@@ -266,15 +269,15 @@ def slide4():
         f"""
 {meta_bar(4)}
 <div class="pad">
-  <div class="tag">WHY IT MATTERS</div>
-  <h1 class="h1">Why Should You <span class="hl">Care?</span></h1>
+  <div class="tag">POR QUÉ IMPORTA</div>
+  <h1 class="h1" style="font-size:72px;line-height:1.08;">¿Por qué te tiene<br><span class="hl">que importar?</span></h1>
 </div>
-<div style="position:absolute;left:56px;right:56px;top:320px;display:grid;grid-template-columns:1fr 1fr;gap:24px;z-index:4;">
+<div style="position:absolute;left:56px;right:56px;top:360px;display:grid;grid-template-columns:1fr 1fr;gap:24px;z-index:4;">
   <div class="card" style="padding:22px;">
-    <div style="font-family:var(--mono);font-size:16px;color:#FF5247;margin-bottom:12px;">✗ BEFORE MCP</div>
+    <div style="font-family:var(--mono);font-size:16px;color:#FF5247;margin-bottom:12px;">✗ ANTES DE MCP</div>
     <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
-      <div class="card" style="padding:10px 16px;">{ico("brain", 28)} AI</div>
-      <div style="font-size:22px;color:#666;line-height:1.1;text-align:center;">╳ ╳ ╳<br>messy wires</div>
+      <div class="card" style="padding:10px 16px;">{ico("brain", 28)} IA</div>
+      <div style="font-size:22px;color:#666;line-height:1.1;text-align:center;">╳ ╳ ╳<br>cables enredados</div>
       <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
         <span class="card" style="padding:8px;">{ico("github", 20)}</span>
         <span class="card" style="padding:8px;">{ico("slack", 20)}</span>
@@ -285,11 +288,11 @@ def slide4():
     </div>
   </div>
   <div class="card" style="padding:22px;border:2px solid var(--acento);">
-    <div style="font-family:var(--mono);font-size:16px;color:var(--acento);margin-bottom:12px;">✓ WITH MCP</div>
+    <div style="font-family:var(--mono);font-size:16px;color:var(--acento);margin-bottom:12px;">✓ CON MCP</div>
     <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
-      <div class="card" style="padding:10px 16px;">{ico("brain", 28)} AI</div>
+      <div class="card" style="padding:10px 16px;">{ico("brain", 28)} IA</div>
       <div style="color:var(--acento);font-size:28px;">↓</div>
-      <div style="background:var(--acento);color:var(--ink);padding:10px 18px;border-radius:12px;font-family:var(--pop);font-weight:800;">MCP Connector</div>
+      <div style="background:var(--acento);color:var(--ink);padding:10px 18px;border-radius:12px;font-family:var(--pop);font-weight:800;">Conector MCP</div>
       <div style="color:var(--acento);font-size:22px;">┊ ┊ ┊ ┊ ┊</div>
       <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
         <span class="card" style="padding:8px;border-color:var(--acento);">{ico("github", 20)}</span>
@@ -305,17 +308,17 @@ def slide4():
   <div class="card" style="padding:22px;text-align:center;">
     <div class="tape" style="width:70px;height:20px;top:-8px;left:50%;margin-left:-35px;"></div>
     <div style="font-family:var(--impact);font-size:56px;color:var(--acento);">2,300+</div>
-    <div style="font-family:var(--cond);font-size:22px;">MCP Servers</div>
+    <div style="font-family:var(--cond);font-size:22px;">Servidores MCP</div>
   </div>
   <div class="card" style="padding:22px;text-align:center;">
     <div class="tape" style="width:70px;height:20px;top:-8px;left:50%;margin-left:-35px;transform:rotate(4deg);"></div>
     <div style="font-family:var(--impact);font-size:56px;color:var(--acento);">3</div>
-    <div style="font-family:var(--cond);font-size:22px;">Major AI companies support it</div>
+    <div style="font-family:var(--cond);font-size:22px;">Grandes empresas de IA lo soportan</div>
   </div>
   <div class="card" style="padding:22px;text-align:center;">
     <div class="tape" style="width:70px;height:20px;top:-8px;left:50%;margin-left:-35px;transform:rotate(-5deg);"></div>
     <div style="font-family:var(--impact);font-size:56px;color:var(--acento);">1</div>
-    <div style="font-family:var(--cond);font-size:22px;">Protocol to rule them all</div>
+    <div style="font-family:var(--cond);font-size:22px;">Un protocolo para gobernarlos a todos</div>
   </div>
 </div>
 """,
@@ -329,11 +332,11 @@ def slide5():
 {meta_bar(5)}
 <div class="ghost">1</div>
 <div class="pad">
-  <div class="tag">STEP 01</div>
-  <h1 class="h1" style="font-size:78px;">Install a Server</h1>
-  <p class="sub">Most servers install with one npm or pip command.</p>
+  <div class="tag">PASO 01</div>
+  <h1 class="h1" style="font-size:72px;">Instalá un servidor</h1>
+  <p class="sub">La mayoría se instala con un solo comando npm o pip.</p>
 </div>
-<div class="win" style="position:absolute;left:80px;right:80px;top:420px;z-index:4;">
+<div class="win" style="position:absolute;left:80px;right:80px;top:440px;z-index:4;">
   <div class="tape" style="width:100px;height:28px;top:-12px;left:60px;"></div>
   <div class="tape" style="width:100px;height:28px;top:-10px;right:70px;transform:rotate(9deg);"></div>
   <div class="win-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
@@ -341,9 +344,9 @@ def slide5():
   <pre>$ npm install -g @modelcontextprotocol/server-github
 
 added 47 packages in 3s
-<span class="ok">✓ Server installed</span></pre>
+<span class="ok">✓ Servidor instalado</span></pre>
 </div>
-<div style="position:absolute;right:100px;top:560px;z-index:5;" class="hand">← one command</div>
+<div style="position:absolute;right:100px;top:580px;z-index:5;" class="hand">← un solo comando</div>
 <div style="position:absolute;left:0;right:0;bottom:170px;display:flex;justify-content:center;gap:24px;z-index:4;">
   <div class="card" style="padding:18px 28px;font-family:var(--mono);font-weight:700;color:#CB3837;border-color:#CB3837;">npm</div>
   <div class="card" style="padding:18px 28px;font-family:var(--mono);font-weight:700;color:#3775A9;border-color:#3775A9;">pip</div>
@@ -359,11 +362,11 @@ def slide6():
 {meta_bar(6)}
 <div class="ghost">2</div>
 <div class="pad">
-  <div class="tag">STEP 02</div>
-  <h1 class="h1" style="font-size:78px;">Add Your Config</h1>
-  <p class="sub">Drop the server into your config file. Here's Claude Desktop as an example.</p>
+  <div class="tag">PASO 02</div>
+  <h1 class="h1" style="font-size:72px;">Agregá tu config</h1>
+  <p class="sub">Meté el servidor en tu archivo de config. Acá un ejemplo con Claude Desktop.</p>
 </div>
-<div class="win" style="position:absolute;left:70px;right:70px;top:400px;z-index:4;">
+<div class="win" style="position:absolute;left:70px;right:70px;top:430px;z-index:4;">
   <div class="tape" style="width:110px;height:30px;top:-12px;right:80px;transform:rotate(8deg);"></div>
   <div class="win-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
     <span style="margin-left:10px;">{{ }} claude_desktop_config.json</span></div>
@@ -379,8 +382,8 @@ def slide6():
   }}
 }}</pre>
 </div>
-<div style="position:absolute;right:90px;top:520px;z-index:5;" class="hand">← server name</div>
-<div style="position:absolute;right:90px;top:780px;z-index:5;" class="hand">← your API key</div>
+<div style="position:absolute;right:90px;top:550px;z-index:5;" class="hand">← nombre del servidor</div>
+<div style="position:absolute;right:90px;top:800px;z-index:5;" class="hand">← tu API key</div>
 """,
     )
 
@@ -392,11 +395,11 @@ def slide7():
 {meta_bar(7)}
 <div class="ghost">3</div>
 <div class="pad">
-  <div class="tag">STEP 03</div>
-  <h1 class="h1" style="font-size:78px;">Talk to Your AI</h1>
-  <p class="sub">Restart the app. Your AI now sees the new tools. Just ask it to do things.</p>
+  <div class="tag">PASO 03</div>
+  <h1 class="h1" style="font-size:72px;">Hablá con tu IA</h1>
+  <p class="sub">Reiniciá la app. Tu IA ya ve las herramientas nuevas. Pedile que haga cosas.</p>
 </div>
-<div class="win" style="position:absolute;left:90px;right:90px;top:400px;bottom:210px;z-index:4;display:flex;flex-direction:column;">
+<div class="win" style="position:absolute;left:90px;right:90px;top:420px;bottom:210px;z-index:4;display:flex;flex-direction:column;">
   <div class="tape" style="width:120px;height:32px;top:-14px;right:60px;transform:rotate(10deg);"></div>
   <div class="win-bar" style="justify-content:space-between;">
     <div style="display:flex;align-items:center;gap:10px;">
@@ -407,27 +410,27 @@ def slide7():
   </div>
   <div style="flex:1;padding:18px 20px;display:flex;flex-direction:column;gap:14px;">
     <div style="align-self:flex-end;background:#2a2a2a;border-radius:16px 16px 4px 16px;padding:14px 16px;max-width:78%;font-family:var(--cond);font-size:24px;">
-      Create an issue in my repo for the login bug
-      <div style="font-family:var(--mono);font-size:13px;color:#8a918c;margin-top:6px;">10:42 AM</div>
+      Creá un issue en mi repo por el bug del login
+      <div style="font-family:var(--mono);font-size:13px;color:#8a918c;margin-top:6px;">10:42</div>
     </div>
     <div style="align-self:flex-start;display:flex;gap:10px;max-width:85%;">
       <img src="{CLAUDE_URI}" alt="" style="width:40px;height:38px;object-fit:contain;flex-shrink:0;">
       <div style="background:#1E1E1E;border-radius:16px 16px 16px 4px;padding:14px 16px;font-family:var(--cond);font-size:24px;">
-        Done. I created issue #247 “Fix login redirect bug” in your-repo with the details you described.
-        <div style="font-family:var(--mono);font-size:13px;color:#8a918c;margin-top:6px;">10:42 AM</div>
+        Listo. Creé el issue #247 “Fix login redirect bug” en your-repo con el detalle que me pasaste.
+        <div style="font-family:var(--mono);font-size:13px;color:#8a918c;margin-top:6px;">10:42</div>
       </div>
     </div>
     <div style="align-self:flex-start;margin-left:50px;border:1.5px solid var(--acento);color:var(--acento);border-radius:999px;padding:8px 14px;font-family:var(--mono);font-size:16px;">
-      ✓ Used tool: github_create_issue
+      ✓ Usó herramienta: github_create_issue
     </div>
   </div>
-  <div style="padding:12px 16px;border-top:1px solid #2a2a2a;color:#8a918c;font-family:var(--cond);font-size:22px;">Message Claude…</div>
+  <div style="padding:12px 16px;border-top:1px solid #2a2a2a;color:#8a918c;font-family:var(--cond);font-size:22px;">Escribile a Claude…</div>
 </div>
-<div style="position:absolute;right:70px;top:720px;z-index:5;" class="hand">MCP in action →</div>
+<div style="position:absolute;right:70px;top:740px;z-index:5;" class="hand">MCP en acción →</div>
 <div style="position:absolute;left:70px;right:70px;bottom:140px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;z-index:4;text-align:center;">
-  <div class="hand" style="font-size:20px;">“Create a GitHub issue”</div>
-  <div class="hand" style="font-size:20px;">“Pull Slack messages”</div>
-  <div class="hand" style="font-size:20px;">“Query my database”</div>
+  <div class="hand" style="font-size:20px;">“Creá un issue en GitHub”</div>
+  <div class="hand" style="font-size:20px;">“Traé mensajes de Slack”</div>
+  <div class="hand" style="font-size:20px;">“Consultá mi base de datos”</div>
 </div>
 """,
     )
@@ -436,11 +439,11 @@ def slide7():
 def slide8():
     servers = [
         ("github", "GitHub", "Repos, issues, PRs"),
-        ("slack", "Slack", "Read + send messages"),
-        ("folder", "Filesystem", "Read + write local files"),
-        ("db", "PostgreSQL", "Query your database"),
-        ("aws", "AWS", "15,000+ APIs"),
-        ("search", "Brave Search", "Web search from AI"),
+        ("slack", "Slack", "Leer + enviar mensajes"),
+        ("folder", "Filesystem", "Leer + escribir archivos locales"),
+        ("db", "PostgreSQL", "Consultá tu base de datos"),
+        ("aws", "AWS", "15.000+ APIs"),
+        ("search", "Brave Search", "Búsqueda web desde la IA"),
     ]
     cards = ""
     for name, title, desc in servers:
@@ -459,13 +462,13 @@ def slide8():
         f"""
 {meta_bar(8)}
 <div class="pad">
-  <div class="tag">TOP PICKS</div>
-  <h1 class="h1" style="font-size:72px;">Servers <span class="hl">Worth</span> Installing</h1>
+  <div class="tag">DESTACADOS</div>
+  <h1 class="h1" style="font-size:64px;line-height:1.08;">Servidores que<br><span class="hl">valen la pena</span></h1>
 </div>
-<div style="position:absolute;left:64px;right:64px;top:360px;display:grid;grid-template-columns:1fr 1fr;gap:16px;z-index:4;">
+<div style="position:absolute;left:64px;right:64px;top:380px;display:grid;grid-template-columns:1fr 1fr;gap:16px;z-index:4;">
   {cards}
 </div>
-<p class="hand" style="position:absolute;left:0;right:0;bottom:140px;text-align:center;z-index:4;">2,300+ more at mcp.directory</p>
+<p class="hand" style="position:absolute;left:0;right:0;bottom:140px;text-align:center;z-index:4;">+2.300 más en mcp.directory</p>
 """,
     )
 
@@ -475,19 +478,19 @@ def slide9():
         9,
         f"""
 {meta_bar(9)}
-<div class="pad center" style="padding-top:220px;">
+<div class="pad center" style="padding-top:200px;">
   <div class="tape" style="width:140px;height:36px;top:160px;left:80px;"></div>
   <div class="tape" style="width:140px;height:36px;top:160px;right:80px;transform:rotate(8deg);"></div>
   <div class="tape" style="width:120px;height:32px;bottom:200px;right:100px;transform:rotate(-6deg);"></div>
-  <h1 class="h1" style="font-size:110px;"><span class="hl">Save This</span><br>for Later</h1>
-  <p class="sub">Follow for more AI + Dev tutorials</p>
+  <h1 class="h1" style="font-size:96px;line-height:1.05;"><span class="hl">Guardá esto</span><br>para después</h1>
+  <p class="sub">Seguime para más tutoriales de IA + Dev</p>
   <div style="margin:36px auto 0;display:inline-block;background:#0A0A0A;color:#fff;border-radius:999px;padding:16px 28px;font-family:var(--mono);font-size:24px;">
     sebastian.stlabs.ar
   </div>
   <div style="margin-top:28px;display:flex;justify-content:center;gap:40px;color:var(--acento);font-family:var(--mono);font-size:20px;letter-spacing:1px;">
-    <span style="border:2px solid var(--acento);padding:10px 14px;border-radius:8px;">SAVE</span>
-    <span style="border:2px solid var(--acento);padding:10px 14px;border-radius:8px;">SHARE</span>
-    <span style="border:2px solid var(--acento);padding:10px 14px;border-radius:8px;">LIKE</span>
+    <span style="border:2px solid var(--acento);padding:10px 14px;border-radius:8px;">GUARDAR</span>
+    <span style="border:2px solid var(--acento);padding:10px 14px;border-radius:8px;">COMPARTIR</span>
+    <span style="border:2px solid var(--acento);padding:10px 14px;border-radius:8px;">ME GUSTA</span>
   </div>
   <div style="margin-top:36px;">
     <img src="{CLAUDE_URI}" alt="Claude" style="width:90px;height:84px;object-fit:contain;filter:drop-shadow(0 10px 18px rgba(0,0,0,.15));">
@@ -496,13 +499,15 @@ def slide9():
     <img src="{SEB_URI}" alt="Sebastian" style="width:64px;height:64px;border-radius:50%;object-fit:cover;">
     <div>
       <div style="font-family:var(--pop);font-weight:800;font-size:22px;">Sebastian Garcia</div>
-      <div style="font-family:var(--cond);font-size:18px;color:#6a736e;">sebastiangarcia.ar · 420 followers</div>
+      <div style="font-family:var(--cond);font-size:18px;color:#6a736e;">sebastiangarcia.ar · 420 seguidores</div>
     </div>
   </div>
 </div>
 """,
         swipe=False,
     )
+
+
 
 
 def main():
@@ -514,14 +519,14 @@ def main():
     print(f"Render OK: {len(pngs)}")
 
     meta = {
-        "titulo": "MCP Servers Tutorial",
+        "titulo": "Tutorial Servidores MCP",
         "slides": TOTAL,
         "fondo": "papel_corrugado",
         "familia_visual": "manifiesto",
         "origen": "screenshot",
         "keyword_portada": KEYWORD,
         "modo_fondo": "blanco",
-        "idioma": "en",
+        "idioma": "es",
         "acento": VERDE,
         "feedback": {"estado": "borrador"},
     }
@@ -563,7 +568,7 @@ def main():
 | IBM Plex Mono | 400–600 | Code / meta / footer | `fonts/IBMPlexMono-*.ttf` |
 | Poppins | 800 | Card titles | `fonts/Poppins-Bold.ttf` |
 
-Accent: `#00FFB2` (replaces orange). Language: English.
+Accent: `#00FFB2` (replaces orange). Idioma: español.
 Claude: `assets/claude.png` (default orange mascot).
 Identity: sebastian.stlabs.ar · white scrapbook clone.
 """,
@@ -573,7 +578,7 @@ Identity: sebastian.stlabs.ar · white scrapbook clone.
         f"""STLabs Carousel — MCP Servers Tutorial
 Clone of @fullstackparody MCP tutorial → sebastian.stlabs.ar
 Background: WHITE · Texture: papel_corrugado · Family: manifiesto
-Slides: {TOTAL} · Keyword: {KEYWORD} · Language: English
+Slides: {TOTAL} · Keyword: {KEYWORD} · Idioma: español
 Accent: #00FFB2 · Claude: assets/claude.png
 """,
         encoding="utf-8",

@@ -8,6 +8,6 @@
 | IBM Plex Mono | 400–600 | Code / meta / footer | `fonts/IBMPlexMono-*.ttf` |
 | Poppins | 800 | Card titles | `fonts/Poppins-Bold.ttf` |
 
-Accent: `#00FFB2` (replaces orange). Language: English.
+Accent: `#00FFB2` (replaces orange). Idioma: español.
 Claude: `assets/claude.png` (default orange mascot).
 Identity: sebastian.stlabs.ar · white scrapbook clone.

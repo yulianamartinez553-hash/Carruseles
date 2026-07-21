@@ -1,16 +1,16 @@
 {
-  "titulo": "MCP Servers Tutorial",
+  "titulo": "Tutorial Servidores MCP",
   "slides": 9,
   "fondo": "papel_corrugado",
   "familia_visual": "manifiesto",
   "origen": "screenshot",
   "keyword_portada": "MCP",
   "modo_fondo": "blanco",
-  "idioma": "en",
+  "idioma": "es",
   "acento": "#00FFB2",
   "feedback": {
     "estado": "borrador"
   },
-  "id": "2026-07-21-mcp-servers-tutorial",
+  "id": "2026-07-21-tutorial-servidores-mcp",
   "fecha": "2026-07-21"
 }

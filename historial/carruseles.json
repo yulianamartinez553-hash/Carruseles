@@ -1,5 +1,5 @@
 {
-  "ultimo_id": "2026-07-21-mcp-servers-tutorial",
+  "ultimo_id": "2026-07-21-tutorial-servidores-mcp",
   "carruseles": [
     {
       "id": "2026-07-01-demo-memoria-stlabs",
@@ -76,6 +76,15 @@
       "id": "2026-07-21-mcp-servers-tutorial",
       "fecha": "2026-07-21",
       "titulo": "MCP Servers Tutorial",
+      "slides": 9,
+      "fondo": "papel_corrugado",
+      "familia_visual": "manifiesto",
+      "feedback_estado": "borrador"
+    },
+    {
+      "id": "2026-07-21-tutorial-servidores-mcp",
+      "fecha": "2026-07-21",
+      "titulo": "Tutorial Servidores MCP",
       "slides": 9,
       "fondo": "papel_corrugado",
       "familia_visual": "manifiesto",
