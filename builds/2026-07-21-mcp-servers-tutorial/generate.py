@@ -166,34 +166,34 @@ def slide1():
 {meta_bar(1)}
 <div class="pad center">
   <div class="tag">TUTORIAL</div>
-  <h1 class="h1" style="font-size:92px;">MCP<span class="script" style="font-size:80px;">Servers</span></h1>
-  <p class="sub">Qué son + Cómo configurarlos</p>
+  <h1 class="h1" style="font-size:84px;">MCP<span class="script" style="font-size:72px;">Servers</span></h1>
+  <p class="sub" style="margin-bottom:8px;">Qué son + Cómo configurarlos</p>
 </div>
-<div class="layer" style="left:56px;right:56px;top:430px;bottom:150px;display:flex;gap:20px;align-items:stretch;">
-  <div style="flex:1.3;display:flex;flex-direction:column;justify-content:center;gap:14px;">
-    <div class="win">
-      <div class="tape" style="width:80px;height:24px;top:-10px;left:36px;"></div>
-      <div class="tape" style="width:80px;height:24px;top:-8px;right:44px;transform:rotate(8deg);"></div>
+<div class="layer" style="left:56px;right:56px;top:480px;bottom:150px;display:flex;gap:36px;align-items:flex-start;">
+  <div style="flex:1;min-width:0;max-width:640px;display:flex;flex-direction:column;gap:12px;">
+    <div class="win" style="box-shadow:0 16px 36px rgba(10,10,10,.16);">
+      <div class="tape" style="width:70px;height:20px;top:-8px;left:32px;"></div>
+      <div class="tape" style="width:70px;height:20px;top:-6px;right:40px;transform:rotate(8deg);"></div>
       <div class="win-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
         <span style="margin-left:10px;">claude_desktop_config.json</span></div>
-      <pre><span class="k">"mcpServers"</span>: {{
+      <pre style="font-size:20px;padding:14px 16px 16px;"><span class="k">"mcpServers"</span>: {{
   <span class="k">"github"</span>: {{ <span class="c">...</span> }},
   <span class="k">"slack"</span>: {{ <span class="c">...</span> }},
   <span class="k">"filesystem"</span>: {{ <span class="c">...</span> }}
 }}</pre>
     </div>
-    <div style="display:flex;align-items:center;gap:12px;padding-left:8px;">
-      <img src="{CLAUDE_URI}" alt="Claude" style="width:56px;height:52px;object-fit:contain;filter:drop-shadow(0 8px 14px rgba(0,0,0,.15));">
-      <span class="hand">el archivo que conecta todo</span>
+    <div style="display:flex;align-items:center;gap:10px;padding-left:6px;">
+      <img src="{CLAUDE_URI}" alt="Claude" style="width:48px;height:44px;object-fit:contain;filter:drop-shadow(0 6px 12px rgba(0,0,0,.15));">
+      <span class="hand" style="font-size:20px;">el archivo que conecta todo</span>
     </div>
   </div>
-  <div style="display:flex;flex-direction:column;gap:12px;width:250px;justify-content:center;">
-    <div class="app-card">{ico("github", 72)}<div class="app-lab">GitHub</div>
-      <div class="tape" style="width:72px;height:22px;top:-10px;left:50%;margin-left:-36px;"></div></div>
-    <div class="app-card">{ico("slack", 72)}<div class="app-lab">Slack</div>
-      <div class="tape" style="width:72px;height:22px;top:-10px;left:50%;margin-left:-36px;transform:rotate(5deg);"></div></div>
-    <div class="app-card">{ico("folder", 72)}<div class="app-lab">Archivos</div>
-      <div class="tape" style="width:72px;height:22px;top:-10px;left:50%;margin-left:-36px;transform:rotate(-4deg);"></div></div>
+  <div style="display:flex;flex-direction:column;gap:10px;width:200px;flex-shrink:0;">
+    <div class="app-card" style="padding:14px 12px;box-shadow:0 10px 22px rgba(10,10,10,.08);">{ico("github", 48)}<div class="app-lab" style="font-size:22px;margin-top:6px;">GitHub</div>
+      <div class="tape" style="width:54px;height:16px;top:-8px;left:50%;margin-left:-27px;"></div></div>
+    <div class="app-card" style="padding:14px 12px;box-shadow:0 10px 22px rgba(10,10,10,.08);">{ico("slack", 48)}<div class="app-lab" style="font-size:22px;margin-top:6px;">Slack</div>
+      <div class="tape" style="width:54px;height:16px;top:-8px;left:50%;margin-left:-27px;transform:rotate(5deg);"></div></div>
+    <div class="app-card" style="padding:14px 12px;box-shadow:0 10px 22px rgba(10,10,10,.08);">{ico("folder", 48)}<div class="app-lab" style="font-size:22px;margin-top:6px;">Archivos</div>
+      <div class="tape" style="width:54px;height:16px;top:-8px;left:50%;margin-left:-27px;transform:rotate(-4deg);"></div></div>
   </div>
 </div>
 """,
@@ -239,36 +239,36 @@ def slide3():
 {meta_bar(3)}
 <div class="pad center">
   <div class="tag">ARQUITECTURA</div>
-  <h1 class="h1" style="font-size:88px;">Cómo funciona <span class="hl">MCP</span></h1>
+  <h1 class="h1" style="font-size:78px;">Cómo funciona <span class="hl">MCP</span></h1>
 </div>
-<div class="layer" style="left:80px;right:80px;top:360px;bottom:145px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;">
-  <div class="card" style="width:560px;padding:22px 28px;display:flex;align-items:center;justify-content:space-between;">
-    <div class="tape" style="width:72px;height:22px;top:-8px;left:28px;"></div>
-    <div><div style="font-family:var(--pop);font-weight:800;font-size:36px;color:#0A0A0A;">HOST</div>
-    <div style="font-family:var(--cond);font-size:26px;color:#6a736e;">Tu app de IA</div></div>
-    {ico("brain", 60)}
+<div class="layer" style="left:70px;right:70px;top:300px;bottom:145px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:50px;gap:6px;box-sizing:border-box;">
+  <div class="card" style="width:480px;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;">
+    <div class="tape" style="width:48px;height:16px;top:-8px;left:18px;"></div>
+    <div><div style="font-family:var(--pop);font-weight:800;font-size:28px;color:#0A0A0A;">HOST</div>
+    <div style="font-family:var(--cond);font-size:20px;color:#6a736e;">Tu app de IA</div></div>
+    {ico("brain", 44)}
   </div>
-  <div class="hand" style="font-size:24px;">pide ↓</div>
-  <div class="card" style="width:560px;padding:22px 28px;display:flex;align-items:center;justify-content:space-between;">
-    <div class="tape" style="width:72px;height:22px;top:-8px;right:36px;transform:rotate(7deg);"></div>
-    <div><div style="font-family:var(--pop);font-weight:800;font-size:36px;color:#0A0A0A;">CLIENT</div>
-    <div style="font-family:var(--cond);font-size:26px;color:#6a736e;">El conector</div></div>
-    {ico("plug", 60)}
+  <div class="hand" style="font-size:18px;">pide ↓</div>
+  <div class="card" style="width:480px;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;">
+    <div class="tape" style="width:48px;height:16px;top:-8px;right:18px;transform:rotate(7deg);"></div>
+    <div><div style="font-family:var(--pop);font-weight:800;font-size:28px;color:#0A0A0A;">CLIENT</div>
+    <div style="font-family:var(--cond);font-size:20px;color:#6a736e;">El conector</div></div>
+    {ico("plug", 44)}
   </div>
-  <div class="hand" style="font-size:22px;align-self:flex-end;margin-right:60px;">← un cliente por servidor</div>
-  <div class="hand" style="font-size:24px;">llama ↓</div>
-  <div class="card" style="width:560px;padding:22px 28px;display:flex;align-items:center;justify-content:space-between;">
-    <div class="tape" style="width:72px;height:22px;top:-8px;left:44px;transform:rotate(-5deg);"></div>
-    <div><div style="font-family:var(--pop);font-weight:800;font-size:36px;color:#0A0A0A;">SERVER</div>
-    <div style="font-family:var(--cond);font-size:26px;color:#6a736e;">La herramienta</div></div>
-    {ico("wrench", 60)}
+  <div class="hand" style="font-size:16px;">← un cliente por servidor</div>
+  <div class="hand" style="font-size:18px;">llama ↓</div>
+  <div class="card" style="width:480px;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;">
+    <div class="tape" style="width:48px;height:16px;top:-8px;left:18px;transform:rotate(-5deg);"></div>
+    <div><div style="font-family:var(--pop);font-weight:800;font-size:28px;color:#0A0A0A;">SERVER</div>
+    <div style="font-family:var(--cond);font-size:20px;color:#6a736e;">La herramienta</div></div>
+    {ico("wrench", 44)}
   </div>
-  <div style="display:flex;gap:14px;margin-top:6px;">
-    <div class="card" style="padding:14px 20px;border-radius:999px;font-family:var(--pop);font-weight:800;font-size:26px;color:#0A0A0A;display:flex;align-items:center;gap:10px;">{ico("github", 36)} GitHub</div>
-    <div class="card" style="padding:14px 20px;border-radius:999px;font-family:var(--pop);font-weight:800;font-size:26px;color:#0A0A0A;display:flex;align-items:center;gap:10px;">{ico("code", 36)} Slack</div>
-    <div class="card" style="padding:14px 20px;border-radius:999px;font-family:var(--pop);font-weight:800;font-size:26px;color:#0A0A0A;display:flex;align-items:center;gap:10px;">{ico("cloud", 36)} Archivos</div>
+  <div class="hand" style="font-size:16px;margin-top:2px;">devuelve resultados ↑</div>
+  <div style="display:flex;gap:10px;margin-top:4px;">
+    <div class="card" style="padding:9px 14px;border-radius:999px;font-family:var(--pop);font-weight:800;font-size:20px;color:#0A0A0A;display:flex;align-items:center;gap:8px;">{ico("github", 26)} GitHub</div>
+    <div class="card" style="padding:9px 14px;border-radius:999px;font-family:var(--pop);font-weight:800;font-size:20px;color:#0A0A0A;display:flex;align-items:center;gap:8px;">{ico("code", 26)} Slack</div>
+    <div class="card" style="padding:9px 14px;border-radius:999px;font-family:var(--pop);font-weight:800;font-size:20px;color:#0A0A0A;display:flex;align-items:center;gap:8px;">{ico("cloud", 26)} Archivos</div>
   </div>
-  <div class="hand" style="position:absolute;left:8px;top:140px;transform:rotate(-90deg);transform-origin:left center;font-size:20px;">devuelve resultados ↑</div>
 </div>
 """,
     )
@@ -281,55 +281,55 @@ def slide4():
 {meta_bar(4)}
 <div class="pad">
   <div class="tag">POR QUÉ IMPORTA</div>
-  <h1 class="h1" style="font-size:76px;line-height:1.05;">¿Por qué te tiene<br><span class="hl">que importar?</span></h1>
+  <h1 class="h1" style="font-size:64px;line-height:1.04;">¿Por qué te tiene<br><span class="hl">que importar?</span></h1>
 </div>
-<div class="layer" style="left:56px;right:56px;top:385px;bottom:300px;display:grid;grid-template-columns:1fr 1fr;gap:18px;align-content:start;">
-  <div class="card" style="padding:18px;">
-    <div style="font-family:var(--mono);font-size:16px;color:#FF5247;margin-bottom:10px;">✗ ANTES DE MCP</div>
-    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
-      <div class="card" style="padding:12px 18px;display:flex;align-items:center;gap:10px;font-family:var(--pop);font-weight:800;font-size:26px;color:#0A0A0A;">{ico("brain", 40)} IA</div>
-      <div style="font-size:22px;color:#666;line-height:1.15;text-align:center;">╳ ╳ ╳<br>cables enredados</div>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
-        <span class="card" style="padding:10px;">{ico("github", 34)}</span>
-        <span class="card" style="padding:10px;">{ico("slack", 34)}</span>
-        <span class="card" style="padding:10px;">{ico("db", 34)}</span>
-        <span class="card" style="padding:10px;">{ico("folder", 34)}</span>
-        <span class="card" style="padding:10px;">{ico("mail", 34)}</span>
+<div class="layer" style="left:56px;right:56px;top:300px;bottom:270px;display:grid;grid-template-columns:1fr 1fr;gap:14px;align-content:start;padding-top:55px;box-sizing:border-box;">
+  <div class="card" style="padding:12px;">
+    <div style="font-family:var(--mono);font-size:13px;color:#FF5247;margin-bottom:6px;">✗ ANTES DE MCP</div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;">
+      <div class="card" style="padding:8px 12px;display:flex;align-items:center;gap:8px;font-family:var(--pop);font-weight:800;font-size:20px;color:#0A0A0A;">{ico("brain", 28)} IA</div>
+      <div style="font-size:16px;color:#666;line-height:1.15;text-align:center;">╳ ╳ ╳<br>cables enredados</div>
+      <div style="display:flex;flex-wrap:wrap;gap:5px;justify-content:center;">
+        <span class="card" style="padding:6px;">{ico("github", 24)}</span>
+        <span class="card" style="padding:6px;">{ico("slack", 24)}</span>
+        <span class="card" style="padding:6px;">{ico("db", 24)}</span>
+        <span class="card" style="padding:6px;">{ico("folder", 24)}</span>
+        <span class="card" style="padding:6px;">{ico("mail", 24)}</span>
       </div>
     </div>
   </div>
-  <div class="card" style="padding:18px;border:2.5px solid var(--acento);">
-    <div style="font-family:var(--mono);font-size:16px;color:var(--acento);margin-bottom:10px;">✓ CON MCP</div>
-    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
-      <div class="card" style="padding:12px 18px;display:flex;align-items:center;gap:10px;font-family:var(--pop);font-weight:800;font-size:26px;color:#0A0A0A;">{ico("brain", 40)} IA</div>
-      <div style="color:var(--acento);font-size:28px;">↓</div>
-      <div style="background:var(--acento);color:var(--ink);padding:12px 18px;border-radius:12px;font-family:var(--pop);font-weight:800;font-size:24px;">Conector MCP</div>
-      <div style="color:var(--acento);font-size:22px;">┊ ┊ ┊ ┊ ┊</div>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
-        <span class="card" style="padding:10px;border-color:var(--acento);">{ico("github", 34)}</span>
-        <span class="card" style="padding:10px;border-color:var(--acento);">{ico("slack", 34)}</span>
-        <span class="card" style="padding:10px;border-color:var(--acento);">{ico("db", 34)}</span>
-        <span class="card" style="padding:10px;border-color:var(--acento);">{ico("mail", 34)}</span>
-        <span class="card" style="padding:10px;border-color:var(--acento);">{ico("folder", 34)}</span>
+  <div class="card" style="padding:12px;border:2.5px solid var(--acento);">
+    <div style="font-family:var(--mono);font-size:13px;color:var(--acento);margin-bottom:6px;">✓ CON MCP</div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;">
+      <div class="card" style="padding:8px 12px;display:flex;align-items:center;gap:8px;font-family:var(--pop);font-weight:800;font-size:20px;color:#0A0A0A;">{ico("brain", 28)} IA</div>
+      <div style="color:var(--acento);font-size:18px;">↓</div>
+      <div style="background:var(--acento);color:var(--ink);padding:8px 12px;border-radius:10px;font-family:var(--pop);font-weight:800;font-size:18px;">Conector MCP</div>
+      <div style="color:var(--acento);font-size:16px;">┊ ┊ ┊ ┊ ┊</div>
+      <div style="display:flex;flex-wrap:wrap;gap:5px;justify-content:center;">
+        <span class="card" style="padding:6px;border-color:var(--acento);">{ico("github", 24)}</span>
+        <span class="card" style="padding:6px;border-color:var(--acento);">{ico("slack", 24)}</span>
+        <span class="card" style="padding:6px;border-color:var(--acento);">{ico("db", 24)}</span>
+        <span class="card" style="padding:6px;border-color:var(--acento);">{ico("mail", 24)}</span>
+        <span class="card" style="padding:6px;border-color:var(--acento);">{ico("folder", 24)}</span>
       </div>
     </div>
   </div>
 </div>
-<div class="layer" style="left:56px;right:56px;bottom:145px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;">
-  <div class="card" style="padding:18px;text-align:center;">
-    <div class="tape" style="width:60px;height:18px;top:-8px;left:50%;margin-left:-30px;"></div>
-    <div style="font-family:var(--impact);font-size:56px;color:var(--acento);-webkit-text-stroke:2.5px var(--acento);">2,300+</div>
-    <div style="font-family:var(--cond);font-size:24px;font-weight:600;color:#0A0A0A;">Servidores MCP</div>
+<div class="layer" style="left:56px;right:56px;bottom:145px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
+  <div class="card" style="padding:12px;text-align:center;">
+    <div class="tape" style="width:44px;height:12px;top:-8px;left:50%;margin-left:-22px;"></div>
+    <div style="font-family:var(--impact);font-size:44px;color:var(--acento);-webkit-text-stroke:2px var(--acento);margin-top:4px;">2,300+</div>
+    <div style="font-family:var(--cond);font-size:18px;font-weight:600;color:#0A0A0A;">Servidores MCP</div>
   </div>
-  <div class="card" style="padding:18px;text-align:center;">
-    <div class="tape" style="width:60px;height:18px;top:-8px;left:50%;margin-left:-30px;transform:rotate(4deg);"></div>
-    <div style="font-family:var(--impact);font-size:56px;color:var(--acento);-webkit-text-stroke:2.5px var(--acento);">3</div>
-    <div style="font-family:var(--cond);font-size:24px;font-weight:600;color:#0A0A0A;">Grandes empresas de IA lo soportan</div>
+  <div class="card" style="padding:12px;text-align:center;">
+    <div class="tape" style="width:44px;height:12px;top:-8px;left:50%;margin-left:-22px;transform:rotate(4deg);"></div>
+    <div style="font-family:var(--impact);font-size:44px;color:var(--acento);-webkit-text-stroke:2px var(--acento);margin-top:4px;">3</div>
+    <div style="font-family:var(--cond);font-size:18px;font-weight:600;color:#0A0A0A;">Grandes empresas de IA lo soportan</div>
   </div>
-  <div class="card" style="padding:18px;text-align:center;">
-    <div class="tape" style="width:60px;height:18px;top:-8px;left:50%;margin-left:-30px;transform:rotate(-5deg);"></div>
-    <div style="font-family:var(--impact);font-size:56px;color:var(--acento);-webkit-text-stroke:2.5px var(--acento);">1</div>
-    <div style="font-family:var(--cond);font-size:24px;font-weight:600;color:#0A0A0A;">Un protocolo para gobernarlos a todos</div>
+  <div class="card" style="padding:12px;text-align:center;">
+    <div class="tape" style="width:44px;height:12px;top:-8px;left:50%;margin-left:-22px;transform:rotate(-5deg);"></div>
+    <div style="font-family:var(--impact);font-size:44px;color:var(--acento);-webkit-text-stroke:2px var(--acento);margin-top:4px;">1</div>
+    <div style="font-family:var(--cond);font-size:18px;font-weight:600;color:#0A0A0A;">Un protocolo para gobernarlos a todos</div>
   </div>
 </div>
 """,
