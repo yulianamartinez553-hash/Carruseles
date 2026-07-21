@@ -48,6 +48,12 @@ Brief breve → estructura de slides → **[✓ VALIDAR]** → build → QA → 
 
 > **Cantidad de slides = la del original.** Nunca forzar 10.
 
+## Salida y organización (obligatorio)
+
+- **No se abre una rama por carrusel.** Todos los carruseles se guardan en la carpeta `resultados/` de la rama `main`.
+- Cada creación es una carpeta numerada secuencial: `resultados/carrusel-1`, `resultados/carrusel-2`, … El id por defecto (`carrusel-N`) lo asigna `package()` mirando `resultados/`; para fijar el número pasar `meta["id"]`.
+- Commitear el resultado a `main`: los PNGs entregables se versionan; los `.zip` se ignoran (ver `.gitignore`).
+
 ## Reglas de títulos (dura)
 
 - Única exigencia: **grande y grueso**. Nunca finito.

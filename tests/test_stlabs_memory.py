@@ -88,7 +88,19 @@ def test_resolve_build_id(tmp_historial):
     meta = {"titulo": "IA RevOps"}
     bid = resolve_build_id(meta, "fallback")
     assert meta["id"] == bid
-    assert "ia-revops" in bid
+    assert bid == "carrusel-1"
+
+
+def test_siguiente_numero_carrusel_secuencial(tmp_historial):
+    from stlabs_memory import siguiente_numero_carrusel
+
+    assert siguiente_numero_carrusel() == 1
+    (tmp_historial / "resultados" / "carrusel-1").mkdir(parents=True)
+    (tmp_historial / "resultados" / "carrusel-2").mkdir(parents=True)
+    assert siguiente_numero_carrusel() == 3
+    # ignora carpetas que no siguen el patrón carrusel-N
+    (tmp_historial / "resultados" / "_legacy").mkdir(parents=True)
+    assert siguiente_numero_carrusel() == 3
 
 
 def test_validar_meta_rechaza_incompleto():
@@ -133,7 +145,7 @@ def test_registrar_carrusel_copia_outputs(tmp_historial, tmp_path):
 
 def test_registrar_carrusel_no_duplica_si_mismo_path(tmp_historial, tmp_path):
     build_id = "test-same-path"
-    dest = tmp_historial / "builds" / build_id
+    dest = tmp_historial / "resultados" / build_id
     dest.mkdir(parents=True)
     (dest / "carrusel.html").write_text("<html></html>", encoding="utf-8")
     meta = {
@@ -147,7 +159,7 @@ def test_registrar_carrusel_no_duplica_si_mismo_path(tmp_historial, tmp_path):
     }
     result = registrar_carrusel(dest, meta)
     assert result.resolve() == dest.resolve()
-    assert len(list((tmp_historial / "builds").iterdir())) == 1
+    assert len(list((tmp_historial / "resultados").iterdir())) == 1
 
 
 def test_actualizar_feedback(tmp_historial, tmp_path):
@@ -165,7 +177,7 @@ def test_actualizar_feedback(tmp_historial, tmp_path):
     }
     registrar_carrusel(build, meta)
     actualizar_feedback("test-fb", {"estado": "publicado", "notas": "ok"})
-    m = load_manifest(tmp_historial / "builds" / "test-fb")
+    m = load_manifest(tmp_historial / "resultados" / "test-fb")
     assert m["feedback"]["estado"] == "publicado"
     assert m["feedback"]["notas"] == "ok"
     idx = load_index()

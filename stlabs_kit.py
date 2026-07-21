@@ -7,7 +7,7 @@ Uso típico desde un build nuevo:
     slides = [chrome(1, cover_html, bridges="right", footer=True), ...]
     write_html(slides, "/home/claude/buildX/carrusel.html")
     render("/home/claude/buildX")                 # -> png/slide-XX.png (retina 2160x2700)
-    package("/home/claude/buildX", "STLabs-MiCarrusel")  # -> /mnt/user-data/outputs/...
+    package("/home/claude/buildX", "STLabs-MiCarrusel", meta={...})  # -> resultados/carrusel-N/
 
 Reglas de marca: ver SISTEMA-DISENO-CARRUSELES-STLABS.md
 """
@@ -248,10 +248,13 @@ def render(build_dir, html_name="carrusel.html"):
 def package(build_dir, out_name, html_name="carrusel.html", output_dir=None, meta=None):
     """Embebe fuentes base64, copia PNGs, arma tira de preview + ZIP.
 
-    output_dir: destino (default REPO/builds/<id> si meta, sino out_name)
+    Todos los carruseles se guardan en resultados/carrusel-N/ (rama main).
+    No se abre una rama por carrusel: cada creación es una carpeta más en resultados/.
+
+    output_dir: destino (default REPO/resultados/<id>, con id secuencial carrusel-N)
     meta: dict opcional → dispara registrar_carrusel() al finalizar
     """
-    from stlabs_memory import REPO_ROOT, registrar_carrusel, resolve_build_id, validar_meta
+    from stlabs_memory import RESULTADOS_DIR, registrar_carrusel, resolve_build_id, validar_meta
 
     B = pathlib.Path(build_dir)
     html = (B / html_name).read_text(encoding="utf-8").replace(
@@ -264,10 +267,9 @@ def package(build_dir, out_name, html_name="carrusel.html", output_dir=None, met
 
     if output_dir is None:
         if meta is not None:
-            output_dir = REPO_ROOT / "builds" / meta["id"]
+            output_dir = RESULTADOS_DIR / meta["id"]
         else:
-            legacy = pathlib.Path("/mnt/user-data/outputs") / out_name
-            output_dir = legacy if legacy.parent.exists() else REPO_ROOT / "builds" / out_name
+            output_dir = RESULTADOS_DIR / out_name
     OUT = pathlib.Path(output_dir)
     OUT.mkdir(parents=True, exist_ok=True)
     final_html = OUT / f"{out_name}.html"

@@ -12,7 +12,7 @@ sys.path.insert(0, str(REPO))
 
 import stlabs_kit as kit
 from stlabs_memory import (
-    BUILDS_DIR,
+    RESULTADOS_DIR,
     INDEX_PATH,
     load_index,
     load_manifest,
@@ -59,13 +59,13 @@ def main() -> int:
         kit.embedded_fonts_css = _orig
 
     build_id = meta["id"]
-    manifest_path = BUILDS_DIR / build_id / "manifest.json"
+    manifest_path = RESULTADOS_DIR / build_id / "manifest.json"
     assert manifest_path.exists(), f"Falta manifest en {manifest_path}"
-    assert out.resolve() == (BUILDS_DIR / build_id).resolve()
+    assert out.resolve() == (RESULTADOS_DIR / build_id).resolve()
 
     idx = load_index()
     assert idx["ultimo_id"] == build_id
-    m = load_manifest(BUILDS_DIR / build_id)
+    m = load_manifest(RESULTADOS_DIR / build_id)
     print(f"OK — build registrado: {build_id}")
     print(f"  manifest: {manifest_path}")
     print(f"  índice: {INDEX_PATH} ({len(idx['carruseles'])} carruseles)")

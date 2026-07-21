@@ -14,4 +14,11 @@ Al iniciar trabajo de carrusel en este repo:
 4. Verificar registro con `python stlabs_memory.py list`
 5. Si el carrusel se publica, registrar feedback con `python stlabs_memory.py feedback <id> --estado publicado`
 
+## Salida de carruseles (obligatorio)
+
+- **NO se abre una rama por carrusel.** Todos los carruseles viven en la carpeta `resultados/` de la rama `main`.
+- Cada creación es una carpeta numerada secuencial: `resultados/carrusel-1`, `resultados/carrusel-2`, … El id por defecto (`carrusel-N`) lo asigna `package()` automáticamente mirando `resultados/`.
+- Para forzar un número/nombre, pasar `meta["id"]`; si no, se usa el siguiente `carrusel-N` disponible.
+- Commitear el resultado a `main` (los PNGs entregables se versionan; los `.zip` se ignoran vía `.gitignore`).
+
 Referencia: `SISTEMA-DISENO-CARRUSELES-STLABS.md` secciones 7 y 8.

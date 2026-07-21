@@ -62,7 +62,9 @@ NUNCA @handle de Instagram ni handles de terceros.
 Estructura `/home/claude/buildN/`:
 - `generate.py` → HTML + CSS con tokens de marca
 - `render.py` → Playwright screenshot por .slide
-- `package.py` → fuentes base64 + ZIP + tira preview → `/mnt/user-data/outputs/`
+- `package.py` → fuentes base64 + ZIP + tira preview → `resultados/carrusel-N/` (rama `main`)
+
+> **Salida única:** todos los carruseles se guardan en `resultados/carrusel-N/` en la rama `main`. **No se abre una rama por carrusel.** El número `N` es secuencial y lo asigna `package()` (id por defecto `carrusel-N`) salvo que se pase `meta["id"]`.
 
 Parámetros render: lienzo 1080×1350px · viewport 1180 · device_scale_factor=2 → PNG retina 2160×2700
 Crítico: `page.wait_for_function("document.fonts.ready")` + `wait_for_timeout(4000)` antes del screenshot.
@@ -145,7 +147,7 @@ NO: robots/cerebros/circuitos · 3D plástico · estética SaaS genérica · sim
 5. generate.py → render.py → seam tests → ajustar → package.py
 6. Verificar: sebastian.stlabs.ar en todos · sin @Instagram · sin contador de slides
 7. Entregar: tira preview → ZIP → slides → HTML
-8. `package(..., meta={...})` registra en builds/ e historial/
+8. `package(..., meta={...})` guarda en `resultados/carrusel-N/` (rama main) e historial/ — sin rama por carrusel
 9. Si se publica: `python stlabs_memory.py feedback <id> --estado publicado`
 
 ---

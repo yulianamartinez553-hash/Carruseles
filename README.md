@@ -42,9 +42,17 @@ python scripts/demo_memory.py
 
 1. Consultar memoria (`suggest`)
 2. `write_html()` + `render()` con [stlabs_kit.py](stlabs_kit.py)
-3. `package(build_dir, out_name, meta={...})` — registra en `builds/<id>/` e `historial/`
+3. `package(build_dir, out_name, meta={...})` — registra en `resultados/<id>/` e `historial/`
 
 Campos obligatorios en `meta`: `fondo`, `familia_visual`, `origen`, `slides`, `keyword_portada`.
+
+## Dónde quedan los carruseles
+
+Todos los carruseles viven en la carpeta [`resultados/`](resultados/) de la rama `main`.
+**No se crea una rama por carrusel:** cada creación es una carpeta numerada secuencial
+(`resultados/carrusel-1`, `resultados/carrusel-2`, …). El número lo asigna `package()`
+automáticamente (id por defecto `carrusel-N`); para fijarlo manualmente pasá `meta["id"]`.
+Los PNGs entregables se versionan en `main`; los `.zip` se ignoran (ver `.gitignore`).
 
 ## Documentación
 

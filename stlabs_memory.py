@@ -12,7 +12,11 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent
 HISTORIAL_DIR = REPO_ROOT / "historial"
-BUILDS_DIR = REPO_ROOT / "builds"
+# Carpeta única donde viven TODOS los carruseles, numerados carrusel-1, carrusel-2, ...
+# Se versiona en la rama main: no se abre una rama por carrusel.
+RESULTADOS_DIR = REPO_ROOT / "resultados"
+# Alias retrocompatible (código/imports antiguos que hablaban de "builds").
+BUILDS_DIR = RESULTADOS_DIR
 INDEX_PATH = HISTORIAL_DIR / "carruseles.json"
 PLANTILLAS_PATH = HISTORIAL_DIR / "plantillas_copy.json"
 
@@ -149,13 +153,28 @@ def slugify(text: str) -> str:
     return s.strip("-") or "carrusel"
 
 
-def _default_id(titulo: str) -> str:
-    return f"{date.today().isoformat()}-{slugify(titulo)}"
+_CARRUSEL_RE = re.compile(r"^carrusel-(\d+)$")
+
+
+def siguiente_numero_carrusel() -> int:
+    """Devuelve el próximo número secuencial para carrusel-N mirando resultados/."""
+    RESULTADOS_DIR.mkdir(parents=True, exist_ok=True)
+    nums = [
+        int(m.group(1))
+        for d in RESULTADOS_DIR.iterdir()
+        if d.is_dir() and (m := _CARRUSEL_RE.match(d.name))
+    ]
+    return max(nums, default=0) + 1
+
+
+def _default_id(titulo: str | None = None) -> str:
+    """ID por defecto: carrusel-N secuencial. Todos viven en resultados/ en main."""
+    return f"carrusel-{siguiente_numero_carrusel()}"
 
 
 def resolve_build_id(meta: dict, fallback_titulo: str) -> str:
     meta.setdefault("titulo", fallback_titulo)
-    meta.setdefault("id", _default_id(meta["titulo"]))
+    meta.setdefault("id", _default_id())
     return meta["id"]
 
 
@@ -174,13 +193,13 @@ def load_manifest(build_path: Path) -> dict:
 def registrar_carrusel(build_dir: Path, meta: dict) -> Path:
     build_dir = Path(build_dir)
     meta = dict(meta)
-    meta.setdefault("id", _default_id(meta.get("titulo", "carrusel")))
+    meta.setdefault("id", _default_id())
     meta.setdefault("fecha", date.today().isoformat())
 
     manifest_text = json.dumps(meta, ensure_ascii=False, indent=2)
     (build_dir / "manifest.json").write_text(manifest_text, encoding="utf-8")
 
-    dest = BUILDS_DIR / meta["id"]
+    dest = RESULTADOS_DIR / meta["id"]
     if build_dir.resolve() != dest.resolve():
         if dest.exists():
             shutil.rmtree(dest)
@@ -190,9 +209,9 @@ def registrar_carrusel(build_dir: Path, meta: dict) -> Path:
 
 
 def listar_builds(estado: str | None = None) -> list[dict]:
-    BUILDS_DIR.mkdir(parents=True, exist_ok=True)
+    RESULTADOS_DIR.mkdir(parents=True, exist_ok=True)
     builds = []
-    for d in sorted(BUILDS_DIR.iterdir()):
+    for d in sorted(RESULTADOS_DIR.iterdir()):
         if not d.is_dir() or d.name.startswith("."):
             continue
         manifest = d / "manifest.json"
@@ -204,10 +223,10 @@ def listar_builds(estado: str | None = None) -> list[dict]:
 
 
 def actualizar_feedback(build_id: str, feedback: dict) -> None:
-    path = BUILDS_DIR / build_id / "manifest.json"
+    path = RESULTADOS_DIR / build_id / "manifest.json"
     if not path.exists():
         raise FileNotFoundError(f"No existe build: {build_id}")
-    m = load_manifest(BUILDS_DIR / build_id)
+    m = load_manifest(RESULTADOS_DIR / build_id)
     m["feedback"] = {**m.get("feedback", {}), **feedback}
     path.write_text(json.dumps(m, ensure_ascii=False, indent=2), encoding="utf-8")
     _sync_index_feedback(build_id, feedback)
