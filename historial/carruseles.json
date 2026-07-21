@@ -107,6 +107,24 @@
       "fondo": "papel_corrugado",
       "familia_visual": "manifiesto",
       "feedback_estado": "borrador"
+    },
+    {
+      "id": "2026-07-21-tutorial-servidores-mcp",
+      "fecha": "2026-07-21",
+      "titulo": "Tutorial Servidores MCP",
+      "slides": 9,
+      "fondo": "papel_corrugado",
+      "familia_visual": "manifiesto",
+      "feedback_estado": "borrador"
+    },
+    {
+      "id": "2026-07-21-tutorial-servidores-mcp",
+      "fecha": "2026-07-21",
+      "titulo": "Tutorial Servidores MCP",
+      "slides": 9,
+      "fondo": "papel_corrugado",
+      "familia_visual": "manifiesto",
+      "feedback_estado": "borrador"
     }
   ]
 }
