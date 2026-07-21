@@ -1,0 +1,585 @@
+# -*- coding: utf-8 -*-
+"""Clone: MCP Servers tutorial → STLabs · white · #00FFB2 · English."""
+from __future__ import annotations
+
+import base64
+import shutil
+import sys
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parents[2]
+BUILD = Path(__file__).resolve().parent
+sys.path.insert(0, str(REPO))
+
+from stlabs_kit import chrome, write_html, render, package  # noqa: E402
+
+KEYWORD = "MCP"
+TOTAL = 9
+WORD_DIR = REPO / "Word"
+VERDE = "#00FFB2"
+INK = "#04130b"
+
+CLAUDE_PNG = REPO / "assets" / "claude.png"
+CLAUDE_URI = "data:image/png;base64," + base64.b64encode(CLAUDE_PNG.read_bytes()).decode()
+SEB_URI = f"data:image/jpeg;base64,{base64.b64encode((REPO / 'seb.jpg').read_bytes()).decode()}"
+
+# Minimal inline SVG icons (mono, colored via currentColor)
+ICO = {
+    "github": """<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.1.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05A9.3 9.3 0 0 1 12 6.8c.85 0 1.71.12 2.51.35 1.9-1.32 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .26.18.58.69.48A10.03 10.03 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg>""",
+    "slack": """<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 15a2 2 0 1 1-2-2h2v2zm1 0a2 2 0 1 1 4 0v5a2 2 0 1 1-4 0v-5zm2-7a2 2 0 1 1 2-2v2H9zm0 1a2 2 0 1 1 0 4H4a2 2 0 1 1 0-4h5zm7 2a2 2 0 1 1 2 2h-2v-2zm-1 0a2 2 0 1 1-4 0V6a2 2 0 1 1 4 0v5zm-2 7a2 2 0 1 1-2 2v-2h2zm0-1a2 2 0 1 1 0-4h5a2 2 0 1 1 0 4h-5z"/></svg>""",
+    "folder": """<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h6l2 2h10v10H3V7z"/></svg>""",
+    "db": """<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg>""",
+    "brain": """<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 4a3.5 3.5 0 0 0-3.4 4.2A3.5 3.5 0 0 0 4 11.5 3.5 3.5 0 0 0 6.2 15a3.5 3.5 0 0 0 3.3 4h.5M14.5 4a3.5 3.5 0 0 1 3.4 4.2A3.5 3.5 0 0 1 20 11.5 3.5 3.5 0 0 1 17.8 15a3.5 3.5 0 0 1-3.3 4h-.5M9 8.5h6M9 12h6M10 15.5h4"/></svg>""",
+    "usb": """<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="8" rx="1"/><path d="M12 10v8M8 14h8M7 18h10v3H7z"/></svg>""",
+    "plug": """<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v6M16 2v6M6 8h12v4a6 6 0 0 1-12 0V8zM12 18v4"/></svg>""",
+    "wrench": """<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a4 4 0 0 0-5.6 5.6L3 18v3h3l6.1-6.1a4 4 0 0 0 5.6-5.6l-2.5 2.5-2.5-2.5 2.5-2.5z"/></svg>""",
+    "mail": """<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>""",
+    "search": """<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>""",
+    "aws": """<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15c2 2 5 3 8 3s6-1 8-3"/><path d="M7 9h10M9 5h6v10H9z"/></svg>""",
+    "code": """<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m8 8-4 4 4 4M16 8l4 4-4 4"/></svg>""",
+    "cloud": """<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 18h11a4 4 0 0 0 0-8 6 6 0 0 0-11.5-1.5A4 4 0 0 0 7 18z"/></svg>""",
+}
+
+
+def ico(name: str, size: int = 36) -> str:
+    return f'<span class="ico" style="width:{size}px;height:{size}px">{ICO[name]}</span>'
+
+
+EXTRA_CSS = f"""
+:root{{--acento:{VERDE};--ink:{INK};}}
+.sheet{{background:#e8e8e8;}}
+.slide{{
+  color:#0A0A0A;
+  background:
+    radial-gradient(40% 28% at 88% 6%, rgba(0,255,178,.10), transparent 60%),
+    linear-gradient(180deg,#FFFFFF 0%, #F6F6F4 100%);
+}}
+.web{{display:none!important;}}
+.foot{{
+  position:absolute;left:0;right:0;bottom:56px;z-index:10;text-align:center;
+  font-family:var(--mono);font-size:20px;letter-spacing:1px;color:var(--verde);
+}}
+.swipe{{
+  position:absolute;right:56px;bottom:120px;z-index:10;
+  font-family:var(--mono);font-size:18px;letter-spacing:2px;color:#6a736e;
+}}
+.meta{{
+  position:absolute;left:56px;right:56px;top:48px;z-index:8;
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:var(--mono);font-size:16px;letter-spacing:1px;color:#8a918c;
+}}
+.meta .brand{{color:var(--verde);}}
+.tag{{
+  display:inline-block;margin-top:18px;background:#0A0A0A;color:#fff;
+  font-family:var(--mono);font-size:16px;letter-spacing:2px;padding:8px 14px;border-radius:6px;
+}}
+.h1{{
+  margin-top:18px;font-family:var(--impact);font-weight:900;font-size:92px;line-height:.92;
+  letter-spacing:1px;color:#0A0A0A;
+  -webkit-text-stroke:2px #0A0A0A;paint-order:stroke fill;
+}}
+.h1 .hl{{color:var(--acento);-webkit-text-stroke:2px var(--acento);}}
+.h1 .script{{
+  display:block;font-family:var(--serif);font-style:italic;font-weight:700;
+  font-size:88px;color:var(--acento);-webkit-text-stroke:0;letter-spacing:0;
+}}
+.sub{{margin-top:14px;font-family:var(--cond);font-size:30px;color:#3a3f3c;line-height:1.3;}}
+.sub b,.body b{{color:#0A0A0A;}}
+.body{{margin-top:14px;font-family:var(--cond);font-size:28px;color:#4a524e;line-height:1.35;max-width:920px;}}
+.note{{
+  font-family:var(--serif);font-style:italic;font-weight:600;font-size:26px;color:var(--acento);
+}}
+.tape{{
+  position:absolute;background:rgba(180,180,170,.45);border:1px solid rgba(120,120,110,.25);
+  box-shadow:0 2px 6px rgba(0,0,0,.08);transform:rotate(-6deg);z-index:6;pointer-events:none;
+}}
+.win{{
+  position:relative;background:#141414;border-radius:18px;color:#F2F2F2;
+  box-shadow:0 22px 50px rgba(10,10,10,.18);overflow:hidden;text-align:left;
+}}
+.win-bar{{
+  display:flex;align-items:center;gap:8px;padding:14px 16px;background:#1E1E1E;border-bottom:1px solid #2a2a2a;
+  font-family:var(--mono);font-size:15px;color:#9aa39c;
+}}
+.dot{{width:12px;height:12px;border-radius:50%;display:inline-block;}}
+.dot.r{{background:#FF5F57;}}.dot.y{{background:#FEBC2E;}}.dot.g{{background:#28C840;}}
+.win pre,.code{{
+  margin:0;padding:18px 20px 22px;font-family:var(--mono);font-size:22px;line-height:1.45;
+  white-space:pre-wrap;word-break:break-word;
+}}
+.k{{color:#FF7AD9;}}.s{{color:var(--acento);}}.c{{color:#9CDCFE;}}
+.ok{{color:#00FFB2;}}
+.card{{
+  background:#fff;border:1.5px solid rgba(10,10,10,.10);border-radius:16px;
+  box-shadow:0 14px 36px rgba(10,10,10,.08);position:relative;
+}}
+.ico{{display:inline-flex;align-items:center;justify-content:center;color:var(--acento);}}
+.ico svg{{width:100%;height:100%;display:block;}}
+.ghost{{
+  position:absolute;right:40px;top:180px;z-index:0;pointer-events:none;
+  font-family:var(--impact);font-weight:900;font-size:420px;line-height:1;
+  color:rgba(0,255,178,.12);letter-spacing:-8px;
+}}
+.hand{{
+  font-family:var(--serif);font-style:italic;font-weight:700;font-size:24px;color:var(--acento);
+}}
+.arrow{{color:var(--acento);font-size:28px;font-weight:700;}}
+.pad{{padding:110px 64px 0;position:relative;z-index:2;text-align:left;}}
+.center{{text-align:center;}}
+"""
+
+
+def wrap(idx: int, inner: str, swipe: bool = True) -> str:
+    html = chrome(idx, inner, total=TOTAL, bridges=None, footer=False)
+    extras = '<div class="foot">sebastian.stlabs.ar</div>'
+    if swipe and idx < TOTAL:
+        extras = '<div class="swipe">SWIPE →</div>' + extras
+    return html.replace("</section>", extras + "</section>", 1)
+
+
+def meta_bar(n: int) -> str:
+    return f"""
+<div class="meta">
+  <span>JULY 2026</span>
+  <span class="brand">sebastian.stlabs.ar</span>
+  <span>{n:02d}/{TOTAL:02d}</span>
+</div>
+"""
+
+
+def slide1():
+    return wrap(
+        1,
+        f"""
+{meta_bar(1)}
+<div class="pad center">
+  <div class="tag">TUTORIAL</div>
+  <h1 class="h1">MCP<span class="script">Servers</span></h1>
+  <p class="sub">What They Are + How to Set Them Up</p>
+</div>
+<div style="position:absolute;left:70px;right:70px;bottom:170px;z-index:4;display:flex;gap:28px;align-items:flex-start;">
+  <div class="win" style="flex:1.4;">
+    <div class="tape" style="width:90px;height:28px;top:-12px;left:40px;"></div>
+    <div class="tape" style="width:90px;height:28px;top:-10px;right:50px;transform:rotate(8deg);"></div>
+    <div class="win-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+      <span style="margin-left:10px;">claude_desktop_config.json</span></div>
+    <pre><span class="k">"mcpServers"</span>: {{
+  <span class="k">"github"</span>: {{ <span class="c">...</span> }},
+  <span class="k">"slack"</span>: {{ <span class="c">...</span> }},
+  <span class="k">"filesystem"</span>: {{ <span class="c">...</span> }}
+}}</pre>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:16px;width:180px;padding-top:30px;">
+    <div class="card" style="padding:22px;text-align:center;">{ico("github", 48)}<div style="margin-top:8px;font-family:var(--mono);font-size:14px;">GitHub</div>
+      <div class="tape" style="width:70px;height:22px;top:-8px;left:40px;"></div></div>
+    <div class="card" style="padding:22px;text-align:center;">{ico("slack", 48)}<div style="margin-top:8px;font-family:var(--mono);font-size:14px;">Slack</div>
+      <div class="tape" style="width:70px;height:22px;top:-8px;left:40px;transform:rotate(5deg);"></div></div>
+    <div class="card" style="padding:22px;text-align:center;">{ico("folder", 48)}<div style="margin-top:8px;font-family:var(--mono);font-size:14px;">Files</div>
+      <div class="tape" style="width:70px;height:22px;top:-8px;left:40px;transform:rotate(-4deg);"></div></div>
+  </div>
+</div>
+<div style="position:absolute;left:90px;bottom:280px;z-index:5;display:flex;align-items:center;gap:12px;">
+  <img src="{CLAUDE_URI}" alt="Claude" style="width:72px;height:68px;object-fit:contain;filter:drop-shadow(0 8px 14px rgba(0,0,0,.15));">
+  <span class="hand">the file that connects everything</span>
+</div>
+""",
+    )
+
+
+def slide2():
+    return wrap(
+        2,
+        f"""
+{meta_bar(2)}
+<div class="pad">
+  <div class="tag">THE BASICS</div>
+  <h1 class="h1">What is <span class="hl">MCP?</span></h1>
+  <p class="sub"><b>Model Context Protocol.</b></p>
+  <p class="body">An open standard by Anthropic that lets AI connect to any external tool, database, or API.</p>
+  <p class="body">Think of it as <span class="note">USB-C for AI.</span><br>One plug, everything works.</p>
+</div>
+<div style="position:absolute;left:80px;right:80px;bottom:180px;z-index:4;display:flex;align-items:center;justify-content:center;gap:18px;">
+  <div class="card" style="padding:28px 32px;min-width:180px;text-align:center;">
+    {ico("brain", 56)}
+    <div style="margin-top:10px;font-family:var(--pop);font-weight:800;font-size:28px;">AI</div>
+  </div>
+  <div style="font-size:36px;color:var(--acento);">┄┄</div>
+  <div class="card" style="padding:28px 26px;border:2px solid var(--acento);text-align:center;">
+    {ico("usb", 56)}
+  </div>
+  <div style="font-size:36px;color:var(--acento);">┄</div>
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <div class="card" style="padding:14px 22px;display:flex;align-items:center;gap:12px;">{ico("github", 28)}<b>GitHub</b></div>
+    <div class="card" style="padding:14px 22px;display:flex;align-items:center;gap:12px;">{ico("slack", 28)}<b>Slack</b></div>
+    <div class="card" style="padding:14px 22px;display:flex;align-items:center;gap:12px;">{ico("db", 28)}<b>Database</b></div>
+  </div>
+</div>
+""",
+    )
+
+
+def slide3():
+    return wrap(
+        3,
+        f"""
+{meta_bar(3)}
+<div class="pad center">
+  <div class="tag">ARCHITECTURE</div>
+  <h1 class="h1">How <span class="hl">MCP</span> Works</h1>
+</div>
+<div style="position:absolute;left:120px;right:120px;top:320px;bottom:160px;z-index:4;display:flex;flex-direction:column;align-items:center;gap:10px;">
+  <div class="card" style="width:520px;padding:22px 28px;display:flex;align-items:center;justify-content:space-between;">
+    <div class="tape" style="width:80px;height:24px;top:-10px;left:30px;"></div>
+    <div><div style="font-family:var(--pop);font-weight:800;font-size:28px;">HOST</div>
+    <div style="font-family:var(--cond);font-size:22px;color:#6a736e;">Your AI App</div></div>
+    {ico("brain", 48)}
+  </div>
+  <div class="hand">asks ↓</div>
+  <div class="card" style="width:520px;padding:22px 28px;display:flex;align-items:center;justify-content:space-between;">
+    <div class="tape" style="width:80px;height:24px;top:-10px;right:40px;transform:rotate(7deg);"></div>
+    <div><div style="font-family:var(--pop);font-weight:800;font-size:28px;">CLIENT</div>
+    <div style="font-family:var(--cond);font-size:22px;color:#6a736e;">The Connector</div></div>
+    {ico("plug", 48)}
+  </div>
+  <div style="align-self:flex-end;margin-right:40px;" class="hand">← one client per server</div>
+  <div class="hand">calls ↓</div>
+  <div class="card" style="width:520px;padding:22px 28px;display:flex;align-items:center;justify-content:space-between;">
+    <div class="tape" style="width:80px;height:24px;top:-10px;left:50px;transform:rotate(-5deg);"></div>
+    <div><div style="font-family:var(--pop);font-weight:800;font-size:28px;">SERVER</div>
+    <div style="font-family:var(--cond);font-size:22px;color:#6a736e;">The Tool</div></div>
+    {ico("wrench", 48)}
+  </div>
+  <div style="display:flex;gap:18px;margin-top:8px;">
+    <div class="card" style="padding:12px 16px;border-radius:999px;">{ico("github", 22)} GitHub</div>
+    <div class="card" style="padding:12px 16px;border-radius:999px;">{ico("code", 22)} Slack</div>
+    <div class="card" style="padding:12px 16px;border-radius:999px;">{ico("cloud", 22)} Files</div>
+  </div>
+  <div class="hand" style="position:absolute;left:20px;top:120px;transform:rotate(-90deg);transform-origin:left center;">returns results ↑</div>
+</div>
+""",
+    )
+
+
+def slide4():
+    return wrap(
+        4,
+        f"""
+{meta_bar(4)}
+<div class="pad">
+  <div class="tag">WHY IT MATTERS</div>
+  <h1 class="h1">Why Should You <span class="hl">Care?</span></h1>
+</div>
+<div style="position:absolute;left:56px;right:56px;top:320px;display:grid;grid-template-columns:1fr 1fr;gap:24px;z-index:4;">
+  <div class="card" style="padding:22px;">
+    <div style="font-family:var(--mono);font-size:16px;color:#FF5247;margin-bottom:12px;">✗ BEFORE MCP</div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+      <div class="card" style="padding:10px 16px;">{ico("brain", 28)} AI</div>
+      <div style="font-size:22px;color:#666;line-height:1.1;text-align:center;">╳ ╳ ╳<br>messy wires</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
+        <span class="card" style="padding:8px;">{ico("github", 20)}</span>
+        <span class="card" style="padding:8px;">{ico("slack", 20)}</span>
+        <span class="card" style="padding:8px;">{ico("db", 20)}</span>
+        <span class="card" style="padding:8px;">{ico("folder", 20)}</span>
+        <span class="card" style="padding:8px;">{ico("mail", 20)}</span>
+      </div>
+    </div>
+  </div>
+  <div class="card" style="padding:22px;border:2px solid var(--acento);">
+    <div style="font-family:var(--mono);font-size:16px;color:var(--acento);margin-bottom:12px;">✓ WITH MCP</div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+      <div class="card" style="padding:10px 16px;">{ico("brain", 28)} AI</div>
+      <div style="color:var(--acento);font-size:28px;">↓</div>
+      <div style="background:var(--acento);color:var(--ink);padding:10px 18px;border-radius:12px;font-family:var(--pop);font-weight:800;">MCP Connector</div>
+      <div style="color:var(--acento);font-size:22px;">┊ ┊ ┊ ┊ ┊</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
+        <span class="card" style="padding:8px;border-color:var(--acento);">{ico("github", 20)}</span>
+        <span class="card" style="padding:8px;border-color:var(--acento);">{ico("slack", 20)}</span>
+        <span class="card" style="padding:8px;border-color:var(--acento);">{ico("db", 20)}</span>
+        <span class="card" style="padding:8px;border-color:var(--acento);">{ico("mail", 20)}</span>
+        <span class="card" style="padding:8px;border-color:var(--acento);">{ico("folder", 20)}</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="position:absolute;left:56px;right:56px;bottom:160px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;z-index:4;">
+  <div class="card" style="padding:22px;text-align:center;">
+    <div class="tape" style="width:70px;height:20px;top:-8px;left:50%;margin-left:-35px;"></div>
+    <div style="font-family:var(--impact);font-size:56px;color:var(--acento);">2,300+</div>
+    <div style="font-family:var(--cond);font-size:22px;">MCP Servers</div>
+  </div>
+  <div class="card" style="padding:22px;text-align:center;">
+    <div class="tape" style="width:70px;height:20px;top:-8px;left:50%;margin-left:-35px;transform:rotate(4deg);"></div>
+    <div style="font-family:var(--impact);font-size:56px;color:var(--acento);">3</div>
+    <div style="font-family:var(--cond);font-size:22px;">Major AI companies support it</div>
+  </div>
+  <div class="card" style="padding:22px;text-align:center;">
+    <div class="tape" style="width:70px;height:20px;top:-8px;left:50%;margin-left:-35px;transform:rotate(-5deg);"></div>
+    <div style="font-family:var(--impact);font-size:56px;color:var(--acento);">1</div>
+    <div style="font-family:var(--cond);font-size:22px;">Protocol to rule them all</div>
+  </div>
+</div>
+""",
+    )
+
+
+def slide5():
+    return wrap(
+        5,
+        f"""
+{meta_bar(5)}
+<div class="ghost">1</div>
+<div class="pad">
+  <div class="tag">STEP 01</div>
+  <h1 class="h1" style="font-size:78px;">Install a Server</h1>
+  <p class="sub">Most servers install with one npm or pip command.</p>
+</div>
+<div class="win" style="position:absolute;left:80px;right:80px;top:420px;z-index:4;">
+  <div class="tape" style="width:100px;height:28px;top:-12px;left:60px;"></div>
+  <div class="tape" style="width:100px;height:28px;top:-10px;right:70px;transform:rotate(9deg);"></div>
+  <div class="win-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+    <span style="margin-left:10px;">terminal</span></div>
+  <pre>$ npm install -g @modelcontextprotocol/server-github
+
+added 47 packages in 3s
+<span class="ok">✓ Server installed</span></pre>
+</div>
+<div style="position:absolute;right:100px;top:560px;z-index:5;" class="hand">← one command</div>
+<div style="position:absolute;left:0;right:0;bottom:170px;display:flex;justify-content:center;gap:24px;z-index:4;">
+  <div class="card" style="padding:18px 28px;font-family:var(--mono);font-weight:700;color:#CB3837;border-color:#CB3837;">npm</div>
+  <div class="card" style="padding:18px 28px;font-family:var(--mono);font-weight:700;color:#3775A9;border-color:#3775A9;">pip</div>
+</div>
+""",
+    )
+
+
+def slide6():
+    return wrap(
+        6,
+        f"""
+{meta_bar(6)}
+<div class="ghost">2</div>
+<div class="pad">
+  <div class="tag">STEP 02</div>
+  <h1 class="h1" style="font-size:78px;">Add Your Config</h1>
+  <p class="sub">Drop the server into your config file. Here's Claude Desktop as an example.</p>
+</div>
+<div class="win" style="position:absolute;left:70px;right:70px;top:400px;z-index:4;">
+  <div class="tape" style="width:110px;height:30px;top:-12px;right:80px;transform:rotate(8deg);"></div>
+  <div class="win-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+    <span style="margin-left:10px;">{{ }} claude_desktop_config.json</span></div>
+  <pre>{{
+  <span class="k">"mcpServers"</span>: {{
+    <span class="k">"github"</span>: {{
+      <span class="k">"command"</span>: <span class="s">"npx"</span>,
+      <span class="k">"args"</span>: [<span class="s">"-y"</span>, <span class="s">"@modelcontextprotocol/server-github"</span>],
+      <span class="k">"env"</span>: {{
+        <span class="k">"GITHUB_TOKEN"</span>: <span class="s">"ghp_xxx"</span>
+      }}
+    }}
+  }}
+}}</pre>
+</div>
+<div style="position:absolute;right:90px;top:520px;z-index:5;" class="hand">← server name</div>
+<div style="position:absolute;right:90px;top:780px;z-index:5;" class="hand">← your API key</div>
+""",
+    )
+
+
+def slide7():
+    return wrap(
+        7,
+        f"""
+{meta_bar(7)}
+<div class="ghost">3</div>
+<div class="pad">
+  <div class="tag">STEP 03</div>
+  <h1 class="h1" style="font-size:78px;">Talk to Your AI</h1>
+  <p class="sub">Restart the app. Your AI now sees the new tools. Just ask it to do things.</p>
+</div>
+<div class="win" style="position:absolute;left:90px;right:90px;top:400px;bottom:210px;z-index:4;display:flex;flex-direction:column;">
+  <div class="tape" style="width:120px;height:32px;top:-14px;right:60px;transform:rotate(10deg);"></div>
+  <div class="win-bar" style="justify-content:space-between;">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <img src="{CLAUDE_URI}" alt="Claude" style="width:36px;height:34px;object-fit:contain;">
+      <span style="color:#F2F2F2;font-family:var(--pop);font-weight:700;">Claude Desktop</span>
+    </div>
+    <span>─ □ ×</span>
+  </div>
+  <div style="flex:1;padding:18px 20px;display:flex;flex-direction:column;gap:14px;">
+    <div style="align-self:flex-end;background:#2a2a2a;border-radius:16px 16px 4px 16px;padding:14px 16px;max-width:78%;font-family:var(--cond);font-size:24px;">
+      Create an issue in my repo for the login bug
+      <div style="font-family:var(--mono);font-size:13px;color:#8a918c;margin-top:6px;">10:42 AM</div>
+    </div>
+    <div style="align-self:flex-start;display:flex;gap:10px;max-width:85%;">
+      <img src="{CLAUDE_URI}" alt="" style="width:40px;height:38px;object-fit:contain;flex-shrink:0;">
+      <div style="background:#1E1E1E;border-radius:16px 16px 16px 4px;padding:14px 16px;font-family:var(--cond);font-size:24px;">
+        Done. I created issue #247 “Fix login redirect bug” in your-repo with the details you described.
+        <div style="font-family:var(--mono);font-size:13px;color:#8a918c;margin-top:6px;">10:42 AM</div>
+      </div>
+    </div>
+    <div style="align-self:flex-start;margin-left:50px;border:1.5px solid var(--acento);color:var(--acento);border-radius:999px;padding:8px 14px;font-family:var(--mono);font-size:16px;">
+      ✓ Used tool: github_create_issue
+    </div>
+  </div>
+  <div style="padding:12px 16px;border-top:1px solid #2a2a2a;color:#8a918c;font-family:var(--cond);font-size:22px;">Message Claude…</div>
+</div>
+<div style="position:absolute;right:70px;top:720px;z-index:5;" class="hand">MCP in action →</div>
+<div style="position:absolute;left:70px;right:70px;bottom:140px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;z-index:4;text-align:center;">
+  <div class="hand" style="font-size:20px;">“Create a GitHub issue”</div>
+  <div class="hand" style="font-size:20px;">“Pull Slack messages”</div>
+  <div class="hand" style="font-size:20px;">“Query my database”</div>
+</div>
+""",
+    )
+
+
+def slide8():
+    servers = [
+        ("github", "GitHub", "Repos, issues, PRs"),
+        ("slack", "Slack", "Read + send messages"),
+        ("folder", "Filesystem", "Read + write local files"),
+        ("db", "PostgreSQL", "Query your database"),
+        ("aws", "AWS", "15,000+ APIs"),
+        ("search", "Brave Search", "Web search from AI"),
+    ]
+    cards = ""
+    for name, title, desc in servers:
+        cards += f"""
+        <div class="card" style="padding:20px 18px;display:flex;gap:14px;align-items:center;">
+          <div class="tape" style="width:50px;height:16px;top:-7px;left:20px;"></div>
+          <div class="tape" style="width:50px;height:16px;top:-7px;right:20px;transform:rotate(6deg);"></div>
+          {ico(name, 40)}
+          <div>
+            <div style="font-family:var(--pop);font-weight:800;font-size:26px;">{title}</div>
+            <div style="font-family:var(--cond);font-size:20px;color:#6a736e;">{desc}</div>
+          </div>
+        </div>"""
+    return wrap(
+        8,
+        f"""
+{meta_bar(8)}
+<div class="pad">
+  <div class="tag">TOP PICKS</div>
+  <h1 class="h1" style="font-size:72px;">Servers <span class="hl">Worth</span> Installing</h1>
+</div>
+<div style="position:absolute;left:64px;right:64px;top:360px;display:grid;grid-template-columns:1fr 1fr;gap:16px;z-index:4;">
+  {cards}
+</div>
+<p class="hand" style="position:absolute;left:0;right:0;bottom:140px;text-align:center;z-index:4;">2,300+ more at mcp.directory</p>
+""",
+    )
+
+
+def slide9():
+    return wrap(
+        9,
+        f"""
+{meta_bar(9)}
+<div class="pad center" style="padding-top:220px;">
+  <div class="tape" style="width:140px;height:36px;top:160px;left:80px;"></div>
+  <div class="tape" style="width:140px;height:36px;top:160px;right:80px;transform:rotate(8deg);"></div>
+  <div class="tape" style="width:120px;height:32px;bottom:200px;right:100px;transform:rotate(-6deg);"></div>
+  <h1 class="h1" style="font-size:110px;"><span class="hl">Save This</span><br>for Later</h1>
+  <p class="sub">Follow for more AI + Dev tutorials</p>
+  <div style="margin:36px auto 0;display:inline-block;background:#0A0A0A;color:#fff;border-radius:999px;padding:16px 28px;font-family:var(--mono);font-size:24px;">
+    sebastian.stlabs.ar
+  </div>
+  <div style="margin-top:28px;display:flex;justify-content:center;gap:40px;color:var(--acento);font-family:var(--mono);font-size:20px;letter-spacing:1px;">
+    <span style="border:2px solid var(--acento);padding:10px 14px;border-radius:8px;">SAVE</span>
+    <span style="border:2px solid var(--acento);padding:10px 14px;border-radius:8px;">SHARE</span>
+    <span style="border:2px solid var(--acento);padding:10px 14px;border-radius:8px;">LIKE</span>
+  </div>
+  <div style="margin-top:36px;">
+    <img src="{CLAUDE_URI}" alt="Claude" style="width:90px;height:84px;object-fit:contain;filter:drop-shadow(0 10px 18px rgba(0,0,0,.15));">
+  </div>
+  <div class="card" style="margin:22px auto 0;display:inline-flex;align-items:center;gap:16px;padding:14px 18px;text-align:left;">
+    <img src="{SEB_URI}" alt="Sebastian" style="width:64px;height:64px;border-radius:50%;object-fit:cover;">
+    <div>
+      <div style="font-family:var(--pop);font-weight:800;font-size:22px;">Sebastian Garcia</div>
+      <div style="font-family:var(--cond);font-size:18px;color:#6a736e;">sebastiangarcia.ar · 420 followers</div>
+    </div>
+  </div>
+</div>
+""",
+        swipe=False,
+    )
+
+
+def main():
+    slides = [slide1(), slide2(), slide3(), slide4(), slide5(), slide6(), slide7(), slide8(), slide9()]
+
+    write_html(slides, BUILD / "carrusel.html", extra_css=EXTRA_CSS)
+    print("HTML:", BUILD / "carrusel.html")
+    pngs = render(BUILD)
+    print(f"Render OK: {len(pngs)}")
+
+    meta = {
+        "titulo": "MCP Servers Tutorial",
+        "slides": TOTAL,
+        "fondo": "papel_corrugado",
+        "familia_visual": "manifiesto",
+        "origen": "screenshot",
+        "keyword_portada": KEYWORD,
+        "modo_fondo": "blanco",
+        "idioma": "en",
+        "acento": VERDE,
+        "feedback": {"estado": "borrador"},
+    }
+    out = package(BUILD, "STLabs-MCP-Servers", meta=meta)
+    print("Package:", out)
+
+    KEEP = {".ttf", ".otf", ".woff", ".woff2"}
+    KEEP_NAMES = {"befonts-license.txt", "impact-font.zip"}
+    WORD_DIR.mkdir(parents=True, exist_ok=True)
+    for p in list(WORD_DIR.iterdir()):
+        if p.is_file() and p.suffix.lower() not in KEEP and p.name.lower() not in KEEP_NAMES:
+            p.unlink()
+    for fname in ("impact.ttf", "impacted.ttf", "unicodeimpact.ttf", "Befonts-License.txt"):
+        src = REPO / "fonts" / fname
+        if src.exists():
+            shutil.copy2(src, WORD_DIR / fname)
+
+    for name in (
+        "STLabs-MCP-Servers.html",
+        "STLabs-MCP-Servers.zip",
+        "_preview-tira.png",
+        "manifest.json",
+        *[f"slide-{i:02d}.png" for i in range(1, TOTAL + 1)],
+    ):
+        src = out / name
+        if src.exists():
+            shutil.copy2(src, WORD_DIR / name)
+
+    shutil.copy2(CLAUDE_PNG, WORD_DIR / "claude.png")
+
+    (WORD_DIR / "MANIFIESTO-FUENTES.md").write_text(
+        """# Font manifesto — MCP Servers Tutorial
+
+| Font | Weight | Role | Source |
+|---|---|---|---|
+| Impact | 900 | Titles | `fonts/impact.ttf` |
+| Lora Italic | 600–700 | Accent script / notes | `fonts/Lora-Italic-Variable.ttf` |
+| Barlow Condensed | 400–700 | Body | `fonts/BarlowCondensed-*.ttf` |
+| IBM Plex Mono | 400–600 | Code / meta / footer | `fonts/IBMPlexMono-*.ttf` |
+| Poppins | 800 | Card titles | `fonts/Poppins-Bold.ttf` |
+
+Accent: `#00FFB2` (replaces orange). Language: English.
+Claude: `assets/claude.png` (default orange mascot).
+Identity: sebastian.stlabs.ar · white scrapbook clone.
+""",
+        encoding="utf-8",
+    )
+    (WORD_DIR / "LEEME.txt").write_text(
+        f"""STLabs Carousel — MCP Servers Tutorial
+Clone of @fullstackparody MCP tutorial → sebastian.stlabs.ar
+Background: WHITE · Texture: papel_corrugado · Family: manifiesto
+Slides: {TOTAL} · Keyword: {KEYWORD} · Language: English
+Accent: #00FFB2 · Claude: assets/claude.png
+""",
+        encoding="utf-8",
+    )
+    print("Word/:", WORD_DIR)
+
+
+if __name__ == "__main__":
+    main()
