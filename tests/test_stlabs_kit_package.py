@@ -10,7 +10,8 @@ def test_package_llama_registrar_con_meta(tmp_historial, tmp_path, monkeypatch):
     monkeypatch.setattr(kit, "embedded_fonts_css", lambda: "")
     monkeypatch.setattr(mem, "REPO_ROOT", tmp_historial)
     monkeypatch.setattr(mem, "HISTORIAL_DIR", tmp_historial / "historial")
-    monkeypatch.setattr(mem, "BUILDS_DIR", tmp_historial / "builds")
+    monkeypatch.setattr(mem, "RESULTADOS_DIR", tmp_historial / "resultados")
+    monkeypatch.setattr(mem, "BUILDS_DIR", tmp_historial / "resultados")
     monkeypatch.setattr(mem, "INDEX_PATH", tmp_historial / "historial" / "carruseles.json")
 
     build = tmp_path / "build"
@@ -29,12 +30,13 @@ def test_package_llama_registrar_con_meta(tmp_historial, tmp_path, monkeypatch):
     }
     out = kit.package(build, "test-out", meta=meta)
     build_id = meta["id"]
-    assert out.resolve() == (tmp_historial / "builds" / build_id).resolve()
+    assert build_id == "carrusel-1"
+    assert out.resolve() == (tmp_historial / "resultados" / build_id).resolve()
     assert (out / "manifest.json").exists()
     manifest = __import__("json").loads((out / "manifest.json").read_text(encoding="utf-8"))
     assert manifest["fondo"] == "reticula_fina"
-    # Una sola carpeta en builds (sin duplicado out_name)
-    dirs = [d for d in (tmp_historial / "builds").iterdir() if d.is_dir()]
+    # Una sola carpeta en resultados (sin duplicado out_name)
+    dirs = [d for d in (tmp_historial / "resultados").iterdir() if d.is_dir()]
     assert len(dirs) == 1
 
 

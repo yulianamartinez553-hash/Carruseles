@@ -1,0 +1,362 @@
+{
+  "$schema": "sistema-visual-carrusel/v1",
+  "nombre": "Sistema Visual Carruseles — sebastian.stlabs.ar",
+  "descripcion": "Reglas permanentes y obligatorias para generar CUALQUIER carrusel de Instagram. Este archivo NO define textos concretos: define tamaños, pesos, colores, jerarquías, fondos, comportamiento de elementos y reglas de salida. Se aplica siempre, en todos los slides, no solo en la portada.",
+  "prioridad": "Estas reglas tienen prioridad sobre cualquier criterio estético improvisado. Ante duda, replicar exactamente el comportamiento de las imágenes de referencia aprobadas.",
+
+  "marca": {
+    "propietario_visual": "Sebastián García",
+    "firma_obligatoria": {
+      "texto": "sebastian.stlabs.ar",
+      "regla": "SIEMPRE debe aparecer en TODOS los slides, sin excepción. Reemplaza cualquier otra firma, watermark, usuario o URL que aparezca en las imágenes de referencia.",
+      "posicion_default": "inferior centrado o inferior izquierda, según composición",
+      "fuente": "monoespaciada",
+      "tamano_px_relativo": "1.4% - 1.8% de la altura del canvas",
+      "color": "#7DF0AE",
+      "opacidad": 0.85,
+      "peso": 500,
+      "letter_spacing": "0.08em",
+      "no_debe": "nunca ser tapada por otro elemento ni tapar contenido"
+    }
+  },
+
+  "canvas": {
+    "formato_default": "1080x1350 (4:5 vertical, feed Instagram)",
+    "formatos_permitidos": ["1080x1350", "1080x1080"],
+    "resolucion_export": "2x retina (2160x2700)",
+    "formato_archivo": "PNG",
+    "espacio_color": "sRGB",
+    "margen_seguro": {
+      "superior_px": 90,
+      "inferior_px": 110,
+      "lateral_px": 72,
+      "regla": "NINGÚN texto ni elemento puede salir del margen seguro. El margen inferior es mayor porque ahí vive la firma."
+    }
+  },
+
+  "paleta": {
+    "verde_marca": "#7DF0AE",
+    "verde_marca_alt": "#4EE39A",
+    "verde_oscuro_degrade": "#0B2A1E",
+    "negro_fondo": "#000000",
+    "negro_panel": "#0D0D0D",
+    "gris_panel": "#161616",
+    "gris_borde": "#2A2A2A",
+    "gris_texto_secundario": "#A8A8A8",
+    "blanco_texto": "#FFFFFF",
+    "rojo_negativo": "#FF6B6B",
+    "naranja_claude": "#D97757",
+    "regla_uso": "El verde es SIEMPRE color de marca y de énfasis. El rojo se usa EXCLUSIVAMENTE para el lado negativo de comparaciones (ANTES / SIN SISTEMA / errores / no verificado). Nunca decorativo."
+  },
+
+  "tipografia": {
+    "regla_grosor_global": {
+      "descripcion": "Inter NUNCA se usa en pesos finos. Prohibidos los pesos 100, 200, 300 y 400 en cualquier texto visible del carrusel.",
+      "peso_minimo_permitido": 500,
+      "prohibidos": [100, 200, 300, 400],
+      "aplica_a": "títulos, subtítulos, cuerpo, cuerpo secundario, labels y badges",
+      "nota": "Si un texto necesita bajar de jerarquía, se baja con TAMAÑO y COLOR (gris #A8A8A8), nunca adelgazando la fuente."
+    },
+    "familia_titulo": {
+      "principal": "Inter / Helvetica Now Display / SF Pro Display",
+      "alternativa_editorial": "serif display (tipo Playfair / Tiempos) SOLO cuando el carrusel es de estilo editorial (ver estilos.editorial)",
+      "peso": 800,
+      "regla": "El título SIEMPRE es el elemento más grande y pesado del slide. Sin excepción."
+    },
+    "familia_cuerpo": {
+      "principal": "Inter",
+      "pesos": [500, 600, 700, 800]
+    },
+    "familia_mono": {
+      "principal": "JetBrains Mono / SF Mono",
+      "uso": "etiquetas, badges, firmas, labels de datos, bloques de prompt, pies de tarjeta"
+    },
+    "escala": {
+      "titulo_principal": {
+        "tamano_px": "108 - 132",
+        "line_height": 0.95,
+        "peso": 800,
+        "letter_spacing": "-0.02em",
+        "max_lineas": 3,
+        "color_base": "#FFFFFF (sobre fondo oscuro) o #000000 (sobre fondo claro)",
+        "color_enfasis": "#7DF0AE",
+        "regla_color": "SIEMPRE al menos una palabra o frase clave del título va en verde #7DF0AE. El resto en blanco o negro según el contraste del fondo. Nunca un título 100% blanco ni 100% verde."
+      },
+      "subrayado_titulo": {
+        "activo": true,
+        "descripcion": "Barra horizontal verde corta debajo del título",
+        "alto_px": 6,
+        "ancho_px": 240,
+        "color": "#7DF0AE",
+        "margen_superior_px": 24
+      },
+      "eyebrow_badge": {
+        "descripcion": "Etiqueta pequeña sobre el título (ej: PASO 1, EL STACK, QUÉ CAMBIA, PÁGINA 01)",
+        "tamano_px": "26 - 30",
+        "peso": 700,
+        "letter_spacing": "0.16em",
+        "transform": "uppercase",
+        "fuente": "mono",
+        "estilo": "pill con fondo #7DF0AE y texto negro, O texto verde plano sin fondo en estilo editorial",
+        "padding_px": [10, 22],
+        "border_radius_px": 999
+      },
+      "subtitulo": {
+        "tamano_px": "42 - 52",
+        "peso": 600,
+        "line_height": 1.2,
+        "color": "#FFFFFF"
+      },
+      "cuerpo": {
+        "tamano_px": "30 - 36",
+        "peso": 500,
+        "line_height": 1.45,
+        "color": "#FFFFFF",
+        "enfasis_bold": {"peso": 700, "color": "#7DF0AE o #FFFFFF"}
+      },
+      "cuerpo_secundario": {
+        "tamano_px": "26 - 30",
+        "peso": 500,
+        "color": "#A8A8A8"
+      },
+      "label_mono": {
+        "tamano_px": "20 - 24",
+        "peso": 600,
+        "letter_spacing": "0.1em",
+        "color": "#A8A8A8"
+      }
+    },
+    "regla_jerarquia": "Máximo 3 niveles tipográficos visibles por slide. Si hay más, el slide está sobrecargado y hay que dividirlo."
+  },
+
+  "fondos": {
+    "regla_maestra": "El fondo elegido se aplica al CARRUSEL COMPLETO, no solo a la portada. Si el pedido dice 'fondo rocoso', TODOS los slides llevan fondo rocoso. Si dice 'temática mundial', TODOS los slides llevan esa temática.",
+    "tipos": {
+      "rocoso": {
+        "descripcion": "Textura de piedra/hormigón gris oscuro, granulada, con relieve sutil e iluminación lateral suave",
+        "color_base": "#2E2E2E - #3A3A3A",
+        "overlay": "negro al 35-50% para garantizar legibilidad del texto",
+        "uso": "carruseles de autoridad, 'modo dios', contenido técnico premium"
+      },
+      "negro_puro": {
+        "color": "#000000",
+        "acento": "halo/glow verde muy sutil en una esquina (radial-gradient #0B2A1E al 0%)",
+        "uso": "carruseles de paso a paso, tutoriales, dashboards"
+      },
+      "degrade_verde": {
+        "descripcion": "Degradé de negro a verde oscuro de marca, direccional (diagonal o radial desde una esquina)",
+        "stops": ["#000000", "#0B2A1E", "#05140E"],
+        "uso": "portadas, slides de cierre, slides de impacto"
+      },
+      "tematico": {
+        "descripcion": "Fondo ilustrado o fotográfico que refuerza literalmente el título (ej: cancha de fútbol para Mundial, copa, líneas de campo)",
+        "regla": "SIEMPRE tratado con overlay verde/negro para que quede dentro de la paleta de marca. Nunca una foto cruda sin tratar.",
+        "opacidad_imagen": "20% - 40%",
+        "uso": "fechas conmemorativas, campañas estacionales, efemérides"
+      },
+      "imagen_provista": {
+        "descripcion": "Imagen entregada por el usuario en el mismo comando",
+        "regla": "Se usa TAL CUAL, integrada al fondo con overlay de marca. Nunca se recrea, nunca se reemplaza por una similar."
+      }
+    },
+    "prohibido": [
+      "fondos blancos planos sin justificación",
+      "fondos con imagen suelta pegada sin integración",
+      "cambiar de tipo de fondo entre slides del mismo carrusel"
+    ]
+  },
+
+  "logos_y_marcas": {
+    "regla_maestra": "TODO logo de producto real se usa EXACTO, en su versión oficial. Está PROHIBIDO recrear, reinterpretar, redibujar o generar un logo 'similar'.",
+    "claude": {
+      "logo_oficial": "el personaje/bichito naranja de Claude (cuadrado naranja #D97757 con ojos '>' y '<' y patas)",
+      "regla": "ES EL ÚNICO logo de Claude válido. No existe otro. No se genera otro. No se estiliza distinto. Se usa siempre esa figura.",
+      "variantes_permitidas": ["versión color naranja", "versión monocroma sobre fondo oscuro"],
+      "asterisco_claude": "el símbolo asterisco/estrella de Claude puede usarse como ícono secundario en interfaces simuladas"
+    },
+    "otros_productos": {
+      "gmail": "logo oficial de la app Gmail (la M multicolor)",
+      "instagram": "logo oficial de la app Instagram",
+      "apollo": "logo oficial de Apollo",
+      "linkedin": "logo oficial de LinkedIn",
+      "regla": "Si el texto menciona una herramienta, va SU logo real. Nunca un ícono genérico ni una versión inventada."
+    },
+    "tamano_logo_px": "56 - 88 en tarjetas, 100 - 140 en portadas",
+    "label_bajo_logo": {
+      "fuente": "mono",
+      "tamano_px": 22,
+      "transform": "uppercase",
+      "color": "#A8A8A8"
+    }
+  },
+
+  "elementos_visuales": {
+    "regla_maestra_absoluta": "NINGÚN elemento puede tapar, superponerse ni cortar a otro elemento, texto, logo o firma. Cero solapamiento. Si no entra, se reduce el contenido o se divide en otro slide. Esta es la regla que más se incumple y la más importante de todas.",
+    "verificacion_obligatoria": [
+      "1. Ningún texto queda debajo de otro elemento",
+      "2. Ningún panel se corta contra el borde del canvas",
+      "3. La firma sebastian.stlabs.ar está 100% visible y libre",
+      "4. Los logos no pisan texto",
+      "5. Todo respeta el margen seguro"
+    ],
+    "recreables": {
+      "descripcion": "Elementos de interfaz que SÍ se generan, siempre imitando el estilo de las referencias aprobadas",
+      "lista": [
+        "paneles de chat simulados (usuario + Claude con hora)",
+        "tablas de datos con encabezado y filas",
+        "bandeja de Gmail simulada (sidebar + lista de borradores)",
+        "paneles de Configuración > Conectores / Proyecto > Instrucciones",
+        "dashboards con tarjetas de métrica + minigráfico de línea",
+        "calendarios de publicaciones",
+        "listas numeradas con badge circular verde",
+        "bloques de código / prompt tipo terminal con los 3 puntos rojo-amarillo-verde",
+        "comparativas ANTES vs DESPUÉS con divisor 'VS' circular",
+        "barras de embudo de pipeline",
+        "checklists con check verde"
+      ],
+      "estilo_panel": {
+        "fondo": "#0D0D0D o #161616 (siempre más claro que el fondo negro, para separarse por valor no por línea gruesa)",
+        "borde": "1px #2A2A2A",
+        "border_radius_px": 20,
+        "padding_px": 32,
+        "sombra": "ninguna o muy sutil",
+        "regla_contraste": "Sobre fondo negro el panel es gris oscuro. Sobre fondo rocoso el panel es negro sólido. El panel SIEMPRE debe distinguirse del fondo."
+      },
+      "badges_numericos": {
+        "forma": "cuadrado redondeado",
+        "tamano_px": 48,
+        "fondo": "#12241B",
+        "borde": "1px #7DF0AE",
+        "color_numero": "#7DF0AE",
+        "peso": 700
+      },
+      "flechas": {
+        "activas": true,
+        "descripcion": "Flechas '→' entre pasos o logos de flujo. Se mantienen como elemento por defecto del sistema.",
+        "color": "#A8A8A8",
+        "tamano_px": 28,
+        "regla": "Se usan para conectar flujos horizontales (logo → logo → logo). Nunca superpuestas a texto."
+      },
+      "divisor_vs": {
+        "forma": "círculo",
+        "diametro_px": 76,
+        "fondo": "#1A1A1A",
+        "texto": "VS",
+        "color_texto": "#FFFFFF",
+        "uso": "solo entre dos bloques comparativos"
+      },
+      "indicador_prueba": {
+        "descripcion": "Pill verde con check usado como sello de validación en slides de demo",
+        "estilo": "fondo #7DF0AE, texto negro, uppercase, mono"
+      }
+    },
+    "prohibido_recrear": [
+      "logos de marcas (van los oficiales)",
+      "fotos de personas (van las provistas)",
+      "cualquier imagen que el usuario entregue en el comando"
+    ]
+  },
+
+  "imagenes_provistas_por_el_usuario": {
+    "regla": "El usuario entrega entre 8 y 9 imágenes junto al comando. Esas imágenes son OBLIGATORIAS y se integran al diseño.",
+    "tratamiento": [
+      "Nunca se recortan de forma que se pierda el sujeto",
+      "Se integran al fondo con overlay de marca (verde/negro) para que pertenezcan al sistema visual",
+      "Nunca quedan como una foto suelta pegada encima: siempre integradas (full-bleed, con degradé, o dentro de un panel con borde)",
+      "Nunca se regeneran ni se reemplazan por una versión similar"
+    ]
+  },
+
+  "limpieza_obligatoria": {
+    "descripcion": "Las imágenes de referencia son capturas de pantalla. Todo lo que sea interfaz de captura debe eliminarse en la salida final.",
+    "eliminar_siempre": [
+      "contador de slide tipo 1/9, 4/5, 7/11",
+      "barra de estado del teléfono (hora, señal, wifi, batería)",
+      "nombre de usuario de Instagram, foto de perfil, '...' de menú",
+      "nombre y ícono de la música / audio",
+      "íconos de like, comentario, compartir, guardar, contador de likes",
+      "botones 'Ver insights' / 'Promocionar publicación'",
+      "burbujas 'Etiqueta a un amigo…' / 'Añade una idea…'",
+      "puntos indicadores del carrusel",
+      "sticker de reposteo morado",
+      "ícono de altavoz",
+      "cualquier firma, mail o usuario que no sea sebastian.stlabs.ar"
+    ],
+    "resultado": "Imágenes 100% limpias, listas para subir a redes sociales sin edición posterior."
+  },
+
+  "estilos": {
+    "tecnico_dashboard": {
+      "fondo": "negro_puro",
+      "titulo": "sans 800",
+      "uso": "pasos, stacks, demos de producto, pipelines"
+    },
+    "editorial": {
+      "fondo": "negro_puro con glow verde",
+      "titulo": "serif display con palabra clave en itálica verde",
+      "eyebrow": "mono verde sin pill, formato 'PÁGINA 01 · NOMBRE'",
+      "uso": "carruseles de prompts, tableros de contenido, ideas"
+    },
+    "autoridad_rocoso": {
+      "fondo": "rocoso",
+      "titulo": "sans 800 + número de paso grande en verde",
+      "uso": "'modo dios', comandos avanzados, contenido de alto valor"
+    },
+    "conmemorativo": {
+      "fondo": "tematico",
+      "regla": "El motivo temático (cancha, copa, líneas de campo, etc.) se repite en TODOS los slides con distinta intensidad. Se mantiene la paleta verde de marca.",
+      "uso": "fechas especiales, mundiales, efemérides, campañas"
+    },
+    "regla": "Un carrusel = un solo estilo. Nunca mezclar estilos entre slides."
+  },
+
+  "estructura_carrusel": {
+    "cantidad_slides": "entre 5 y 11, definido por el contenido",
+    "arco_narrativo": [
+      "Slide 1 — Portada: promesa grande + logos de herramientas involucradas + hook",
+      "Slides intermedios — Un paso / una idea por slide, con badge de paso y demo visual",
+      "Slide final — 'QUÉ CAMBIA': comparativa ANTES vs DESPUÉS + cierre + CTA"
+    ],
+    "regla_una_idea": "Un slide = una idea. Si un slide necesita scroll mental, se divide."
+  },
+
+  "salida": {
+    "entregables": [
+      "PNG retina de cada slide, numerados en orden (01, 02, 03...), sin marcas de interfaz",
+      "HTML standalone con fuentes embebidas (opcional, para edición)",
+      "Copy del post (caption) según reglas de caption"
+    ]
+  },
+
+  "caption": {
+    "obligatorio": true,
+    "descripcion": "Junto con las imágenes SIEMPRE se entrega un copy listo para publicar.",
+    "reglas": {
+      "max_caracteres": 500,
+      "hashtags": {
+        "cantidad_exacta": 5,
+        "posicion": "al final del texto"
+      },
+      "estructura": [
+        "Línea 1: hook fuerte que repita la promesa de la portada",
+        "Cuerpo: 2-4 líneas cortas, español rioplatense (voseo), frases directas, sin relleno",
+        "CTA: invitación a guardar, comentar una palabra clave o visitar sebastian.stlabs.ar",
+        "5 hashtags"
+      ],
+      "tono": "directo, seguro, sin promesas vacías, orientado a resultado de negocio",
+      "prohibido": "emojis en exceso (máximo 2), texto genérico de IA, superar 500 caracteres"
+    }
+  },
+
+  "checklist_final": [
+    "¿El título es el elemento más grande y tiene énfasis en verde #7DF0AE?",
+    "¿El fondo elegido se aplicó a TODOS los slides, no solo a la portada?",
+    "¿Todos los logos son oficiales y exactos (Claude = bichito naranja)?",
+    "¿Ningún elemento tapa a otro? (verificar uno por uno)",
+    "¿Aparece sebastian.stlabs.ar en todos los slides, libre y visible?",
+    "¿Se eliminó toda la interfaz de captura (contadores, música, íconos, likes)?",
+    "¿Las imágenes provistas por el usuario están integradas, no pegadas?",
+    "¿Se entregó el caption con exactamente 5 hashtags y menos de 500 caracteres?",
+    "¿Todos los slides mantienen el mismo estilo?"
+  ]
+}

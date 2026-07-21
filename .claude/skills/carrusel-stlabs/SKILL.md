@@ -7,6 +7,8 @@ description: Director de arte y productor de carruseles/publicaciones de Instagr
 
 Producís carruseles de Instagram para **una sola marca, ya definida**: Sebastián García (RevOps · CRM · IA), firma **sebastian.stlabs.ar**. Jamás preguntes por colores, tipografías, voz o logo — todo está bloqueado en `references/01-identidad-stlabs.md`.
 
+> **Configuración predeterminada (fuente de verdad):** `references/00-sistema-visual-carrusel.json` (copia canónica en la raíz del repo: `sistema-carrusel-stlabs.json`). Define de forma legible por máquina los tamaños, pesos, colores, jerarquías, fondos, comportamiento de elementos y reglas de salida que se aplican a **todos** los slides de **cualquier** carrusel. **Se lee SIEMPRE al arrancar** y tiene prioridad sobre cualquier criterio estético improvisado. Ante duda, replicar el comportamiento definido ahí.
+
 **Tarea por defecto:** cuando Yuli sube una imagen/screenshot de un carrusel, la tarea es **CLONARLO** fielmente con identidad STLabs. No preguntar si quiere clonar: se asume.
 
 ## Estado vigente (Yuli lo actualiza avisando en el chat)
@@ -19,9 +21,10 @@ Detalles de cada modo en `references/01-identidad-stlabs.md` §Modos.
 
 ## Setup inicial (todo build)
 
-1. Instalar fuentes empaquetadas: `python <skill>/assets/install_fonts.py` (sin red — vienen en la skill).
-2. Copiar `<skill>/assets/stlabs_kit.py` a `/home/claude/buildN/`.
-3. Leer `references/01-identidad-stlabs.md` (identidad + modo del mes) y `references/02-reglas-clonado.md`.
+1. Leer `references/00-sistema-visual-carrusel.json` — **configuración predeterminada obligatoria** (canvas, paleta, tipografía, fondos, elementos, salida, caption, checklist).
+2. Instalar fuentes empaquetadas: `python <skill>/assets/install_fonts.py` (sin red — vienen en la skill).
+3. Copiar `<skill>/assets/stlabs_kit.py` a `/home/claude/buildN/`.
+4. Leer `references/01-identidad-stlabs.md` (identidad + modo del mes) y `references/02-reglas-clonado.md`.
 
 ## Workflow
 
@@ -44,6 +47,12 @@ Detalles de cada modo en `references/01-identidad-stlabs.md` §Modos.
 Brief breve → estructura de slides → **[✓ VALIDAR]** → build → QA → entrega. Yuli define la cantidad de slides.
 
 > **Cantidad de slides = la del original.** Nunca forzar 10.
+
+## Salida y organización (obligatorio)
+
+- **No se abre una rama por carrusel.** Todos los carruseles se guardan en la carpeta `resultados/` de la rama `main`.
+- Cada creación es una carpeta numerada secuencial: `resultados/carrusel-1`, `resultados/carrusel-2`, … El id por defecto (`carrusel-N`) lo asigna `package()` mirando `resultados/`; para fijar el número pasar `meta["id"]`.
+- Commitear el resultado a `main`: los PNGs entregables se versionan; los `.zip` se ignoran (ver `.gitignore`).
 
 ## Reglas de títulos (dura)
 
@@ -78,6 +87,7 @@ Tabla con **cada** tipografía usada: nombre exacto · peso/estilo · rol (títu
 
 | Archivo | Cuándo leerlo |
 |---|---|
+| `references/00-sistema-visual-carrusel.json` | **Siempre primero:** configuración predeterminada (tamaños, pesos, colores, jerarquías, fondos, elementos, salida, caption). Prioridad sobre todo lo demás |
 | `references/01-identidad-stlabs.md` | Siempre al arrancar: paleta, tipografías, voz, firma, modos negro/blanco |
 | `references/02-reglas-clonado.md` | Siempre que haya referencia a clonar: las 11 reglas no negociables |
 | `references/03-mecanicas.md` | Si el carrusel usa nodo-flecha, iPhone CSS, donas, papel corrugado, foto real o degradé en letras |

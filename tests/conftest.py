@@ -8,8 +8,9 @@ def tmp_historial(tmp_path, monkeypatch):
 
     monkeypatch.setattr(mem, "REPO_ROOT", tmp_path)
     monkeypatch.setattr(mem, "HISTORIAL_DIR", tmp_path / "historial")
-    monkeypatch.setattr(mem, "BUILDS_DIR", tmp_path / "builds")
+    monkeypatch.setattr(mem, "RESULTADOS_DIR", tmp_path / "resultados")
+    monkeypatch.setattr(mem, "BUILDS_DIR", tmp_path / "resultados")
     monkeypatch.setattr(mem, "INDEX_PATH", tmp_path / "historial" / "carruseles.json")
     (tmp_path / "historial").mkdir()
-    (tmp_path / "builds").mkdir()
+    (tmp_path / "resultados").mkdir()
     yield tmp_path
