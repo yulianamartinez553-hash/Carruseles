@@ -48,6 +48,7 @@ Campos obligatorios en `meta`: `fondo`, `familia_visual`, `origen`, `slides`, `k
 
 ## Documentación
 
+- **Configuración visual predeterminada (fuente de verdad):** [sistema-carrusel-stlabs.json](sistema-carrusel-stlabs.json) — reglas permanentes y obligatorias (tamaños, pesos, colores, jerarquías, fondos, elementos, salida y caption) que se aplican a todos los slides de cualquier carrusel. Copia para el skill en [.claude/skills/carrusel-stlabs/references/00-sistema-visual-carrusel.json](.claude/skills/carrusel-stlabs/references/00-sistema-visual-carrusel.json).
 - Sistema de diseño: [SISTEMA-DISENO-CARRUSELES-STLABS.md](SISTEMA-DISENO-CARRUSELES-STLABS.md)
 - Plan de memoria: [docs/plans/2026-07-01-memoria-operativa-carruseles.md](docs/plans/2026-07-01-memoria-operativa-carruseles.md)
 

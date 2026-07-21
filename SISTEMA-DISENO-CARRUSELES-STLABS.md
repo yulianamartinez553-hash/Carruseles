@@ -1,6 +1,8 @@
 # Sistema de Diseño de Carruseles — STLabs / Sebastián García
 > **Estándar absoluto del proyecto.** Todo chat nuevo arranca aquí.
 > Marca: Sebastián García (RevOps · CRM · IA). Firma: **sebastian.stlabs.ar**
+>
+> **Configuración predeterminada legible por máquina:** [`sistema-carrusel-stlabs.json`](sistema-carrusel-stlabs.json) (copia para el skill en `.claude/skills/carrusel-stlabs/references/00-sistema-visual-carrusel.json`). Ese JSON es la fuente de verdad de tamaños, pesos, colores, jerarquías, fondos, comportamiento de elementos y reglas de salida, y se aplica a **todos** los slides de **cualquier** carrusel. Este documento es la guía narrativa; ante conflicto, mandan las reglas del JSON.
 
 ---
 
