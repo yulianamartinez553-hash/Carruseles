@@ -1,0 +1,16 @@
+{
+  "titulo": "MCP Servers Tutorial",
+  "slides": 9,
+  "fondo": "papel_corrugado",
+  "familia_visual": "manifiesto",
+  "origen": "screenshot",
+  "keyword_portada": "MCP",
+  "modo_fondo": "blanco",
+  "idioma": "en",
+  "acento": "#00FFB2",
+  "feedback": {
+    "estado": "borrador"
+  },
+  "id": "2026-07-21-mcp-servers-tutorial",
+  "fecha": "2026-07-21"
+}

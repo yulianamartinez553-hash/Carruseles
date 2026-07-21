@@ -25,9 +25,37 @@ def _font_dir(linux_path: pathlib.Path) -> str:
 
 STLABS = _font_dir(_LINUX_STLABS)
 GFONTS = _font_dir(_LINUX_GFONTS)
+LOCAL = str(_LOCAL_FONTS) + "/"
+WORD_FONTS = str(REPO_ROOT / "Word") + "/"
+
+def _resolve_font(*candidates: str) -> str:
+    """Prefiere el primer TTF existente (Word/ → fonts/ → sistema)."""
+    for c in candidates:
+        if pathlib.Path(c).exists():
+            return c
+    return candidates[0]
 
 # (familia, archivo, peso, estilo)
+# DEFAULT DE TÍTULO: Impact (pack del repo `impact-font.zip` → fonts/impact.ttf)
+# Resolución: Word/ → fonts/ → sistema
+_IMPACT = _resolve_font(
+    WORD_FONTS+"impact.ttf", WORD_FONTS+"Impact.ttf",
+    LOCAL+"impact.ttf", LOCAL+"Impact.ttf", STLABS+"Impact.ttf",
+)
+_IMPACTED = _resolve_font(WORD_FONTS+"impacted.ttf", LOCAL+"impacted.ttf")
+_UNICODE_IMPACT = _resolve_font(WORD_FONTS+"unicodeimpact.ttf", LOCAL+"unicodeimpact.ttf")
+_ANTON = _resolve_font(
+    WORD_FONTS+"Anton-Regular.ttf", LOCAL+"Anton-Regular.ttf", GFONTS+"Anton-Regular.ttf",
+)
+
 FONT_FACES = [
+    ("Impact", _IMPACT, 400, "normal"),
+    ("Impact", _IMPACT, 900, "normal"),
+    ("Impacted", _IMPACTED, 400, "normal"),
+    ("Impacted", _IMPACTED, 900, "normal"),
+    ("UnicodeImpact", _UNICODE_IMPACT, 400, "normal"),
+    ("Anton", _ANTON, 400, "normal"),
+    ("Anton", _ANTON, 900, "normal"),
     ("Poppins", GFONTS+"Poppins-Bold.ttf", 700, "normal"),
     ("Poppins", GFONTS+"Poppins-Bold.ttf", 800, "normal"),
     ("Bebas Neue", STLABS+"BebasNeue-Regular.ttf", 400, "normal"),
@@ -65,7 +93,10 @@ NEG="#0A0A0A"; GRAF="#141414"; GRIS="#1E1E1E"; BLANCO="#F2F2F2"; GRAY="#9aa39c"
 BASE_CSS = """
 :root{--verde:#00FFB2;--red:#FF5247;--am:#FF9D3C;--neg:#0A0A0A;--graf:#141414;--gris:#1E1E1E;
  --blanco:#F2F2F2;--gray:#9aa39c;
- --mono:'IBM Plex Mono',monospace;--cond:'Barlow Condensed',sans-serif;--disp:'Bebas Neue',sans-serif;
+ --impact:'Impact',sans-serif;--impacted:'Impacted',sans-serif;--anton:'Anton',sans-serif;
+ --mono:'IBM Plex Mono',monospace;--cond:'Barlow Condensed',sans-serif;
+ --disp:'Impact','Impacted','Bebas Neue',sans-serif;
+ --title:'Impact','Impacted','Anton',sans-serif;
  --pop:'Poppins',sans-serif;--serif:'Lora',serif;}
 *{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased;}
 body{background:#000;}
@@ -78,6 +109,12 @@ body{background:#000;}
 .gr{color:var(--verde);} .red{color:var(--red);} .am{color:var(--am);}
 .ac{font-family:var(--serif);font-style:italic;font-weight:600;color:var(--verde);}
 b{font-weight:700;color:#fff;}
+/* DEFAULT TÍTULOS: Impact (impact-font.zip del repo) — Super-Heavy ~100px */
+.impact,.title-impact,.title-heavy{
+  font-family:var(--impact);font-weight:900;letter-spacing:.5px;text-transform:uppercase;
+}
+.impacted{font-family:var(--impacted);font-weight:900;letter-spacing:.5px;text-transform:uppercase;}
+.anton,.title-anton{font-family:var(--anton);font-weight:400;letter-spacing:.5px;text-transform:uppercase;}
 
 /* retícula sutil opcional */
 .grid::before{content:'';position:absolute;inset:0;z-index:0;opacity:.4;

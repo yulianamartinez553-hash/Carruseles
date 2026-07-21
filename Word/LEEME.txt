@@ -1,0 +1,5 @@
+STLabs Carousel — MCP Servers Tutorial
+Clone of @fullstackparody MCP tutorial → sebastian.stlabs.ar
+Background: WHITE · Texture: papel_corrugado · Family: manifiesto
+Slides: 9 · Keyword: MCP · Idioma: español
+Accent: #00FFB2 · Claude: assets/claude.png

@@ -1,5 +1,5 @@
 {
-  "ultimo_id": "2026-07-01-tu-sitio-web-no-es-una-tarjeta",
+  "ultimo_id": "2026-07-21-tutorial-servidores-mcp",
   "carruseles": [
     {
       "id": "2026-07-01-demo-memoria-stlabs",
@@ -26,6 +26,123 @@
       "fondo": "concreto_industrial",
       "familia_visual": "operator_log",
       "feedback_estado": "publicado"
+    },
+    {
+      "id": "2026-07-17-fable-5-antes-de-que-se-acabe-el-tiempo",
+      "fecha": "2026-07-17",
+      "titulo": "Fable 5 Antes De Que Se Acabe El Tiempo",
+      "slides": 8,
+      "fondo": "lino_tela",
+      "familia_visual": "before_after",
+      "feedback_estado": "borrador"
+    },
+    {
+      "id": "2026-07-19-fable-5-usos-que-parecen-trampa",
+      "fecha": "2026-07-19",
+      "titulo": "Fable 5 Usos Que Parecen Trampa",
+      "slides": 7,
+      "fondo": "reticula_fina",
+      "familia_visual": "dossier_editorial",
+      "feedback_estado": "borrador"
+    },
+    {
+      "id": "2026-07-19-fable-5-usos-que-parecen-trampa",
+      "fecha": "2026-07-19",
+      "titulo": "Fable 5 Usos Que Parecen Trampa",
+      "slides": 7,
+      "fondo": "reticula_fina",
+      "familia_visual": "dossier_editorial",
+      "feedback_estado": "borrador"
+    },
+    {
+      "id": "2026-07-19-fable-5-usos-que-parecen-trampa",
+      "fecha": "2026-07-19",
+      "titulo": "Fable 5 Usos Que Parecen Trampa",
+      "slides": 7,
+      "fondo": "reticula_fina",
+      "familia_visual": "dossier_editorial",
+      "feedback_estado": "borrador"
+    },
+    {
+      "id": "2026-07-21-mcp-servers-tutorial",
+      "fecha": "2026-07-21",
+      "titulo": "MCP Servers Tutorial",
+      "slides": 9,
+      "fondo": "papel_corrugado",
+      "familia_visual": "manifiesto",
+      "feedback_estado": "borrador"
+    },
+    {
+      "id": "2026-07-21-mcp-servers-tutorial",
+      "fecha": "2026-07-21",
+      "titulo": "MCP Servers Tutorial",
+      "slides": 9,
+      "fondo": "papel_corrugado",
+      "familia_visual": "manifiesto",
+      "feedback_estado": "borrador"
+    },
+    {
+      "id": "2026-07-21-tutorial-servidores-mcp",
+      "fecha": "2026-07-21",
+      "titulo": "Tutorial Servidores MCP",
+      "slides": 9,
+      "fondo": "papel_corrugado",
+      "familia_visual": "manifiesto",
+      "feedback_estado": "borrador"
+    },
+    {
+      "id": "2026-07-21-tutorial-servidores-mcp",
+      "fecha": "2026-07-21",
+      "titulo": "Tutorial Servidores MCP",
+      "slides": 9,
+      "fondo": "papel_corrugado",
+      "familia_visual": "manifiesto",
+      "feedback_estado": "borrador"
+    },
+    {
+      "id": "2026-07-21-tutorial-servidores-mcp",
+      "fecha": "2026-07-21",
+      "titulo": "Tutorial Servidores MCP",
+      "slides": 9,
+      "fondo": "papel_corrugado",
+      "familia_visual": "manifiesto",
+      "feedback_estado": "borrador"
+    },
+    {
+      "id": "2026-07-21-tutorial-servidores-mcp",
+      "fecha": "2026-07-21",
+      "titulo": "Tutorial Servidores MCP",
+      "slides": 9,
+      "fondo": "papel_corrugado",
+      "familia_visual": "manifiesto",
+      "feedback_estado": "borrador"
+    },
+    {
+      "id": "2026-07-21-tutorial-servidores-mcp",
+      "fecha": "2026-07-21",
+      "titulo": "Tutorial Servidores MCP",
+      "slides": 9,
+      "fondo": "papel_corrugado",
+      "familia_visual": "manifiesto",
+      "feedback_estado": "borrador"
+    },
+    {
+      "id": "2026-07-21-tutorial-servidores-mcp",
+      "fecha": "2026-07-21",
+      "titulo": "Tutorial Servidores MCP",
+      "slides": 9,
+      "fondo": "papel_corrugado",
+      "familia_visual": "manifiesto",
+      "feedback_estado": "borrador"
+    },
+    {
+      "id": "2026-07-21-tutorial-servidores-mcp",
+      "fecha": "2026-07-21",
+      "titulo": "Tutorial Servidores MCP",
+      "slides": 9,
+      "fondo": "papel_corrugado",
+      "familia_visual": "manifiesto",
+      "feedback_estado": "borrador"
     }
   ]
 }

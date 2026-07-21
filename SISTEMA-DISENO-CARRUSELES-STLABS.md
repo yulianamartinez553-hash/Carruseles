@@ -35,15 +35,29 @@ Cuando Yuli sube imágenes, la tarea por defecto es **clonar el carrusel** con l
 | Ámbar | `#FF9D3C` | Solo énfasis negativo puntual. |
 
 ### Tipografías (todas base64-embebidas — CDN inaccesible en entorno bash)
+
+#### Default de título (obligatorio — pack del repo)
+| Familia | Origen | Rol | Token CSS |
+|---|---|---|---|
+| **Impact** | `impact-font.zip` → `fonts/impact.ttf` | **Todos los títulos** display / portada / CTA (~100px, Super-Heavy) | `--impact` · `.impact` / `.title-heavy` |
+
+Variantes del pack: `impacted.ttf`, `unicodeimpact.ttf`. Licencia: `fonts/Befonts-License.txt` (Personal Use · Befonts).
+
+Stack: `--disp` / `--title` arrancan con **Impact**. Anton / Bebas / Poppins = soporte, no default.
+
+#### Stack completo
 | Familia | Peso | Rol |
 |---|---|---|
-| Bebas Neue | 400 | Display, portada, números gigantes |
-| Poppins | 700 / 800 | Titulares de paso |
-| Barlow Condensed | 400–700 | Cuerpo, bullets, claims |
-| IBM Plex Mono | 400–600 | Labels, PASO, footer, URL |
+| Impact | 400 / 900 | **Default de título** Super-Heavy |
+| Impacted | 400 / 900 | Variante del pack Impact |
+| Anton | 400 / 900 | Soporte Ultra-Heavy |
+| Bebas Neue | 400 | Display alternativo, números |
+| Poppins | 700 / 800 | Titulares de paso (soporte) |
+| Barlow Condensed | 400–700 | Cuerpo, bullets, claims — **jamás título** |
+| IBM Plex Mono | 400–600 | Labels, PASO, footer, URL — **jamás título** |
 | Lora *itálica* | 400–700 | Palabras-acento editoriales, siempre en verde |
 
-Rutas: `/usr/share/fonts/truetype/stlabs/` y `/usr/share/fonts/truetype/google-fonts/`
+Resolución del kit: `Word/` → `fonts/` → sistema. Pack canónico en la raíz: `impact-font.zip`.
 
 ### Voz
 Español argentino, voseo: Empezá, Elegí, Dejá, Hacé, Creá, Conectá, Comentá, Deslizá.
