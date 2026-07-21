@@ -139,23 +139,31 @@ b{font-weight:700;color:#fff;}
   font-family:var(--mono);font-size:16px;letter-spacing:2px;padding:8px 14px;border-radius:6px;
 }
 .h1{
-  margin-top:18px;font-family:var(--impact);font-weight:900;font-size:84px;line-height:1.05;
-  letter-spacing:1px;color:#0A0A0A;position:relative;z-index:3;
-  -webkit-text-stroke:1.5px #0A0A0A;paint-order:stroke fill;
+  margin-top:18px;font-family:var(--impact);font-weight:900;font-size:112px;line-height:1.02;
+  letter-spacing:.5px;color:#0A0A0A;position:relative;z-index:3;
+  -webkit-text-stroke:6px #0A0A0A;paint-order:stroke fill;
+  text-shadow:0 0 0 #0A0A0A;
 }
 .h1 .hl{
-  display:inline-block;color:var(--acento);-webkit-text-stroke:1.5px var(--acento);
-  margin-top:6px;
+  display:inline-block;color:var(--acento);-webkit-text-stroke:6px var(--acento);
+  margin-top:8px;
 }
 .h1 .script{
-  display:block;margin-top:8px;font-family:var(--serif);font-style:italic;font-weight:700;
-  font-size:80px;color:var(--acento);-webkit-text-stroke:0;letter-spacing:0;line-height:1.05;
+  display:block;margin-top:10px;font-family:var(--serif);font-style:italic;font-weight:700;
+  font-size:100px;color:var(--acento);-webkit-text-stroke:3px var(--acento);letter-spacing:0;line-height:1.02;
 }
-.sub{margin-top:16px;font-family:var(--cond);font-size:30px;color:#3a3f3c;line-height:1.35;position:relative;z-index:3;}
+.app-lab{
+  font-family:var(--pop);font-weight:800;font-size:40px;color:#0A0A0A;margin-top:16px;
+}
+.app-card{
+  background:#fff;border:2px solid rgba(10,10,10,.12);border-radius:24px;
+  box-shadow:0 16px 40px rgba(10,10,10,.10);position:relative;text-align:center;padding:40px 28px;
+}
+.sub{margin-top:16px;font-family:var(--cond);font-size:34px;color:#3a3f3c;line-height:1.35;position:relative;z-index:3;}
 .sub b,.body b{color:#0A0A0A;}
-.body{margin-top:14px;font-family:var(--cond);font-size:28px;color:#4a524e;line-height:1.35;max-width:920px;position:relative;z-index:3;}
+.body{margin-top:14px;font-family:var(--cond);font-size:30px;color:#4a524e;line-height:1.35;max-width:920px;position:relative;z-index:3;}
 .note{
-  font-family:var(--serif);font-style:italic;font-weight:600;font-size:26px;color:var(--acento);
+  font-family:var(--serif);font-style:italic;font-weight:600;font-size:30px;color:var(--acento);
 }
 .tape{
   position:absolute;background:rgba(180,180,170,.45);border:1px solid rgba(120,120,110,.25);
@@ -207,8 +215,8 @@ b{font-weight:700;color:#fff;}
   <h1 class="h1">MCP<span class="script">Servers</span></h1>
   <p class="sub">Qué son + Cómo configurarlos</p>
 </div>
-<div style="position:absolute;left:70px;right:70px;bottom:170px;z-index:4;display:flex;gap:28px;align-items:flex-start;">
-  <div class="win" style="flex:1.4;">
+<div style="position:absolute;left:56px;right:56px;bottom:150px;z-index:4;display:flex;gap:24px;align-items:flex-start;">
+  <div class="win" style="flex:1.25;">
     <div class="tape" style="width:90px;height:28px;top:-12px;left:40px;"></div>
     <div class="tape" style="width:90px;height:28px;top:-10px;right:50px;transform:rotate(8deg);"></div>
     <div class="win-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
@@ -219,16 +227,16 @@ b{font-weight:700;color:#fff;}
   <span class="k">"filesystem"</span>: { <span class="c">...</span> }
 }</pre>
   </div>
-  <div style="display:flex;flex-direction:column;gap:16px;width:180px;padding-top:30px;">
-    <div class="card" style="padding:22px;text-align:center;"><span class="ico" style="width:48px;height:48px"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.1.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05A9.3 9.3 0 0 1 12 6.8c.85 0 1.71.12 2.51.35 1.9-1.32 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .26.18.58.69.48A10.03 10.03 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg></span><div style="margin-top:8px;font-family:var(--mono);font-size:14px;">GitHub</div>
-      <div class="tape" style="width:70px;height:22px;top:-8px;left:40px;"></div></div>
-    <div class="card" style="padding:22px;text-align:center;"><span class="ico" style="width:48px;height:48px"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 15a2 2 0 1 1-2-2h2v2zm1 0a2 2 0 1 1 4 0v5a2 2 0 1 1-4 0v-5zm2-7a2 2 0 1 1 2-2v2H9zm0 1a2 2 0 1 1 0 4H4a2 2 0 1 1 0-4h5zm7 2a2 2 0 1 1 2 2h-2v-2zm-1 0a2 2 0 1 1-4 0V6a2 2 0 1 1 4 0v5zm-2 7a2 2 0 1 1-2 2v-2h2zm0-1a2 2 0 1 1 0-4h5a2 2 0 1 1 0 4h-5z"/></svg></span><div style="margin-top:8px;font-family:var(--mono);font-size:14px;">Slack</div>
-      <div class="tape" style="width:70px;height:22px;top:-8px;left:40px;transform:rotate(5deg);"></div></div>
-    <div class="card" style="padding:22px;text-align:center;"><span class="ico" style="width:48px;height:48px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h6l2 2h10v10H3V7z"/></svg></span><div style="margin-top:8px;font-family:var(--mono);font-size:14px;">Archivos</div>
-      <div class="tape" style="width:70px;height:22px;top:-8px;left:40px;transform:rotate(-4deg);"></div></div>
+  <div style="display:flex;flex-direction:column;gap:16px;width:320px;padding-top:0;">
+    <div class="app-card"><span class="ico" style="width:108px;height:108px"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.1.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05A9.3 9.3 0 0 1 12 6.8c.85 0 1.71.12 2.51.35 1.9-1.32 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .26.18.58.69.48A10.03 10.03 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg></span><div class="app-lab">GitHub</div>
+      <div class="tape" style="width:100px;height:28px;top:-12px;left:50%;margin-left:-50px;"></div></div>
+    <div class="app-card"><span class="ico" style="width:108px;height:108px"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 15a2 2 0 1 1-2-2h2v2zm1 0a2 2 0 1 1 4 0v5a2 2 0 1 1-4 0v-5zm2-7a2 2 0 1 1 2-2v2H9zm0 1a2 2 0 1 1 0 4H4a2 2 0 1 1 0-4h5zm7 2a2 2 0 1 1 2 2h-2v-2zm-1 0a2 2 0 1 1-4 0V6a2 2 0 1 1 4 0v5zm-2 7a2 2 0 1 1-2 2v-2h2zm0-1a2 2 0 1 1 0-4h5a2 2 0 1 1 0 4h-5z"/></svg></span><div class="app-lab">Slack</div>
+      <div class="tape" style="width:100px;height:28px;top:-12px;left:50%;margin-left:-50px;transform:rotate(5deg);"></div></div>
+    <div class="app-card"><span class="ico" style="width:108px;height:108px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h6l2 2h10v10H3V7z"/></svg></span><div class="app-lab">Archivos</div>
+      <div class="tape" style="width:100px;height:28px;top:-12px;left:50%;margin-left:-50px;transform:rotate(-4deg);"></div></div>
   </div>
 </div>
-<div style="position:absolute;left:90px;bottom:280px;z-index:5;display:flex;align-items:center;gap:12px;">
+<div style="position:absolute;left:90px;bottom:250px;z-index:5;display:flex;align-items:center;gap:12px;">
   <img src="data:image/png;base64,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" alt="Claude" style="width:72px;height:68px;object-fit:contain;filter:drop-shadow(0 8px 14px rgba(0,0,0,.15));">
   <span class="hand">el archivo que conecta todo</span>
 </div>
@@ -247,20 +255,20 @@ b{font-weight:700;color:#fff;}
   <p class="body">Un estándar abierto de Anthropic que deja que la IA se conecte a cualquier herramienta, base de datos o API externa.</p>
   <p class="body">Pensalo como el <span class="note">USB-C de la IA.</span><br>Un conector, y todo funciona.</p>
 </div>
-<div style="position:absolute;left:80px;right:80px;bottom:180px;z-index:4;display:flex;align-items:center;justify-content:center;gap:18px;">
-  <div class="card" style="padding:28px 32px;min-width:180px;text-align:center;">
-    <span class="ico" style="width:56px;height:56px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 4a3.5 3.5 0 0 0-3.4 4.2A3.5 3.5 0 0 0 4 11.5 3.5 3.5 0 0 0 6.2 15a3.5 3.5 0 0 0 3.3 4h.5M14.5 4a3.5 3.5 0 0 1 3.4 4.2A3.5 3.5 0 0 1 20 11.5 3.5 3.5 0 0 1 17.8 15a3.5 3.5 0 0 1-3.3 4h-.5M9 8.5h6M9 12h6M10 15.5h4"/></svg></span>
-    <div style="margin-top:10px;font-family:var(--pop);font-weight:800;font-size:28px;">IA</div>
+<div style="position:absolute;left:56px;right:56px;bottom:160px;z-index:4;display:flex;align-items:center;justify-content:center;gap:24px;">
+  <div class="card" style="padding:40px 42px;min-width:240px;text-align:center;">
+    <span class="ico" style="width:96px;height:96px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 4a3.5 3.5 0 0 0-3.4 4.2A3.5 3.5 0 0 0 4 11.5 3.5 3.5 0 0 0 6.2 15a3.5 3.5 0 0 0 3.3 4h.5M14.5 4a3.5 3.5 0 0 1 3.4 4.2A3.5 3.5 0 0 1 20 11.5 3.5 3.5 0 0 1 17.8 15a3.5 3.5 0 0 1-3.3 4h-.5M9 8.5h6M9 12h6M10 15.5h4"/></svg></span>
+    <div style="margin-top:16px;font-family:var(--pop);font-weight:800;font-size:44px;">IA</div>
   </div>
-  <div style="font-size:36px;color:var(--acento);">┄┄</div>
-  <div class="card" style="padding:28px 26px;border:2px solid var(--acento);text-align:center;">
-    <span class="ico" style="width:56px;height:56px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="8" rx="1"/><path d="M12 10v8M8 14h8M7 18h10v3H7z"/></svg></span>
+  <div style="font-size:48px;color:var(--acento);">┄┄</div>
+  <div class="card" style="padding:40px 36px;border:3px solid var(--acento);text-align:center;">
+    <span class="ico" style="width:96px;height:96px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="8" rx="1"/><path d="M12 10v8M8 14h8M7 18h10v3H7z"/></svg></span>
   </div>
-  <div style="font-size:36px;color:var(--acento);">┄</div>
-  <div style="display:flex;flex-direction:column;gap:12px;">
-    <div class="card" style="padding:14px 22px;display:flex;align-items:center;gap:12px;"><span class="ico" style="width:28px;height:28px"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.1.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05A9.3 9.3 0 0 1 12 6.8c.85 0 1.71.12 2.51.35 1.9-1.32 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .26.18.58.69.48A10.03 10.03 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg></span><b>GitHub</b></div>
-    <div class="card" style="padding:14px 22px;display:flex;align-items:center;gap:12px;"><span class="ico" style="width:28px;height:28px"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 15a2 2 0 1 1-2-2h2v2zm1 0a2 2 0 1 1 4 0v5a2 2 0 1 1-4 0v-5zm2-7a2 2 0 1 1 2-2v2H9zm0 1a2 2 0 1 1 0 4H4a2 2 0 1 1 0-4h5zm7 2a2 2 0 1 1 2 2h-2v-2zm-1 0a2 2 0 1 1-4 0V6a2 2 0 1 1 4 0v5zm-2 7a2 2 0 1 1-2 2v-2h2zm0-1a2 2 0 1 1 0-4h5a2 2 0 1 1 0 4h-5z"/></svg></span><b>Slack</b></div>
-    <div class="card" style="padding:14px 22px;display:flex;align-items:center;gap:12px;"><span class="ico" style="width:28px;height:28px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span><b>Base de datos</b></div>
+  <div style="font-size:48px;color:var(--acento);">┄</div>
+  <div style="display:flex;flex-direction:column;gap:18px;min-width:340px;">
+    <div class="card" style="padding:26px 32px;display:flex;align-items:center;gap:18px;"><span class="ico" style="width:60px;height:60px"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.1.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05A9.3 9.3 0 0 1 12 6.8c.85 0 1.71.12 2.51.35 1.9-1.32 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .26.18.58.69.48A10.03 10.03 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg></span><span style="font-family:var(--pop);font-weight:800;font-size:38px;color:#0A0A0A;">GitHub</span></div>
+    <div class="card" style="padding:26px 32px;display:flex;align-items:center;gap:18px;"><span class="ico" style="width:60px;height:60px"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 15a2 2 0 1 1-2-2h2v2zm1 0a2 2 0 1 1 4 0v5a2 2 0 1 1-4 0v-5zm2-7a2 2 0 1 1 2-2v2H9zm0 1a2 2 0 1 1 0 4H4a2 2 0 1 1 0-4h5zm7 2a2 2 0 1 1 2 2h-2v-2zm-1 0a2 2 0 1 1-4 0V6a2 2 0 1 1 4 0v5zm-2 7a2 2 0 1 1-2 2v-2h2zm0-1a2 2 0 1 1 0-4h5a2 2 0 1 1 0 4h-5z"/></svg></span><span style="font-family:var(--pop);font-weight:800;font-size:38px;color:#0A0A0A;">Slack</span></div>
+    <div class="card" style="padding:26px 32px;display:flex;align-items:center;gap:18px;"><span class="ico" style="width:60px;height:60px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span><span style="font-family:var(--pop);font-weight:800;font-size:38px;color:#0A0A0A;">Base de datos</span></div>
   </div>
 </div>
 <div class="swipe">deslizá →</div><div class="foot">sebastian.stlabs.ar</div></section><section class="slide">
@@ -275,32 +283,32 @@ b{font-weight:700;color:#fff;}
   <div class="tag">ARQUITECTURA</div>
   <h1 class="h1">Cómo funciona <span class="hl">MCP</span></h1>
 </div>
-<div style="position:absolute;left:120px;right:120px;top:340px;bottom:160px;z-index:4;display:flex;flex-direction:column;align-items:center;gap:10px;">
-  <div class="card" style="width:520px;padding:22px 28px;display:flex;align-items:center;justify-content:space-between;">
-    <div class="tape" style="width:80px;height:24px;top:-10px;left:30px;"></div>
-    <div><div style="font-family:var(--pop);font-weight:800;font-size:28px;">HOST</div>
-    <div style="font-family:var(--cond);font-size:22px;color:#6a736e;">Tu app de IA</div></div>
-    <span class="ico" style="width:48px;height:48px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 4a3.5 3.5 0 0 0-3.4 4.2A3.5 3.5 0 0 0 4 11.5 3.5 3.5 0 0 0 6.2 15a3.5 3.5 0 0 0 3.3 4h.5M14.5 4a3.5 3.5 0 0 1 3.4 4.2A3.5 3.5 0 0 1 20 11.5 3.5 3.5 0 0 1 17.8 15a3.5 3.5 0 0 1-3.3 4h-.5M9 8.5h6M9 12h6M10 15.5h4"/></svg></span>
+<div style="position:absolute;left:100px;right:100px;top:320px;bottom:150px;z-index:4;display:flex;flex-direction:column;align-items:center;gap:12px;">
+  <div class="card" style="width:620px;padding:32px 36px;display:flex;align-items:center;justify-content:space-between;">
+    <div class="tape" style="width:90px;height:26px;top:-10px;left:30px;"></div>
+    <div><div style="font-family:var(--pop);font-weight:800;font-size:44px;">HOST</div>
+    <div style="font-family:var(--cond);font-size:30px;color:#6a736e;">Tu app de IA</div></div>
+    <span class="ico" style="width:80px;height:80px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 4a3.5 3.5 0 0 0-3.4 4.2A3.5 3.5 0 0 0 4 11.5 3.5 3.5 0 0 0 6.2 15a3.5 3.5 0 0 0 3.3 4h.5M14.5 4a3.5 3.5 0 0 1 3.4 4.2A3.5 3.5 0 0 1 20 11.5 3.5 3.5 0 0 1 17.8 15a3.5 3.5 0 0 1-3.3 4h-.5M9 8.5h6M9 12h6M10 15.5h4"/></svg></span>
   </div>
-  <div class="hand">pide ↓</div>
-  <div class="card" style="width:520px;padding:22px 28px;display:flex;align-items:center;justify-content:space-between;">
-    <div class="tape" style="width:80px;height:24px;top:-10px;right:40px;transform:rotate(7deg);"></div>
-    <div><div style="font-family:var(--pop);font-weight:800;font-size:28px;">CLIENT</div>
-    <div style="font-family:var(--cond);font-size:22px;color:#6a736e;">El conector</div></div>
-    <span class="ico" style="width:48px;height:48px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v6M16 2v6M6 8h12v4a6 6 0 0 1-12 0V8zM12 18v4"/></svg></span>
+  <div class="hand" style="font-size:30px;">pide ↓</div>
+  <div class="card" style="width:620px;padding:32px 36px;display:flex;align-items:center;justify-content:space-between;">
+    <div class="tape" style="width:90px;height:26px;top:-10px;right:40px;transform:rotate(7deg);"></div>
+    <div><div style="font-family:var(--pop);font-weight:800;font-size:44px;">CLIENT</div>
+    <div style="font-family:var(--cond);font-size:30px;color:#6a736e;">El conector</div></div>
+    <span class="ico" style="width:80px;height:80px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v6M16 2v6M6 8h12v4a6 6 0 0 1-12 0V8zM12 18v4"/></svg></span>
   </div>
-  <div style="align-self:flex-end;margin-right:40px;" class="hand">← un cliente por servidor</div>
-  <div class="hand">llama ↓</div>
-  <div class="card" style="width:520px;padding:22px 28px;display:flex;align-items:center;justify-content:space-between;">
-    <div class="tape" style="width:80px;height:24px;top:-10px;left:50px;transform:rotate(-5deg);"></div>
-    <div><div style="font-family:var(--pop);font-weight:800;font-size:28px;">SERVER</div>
-    <div style="font-family:var(--cond);font-size:22px;color:#6a736e;">La herramienta</div></div>
-    <span class="ico" style="width:48px;height:48px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a4 4 0 0 0-5.6 5.6L3 18v3h3l6.1-6.1a4 4 0 0 0 5.6-5.6l-2.5 2.5-2.5-2.5 2.5-2.5z"/></svg></span>
+  <div style="align-self:flex-end;margin-right:40px;" class="hand" style="font-size:28px;">← un cliente por servidor</div>
+  <div class="hand" style="font-size:30px;">llama ↓</div>
+  <div class="card" style="width:620px;padding:32px 36px;display:flex;align-items:center;justify-content:space-between;">
+    <div class="tape" style="width:90px;height:26px;top:-10px;left:50px;transform:rotate(-5deg);"></div>
+    <div><div style="font-family:var(--pop);font-weight:800;font-size:44px;">SERVER</div>
+    <div style="font-family:var(--cond);font-size:30px;color:#6a736e;">La herramienta</div></div>
+    <span class="ico" style="width:80px;height:80px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a4 4 0 0 0-5.6 5.6L3 18v3h3l6.1-6.1a4 4 0 0 0 5.6-5.6l-2.5 2.5-2.5-2.5 2.5-2.5z"/></svg></span>
   </div>
-  <div style="display:flex;gap:18px;margin-top:8px;">
-    <div class="card" style="padding:12px 16px;border-radius:999px;"><span class="ico" style="width:22px;height:22px"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.1.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05A9.3 9.3 0 0 1 12 6.8c.85 0 1.71.12 2.51.35 1.9-1.32 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .26.18.58.69.48A10.03 10.03 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg></span> GitHub</div>
-    <div class="card" style="padding:12px 16px;border-radius:999px;"><span class="ico" style="width:22px;height:22px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m8 8-4 4 4 4M16 8l4 4-4 4"/></svg></span> Slack</div>
-    <div class="card" style="padding:12px 16px;border-radius:999px;"><span class="ico" style="width:22px;height:22px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 18h11a4 4 0 0 0 0-8 6 6 0 0 0-11.5-1.5A4 4 0 0 0 7 18z"/></svg></span> Archivos</div>
+  <div style="display:flex;gap:20px;margin-top:12px;">
+    <div class="card" style="padding:20px 28px;border-radius:999px;font-family:var(--pop);font-weight:800;font-size:32px;display:flex;align-items:center;gap:14px;"><span class="ico" style="width:44px;height:44px"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.1.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05A9.3 9.3 0 0 1 12 6.8c.85 0 1.71.12 2.51.35 1.9-1.32 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .26.18.58.69.48A10.03 10.03 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg></span> GitHub</div>
+    <div class="card" style="padding:20px 28px;border-radius:999px;font-family:var(--pop);font-weight:800;font-size:32px;display:flex;align-items:center;gap:14px;"><span class="ico" style="width:44px;height:44px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m8 8-4 4 4 4M16 8l4 4-4 4"/></svg></span> Slack</div>
+    <div class="card" style="padding:20px 28px;border-radius:999px;font-family:var(--pop);font-weight:800;font-size:32px;display:flex;align-items:center;gap:14px;"><span class="ico" style="width:44px;height:44px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 18h11a4 4 0 0 0 0-8 6 6 0 0 0-11.5-1.5A4 4 0 0 0 7 18z"/></svg></span> Archivos</div>
   </div>
   <div class="hand" style="position:absolute;left:20px;top:120px;transform:rotate(-90deg);transform-origin:left center;">devuelve resultados ↑</div>
 </div>
@@ -314,55 +322,55 @@ b{font-weight:700;color:#fff;}
 
 <div class="pad">
   <div class="tag">POR QUÉ IMPORTA</div>
-  <h1 class="h1" style="font-size:72px;line-height:1.08;">¿Por qué te tiene<br><span class="hl">que importar?</span></h1>
+  <h1 class="h1" style="font-size:92px;line-height:1.08;">¿Por qué te tiene<br><span class="hl">que importar?</span></h1>
 </div>
-<div style="position:absolute;left:56px;right:56px;top:360px;display:grid;grid-template-columns:1fr 1fr;gap:24px;z-index:4;">
-  <div class="card" style="padding:22px;">
-    <div style="font-family:var(--mono);font-size:16px;color:#FF5247;margin-bottom:12px;">✗ ANTES DE MCP</div>
-    <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
-      <div class="card" style="padding:10px 16px;"><span class="ico" style="width:28px;height:28px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 4a3.5 3.5 0 0 0-3.4 4.2A3.5 3.5 0 0 0 4 11.5 3.5 3.5 0 0 0 6.2 15a3.5 3.5 0 0 0 3.3 4h.5M14.5 4a3.5 3.5 0 0 1 3.4 4.2A3.5 3.5 0 0 1 20 11.5 3.5 3.5 0 0 1 17.8 15a3.5 3.5 0 0 1-3.3 4h-.5M9 8.5h6M9 12h6M10 15.5h4"/></svg></span> IA</div>
-      <div style="font-size:22px;color:#666;line-height:1.1;text-align:center;">╳ ╳ ╳<br>cables enredados</div>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
-        <span class="card" style="padding:8px;"><span class="ico" style="width:20px;height:20px"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.1.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05A9.3 9.3 0 0 1 12 6.8c.85 0 1.71.12 2.51.35 1.9-1.32 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .26.18.58.69.48A10.03 10.03 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg></span></span>
-        <span class="card" style="padding:8px;"><span class="ico" style="width:20px;height:20px"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 15a2 2 0 1 1-2-2h2v2zm1 0a2 2 0 1 1 4 0v5a2 2 0 1 1-4 0v-5zm2-7a2 2 0 1 1 2-2v2H9zm0 1a2 2 0 1 1 0 4H4a2 2 0 1 1 0-4h5zm7 2a2 2 0 1 1 2 2h-2v-2zm-1 0a2 2 0 1 1-4 0V6a2 2 0 1 1 4 0v5zm-2 7a2 2 0 1 1-2 2v-2h2zm0-1a2 2 0 1 1 0-4h5a2 2 0 1 1 0 4h-5z"/></svg></span></span>
-        <span class="card" style="padding:8px;"><span class="ico" style="width:20px;height:20px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span></span>
-        <span class="card" style="padding:8px;"><span class="ico" style="width:20px;height:20px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h6l2 2h10v10H3V7z"/></svg></span></span>
-        <span class="card" style="padding:8px;"><span class="ico" style="width:20px;height:20px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span></span>
+<div style="position:absolute;left:56px;right:56px;top:340px;display:grid;grid-template-columns:1fr 1fr;gap:24px;z-index:4;">
+  <div class="card" style="padding:26px;">
+    <div style="font-family:var(--mono);font-size:18px;color:#FF5247;margin-bottom:14px;">✗ ANTES DE MCP</div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:12px;">
+      <div class="card" style="padding:18px 24px;display:flex;align-items:center;gap:12px;font-family:var(--pop);font-weight:800;font-size:32px;"><span class="ico" style="width:52px;height:52px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 4a3.5 3.5 0 0 0-3.4 4.2A3.5 3.5 0 0 0 4 11.5 3.5 3.5 0 0 0 6.2 15a3.5 3.5 0 0 0 3.3 4h.5M14.5 4a3.5 3.5 0 0 1 3.4 4.2A3.5 3.5 0 0 1 20 11.5 3.5 3.5 0 0 1 17.8 15a3.5 3.5 0 0 1-3.3 4h-.5M9 8.5h6M9 12h6M10 15.5h4"/></svg></span> IA</div>
+      <div style="font-size:28px;color:#666;line-height:1.15;text-align:center;">╳ ╳ ╳<br>cables enredados</div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
+        <span class="card" style="padding:16px;"><span class="ico" style="width:44px;height:44px"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.1.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05A9.3 9.3 0 0 1 12 6.8c.85 0 1.71.12 2.51.35 1.9-1.32 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .26.18.58.69.48A10.03 10.03 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg></span></span>
+        <span class="card" style="padding:16px;"><span class="ico" style="width:44px;height:44px"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 15a2 2 0 1 1-2-2h2v2zm1 0a2 2 0 1 1 4 0v5a2 2 0 1 1-4 0v-5zm2-7a2 2 0 1 1 2-2v2H9zm0 1a2 2 0 1 1 0 4H4a2 2 0 1 1 0-4h5zm7 2a2 2 0 1 1 2 2h-2v-2zm-1 0a2 2 0 1 1-4 0V6a2 2 0 1 1 4 0v5zm-2 7a2 2 0 1 1-2 2v-2h2zm0-1a2 2 0 1 1 0-4h5a2 2 0 1 1 0 4h-5z"/></svg></span></span>
+        <span class="card" style="padding:16px;"><span class="ico" style="width:44px;height:44px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span></span>
+        <span class="card" style="padding:16px;"><span class="ico" style="width:44px;height:44px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h6l2 2h10v10H3V7z"/></svg></span></span>
+        <span class="card" style="padding:16px;"><span class="ico" style="width:44px;height:44px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span></span>
       </div>
     </div>
   </div>
-  <div class="card" style="padding:22px;border:2px solid var(--acento);">
-    <div style="font-family:var(--mono);font-size:16px;color:var(--acento);margin-bottom:12px;">✓ CON MCP</div>
-    <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
-      <div class="card" style="padding:10px 16px;"><span class="ico" style="width:28px;height:28px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 4a3.5 3.5 0 0 0-3.4 4.2A3.5 3.5 0 0 0 4 11.5 3.5 3.5 0 0 0 6.2 15a3.5 3.5 0 0 0 3.3 4h.5M14.5 4a3.5 3.5 0 0 1 3.4 4.2A3.5 3.5 0 0 1 20 11.5 3.5 3.5 0 0 1 17.8 15a3.5 3.5 0 0 1-3.3 4h-.5M9 8.5h6M9 12h6M10 15.5h4"/></svg></span> IA</div>
-      <div style="color:var(--acento);font-size:28px;">↓</div>
-      <div style="background:var(--acento);color:var(--ink);padding:10px 18px;border-radius:12px;font-family:var(--pop);font-weight:800;">Conector MCP</div>
-      <div style="color:var(--acento);font-size:22px;">┊ ┊ ┊ ┊ ┊</div>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
-        <span class="card" style="padding:8px;border-color:var(--acento);"><span class="ico" style="width:20px;height:20px"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.1.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05A9.3 9.3 0 0 1 12 6.8c.85 0 1.71.12 2.51.35 1.9-1.32 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .26.18.58.69.48A10.03 10.03 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg></span></span>
-        <span class="card" style="padding:8px;border-color:var(--acento);"><span class="ico" style="width:20px;height:20px"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 15a2 2 0 1 1-2-2h2v2zm1 0a2 2 0 1 1 4 0v5a2 2 0 1 1-4 0v-5zm2-7a2 2 0 1 1 2-2v2H9zm0 1a2 2 0 1 1 0 4H4a2 2 0 1 1 0-4h5zm7 2a2 2 0 1 1 2 2h-2v-2zm-1 0a2 2 0 1 1-4 0V6a2 2 0 1 1 4 0v5zm-2 7a2 2 0 1 1-2 2v-2h2zm0-1a2 2 0 1 1 0-4h5a2 2 0 1 1 0 4h-5z"/></svg></span></span>
-        <span class="card" style="padding:8px;border-color:var(--acento);"><span class="ico" style="width:20px;height:20px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span></span>
-        <span class="card" style="padding:8px;border-color:var(--acento);"><span class="ico" style="width:20px;height:20px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span></span>
-        <span class="card" style="padding:8px;border-color:var(--acento);"><span class="ico" style="width:20px;height:20px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h6l2 2h10v10H3V7z"/></svg></span></span>
+  <div class="card" style="padding:26px;border:2.5px solid var(--acento);">
+    <div style="font-family:var(--mono);font-size:18px;color:var(--acento);margin-bottom:14px;">✓ CON MCP</div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:12px;">
+      <div class="card" style="padding:18px 24px;display:flex;align-items:center;gap:12px;font-family:var(--pop);font-weight:800;font-size:32px;"><span class="ico" style="width:52px;height:52px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 4a3.5 3.5 0 0 0-3.4 4.2A3.5 3.5 0 0 0 4 11.5 3.5 3.5 0 0 0 6.2 15a3.5 3.5 0 0 0 3.3 4h.5M14.5 4a3.5 3.5 0 0 1 3.4 4.2A3.5 3.5 0 0 1 20 11.5 3.5 3.5 0 0 1 17.8 15a3.5 3.5 0 0 1-3.3 4h-.5M9 8.5h6M9 12h6M10 15.5h4"/></svg></span> IA</div>
+      <div style="color:var(--acento);font-size:36px;">↓</div>
+      <div style="background:var(--acento);color:var(--ink);padding:16px 26px;border-radius:14px;font-family:var(--pop);font-weight:800;font-size:32px;">Conector MCP</div>
+      <div style="color:var(--acento);font-size:28px;">┊ ┊ ┊ ┊ ┊</div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
+        <span class="card" style="padding:16px;border-color:var(--acento);"><span class="ico" style="width:44px;height:44px"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.1.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05A9.3 9.3 0 0 1 12 6.8c.85 0 1.71.12 2.51.35 1.9-1.32 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .26.18.58.69.48A10.03 10.03 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg></span></span>
+        <span class="card" style="padding:16px;border-color:var(--acento);"><span class="ico" style="width:44px;height:44px"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 15a2 2 0 1 1-2-2h2v2zm1 0a2 2 0 1 1 4 0v5a2 2 0 1 1-4 0v-5zm2-7a2 2 0 1 1 2-2v2H9zm0 1a2 2 0 1 1 0 4H4a2 2 0 1 1 0-4h5zm7 2a2 2 0 1 1 2 2h-2v-2zm-1 0a2 2 0 1 1-4 0V6a2 2 0 1 1 4 0v5zm-2 7a2 2 0 1 1-2 2v-2h2zm0-1a2 2 0 1 1 0-4h5a2 2 0 1 1 0 4h-5z"/></svg></span></span>
+        <span class="card" style="padding:16px;border-color:var(--acento);"><span class="ico" style="width:44px;height:44px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span></span>
+        <span class="card" style="padding:16px;border-color:var(--acento);"><span class="ico" style="width:44px;height:44px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span></span>
+        <span class="card" style="padding:16px;border-color:var(--acento);"><span class="ico" style="width:44px;height:44px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h6l2 2h10v10H3V7z"/></svg></span></span>
       </div>
     </div>
   </div>
 </div>
-<div style="position:absolute;left:56px;right:56px;bottom:160px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;z-index:4;">
-  <div class="card" style="padding:22px;text-align:center;">
+<div style="position:absolute;left:56px;right:56px;bottom:150px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;z-index:4;">
+  <div class="card" style="padding:26px;text-align:center;">
     <div class="tape" style="width:70px;height:20px;top:-8px;left:50%;margin-left:-35px;"></div>
-    <div style="font-family:var(--impact);font-size:56px;color:var(--acento);">2,300+</div>
-    <div style="font-family:var(--cond);font-size:22px;">Servidores MCP</div>
+    <div style="font-family:var(--impact);font-size:72px;color:var(--acento);-webkit-text-stroke:3.5px var(--acento);">2,300+</div>
+    <div style="font-family:var(--cond);font-size:28px;font-weight:600;">Servidores MCP</div>
   </div>
-  <div class="card" style="padding:22px;text-align:center;">
+  <div class="card" style="padding:26px;text-align:center;">
     <div class="tape" style="width:70px;height:20px;top:-8px;left:50%;margin-left:-35px;transform:rotate(4deg);"></div>
-    <div style="font-family:var(--impact);font-size:56px;color:var(--acento);">3</div>
-    <div style="font-family:var(--cond);font-size:22px;">Grandes empresas de IA lo soportan</div>
+    <div style="font-family:var(--impact);font-size:72px;color:var(--acento);-webkit-text-stroke:3.5px var(--acento);">3</div>
+    <div style="font-family:var(--cond);font-size:28px;font-weight:600;">Grandes empresas de IA lo soportan</div>
   </div>
-  <div class="card" style="padding:22px;text-align:center;">
+  <div class="card" style="padding:26px;text-align:center;">
     <div class="tape" style="width:70px;height:20px;top:-8px;left:50%;margin-left:-35px;transform:rotate(-5deg);"></div>
-    <div style="font-family:var(--impact);font-size:56px;color:var(--acento);">1</div>
-    <div style="font-family:var(--cond);font-size:22px;">Un protocolo para gobernarlos a todos</div>
+    <div style="font-family:var(--impact);font-size:72px;color:var(--acento);-webkit-text-stroke:3.5px var(--acento);">1</div>
+    <div style="font-family:var(--cond);font-size:28px;font-weight:600;">Un protocolo para gobernarlos a todos</div>
   </div>
 </div>
 <div class="swipe">deslizá →</div><div class="foot">sebastian.stlabs.ar</div></section><section class="slide">
@@ -376,7 +384,7 @@ b{font-weight:700;color:#fff;}
 <div class="ghost">1</div>
 <div class="pad">
   <div class="tag">PASO 01</div>
-  <h1 class="h1" style="font-size:72px;">Instalá un servidor</h1>
+  <h1 class="h1" style="font-size:100px;">Instalá un servidor</h1>
   <p class="sub">La mayoría se instala con un solo comando npm o pip.</p>
 </div>
 <div class="win" style="position:absolute;left:80px;right:80px;top:440px;z-index:4;">
@@ -405,7 +413,7 @@ added 47 packages in 3s
 <div class="ghost">2</div>
 <div class="pad">
   <div class="tag">PASO 02</div>
-  <h1 class="h1" style="font-size:72px;">Agregá tu config</h1>
+  <h1 class="h1" style="font-size:100px;">Agregá tu config</h1>
   <p class="sub">Meté el servidor en tu archivo de config. Acá un ejemplo con Claude Desktop.</p>
 </div>
 <div class="win" style="position:absolute;left:70px;right:70px;top:430px;z-index:4;">
@@ -437,7 +445,7 @@ added 47 packages in 3s
 <div class="ghost">3</div>
 <div class="pad">
   <div class="tag">PASO 03</div>
-  <h1 class="h1" style="font-size:72px;">Hablá con tu IA</h1>
+  <h1 class="h1" style="font-size:100px;">Hablá con tu IA</h1>
   <p class="sub">Reiniciá la app. Tu IA ya ve las herramientas nuevas. Pedile que haga cosas.</p>
 </div>
 <div class="win" style="position:absolute;left:90px;right:90px;top:420px;bottom:210px;z-index:4;display:flex;flex-direction:column;">
@@ -483,62 +491,62 @@ added 47 packages in 3s
 
 <div class="pad">
   <div class="tag">DESTACADOS</div>
-  <h1 class="h1" style="font-size:64px;line-height:1.08;">Servidores que<br><span class="hl">valen la pena</span></h1>
+  <h1 class="h1" style="font-size:90px;line-height:1.05;">Servidores que<br><span class="hl">valen la pena</span></h1>
 </div>
-<div style="position:absolute;left:64px;right:64px;top:380px;display:grid;grid-template-columns:1fr 1fr;gap:16px;z-index:4;">
+<div style="position:absolute;left:48px;right:48px;top:340px;display:grid;grid-template-columns:1fr 1fr;gap:22px;z-index:4;">
   
-        <div class="card" style="padding:20px 18px;display:flex;gap:14px;align-items:center;">
-          <div class="tape" style="width:50px;height:16px;top:-7px;left:20px;"></div>
-          <div class="tape" style="width:50px;height:16px;top:-7px;right:20px;transform:rotate(6deg);"></div>
-          <span class="ico" style="width:40px;height:40px"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.1.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05A9.3 9.3 0 0 1 12 6.8c.85 0 1.71.12 2.51.35 1.9-1.32 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .26.18.58.69.48A10.03 10.03 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg></span>
+        <div class="card" style="padding:38px 30px;display:flex;gap:24px;align-items:center;">
+          <div class="tape" style="width:70px;height:22px;top:-10px;left:28px;"></div>
+          <div class="tape" style="width:70px;height:22px;top:-10px;right:28px;transform:rotate(6deg);"></div>
+          <span class="ico" style="width:84px;height:84px"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.1.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05A9.3 9.3 0 0 1 12 6.8c.85 0 1.71.12 2.51.35 1.9-1.32 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .26.18.58.69.48A10.03 10.03 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg></span>
           <div>
-            <div style="font-family:var(--pop);font-weight:800;font-size:26px;">GitHub</div>
-            <div style="font-family:var(--cond);font-size:20px;color:#6a736e;">Repos, issues, PRs</div>
+            <div style="font-family:var(--pop);font-weight:800;font-size:46px;color:#0A0A0A;">GitHub</div>
+            <div style="font-family:var(--cond);font-size:30px;color:#6a736e;">Repos, issues, PRs</div>
           </div>
         </div>
-        <div class="card" style="padding:20px 18px;display:flex;gap:14px;align-items:center;">
-          <div class="tape" style="width:50px;height:16px;top:-7px;left:20px;"></div>
-          <div class="tape" style="width:50px;height:16px;top:-7px;right:20px;transform:rotate(6deg);"></div>
-          <span class="ico" style="width:40px;height:40px"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 15a2 2 0 1 1-2-2h2v2zm1 0a2 2 0 1 1 4 0v5a2 2 0 1 1-4 0v-5zm2-7a2 2 0 1 1 2-2v2H9zm0 1a2 2 0 1 1 0 4H4a2 2 0 1 1 0-4h5zm7 2a2 2 0 1 1 2 2h-2v-2zm-1 0a2 2 0 1 1-4 0V6a2 2 0 1 1 4 0v5zm-2 7a2 2 0 1 1-2 2v-2h2zm0-1a2 2 0 1 1 0-4h5a2 2 0 1 1 0 4h-5z"/></svg></span>
+        <div class="card" style="padding:38px 30px;display:flex;gap:24px;align-items:center;">
+          <div class="tape" style="width:70px;height:22px;top:-10px;left:28px;"></div>
+          <div class="tape" style="width:70px;height:22px;top:-10px;right:28px;transform:rotate(6deg);"></div>
+          <span class="ico" style="width:84px;height:84px"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 15a2 2 0 1 1-2-2h2v2zm1 0a2 2 0 1 1 4 0v5a2 2 0 1 1-4 0v-5zm2-7a2 2 0 1 1 2-2v2H9zm0 1a2 2 0 1 1 0 4H4a2 2 0 1 1 0-4h5zm7 2a2 2 0 1 1 2 2h-2v-2zm-1 0a2 2 0 1 1-4 0V6a2 2 0 1 1 4 0v5zm-2 7a2 2 0 1 1-2 2v-2h2zm0-1a2 2 0 1 1 0-4h5a2 2 0 1 1 0 4h-5z"/></svg></span>
           <div>
-            <div style="font-family:var(--pop);font-weight:800;font-size:26px;">Slack</div>
-            <div style="font-family:var(--cond);font-size:20px;color:#6a736e;">Leer + enviar mensajes</div>
+            <div style="font-family:var(--pop);font-weight:800;font-size:46px;color:#0A0A0A;">Slack</div>
+            <div style="font-family:var(--cond);font-size:30px;color:#6a736e;">Leer + enviar mensajes</div>
           </div>
         </div>
-        <div class="card" style="padding:20px 18px;display:flex;gap:14px;align-items:center;">
-          <div class="tape" style="width:50px;height:16px;top:-7px;left:20px;"></div>
-          <div class="tape" style="width:50px;height:16px;top:-7px;right:20px;transform:rotate(6deg);"></div>
-          <span class="ico" style="width:40px;height:40px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h6l2 2h10v10H3V7z"/></svg></span>
+        <div class="card" style="padding:38px 30px;display:flex;gap:24px;align-items:center;">
+          <div class="tape" style="width:70px;height:22px;top:-10px;left:28px;"></div>
+          <div class="tape" style="width:70px;height:22px;top:-10px;right:28px;transform:rotate(6deg);"></div>
+          <span class="ico" style="width:84px;height:84px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h6l2 2h10v10H3V7z"/></svg></span>
           <div>
-            <div style="font-family:var(--pop);font-weight:800;font-size:26px;">Filesystem</div>
-            <div style="font-family:var(--cond);font-size:20px;color:#6a736e;">Leer + escribir archivos locales</div>
+            <div style="font-family:var(--pop);font-weight:800;font-size:46px;color:#0A0A0A;">Filesystem</div>
+            <div style="font-family:var(--cond);font-size:30px;color:#6a736e;">Leer + escribir archivos locales</div>
           </div>
         </div>
-        <div class="card" style="padding:20px 18px;display:flex;gap:14px;align-items:center;">
-          <div class="tape" style="width:50px;height:16px;top:-7px;left:20px;"></div>
-          <div class="tape" style="width:50px;height:16px;top:-7px;right:20px;transform:rotate(6deg);"></div>
-          <span class="ico" style="width:40px;height:40px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span>
+        <div class="card" style="padding:38px 30px;display:flex;gap:24px;align-items:center;">
+          <div class="tape" style="width:70px;height:22px;top:-10px;left:28px;"></div>
+          <div class="tape" style="width:70px;height:22px;top:-10px;right:28px;transform:rotate(6deg);"></div>
+          <span class="ico" style="width:84px;height:84px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span>
           <div>
-            <div style="font-family:var(--pop);font-weight:800;font-size:26px;">PostgreSQL</div>
-            <div style="font-family:var(--cond);font-size:20px;color:#6a736e;">Consultá tu base de datos</div>
+            <div style="font-family:var(--pop);font-weight:800;font-size:46px;color:#0A0A0A;">PostgreSQL</div>
+            <div style="font-family:var(--cond);font-size:30px;color:#6a736e;">Consultá tu base de datos</div>
           </div>
         </div>
-        <div class="card" style="padding:20px 18px;display:flex;gap:14px;align-items:center;">
-          <div class="tape" style="width:50px;height:16px;top:-7px;left:20px;"></div>
-          <div class="tape" style="width:50px;height:16px;top:-7px;right:20px;transform:rotate(6deg);"></div>
-          <span class="ico" style="width:40px;height:40px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15c2 2 5 3 8 3s6-1 8-3"/><path d="M7 9h10M9 5h6v10H9z"/></svg></span>
+        <div class="card" style="padding:38px 30px;display:flex;gap:24px;align-items:center;">
+          <div class="tape" style="width:70px;height:22px;top:-10px;left:28px;"></div>
+          <div class="tape" style="width:70px;height:22px;top:-10px;right:28px;transform:rotate(6deg);"></div>
+          <span class="ico" style="width:84px;height:84px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15c2 2 5 3 8 3s6-1 8-3"/><path d="M7 9h10M9 5h6v10H9z"/></svg></span>
           <div>
-            <div style="font-family:var(--pop);font-weight:800;font-size:26px;">AWS</div>
-            <div style="font-family:var(--cond);font-size:20px;color:#6a736e;">15.000+ APIs</div>
+            <div style="font-family:var(--pop);font-weight:800;font-size:46px;color:#0A0A0A;">AWS</div>
+            <div style="font-family:var(--cond);font-size:30px;color:#6a736e;">15.000+ APIs</div>
           </div>
         </div>
-        <div class="card" style="padding:20px 18px;display:flex;gap:14px;align-items:center;">
-          <div class="tape" style="width:50px;height:16px;top:-7px;left:20px;"></div>
-          <div class="tape" style="width:50px;height:16px;top:-7px;right:20px;transform:rotate(6deg);"></div>
-          <span class="ico" style="width:40px;height:40px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>
+        <div class="card" style="padding:38px 30px;display:flex;gap:24px;align-items:center;">
+          <div class="tape" style="width:70px;height:22px;top:-10px;left:28px;"></div>
+          <div class="tape" style="width:70px;height:22px;top:-10px;right:28px;transform:rotate(6deg);"></div>
+          <span class="ico" style="width:84px;height:84px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>
           <div>
-            <div style="font-family:var(--pop);font-weight:800;font-size:26px;">Brave Search</div>
-            <div style="font-family:var(--cond);font-size:20px;color:#6a736e;">Búsqueda web desde la IA</div>
+            <div style="font-family:var(--pop);font-weight:800;font-size:46px;color:#0A0A0A;">Brave Search</div>
+            <div style="font-family:var(--cond);font-size:30px;color:#6a736e;">Búsqueda web desde la IA</div>
           </div>
         </div>
 </div>
@@ -555,7 +563,7 @@ added 47 packages in 3s
   <div class="tape" style="width:140px;height:36px;top:160px;left:80px;"></div>
   <div class="tape" style="width:140px;height:36px;top:160px;right:80px;transform:rotate(8deg);"></div>
   <div class="tape" style="width:120px;height:32px;bottom:200px;right:100px;transform:rotate(-6deg);"></div>
-  <h1 class="h1" style="font-size:96px;line-height:1.05;"><span class="hl">Guardá esto</span><br>para después</h1>
+  <h1 class="h1" style="font-size:120px;line-height:1.02;"><span class="hl">Guardá esto</span><br>para después</h1>
   <p class="sub">Seguime para más tutoriales de IA + Dev</p>
   <div style="margin:36px auto 0;display:inline-block;background:#0A0A0A;color:#fff;border-radius:999px;padding:16px 28px;font-family:var(--mono);font-size:24px;">
     sebastian.stlabs.ar
