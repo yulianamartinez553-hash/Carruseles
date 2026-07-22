@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Clone: Claude Code Skills (CLAUDE.md) → STLabs · blanco · #00FFB2 · español."""
+"""Clone: Claude Code Skills (CLAUDE.md) → STLabs · blanco · #00FFB2 · bichitos voxel · español."""
 from __future__ import annotations
 
 import base64
@@ -20,14 +20,26 @@ KEYWORD = CONTENT["keyword_portada"]
 WORD_DIR = REPO / "Word"
 VERDE = "#00FFB2"
 INK = "#0A0A0A"
+ASSETS = BUILD / "assets"
 
-CLAUDE_PNG = REPO / "assets" / "claude.png"
-CLAUDE_URI = "data:image/png;base64," + base64.b64encode(CLAUDE_PNG.read_bytes()).decode()
-SEB_URI = f"data:image/jpeg;base64,{base64.b64encode((REPO / 'seb.jpg').read_bytes()).decode()}"
 
+def _uri(path: Path) -> str:
+    mime = "image/png" if path.suffix.lower() == ".png" else "image/jpeg"
+    return f"data:{mime};base64," + base64.b64encode(path.read_bytes()).decode()
+
+
+BICHITO = {
+    "cover": _uri(ASSETS / "bichito-cover.png"),
+    "think": _uri(ASSETS / "bichito-think.png"),
+    "surgical": _uri(ASSETS / "bichito-surgical.png"),
+    "airplane": _uri(ASSETS / "bichito-airplane.png"),
+}
 
 EXTRA_CSS = f"""
-:root{{--acento:{VERDE};--ink:{INK};--orange:#E8916A;}}
+:root{{--acento:{VERDE};--ink:{INK};--orange:#E8916A;
+  --impact:'Impact','Impacted','Anton',sans-serif;
+  --impacted:'Impacted','Impact','Anton',sans-serif;
+  --title:'Impact','Impacted','Anton',sans-serif;}}
 .sheet{{background:#e8e8e8;}}
 .slide{{
   color:var(--ink);
@@ -57,17 +69,25 @@ EXTRA_CSS = f"""
   display:inline-block;background:#0A0A0A;color:#fff;
   font-family:var(--mono);font-size:18px;letter-spacing:2px;padding:10px 16px;border-radius:8px;
 }}
+/* Brody-style titles: taller, thicker, slanted + green bar */
 .h1{{
-  margin:0;font-family:var(--impact);font-weight:900;font-size:92px;line-height:0.95;
-  letter-spacing:.5px;color:var(--ink);position:relative;z-index:5;
-  -webkit-text-stroke:4px var(--ink);paint-order:stroke fill;
+  margin:0;font-family:var(--title);font-weight:900;font-size:96px;line-height:0.88;
+  letter-spacing:-1px;color:var(--ink);position:relative;z-index:5;
+  text-transform:uppercase;
+  font-style:italic;
+  transform:skewX(-8deg);
+  transform-origin:left center;
+  -webkit-text-stroke:3.5px var(--ink);paint-order:stroke fill;
 }}
+.h1 .line{{display:block;white-space:nowrap;}}
 .h1 .bar{{
-  display:inline-block;background:var(--acento);color:var(--ink);
-  -webkit-text-stroke:0;padding:6px 18px 10px;margin-top:10px;
-  box-shadow:0 0 0 2px rgba(0,255,178,.25);
+  display:inline-block;background:var(--acento);color:#fff;
+  -webkit-text-stroke:0;padding:10px 22px 14px;margin-top:12px;
+  box-shadow:0 0 0 2px rgba(0,255,178,.22);
+  font-style:italic;
 }}
-.h1 .hl{{color:var(--acento);-webkit-text-stroke:4px var(--acento);}}
+.h1 .hl{{color:var(--acento);-webkit-text-stroke:3.5px var(--acento);}}
+.h1.center{{transform-origin:center center;text-align:center;}}
 .sub{{
   margin-top:18px;font-family:var(--pop);font-weight:800;font-size:32px;
   color:var(--ink);line-height:1.25;max-width:920px;position:relative;z-index:5;
@@ -78,12 +98,17 @@ EXTRA_CSS = f"""
 }}
 .body b{{color:var(--ink);font-weight:700;}}
 .slash{{
-  font-family:var(--mono);font-weight:700;font-size:56px;color:var(--ink);
+  font-family:var(--title);font-weight:900;font-size:68px;color:var(--ink);
   letter-spacing:-1px;position:relative;z-index:5;
+  font-style:italic;transform:skewX(-8deg);transform-origin:left center;
+  line-height:0.95;-webkit-text-stroke:2.5px var(--ink);paint-order:stroke fill;
+  text-transform:uppercase;
 }}
 .slash .u{{
-  display:inline;border-bottom:6px solid var(--acento);padding-bottom:2px;
+  display:inline;border-bottom:8px solid var(--acento);padding-bottom:2px;
+  color:var(--ink);
 }}
+.slash .mark{{color:var(--acento);-webkit-text-stroke:2.5px var(--acento);}}
 .pad{{padding:110px 64px 0;position:relative;z-index:5;text-align:left;}}
 .center{{text-align:center;}}
 .card{{
@@ -99,7 +124,8 @@ EXTRA_CSS = f"""
   margin-bottom:12px;
 }}
 .ba .t{{
-  font-family:var(--impact);font-size:48px;line-height:1;
+  font-family:var(--title);font-size:52px;line-height:0.95;
+  font-style:italic;transform:skewX(-6deg);
   -webkit-text-stroke:2px currentColor;paint-order:stroke fill;margin-bottom:14px;
 }}
 .ba .d{{font-family:var(--cond);font-size:26px;line-height:1.35;color:#3a3f3c;}}
@@ -134,31 +160,9 @@ EXTRA_CSS = f"""
   color:var(--ink);
 }}
 .fix-pill u{{text-decoration-color:var(--acento);text-underline-offset:6px;}}
-.claude{{
+.bichito{{
   display:block;margin:0 auto;object-fit:contain;
-  filter:drop-shadow(0 14px 28px rgba(0,0,0,.16));
-}}
-.prop{{
-  position:absolute;z-index:4;pointer-events:none;
-}}
-.burn{{
-  width:120px;height:150px;background:#1a1a1a;border-radius:6px;
-  box-shadow:0 10px 24px rgba(0,0,0,.2);
-  font-family:var(--mono);font-size:11px;color:#9aa39c;padding:10px 8px;line-height:1.35;
-  transform:rotate(8deg);
-}}
-.flame{{
-  position:absolute;right:-8px;top:-18px;width:28px;height:36px;
-  background:radial-gradient(circle at 50% 70%, #FF9D3C 0%, #FF5247 55%, transparent 70%);
-  border-radius:50% 50% 40% 40%;
-}}
-.thought{{
-  width:90px;height:56px;border:3px solid var(--ink);border-radius:40px;
-  position:relative;
-}}
-.thought:after{{
-  content:'';position:absolute;left:18px;bottom:-14px;width:14px;height:14px;
-  border:3px solid var(--ink);border-radius:50%;
+  filter:drop-shadow(0 16px 28px rgba(0,0,0,.18));
 }}
 .credit{{
   margin-top:10px;padding:16px 22px;border-radius:999px;background:#fff;
@@ -166,6 +170,14 @@ EXTRA_CSS = f"""
   font-family:var(--cond);font-size:24px;color:#3a3f3c;text-align:center;
 }}
 .credit b{{color:var(--acento);}}
+.scribble{{
+  width:110px;height:70px;margin:0 auto 8px;
+  background:
+    radial-gradient(circle at 30% 40%, transparent 40%, #0A0A0A 41%, #0A0A0A 48%, transparent 49%),
+    radial-gradient(circle at 60% 35%, transparent 38%, #0A0A0A 39%, #0A0A0A 46%, transparent 47%),
+    radial-gradient(circle at 45% 60%, transparent 36%, #0A0A0A 37%, #0A0A0A 44%, transparent 45%);
+  opacity:.85;
+}}
 """
 
 
@@ -193,24 +205,16 @@ def slide_cover(s: dict) -> str:
         1,
         f"""
 {meta_bar(1, "PORTADA")}
-<div class="pad center" style="padding-top:150px;">
-  <h1 class="h1" style="font-size:64px;line-height:1.05;">
-    <span style="display:block;white-space:nowrap;">{s['linea1']}</span>
-    <span class="bar" style="display:inline-block;white-space:nowrap;margin-top:14px;">{s['linea2']}</span>
+<div class="pad center" style="padding-top:130px;">
+  <h1 class="h1 center" style="font-size:58px;line-height:0.92;">
+    <span class="line">{s['linea1']}</span>
+    <span class="bar">{s['linea2']}</span>
   </h1>
 </div>
-<div style="position:absolute;left:0;right:0;top:480px;bottom:250px;z-index:4;display:flex;align-items:center;justify-content:center;">
-  <div style="position:relative;width:440px;height:340px;">
-    <img class="claude" src="{CLAUDE_URI}" alt="Claude" style="width:250px;height:234px;position:absolute;left:30px;bottom:30px;">
-    <div class="prop burn" style="right:10px;bottom:60px;">
-      <div class="flame"></div>
-      def fix():<br>
-      &nbsp;&nbsp;return True<br>
-      # CLAUDE.md<br>
-      rules = [...]
-    </div>
-    <div class="prop" style="left:200px;top:10px;font-family:var(--impact);font-size:64px;color:var(--ink);">?</div>
-  </div>
+<div style="position:absolute;left:0;right:0;top:420px;bottom:220px;z-index:4;
+  display:flex;align-items:center;justify-content:center;">
+  <img class="bichito" src="{BICHITO['cover']}" alt="Claude"
+    style="width:520px;height:auto;max-height:520px;">
 </div>
 <div style="position:absolute;left:0;right:0;bottom:155px;text-align:center;z-index:5;">
   <div class="fix-pill">Este archivo lo <u>arregla</u>.</div>
@@ -219,50 +223,24 @@ def slide_cover(s: dict) -> str:
     )
 
 
-def slide_skill(idx: int, s: dict, claude_extra: str = "") -> str:
-    title = f"""{s.get('titulo_a','')}<span class="bar">{s.get('titulo_b','')}</span>"""
-    if s.get("titulo_a", "").startswith("/"):
-        # slash style like surgical
-        a = s["titulo_a"]
-        b = s.get("titulo_b", "")
-        title = f"""<span class="slash"><span class="u">{a.rstrip('-')}</span>{'-' if a.endswith('-') or a.endswith('/') else ''}{b}</span>"""
-        # Actually for skill 3/5 we use slash style
-    sub = f'<p class="sub">{s["subtitulo"]}</p>' if s.get("subtitulo") else ""
-    return wrap(
-        idx,
-        f"""
-{meta_bar(idx)}
-<div class="pad">
-  <div class="tag">{s['tag']}</div>
-  <h1 class="h1" style="margin-top:22px;font-size:84px;">{title}</h1>
-  {sub}
-  <p class="body">{s['cuerpo']}</p>
-</div>
-{claude_extra}
-""",
-    )
-
-
 def slide_skill01(s: dict) -> str:
-    claude = f"""
-<div style="position:absolute;left:0;right:0;bottom:170px;z-index:4;text-align:center;">
-  <div style="position:relative;display:inline-block;">
-    <div class="thought" style="position:absolute;left:50%;top:-70px;margin-left:-45px;"></div>
-    <img class="claude" src="{CLAUDE_URI}" alt="Claude" style="width:220px;height:206px;">
-  </div>
-</div>
-"""
-    title = f"""{s['titulo_a']}<br><span class="bar">{s['titulo_b']}</span>"""
     return wrap(
         2,
         f"""
 {meta_bar(2)}
 <div class="pad">
   <div class="tag">{s['tag']}</div>
-  <h1 class="h1" style="margin-top:22px;font-size:88px;">{title}</h1>
+  <h1 class="h1" style="margin-top:22px;font-size:86px;">
+    <span class="line">{s['titulo_a']}</span>
+    <span class="bar">{s['titulo_b']}</span>
+  </h1>
   <p class="body" style="margin-top:22px;">{s['cuerpo']}</p>
 </div>
-{claude}
+<div style="position:absolute;left:0;right:0;bottom:150px;z-index:4;text-align:center;">
+  <div class="scribble"></div>
+  <img class="bichito" src="{BICHITO['think']}" alt="Claude"
+    style="width:280px;height:auto;">
+</div>
 """,
     )
 
@@ -274,7 +252,7 @@ def slide_skill02(s: dict) -> str:
 {meta_bar(3)}
 <div class="pad">
   <div class="tag" style="background:#fff;color:#0A0A0A;border:2px solid #0A0A0A;">{s['tag']}</div>
-  <div class="slash" style="margin-top:22px;"><span class="u">/simplicidad</span>-primero</div>
+  <div class="slash" style="margin-top:22px;"><span class="mark">/</span><span class="u">simplicidad</span>-primero</div>
   <p class="sub">{s['subtitulo']}</p>
   <p class="body">{s['cuerpo']}</p>
 </div>
@@ -302,19 +280,15 @@ def slide_skill03(s: dict) -> str:
 {meta_bar(4)}
 <div class="pad">
   <div class="tag">{s['tag']}</div>
-  <div class="slash" style="margin-top:22px;font-size:64px;"><span class="u">/cambios</span>-quirúrgicos</div>
+  <div class="slash" style="margin-top:22px;font-size:62px;">
+    <span class="mark">/</span><span class="u">cambios</span>-quirúrgicos
+  </div>
   <p class="sub">{s['subtitulo']}</p>
   <p class="body">{s['cuerpo']}</p>
 </div>
-<div style="position:absolute;left:0;right:0;bottom:160px;z-index:4;text-align:center;">
-  <div style="position:relative;display:inline-block;">
-    <div style="position:absolute;left:50%;top:-8px;margin-left:-70px;width:140px;height:36px;background:#9ED6FF;border-radius:18px 18px 8px 8px;z-index:5;"></div>
-    <img class="claude" src="{CLAUDE_URI}" alt="Claude" style="width:200px;height:188px;position:relative;z-index:4;">
-    <div style="position:absolute;left:50%;bottom:-10px;margin-left:-90px;width:180px;height:70px;background:#1a1a1a;border-radius:10px;border:2px solid var(--acento);z-index:3;
-      font-family:var(--mono);font-size:12px;color:var(--acento);padding:10px;text-align:left;">
-      def fixBug():<br>&nbsp;&nbsp;return ok
-    </div>
-  </div>
+<div style="position:absolute;left:0;right:0;bottom:140px;z-index:4;text-align:center;">
+  <img class="bichito" src="{BICHITO['surgical']}" alt="Claude"
+    style="width:420px;height:auto;max-height:380px;">
 </div>
 """,
     )
@@ -327,7 +301,9 @@ def slide_skill04(s: dict) -> str:
 {meta_bar(5)}
 <div class="pad">
   <div class="tag">{s['tag']}</div>
-  <div class="slash" style="margin-top:22px;font-size:60px;"><span class="u">/ejecución</span>-con-meta</div>
+  <div class="slash" style="margin-top:22px;font-size:58px;">
+    <span class="mark">/</span><span class="u">ejecución</span>-con-meta
+  </div>
   <p class="sub">{s['subtitulo']}</p>
   <p class="body">{s['cuerpo']}</p>
 </div>
@@ -339,9 +315,6 @@ def slide_skill04(s: dict) -> str:
       2. Implementá lo mínimo → <b>pasa</b><br>
       3. Repetí hasta cumplir el criterio
     </div>
-  </div>
-  <div style="margin-top:18px;text-align:center;">
-    <img class="claude" src="{CLAUDE_URI}" alt="Claude" style="width:120px;height:112px;">
   </div>
 </div>
 """,
@@ -366,7 +339,9 @@ def slide_install(s: dict) -> str:
 {meta_bar(6, "INSTALAR")}
 <div class="pad" style="padding-top:100px;">
   <div class="tag">{s['tag']}</div>
-  <h1 class="h1" style="margin-top:18px;font-size:78px;">{s['titulo']}</h1>
+  <h1 class="h1" style="margin-top:18px;font-size:78px;">
+    <span class="bar">{s['titulo']}</span>
+  </h1>
 </div>
 <div style="position:absolute;left:56px;right:56px;top:340px;bottom:150px;z-index:4;overflow:hidden;">
   {steps}
@@ -381,18 +356,20 @@ def slide_cta(s: dict) -> str:
         7,
         f"""
 {meta_bar(7, "FIN")}
-<div class="pad center" style="padding-top:180px;">
-  <h1 class="h1" style="font-size:88px;">{s['linea1']}<br>
-    <span class="hl">{s['linea2']}</span>
+<div class="pad center" style="padding-top:150px;">
+  <h1 class="h1 center" style="font-size:78px;">
+    <span class="line">{s['linea1']}</span>
+    <span class="bar" style="margin-top:14px;">{s['linea2']}</span>
   </h1>
-  <div style="margin-top:40px;">
+  <div style="margin-top:36px;">
     <div class="cta-pill">{s['boton']}</div>
   </div>
 </div>
-<div style="position:absolute;left:0;right:0;bottom:200px;z-index:4;text-align:center;">
-  <img class="claude" src="{CLAUDE_URI}" alt="Claude" style="width:180px;height:168px;">
+<div style="position:absolute;left:0;right:0;bottom:160px;z-index:4;text-align:center;">
+  <img class="bichito" src="{BICHITO['airplane']}" alt="Claude"
+    style="width:520px;height:auto;max-height:320px;">
 </div>
-<div style="position:absolute;left:0;right:0;bottom:140px;text-align:center;z-index:5;
+<div style="position:absolute;left:0;right:0;bottom:120px;text-align:center;z-index:5;
   font-family:var(--mono);font-size:18px;color:#6a736e;">
   {s['footer_extra']}
 </div>
@@ -455,7 +432,10 @@ def main():
         if src.exists():
             shutil.copy2(src, WORD_DIR / name)
 
-    shutil.copy2(CLAUDE_PNG, WORD_DIR / "claude.png")
+    # Delivery assets: cropped bichitos
+    for name in ("bichito-cover.png", "bichito-think.png", "bichito-surgical.png", "bichito-airplane.png"):
+        shutil.copy2(ASSETS / name, WORD_DIR / name)
+
     shutil.copy2(BUILD / "content.json", WORD_DIR / "content.json")
 
     (WORD_DIR / "MANIFIESTO-FUENTES.md").write_text(
@@ -463,13 +443,14 @@ def main():
 
 | Font | Weight | Role | Source |
 |---|---|---|---|
-| Impact | 900 | Titles / display bars | `fonts/Impact.ttf` |
+| Impact / Impacted | 900 | Titles slanted + green bars | `fonts/Impact.ttf` / `impacted.ttf` |
+| Anton | 400 | Fallback display | `fonts/Anton-Regular.ttf` |
 | Poppins | 800 | Subtitles / step titles | `fonts/Poppins-Bold.ttf` |
 | Barlow Condensed | 400–700 | Body | `fonts/BarlowCondensed-*.ttf` |
 | IBM Plex Mono | 400–600 | Tags / meta / footer / CTA | `fonts/IBMPlexMono-*.ttf` |
 
-Accent bars: `#00FFB2` (replaces orange bars from reference).
-Claude mascot: `assets/claude.png` (orange, unchanged).
+Title treatment: italic + skewX(-8°) · taller condensed · rectangular bar `#00FFB2`.
+Mascots: voxel orange bichitos cropped from Brody Automates refs (`bichito-*.png`).
 Idioma: español (voseo). Identity: sebastian.stlabs.ar · white · piedra_roca · blueprint.
 """,
         encoding="utf-8",
@@ -479,7 +460,7 @@ Idioma: español (voseo). Identity: sebastian.stlabs.ar · white · piedra_roca 
 Clone of brodyautomates Karpathy skills carousel → sebastian.stlabs.ar
 Background: WHITE · Texture: piedra_roca · Family: blueprint
 Slides: {TOTAL} · Keyword: {KEYWORD} · Idioma: español
-Accent: #00FFB2 · Claude: assets/claude.png (orange)
+Accent: #00FFB2 · Bichitos voxel naranja recortados de la referencia
 Source: content.json · repo multica-ai/andrej-karpathy-skills
 """,
         encoding="utf-8",

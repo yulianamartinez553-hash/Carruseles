@@ -2,5 +2,5 @@ STLabs Carousel — Claude Code Skills (CLAUDE.md)
 Clone of brodyautomates Karpathy skills carousel → sebastian.stlabs.ar
 Background: WHITE · Texture: piedra_roca · Family: blueprint
 Slides: 7 · Keyword: CLAUDE · Idioma: español
-Accent: #00FFB2 · Claude: assets/claude.png (orange)
+Accent: #00FFB2 · Bichitos voxel naranja recortados de la referencia
 Source: content.json · repo multica-ai/andrej-karpathy-skills
