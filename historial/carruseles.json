@@ -62,6 +62,15 @@
       "fondo": "piedra_roca",
       "familia_visual": "blueprint",
       "feedback_estado": "borrador"
+    },
+    {
+      "id": "2026-07-22-claude-code-skills-claude-md",
+      "fecha": "2026-07-22",
+      "titulo": "Claude Code Skills CLAUDE.md",
+      "slides": 7,
+      "fondo": "piedra_roca",
+      "familia_visual": "blueprint",
+      "feedback_estado": "borrador"
     }
   ]
 }

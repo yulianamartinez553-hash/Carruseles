@@ -61,12 +61,27 @@
       "tag": "PONELO A CORRER",
       "titulo": "CÓMO INSTALARLO.",
       "pasos": [
-        {"t": "AHORA", "h": "Andá al repo", "d": "github.com/multica-ai/andrej-karpathy-skills"},
-        {"t": "1 MIN", "h": "Copiá el archivo", "d": "Agarrá CLAUDE.md del repo"},
-        {"t": "2 MIN", "h": "Pegalo en tu proyecto", "d": "En la raíz, junto a tu código"},
-        {"t": "3 MIN", "h": "Abrí Claude Code", "d": "Ya lee las reglas en cada sesión"}
-      ],
-      "credito": "Hecho por Jiayuan (multica-ai). MIT. Gratis."
+        {
+          "t": "AHORA",
+          "h": "Andá al repo",
+          "d": "github.com/multica-ai/andrej-karpathy-skills"
+        },
+        {
+          "t": "1 MIN",
+          "h": "Copiá el archivo",
+          "d": "Agarrá CLAUDE.md del repo"
+        },
+        {
+          "t": "2 MIN",
+          "h": "Pegalo en tu proyecto",
+          "d": "En la raíz, junto a tu código"
+        },
+        {
+          "t": "3 MIN",
+          "h": "Abrí Claude Code",
+          "d": "Ya lee las reglas en cada sesión"
+        }
+      ]
     },
     {
       "n": 7,

@@ -404,7 +404,6 @@ def slide_install(s: dict) -> str:
 </div>
 <div style="position:absolute;left:56px;right:56px;top:330px;bottom:140px;z-index:4;overflow:hidden;">
   {steps}
-  <div class="credit">Hecho por <b>Jiayuan</b> (multica-ai). MIT. Gratis.</div>
 </div>
 """,
     )
