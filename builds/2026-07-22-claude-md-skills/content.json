@@ -1,0 +1,80 @@
+{
+  "titulo": "Claude Code Skills CLAUDE.md",
+  "keyword_portada": "CLAUDE",
+  "slides": 7,
+  "fondo": "piedra_roca",
+  "familia_visual": "blueprint",
+  "modo_fondo": "blanco",
+  "origen": "screenshot",
+  "idioma": "es",
+  "acento": "#00FFB2",
+  "repo": "github.com/multica-ai/andrej-karpathy-skills",
+  "slides_copy": [
+    {
+      "n": 1,
+      "tipo": "cover",
+      "linea1": "CLAUDE CODE FALLA AL",
+      "linea2": "ADMITIR QUE SE EQUIVOCA",
+      "cta": "Este archivo lo arregla."
+    },
+    {
+      "n": 2,
+      "tipo": "skill",
+      "tag": "HABILIDAD 01",
+      "titulo_a": "PENSÁ ANTES DE",
+      "titulo_b": "CODEAR.",
+      "cuerpo": "No asumas. No escondas la confusión. Sacá a la luz los tradeoffs antes de tocar una línea."
+    },
+    {
+      "n": 3,
+      "tipo": "skill_ba",
+      "tag": "HABILIDAD 02",
+      "titulo": "/simplicidad-primero",
+      "subtitulo": "El mínimo de código que resuelve el problema. Nada especulativo.",
+      "cuerpo": "Claude tiende a construir para casos que no pediste. Esta regla corta eso. Escribe lo que la tarea necesita y para ahí.",
+      "before_t": "INFLADO",
+      "before_d": "Capas de config, registries y manejo de errores para escenarios que no existen.",
+      "after_t": "MÍNIMO",
+      "after_d": "Exactamente el código que pide la tarea. Nada especulativo, nada sin usar."
+    },
+    {
+      "n": 4,
+      "tipo": "skill",
+      "tag": "HABILIDAD 03",
+      "titulo_a": "/cambios-",
+      "titulo_b": "quirúrgicos",
+      "subtitulo": "Tocá solo lo necesario. Limpiá solo tu propio desastre.",
+      "cuerpo": "Sin control, Claude edita código cerca de la tarea, no solo la tarea. Esta regla limita cada cambio a lo que pediste de verdad."
+    },
+    {
+      "n": 5,
+      "tipo": "skill",
+      "tag": "HABILIDAD 04",
+      "titulo_a": "/ejecución-",
+      "titulo_b": "con-meta",
+      "subtitulo": "Definí criterios de éxito. Iterá hasta verificarlos.",
+      "cuerpo": "Convertí cada pedido en una meta verificable: tests primero, después el código. Criterios fuertes dejan que Claude avance solo."
+    },
+    {
+      "n": 6,
+      "tipo": "install",
+      "tag": "PONELO A CORRER",
+      "titulo": "CÓMO INSTALARLO.",
+      "pasos": [
+        {"t": "AHORA", "h": "Andá al repo", "d": "github.com/multica-ai/andrej-karpathy-skills"},
+        {"t": "1 MIN", "h": "Copiá el archivo", "d": "Agarrá CLAUDE.md del repo"},
+        {"t": "2 MIN", "h": "Pegalo en tu proyecto", "d": "En la raíz, junto a tu código"},
+        {"t": "3 MIN", "h": "Abrí Claude Code", "d": "Ya lee las reglas en cada sesión"}
+      ],
+      "credito": "Hecho por Jiayuan (multica-ai). MIT. Gratis."
+    },
+    {
+      "n": 7,
+      "tipo": "cta",
+      "linea1": "¿QUERÉS MEJORAR",
+      "linea2": "TU CLAUDE?",
+      "boton": "Comentá CLAUDE y te lo mando.",
+      "footer_extra": "Seguime en sebastian.stlabs.ar para más de Claude Code"
+    }
+  ]
+}
