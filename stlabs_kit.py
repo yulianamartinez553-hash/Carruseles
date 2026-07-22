@@ -28,6 +28,10 @@ GFONTS = _font_dir(_LINUX_GFONTS)
 
 # (familia, archivo, peso, estilo)
 FONT_FACES = [
+    ("Impact", STLABS+"Impact.ttf", 400, "normal"),
+    ("Impact", STLABS+"impact.ttf", 900, "normal"),
+    ("Impacted", STLABS+"impacted.ttf", 400, "normal"),
+    ("Anton", STLABS+"Anton-Regular.ttf", 400, "normal"),
     ("Poppins", GFONTS+"Poppins-Bold.ttf", 700, "normal"),
     ("Poppins", GFONTS+"Poppins-Bold.ttf", 800, "normal"),
     ("Bebas Neue", STLABS+"BebasNeue-Regular.ttf", 400, "normal"),
@@ -66,7 +70,9 @@ BASE_CSS = """
 :root{--verde:#00FFB2;--red:#FF5247;--am:#FF9D3C;--neg:#0A0A0A;--graf:#141414;--gris:#1E1E1E;
  --blanco:#F2F2F2;--gray:#9aa39c;
  --mono:'IBM Plex Mono',monospace;--cond:'Barlow Condensed',sans-serif;--disp:'Bebas Neue',sans-serif;
- --pop:'Poppins',sans-serif;--serif:'Lora',serif;}
+ --pop:'Poppins',sans-serif;--serif:'Lora',serif;
+ --impact:'Impact','Impacted','Anton',sans-serif;--impacted:'Impacted','Impact',sans-serif;--anton:'Anton',sans-serif;
+ --title:'Impact','Impacted','Anton',sans-serif;}
 *{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased;}
 body{background:#000;}
 .sheet{display:flex;flex-direction:column;gap:48px;padding:48px;background:#000;}

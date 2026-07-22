@@ -1,5 +1,5 @@
 {
-  "ultimo_id": "2026-07-01-tu-sitio-web-no-es-una-tarjeta",
+  "ultimo_id": "2026-07-22-claude-code-skills-claude-md",
   "carruseles": [
     {
       "id": "2026-07-01-demo-memoria-stlabs",
@@ -26,6 +26,51 @@
       "fondo": "concreto_industrial",
       "familia_visual": "operator_log",
       "feedback_estado": "publicado"
+    },
+    {
+      "id": "2026-07-22-claude-code-skills-claude-md",
+      "fecha": "2026-07-22",
+      "titulo": "Claude Code Skills CLAUDE.md",
+      "slides": 7,
+      "fondo": "piedra_roca",
+      "familia_visual": "blueprint",
+      "feedback_estado": "borrador"
+    },
+    {
+      "id": "2026-07-22-claude-code-skills-claude-md",
+      "fecha": "2026-07-22",
+      "titulo": "Claude Code Skills CLAUDE.md",
+      "slides": 7,
+      "fondo": "piedra_roca",
+      "familia_visual": "blueprint",
+      "feedback_estado": "borrador"
+    },
+    {
+      "id": "2026-07-22-claude-code-skills-claude-md",
+      "fecha": "2026-07-22",
+      "titulo": "Claude Code Skills CLAUDE.md",
+      "slides": 7,
+      "fondo": "piedra_roca",
+      "familia_visual": "blueprint",
+      "feedback_estado": "borrador"
+    },
+    {
+      "id": "2026-07-22-claude-code-skills-claude-md",
+      "fecha": "2026-07-22",
+      "titulo": "Claude Code Skills CLAUDE.md",
+      "slides": 7,
+      "fondo": "piedra_roca",
+      "familia_visual": "blueprint",
+      "feedback_estado": "borrador"
+    },
+    {
+      "id": "2026-07-22-claude-code-skills-claude-md",
+      "fecha": "2026-07-22",
+      "titulo": "Claude Code Skills CLAUDE.md",
+      "slides": 7,
+      "fondo": "piedra_roca",
+      "familia_visual": "blueprint",
+      "feedback_estado": "borrador"
     }
   ]
 }
