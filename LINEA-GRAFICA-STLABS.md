@@ -1,8 +1,7 @@
 # Línea gráfica STLabs
 
-Documento maestro de identidad visual para YouTube y contenido de marca:
+Documento maestro de identidad visual (YouTube + marca completa):
 
 → **[`docs/LINEA-GRAFICA-STLABS.md`](docs/LINEA-GRAFICA-STLABS.md)**
 
-Incluye paleta, tipografía, voz, mecánica visual, fotografía, formatos YouTube y checklist.
-El sistema de carruseles (`SISTEMA-DISENO-CARRUSELES-STLABS.md`) queda como referencia histórica de producción; la línea gráfica de marca vive en el documento de `docs/`.
+Incluye: paleta `#00FFB2`, tipografía Impact/Anton creativa, mono tipo código, líneas/neón, flechas, cuadros, nodos partidos, Claude naranja, foto Sebastián, checklist y correcciones de todos los chats del repo.
