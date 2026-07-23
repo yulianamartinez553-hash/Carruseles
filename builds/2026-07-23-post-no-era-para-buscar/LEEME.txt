@@ -1,0 +1,36 @@
+CARRUSEL STLABS — POST NO ERA PARA BUSCAR (RFC 10008 / QUERY)
+==============================================================
+
+Clon del carrusel de referencia (12 slides) con identidad STLabs, modo BLANCO
+(pedido explícito). Robots pixel-art recreados como SVG:
+  - POST  → naranja idéntico a la referencia (#FF5A2E), cejas enojadas, placa "POST".
+  - QUERY → verde de marca (#00FFB2), anteojos negros, sonrisa, placa "QUERY".
+  - GET   → azul (#2F7BFF), ojos tristes, placa "GET".
+
+Contenido
+---------
+- slide-01..12.png   → PNGs retina 2160×2700 listos para Instagram.
+- STLabs-QUERY-RFC10008.html → HTML standalone editable, fuentes embebidas en base64.
+- _preview-tira.png  → tira de preview.
+- STLabs-QUERY-RFC10008.zip  → PNGs + HTML.
+- src/               → generate.py, robots.py, qa.py, pack.py (reproducir: python3 src/generate.py
+                       con el repo en sys.path, luego render + pack).
+
+Manifiesto de fuentes
+---------------------
+| Fuente           | Peso/estilo   | Rol                              | Origen                                              | Carga |
+|------------------|---------------|----------------------------------|-----------------------------------------------------|-------|
+| Poppins          | 800           | títulos (todas las portadas)     | skill assets → /usr/share/fonts/truetype/google-fonts/Poppins-ExtraBold.ttf | @font-face base64 en el HTML |
+| Barlow Condensed | 500/600/700   | cuerpo, subtítulos, burbujas     | skill assets → /usr/share/fonts/truetype/stlabs/    | @font-face base64 en el HTML |
+| IBM Plex Mono    | 400/500/600   | labels, código, footer, chips    | skill assets → /usr/share/fonts/truetype/stlabs/    | @font-face base64 en el HTML |
+| Lora (itálica)   | 400–700 var   | diario S9, "un junior/un senior" | skill assets → /usr/share/fonts/truetype/google-fonts/Lora-Italic-Variable.ttf | @font-face base64 en el HTML |
+| Press Start 2P   | 400           | placas de los robots pixel       | GitHub google/fonts (ofl/pressstart2p/PressStart2P-Regular.ttf) | curl + @font-face base64 |
+| Caveat           | 400–700 var   | firmas S5, nota adhesiva S9      | GitHub google/fonts (ofl/caveat/Caveat[wght].ttf)   | curl + @font-face base64 |
+
+Comandos de instalación de las familias nuevas:
+  curl -LO https://raw.githubusercontent.com/google/fonts/main/ofl/pressstart2p/PressStart2P-Regular.ttf
+  curl -LO https://raw.githubusercontent.com/google/fonts/main/ofl/caveat/Caveat%5Bwght%5D.ttf
+
+Feedback
+--------
+Si se publica: python stlabs_memory.py feedback 2026-07-23-post-no-era-para-buscar --estado publicado
