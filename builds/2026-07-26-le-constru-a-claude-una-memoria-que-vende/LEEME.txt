@@ -1,0 +1,32 @@
+CARRUSEL STLABS — LE CONSTRUÍ A CLAUDE UNA MEMORIA QUE VENDE
+=============================================================
+
+Clon del carrusel de referencia "a memory that never forgets" (7 slides), traducido
+al español (voseo) y adaptado a un agente que vende la marca: CRM × AGENTE × CLAUDE.
+Modo BLANCO (pedido explícito). La estrella naranja de la referencia se mantiene
+EXACTA: starburst de brazos redondeados en #E85A24 (portada-badge, slide 2 grande,
+slide 5 fina de 12 brazos, kicker del CTA y asterisco de Claude en la ventana del agente).
+
+Contenido
+---------
+- slide-01..07.png              → PNGs retina 2160×2700 listos para Instagram.
+- STLabs-Agente-Memoria.html    → HTML standalone editable, fuentes embebidas en base64.
+- _preview-tira.png             → tira de preview.
+- STLabs-Agente-Memoria.zip     → PNGs + HTML.
+- src/                          → generate.py, elements.py, qa.py, pack.py.
+
+Manifiesto de fuentes
+---------------------
+| Fuente           | Peso/estilo | Rol                                   | Origen                                            | Carga |
+|------------------|-------------|---------------------------------------|---------------------------------------------------|-------|
+| Archivo Black    | 400         | títulos grotescos de todos los slides | GitHub google/fonts (ofl/archivoblack/ArchivoBlack-Regular.ttf) | curl + @font-face base64 |
+| Lora (itálica)   | 400–700 var | líneas serif de acento (display)      | skill assets → /usr/share/fonts/truetype/google-fonts/Lora-Italic-Variable.ttf | @font-face base64 en el HTML |
+| Barlow Condensed | 500/700     | cuerpo, listas, bajadas               | skill assets → /usr/share/fonts/truetype/stlabs/  | @font-face base64 en el HTML |
+| IBM Plex Mono    | 400/500/600 | labels, badge, ventanas, swipe, firma | skill assets → /usr/share/fonts/truetype/stlabs/  | @font-face base64 en el HTML |
+
+Comando de instalación de la familia nueva:
+  curl -LO https://raw.githubusercontent.com/google/fonts/main/ofl/archivoblack/ArchivoBlack-Regular.ttf
+
+Feedback
+--------
+Si se publica: python stlabs_memory.py feedback 2026-07-26-le-constru-a-claude-una-memoria-que-vende --estado publicado

@@ -1,5 +1,5 @@
 {
-  "ultimo_id": "2026-07-23-post-no-era-para-buscar",
+  "ultimo_id": "2026-07-26-le-constru-a-claude-una-memoria-que-vende",
   "carruseles": [
     {
       "id": "2026-07-01-demo-memoria-stlabs",
@@ -34,6 +34,14 @@
       "slides": 12,
       "fondo": "blanco_reticula_fina",
       "familia_visual": "pixel_protocol"
+    },
+    {
+      "id": "2026-07-26-le-constru-a-claude-una-memoria-que-vende",
+      "fecha": "2026-07-26",
+      "titulo": "Le construí a Claude una memoria que vende",
+      "slides": 7,
+      "fondo": "blanco_constelacion",
+      "familia_visual": "editorial_grotesca"
     }
   ]
 }
