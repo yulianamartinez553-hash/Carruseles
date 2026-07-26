@@ -11,12 +11,10 @@ from elements import (starburst, diamond, spark, flower_badge, constellation,  #
 BUILD = "/tmp/build-agente"
 
 CSS = """
-/* ── MODO BLANCO STLabs ── */
+/* ── MODO BLANCO STLabs — todos los fondos blancos ── */
 .slide{background:#FFFFFF;color:#0A0A0A;}
-.slide.paperbg{background:#F6F4EE;}
 .slide::after{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
- background:radial-gradient(44% 30% at 50% 34%, rgba(232,90,36,.07), transparent 65%);}
-.slide.paperbg::after{background:none;}
+ background:radial-gradient(44% 30% at 50% 34%, rgba(0,255,178,.07), transparent 65%);}
 b{color:#0A0A0A;}
 .web{left:50%;right:auto;transform:translateX(-50%);width:max-content;opacity:1;
  text-shadow:0 0 1px rgba(0,90,60,.35);}
@@ -27,7 +25,8 @@ b{color:#0A0A0A;}
 .body{font-family:var(--cond);font-weight:500;font-size:35px;line-height:1.34;color:#3c403d;text-align:left;}
 .body b{font-weight:700;}
 .lab{font-family:var(--mono);font-weight:600;font-size:25px;letter-spacing:4px;}
-.nar{color:#E85A24;}
+/* acento de texto: verde de marca (la estrella gráfica sigue naranja) */
+.nar{color:#00FFB2;text-shadow:0 0 1px rgba(0,110,75,.45);}
 
 /* badge portada */
 .badge-row{display:flex;justify-content:center;align-items:center;gap:14px;
@@ -85,7 +84,7 @@ S.append(constellation() + f'''
 </div>
 <div style="position:absolute;left:0;right:0;top:352px;text-align:center;z-index:5;">
   <div class="blk" style="font-size:116px;text-align:center;letter-spacing:1px;width:max-content;margin:0 auto;">LE CONSTRU&Iacute;<br>A CLAUDE</div>
-  <div class="ser" style="font-size:92px;line-height:1.04;text-align:center;color:#E85A24;margin-top:18px;width:max-content;margin-left:auto;margin-right:auto;">
+  <div class="ser nar" style="font-size:92px;line-height:1.04;text-align:center;margin-top:18px;width:max-content;margin-left:auto;margin-right:auto;">
     una memoria que<br>nunca olvida.</div>
 </div>
 <div style="position:absolute;left:150px;right:150px;top:872px;z-index:5;">
@@ -130,8 +129,8 @@ S.append(f'''
     <span class="lab" style="color:#c98f1a;">LA MEMORIA</span></div>
   <div class="blk" style="font-size:120px;margin-top:20px;">el agente</div>
   <div class="ser" style="font-size:40px;margin-top:14px;">La IA que lee tu b&oacute;veda y vende tu marca.</div>
-  <div class="body" style="margin-top:30px;max-width:900px;">El agente enchufa Claude a tu CRM y lo convierte en
-   <b>memoria viva</b>. Preguntale lo que quieras: responde con lo que de verdad pas&oacute; con cada
+  <div class="body" style="margin-top:30px;max-width:900px;">El agente se convierte en <b>memoria viva</b>.
+   Preguntale lo que quieras: responde con lo que de verdad pas&oacute; con cada
    cliente, <b>con las fuentes adjuntas</b>.</div>
 </div>
 <div style="position:absolute;left:50%;transform:translateX(-50%);top:700px;z-index:5;">
@@ -183,7 +182,7 @@ S.append(f'''
 </div>
 <div style="position:absolute;left:150px;right:150px;top:966px;z-index:5;">
   <div class="body" style="text-align:center;font-size:37px;">El CRM guarda lo que sab&eacute;s. El agente lo lee,
-   lo conecta y <b class="nar" style="color:#E85A24;">se lo pasa a Claude</b> &mdash; as&iacute; cada respuesta
+   lo conecta y <b class="nar">se lo pasa a Claude</b> &mdash; as&iacute; cada respuesta
    nace de tu propio negocio.</div>
 </div>
 ''')
@@ -202,19 +201,11 @@ S.append(f'''
     <div class="small">y te mando todo lo que necesit&aacute;s.</div></div>
 </div>
 <div style="position:absolute;left:92px;right:92px;top:1040px;z-index:5;">
-  <div class="body" style="font-size:33px;">&iquest;Quer&eacute;s el <b class="nar" style="color:#E85A24;">desglose completo</b>,
+  <div class="body" style="font-size:33px;">&iquest;Quer&eacute;s el <b class="nar">desglose completo</b>,
    paso a paso? Dec&iacute;melo en los comentarios.</div>
 </div>
 ''')
 
-paper = {2: True, 5: True}  # slides 3 y 6 (índices 2 y 5) en blanco papel
-slides = []
-for i, inner in enumerate(S):
-    cls_extra = " paperbg" if paper.get(i) else ""
-    html = chrome(i + 1, inner, total=7, bridges=None, footer=True)
-    if cls_extra:
-        html = html.replace('<section class="slide">', f'<section class="slide{cls_extra}">', 1)
-    slides.append(html)
-
+slides = [chrome(i + 1, inner, total=7, bridges=None, footer=True) for i, inner in enumerate(S)]
 write_html(slides, f"{BUILD}/carrusel.html", extra_css=CSS)
 print(f"HTML escrito: {BUILD}/carrusel.html — {len(slides)} slides")

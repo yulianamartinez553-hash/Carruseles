@@ -18,8 +18,9 @@ meta = {
     "notas": (
         "Clon del carrusel 'memoria que nunca olvida' (Obsidian×Hermes×Claude), traducido "
         "al español voseo y adaptado a un agente que vende la marca (CRM×Agente×Claude). "
-        "Modo blanco pedido explícito. Estrella naranja de la referencia mantenida exacta "
-        "(#E85A24, starburst de brazos redondeados). Título Archivo Black + Lora itálica."
+        "Todos los fondos blancos; acentos de texto en verde #00FFB2 (iteración pedida); "
+        "estrella naranja de la referencia mantenida exacta (#E85A24, starburst de brazos "
+        "redondeados). Título Archivo Black + Lora itálica."
     ),
 }
 
