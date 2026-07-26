@@ -1,0 +1,11 @@
+{
+  "titulo": "POST no era para buscar",
+  "slides": 12,
+  "fondo": "blanco_reticula_fina",
+  "familia_visual": "pixel_protocol",
+  "origen": "screenshot",
+  "keyword_portada": "QUERY",
+  "notas": "Clon del carrusel RFC 10008/QUERY. Modo blanco pedido explícito. Robots pixel-art SVG: POST naranja idéntico a la referencia (#FF5A2E), QUERY en verde de marca, GET azul. Fuentes extra: Press Start 2P (labels robots), Caveat (firmas/nota adhesiva).",
+  "id": "2026-07-23-post-no-era-para-buscar",
+  "fecha": "2026-07-23"
+}
