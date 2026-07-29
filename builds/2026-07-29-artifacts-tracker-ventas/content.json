@@ -1,0 +1,77 @@
+{
+  "titulo": "Artifacts Tracker de Ventas Claude",
+  "keyword_portada": "ARTIFACTS",
+  "slides": 7,
+  "fondo": "reticula_fina",
+  "familia_visual": "dossier_editorial",
+  "modo_fondo": "blanco",
+  "origen": "screenshot",
+  "idioma": "es",
+  "acento": "#00FFB2",
+  "slides_copy": [
+    {
+      "n": 1,
+      "tipo": "cover",
+      "tag": "ARTIFACTS",
+      "linea1": "Sin CRM.",
+      "linea2": "Sin Excel",
+      "linea3": "complicado.",
+      "chat": "Hola Claude! Construí un tracker de ventas visual"
+    },
+    {
+      "n": 2,
+      "tipo": "explain",
+      "titulo_a": "¿Qué es un",
+      "titulo_b": "Artifact?",
+      "cuerpo": "Un Artifact es una <b>mini-app</b> que Claude genera dentro del chat.",
+      "bullets": [
+        "No instalás nada.",
+        "No necesitás programador."
+      ],
+      "cierre": "Es tuyo en el momento en que Claude lo crea."
+    },
+    {
+      "n": 3,
+      "tipo": "prompt",
+      "titulo": "PASO 1: Abrí Claude y escribí el siguiente PROMPT",
+      "badge": "PROMPT REGALO",
+      "prompt": "Crea un Artifact interactivo: un tracker de pipeline de ventas.\n\nColumnas: Cliente | Empresa | Producto | Valor (MXN) | Estatus | Último contacto |\n\nEstatus con colores: Prospecto (gris) | Contactado (azul) | Propuesta (amarillo) | Negociación (naranja) | Ganado (verde) | Perdido (rojo) Botón para agregar nueva oportunidad.\n\nResumen arriba: total de oportunidades, valor total del pipeline y valor ganado. Diseño oscuro, profesional. HTML + CSS + JS. Sin librerías."
+    },
+    {
+      "n": 4,
+      "tipo": "result",
+      "bubble1": "En el panel derecho del chat aparece tu tracker listo:",
+      "bubble2": "Podés agregar clientes, cambiar estatus y ver el pipeline de un vistazo.",
+      "bubble3": "Todo interactivo. Sin abrir ninguna otra herramienta."
+    },
+    {
+      "n": 5,
+      "tipo": "customize",
+      "titulo": "PERSONALIZALO EN LENGUAJE NATURAL:",
+      "quotes": [
+        "Agrega una columna de probabilidad de cierre (%)",
+        "Cambia los estatus por los que usa mi equipo",
+        "Agrega un filtro por vendedor"
+      ],
+      "cierre": "Claude actualiza el tracker en segundos."
+    },
+    {
+      "n": 6,
+      "tipo": "benefits",
+      "titulo": "En lugar de una hoja de Excel que nadie actualiza, tenés un tracker visual con:",
+      "items": [
+        "Colores por estatus",
+        "Valor total del pipeline en tiempo real",
+        "Filtros para ver por cliente o por etapa"
+      ]
+    },
+    {
+      "n": 7,
+      "tipo": "cta",
+      "badge": "GUARDA ESTE CARRUSEL.",
+      "titulo": "El prompt está acá para que lo copies y tengas tu tracker funcionando hoy.",
+      "sub": "Sin pagar CRM. / Sin saber código.",
+      "conclusion": "Esto lo podés generar vos solo. Con mi ayuda, el agente queda más potente y especializado para tu negocio."
+    }
+  ]
+}
