@@ -5,11 +5,8 @@
     "id": "ev-01",
     "layout": "claim",
     "kicker": "01 / 05",
-    "rock": 0,
-    "frame": "brackets",
-    "dots": "tl-heavy",
     "claim": "Tu web ya existe.",
-    "cont": "El problema es lo que pasa después…"
+    "apoyo": "Tener sitio no alcanza si no genera consultas."
   },
   {
     "n": 2,
@@ -17,11 +14,8 @@
     "id": "ev-02",
     "layout": "dato",
     "kicker": "02 / 05",
-    "rock": 1,
-    "frame": "double",
-    "dots": "br-scatter",
-    "claim": "…si tarda,\nla gente se va.",
-    "cont": "Y no es solo la carga…"
+    "claim": "Si tarda,\nla gente se va.",
+    "apoyo": "La misma marca puede cargar en menos de 2 segundos."
   },
   {
     "n": 3,
@@ -29,11 +23,8 @@
     "id": "ev-03",
     "layout": "split",
     "kicker": "03 / 05",
-    "rock": 2,
-    "frame": "lines",
-    "dots": "corners-mixed",
     "claim": null,
-    "cont": "Cuando ordenás eso…"
+    "apoyo": "También se pierde la venta cuando el mensaje no llega."
   },
   {
     "n": 4,
@@ -41,11 +32,8 @@
     "id": "ev-04",
     "layout": "dato",
     "kicker": "04 / 05",
-    "rock": 3,
-    "frame": "brackets",
-    "dots": "tr-heavy",
-    "claim": "…la conversión\nresponde.",
-    "cont": "Y el sitio deja de ser adorno…"
+    "claim": "Con estructura,\nla conversión responde.",
+    "apoyo": "Copy, recorrido y peso alineados al objetivo."
   },
   {
     "n": 5,
@@ -53,11 +41,8 @@
     "id": "ev-05",
     "layout": "claim",
     "kicker": "05 / 05",
-    "rock": 4,
-    "frame": "double",
-    "dots": "all-asymmetric",
-    "claim": "…pasa a vender\nde verdad.",
-    "cont": null
+    "claim": "Así tu web\nvende de verdad.",
+    "apoyo": "Live, midiendo y trayendo consultas reales."
   },
   {
     "n": 6,
@@ -65,11 +50,8 @@
     "id": "me-01",
     "layout": "claim",
     "kicker": "01 / 05",
-    "rock": 1,
-    "frame": "lines",
-    "dots": "bl-heavy",
-    "claim": "Si me contratás,\nno arrancamos\ndiseñando.",
-    "cont": "Eso es el punto de partida…"
+    "claim": "Si me contratás,\nno arrancamos diseñando.",
+    "apoyo": "Primero hay que ver dónde se frena la venta."
   },
   {
     "n": 7,
@@ -77,11 +59,8 @@
     "id": "me-02",
     "layout": "claim",
     "kicker": "02 / 05",
-    "rock": 3,
-    "frame": "brackets",
-    "dots": "tl-scatter",
-    "claim": "…miramos web,\nmensajes y embudo.",
-    "cont": "Recién ahí armamos estructura…"
+    "claim": "Miramos web,\nmensajes y embudo.",
+    "apoyo": "Salís con un mapa de prioridades, sin humo."
   },
   {
     "n": 8,
@@ -89,11 +68,8 @@
     "id": "me-03",
     "layout": "claim",
     "kicker": "03 / 05",
-    "rock": 0,
-    "frame": "double",
-    "dots": "br-heavy",
-    "claim": "…primero el esqueleto.\nDespués lo lindo.",
-    "cont": "Diseño y desarrollo van juntos…"
+    "claim": "Después viene\nel esqueleto.",
+    "apoyo": "Recién cuando el recorrido cierra, diseñamos lo lindo."
   },
   {
     "n": 9,
@@ -101,11 +77,8 @@
     "id": "me-04",
     "layout": "pasos",
     "kicker": "04 / 05",
-    "rock": 4,
-    "frame": "lines",
-    "dots": "corners-mixed",
-    "claim": "…con avances\nque se ven.",
-    "cont": "Y al final…"
+    "claim": "Diseño y desarrollo\nvan juntos.",
+    "apoyo": "Cinco momentos claros desde el día uno."
   },
   {
     "n": 10,
@@ -113,11 +86,8 @@
     "id": "me-05",
     "layout": "claim",
     "kicker": "05 / 05",
-    "rock": 2,
-    "frame": "brackets",
-    "dots": "tr-scatter",
-    "claim": "…te lo dejo\nfuncionando.",
-    "cont": null
+    "claim": "Al final,\nte lo dejo funcionando.",
+    "apoyo": "Accesos, checklist y próximos pasos. Cerrado."
   },
   {
     "n": 11,
@@ -125,11 +95,8 @@
     "id": "co-01",
     "layout": "cita",
     "kicker": "01 / 05",
-    "rock": 2,
-    "frame": "double",
-    "dots": "tl-heavy",
     "claim": "Por fin entiendo\nqué hace mi web.",
-    "cont": "No es marketing vacío…"
+    "apoyo": "Eso aparece cuando el sitio ordena el negocio."
   },
   {
     "n": 12,
@@ -137,11 +104,8 @@
     "id": "co-02",
     "layout": "dato",
     "kicker": "02 / 05",
-    "rock": 4,
-    "frame": "brackets",
-    "dots": "br-scatter",
-    "claim": "…son plazos reales\ny alcance claro.",
-    "cont": "Y sin inventar credenciales…"
+    "claim": "Son plazos reales\ny alcance claro.",
+    "apoyo": "Sin milagros. Con prioridades definidas."
   },
   {
     "n": 13,
@@ -149,11 +113,8 @@
     "id": "co-03",
     "layout": "claim",
     "kicker": "03 / 05",
-    "rock": 1,
-    "frame": "lines",
-    "dots": "tr-heavy",
-    "claim": "…logos solo\ncon permiso.",
-    "cont": "Lo que escriben también cuenta…"
+    "claim": "Los logos aparecen\nsolo con permiso.",
+    "apoyo": "Nada inventado. Nada prestado sin autorización."
   },
   {
     "n": 14,
@@ -161,11 +122,8 @@
     "id": "co-04",
     "layout": "cita",
     "kicker": "04 / 05",
-    "rock": 0,
-    "frame": "double",
-    "dots": "bl-scatter",
     "claim": "El formulario\nempezó a llegar.",
-    "cont": "Al final la confianza…"
+    "apoyo": "Capturas reales, con datos sensibles tapados."
   },
   {
     "n": 15,
@@ -173,11 +131,8 @@
     "id": "co-05",
     "layout": "claim",
     "kicker": "05 / 05",
-    "rock": 3,
-    "frame": "brackets",
-    "dots": "all-asymmetric",
-    "claim": "…se construye\ncon entregas.",
-    "cont": null
+    "claim": "La confianza se construye\ncon entregas.",
+    "apoyo": "No con promesas enormes en un story."
   },
   {
     "n": 16,
@@ -185,11 +140,8 @@
     "id": "of-01",
     "layout": "claim",
     "kicker": "01 / 05",
-    "rock": 3,
-    "frame": "lines",
-    "dots": "tl-scatter",
-    "claim": "No hace falta\nun hilo eterno\npor DM.",
-    "cont": "Si querés vender una cosa…"
+    "claim": "No hace falta\nun hilo eterno por DM.",
+    "apoyo": "Hay caminos claros según lo que necesitás."
   },
   {
     "n": 17,
@@ -197,11 +149,8 @@
     "id": "of-02",
     "layout": "claim",
     "kicker": "02 / 05",
-    "rock": 0,
-    "frame": "brackets",
-    "dots": "br-heavy",
-    "claim": "…una landing\nbasta.",
-    "cont": "Si tu marca necesita más espacio…"
+    "claim": "Si querés vender una cosa,\nuna landing alcanza.",
+    "apoyo": "Una página, un objetivo, formularios conectados."
   },
   {
     "n": 18,
@@ -209,11 +158,8 @@
     "id": "of-03",
     "layout": "split",
     "kicker": "03 / 05",
-    "rock": 2,
-    "frame": "double",
-    "dots": "corners-mixed",
     "claim": null,
-    "cont": "Y cuando ya está al aire…"
+    "apoyo": "Si necesitás más espacio, armamos el sitio completo."
   },
   {
     "n": 19,
@@ -221,11 +167,8 @@
     "id": "of-04",
     "layout": "claim",
     "kicker": "04 / 05",
-    "rock": 4,
-    "frame": "lines",
-    "dots": "tr-scatter",
-    "claim": "…que no se te caiga\ndespués del launch.",
-    "cont": "Si el freno es velocidad o visibilidad…"
+    "claim": "Cuando ya está al aire,\nno se puede caer.",
+    "apoyo": "Mantenimiento: updates, backups y cambios chicos."
   },
   {
     "n": 20,
@@ -233,11 +176,8 @@
     "id": "of-05",
     "layout": "dato",
     "kicker": "05 / 05",
-    "rock": 1,
-    "frame": "brackets",
-    "dots": "bl-heavy",
-    "claim": "…lo atacamos\nde frente.",
-    "cont": null
+    "claim": "Si el freno es\nvisibilidad, lo atacamos.",
+    "apoyo": "Core Web Vitals y peso bajo control."
   },
   {
     "n": 21,
@@ -245,11 +185,8 @@
     "id": "si-01",
     "layout": "claim",
     "kicker": "01 / 05",
-    "rock": 4,
-    "frame": "double",
-    "dots": "tl-heavy",
     "claim": "Trabajo con negocios\nque ya tienen demanda.",
-    "cont": "Si buscás lo más barato…"
+    "apoyo": "Y una web floja, o ninguna."
   },
   {
     "n": 22,
@@ -257,11 +194,8 @@
     "id": "si-02",
     "layout": "claim",
     "kicker": "02 / 05",
-    "rock": 1,
-    "frame": "lines",
-    "dots": "br-scatter",
-    "claim": "…o “para ayer”\nsin brief,",
-    "cont": "Si esto te suena…"
+    "claim": "No es para quien busca\nlo más barato sin brief.",
+    "apoyo": "Sin claridad de oferta, mejor no arrancar."
   },
   {
     "n": 23,
@@ -269,11 +203,8 @@
     "id": "si-03",
     "layout": "cta",
     "kicker": "03 / 05",
-    "rock": 3,
-    "frame": "brackets",
-    "dots": "corners-mixed",
-    "claim": "…comentá WEB.",
-    "cont": "También podés agendar…"
+    "claim": "Si esto te suena,\ncomentá WEB.",
+    "apoyo": "Te mando el diagnóstico y cómo arrancar."
   },
   {
     "n": 24,
@@ -281,11 +212,8 @@
     "id": "si-04",
     "layout": "dato",
     "kicker": "04 / 05",
-    "rock": 0,
-    "frame": "double",
-    "dots": "tr-heavy",
-    "claim": "…y salir\ncon claridad.",
-    "cont": "Una duda rápida, de paso…"
+    "claim": "También podés\nagendar y salir con claridad.",
+    "apoyo": "Calendly o WhatsApp, como te quede mejor."
   },
   {
     "n": 25,
@@ -293,10 +221,7 @@
     "id": "si-05",
     "layout": "faq",
     "kicker": "05 / 05",
-    "rock": 2,
-    "frame": "lines",
-    "dots": "all-asymmetric",
     "claim": "¿Cuánto tarda?",
-    "cont": null
+    "apoyo": "Dos rondas de revisión incluidas. Empezá cuando quieras."
   }
 ]
