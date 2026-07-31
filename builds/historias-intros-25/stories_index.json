@@ -4,174 +4,299 @@
     "tema": "01-evidencia",
     "id": "ev-01",
     "layout": "claim",
-    "kicker": "AL AIRE"
+    "kicker": "01 / 05",
+    "rock": 0,
+    "frame": "brackets",
+    "dots": "tl-heavy",
+    "claim": "Tu web ya existe.",
+    "cont": "El problema es lo que pasa después…"
   },
   {
     "n": 2,
     "tema": "01-evidencia",
     "id": "ev-02",
     "layout": "dato",
-    "kicker": "CARGA"
+    "kicker": "02 / 05",
+    "rock": 1,
+    "frame": "double",
+    "dots": "br-scatter",
+    "claim": "…si tarda,\nla gente se va.",
+    "cont": "Y no es solo la carga…"
   },
   {
     "n": 3,
     "tema": "01-evidencia",
     "id": "ev-03",
     "layout": "split",
-    "kicker": "CAMBIO REAL"
+    "kicker": "03 / 05",
+    "rock": 2,
+    "frame": "lines",
+    "dots": "corners-mixed",
+    "claim": null,
+    "cont": "Cuando ordenás eso…"
   },
   {
     "n": 4,
     "tema": "01-evidencia",
     "id": "ev-04",
     "layout": "dato",
-    "kicker": "CONVERSIÓN"
+    "kicker": "04 / 05",
+    "rock": 3,
+    "frame": "brackets",
+    "dots": "tr-heavy",
+    "claim": "…la conversión\nresponde.",
+    "cont": "Y el sitio deja de ser adorno…"
   },
   {
     "n": 5,
     "tema": "01-evidencia",
     "id": "ev-05",
     "layout": "claim",
-    "kicker": "EN PRODUCCIÓN"
+    "kicker": "05 / 05",
+    "rock": 4,
+    "frame": "double",
+    "dots": "all-asymmetric",
+    "claim": "…pasa a vender\nde verdad.",
+    "cont": null
   },
   {
     "n": 6,
     "tema": "02-metodo",
     "id": "me-01",
     "layout": "claim",
-    "kicker": "DÍA CERO"
+    "kicker": "01 / 05",
+    "rock": 1,
+    "frame": "lines",
+    "dots": "bl-heavy",
+    "claim": "Si me contratás,\nno arrancamos\ndiseñando.",
+    "cont": "Eso es el punto de partida…"
   },
   {
     "n": 7,
     "tema": "02-metodo",
     "id": "me-02",
-    "layout": "pasos",
-    "kicker": "SIN SORPRESAS"
+    "layout": "claim",
+    "kicker": "02 / 05",
+    "rock": 3,
+    "frame": "brackets",
+    "dots": "tl-scatter",
+    "claim": "…miramos web,\nmensajes y embudo.",
+    "cont": "Recién ahí armamos estructura…"
   },
   {
     "n": 8,
     "tema": "02-metodo",
     "id": "me-03",
     "layout": "claim",
-    "kicker": "REGLA"
+    "kicker": "03 / 05",
+    "rock": 0,
+    "frame": "double",
+    "dots": "br-heavy",
+    "claim": "…primero el esqueleto.\nDespués lo lindo.",
+    "cont": "Diseño y desarrollo van juntos…"
   },
   {
     "n": 9,
     "tema": "02-metodo",
     "id": "me-04",
-    "layout": "dato",
-    "kicker": "CLARIDAD"
+    "layout": "pasos",
+    "kicker": "04 / 05",
+    "rock": 4,
+    "frame": "lines",
+    "dots": "corners-mixed",
+    "claim": "…con avances\nque se ven.",
+    "cont": "Y al final…"
   },
   {
     "n": 10,
     "tema": "02-metodo",
     "id": "me-05",
     "layout": "claim",
-    "kicker": "ENTREGA"
+    "kicker": "05 / 05",
+    "rock": 2,
+    "frame": "brackets",
+    "dots": "tr-scatter",
+    "claim": "…te lo dejo\nfuncionando.",
+    "cont": null
   },
   {
     "n": 11,
     "tema": "03-confianza",
     "id": "co-01",
     "layout": "cita",
-    "kicker": "POST LAUNCH"
+    "kicker": "01 / 05",
+    "rock": 2,
+    "frame": "double",
+    "dots": "tl-heavy",
+    "claim": "Por fin entiendo\nqué hace mi web.",
+    "cont": "No es marketing vacío…"
   },
   {
     "n": 12,
     "tema": "03-confianza",
     "id": "co-02",
     "layout": "dato",
-    "kicker": "PLAZO REAL"
+    "kicker": "02 / 05",
+    "rock": 4,
+    "frame": "brackets",
+    "dots": "br-scatter",
+    "claim": "…son plazos reales\ny alcance claro.",
+    "cont": "Y sin inventar credenciales…"
   },
   {
     "n": 13,
     "tema": "03-confianza",
     "id": "co-03",
     "layout": "claim",
-    "kicker": "SERIEDAD"
+    "kicker": "03 / 05",
+    "rock": 1,
+    "frame": "lines",
+    "dots": "tr-heavy",
+    "claim": "…logos solo\ncon permiso.",
+    "cont": "Lo que escriben también cuenta…"
   },
   {
     "n": 14,
     "tema": "03-confianza",
     "id": "co-04",
     "layout": "cita",
-    "kicker": "EN SUS PALABRAS"
+    "kicker": "04 / 05",
+    "rock": 0,
+    "frame": "double",
+    "dots": "bl-scatter",
+    "claim": "El formulario\nempezó a llegar.",
+    "cont": "Al final la confianza…"
   },
   {
     "n": 15,
     "tema": "03-confianza",
     "id": "co-05",
     "layout": "claim",
-    "kicker": "HECHO"
+    "kicker": "05 / 05",
+    "rock": 3,
+    "frame": "brackets",
+    "dots": "all-asymmetric",
+    "claim": "…se construye\ncon entregas.",
+    "cont": null
   },
   {
     "n": 16,
     "tema": "04-oferta",
     "id": "of-01",
     "layout": "claim",
-    "kicker": "UNA PÁGINA"
+    "kicker": "01 / 05",
+    "rock": 3,
+    "frame": "lines",
+    "dots": "tl-scatter",
+    "claim": "No hace falta\nun hilo eterno\npor DM.",
+    "cont": "Si querés vender una cosa…"
   },
   {
     "n": 17,
     "tema": "04-oferta",
     "id": "of-02",
-    "layout": "split",
-    "kicker": "ELEGÍ"
+    "layout": "claim",
+    "kicker": "02 / 05",
+    "rock": 0,
+    "frame": "brackets",
+    "dots": "br-heavy",
+    "claim": "…una landing\nbasta.",
+    "cont": "Si tu marca necesita más espacio…"
   },
   {
     "n": 18,
     "tema": "04-oferta",
     "id": "of-03",
-    "layout": "claim",
-    "kicker": "REHACER"
+    "layout": "split",
+    "kicker": "03 / 05",
+    "rock": 2,
+    "frame": "double",
+    "dots": "corners-mixed",
+    "claim": null,
+    "cont": "Y cuando ya está al aire…"
   },
   {
     "n": 19,
     "tema": "04-oferta",
     "id": "of-04",
     "layout": "claim",
-    "kicker": "DESPUÉS DEL LAUNCH"
+    "kicker": "04 / 05",
+    "rock": 4,
+    "frame": "lines",
+    "dots": "tr-scatter",
+    "claim": "…que no se te caiga\ndespués del launch.",
+    "cont": "Si el freno es velocidad o visibilidad…"
   },
   {
     "n": 20,
     "tema": "04-oferta",
     "id": "of-05",
     "layout": "dato",
-    "kicker": "VISIBILIDAD"
+    "kicker": "05 / 05",
+    "rock": 1,
+    "frame": "brackets",
+    "dots": "bl-heavy",
+    "claim": "…lo atacamos\nde frente.",
+    "cont": null
   },
   {
     "n": 21,
     "tema": "05-siguiente",
     "id": "si-01",
     "layout": "claim",
-    "kicker": "FILTRO"
+    "kicker": "01 / 05",
+    "rock": 4,
+    "frame": "double",
+    "dots": "tl-heavy",
+    "claim": "Trabajo con negocios\nque ya tienen demanda.",
+    "cont": "Si buscás lo más barato…"
   },
   {
     "n": 22,
     "tema": "05-siguiente",
     "id": "si-02",
     "layout": "claim",
-    "kicker": "NO ES PARA VOS SI"
+    "kicker": "02 / 05",
+    "rock": 1,
+    "frame": "lines",
+    "dots": "br-scatter",
+    "claim": "…o “para ayer”\nsin brief,",
+    "cont": "Si esto te suena…"
   },
   {
     "n": 23,
     "tema": "05-siguiente",
     "id": "si-03",
     "layout": "cta",
-    "kicker": "SIGUIENTE PASO"
+    "kicker": "03 / 05",
+    "rock": 3,
+    "frame": "brackets",
+    "dots": "corners-mixed",
+    "claim": "…comentá WEB.",
+    "cont": "También podés agendar…"
   },
   {
     "n": 24,
     "tema": "05-siguiente",
     "id": "si-04",
     "layout": "dato",
-    "kicker": "AGENDA"
+    "kicker": "04 / 05",
+    "rock": 0,
+    "frame": "double",
+    "dots": "tr-heavy",
+    "claim": "…y salir\ncon claridad.",
+    "cont": "Una duda rápida, de paso…"
   },
   {
     "n": 25,
     "tema": "05-siguiente",
     "id": "si-05",
     "layout": "faq",
-    "kicker": "DUDA RÁPIDA"
+    "kicker": "05 / 05",
+    "rock": 2,
+    "frame": "lines",
+    "dots": "all-asymmetric",
+    "claim": "¿Cuánto tarda?",
+    "cont": null
   }
 ]

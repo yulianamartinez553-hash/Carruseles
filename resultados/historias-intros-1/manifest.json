@@ -1,6 +1,6 @@
 {
   "id": "historias-intros-1",
-  "titulo": "Historias introductorias — 5 por tema (sin nombrar sección)",
+  "titulo": "Historias continuas — fondo rocoso + marco + puntos",
   "tipo": "historias_intros",
   "historias": 25,
   "temas": [
@@ -25,7 +25,7 @@
       "highlight_sugerido": "CONTACTO"
     }
   ],
-  "fondo": "negro_lineas_verde",
+  "fondo": "piedra_roca_variantes",
   "familia_visual": "manifiesto",
   "origen": "original",
   "keyword_portada": "WEB",
@@ -33,5 +33,6 @@
   "slides": 25,
   "formato": "1080x1920 → retina 2160x3840",
   "regla_copy": "No mencionar títulos de sección en el arte",
-  "sistema": "sistema-historias-stlabs.json"
+  "sistema": "sistema-historias-stlabs.json",
+  "nota": "Copy continuo por tema (ellipsis). Marcos con líneas. Puntos verdes de distintos tamaños en esquinas. Textura rocosa distinta por slide."
 }

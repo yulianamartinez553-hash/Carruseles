@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es"><head><meta charset="UTF-8"><title>Historias intros STLabs</title>
+<html lang="es"><head><meta charset="UTF-8"><title>Historias STLabs v2</title>
 <style>
 @font-face { font-family:'Bebas Neue'; src:url('file:///tmp/stlabs-fonts/BebasNeue-Regular.ttf') format('truetype'); }
 @font-face { font-family:'Poppins'; src:url('file:///tmp/stlabs-fonts/Poppins-ExtraBold.ttf') format('truetype'); font-weight:800; }
@@ -19,475 +19,531 @@ html, body { background:#000; }
   background:#0A0A0A; isolation:isolate;
 }
 .bg { position:absolute; inset:0; }
-.grid {
-  position:absolute; inset:0;
-  background-image:
-    linear-gradient(rgba(0,255,178,.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,255,178,.07) 1px, transparent 1px);
-  background-size:60px 60px;
-  opacity:.85;
+.rock-tex {
+  position:absolute; inset:0; z-index:1; pointer-events:none;
+  background-repeat: repeat;
+  mix-blend-mode: normal;
+  filter: contrast(1.25) brightness(.9);
 }
-.lines {
-  position:absolute; inset:-25%;
-  background: repeating-linear-gradient(-32deg, transparent 0 22px, rgba(0,255,178,.06) 22px 23.5px);
-  mix-blend-mode:screen;
-}
-.stain { position:absolute; border-radius:50%; filter:blur(40px); pointer-events:none; }
-.s1 { width:560px; height:560px; left:-140px; top:-80px;
-  background:radial-gradient(circle, rgba(0,255,178,.32) 0%, rgba(0,255,178,0) 70%); }
-.s2 { width:640px; height:480px; right:-180px; bottom:120px;
-  background:radial-gradient(circle, rgba(0,255,178,.22) 0%, rgba(0,255,178,0) 68%); }
-.s3 { width:360px; height:360px; left:50%; top:42%; transform:translate(-50%,-50%);
-  background:radial-gradient(circle, rgba(0,255,178,.12) 0%, rgba(0,255,178,0) 70%); }
-.glow {
-  position:absolute; inset:0;
+.rock-overlay {
+  position:absolute; inset:0; z-index:2;
   background:
-    radial-gradient(ellipse at 50% 28%, rgba(0,255,178,.16) 0%, transparent 55%),
-    linear-gradient(180deg, rgba(0,255,178,.05) 0%, transparent 35%, rgba(0,0,0,.55) 100%);
+    radial-gradient(ellipse at var(--glow), rgba(0,255,178,.18) 0%, transparent 48%),
+    linear-gradient(180deg, rgba(7,7,7,.45) 0%, rgba(7,7,7,var(--ov)) 52%, rgba(0,0,0,.85) 100%);
 }
-.vignette {
-  position:absolute; inset:0;
-  background:radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(0,0,0,.55) 100%);
+.grain-lines {
+  position:absolute; inset:-20%; z-index:3;
+  background:
+    repeating-linear-gradient(-34deg, transparent 0 20px, rgba(0,255,178,.09) 20px 21.5px),
+    repeating-linear-gradient(18deg, transparent 0 30px, rgba(255,255,255,.04) 30px 31px);
+  mix-blend-mode:overlay; opacity:1; pointer-events:none;
+}
+.stain { position:absolute; border-radius:50%; filter:blur(48px); pointer-events:none; }
+.s1 { width:520px; height:520px; left:-120px; top:-40px;
+  background:radial-gradient(circle, rgba(0,255,178,.22) 0%, transparent 70%); }
+.s2 { width:580px; height:420px; right:-160px; bottom:180px;
+  background:radial-gradient(circle, rgba(0,255,178,.16) 0%, transparent 68%); }
+
+/* Marcos con líneas */
+.frame { position:absolute; inset:56px 48px 56px 48px; pointer-events:none; z-index:4; }
+.frame-double {
+  border:1.5px solid rgba(0,255,178,.35);
+  box-shadow: inset 0 0 0 6px rgba(10,10,10,.2), inset 0 0 0 7.5px rgba(0,255,178,.18);
+}
+.frame-lines {
+  border:1px solid rgba(0,255,178,.22);
+  background:
+    linear-gradient(#00FFB2, #00FFB2) top left / 72px 2px no-repeat,
+    linear-gradient(#00FFB2, #00FFB2) top left / 2px 72px no-repeat,
+    linear-gradient(#00FFB2, #00FFB2) top right / 72px 2px no-repeat,
+    linear-gradient(#00FFB2, #00FFB2) top right / 2px 72px no-repeat,
+    linear-gradient(#00FFB2, #00FFB2) bottom left / 72px 2px no-repeat,
+    linear-gradient(#00FFB2, #00FFB2) bottom left / 2px 72px no-repeat,
+    linear-gradient(#00FFB2, #00FFB2) bottom right / 72px 2px no-repeat,
+    linear-gradient(#00FFB2, #00FFB2) bottom right / 2px 72px no-repeat;
+}
+.frame-brackets::before, .frame-brackets::after {
+  content:''; position:absolute; width:54px; height:54px;
+  border:2px solid #00FFB2; opacity:.7;
+}
+.frame-brackets::before { top:0; left:0; border-right:none; border-bottom:none; }
+.frame-brackets::after { bottom:0; right:0; border-left:none; border-top:none; }
+.frame-brackets {
+  border:1px solid rgba(0,255,178,.12);
+}
+.frame-brackets {
+  background:
+    linear-gradient(#00FFB2,#00FFB2) top right / 54px 2px no-repeat,
+    linear-gradient(#00FFB2,#00FFB2) top right / 2px 54px no-repeat,
+    linear-gradient(#00FFB2,#00FFB2) bottom left / 54px 2px no-repeat,
+    linear-gradient(#00FFB2,#00FFB2) bottom left / 2px 54px no-repeat;
+}
+
+/* Puntos verdes en esquinas */
+.dots { position:absolute; inset:0; z-index:5; pointer-events:none; }
+.dots span {
+  position:absolute; border-radius:50%; background:#00FFB2;
+  box-shadow:0 0 10px rgba(0,255,178,.55);
+  display:block;
 }
 
 .safe {
-  position:absolute; left:64px; right:64px; top:200px; bottom:320px;
-  display:flex; flex-direction:column; justify-content:center; z-index:5;
+  position:absolute; left:96px; right:96px; top:220px; bottom:340px;
+  display:flex; flex-direction:column; justify-content:center; z-index:6;
 }
+.align-left { align-items:flex-start; text-align:left; }
+.align-center { align-items:center; text-align:center; }
+.align-center .rule { margin-left:auto; margin-right:auto; }
+.align-center .cta-pill { align-self:center; }
+.align-center .pasos { width:100%; }
+
 .kicker {
-  font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:26px;
-  letter-spacing:.2em; color:#00FFB2; text-transform:uppercase; margin-bottom:36px;
+  font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:24px;
+  letter-spacing:.22em; color:#00FFB2; text-transform:uppercase; margin-bottom:32px;
 }
 .claim {
-  font-family:'Bebas Neue', Impact, sans-serif; font-size:110px; line-height:.95;
-  letter-spacing:.01em; color:#F2F2F2; text-shadow:0 0 40px rgba(0,255,178,.18);
-  white-space:normal;
+  font-family:'Bebas Neue', Impact, sans-serif; font-size:108px; line-height:.94;
+  letter-spacing:.01em; color:#F2F2F2; text-shadow:0 0 36px rgba(0,255,178,.16);
 }
-.claim-sm { font-size:88px; }
+.claim-sm { font-size:84px; }
 .rule {
-  width:140px; height:7px; background:#00FFB2; border-radius:2px;
-  margin:32px 0 28px; box-shadow:0 0 18px rgba(0,255,178,.55);
+  width:120px; height:6px; background:#00FFB2; border-radius:2px;
+  margin:28px 0 24px; box-shadow:0 0 16px rgba(0,255,178,.5);
 }
 .apoyo {
-  font-family:'Barlow Condensed', sans-serif; font-weight:500; font-size:36px;
-  line-height:1.3; color:#9aa39c; max-width:880px; margin-top:8px;
+  font-family:'Barlow Condensed', sans-serif; font-weight:500; font-size:34px;
+  line-height:1.3; color:#9aa39c; max-width:860px;
+}
+.cont {
+  margin-top:36px; font-family:'Lora', Georgia, serif; font-style:italic;
+  font-size:32px; color:#00FFB2; opacity:.9; max-width:820px;
 }
 .firma {
-  position:absolute; left:0; right:0; bottom:300px; text-align:center; z-index:6;
-  font-family:'IBM Plex Mono', monospace; font-weight:500; font-size:24px;
+  position:absolute; left:0; right:0; bottom:300px; text-align:center; z-index:7;
+  font-family:'IBM Plex Mono', monospace; font-weight:500; font-size:22px;
   letter-spacing:.12em; color:#00FFB2; opacity:.92;
 }
 
 .dato {
-  font-family:'Bebas Neue', Impact, sans-serif; font-size:220px; line-height:.85;
-  color:#00FFB2; text-shadow:0 0 60px rgba(0,255,178,.35); margin-bottom:8px;
+  font-family:'Bebas Neue', Impact, sans-serif; font-size:200px; line-height:.85;
+  color:#00FFB2; text-shadow:0 0 50px rgba(0,255,178,.3); margin-bottom:6px;
 }
 .dato-sub {
-  font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:28px;
-  letter-spacing:.12em; color:#9aa39c; text-transform:uppercase; margin-bottom:36px;
+  font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:26px;
+  letter-spacing:.12em; color:#9aa39c; text-transform:uppercase; margin-bottom:28px;
 }
 
-.split {
-  display:flex; align-items:stretch; gap:18px; margin:12px 0 36px;
-}
+.split { display:flex; align-items:stretch; gap:16px; margin:8px 0 28px; width:100%; }
 .col {
-  flex:1; border-radius:24px; padding:36px 28px; min-height:280px;
+  flex:1; border-radius:20px; padding:32px 24px; min-height:260px;
   display:flex; flex-direction:column; justify-content:center;
-  border:1px solid #2A2A2A; background:#141414;
+  border:1px solid #2A2A2A; background:rgba(20,20,20,.82);
 }
-.col.bad { border-color:rgba(255,82,71,.45); }
-.col.good { border-color:rgba(0,255,178,.45); background:#0d1a14; }
-.col.choice { border-color:rgba(0,255,178,.35); background:#141414; }
-.col.choice.good { background:#0d1a14; }
+.col.bad { border-color:rgba(255,82,71,.5); }
+.col.good { border-color:rgba(0,255,178,.5); background:rgba(13,26,20,.85); }
+.col.choice { border-color:rgba(0,255,178,.4); }
 .col-lab {
-  font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:22px;
-  letter-spacing:.18em; margin-bottom:18px;
+  font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:20px;
+  letter-spacing:.16em; margin-bottom:16px;
 }
 .col.bad .col-lab { color:#FF5247; }
-.col.good .col-lab { color:#00FFB2; }
-.col.choice .col-lab { color:#00FFB2; }
+.col.good .col-lab, .col.choice .col-lab { color:#00FFB2; }
 .col-txt {
-  font-family:'Poppins', sans-serif; font-weight:800; font-size:34px;
+  font-family:'Poppins', sans-serif; font-weight:800; font-size:30px;
   line-height:1.15; color:#F2F2F2;
 }
 .vs {
-  align-self:center; width:72px; height:72px; border-radius:50%;
+  align-self:center; width:64px; height:64px; border-radius:50%;
   background:#1A1A1A; border:1px solid #2A2A2A; color:#F2F2F2;
-  font-family:'Poppins', sans-serif; font-weight:800; font-size:22px;
+  font-family:'Poppins', sans-serif; font-weight:800; font-size:20px;
   display:flex; align-items:center; justify-content:center; flex-shrink:0;
 }
 
-.pasos { list-style:none; margin:28px 0 32px; display:flex; flex-direction:column; gap:18px; }
+.pasos { list-style:none; margin:22px 0 24px; display:flex; flex-direction:column; gap:14px; width:100%; }
 .pasos li {
-  display:flex; align-items:center; gap:22px;
-  background:#141414; border:1px solid #2A2A2A; border-radius:18px; padding:22px 26px;
+  display:flex; align-items:center; gap:18px;
+  background:rgba(20,20,20,.85); border:1px solid #2A2A2A; border-radius:16px; padding:18px 22px;
 }
 .pasos .n {
-  font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:22px;
-  color:#00FFB2; letter-spacing:.08em; width:52px;
+  font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:20px;
+  color:#00FFB2; letter-spacing:.08em; width:48px;
 }
 .pasos .t {
-  font-family:'Poppins', sans-serif; font-weight:700; font-size:34px; color:#F2F2F2;
+  font-family:'Poppins', sans-serif; font-weight:700; font-size:30px; color:#F2F2F2;
 }
 
 .quote {
   font-family:'Lora', Georgia, serif; font-style:italic; font-weight:600;
-  font-size:72px; line-height:1.15; color:#F2F2F2;
+  font-size:64px; line-height:1.15; color:#F2F2F2;
 }
-.quote::first-letter { color:#00FFB2; }
-
 .cta-pill {
-  display:inline-flex; align-self:flex-start; margin:36px 0 28px;
+  display:inline-flex; margin:28px 0 22px;
   background:#00FFB2; color:#04130b; font-family:'Poppins', sans-serif; font-weight:800;
-  font-size:40px; letter-spacing:.04em; padding:22px 40px; border-radius:999px;
-  box-shadow:0 0 28px rgba(0,255,178,.4);
+  font-size:36px; letter-spacing:.04em; padding:20px 36px; border-radius:999px;
+  box-shadow:0 0 24px rgba(0,255,178,.4);
 }
 .respuesta {
-  font-family:'Barlow Condensed', sans-serif; font-weight:700; font-size:40px;
-  line-height:1.35; color:#F2F2F2; margin:28px 0 24px; max-width:900px;
+  font-family:'Barlow Condensed', sans-serif; font-weight:700; font-size:38px;
+  line-height:1.35; color:#F2F2F2; margin:24px 0 20px; max-width:880px;
 }
-
-.viz { margin-bottom:28px; }
-.viz.check svg { width:120px; height:120px; filter:drop-shadow(0 0 16px rgba(0,255,178,.4)); }
+.viz { margin-bottom:22px; }
+.viz.check svg { width:110px; height:110px; filter:drop-shadow(0 0 14px rgba(0,255,178,.4)); }
 .viz.seal, .viz.warn {
-  width:110px; height:110px; border-radius:50%; border:3px solid #00FFB2;
+  width:100px; height:100px; border-radius:50%; border:3px solid #00FFB2;
   display:flex; align-items:center; justify-content:center;
-  font-family:'Bebas Neue', sans-serif; font-size:56px; color:#00FFB2;
-  box-shadow:0 0 24px rgba(0,255,178,.35);
+  font-family:'Bebas Neue', sans-serif; font-size:52px; color:#00FFB2;
+  box-shadow:0 0 20px rgba(0,255,178,.35);
 }
-.viz.warn { border-color:#FF5247; color:#FF5247; box-shadow:0 0 24px rgba(255,82,71,.35); }
-.viz.pulse { display:flex; gap:14px; align-items:flex-end; height:80px; }
-.viz.pulse span {
-  width:22px; background:#00FFB2; border-radius:6px;
-  box-shadow:0 0 14px rgba(0,255,178,.45);
-}
-.viz.pulse span:nth-child(1) { height:36px; opacity:.45; }
-.viz.pulse span:nth-child(2) { height:58px; opacity:.7; }
-.viz.pulse span:nth-child(3) { height:80px; }
+.viz.warn { border-color:#FF5247; color:#FF5247; box-shadow:0 0 20px rgba(255,82,71,.35); }
 </style></head>
 <body><div class="sheet">
-    <div class="slide" data-tema="01-evidencia" data-id="ev-01" data-n="1">
+    <div class="slide rock-0" data-tema="01-evidencia" data-id="ev-01" data-n="1">
       <div class="bg">
-        <div class="grid"></div>
-        <div class="lines"></div>
+        <div class="rock-tex" style='background-image:url("file:///workspace/builds/historias-intros-25/textures/rock-0.png");opacity:0.85;background-size:340px'></div>
+        <div class="rock-overlay" style="--ov:0.62;--glow:18% 22%;--ctr:1.2"></div>
+        <div class="grain-lines"></div>
         <div class="stain s1"></div>
         <div class="stain s2"></div>
-        <div class="stain s3"></div>
-        <div class="glow"></div>
-        <div class="vignette"></div>
       </div>
-      <div class="safe">
-        <div class="kicker">AL AIRE</div>
-
-<h1 class="claim">Tu web ya existe.<br>Ahora que venda.</h1>
+      <div class="frame frame-brackets"></div>
+      <div class="dots"><span style="left:48px;top:48px;width:28px;height:28px;"></span><span style="left:86px;top:52px;width:12px;height:12px;"></span><span style="left:52px;top:92px;width:8px;height:8px;"></span><span style="left:110px;top:78px;width:6px;height:6px;"></span><span style="left:980px;top:60px;width:10px;height:10px;"></span><span style="left:1020px;top:100px;width:6px;height:6px;"></span><span style="left:56px;top:1780px;width:8px;height:8px;"></span><span style="left:1000px;top:1820px;width:14px;height:14px;"></span></div>
+      <div class="safe align-left">
+        <div class="kicker">01 / 05</div>
+<h1 class="claim">Tu web ya existe.</h1>
 <div class="rule"></div>
-<p class="apoyo">Menos tarjeta digital. Más máquina de consultas.</p>
+<p class="apoyo">El problema no es “tener sitio”.</p>
+<p class="cont">El problema es lo que pasa después…</p>
       </div>
       <div class="firma">sebastian.stlabs.ar</div>
     </div>
-    <div class="slide" data-tema="01-evidencia" data-id="ev-02" data-n="2">
+    <div class="slide rock-1" data-tema="01-evidencia" data-id="ev-02" data-n="2">
       <div class="bg">
-        <div class="grid"></div>
-        <div class="lines"></div>
+        <div class="rock-tex" style='background-image:url("file:///workspace/builds/historias-intros-25/textures/rock-1.png");opacity:0.9;background-size:280px'></div>
+        <div class="rock-overlay" style="--ov:0.58;--glow:78% 18%;--ctr:1.25"></div>
+        <div class="grain-lines"></div>
         <div class="stain s1"></div>
         <div class="stain s2"></div>
-        <div class="stain s3"></div>
-        <div class="glow"></div>
-        <div class="vignette"></div>
       </div>
-      <div class="safe">
-        <div class="kicker">CARGA</div>
-<div class="dato">1.9s</div>
-<div class="dato-sub">antes: 8.4s</div>
-<h1 class="claim claim-sm">Misma marca.<br>Otra velocidad.</h1>
-<p class="apoyo">Sin rediseñar todo. Sí, tocando lo que pesa.</p>
+      <div class="frame frame-double"></div>
+      <div class="dots"><span style="left:1020px;top:1820px;width:24px;height:24px;"></span><span style="left:960px;top:1760px;width:10px;height:10px;"></span><span style="left:900px;top:1840px;width:6px;height:6px;"></span><span style="left:1000px;top:1700px;width:12px;height:12px;"></span><span style="left:50px;top:50px;width:14px;height:14px;"></span><span style="left:80px;top:1810px;width:7px;height:7px;"></span><span style="left:1000px;top:60px;width:5px;height:5px;"></span></div>
+      <div class="safe align-center">
+        <div class="kicker">02 / 05</div>
+<div class="dato">8.4s</div>
+<div class="dato-sub">así carga hoy</div>
+<h1 class="claim claim-sm">…si tarda,<br>la gente se va.</h1>
+<p class="apoyo">Misma marca. Otra velocidad es posible.</p>
+<p class="cont">Y no es solo la carga…</p>
       </div>
       <div class="firma">sebastian.stlabs.ar</div>
     </div>
-    <div class="slide" data-tema="01-evidencia" data-id="ev-03" data-n="3">
+    <div class="slide rock-2" data-tema="01-evidencia" data-id="ev-03" data-n="3">
       <div class="bg">
-        <div class="grid"></div>
-        <div class="lines"></div>
+        <div class="rock-tex" style='background-image:url("file:///workspace/builds/historias-intros-25/textures/rock-2.png");opacity:0.82;background-size:420px'></div>
+        <div class="rock-overlay" style="--ov:0.64;--glow:22% 72%;--ctr:1.15"></div>
+        <div class="grain-lines"></div>
         <div class="stain s1"></div>
         <div class="stain s2"></div>
-        <div class="stain s3"></div>
-        <div class="glow"></div>
-        <div class="vignette"></div>
       </div>
-      <div class="safe">
-        <div class="kicker">CAMBIO REAL</div>
+      <div class="frame frame-lines"></div>
+      <div class="dots"><span style="left:50px;top:50px;width:22px;height:22px;"></span><span style="left:90px;top:70px;width:8px;height:8px;"></span><span style="left:70px;top:110px;width:5px;height:5px;"></span><span style="left:1010px;top:54px;width:14px;height:14px;"></span><span style="left:960px;top:90px;width:7px;height:7px;"></span><span style="left:54px;top:1810px;width:10px;height:10px;"></span><span style="left:100px;top:1760px;width:16px;height:16px;"></span><span style="left:1008px;top:1800px;width:20px;height:20px;"></span><span style="left:950px;top:1840px;width:6px;height:6px;"></span><span style="left:1020px;top:1720px;width:9px;height:9px;"></span></div>
+      <div class="safe align-center">
+        <div class="kicker">03 / 05</div>
 
         <div class="split">
           <div class="col bad">
             <div class="col-lab">ANTES</div>
-            <div class="col-txt">Formulario<br>que no llega</div>
+            <div class="col-txt">El formulario<br>no llega</div>
           </div>
           <div class="vs">VS</div>
           <div class="col good">
             <div class="col-lab">DESPUÉS</div>
-            <div class="col-txt">Lead en el<br>CRM en segundos</div>
+            <div class="col-txt">Lead en el CRM<br>en segundos</div>
           </div>
         </div>
-<p class="apoyo">Arreglos que se sienten en la facturación.</p>
+<p class="apoyo">…también se pierde la consulta en el camino.</p>
+<p class="cont">Cuando ordenás eso…</p>
       </div>
       <div class="firma">sebastian.stlabs.ar</div>
     </div>
-    <div class="slide" data-tema="01-evidencia" data-id="ev-04" data-n="4">
+    <div class="slide rock-3" data-tema="01-evidencia" data-id="ev-04" data-n="4">
       <div class="bg">
-        <div class="grid"></div>
-        <div class="lines"></div>
+        <div class="rock-tex" style='background-image:url("file:///workspace/builds/historias-intros-25/textures/rock-3.png");opacity:0.92;background-size:240px'></div>
+        <div class="rock-overlay" style="--ov:0.55;--glow:70% 78%;--ctr:1.35"></div>
+        <div class="grain-lines"></div>
         <div class="stain s1"></div>
         <div class="stain s2"></div>
-        <div class="stain s3"></div>
-        <div class="glow"></div>
-        <div class="vignette"></div>
       </div>
-      <div class="safe">
-        <div class="kicker">CONVERSIÓN</div>
+      <div class="frame frame-brackets"></div>
+      <div class="dots"><span style="left:1000px;top:52px;width:26px;height:26px;"></span><span style="left:960px;top:70px;width:11px;height:11px;"></span><span style="left:1020px;top:100px;width:7px;height:7px;"></span><span style="left:920px;top:48px;width:5px;height:5px;"></span><span style="left:60px;top:56px;width:9px;height:9px;"></span><span style="left:48px;top:1800px;width:12px;height:12px;"></span><span style="left:1010px;top:1810px;width:8px;height:8px;"></span></div>
+      <div class="safe align-left">
+        <div class="kicker">04 / 05</div>
 <div class="dato">+27%</div>
-<div class="dato-sub">consultas en 60 días</div>
-<h1 class="claim claim-sm">No fue magia.<br>Fue estructura.</h1>
+<div class="dato-sub">consultas · 60 días</div>
+<h1 class="claim claim-sm">…la conversión<br>responde.</h1>
 <p class="apoyo">Copy, recorrido y peso: alineados.</p>
+<p class="cont">Y el sitio deja de ser adorno…</p>
       </div>
       <div class="firma">sebastian.stlabs.ar</div>
     </div>
-    <div class="slide" data-tema="01-evidencia" data-id="ev-05" data-n="5">
+    <div class="slide rock-4" data-tema="01-evidencia" data-id="ev-05" data-n="5">
       <div class="bg">
-        <div class="grid"></div>
-        <div class="lines"></div>
+        <div class="rock-tex" style='background-image:url("file:///workspace/builds/historias-intros-25/textures/rock-4.png");opacity:0.8;background-size:380px'></div>
+        <div class="rock-overlay" style="--ov:0.66;--glow:50% 40%;--ctr:1.18"></div>
+        <div class="grain-lines"></div>
         <div class="stain s1"></div>
         <div class="stain s2"></div>
-        <div class="stain s3"></div>
-        <div class="glow"></div>
-        <div class="vignette"></div>
       </div>
-      <div class="safe">
-        <div class="kicker">EN PRODUCCIÓN</div>
-<div class="viz pulse"><span></span><span></span><span></span></div>
-<h1 class="claim">Live.<br>Midiendo.<br>Vendiendo.</h1>
+      <div class="frame frame-double"></div>
+      <div class="dots"><span style="left:40px;top:60px;width:26px;height:26px;"></span><span style="left:100px;top:40px;width:9px;height:9px;"></span><span style="left:70px;top:120px;width:5px;height:5px;"></span><span style="left:140px;top:80px;width:4px;height:4px;"></span><span style="left:1000px;top:40px;width:12px;height:12px;"></span><span style="left:1040px;top:90px;width:18px;height:18px;"></span><span style="left:960px;top:110px;width:6px;height:6px;"></span><span style="left:40px;top:1760px;width:8px;height:8px;"></span><span style="left:80px;top:1840px;width:20px;height:20px;"></span><span style="left:130px;top:1780px;width:5px;height:5px;"></span><span style="left:1000px;top:1820px;width:14px;height:14px;"></span><span style="left:940px;top:1760px;width:7px;height:7px;"></span><span style="left:1020px;top:1700px;width:10px;height:10px;"></span><span style="left:880px;top:1840px;width:4px;height:4px;"></span></div>
+      <div class="safe align-center">
+        <div class="kicker">05 / 05</div>
+<h1 class="claim">…pasa a vender<br>de verdad.</h1>
 <div class="rule"></div>
-<p class="apoyo">Lo entregado se ve. No queda en un PDF.</p>
+<p class="apoyo">Live. Midiendo. Con consultas reales.</p>
       </div>
       <div class="firma">sebastian.stlabs.ar</div>
     </div>
-    <div class="slide" data-tema="02-metodo" data-id="me-01" data-n="6">
+    <div class="slide rock-1" data-tema="02-metodo" data-id="me-01" data-n="6">
       <div class="bg">
-        <div class="grid"></div>
-        <div class="lines"></div>
+        <div class="rock-tex" style='background-image:url("file:///workspace/builds/historias-intros-25/textures/rock-1.png");opacity:0.9;background-size:280px'></div>
+        <div class="rock-overlay" style="--ov:0.58;--glow:78% 18%;--ctr:1.25"></div>
+        <div class="grain-lines"></div>
         <div class="stain s1"></div>
         <div class="stain s2"></div>
-        <div class="stain s3"></div>
-        <div class="glow"></div>
-        <div class="vignette"></div>
       </div>
-      <div class="safe">
-        <div class="kicker">DÍA CERO</div>
-
-<h1 class="claim">Primero miramos<br>qué frena tus ventas.</h1>
+      <div class="frame frame-lines"></div>
+      <div class="dots"><span style="left:52px;top:1800px;width:30px;height:30px;"></span><span style="left:90px;top:1760px;width:12px;height:12px;"></span><span style="left:48px;top:1720px;width:7px;height:7px;"></span><span style="left:120px;top:1830px;width:6px;height:6px;"></span><span style="left:1000px;top:50px;width:9px;height:9px;"></span><span style="left:60px;top:56px;width:8px;height:8px;"></span><span style="left:1010px;top:1820px;width:10px;height:10px;"></span></div>
+      <div class="safe align-left">
+        <div class="kicker">01 / 05</div>
+<h1 class="claim">Si me contratás,<br>no arrancamos<br>diseñando.</h1>
 <div class="rule"></div>
-<p class="apoyo">Después sí: diseño y código.</p>
+<p class="apoyo">Primero hay que ver dónde se frena la venta.</p>
+<p class="cont">Eso es el punto de partida…</p>
       </div>
       <div class="firma">sebastian.stlabs.ar</div>
     </div>
-    <div class="slide" data-tema="02-metodo" data-id="me-02" data-n="7">
+    <div class="slide rock-3" data-tema="02-metodo" data-id="me-02" data-n="7">
       <div class="bg">
-        <div class="grid"></div>
-        <div class="lines"></div>
+        <div class="rock-tex" style='background-image:url("file:///workspace/builds/historias-intros-25/textures/rock-3.png");opacity:0.92;background-size:240px'></div>
+        <div class="rock-overlay" style="--ov:0.55;--glow:70% 78%;--ctr:1.35"></div>
+        <div class="grain-lines"></div>
         <div class="stain s1"></div>
         <div class="stain s2"></div>
-        <div class="stain s3"></div>
-        <div class="glow"></div>
-        <div class="vignette"></div>
       </div>
-      <div class="safe">
-        <div class="kicker">SIN SORPRESAS</div>
-<h1 class="claim claim-sm">Así arranca<br>un proyecto.</h1>
-<ol class="pasos"><li><span class="n">01</span><span class="t">Diagnóstico</span></li><li><span class="n">02</span><span class="t">Estructura</span></li><li><span class="n">03</span><span class="t">Diseño + dev</span></li><li><span class="n">04</span><span class="t">Al aire</span></li><li><span class="n">05</span><span class="t">Entrega</span></li></ol>
-<p class="apoyo">Un paso a la vez. Todo dicho de entrada.</p>
+      <div class="frame frame-brackets"></div>
+      <div class="dots"><span style="left:44px;top:44px;width:18px;height:18px;"></span><span style="left:78px;top:90px;width:7px;height:7px;"></span><span style="left:120px;top:50px;width:11px;height:11px;"></span><span style="left:50px;top:130px;width:5px;height:5px;"></span><span style="left:160px;top:100px;width:4px;height:4px;"></span><span style="left:1000px;top:1800px;width:16px;height:16px;"></span><span style="left:960px;top:1840px;width:6px;height:6px;"></span><span style="left:1020px;top:70px;width:8px;height:8px;"></span></div>
+      <div class="safe align-center">
+        <div class="kicker">02 / 05</div>
+<h1 class="claim">…miramos web,<br>mensajes y embudo.</h1>
+<div class="rule"></div>
+<p class="apoyo">Sin humo. Con un mapa de prioridades.</p>
+<p class="cont">Recién ahí armamos estructura…</p>
       </div>
       <div class="firma">sebastian.stlabs.ar</div>
     </div>
-    <div class="slide" data-tema="02-metodo" data-id="me-03" data-n="8">
+    <div class="slide rock-0" data-tema="02-metodo" data-id="me-03" data-n="8">
       <div class="bg">
-        <div class="grid"></div>
-        <div class="lines"></div>
+        <div class="rock-tex" style='background-image:url("file:///workspace/builds/historias-intros-25/textures/rock-0.png");opacity:0.85;background-size:340px'></div>
+        <div class="rock-overlay" style="--ov:0.62;--glow:18% 22%;--ctr:1.2"></div>
+        <div class="grain-lines"></div>
         <div class="stain s1"></div>
         <div class="stain s2"></div>
-        <div class="stain s3"></div>
-        <div class="glow"></div>
-        <div class="vignette"></div>
       </div>
-      <div class="safe">
-        <div class="kicker">REGLA</div>
-
-<h1 class="claim">Primero el esqueleto.<br>Después lo lindo.</h1>
+      <div class="frame frame-double"></div>
+      <div class="dots"><span style="left:1008px;top:1790px;width:28px;height:28px;"></span><span style="left:960px;top:1830px;width:13px;height:13px;"></span><span style="left:1020px;top:1720px;width:8px;height:8px;"></span><span style="left:920px;top:1800px;width:6px;height:6px;"></span><span style="left:56px;top:48px;width:10px;height:10px;"></span><span style="left:1000px;top:60px;width:7px;height:7px;"></span><span style="left:70px;top:1810px;width:9px;height:9px;"></span></div>
+      <div class="safe align-left">
+        <div class="kicker">03 / 05</div>
+<h1 class="claim">…primero el esqueleto.<br>Después lo lindo.</h1>
 <div class="rule"></div>
 <p class="apoyo">Si el recorrido no cierra, el color no salva nada.</p>
+<p class="cont">Diseño y desarrollo van juntos…</p>
       </div>
       <div class="firma">sebastian.stlabs.ar</div>
     </div>
-    <div class="slide" data-tema="02-metodo" data-id="me-04" data-n="9">
+    <div class="slide rock-4" data-tema="02-metodo" data-id="me-04" data-n="9">
       <div class="bg">
-        <div class="grid"></div>
-        <div class="lines"></div>
+        <div class="rock-tex" style='background-image:url("file:///workspace/builds/historias-intros-25/textures/rock-4.png");opacity:0.8;background-size:380px'></div>
+        <div class="rock-overlay" style="--ov:0.66;--glow:50% 40%;--ctr:1.18"></div>
+        <div class="grain-lines"></div>
         <div class="stain s1"></div>
         <div class="stain s2"></div>
-        <div class="stain s3"></div>
-        <div class="glow"></div>
-        <div class="vignette"></div>
       </div>
-      <div class="safe">
-        <div class="kicker">CLARIDAD</div>
-<div class="dato">5</div>
-<div class="dato-sub">momentos definidos</div>
-<h1 class="claim claim-sm">Sabés qué pasa<br>si me contratás.</h1>
-<p class="apoyo">Cero humo a mitad de camino.</p>
+      <div class="frame frame-lines"></div>
+      <div class="dots"><span style="left:50px;top:50px;width:22px;height:22px;"></span><span style="left:90px;top:70px;width:8px;height:8px;"></span><span style="left:70px;top:110px;width:5px;height:5px;"></span><span style="left:1010px;top:54px;width:14px;height:14px;"></span><span style="left:960px;top:90px;width:7px;height:7px;"></span><span style="left:54px;top:1810px;width:10px;height:10px;"></span><span style="left:100px;top:1760px;width:16px;height:16px;"></span><span style="left:1008px;top:1800px;width:20px;height:20px;"></span><span style="left:950px;top:1840px;width:6px;height:6px;"></span><span style="left:1020px;top:1720px;width:9px;height:9px;"></span></div>
+      <div class="safe align-left">
+        <div class="kicker">04 / 05</div>
+<h1 class="claim claim-sm">…con avances<br>que se ven.</h1>
+<ol class="pasos"><li><span class="n">01</span><span class="t">Diagnóstico</span></li><li><span class="n">02</span><span class="t">Estructura</span></li><li><span class="n">03</span><span class="t">Diseño + dev</span></li><li><span class="n">04</span><span class="t">Al aire</span></li><li><span class="n">05</span><span class="t">Entrega</span></li></ol>
+<p class="apoyo">Cinco momentos. Todo dicho de entrada.</p>
+<p class="cont">Y al final…</p>
       </div>
       <div class="firma">sebastian.stlabs.ar</div>
     </div>
-    <div class="slide" data-tema="02-metodo" data-id="me-05" data-n="10">
+    <div class="slide rock-2" data-tema="02-metodo" data-id="me-05" data-n="10">
       <div class="bg">
-        <div class="grid"></div>
-        <div class="lines"></div>
+        <div class="rock-tex" style='background-image:url("file:///workspace/builds/historias-intros-25/textures/rock-2.png");opacity:0.82;background-size:420px'></div>
+        <div class="rock-overlay" style="--ov:0.64;--glow:22% 72%;--ctr:1.15"></div>
+        <div class="grain-lines"></div>
         <div class="stain s1"></div>
         <div class="stain s2"></div>
-        <div class="stain s3"></div>
-        <div class="glow"></div>
-        <div class="vignette"></div>
       </div>
-      <div class="safe">
-        <div class="kicker">ENTREGA</div>
+      <div class="frame frame-brackets"></div>
+      <div class="dots"><span style="left:1020px;top:44px;width:20px;height:20px;"></span><span style="left:960px;top:80px;width:8px;height:8px;"></span><span style="left:980px;top:120px;width:5px;height:5px;"></span><span style="left:900px;top:50px;width:12px;height:12px;"></span><span style="left:50px;top:1800px;width:14px;height:14px;"></span><span style="left:80px;top:60px;width:6px;height:6px;"></span><span style="left:1000px;top:1820px;width:9px;height:9px;"></span></div>
+      <div class="safe align-center">
+        <div class="kicker">05 / 05</div>
 <div class="viz check"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="none" stroke="#00FFB2" stroke-width="6"/><path d="M36 62 L54 80 L86 42" fill="none" stroke="#00FFB2" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-<h1 class="claim">Te lo dejo<br>funcionando.</h1>
+<h1 class="claim">…te lo dejo<br>funcionando.</h1>
 <div class="rule"></div>
-<p class="apoyo">Accesos, checklist y próximos pasos. Listo.</p>
+<p class="apoyo">Accesos, checklist y próximos pasos. Cerrado.</p>
       </div>
       <div class="firma">sebastian.stlabs.ar</div>
     </div>
-    <div class="slide" data-tema="03-confianza" data-id="co-01" data-n="11">
+    <div class="slide rock-2" data-tema="03-confianza" data-id="co-01" data-n="11">
       <div class="bg">
-        <div class="grid"></div>
-        <div class="lines"></div>
+        <div class="rock-tex" style='background-image:url("file:///workspace/builds/historias-intros-25/textures/rock-2.png");opacity:0.82;background-size:420px'></div>
+        <div class="rock-overlay" style="--ov:0.64;--glow:22% 72%;--ctr:1.15"></div>
+        <div class="grain-lines"></div>
         <div class="stain s1"></div>
         <div class="stain s2"></div>
-        <div class="stain s3"></div>
-        <div class="glow"></div>
-        <div class="vignette"></div>
       </div>
-      <div class="safe">
-        <div class="kicker">POST LAUNCH</div>
+      <div class="frame frame-double"></div>
+      <div class="dots"><span style="left:48px;top:48px;width:28px;height:28px;"></span><span style="left:86px;top:52px;width:12px;height:12px;"></span><span style="left:52px;top:92px;width:8px;height:8px;"></span><span style="left:110px;top:78px;width:6px;height:6px;"></span><span style="left:980px;top:60px;width:10px;height:10px;"></span><span style="left:1020px;top:100px;width:6px;height:6px;"></span><span style="left:56px;top:1780px;width:8px;height:8px;"></span><span style="left:1000px;top:1820px;width:14px;height:14px;"></span></div>
+      <div class="safe align-left">
+        <div class="kicker">01 / 05</div>
 <div class="quote">“Por fin entiendo<br>qué hace mi web.”</div>
 <div class="rule"></div>
-<p class="apoyo">Cuando el sitio ordena, el negocio respira.</p>
+<p class="apoyo">Eso aparece cuando el sitio ordena el negocio.</p>
+<p class="cont">No es marketing vacío…</p>
       </div>
       <div class="firma">sebastian.stlabs.ar</div>
     </div>
-    <div class="slide" data-tema="03-confianza" data-id="co-02" data-n="12">
+    <div class="slide rock-4" data-tema="03-confianza" data-id="co-02" data-n="12">
       <div class="bg">
-        <div class="grid"></div>
-        <div class="lines"></div>
+        <div class="rock-tex" style='background-image:url("file:///workspace/builds/historias-intros-25/textures/rock-4.png");opacity:0.8;background-size:380px'></div>
+        <div class="rock-overlay" style="--ov:0.66;--glow:50% 40%;--ctr:1.18"></div>
+        <div class="grain-lines"></div>
         <div class="stain s1"></div>
         <div class="stain s2"></div>
-        <div class="stain s3"></div>
-        <div class="glow"></div>
-        <div class="vignette"></div>
       </div>
-      <div class="safe">
-        <div class="kicker">PLAZO REAL</div>
+      <div class="frame frame-brackets"></div>
+      <div class="dots"><span style="left:1020px;top:1820px;width:24px;height:24px;"></span><span style="left:960px;top:1760px;width:10px;height:10px;"></span><span style="left:900px;top:1840px;width:6px;height:6px;"></span><span style="left:1000px;top:1700px;width:12px;height:12px;"></span><span style="left:50px;top:50px;width:14px;height:14px;"></span><span style="left:80px;top:1810px;width:7px;height:7px;"></span><span style="left:1000px;top:60px;width:5px;height:5px;"></span></div>
+      <div class="safe align-center">
+        <div class="kicker">02 / 05</div>
 <div class="dato">14</div>
-<div class="dato-sub">días · landing con foco</div>
-<h1 class="claim claim-sm">Sin milagros.<br>Con prioridades.</h1>
-<p class="apoyo">Alcance claro = fecha que se cumple.</p>
+<div class="dato-sub">días · con foco</div>
+<h1 class="claim claim-sm">…son plazos reales<br>y alcance claro.</h1>
+<p class="apoyo">Sin milagros. Con prioridades.</p>
+<p class="cont">Y sin inventar credenciales…</p>
       </div>
       <div class="firma">sebastian.stlabs.ar</div>
     </div>
-    <div class="slide" data-tema="03-confianza" data-id="co-03" data-n="13">
+    <div class="slide rock-1" data-tema="03-confianza" data-id="co-03" data-n="13">
       <div class="bg">
-        <div class="grid"></div>
-        <div class="lines"></div>
+        <div class="rock-tex" style='background-image:url("file:///workspace/builds/historias-intros-25/textures/rock-1.png");opacity:0.9;background-size:280px'></div>
+        <div class="rock-overlay" style="--ov:0.58;--glow:78% 18%;--ctr:1.25"></div>
+        <div class="grain-lines"></div>
         <div class="stain s1"></div>
         <div class="stain s2"></div>
-        <div class="stain s3"></div>
-        <div class="glow"></div>
-        <div class="vignette"></div>
       </div>
-      <div class="safe">
-        <div class="kicker">SERIEDAD</div>
-
-<h1 class="claim">Logos con permiso.<br>Nada inventado.</h1>
+      <div class="frame frame-lines"></div>
+      <div class="dots"><span style="left:1000px;top:52px;width:26px;height:26px;"></span><span style="left:960px;top:70px;width:11px;height:11px;"></span><span style="left:1020px;top:100px;width:7px;height:7px;"></span><span style="left:920px;top:48px;width:5px;height:5px;"></span><span style="left:60px;top:56px;width:9px;height:9px;"></span><span style="left:48px;top:1800px;width:12px;height:12px;"></span><span style="left:1010px;top:1810px;width:8px;height:8px;"></span></div>
+      <div class="safe align-left">
+        <div class="kicker">03 / 05</div>
+<h1 class="claim">…logos solo<br>con permiso.</h1>
 <div class="rule"></div>
-<p class="apoyo">La confianza se presta. No se fabrica.</p>
+<p class="apoyo">Nada inventado. Nada prestado sin autorización.</p>
+<p class="cont">Lo que escriben también cuenta…</p>
       </div>
       <div class="firma">sebastian.stlabs.ar</div>
     </div>
-    <div class="slide" data-tema="03-confianza" data-id="co-04" data-n="14">
+    <div class="slide rock-0" data-tema="03-confianza" data-id="co-04" data-n="14">
       <div class="bg">
-        <div class="grid"></div>
-        <div class="lines"></div>
+        <div class="rock-tex" style='background-image:url("file:///workspace/builds/historias-intros-25/textures/rock-0.png");opacity:0.85;background-size:340px'></div>
+        <div class="rock-overlay" style="--ov:0.62;--glow:18% 22%;--ctr:1.2"></div>
+        <div class="grain-lines"></div>
         <div class="stain s1"></div>
         <div class="stain s2"></div>
-        <div class="stain s3"></div>
-        <div class="glow"></div>
-        <div class="vignette"></div>
       </div>
-      <div class="safe">
-        <div class="kicker">EN SUS PALABRAS</div>
+      <div class="frame frame-double"></div>
+      <div class="dots"><span style="left:46px;top:1820px;width:22px;height:22px;"></span><span style="left:90px;top:1760px;width:9px;height:9px;"></span><span style="left:130px;top:1840px;width:5px;height:5px;"></span><span style="left:60px;top:1700px;width:11px;height:11px;"></span><span style="left:1000px;top:50px;width:13px;height:13px;"></span><span style="left:1020px;top:1800px;width:7px;height:7px;"></span><span style="left:70px;top:50px;width:6px;height:6px;"></span></div>
+      <div class="safe align-center">
+        <div class="kicker">04 / 05</div>
 <div class="quote">“El formulario<br>empezó a llegar.”</div>
 <div class="rule"></div>
 <p class="apoyo">Capturas reales. Datos sensibles tapados.</p>
+<p class="cont">Al final la confianza…</p>
       </div>
       <div class="firma">sebastian.stlabs.ar</div>
     </div>
-    <div class="slide" data-tema="03-confianza" data-id="co-05" data-n="15">
+    <div class="slide rock-3" data-tema="03-confianza" data-id="co-05" data-n="15">
       <div class="bg">
-        <div class="grid"></div>
-        <div class="lines"></div>
+        <div class="rock-tex" style='background-image:url("file:///workspace/builds/historias-intros-25/textures/rock-3.png");opacity:0.92;background-size:240px'></div>
+        <div class="rock-overlay" style="--ov:0.55;--glow:70% 78%;--ctr:1.35"></div>
+        <div class="grain-lines"></div>
         <div class="stain s1"></div>
         <div class="stain s2"></div>
-        <div class="stain s3"></div>
-        <div class="glow"></div>
-        <div class="vignette"></div>
       </div>
-      <div class="safe">
-        <div class="kicker">HECHO</div>
+      <div class="frame frame-brackets"></div>
+      <div class="dots"><span style="left:40px;top:60px;width:26px;height:26px;"></span><span style="left:100px;top:40px;width:9px;height:9px;"></span><span style="left:70px;top:120px;width:5px;height:5px;"></span><span style="left:140px;top:80px;width:4px;height:4px;"></span><span style="left:1000px;top:40px;width:12px;height:12px;"></span><span style="left:1040px;top:90px;width:18px;height:18px;"></span><span style="left:960px;top:110px;width:6px;height:6px;"></span><span style="left:40px;top:1760px;width:8px;height:8px;"></span><span style="left:80px;top:1840px;width:20px;height:20px;"></span><span style="left:130px;top:1780px;width:5px;height:5px;"></span><span style="left:1000px;top:1820px;width:14px;height:14px;"></span><span style="left:940px;top:1760px;width:7px;height:7px;"></span><span style="left:1020px;top:1700px;width:10px;height:10px;"></span><span style="left:880px;top:1840px;width:4px;height:4px;"></span></div>
+      <div class="safe align-center">
+        <div class="kicker">05 / 05</div>
 <div class="viz seal">OK</div>
-<h1 class="claim">Confianza se construye<br>con entregas.</h1>
+<h1 class="claim">…se construye<br>con entregas.</h1>
 <div class="rule"></div>
 <p class="apoyo">No con promesas enormes en un story.</p>
       </div>
       <div class="firma">sebastian.stlabs.ar</div>
     </div>
-    <div class="slide" data-tema="04-oferta" data-id="of-01" data-n="16">
+    <div class="slide rock-3" data-tema="04-oferta" data-id="of-01" data-n="16">
       <div class="bg">
-        <div class="grid"></div>
-        <div class="lines"></div>
+        <div class="rock-tex" style='background-image:url("file:///workspace/builds/historias-intros-25/textures/rock-3.png");opacity:0.92;background-size:240px'></div>
+        <div class="rock-overlay" style="--ov:0.55;--glow:70% 78%;--ctr:1.35"></div>
+        <div class="grain-lines"></div>
         <div class="stain s1"></div>
         <div class="stain s2"></div>
-        <div class="stain s3"></div>
-        <div class="glow"></div>
-        <div class="vignette"></div>
       </div>
-      <div class="safe">
-        <div class="kicker">UNA PÁGINA</div>
-
-<h1 class="claim">Un objetivo.<br>Una landing.</h1>
+      <div class="frame frame-lines"></div>
+      <div class="dots"><span style="left:44px;top:44px;width:18px;height:18px;"></span><span style="left:78px;top:90px;width:7px;height:7px;"></span><span style="left:120px;top:50px;width:11px;height:11px;"></span><span style="left:50px;top:130px;width:5px;height:5px;"></span><span style="left:160px;top:100px;width:4px;height:4px;"></span><span style="left:1000px;top:1800px;width:16px;height:16px;"></span><span style="left:960px;top:1840px;width:6px;height:6px;"></span><span style="left:1020px;top:70px;width:8px;height:8px;"></span></div>
+      <div class="safe align-left">
+        <div class="kicker">01 / 05</div>
+<h1 class="claim">No hace falta<br>un hilo eterno<br>por DM.</h1>
 <div class="rule"></div>
-<p class="apoyo">Para cuando necesitás vender una cosa bien.</p>
+<p class="apoyo">Hay caminos claros según lo que necesitás.</p>
+<p class="cont">Si querés vender una cosa…</p>
       </div>
       <div class="firma">sebastian.stlabs.ar</div>
     </div>
-    <div class="slide" data-tema="04-oferta" data-id="of-02" data-n="17">
+    <div class="slide rock-0" data-tema="04-oferta" data-id="of-02" data-n="17">
       <div class="bg">
-        <div class="grid"></div>
-        <div class="lines"></div>
+        <div class="rock-tex" style='background-image:url("file:///workspace/builds/historias-intros-25/textures/rock-0.png");opacity:0.85;background-size:340px'></div>
+        <div class="rock-overlay" style="--ov:0.62;--glow:18% 22%;--ctr:1.2"></div>
+        <div class="grain-lines"></div>
         <div class="stain s1"></div>
         <div class="stain s2"></div>
-        <div class="stain s3"></div>
-        <div class="glow"></div>
-        <div class="vignette"></div>
       </div>
-      <div class="safe">
-        <div class="kicker">ELEGÍ</div>
+      <div class="frame frame-brackets"></div>
+      <div class="dots"><span style="left:1008px;top:1790px;width:28px;height:28px;"></span><span style="left:960px;top:1830px;width:13px;height:13px;"></span><span style="left:1020px;top:1720px;width:8px;height:8px;"></span><span style="left:920px;top:1800px;width:6px;height:6px;"></span><span style="left:56px;top:48px;width:10px;height:10px;"></span><span style="left:1000px;top:60px;width:7px;height:7px;"></span><span style="left:70px;top:1810px;width:9px;height:9px;"></span></div>
+      <div class="safe align-center">
+        <div class="kicker">02 / 05</div>
+<h1 class="claim">…una landing<br>basta.</h1>
+<div class="rule"></div>
+<p class="apoyo">Una página. Un objetivo. Formularios conectados.</p>
+<p class="cont">Si tu marca necesita más espacio…</p>
+      </div>
+      <div class="firma">sebastian.stlabs.ar</div>
+    </div>
+    <div class="slide rock-2" data-tema="04-oferta" data-id="of-03" data-n="18">
+      <div class="bg">
+        <div class="rock-tex" style='background-image:url("file:///workspace/builds/historias-intros-25/textures/rock-2.png");opacity:0.82;background-size:420px'></div>
+        <div class="rock-overlay" style="--ov:0.64;--glow:22% 72%;--ctr:1.15"></div>
+        <div class="grain-lines"></div>
+        <div class="stain s1"></div>
+        <div class="stain s2"></div>
+      </div>
+      <div class="frame frame-double"></div>
+      <div class="dots"><span style="left:50px;top:50px;width:22px;height:22px;"></span><span style="left:90px;top:70px;width:8px;height:8px;"></span><span style="left:70px;top:110px;width:5px;height:5px;"></span><span style="left:1010px;top:54px;width:14px;height:14px;"></span><span style="left:960px;top:90px;width:7px;height:7px;"></span><span style="left:54px;top:1810px;width:10px;height:10px;"></span><span style="left:100px;top:1760px;width:16px;height:16px;"></span><span style="left:1008px;top:1800px;width:20px;height:20px;"></span><span style="left:950px;top:1840px;width:6px;height:6px;"></span><span style="left:1020px;top:1720px;width:9px;height:9px;"></span></div>
+      <div class="safe align-center">
+        <div class="kicker">03 / 05</div>
 
         <div class="split">
           <div class="col choice">
@@ -500,157 +556,142 @@ html, body { background:#000; }
             <div class="col-txt">Marca ordenada<br>en varias páginas</div>
           </div>
         </div>
-<p class="apoyo">Dos caminos. Sin hilo eterno por DM.</p>
+<p class="apoyo">…armamos sitio corporativo. O rediseñamos el que ya tenés.</p>
+<p class="cont">Y cuando ya está al aire…</p>
       </div>
       <div class="firma">sebastian.stlabs.ar</div>
     </div>
-    <div class="slide" data-tema="04-oferta" data-id="of-03" data-n="18">
+    <div class="slide rock-4" data-tema="04-oferta" data-id="of-04" data-n="19">
       <div class="bg">
-        <div class="grid"></div>
-        <div class="lines"></div>
+        <div class="rock-tex" style='background-image:url("file:///workspace/builds/historias-intros-25/textures/rock-4.png");opacity:0.8;background-size:380px'></div>
+        <div class="rock-overlay" style="--ov:0.66;--glow:50% 40%;--ctr:1.18"></div>
+        <div class="grain-lines"></div>
         <div class="stain s1"></div>
         <div class="stain s2"></div>
-        <div class="stain s3"></div>
-        <div class="glow"></div>
-        <div class="vignette"></div>
       </div>
-      <div class="safe">
-        <div class="kicker">REHACER</div>
-
-<h1 class="claim">Rediseñar no es<br>pintar de nuevo.</h1>
+      <div class="frame frame-lines"></div>
+      <div class="dots"><span style="left:1020px;top:44px;width:20px;height:20px;"></span><span style="left:960px;top:80px;width:8px;height:8px;"></span><span style="left:980px;top:120px;width:5px;height:5px;"></span><span style="left:900px;top:50px;width:12px;height:12px;"></span><span style="left:50px;top:1800px;width:14px;height:14px;"></span><span style="left:80px;top:60px;width:6px;height:6px;"></span><span style="left:1000px;top:1820px;width:9px;height:9px;"></span></div>
+      <div class="safe align-left">
+        <div class="kicker">04 / 05</div>
+<h1 class="claim">…que no se te caiga<br>después del launch.</h1>
 <div class="rule"></div>
-<p class="apoyo">Es sacar fricción y hacer que alguien compre.</p>
+<p class="apoyo">Mantenimiento: updates, backups, cambios chicos.</p>
+<p class="cont">Si el freno es velocidad o visibilidad…</p>
       </div>
       <div class="firma">sebastian.stlabs.ar</div>
     </div>
-    <div class="slide" data-tema="04-oferta" data-id="of-04" data-n="19">
+    <div class="slide rock-1" data-tema="04-oferta" data-id="of-05" data-n="20">
       <div class="bg">
-        <div class="grid"></div>
-        <div class="lines"></div>
+        <div class="rock-tex" style='background-image:url("file:///workspace/builds/historias-intros-25/textures/rock-1.png");opacity:0.9;background-size:280px'></div>
+        <div class="rock-overlay" style="--ov:0.58;--glow:78% 18%;--ctr:1.25"></div>
+        <div class="grain-lines"></div>
         <div class="stain s1"></div>
         <div class="stain s2"></div>
-        <div class="stain s3"></div>
-        <div class="glow"></div>
-        <div class="vignette"></div>
       </div>
-      <div class="safe">
-        <div class="kicker">DESPUÉS DEL LAUNCH</div>
-
-<h1 class="claim">Que no se te caiga<br>cuando ya está al aire.</h1>
-<div class="rule"></div>
-<p class="apoyo">Updates, backups y cambios chicos sin drama.</p>
-      </div>
-      <div class="firma">sebastian.stlabs.ar</div>
-    </div>
-    <div class="slide" data-tema="04-oferta" data-id="of-05" data-n="20">
-      <div class="bg">
-        <div class="grid"></div>
-        <div class="lines"></div>
-        <div class="stain s1"></div>
-        <div class="stain s2"></div>
-        <div class="stain s3"></div>
-        <div class="glow"></div>
-        <div class="vignette"></div>
-      </div>
-      <div class="safe">
-        <div class="kicker">VISIBILIDAD</div>
+      <div class="frame frame-brackets"></div>
+      <div class="dots"><span style="left:52px;top:1800px;width:30px;height:30px;"></span><span style="left:90px;top:1760px;width:12px;height:12px;"></span><span style="left:48px;top:1720px;width:7px;height:7px;"></span><span style="left:120px;top:1830px;width:6px;height:6px;"></span><span style="left:1000px;top:50px;width:9px;height:9px;"></span><span style="left:60px;top:56px;width:8px;height:8px;"></span><span style="left:1010px;top:1820px;width:10px;height:10px;"></span></div>
+      <div class="safe align-center">
+        <div class="kicker">05 / 05</div>
 <div class="dato">SEO</div>
 <div class="dato-sub">+ velocidad real</div>
-<h1 class="claim claim-sm">Más rápido.<br>Más visible.</h1>
+<h1 class="claim claim-sm">…lo atacamos<br>de frente.</h1>
 <p class="apoyo">Core Web Vitals y peso bajo control.</p>
       </div>
       <div class="firma">sebastian.stlabs.ar</div>
     </div>
-    <div class="slide" data-tema="05-siguiente" data-id="si-01" data-n="21">
+    <div class="slide rock-4" data-tema="05-siguiente" data-id="si-01" data-n="21">
       <div class="bg">
-        <div class="grid"></div>
-        <div class="lines"></div>
+        <div class="rock-tex" style='background-image:url("file:///workspace/builds/historias-intros-25/textures/rock-4.png");opacity:0.8;background-size:380px'></div>
+        <div class="rock-overlay" style="--ov:0.66;--glow:50% 40%;--ctr:1.18"></div>
+        <div class="grain-lines"></div>
         <div class="stain s1"></div>
         <div class="stain s2"></div>
-        <div class="stain s3"></div>
-        <div class="glow"></div>
-        <div class="vignette"></div>
       </div>
-      <div class="safe">
-        <div class="kicker">FILTRO</div>
-
-<h1 class="claim">Para negocios que<br>ya tienen demanda.</h1>
+      <div class="frame frame-double"></div>
+      <div class="dots"><span style="left:48px;top:48px;width:28px;height:28px;"></span><span style="left:86px;top:52px;width:12px;height:12px;"></span><span style="left:52px;top:92px;width:8px;height:8px;"></span><span style="left:110px;top:78px;width:6px;height:6px;"></span><span style="left:980px;top:60px;width:10px;height:10px;"></span><span style="left:1020px;top:100px;width:6px;height:6px;"></span><span style="left:56px;top:1780px;width:8px;height:8px;"></span><span style="left:1000px;top:1820px;width:14px;height:14px;"></span></div>
+      <div class="safe align-left">
+        <div class="kicker">01 / 05</div>
+<h1 class="claim">Trabajo con negocios<br>que ya tienen demanda.</h1>
 <div class="rule"></div>
 <p class="apoyo">Y una web floja — o ninguna.</p>
+<p class="cont">Si buscás lo más barato…</p>
       </div>
       <div class="firma">sebastian.stlabs.ar</div>
     </div>
-    <div class="slide" data-tema="05-siguiente" data-id="si-02" data-n="22">
+    <div class="slide rock-1" data-tema="05-siguiente" data-id="si-02" data-n="22">
       <div class="bg">
-        <div class="grid"></div>
-        <div class="lines"></div>
+        <div class="rock-tex" style='background-image:url("file:///workspace/builds/historias-intros-25/textures/rock-1.png");opacity:0.9;background-size:280px'></div>
+        <div class="rock-overlay" style="--ov:0.58;--glow:78% 18%;--ctr:1.25"></div>
+        <div class="grain-lines"></div>
         <div class="stain s1"></div>
         <div class="stain s2"></div>
-        <div class="stain s3"></div>
-        <div class="glow"></div>
-        <div class="vignette"></div>
       </div>
-      <div class="safe">
-        <div class="kicker">NO ES PARA VOS SI</div>
+      <div class="frame frame-lines"></div>
+      <div class="dots"><span style="left:1020px;top:1820px;width:24px;height:24px;"></span><span style="left:960px;top:1760px;width:10px;height:10px;"></span><span style="left:900px;top:1840px;width:6px;height:6px;"></span><span style="left:1000px;top:1700px;width:12px;height:12px;"></span><span style="left:50px;top:50px;width:14px;height:14px;"></span><span style="left:80px;top:1810px;width:7px;height:7px;"></span><span style="left:1000px;top:60px;width:5px;height:5px;"></span></div>
+      <div class="safe align-center">
+        <div class="kicker">02 / 05</div>
 <div class="viz warn">!</div>
-<h1 class="claim">Buscás lo más barato<br>o “para ayer” sin brief.</h1>
+<h1 class="claim">…o “para ayer”<br>sin brief,</h1>
 <div class="rule"></div>
-<p class="apoyo">Sin claridad de oferta, mejor no arrancar.</p>
+<p class="apoyo">mejor no arrancamos. Sin claridad no hay buen sitio.</p>
+<p class="cont">Si esto te suena…</p>
       </div>
       <div class="firma">sebastian.stlabs.ar</div>
     </div>
-    <div class="slide" data-tema="05-siguiente" data-id="si-03" data-n="23">
+    <div class="slide rock-3" data-tema="05-siguiente" data-id="si-03" data-n="23">
       <div class="bg">
-        <div class="grid"></div>
-        <div class="lines"></div>
+        <div class="rock-tex" style='background-image:url("file:///workspace/builds/historias-intros-25/textures/rock-3.png");opacity:0.92;background-size:240px'></div>
+        <div class="rock-overlay" style="--ov:0.55;--glow:70% 78%;--ctr:1.35"></div>
+        <div class="grain-lines"></div>
         <div class="stain s1"></div>
         <div class="stain s2"></div>
-        <div class="stain s3"></div>
-        <div class="glow"></div>
-        <div class="vignette"></div>
       </div>
-      <div class="safe">
-        <div class="kicker">SIGUIENTE PASO</div>
-<h1 class="claim">Comentá WEB</h1>
+      <div class="frame frame-brackets"></div>
+      <div class="dots"><span style="left:50px;top:50px;width:22px;height:22px;"></span><span style="left:90px;top:70px;width:8px;height:8px;"></span><span style="left:70px;top:110px;width:5px;height:5px;"></span><span style="left:1010px;top:54px;width:14px;height:14px;"></span><span style="left:960px;top:90px;width:7px;height:7px;"></span><span style="left:54px;top:1810px;width:10px;height:10px;"></span><span style="left:100px;top:1760px;width:16px;height:16px;"></span><span style="left:1008px;top:1800px;width:20px;height:20px;"></span><span style="left:950px;top:1840px;width:6px;height:6px;"></span><span style="left:1020px;top:1720px;width:9px;height:9px;"></span></div>
+      <div class="safe align-center">
+        <div class="kicker">03 / 05</div>
+<h1 class="claim">…comentá WEB.</h1>
 <div class="cta-pill">Comentá WEB</div>
 <p class="apoyo">Te mando el diagnóstico y cómo arrancar.</p>
+<p class="cont">También podés agendar…</p>
       </div>
       <div class="firma">sebastian.stlabs.ar</div>
     </div>
-    <div class="slide" data-tema="05-siguiente" data-id="si-04" data-n="24">
+    <div class="slide rock-0" data-tema="05-siguiente" data-id="si-04" data-n="24">
       <div class="bg">
-        <div class="grid"></div>
-        <div class="lines"></div>
+        <div class="rock-tex" style='background-image:url("file:///workspace/builds/historias-intros-25/textures/rock-0.png");opacity:0.85;background-size:340px'></div>
+        <div class="rock-overlay" style="--ov:0.62;--glow:18% 22%;--ctr:1.2"></div>
+        <div class="grain-lines"></div>
         <div class="stain s1"></div>
         <div class="stain s2"></div>
-        <div class="stain s3"></div>
-        <div class="glow"></div>
-        <div class="vignette"></div>
       </div>
-      <div class="safe">
-        <div class="kicker">AGENDA</div>
+      <div class="frame frame-double"></div>
+      <div class="dots"><span style="left:1000px;top:52px;width:26px;height:26px;"></span><span style="left:960px;top:70px;width:11px;height:11px;"></span><span style="left:1020px;top:100px;width:7px;height:7px;"></span><span style="left:920px;top:48px;width:5px;height:5px;"></span><span style="left:60px;top:56px;width:9px;height:9px;"></span><span style="left:48px;top:1800px;width:12px;height:12px;"></span><span style="left:1010px;top:1810px;width:8px;height:8px;"></span></div>
+      <div class="safe align-left">
+        <div class="kicker">04 / 05</div>
 <div class="dato">20'</div>
-<div class="dato-sub">minutos · sin compromiso</div>
-<h1 class="claim claim-sm">Salís con claridad.</h1>
+<div class="dato-sub">sin compromiso</div>
+<h1 class="claim claim-sm">…y salir<br>con claridad.</h1>
 <p class="apoyo">Calendly o WhatsApp. Como te quede mejor.</p>
+<p class="cont">Una duda rápida, de paso…</p>
       </div>
       <div class="firma">sebastian.stlabs.ar</div>
     </div>
-    <div class="slide" data-tema="05-siguiente" data-id="si-05" data-n="25">
+    <div class="slide rock-2" data-tema="05-siguiente" data-id="si-05" data-n="25">
       <div class="bg">
-        <div class="grid"></div>
-        <div class="lines"></div>
+        <div class="rock-tex" style='background-image:url("file:///workspace/builds/historias-intros-25/textures/rock-2.png");opacity:0.82;background-size:420px'></div>
+        <div class="rock-overlay" style="--ov:0.64;--glow:22% 72%;--ctr:1.15"></div>
+        <div class="grain-lines"></div>
         <div class="stain s1"></div>
         <div class="stain s2"></div>
-        <div class="stain s3"></div>
-        <div class="glow"></div>
-        <div class="vignette"></div>
       </div>
-      <div class="safe">
-        <div class="kicker">DUDA RÁPIDA</div>
+      <div class="frame frame-lines"></div>
+      <div class="dots"><span style="left:40px;top:60px;width:26px;height:26px;"></span><span style="left:100px;top:40px;width:9px;height:9px;"></span><span style="left:70px;top:120px;width:5px;height:5px;"></span><span style="left:140px;top:80px;width:4px;height:4px;"></span><span style="left:1000px;top:40px;width:12px;height:12px;"></span><span style="left:1040px;top:90px;width:18px;height:18px;"></span><span style="left:960px;top:110px;width:6px;height:6px;"></span><span style="left:40px;top:1760px;width:8px;height:8px;"></span><span style="left:80px;top:1840px;width:20px;height:20px;"></span><span style="left:130px;top:1780px;width:5px;height:5px;"></span><span style="left:1000px;top:1820px;width:14px;height:14px;"></span><span style="left:940px;top:1760px;width:7px;height:7px;"></span><span style="left:1020px;top:1700px;width:10px;height:10px;"></span><span style="left:880px;top:1840px;width:4px;height:4px;"></span></div>
+      <div class="safe align-left">
+        <div class="kicker">05 / 05</div>
 <h1 class="claim claim-sm">¿Cuánto tarda?</h1>
 <p class="respuesta">Landing típica: 10–14 días.<br>Sitio: 3–5 semanas.<br>Depende del brief y tus vueltas.</p>
-<p class="apoyo">Dos rondas de revisión incluidas.</p>
+<p class="apoyo">Dos rondas de revisión incluidas. Empezá cuando quieras.</p>
       </div>
       <div class="firma">sebastian.stlabs.ar</div>
     </div></div></body></html>
