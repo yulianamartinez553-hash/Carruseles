@@ -49,6 +49,7 @@ Campos obligatorios en `meta`: `fondo`, `familia_visual`, `origen`, `slides`, `k
 ## Documentación
 
 - Sistema de diseño: [SISTEMA-DISENO-CARRUSELES-STLABS.md](SISTEMA-DISENO-CARRUSELES-STLABS.md)
+- Sistema visual video (Reels / TikTok / Shorts): [sistema-video-stlabs.json](sistema-video-stlabs.json)
 - Plan de memoria: [docs/plans/2026-07-01-memoria-operativa-carruseles.md](docs/plans/2026-07-01-memoria-operativa-carruseles.md)
 
 ## Tests

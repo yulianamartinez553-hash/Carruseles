@@ -1,6 +1,8 @@
 # Sistema de Diseño de Carruseles — STLabs / Sebastián García
 > **Estándar absoluto del proyecto.** Todo chat nuevo arranca aquí.
 > Marca: Sebastián García (RevOps · CRM · IA). Firma: **sebastian.stlabs.ar**
+>
+> Videos cortos (Reels / TikTok / Shorts): ver **`sistema-video-stlabs.json`** (cámara cinematográfica, palabras neón `#00FFB2`, SFX, timeline).
 
 ---
 
