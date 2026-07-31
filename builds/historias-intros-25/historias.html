@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><title>Historias intros STLabs</title>
+<style>
+@font-face { font-family:'Bebas Neue'; src:url('file:///tmp/stlabs-fonts/BebasNeue-Regular.ttf') format('truetype'); }
+@font-face { font-family:'Poppins'; src:url('file:///tmp/stlabs-fonts/Poppins-ExtraBold.ttf') format('truetype'); font-weight:800; }
+@font-face { font-family:'Poppins'; src:url('file:///tmp/stlabs-fonts/Poppins-Bold.ttf') format('truetype'); font-weight:700; }
+@font-face { font-family:'IBM Plex Mono'; src:url('file:///tmp/stlabs-fonts/IBMPlexMono-SemiBold.ttf') format('truetype'); font-weight:600; }
+@font-face { font-family:'IBM Plex Mono'; src:url('file:///tmp/stlabs-fonts/IBMPlexMono-Medium.ttf') format('truetype'); font-weight:500; }
+@font-face { font-family:'Barlow Condensed'; src:url('file:///tmp/stlabs-fonts/BarlowCondensed-Medium.ttf') format('truetype'); font-weight:500; }
+@font-face { font-family:'Barlow Condensed'; src:url('file:///tmp/stlabs-fonts/BarlowCondensed-Bold.ttf') format('truetype'); font-weight:700; }
+@font-face { font-family:'Lora'; src:url('file:///tmp/stlabs-fonts/Lora-Italic-Variable.ttf') format('truetype'); font-style:italic; }
+
+* { box-sizing:border-box; margin:0; padding:0; }
+html, body { background:#000; }
+.sheet { display:flex; flex-direction:column; gap:48px; padding:40px; width:max-content; }
+
+.slide {
+  position:relative; width:1080px; height:1920px; overflow:hidden;
+  background:#0A0A0A; isolation:isolate;
+}
+.bg { position:absolute; inset:0; }
+.grid {
+  position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(0,255,178,.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,178,.07) 1px, transparent 1px);
+  background-size:60px 60px;
+  opacity:.85;
+}
+.lines {
+  position:absolute; inset:-25%;
+  background: repeating-linear-gradient(-32deg, transparent 0 22px, rgba(0,255,178,.06) 22px 23.5px);
+  mix-blend-mode:screen;
+}
+.stain { position:absolute; border-radius:50%; filter:blur(40px); pointer-events:none; }
+.s1 { width:560px; height:560px; left:-140px; top:-80px;
+  background:radial-gradient(circle, rgba(0,255,178,.32) 0%, rgba(0,255,178,0) 70%); }
+.s2 { width:640px; height:480px; right:-180px; bottom:120px;
+  background:radial-gradient(circle, rgba(0,255,178,.22) 0%, rgba(0,255,178,0) 68%); }
+.s3 { width:360px; height:360px; left:50%; top:42%; transform:translate(-50%,-50%);
+  background:radial-gradient(circle, rgba(0,255,178,.12) 0%, rgba(0,255,178,0) 70%); }
+.glow {
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse at 50% 28%, rgba(0,255,178,.16) 0%, transparent 55%),
+    linear-gradient(180deg, rgba(0,255,178,.05) 0%, transparent 35%, rgba(0,0,0,.55) 100%);
+}
+.vignette {
+  position:absolute; inset:0;
+  background:radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(0,0,0,.55) 100%);
+}
+
+.safe {
+  position:absolute; left:64px; right:64px; top:200px; bottom:320px;
+  display:flex; flex-direction:column; justify-content:center; z-index:5;
+}
+.kicker {
+  font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:26px;
+  letter-spacing:.2em; color:#00FFB2; text-transform:uppercase; margin-bottom:36px;
+}
+.claim {
+  font-family:'Bebas Neue', Impact, sans-serif; font-size:110px; line-height:.95;
+  letter-spacing:.01em; color:#F2F2F2; text-shadow:0 0 40px rgba(0,255,178,.18);
+  white-space:normal;
+}
+.claim-sm { font-size:88px; }
+.rule {
+  width:140px; height:7px; background:#00FFB2; border-radius:2px;
+  margin:32px 0 28px; box-shadow:0 0 18px rgba(0,255,178,.55);
+}
+.apoyo {
+  font-family:'Barlow Condensed', sans-serif; font-weight:500; font-size:36px;
+  line-height:1.3; color:#9aa39c; max-width:880px; margin-top:8px;
+}
+.firma {
+  position:absolute; left:0; right:0; bottom:300px; text-align:center; z-index:6;
+  font-family:'IBM Plex Mono', monospace; font-weight:500; font-size:24px;
+  letter-spacing:.12em; color:#00FFB2; opacity:.92;
+}
+
+.dato {
+  font-family:'Bebas Neue', Impact, sans-serif; font-size:220px; line-height:.85;
+  color:#00FFB2; text-shadow:0 0 60px rgba(0,255,178,.35); margin-bottom:8px;
+}
+.dato-sub {
+  font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:28px;
+  letter-spacing:.12em; color:#9aa39c; text-transform:uppercase; margin-bottom:36px;
+}
+
+.split {
+  display:flex; align-items:stretch; gap:18px; margin:12px 0 36px;
+}
+.col {
+  flex:1; border-radius:24px; padding:36px 28px; min-height:280px;
+  display:flex; flex-direction:column; justify-content:center;
+  border:1px solid #2A2A2A; background:#141414;
+}
+.col.bad { border-color:rgba(255,82,71,.45); }
+.col.good { border-color:rgba(0,255,178,.45); background:#0d1a14; }
+.col.choice { border-color:rgba(0,255,178,.35); background:#141414; }
+.col.choice.good { background:#0d1a14; }
+.col-lab {
+  font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:22px;
+  letter-spacing:.18em; margin-bottom:18px;
+}
+.col.bad .col-lab { color:#FF5247; }
+.col.good .col-lab { color:#00FFB2; }
+.col.choice .col-lab { color:#00FFB2; }
+.col-txt {
+  font-family:'Poppins', sans-serif; font-weight:800; font-size:34px;
+  line-height:1.15; color:#F2F2F2;
+}
+.vs {
+  align-self:center; width:72px; height:72px; border-radius:50%;
+  background:#1A1A1A; border:1px solid #2A2A2A; color:#F2F2F2;
+  font-family:'Poppins', sans-serif; font-weight:800; font-size:22px;
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+
+.pasos { list-style:none; margin:28px 0 32px; display:flex; flex-direction:column; gap:18px; }
+.pasos li {
+  display:flex; align-items:center; gap:22px;
+  background:#141414; border:1px solid #2A2A2A; border-radius:18px; padding:22px 26px;
+}
+.pasos .n {
+  font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:22px;
+  color:#00FFB2; letter-spacing:.08em; width:52px;
+}
+.pasos .t {
+  font-family:'Poppins', sans-serif; font-weight:700; font-size:34px; color:#F2F2F2;
+}
+
+.quote {
+  font-family:'Lora', Georgia, serif; font-style:italic; font-weight:600;
+  font-size:72px; line-height:1.15; color:#F2F2F2;
+}
+.quote::first-letter { color:#00FFB2; }
+
+.cta-pill {
+  display:inline-flex; align-self:flex-start; margin:36px 0 28px;
+  background:#00FFB2; color:#04130b; font-family:'Poppins', sans-serif; font-weight:800;
+  font-size:40px; letter-spacing:.04em; padding:22px 40px; border-radius:999px;
+  box-shadow:0 0 28px rgba(0,255,178,.4);
+}
+.respuesta {
+  font-family:'Barlow Condensed', sans-serif; font-weight:700; font-size:40px;
+  line-height:1.35; color:#F2F2F2; margin:28px 0 24px; max-width:900px;
+}
+
+.viz { margin-bottom:28px; }
+.viz.check svg { width:120px; height:120px; filter:drop-shadow(0 0 16px rgba(0,255,178,.4)); }
+.viz.seal, .viz.warn {
+  width:110px; height:110px; border-radius:50%; border:3px solid #00FFB2;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Bebas Neue', sans-serif; font-size:56px; color:#00FFB2;
+  box-shadow:0 0 24px rgba(0,255,178,.35);
+}
+.viz.warn { border-color:#FF5247; color:#FF5247; box-shadow:0 0 24px rgba(255,82,71,.35); }
+.viz.pulse { display:flex; gap:14px; align-items:flex-end; height:80px; }
+.viz.pulse span {
+  width:22px; background:#00FFB2; border-radius:6px;
+  box-shadow:0 0 14px rgba(0,255,178,.45);
+}
+.viz.pulse span:nth-child(1) { height:36px; opacity:.45; }
+.viz.pulse span:nth-child(2) { height:58px; opacity:.7; }
+.viz.pulse span:nth-child(3) { height:80px; }
+</style></head>
+<body><div class="sheet">
+    <div class="slide" data-tema="01-evidencia" data-id="ev-01" data-n="1">
+      <div class="bg">
+        <div class="grid"></div>
+        <div class="lines"></div>
+        <div class="stain s1"></div>
+        <div class="stain s2"></div>
+        <div class="stain s3"></div>
+        <div class="glow"></div>
+        <div class="vignette"></div>
+      </div>
+      <div class="safe">
+        <div class="kicker">AL AIRE</div>
+
+<h1 class="claim">Tu web ya existe.<br>Ahora que venda.</h1>
+<div class="rule"></div>
+<p class="apoyo">Menos tarjeta digital. Más máquina de consultas.</p>
+      </div>
+      <div class="firma">sebastian.stlabs.ar</div>
+    </div>
+    <div class="slide" data-tema="01-evidencia" data-id="ev-02" data-n="2">
+      <div class="bg">
+        <div class="grid"></div>
+        <div class="lines"></div>
+        <div class="stain s1"></div>
+        <div class="stain s2"></div>
+        <div class="stain s3"></div>
+        <div class="glow"></div>
+        <div class="vignette"></div>
+      </div>
+      <div class="safe">
+        <div class="kicker">CARGA</div>
+<div class="dato">1.9s</div>
+<div class="dato-sub">antes: 8.4s</div>
+<h1 class="claim claim-sm">Misma marca.<br>Otra velocidad.</h1>
+<p class="apoyo">Sin rediseñar todo. Sí, tocando lo que pesa.</p>
+      </div>
+      <div class="firma">sebastian.stlabs.ar</div>
+    </div>
+    <div class="slide" data-tema="01-evidencia" data-id="ev-03" data-n="3">
+      <div class="bg">
+        <div class="grid"></div>
+        <div class="lines"></div>
+        <div class="stain s1"></div>
+        <div class="stain s2"></div>
+        <div class="stain s3"></div>
+        <div class="glow"></div>
+        <div class="vignette"></div>
+      </div>
+      <div class="safe">
+        <div class="kicker">CAMBIO REAL</div>
+
+        <div class="split">
+          <div class="col bad">
+            <div class="col-lab">ANTES</div>
+            <div class="col-txt">Formulario<br>que no llega</div>
+          </div>
+          <div class="vs">VS</div>
+          <div class="col good">
+            <div class="col-lab">DESPUÉS</div>
+            <div class="col-txt">Lead en el<br>CRM en segundos</div>
+          </div>
+        </div>
+<p class="apoyo">Arreglos que se sienten en la facturación.</p>
+      </div>
+      <div class="firma">sebastian.stlabs.ar</div>
+    </div>
+    <div class="slide" data-tema="01-evidencia" data-id="ev-04" data-n="4">
+      <div class="bg">
+        <div class="grid"></div>
+        <div class="lines"></div>
+        <div class="stain s1"></div>
+        <div class="stain s2"></div>
+        <div class="stain s3"></div>
+        <div class="glow"></div>
+        <div class="vignette"></div>
+      </div>
+      <div class="safe">
+        <div class="kicker">CONVERSIÓN</div>
+<div class="dato">+27%</div>
+<div class="dato-sub">consultas en 60 días</div>
+<h1 class="claim claim-sm">No fue magia.<br>Fue estructura.</h1>
+<p class="apoyo">Copy, recorrido y peso: alineados.</p>
+      </div>
+      <div class="firma">sebastian.stlabs.ar</div>
+    </div>
+    <div class="slide" data-tema="01-evidencia" data-id="ev-05" data-n="5">
+      <div class="bg">
+        <div class="grid"></div>
+        <div class="lines"></div>
+        <div class="stain s1"></div>
+        <div class="stain s2"></div>
+        <div class="stain s3"></div>
+        <div class="glow"></div>
+        <div class="vignette"></div>
+      </div>
+      <div class="safe">
+        <div class="kicker">EN PRODUCCIÓN</div>
+<div class="viz pulse"><span></span><span></span><span></span></div>
+<h1 class="claim">Live.<br>Midiendo.<br>Vendiendo.</h1>
+<div class="rule"></div>
+<p class="apoyo">Lo entregado se ve. No queda en un PDF.</p>
+      </div>
+      <div class="firma">sebastian.stlabs.ar</div>
+    </div>
+    <div class="slide" data-tema="02-metodo" data-id="me-01" data-n="6">
+      <div class="bg">
+        <div class="grid"></div>
+        <div class="lines"></div>
+        <div class="stain s1"></div>
+        <div class="stain s2"></div>
+        <div class="stain s3"></div>
+        <div class="glow"></div>
+        <div class="vignette"></div>
+      </div>
+      <div class="safe">
+        <div class="kicker">DÍA CERO</div>
+
+<h1 class="claim">Primero miramos<br>qué frena tus ventas.</h1>
+<div class="rule"></div>
+<p class="apoyo">Después sí: diseño y código.</p>
+      </div>
+      <div class="firma">sebastian.stlabs.ar</div>
+    </div>
+    <div class="slide" data-tema="02-metodo" data-id="me-02" data-n="7">
+      <div class="bg">
+        <div class="grid"></div>
+        <div class="lines"></div>
+        <div class="stain s1"></div>
+        <div class="stain s2"></div>
+        <div class="stain s3"></div>
+        <div class="glow"></div>
+        <div class="vignette"></div>
+      </div>
+      <div class="safe">
+        <div class="kicker">SIN SORPRESAS</div>
+<h1 class="claim claim-sm">Así arranca<br>un proyecto.</h1>
+<ol class="pasos"><li><span class="n">01</span><span class="t">Diagnóstico</span></li><li><span class="n">02</span><span class="t">Estructura</span></li><li><span class="n">03</span><span class="t">Diseño + dev</span></li><li><span class="n">04</span><span class="t">Al aire</span></li><li><span class="n">05</span><span class="t">Entrega</span></li></ol>
+<p class="apoyo">Un paso a la vez. Todo dicho de entrada.</p>
+      </div>
+      <div class="firma">sebastian.stlabs.ar</div>
+    </div>
+    <div class="slide" data-tema="02-metodo" data-id="me-03" data-n="8">
+      <div class="bg">
+        <div class="grid"></div>
+        <div class="lines"></div>
+        <div class="stain s1"></div>
+        <div class="stain s2"></div>
+        <div class="stain s3"></div>
+        <div class="glow"></div>
+        <div class="vignette"></div>
+      </div>
+      <div class="safe">
+        <div class="kicker">REGLA</div>
+
+<h1 class="claim">Primero el esqueleto.<br>Después lo lindo.</h1>
+<div class="rule"></div>
+<p class="apoyo">Si el recorrido no cierra, el color no salva nada.</p>
+      </div>
+      <div class="firma">sebastian.stlabs.ar</div>
+    </div>
+    <div class="slide" data-tema="02-metodo" data-id="me-04" data-n="9">
+      <div class="bg">
+        <div class="grid"></div>
+        <div class="lines"></div>
+        <div class="stain s1"></div>
+        <div class="stain s2"></div>
+        <div class="stain s3"></div>
+        <div class="glow"></div>
+        <div class="vignette"></div>
+      </div>
+      <div class="safe">
+        <div class="kicker">CLARIDAD</div>
+<div class="dato">5</div>
+<div class="dato-sub">momentos definidos</div>
+<h1 class="claim claim-sm">Sabés qué pasa<br>si me contratás.</h1>
+<p class="apoyo">Cero humo a mitad de camino.</p>
+      </div>
+      <div class="firma">sebastian.stlabs.ar</div>
+    </div>
+    <div class="slide" data-tema="02-metodo" data-id="me-05" data-n="10">
+      <div class="bg">
+        <div class="grid"></div>
+        <div class="lines"></div>
+        <div class="stain s1"></div>
+        <div class="stain s2"></div>
+        <div class="stain s3"></div>
+        <div class="glow"></div>
+        <div class="vignette"></div>
+      </div>
+      <div class="safe">
+        <div class="kicker">ENTREGA</div>
+<div class="viz check"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="none" stroke="#00FFB2" stroke-width="6"/><path d="M36 62 L54 80 L86 42" fill="none" stroke="#00FFB2" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<h1 class="claim">Te lo dejo<br>funcionando.</h1>
+<div class="rule"></div>
+<p class="apoyo">Accesos, checklist y próximos pasos. Listo.</p>
+      </div>
+      <div class="firma">sebastian.stlabs.ar</div>
+    </div>
+    <div class="slide" data-tema="03-confianza" data-id="co-01" data-n="11">
+      <div class="bg">
+        <div class="grid"></div>
+        <div class="lines"></div>
+        <div class="stain s1"></div>
+        <div class="stain s2"></div>
+        <div class="stain s3"></div>
+        <div class="glow"></div>
+        <div class="vignette"></div>
+      </div>
+      <div class="safe">
+        <div class="kicker">POST LAUNCH</div>
+<div class="quote">“Por fin entiendo<br>qué hace mi web.”</div>
+<div class="rule"></div>
+<p class="apoyo">Cuando el sitio ordena, el negocio respira.</p>
+      </div>
+      <div class="firma">sebastian.stlabs.ar</div>
+    </div>
+    <div class="slide" data-tema="03-confianza" data-id="co-02" data-n="12">
+      <div class="bg">
+        <div class="grid"></div>
+        <div class="lines"></div>
+        <div class="stain s1"></div>
+        <div class="stain s2"></div>
+        <div class="stain s3"></div>
+        <div class="glow"></div>
+        <div class="vignette"></div>
+      </div>
+      <div class="safe">
+        <div class="kicker">PLAZO REAL</div>
+<div class="dato">14</div>
+<div class="dato-sub">días · landing con foco</div>
+<h1 class="claim claim-sm">Sin milagros.<br>Con prioridades.</h1>
+<p class="apoyo">Alcance claro = fecha que se cumple.</p>
+      </div>
+      <div class="firma">sebastian.stlabs.ar</div>
+    </div>
+    <div class="slide" data-tema="03-confianza" data-id="co-03" data-n="13">
+      <div class="bg">
+        <div class="grid"></div>
+        <div class="lines"></div>
+        <div class="stain s1"></div>
+        <div class="stain s2"></div>
+        <div class="stain s3"></div>
+        <div class="glow"></div>
+        <div class="vignette"></div>
+      </div>
+      <div class="safe">
+        <div class="kicker">SERIEDAD</div>
+
+<h1 class="claim">Logos con permiso.<br>Nada inventado.</h1>
+<div class="rule"></div>
+<p class="apoyo">La confianza se presta. No se fabrica.</p>
+      </div>
+      <div class="firma">sebastian.stlabs.ar</div>
+    </div>
+    <div class="slide" data-tema="03-confianza" data-id="co-04" data-n="14">
+      <div class="bg">
+        <div class="grid"></div>
+        <div class="lines"></div>
+        <div class="stain s1"></div>
+        <div class="stain s2"></div>
+        <div class="stain s3"></div>
+        <div class="glow"></div>
+        <div class="vignette"></div>
+      </div>
+      <div class="safe">
+        <div class="kicker">EN SUS PALABRAS</div>
+<div class="quote">“El formulario<br>empezó a llegar.”</div>
+<div class="rule"></div>
+<p class="apoyo">Capturas reales. Datos sensibles tapados.</p>
+      </div>
+      <div class="firma">sebastian.stlabs.ar</div>
+    </div>
+    <div class="slide" data-tema="03-confianza" data-id="co-05" data-n="15">
+      <div class="bg">
+        <div class="grid"></div>
+        <div class="lines"></div>
+        <div class="stain s1"></div>
+        <div class="stain s2"></div>
+        <div class="stain s3"></div>
+        <div class="glow"></div>
+        <div class="vignette"></div>
+      </div>
+      <div class="safe">
+        <div class="kicker">HECHO</div>
+<div class="viz seal">OK</div>
+<h1 class="claim">Confianza se construye<br>con entregas.</h1>
+<div class="rule"></div>
+<p class="apoyo">No con promesas enormes en un story.</p>
+      </div>
+      <div class="firma">sebastian.stlabs.ar</div>
+    </div>
+    <div class="slide" data-tema="04-oferta" data-id="of-01" data-n="16">
+      <div class="bg">
+        <div class="grid"></div>
+        <div class="lines"></div>
+        <div class="stain s1"></div>
+        <div class="stain s2"></div>
+        <div class="stain s3"></div>
+        <div class="glow"></div>
+        <div class="vignette"></div>
+      </div>
+      <div class="safe">
+        <div class="kicker">UNA PÁGINA</div>
+
+<h1 class="claim">Un objetivo.<br>Una landing.</h1>
+<div class="rule"></div>
+<p class="apoyo">Para cuando necesitás vender una cosa bien.</p>
+      </div>
+      <div class="firma">sebastian.stlabs.ar</div>
+    </div>
+    <div class="slide" data-tema="04-oferta" data-id="of-02" data-n="17">
+      <div class="bg">
+        <div class="grid"></div>
+        <div class="lines"></div>
+        <div class="stain s1"></div>
+        <div class="stain s2"></div>
+        <div class="stain s3"></div>
+        <div class="glow"></div>
+        <div class="vignette"></div>
+      </div>
+      <div class="safe">
+        <div class="kicker">ELEGÍ</div>
+
+        <div class="split">
+          <div class="col choice">
+            <div class="col-lab">LANDING</div>
+            <div class="col-txt">Una página<br>que convierte</div>
+          </div>
+          <div class="vs">O</div>
+          <div class="col choice good">
+            <div class="col-lab">SITIO</div>
+            <div class="col-txt">Marca ordenada<br>en varias páginas</div>
+          </div>
+        </div>
+<p class="apoyo">Dos caminos. Sin hilo eterno por DM.</p>
+      </div>
+      <div class="firma">sebastian.stlabs.ar</div>
+    </div>
+    <div class="slide" data-tema="04-oferta" data-id="of-03" data-n="18">
+      <div class="bg">
+        <div class="grid"></div>
+        <div class="lines"></div>
+        <div class="stain s1"></div>
+        <div class="stain s2"></div>
+        <div class="stain s3"></div>
+        <div class="glow"></div>
+        <div class="vignette"></div>
+      </div>
+      <div class="safe">
+        <div class="kicker">REHACER</div>
+
+<h1 class="claim">Rediseñar no es<br>pintar de nuevo.</h1>
+<div class="rule"></div>
+<p class="apoyo">Es sacar fricción y hacer que alguien compre.</p>
+      </div>
+      <div class="firma">sebastian.stlabs.ar</div>
+    </div>
+    <div class="slide" data-tema="04-oferta" data-id="of-04" data-n="19">
+      <div class="bg">
+        <div class="grid"></div>
+        <div class="lines"></div>
+        <div class="stain s1"></div>
+        <div class="stain s2"></div>
+        <div class="stain s3"></div>
+        <div class="glow"></div>
+        <div class="vignette"></div>
+      </div>
+      <div class="safe">
+        <div class="kicker">DESPUÉS DEL LAUNCH</div>
+
+<h1 class="claim">Que no se te caiga<br>cuando ya está al aire.</h1>
+<div class="rule"></div>
+<p class="apoyo">Updates, backups y cambios chicos sin drama.</p>
+      </div>
+      <div class="firma">sebastian.stlabs.ar</div>
+    </div>
+    <div class="slide" data-tema="04-oferta" data-id="of-05" data-n="20">
+      <div class="bg">
+        <div class="grid"></div>
+        <div class="lines"></div>
+        <div class="stain s1"></div>
+        <div class="stain s2"></div>
+        <div class="stain s3"></div>
+        <div class="glow"></div>
+        <div class="vignette"></div>
+      </div>
+      <div class="safe">
+        <div class="kicker">VISIBILIDAD</div>
+<div class="dato">SEO</div>
+<div class="dato-sub">+ velocidad real</div>
+<h1 class="claim claim-sm">Más rápido.<br>Más visible.</h1>
+<p class="apoyo">Core Web Vitals y peso bajo control.</p>
+      </div>
+      <div class="firma">sebastian.stlabs.ar</div>
+    </div>
+    <div class="slide" data-tema="05-siguiente" data-id="si-01" data-n="21">
+      <div class="bg">
+        <div class="grid"></div>
+        <div class="lines"></div>
+        <div class="stain s1"></div>
+        <div class="stain s2"></div>
+        <div class="stain s3"></div>
+        <div class="glow"></div>
+        <div class="vignette"></div>
+      </div>
+      <div class="safe">
+        <div class="kicker">FILTRO</div>
+
+<h1 class="claim">Para negocios que<br>ya tienen demanda.</h1>
+<div class="rule"></div>
+<p class="apoyo">Y una web floja — o ninguna.</p>
+      </div>
+      <div class="firma">sebastian.stlabs.ar</div>
+    </div>
+    <div class="slide" data-tema="05-siguiente" data-id="si-02" data-n="22">
+      <div class="bg">
+        <div class="grid"></div>
+        <div class="lines"></div>
+        <div class="stain s1"></div>
+        <div class="stain s2"></div>
+        <div class="stain s3"></div>
+        <div class="glow"></div>
+        <div class="vignette"></div>
+      </div>
+      <div class="safe">
+        <div class="kicker">NO ES PARA VOS SI</div>
+<div class="viz warn">!</div>
+<h1 class="claim">Buscás lo más barato<br>o “para ayer” sin brief.</h1>
+<div class="rule"></div>
+<p class="apoyo">Sin claridad de oferta, mejor no arrancar.</p>
+      </div>
+      <div class="firma">sebastian.stlabs.ar</div>
+    </div>
+    <div class="slide" data-tema="05-siguiente" data-id="si-03" data-n="23">
+      <div class="bg">
+        <div class="grid"></div>
+        <div class="lines"></div>
+        <div class="stain s1"></div>
+        <div class="stain s2"></div>
+        <div class="stain s3"></div>
+        <div class="glow"></div>
+        <div class="vignette"></div>
+      </div>
+      <div class="safe">
+        <div class="kicker">SIGUIENTE PASO</div>
+<h1 class="claim">Comentá WEB</h1>
+<div class="cta-pill">Comentá WEB</div>
+<p class="apoyo">Te mando el diagnóstico y cómo arrancar.</p>
+      </div>
+      <div class="firma">sebastian.stlabs.ar</div>
+    </div>
+    <div class="slide" data-tema="05-siguiente" data-id="si-04" data-n="24">
+      <div class="bg">
+        <div class="grid"></div>
+        <div class="lines"></div>
+        <div class="stain s1"></div>
+        <div class="stain s2"></div>
+        <div class="stain s3"></div>
+        <div class="glow"></div>
+        <div class="vignette"></div>
+      </div>
+      <div class="safe">
+        <div class="kicker">AGENDA</div>
+<div class="dato">20'</div>
+<div class="dato-sub">minutos · sin compromiso</div>
+<h1 class="claim claim-sm">Salís con claridad.</h1>
+<p class="apoyo">Calendly o WhatsApp. Como te quede mejor.</p>
+      </div>
+      <div class="firma">sebastian.stlabs.ar</div>
+    </div>
+    <div class="slide" data-tema="05-siguiente" data-id="si-05" data-n="25">
+      <div class="bg">
+        <div class="grid"></div>
+        <div class="lines"></div>
+        <div class="stain s1"></div>
+        <div class="stain s2"></div>
+        <div class="stain s3"></div>
+        <div class="glow"></div>
+        <div class="vignette"></div>
+      </div>
+      <div class="safe">
+        <div class="kicker">DUDA RÁPIDA</div>
+<h1 class="claim claim-sm">¿Cuánto tarda?</h1>
+<p class="respuesta">Landing típica: 10–14 días.<br>Sitio: 3–5 semanas.<br>Depende del brief y tus vueltas.</p>
+<p class="apoyo">Dos rondas de revisión incluidas.</p>
+      </div>
+      <div class="firma">sebastian.stlabs.ar</div>
+    </div></div></body></html>

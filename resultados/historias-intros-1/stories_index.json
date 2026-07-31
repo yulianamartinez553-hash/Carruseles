@@ -1,0 +1,177 @@
+[
+  {
+    "n": 1,
+    "tema": "01-evidencia",
+    "id": "ev-01",
+    "layout": "claim",
+    "kicker": "AL AIRE"
+  },
+  {
+    "n": 2,
+    "tema": "01-evidencia",
+    "id": "ev-02",
+    "layout": "dato",
+    "kicker": "CARGA"
+  },
+  {
+    "n": 3,
+    "tema": "01-evidencia",
+    "id": "ev-03",
+    "layout": "split",
+    "kicker": "CAMBIO REAL"
+  },
+  {
+    "n": 4,
+    "tema": "01-evidencia",
+    "id": "ev-04",
+    "layout": "dato",
+    "kicker": "CONVERSIÓN"
+  },
+  {
+    "n": 5,
+    "tema": "01-evidencia",
+    "id": "ev-05",
+    "layout": "claim",
+    "kicker": "EN PRODUCCIÓN"
+  },
+  {
+    "n": 6,
+    "tema": "02-metodo",
+    "id": "me-01",
+    "layout": "claim",
+    "kicker": "DÍA CERO"
+  },
+  {
+    "n": 7,
+    "tema": "02-metodo",
+    "id": "me-02",
+    "layout": "pasos",
+    "kicker": "SIN SORPRESAS"
+  },
+  {
+    "n": 8,
+    "tema": "02-metodo",
+    "id": "me-03",
+    "layout": "claim",
+    "kicker": "REGLA"
+  },
+  {
+    "n": 9,
+    "tema": "02-metodo",
+    "id": "me-04",
+    "layout": "dato",
+    "kicker": "CLARIDAD"
+  },
+  {
+    "n": 10,
+    "tema": "02-metodo",
+    "id": "me-05",
+    "layout": "claim",
+    "kicker": "ENTREGA"
+  },
+  {
+    "n": 11,
+    "tema": "03-confianza",
+    "id": "co-01",
+    "layout": "cita",
+    "kicker": "POST LAUNCH"
+  },
+  {
+    "n": 12,
+    "tema": "03-confianza",
+    "id": "co-02",
+    "layout": "dato",
+    "kicker": "PLAZO REAL"
+  },
+  {
+    "n": 13,
+    "tema": "03-confianza",
+    "id": "co-03",
+    "layout": "claim",
+    "kicker": "SERIEDAD"
+  },
+  {
+    "n": 14,
+    "tema": "03-confianza",
+    "id": "co-04",
+    "layout": "cita",
+    "kicker": "EN SUS PALABRAS"
+  },
+  {
+    "n": 15,
+    "tema": "03-confianza",
+    "id": "co-05",
+    "layout": "claim",
+    "kicker": "HECHO"
+  },
+  {
+    "n": 16,
+    "tema": "04-oferta",
+    "id": "of-01",
+    "layout": "claim",
+    "kicker": "UNA PÁGINA"
+  },
+  {
+    "n": 17,
+    "tema": "04-oferta",
+    "id": "of-02",
+    "layout": "split",
+    "kicker": "ELEGÍ"
+  },
+  {
+    "n": 18,
+    "tema": "04-oferta",
+    "id": "of-03",
+    "layout": "claim",
+    "kicker": "REHACER"
+  },
+  {
+    "n": 19,
+    "tema": "04-oferta",
+    "id": "of-04",
+    "layout": "claim",
+    "kicker": "DESPUÉS DEL LAUNCH"
+  },
+  {
+    "n": 20,
+    "tema": "04-oferta",
+    "id": "of-05",
+    "layout": "dato",
+    "kicker": "VISIBILIDAD"
+  },
+  {
+    "n": 21,
+    "tema": "05-siguiente",
+    "id": "si-01",
+    "layout": "claim",
+    "kicker": "FILTRO"
+  },
+  {
+    "n": 22,
+    "tema": "05-siguiente",
+    "id": "si-02",
+    "layout": "claim",
+    "kicker": "NO ES PARA VOS SI"
+  },
+  {
+    "n": 23,
+    "tema": "05-siguiente",
+    "id": "si-03",
+    "layout": "cta",
+    "kicker": "SIGUIENTE PASO"
+  },
+  {
+    "n": 24,
+    "tema": "05-siguiente",
+    "id": "si-04",
+    "layout": "dato",
+    "kicker": "AGENDA"
+  },
+  {
+    "n": 25,
+    "tema": "05-siguiente",
+    "id": "si-05",
+    "layout": "faq",
+    "kicker": "DUDA RÁPIDA"
+  }
+]

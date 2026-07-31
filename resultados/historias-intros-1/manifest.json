@@ -1,0 +1,37 @@
+{
+  "id": "historias-intros-1",
+  "titulo": "Historias introductorias — 5 por tema (sin nombrar sección)",
+  "tipo": "historias_intros",
+  "historias": 25,
+  "temas": [
+    {
+      "id": "01-evidencia",
+      "highlight_sugerido": "RESULTADOS"
+    },
+    {
+      "id": "02-metodo",
+      "highlight_sugerido": "PROCESO"
+    },
+    {
+      "id": "03-confianza",
+      "highlight_sugerido": "CLIENTES"
+    },
+    {
+      "id": "04-oferta",
+      "highlight_sugerido": "SERVICIOS"
+    },
+    {
+      "id": "05-siguiente",
+      "highlight_sugerido": "CONTACTO"
+    }
+  ],
+  "fondo": "negro_lineas_verde",
+  "familia_visual": "manifiesto",
+  "origen": "original",
+  "keyword_portada": "WEB",
+  "keyword_cta": "WEB",
+  "slides": 25,
+  "formato": "1080x1920 → retina 2160x3840",
+  "regla_copy": "No mencionar títulos de sección en el arte",
+  "sistema": "sistema-historias-stlabs.json"
+}

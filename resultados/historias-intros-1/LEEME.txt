@@ -1,0 +1,14 @@
+Historias introductorias STLabs — 25 piezas (5 por tema)
+========================================================
+
+Formato: 1080×1920 (retina 2160×3840)
+Paleta: #0A0A0A + #00FFB2 · retícula, líneas, degradé, manchas
+
+El arte NO nombra la sección. Son ganchos introductorios.
+El nombre del Highlight lo ponés vos en Instagram.
+
+  01-evidencia/   → Highlight RESULTADOS
+  02-metodo/      → Highlight PROCESO
+  03-confianza/   → Highlight CLIENTES
+  04-oferta/      → Highlight SERVICIOS
+  05-siguiente/   → Highlight CONTACTO
