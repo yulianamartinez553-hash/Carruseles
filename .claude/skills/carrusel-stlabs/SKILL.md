@@ -78,6 +78,7 @@ Tabla con **cada** tipografía usada: nombre exacto · peso/estilo · rol (títu
 
 | Archivo | Cuándo leerlo |
 |---|---|
+| `references/00-sistema-visual-video.json` | Reels / TikTok / Shorts: cámara, palabras neón, SFX, timeline (espejo de `sistema-video-stlabs.json`) |
 | `references/01-identidad-stlabs.md` | Siempre al arrancar: paleta, tipografías, voz, firma, modos negro/blanco |
 | `references/02-reglas-clonado.md` | Siempre que haya referencia a clonar: las 11 reglas no negociables |
 | `references/03-mecanicas.md` | Si el carrusel usa nodo-flecha, iPhone CSS, donas, papel corrugado, foto real o degradé en letras |
