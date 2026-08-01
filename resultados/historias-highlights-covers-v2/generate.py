@@ -189,18 +189,17 @@ def slide(c: dict, idx: int) -> str:
     return f'''
     <div class="slide accent-{c['accent']}" data-id="{c['id']}">
       <div class="bg">
+        <div class="cross-lines"></div>
         <div class="grid"></div>
         <div class="wash"></div>
         <div class="stain"></div>
       </div>
       {dots_gradient(c["dots"], seed=idx + 5)}
       <div class="safe">
-        <div class="kicker">{c['kicker']} · {c['highlight']}</div>
         {glyph_svg(c['glyph'])}
         <h1 class="claim">{nl(c['claim'])}</h1>
         <div class="rule"></div>
         <p class="apoyo">{c['apoyo']}</p>
-        <div class="cta-hint">Deslizá para seguir</div>
       </div>
       <div class="firma">sebastian.stlabs.ar</div>
     </div>'''
@@ -222,11 +221,28 @@ html, body {{ background:#000; }}
   background:#0A0A0A;
 }}
 .bg {{ position:absolute; inset:0; }}
+.cross-lines {{
+  position:absolute; inset:-30%;
+  opacity:.55;
+  background:
+    repeating-linear-gradient(
+      35deg,
+      transparent 0 46px,
+      rgba(0,255,178,.055) 46px 47px
+    ),
+    repeating-linear-gradient(
+      -35deg,
+      transparent 0 52px,
+      rgba(0,255,178,.04) 52px 53px
+    );
+  pointer-events:none;
+  mix-blend-mode:screen;
+}}
 .grid {{
-  position:absolute; inset:0; opacity:.32;
+  position:absolute; inset:0; opacity:.22;
   background-image:
-    linear-gradient(rgba(0,255,178,.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,255,178,.04) 1px, transparent 1px);
+    linear-gradient(rgba(0,255,178,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,178,.035) 1px, transparent 1px);
   background-size:64px 64px;
 }}
 .wash {{
@@ -256,12 +272,8 @@ html, body {{ background:#000; }}
   display:flex; flex-direction:column; justify-content:center; align-items:flex-start;
   z-index:6; text-align:left;
 }}
-.kicker {{
-  font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:22px;
-  letter-spacing:.18em; color:#00FFB2; margin-bottom:28px; text-transform:uppercase;
-}}
 .glyph {{
-  width:160px; height:160px; margin-bottom:28px;
+  width:160px; height:160px; margin-bottom:32px;
   filter: drop-shadow(0 0 16px rgba(0,255,178,.28));
 }}
 .claim {{
@@ -275,12 +287,6 @@ html, body {{ background:#000; }}
 .apoyo {{
   font-family:'Barlow Condensed', sans-serif; font-weight:500; font-size:34px;
   line-height:1.3; color:#9aa39c; max-width:820px;
-}}
-.cta-hint {{
-  margin-top:36px;
-  font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:20px;
-  letter-spacing:.14em; color:#00FFB2; text-transform:uppercase;
-  opacity:.85;
 }}
 .firma {{
   position:absolute; left:0; right:0; bottom:300px; text-align:center; z-index:7;
