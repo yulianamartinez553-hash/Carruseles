@@ -222,32 +222,32 @@ html, body {{ background:#000; }}
 }}
 .bg {{ position:absolute; inset:0; }}
 .cross-lines {{
-  position:absolute; inset:-30%;
-  opacity:.85;
+  position:absolute; inset:-40%;
+  pointer-events:none;
   background:
     repeating-linear-gradient(
-      32deg,
-      transparent 0 40px,
-      rgba(0,255,178,.09) 40px 41px
+      28deg,
+      transparent 0 38px,
+      rgba(0,255,178,.11) 38px 39px
     ),
     repeating-linear-gradient(
-      -32deg,
-      transparent 0 48px,
-      rgba(0,255,178,.065) 48px 49px
+      -28deg,
+      transparent 0 44px,
+      rgba(0,255,178,.08) 44px 45px
     );
-  pointer-events:none;
-  mix-blend-mode:screen;
+  opacity:1;
+  z-index:1;
 }}
 .grid {{
-  position:absolute; inset:0; opacity:.22;
+  position:absolute; inset:0; opacity:.18; z-index:1;
   background-image:
-    linear-gradient(rgba(0,255,178,.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,255,178,.035) 1px, transparent 1px);
+    linear-gradient(rgba(0,255,178,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,178,.03) 1px, transparent 1px);
   background-size:64px 64px;
 }}
 .wash {{
-  position:absolute; inset:0;
-  background: linear-gradient(180deg, rgba(10,10,10,.15) 0%, rgba(10,10,10,.45) 55%, rgba(0,0,0,.7) 100%);
+  position:absolute; inset:0; z-index:2;
+  background: linear-gradient(180deg, rgba(10,10,10,.08) 0%, rgba(10,10,10,.28) 55%, rgba(0,0,0,.55) 100%);
 }}
 
 .accent-tl .stain {{ left:-220px; top:-200px; }}
