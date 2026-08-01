@@ -223,17 +223,17 @@ html, body {{ background:#000; }}
 .bg {{ position:absolute; inset:0; }}
 .cross-lines {{
   position:absolute; inset:-30%;
-  opacity:.55;
+  opacity:.85;
   background:
     repeating-linear-gradient(
-      35deg,
-      transparent 0 46px,
-      rgba(0,255,178,.055) 46px 47px
+      32deg,
+      transparent 0 40px,
+      rgba(0,255,178,.09) 40px 41px
     ),
     repeating-linear-gradient(
-      -35deg,
-      transparent 0 52px,
-      rgba(0,255,178,.04) 52px 53px
+      -32deg,
+      transparent 0 48px,
+      rgba(0,255,178,.065) 48px 49px
     );
   pointer-events:none;
   mix-blend-mode:screen;
