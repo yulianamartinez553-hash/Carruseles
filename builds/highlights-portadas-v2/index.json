@@ -1,0 +1,42 @@
+[
+  {
+    "id": "resultados",
+    "label": "RESULTADOS",
+    "kicker": "PORTFOLIO",
+    "glyph": "resultados",
+    "accent": "tl",
+    "dots": "br"
+  },
+  {
+    "id": "proceso",
+    "label": "PROCESO",
+    "kicker": "CÓMO TRABAJO",
+    "glyph": "proceso",
+    "accent": "tr",
+    "dots": "bl"
+  },
+  {
+    "id": "clientes",
+    "label": "CLIENTES",
+    "kicker": "PRUEBA SOCIAL",
+    "glyph": "clientes",
+    "accent": "bl",
+    "dots": "tr"
+  },
+  {
+    "id": "servicios",
+    "label": "SERVICIOS",
+    "kicker": "OFERTAS",
+    "glyph": "servicios",
+    "accent": "br",
+    "dots": "tl"
+  },
+  {
+    "id": "contacto",
+    "label": "CONTACTO",
+    "kicker": "EMPEZÁ",
+    "glyph": "contacto",
+    "accent": "tl",
+    "dots": "br"
+  }
+]

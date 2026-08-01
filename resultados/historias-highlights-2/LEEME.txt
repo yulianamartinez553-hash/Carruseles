@@ -1,0 +1,12 @@
+Portadas Highlight STLabs — 5 temas
+====================================
+Formato: 1080×1080 (Ideal Highlight Instagram)
+Sin líneas en esquinas.
+Mancha verde degradé en una esquina.
+Puntos verdes amplios con degradé (opacidad/tamaño) en la esquina opuesta.
+
+  01-resultados.png → Highlight RESULTADOS
+  02-proceso.png    → Highlight PROCESO
+  03-clientes.png   → Highlight CLIENTES
+  04-servicios.png  → Highlight SERVICIOS
+  05-contacto.png   → Highlight CONTACTO
