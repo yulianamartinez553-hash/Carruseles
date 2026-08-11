@@ -260,13 +260,22 @@ body{{background:#000;}}
   background:linear-gradient(180deg, rgba(7,7,7,.72) 0%, rgba(7,7,7,.35) 55%, transparent 100%);
 }}
 
-/* Slide 2 */
-.s2-box{{position:absolute;left:400px;right:72px;top:72px;z-index:21;}}
-.s2-box .h-pop{{font-size:58px;max-width:620px;}}
-.s2-box .body{{margin-top:22px;font-size:33px;max-width:600px;}}
-.s2-box .body + .body{{margin-top:16px;}}
+/* Slide 2 — texto centrado arriba (sin tapar la diagonal ni el código) */
+.s2-box{{
+  position:absolute;left:72px;right:72px;top:64px;z-index:21;
+  text-align:center;
+}}
+.s2-box .kicker{{margin-bottom:14px;}}
+.s2-box .h-pop{{
+  font-size:58px;max-width:820px;margin:0 auto;text-align:center;
+}}
+.s2-box .body{{
+  margin-top:18px;font-size:33px;max-width:720px;margin-left:auto;margin-right:auto;
+  text-align:center;
+}}
+.s2-box .body + .body{{margin-top:14px;}}
 .claude-row{{
-  display:flex;align-items:center;gap:18px;margin-top:28px;
+  display:flex;align-items:center;justify-content:center;gap:18px;margin-top:24px;
 }}
 .claude-mark{{
   width:64px;height:64px;border-radius:14px;overflow:hidden;
@@ -277,8 +286,8 @@ body{{background:#000;}}
   font-family:var(--mono);font-size:22px;color:var(--claude);letter-spacing:1px;
 }}
 .s2-scrim{{
-  position:absolute;left:42%;right:0;top:0;height:520px;z-index:15;pointer-events:none;
-  background:linear-gradient(270deg, rgba(7,7,7,.65) 0%, rgba(7,7,7,.25) 60%, transparent 100%);
+  position:absolute;left:0;right:0;top:0;height:420px;z-index:15;pointer-events:none;
+  background:linear-gradient(180deg, rgba(7,7,7,.7) 0%, rgba(7,7,7,.28) 70%, transparent 100%);
 }}
 
 /* Slide 3 */
