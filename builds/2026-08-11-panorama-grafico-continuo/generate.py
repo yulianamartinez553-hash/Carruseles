@@ -26,6 +26,7 @@ def b64(path: Path, mime: str) -> str:
 
 
 URI_SEB = b64(REPO / "seb.jpg", "image/jpeg")
+URI_MAC = b64(BUILD / "assets" / "macbook-code.png", "image/png")
 
 # Claude mark — naranja Anthropic (regla: logo Claude siempre naranja)
 CLAUDE_SVG = (
@@ -188,196 +189,20 @@ body{{background:#000;}}
 .r2{{left:1680px;top:760px;width:320px;height:320px;border-color:rgba(255,255,255,.08);}}
 .r3{{left:3700px;top:420px;width:280px;height:280px;}}
 
-/* ── iMac realista CSS (puente continuo slides 1↔2) — sin imagen del repo ── */
-.imac-wrap{{
-  position:absolute;left:680px;top:380px;width:820px;height:860px;z-index:14;
-  transform:perspective(2400px) rotateY(-14deg) rotateX(5deg) rotateZ(-1deg);
-  transform-origin:center bottom;
-  filter:drop-shadow(0 60px 80px rgba(0,0,0,.82));
+/* ── MacBook realista (foto + código) — puente continuo slides 1↔2 ── */
+.mac-wrap{{
+  position:absolute;left:760px;top:460px;width:980px;height:820px;z-index:14;
+  filter:drop-shadow(0 50px 70px rgba(0,0,0,.85));
 }}
-.imac{{position:relative;width:100%;height:100%;}}
-.imac-body{{
-  position:relative;width:700px;margin:0 auto;
+.mac-wrap img{{
+  width:100%;height:100%;object-fit:contain;object-position:center;
+  display:block;
 }}
-.imac-edge{{
-  position:absolute;top:10px;right:-10px;width:12px;height:470px;
-  border-radius:0 10px 10px 0;
-  background:linear-gradient(180deg,#f4f5f7 0%,#9aa0a6 35%,#5c6168 70%,#c9ccd1 100%);
-  box-shadow:2px 0 8px rgba(0,0,0,.35);
+.mac-glow{{
+  position:absolute;left:900px;top:500px;width:460px;height:300px;z-index:12;
+  background:radial-gradient(circle, rgba(0,255,178,.22), transparent 68%);
+  filter:blur(28px);pointer-events:none;
 }}
-.imac-bezel{{
-  position:relative;width:100%;
-  padding:16px 16px 0;
-  border-radius:26px 26px 4px 4px;
-  background:
-    linear-gradient(145deg, rgba(255,255,255,.55) 0%, transparent 28%),
-    linear-gradient(160deg,#f3f4f6 0%,#c2c6cb 16%,#8a8f96 40%,#bec0c4 62%,#e9ebef 88%,#f7f8fa 100%);
-  box-shadow:
-    inset 0 2px 0 rgba(255,255,255,.9),
-    inset 0 -2px 0 rgba(0,0,0,.18),
-    inset 2px 0 0 rgba(255,255,255,.35),
-    inset -2px 0 0 rgba(0,0,0,.12),
-    0 0 0 1px rgba(30,30,30,.45);
-}}
-.imac-screen{{
-  position:relative;width:100%;height:448px;border-radius:8px;overflow:hidden;
-  background:#030405;
-  box-shadow:
-    inset 0 0 0 2px #0a0a0a,
-    inset 0 0 40px rgba(0,0,0,.85),
-    0 0 40px rgba(0,255,178,.08);
-}}
-.imac-ui{{
-  position:absolute;inset:0;display:grid;
-  grid-template-columns:78px 1.05fr 1fr;gap:0;
-  background:
-    radial-gradient(70% 55% at 75% 18%, rgba(0,255,178,.07), transparent 55%),
-    linear-gradient(165deg,#0c100e 0%,#070807 48%,#050505 100%);
-}}
-.imac-side{{
-  background:linear-gradient(180deg,#101411,#080a09);
-  border-right:1px solid #1c221e;
-  padding:20px 0;display:flex;flex-direction:column;align-items:center;gap:16px;
-}}
-.imac-side i{{
-  display:block;width:30px;height:30px;border-radius:9px;
-  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
-}}
-.imac-side i.on{{
-  background:rgba(0,255,178,.2);border-color:rgba(0,255,178,.6);
-  box-shadow:0 0 16px rgba(0,255,178,.4);
-}}
-.imac-mid{{padding:18px 14px;display:flex;flex-direction:column;gap:11px;}}
-.imac-row{{
-  height:48px;border-radius:11px;background:#121612;border:1px solid #1f2621;
-  position:relative;overflow:hidden;
-}}
-.imac-row::after{{
-  content:'';position:absolute;left:14px;top:18px;width:42%;height:10px;border-radius:5px;
-  background:rgba(255,255,255,.08);
-}}
-.imac-row.tall{{height:132px;}}
-.imac-row.tall::after{{display:none;}}
-.imac-wave{{
-  position:absolute;left:10px;right:10px;bottom:12px;height:72px;
-  background:
-    linear-gradient(180deg, transparent 35%, rgba(0,255,178,.12)),
-    radial-gradient(55% 80% at 18% 72%, rgba(0,255,178,.65), transparent 58%),
-    radial-gradient(48% 70% at 48% 38%, rgba(0,255,178,.45), transparent 55%),
-    radial-gradient(42% 65% at 82% 68%, rgba(0,255,178,.55), transparent 55%);
-  border-bottom:2px solid rgba(0,255,178,.65);opacity:.95;
-  filter:drop-shadow(0 0 10px rgba(0,255,178,.25));
-}}
-.imac-right{{padding:18px 14px;display:flex;flex-direction:column;gap:12px;}}
-.imac-donut{{
-  width:92px;height:92px;border-radius:50%;margin:4px auto 0;
-  background:conic-gradient(from -40deg, #00FFB2 0 72%, #1a1f1c 72% 100%);
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 0 28px rgba(0,255,178,.3), inset 0 0 0 1px rgba(0,255,178,.2);
-}}
-.imac-donut span{{
-  width:52px;height:52px;border-radius:50%;background:#080a09;
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--mono);font-size:14px;color:#00FFB2;font-weight:600;
-}}
-.imac-bars{{display:flex;align-items:flex-end;gap:7px;height:78px;padding:0 6px;}}
-.imac-bars b{{
-  flex:1;border-radius:4px 4px 0 0;
-  background:linear-gradient(180deg,#6dffd0,#00FFB2 40%,#007a52);
-  box-shadow:0 0 12px rgba(0,255,178,.3);
-}}
-.imac-bars b:nth-child(1){{height:32%;opacity:.5;}}
-.imac-bars b:nth-child(2){{height:55%;opacity:.7;}}
-.imac-bars b:nth-child(3){{height:88%;}}
-.imac-bars b:nth-child(4){{height:44%;opacity:.65;}}
-.imac-bars b:nth-child(5){{height:70%;opacity:.85;}}
-.imac-wa{{
-  margin-top:auto;border-radius:14px;padding:12px;
-  background:linear-gradient(145deg,#102018,#0a120e);
-  border:1px solid rgba(37,211,102,.4);
-  box-shadow:0 0 18px rgba(37,211,102,.12);
-}}
-.imac-wa .line{{
-  height:8px;border-radius:4px;background:rgba(255,255,255,.07);margin-bottom:8px;
-}}
-.imac-wa .line.g{{width:64%;background:rgba(0,255,178,.4);}}
-.imac-wa .line.s{{width:42%;background:rgba(37,211,102,.45);}}
-.imac-glare{{
-  position:absolute;inset:0;pointer-events:none;z-index:3;
-  background:
-    linear-gradient(115deg, rgba(255,255,255,.22) 0%, rgba(255,255,255,0) 18%, transparent 55%, rgba(255,255,255,.05) 100%),
-    radial-gradient(40% 30% at 80% 10%, rgba(0,255,178,.08), transparent 70%);
-}}
-.imac-chin{{
-  height:56px;display:flex;align-items:center;justify-content:center;position:relative;
-  background:
-    linear-gradient(180deg, rgba(255,255,255,.35) 0%, transparent 40%),
-    linear-gradient(180deg,#e4e6ea 0%,#a8adb4 48%,#d5d8dd 100%);
-  border-radius:0 0 6px 6px;
-}}
-.imac-cam{{
-  width:9px;height:9px;border-radius:50%;
-  background:radial-gradient(circle at 35% 28%,#4a5562,#0b0d10 68%);
-  box-shadow:0 0 0 3px rgba(0,0,0,.18), inset 0 0 2px #7a8899;
-}}
-.imac-logo{{
-  position:absolute;bottom:10px;left:50%;transform:translateX(-50%);
-  width:18px;height:18px;opacity:.28;
-  background:radial-gradient(circle at 40% 35%,#555,#222);
-  border-radius:50%;
-}}
-.imac-neck{{
-  width:98px;height:78px;margin:-1px auto 0;
-  background:
-    linear-gradient(90deg, transparent 0%, rgba(255,255,255,.35) 35%, transparent 55%),
-    linear-gradient(90deg,#5a5e64 0%,#d8dade 26%,#8e9399 50%,#eef0f2 76%,#4e5258 100%);
-  clip-path:polygon(30% 0, 70% 0, 100% 100%, 0 100%);
-  box-shadow:inset 0 0 14px rgba(0,0,0,.28);
-}}
-.imac-base{{
-  position:relative;width:300px;height:16px;margin:0 auto;
-  border-radius:0 0 48% 48% / 0 0 100% 100%;
-  background:linear-gradient(180deg,#f5f6f8 0%,#b0b4ba 38%,#6a6f75 100%);
-  box-shadow:
-    0 10px 22px rgba(0,0,0,.5),
-    inset 0 1px 0 rgba(255,255,255,.75);
-}}
-.imac-base::after{{
-  content:'';position:absolute;left:50%;bottom:-10px;transform:translateX(-50%);
-  width:240px;height:10px;border-radius:50%;
-  background:rgba(0,0,0,.35);filter:blur(6px);
-}}
-.imac-kb{{
-  position:absolute;left:90px;bottom:48px;width:520px;height:28px;z-index:12;
-  border-radius:6px;
-  background:
-    linear-gradient(180deg,#3a3d42 0%,#1a1c1f 45%,#2c2f34 100%);
-  box-shadow:
-    0 14px 28px rgba(0,0,0,.55),
-    inset 0 1px 0 rgba(255,255,255,.12);
-  transform:perspective(800px) rotateX(55deg);
-  transform-origin:center top;
-}}
-.imac-kb::before{{
-  content:'';position:absolute;inset:4px 8px;border-radius:3px;
-  background:repeating-linear-gradient(90deg,
-    rgba(255,255,255,.06) 0 10px,
-    transparent 10px 14px);
-  opacity:.55;
-}}
-.imac-pad{{
-  position:absolute;left:280px;bottom:18px;width:140px;height:22px;z-index:11;
-  border-radius:8px;
-  background:linear-gradient(180deg,#2a2d31,#121416);
-  box-shadow:0 10px 20px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.1);
-  transform:perspective(700px) rotateX(50deg);
-}}
-.imac-cursor{{
-  position:absolute;right:95px;bottom:250px;width:58px;height:58px;z-index:16;
-  filter:drop-shadow(0 12px 16px rgba(0,0,0,.6));
-  transform:rotate(-10deg);
-}}
-.imac-cursor svg{{width:100%;height:100%;display:block;}}
 
 .obj-portrait{{
   position:absolute;left:2000px;top:980px;width:160px;height:160px;z-index:13;
@@ -427,7 +252,7 @@ body{{background:#000;}}
 .s1-box{{position:absolute;left:72px;right:72px;top:88px;z-index:21;}}
 .s1-box .h-bebas{{font-size:118px;max-width:920px;}}
 .s1-box .h-bebas .gr{{color:var(--verde);}}
-.s1-box .body{{margin-top:28px;font-size:36px;max-width:680px;}}
+.s1-box .body{{margin-top:28px;font-size:36px;max-width:640px;}}
 .s1-scrim{{
   position:absolute;left:0;right:0;top:0;height:520px;z-index:15;pointer-events:none;
   background:linear-gradient(180deg, rgba(7,7,7,.72) 0%, rgba(7,7,7,.35) 55%, transparent 100%);
@@ -565,58 +390,8 @@ def pano_html() -> str:
 <div class="ring r2"></div>
 <div class="ring r3"></div>
 <div class="chip chip-a"><img src="{URI_SEB}" alt=""></div>
-<div class="imac-wrap">
-  <div class="imac">
-    <div class="imac-body">
-      <div class="imac-edge"></div>
-      <div class="imac-bezel">
-        <div class="imac-screen">
-          <div class="imac-ui">
-            <div class="imac-side">
-              <i class="on"></i><i></i><i></i><i></i><i></i>
-            </div>
-            <div class="imac-mid">
-              <div class="imac-row"></div>
-              <div class="imac-row tall"><div class="imac-wave"></div></div>
-              <div class="imac-row"></div>
-              <div class="imac-wa">
-                <div class="line g"></div>
-                <div class="line s"></div>
-                <div class="line"></div>
-              </div>
-            </div>
-            <div class="imac-right">
-              <div class="imac-donut"><span>68%</span></div>
-              <div class="imac-bars"><b></b><b></b><b></b><b></b><b></b></div>
-              <div class="imac-row"></div>
-            </div>
-          </div>
-          <div class="imac-glare"></div>
-        </div>
-        <div class="imac-chin">
-          <div class="imac-cam"></div>
-          <div class="imac-logo"></div>
-        </div>
-      </div>
-      <div class="imac-neck"></div>
-      <div class="imac-base"></div>
-    </div>
-    <div class="imac-kb"></div>
-    <div class="imac-pad"></div>
-    <div class="imac-cursor">
-      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="cg" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#f5f6f8"/>
-            <stop offset="100%" stop-color="#9aa0a6"/>
-          </linearGradient>
-        </defs>
-        <path fill="url(#cg)" stroke="#1a1a1a" stroke-width="2.2"
-          d="M12 8 L12 50 L25 39 L34 58 L42 54 L31 35 L50 35 Z"/>
-      </svg>
-    </div>
-  </div>
-</div>
+<div class="mac-glow"></div>
+<div class="mac-wrap"><img src="{URI_MAC}" alt=""></div>
 <div class="obj-portrait"><img src="{URI_SEB}" alt=""></div>
 """
 
