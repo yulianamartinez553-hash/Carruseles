@@ -189,19 +189,20 @@ body{{background:#000;}}
 .r2{{left:1680px;top:760px;width:320px;height:320px;border-color:rgba(255,255,255,.08);}}
 .r3{{left:3700px;top:420px;width:280px;height:280px;}}
 
-/* ── MacBook realista (foto + código) — puente continuo slides 1↔2 ── */
+/* ── MacBook realista (foto + código) — completo en slide 1 ── */
 .mac-wrap{{
-  position:absolute;left:760px;top:460px;width:980px;height:820px;z-index:14;
-  filter:drop-shadow(0 50px 70px rgba(0,0,0,.85));
+  position:absolute;left:230px;top:500px;width:640px;height:500px;z-index:14;
+  filter:drop-shadow(0 28px 48px rgba(0,0,0,.9));
+  overflow:visible;
 }}
 .mac-wrap img{{
-  width:100%;height:100%;object-fit:contain;object-position:center;
+  width:100%;height:100%;object-fit:contain;object-position:center center;
   display:block;
 }}
 .mac-glow{{
-  position:absolute;left:900px;top:500px;width:460px;height:300px;z-index:12;
-  background:radial-gradient(circle, rgba(0,255,178,.22), transparent 68%);
-  filter:blur(28px);pointer-events:none;
+  position:absolute;left:320px;top:540px;width:460px;height:240px;z-index:12;
+  background:radial-gradient(circle, rgba(0,255,178,.16), transparent 68%);
+  filter:blur(26px);pointer-events:none;
 }}
 
 .obj-portrait{{
@@ -216,7 +217,7 @@ body{{background:#000;}}
   border:1px solid rgba(255,255,255,.14);box-shadow:0 20px 40px rgba(0,0,0,.5);
 }}
 .chip img{{width:100%;height:100%;object-fit:cover;filter:brightness(.55) contrast(1.08) saturate(.7);}}
-.chip-a{{left:200px;top:700px;width:150px;height:180px;transform:rotate(-6deg);opacity:.85;}}
+.chip-a{{left:40px;top:980px;width:110px;height:130px;transform:rotate(-6deg);opacity:.7;}}
 
 .orb{{
   position:absolute;border-radius:50%;z-index:4;filter:blur(40px);

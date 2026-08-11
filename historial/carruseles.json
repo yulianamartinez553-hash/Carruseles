@@ -33,7 +33,9 @@
       "titulo": "Claude WhatsApp Multinivel Ultimo Momento",
       "slides": 4,
       "fondo": "reticula_fina",
-      "familia_visual": "dossier_editorial"
+      "familia_visual": "dossier_editorial",
+      "origen": "original",
+      "keyword_portada": "PDF"
     }
   ]
 }
