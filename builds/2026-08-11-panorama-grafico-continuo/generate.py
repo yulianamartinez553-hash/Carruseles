@@ -189,87 +189,21 @@ body{{background:#000;}}
 .r2{{left:1680px;top:760px;width:320px;height:320px;border-color:rgba(255,255,255,.08);}}
 .r3{{left:3700px;top:420px;width:280px;height:280px;}}
 
-/* ── MacBook frontal (chasis completo, código 100% flush) — slide 1 ── */
-.mac-scene{{
-  position:absolute;left:200px;top:455px;width:680px;height:640px;z-index:30;
-  filter:drop-shadow(0 36px 56px rgba(0,0,0,.88));
+/* ── Solo código (sin computadora) — slide 1 ── */
+.code-panel{{
+  position:absolute;left:90px;top:520px;width:900px;height:560px;z-index:30;
+  border-radius:18px;overflow:hidden;
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 28px 60px rgba(0,0,0,.65), 0 0 40px rgba(0,255,178,.08);
+  background:#0b0d10;
 }}
-.mac{{
-  position:relative;width:640px;height:600px;margin:0 auto;
+.code-panel img{{
+  width:100%;height:100%;object-fit:cover;object-position:center;display:block;
 }}
-.mac-lid{{
-  position:absolute;left:30px;top:0;width:580px;height:355px;
-}}
-.mac-lid-shell{{
-  position:absolute;inset:0;border-radius:14px 14px 3px 3px;
-  background:linear-gradient(180deg,#5a5f68 0%,#3a3e46 40%,#25292f 100%);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.3), inset 0 -1px 0 rgba(0,0,0,.45);
-}}
-.mac-bezel{{
-  position:absolute;left:10px;top:8px;right:10px;bottom:22px;border-radius:6px;
-  background:#020304;overflow:hidden;
-}}
-.mac-cam{{
-  position:absolute;left:50%;top:3px;width:6px;height:6px;margin-left:-3px;z-index:3;
-  border-radius:50%;background:#0a0b0d;box-shadow:inset 0 0 0 1.5px #1c1e22;
-}}
-.mac-screen{{
-  position:absolute;inset:0;background:#05070a;overflow:hidden;
-}}
-.mac-screen img{{
-  width:100%;height:100%;object-fit:cover;object-position:center top;display:block;
-  filter:contrast(1.06) saturate(1.05) brightness(1.04);
-}}
-.mac-glass{{
-  position:absolute;inset:0;pointer-events:none;z-index:2;
-  background:linear-gradient(135deg,rgba(255,255,255,.07),transparent 45%,rgba(0,0,0,.12));
-}}
-.mac-chin{{
-  position:absolute;left:0;right:0;bottom:4px;height:14px;
-  display:flex;align-items:center;justify-content:center;
-  font:600 9px/1 var(--mono);letter-spacing:.26em;color:rgba(200,205,210,.42);
-  text-transform:uppercase;
-}}
-.mac-base{{
-  position:absolute;left:8px;top:348px;width:624px;height:220px;
-}}
-.mac-hinge{{
-  position:absolute;left:50px;top:-5px;width:524px;height:8px;border-radius:3px;
-  background:linear-gradient(180deg,#1a1c20,#3a3e45 50%,#1a1c20);
-}}
-.mac-deck{{
-  position:absolute;inset:0;border-radius:2px 2px 16px 16px;
-  background:linear-gradient(180deg,#5c616a,#3a3e46 16%,#2c3037 70%,#23272d);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.32), inset 0 -2px 0 rgba(0,0,0,.35), 0 16px 30px rgba(0,0,0,.5);
-}}
-.mac-kb{{
-  position:absolute;left:42px;top:14px;right:42px;height:88px;border-radius:5px;background:#14171c;
-  box-shadow:inset 0 0 0 1px rgba(0,0,0,.55), inset 0 2px 8px rgba(0,0,0,.45);
-  display:grid;grid-template-rows:repeat(5,1fr);gap:3px;padding:7px;
-}}
-.mac-kb .r{{display:grid;gap:3px}}
-.mac-kb .r1{{grid-template-columns:repeat(14,1fr)}}
-.mac-kb .r2{{grid-template-columns:1.4fr repeat(12,1fr) 1.6fr}}
-.mac-kb .r3{{grid-template-columns:1.6fr repeat(11,1fr) 1.8fr}}
-.mac-kb .r4{{grid-template-columns:2fr repeat(10,1fr) 2.1fr}}
-.mac-kb .r5{{grid-template-columns:1.2fr 1.2fr 1.2fr 5.8fr 1.2fr 1.2fr 1.2fr 1.2fr}}
-.mac-kb .k{{
-  background:linear-gradient(180deg,#2a2e35,#1a1d22);border-radius:2px;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 #000;
-}}
-.mac-pad{{
-  position:absolute;left:50%;bottom:18px;width:230px;height:70px;margin-left:-115px;border-radius:8px;
-  background:linear-gradient(180deg,#484c54,#33373e);
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.12), inset 0 2px 4px rgba(0,0,0,.3);
-}}
-.mac-lip{{
-  position:absolute;left:4px;right:4px;bottom:-11px;height:15px;border-radius:0 0 14px 14px;
-  background:linear-gradient(180deg,#2e3238,#121418);box-shadow:0 8px 16px rgba(0,0,0,.55);
-}}
-.mac-glow{{
-  position:absolute;left:270px;top:520px;width:520px;height:260px;z-index:12;
-  background:radial-gradient(circle, rgba(0,255,178,.12), transparent 70%);
-  filter:blur(22px);pointer-events:none;
+.code-glow{{
+  position:absolute;left:220px;top:580px;width:640px;height:320px;z-index:12;
+  background:radial-gradient(circle, rgba(0,255,178,.14), transparent 70%);
+  filter:blur(28px);pointer-events:none;
 }}
 
 .obj-portrait{{
@@ -458,43 +392,10 @@ def pano_html() -> str:
 <div class="ring r2"></div>
 <div class="ring r3"></div>
 <div class="chip chip-a"><img src="{URI_SEB}" alt=""></div>
-<div class="mac-glow"></div>
-<div class="mac-scene">
-  <div class="mac">
-    <div class="mac-lid">
-      <div class="mac-lid-shell"></div>
-      <div class="mac-cam"></div>
-      <div class="mac-bezel">
-        <div class="mac-screen">
-          <img src="{URI_CODE}" alt="">
-          <div class="mac-glass"></div>
-        </div>
-      </div>
-      <div class="mac-chin">MacBook Pro</div>
-    </div>
-    <div class="mac-base">
-      <div class="mac-hinge"></div>
-      <div class="mac-deck">
-        <div class="mac-kb">
-          {_mac_keys()}
-        </div>
-        <div class="mac-pad"></div>
-      </div>
-      <div class="mac-lip"></div>
-    </div>
-  </div>
-</div>
+<div class="code-glow"></div>
+<div class="code-panel"><img src="{URI_CODE}" alt=""></div>
 <div class="obj-portrait"><img src="{URI_SEB}" alt=""></div>
 """
-
-
-def _mac_keys() -> str:
-    rows = [("r1", 14), ("r2", 14), ("r3", 13), ("r4", 12), ("r5", 8)]
-    parts = []
-    for cls, n in rows:
-        keys = "".join('<div class="k"></div>' for _ in range(n))
-        parts.append(f'<div class="r {cls}">{keys}</div>')
-    return "".join(parts)
 
 
 
