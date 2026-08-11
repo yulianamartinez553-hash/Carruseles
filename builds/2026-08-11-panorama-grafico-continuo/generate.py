@@ -189,9 +189,9 @@ body{{background:#000;}}
 .r2{{left:1680px;top:760px;width:320px;height:320px;border-color:rgba(255,255,255,.08);}}
 .r3{{left:3700px;top:420px;width:280px;height:280px;}}
 
-/* ── Solo código (sin computadora) — slide 1 ── */
+/* ── Solo código (sin computadora) — puente continuo slides 1↔2 ── */
 .code-panel{{
-  position:absolute;left:90px;top:520px;width:900px;height:560px;z-index:30;
+  position:absolute;left:540px;top:480px;width:1080px;height:580px;z-index:30;
   border-radius:18px;overflow:hidden;
   border:1px solid rgba(255,255,255,.12);
   box-shadow:0 28px 60px rgba(0,0,0,.65), 0 0 40px rgba(0,255,178,.08);
@@ -201,7 +201,7 @@ body{{background:#000;}}
   width:100%;height:100%;object-fit:cover;object-position:center;display:block;
 }}
 .code-glow{{
-  position:absolute;left:220px;top:580px;width:640px;height:320px;z-index:12;
+  position:absolute;left:780px;top:540px;width:600px;height:300px;z-index:12;
   background:radial-gradient(circle, rgba(0,255,178,.14), transparent 70%);
   filter:blur(28px);pointer-events:none;
 }}
