@@ -26,7 +26,7 @@ def b64(path: Path, mime: str) -> str:
 
 
 URI_SEB = b64(REPO / "seb.jpg", "image/jpeg")
-URI_MAC = b64(BUILD / "assets" / "macbook-code.png", "image/png")
+URI_CODE = b64(BUILD / "assets" / "code-screen.png", "image/png")
 
 # Claude mark — naranja Anthropic (regla: logo Claude siempre naranja)
 CLAUDE_SVG = (
@@ -90,7 +90,7 @@ body{{background:#000;}}
 }}
 .sb-a{{top:60px;transform:rotate(-16deg);}}
 .sb-b{{top:480px;transform:rotate(-16deg);opacity:.7;}}
-.sb-c{{top:920px;transform:rotate(-16deg);opacity:.45;}}
+.sb-c{{display:none;}}
 .beam{{
   position:absolute;left:-220px;top:40px;width:4800px;height:220px;z-index:2;
   background:linear-gradient(180deg, rgba(0,255,178,0), rgba(0,255,178,.10) 42%, rgba(0,255,178,.03) 72%, transparent);
@@ -148,7 +148,7 @@ body{{background:#000;}}
   content:'';position:absolute;inset:0;
   background:linear-gradient(118deg, rgba(255,255,255,.16) 0%, transparent 26%, transparent 70%, rgba(0,255,178,.10) 100%);
 }}
-.g1{{left:60px;top:160px;width:360px;height:420px;transform:rotate(-7deg);opacity:.55;}}
+.g1{{display:none;}}
 .g2{{left:1180px;top:70px;width:280px;height:220px;transform:rotate(5deg);opacity:.5;}}
 .g3{{left:2280px;top:100px;width:260px;height:300px;transform:rotate(-3deg);opacity:.45;}}
 .g4{{left:3400px;top:160px;width:420px;height:520px;transform:rotate(-4deg);opacity:.7;}}
@@ -159,7 +159,7 @@ body{{background:#000;}}
   background:linear-gradient(160deg,#4a4e54 0%,#1b1d20 40%,#0b0c0e 70%,#2a2e33 100%);
   box-shadow:0 24px 48px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.25);
 }}
-.p1{{left:480px;top:900px;width:220px;height:130px;transform:rotate(11deg);opacity:.7;}}
+.p1{{display:none;}} /* oculto: cruzaba el MacBook del slide 1 */
 .p2{{left:2500px;top:160px;width:190px;height:110px;transform:rotate(-12deg);}}
 .p3{{left:3600px;top:900px;width:260px;height:120px;transform:rotate(-6deg);}}
 .plate .edge{{
@@ -168,7 +168,7 @@ body{{background:#000;}}
   box-shadow:0 0 12px rgba(0,255,178,.5);
 }}
 .block{{position:absolute;z-index:5;}}
-.b1{{
+.b1{{display:none;
   left:160px;top:1020px;width:130px;height:130px;transform:skewY(-8deg);
   background:linear-gradient(135deg,#2e3238,#121416);
   box-shadow:14px 16px 0 rgba(0,255,178,.07), 0 24px 40px rgba(0,0,0,.5);
@@ -189,20 +189,81 @@ body{{background:#000;}}
 .r2{{left:1680px;top:760px;width:320px;height:320px;border-color:rgba(255,255,255,.08);}}
 .r3{{left:3700px;top:420px;width:280px;height:280px;}}
 
-/* ── MacBook realista (foto + código) — completo en slide 1 ── */
-.mac-wrap{{
-  position:absolute;left:230px;top:500px;width:640px;height:500px;z-index:14;
-  filter:drop-shadow(0 28px 48px rgba(0,0,0,.9));
-  overflow:visible;
+/* ── MacBook frontal (chasis completo, código 100% flush) — slide 1 ── */
+.mac-scene{{
+  position:absolute;left:200px;top:455px;width:680px;height:640px;z-index:30;
+  filter:drop-shadow(0 36px 56px rgba(0,0,0,.88));
 }}
-.mac-wrap img{{
-  width:100%;height:100%;object-fit:contain;object-position:center center;
-  display:block;
+.mac{{
+  position:relative;width:640px;height:600px;margin:0 auto;
+}}
+.mac-lid{{
+  position:absolute;left:30px;top:0;width:580px;height:355px;
+}}
+.mac-lid-shell{{
+  position:absolute;inset:0;border-radius:14px 14px 3px 3px;
+  background:linear-gradient(180deg,#5a5f68 0%,#3a3e46 40%,#25292f 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.3), inset 0 -1px 0 rgba(0,0,0,.45);
+}}
+.mac-bezel{{
+  position:absolute;left:10px;top:8px;right:10px;bottom:22px;border-radius:6px;
+  background:#020304;overflow:hidden;
+}}
+.mac-cam{{
+  position:absolute;left:50%;top:3px;width:6px;height:6px;margin-left:-3px;z-index:3;
+  border-radius:50%;background:#0a0b0d;box-shadow:inset 0 0 0 1.5px #1c1e22;
+}}
+.mac-screen{{
+  position:absolute;inset:0;background:#05070a;overflow:hidden;
+}}
+.mac-screen img{{
+  width:100%;height:100%;object-fit:cover;object-position:center top;display:block;
+  filter:contrast(1.06) saturate(1.05) brightness(1.04);
+}}
+.mac-glass{{
+  position:absolute;inset:0;pointer-events:none;z-index:2;
+  background:linear-gradient(135deg,rgba(255,255,255,.07),transparent 45%,rgba(0,0,0,.12));
+}}
+.mac-chin{{
+  position:absolute;left:0;right:0;bottom:4px;height:14px;
+  display:flex;align-items:center;justify-content:center;
+  font:600 9px/1 var(--mono);letter-spacing:.26em;color:rgba(200,205,210,.42);
+  text-transform:uppercase;
+}}
+.mac-base{{
+  position:absolute;left:8px;top:348px;width:624px;height:220px;
+}}
+.mac-hinge{{
+  position:absolute;left:50px;top:-5px;width:524px;height:8px;border-radius:3px;
+  background:linear-gradient(180deg,#1a1c20,#3a3e45 50%,#1a1c20);
+}}
+.mac-deck{{
+  position:absolute;inset:0;border-radius:2px 2px 16px 16px;
+  background:linear-gradient(180deg,#5c616a,#3a3e46 16%,#2c3037 70%,#23272d);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.32), inset 0 -2px 0 rgba(0,0,0,.35), 0 16px 30px rgba(0,0,0,.5);
+}}
+.mac-kb{{
+  position:absolute;left:42px;top:14px;right:42px;height:88px;border-radius:5px;background:#14171c;
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.55), inset 0 2px 8px rgba(0,0,0,.45);
+  background-image:
+    repeating-linear-gradient(90deg, #1e2228 0 14px, #14171c 14px 17px),
+    repeating-linear-gradient(180deg, #1e2228 0 13px, #14171c 13px 16px);
+  background-size:100% 100%;
+}}
+.mac-kb .r,.mac-kb .k{{display:none}} /* teclado por textura, no barras */
+.mac-pad{{
+  position:absolute;left:50%;bottom:18px;width:230px;height:70px;margin-left:-115px;border-radius:8px;
+  background:linear-gradient(180deg,#484c54,#33373e);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.12), inset 0 2px 4px rgba(0,0,0,.3);
+}}
+.mac-lip{{
+  position:absolute;left:4px;right:4px;bottom:-11px;height:15px;border-radius:0 0 14px 14px;
+  background:linear-gradient(180deg,#2e3238,#121418);box-shadow:0 8px 16px rgba(0,0,0,.55);
 }}
 .mac-glow{{
-  position:absolute;left:320px;top:540px;width:460px;height:240px;z-index:12;
-  background:radial-gradient(circle, rgba(0,255,178,.16), transparent 68%);
-  filter:blur(26px);pointer-events:none;
+  position:absolute;left:270px;top:520px;width:520px;height:260px;z-index:12;
+  background:radial-gradient(circle, rgba(0,255,178,.12), transparent 70%);
+  filter:blur(22px);pointer-events:none;
 }}
 
 .obj-portrait{{
@@ -217,7 +278,7 @@ body{{background:#000;}}
   border:1px solid rgba(255,255,255,.14);box-shadow:0 20px 40px rgba(0,0,0,.5);
 }}
 .chip img{{width:100%;height:100%;object-fit:cover;filter:brightness(.55) contrast(1.08) saturate(.7);}}
-.chip-a{{left:40px;top:980px;width:110px;height:130px;transform:rotate(-6deg);opacity:.7;}}
+.chip-a{{display:none;}}
 
 .orb{{
   position:absolute;border-radius:50%;z-index:4;filter:blur(40px);
@@ -392,9 +453,43 @@ def pano_html() -> str:
 <div class="ring r3"></div>
 <div class="chip chip-a"><img src="{URI_SEB}" alt=""></div>
 <div class="mac-glow"></div>
-<div class="mac-wrap"><img src="{URI_MAC}" alt=""></div>
+<div class="mac-scene">
+  <div class="mac">
+    <div class="mac-lid">
+      <div class="mac-lid-shell"></div>
+      <div class="mac-cam"></div>
+      <div class="mac-bezel">
+        <div class="mac-screen">
+          <img src="{URI_CODE}" alt="">
+          <div class="mac-glass"></div>
+        </div>
+      </div>
+      <div class="mac-chin">MacBook Pro</div>
+    </div>
+    <div class="mac-base">
+      <div class="mac-hinge"></div>
+      <div class="mac-deck">
+        <div class="mac-kb">
+          {_mac_keys()}
+        </div>
+        <div class="mac-pad"></div>
+      </div>
+      <div class="mac-lip"></div>
+    </div>
+  </div>
+</div>
 <div class="obj-portrait"><img src="{URI_SEB}" alt=""></div>
 """
+
+
+def _mac_keys() -> str:
+    rows = [("r1", 14), ("r2", 14), ("r3", 13), ("r4", 12), ("r5", 8)]
+    parts = []
+    for cls, n in rows:
+        keys = "".join('<div class="k"></div>' for _ in range(n))
+        parts.append(f'<div class="r {cls}">{keys}</div>')
+    return "".join(parts)
+
 
 
 def slide1() -> str:
