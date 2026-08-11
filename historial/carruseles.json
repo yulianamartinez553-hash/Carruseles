@@ -1,5 +1,5 @@
 {
-  "ultimo_id": "2026-07-01-tu-sitio-web-no-es-una-tarjeta",
+  "ultimo_id": "2026-08-11-panorama-grafico-continuo",
   "carruseles": [
     {
       "id": "2026-07-01-demo-memoria-stlabs",
@@ -26,6 +26,14 @@
       "fondo": "concreto_industrial",
       "familia_visual": "operator_log",
       "feedback_estado": "publicado"
+    },
+    {
+      "id": "2026-08-11-panorama-grafico-continuo",
+      "fecha": "2026-08-11",
+      "titulo": "Panorama Grafico Continuo",
+      "slides": 5,
+      "fondo": "reticula_fina",
+      "familia_visual": "dossier_editorial"
     }
   ]
 }
