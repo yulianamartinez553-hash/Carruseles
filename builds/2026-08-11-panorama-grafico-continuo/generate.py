@@ -245,12 +245,18 @@ body{{background:#000;}}
 .mac-kb{{
   position:absolute;left:42px;top:14px;right:42px;height:88px;border-radius:5px;background:#14171c;
   box-shadow:inset 0 0 0 1px rgba(0,0,0,.55), inset 0 2px 8px rgba(0,0,0,.45);
-  background-image:
-    repeating-linear-gradient(90deg, #1e2228 0 14px, #14171c 14px 17px),
-    repeating-linear-gradient(180deg, #1e2228 0 13px, #14171c 13px 16px);
-  background-size:100% 100%;
+  display:grid;grid-template-rows:repeat(5,1fr);gap:3px;padding:7px;
 }}
-.mac-kb .r,.mac-kb .k{{display:none}} /* teclado por textura, no barras */
+.mac-kb .r{{display:grid;gap:3px}}
+.mac-kb .r1{{grid-template-columns:repeat(14,1fr)}}
+.mac-kb .r2{{grid-template-columns:1.4fr repeat(12,1fr) 1.6fr}}
+.mac-kb .r3{{grid-template-columns:1.6fr repeat(11,1fr) 1.8fr}}
+.mac-kb .r4{{grid-template-columns:2fr repeat(10,1fr) 2.1fr}}
+.mac-kb .r5{{grid-template-columns:1.2fr 1.2fr 1.2fr 5.8fr 1.2fr 1.2fr 1.2fr 1.2fr}}
+.mac-kb .k{{
+  background:linear-gradient(180deg,#2a2e35,#1a1d22);border-radius:2px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 #000;
+}}
 .mac-pad{{
   position:absolute;left:50%;bottom:18px;width:230px;height:70px;margin-left:-115px;border-radius:8px;
   background:linear-gradient(180deg,#484c54,#33373e);
