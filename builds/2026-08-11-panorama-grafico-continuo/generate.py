@@ -27,15 +27,7 @@ def b64(path: Path, mime: str) -> str:
 
 URI_SEB = b64(REPO / "seb.jpg", "image/jpeg")
 URI_CODE = b64(BUILD / "assets" / "code-screen.png", "image/png")
-
-# Claude mark — naranja Anthropic (regla: logo Claude siempre naranja)
-CLAUDE_SVG = (
-    "data:image/svg+xml,"
-    + "%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E"
-    + "%3Crect width='64' height='64' rx='14' fill='%23D97757'/%3E"
-    + "%3Cpath fill='%23fff' d='M32 14c-2.2 8.4-6.8 14.2-14 18 7.2 3.8 11.8 9.6 14 18 "
-    + "2.2-8.4 6.8-14.2 14-18-7.2-3.8-11.8-9.6-14-18z'/%3E%3C/svg%3E"
-)
+URI_ICONS = b64(BUILD / "assets" / "claude-whatsapp-pair.png", "image/png")
 
 EXTRA_CSS = f"""
 :root{{
@@ -270,24 +262,17 @@ body{{background:#000;}}
   font-size:58px;max-width:820px;margin:0 auto;text-align:center;
 }}
 .s2-box .body{{
-  margin-top:18px;font-size:33px;max-width:720px;margin-left:auto;margin-right:auto;
+  margin-top:14px;font-size:30px;max-width:720px;margin-left:auto;margin-right:auto;
   text-align:center;
 }}
-.s2-box .body + .body{{margin-top:14px;}}
-.claude-row{{
-  display:flex;align-items:center;justify-content:center;gap:18px;margin-top:24px;
+.icons-pair{{
+  display:block;width:620px;height:auto;margin:10px auto 4px;
+  filter:drop-shadow(0 18px 36px rgba(0,0,0,.45));
 }}
-.claude-mark{{
-  width:64px;height:64px;border-radius:14px;overflow:hidden;
-  box-shadow:0 12px 28px rgba(217,119,87,.45);
-}}
-.claude-mark img{{width:100%;height:100%;display:block;}}
-.claude-lab{{
-  font-family:var(--mono);font-size:22px;color:var(--claude);letter-spacing:1px;
-}}
+.s2-box .body.after-icons{{margin-top:6px;}}
 .s2-scrim{{
-  position:absolute;left:0;right:0;top:0;height:420px;z-index:15;pointer-events:none;
-  background:linear-gradient(180deg, rgba(7,7,7,.7) 0%, rgba(7,7,7,.28) 70%, transparent 100%);
+  position:absolute;left:0;right:0;top:0;height:520px;z-index:15;pointer-events:none;
+  background:linear-gradient(180deg, rgba(7,7,7,.72) 0%, rgba(7,7,7,.3) 70%, transparent 100%);
 }}
 
 /* Slide 3 */
@@ -433,13 +418,10 @@ def slide2() -> str:
     <div class="kicker">100% oficial</div>
     <h2 class="h-pop">Ya es <span class="ac">100% oficial</span></h2>
     <p class="body">Podés conectar <b>Claude</b> a tu WhatsApp y darle todo el
-    trabajo operativo de tu red multinivel.</p>
-    <p class="body">Y ponerlo a trabajar como un <span class="gr">miembro más</span>
+    trabajo operativo de tu <span class="ac">red multinivel</span>.</p>
+    <img class="icons-pair" src="{URI_ICONS}" alt="Claude conectado a WhatsApp">
+    <p class="body after-icons">Y ponerlo a trabajar como un <span class="gr">miembro más</span>
     de tu equipo.</p>
-    <div class="claude-row">
-      <div class="claude-mark"><img src="{CLAUDE_SVG}" alt="Claude"></div>
-      <div class="claude-lab">Claude · conectado</div>
-    </div>
   </div>
   <div class="web">sebastian.stlabs.ar</div>
 </section>
