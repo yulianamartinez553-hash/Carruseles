@@ -21,10 +21,10 @@ Al deslizar, la composición continúa: la diagonal verde, el rail metálico, la
 1. Diagonal maestra `#00FFB2` (12.6°) + línea fina paralela
 2. Rail metálico inferior con ticks
 3. Bandas de luz / haz volumétrico
-4. Objetos fotográficos enteros (no UI partida a la mitad):
+4. Objetos fotográficos enteros solo en slides 1–3:
    - Monitor (zona slides 1–2)
    - Retrato circular (slide 3)
-   - Foto editorial (slide 4)
+   - Slides 4–5: solo elementos gráficos (sin foto)
 
 ## Archivos
 - `carrusel.html` / `STLabs-Panorama-Grafico-Continuo.html`

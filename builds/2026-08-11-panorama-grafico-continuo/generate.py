@@ -29,7 +29,6 @@ def b64(path: Path, mime: str) -> str:
 
 
 URI_MON = b64(REPO / "assets" / "slide1-hero.png", "image/png")
-URI_EDIT = b64(REPO / "assets" / "slide6-hero.png", "image/png")
 URI_SEB = b64(REPO / "seb.jpg", "image/jpeg")
 
 EXTRA_CSS = f"""
@@ -177,6 +176,9 @@ body{{background:#000;}}
 .g2{{left:1240px;top:70px;width:300px;height:240px;transform:rotate(5deg);}}
 .g3{{left:2280px;top:140px;width:280px;height:380px;transform:rotate(-3deg);}}
 .g4{{left:4560px;top:200px;width:360px;height:480px;transform:rotate(6deg);}}
+.g5{{left:3280px;top:180px;width:520px;height:640px;transform:rotate(-4deg);}}
+.g6{{left:3880px;top:620px;width:340px;height:280px;transform:rotate(7deg);}}
+.g7{{left:4480px;top:720px;width:420px;height:300px;transform:rotate(-5deg);}}
 
 /* Placas metálicas */
 .plate{{
@@ -187,6 +189,8 @@ body{{background:#000;}}
 .p1{{left:480px;top:880px;width:250px;height:150px;transform:rotate(11deg);}}
 .p2{{left:3360px;top:150px;width:210px;height:130px;transform:rotate(-12deg);}}
 .p3{{left:4880px;top:980px;width:270px;height:110px;transform:rotate(3deg);}}
+.p4{{left:3420px;top:920px;width:280px;height:140px;transform:rotate(-8deg);}}
+.p5{{left:5100px;top:180px;width:240px;height:160px;transform:rotate(10deg);}}
 .plate .edge{{
   position:absolute;left:12px;right:12px;top:14px;height:3px;border-radius:2px;
   background:linear-gradient(90deg, #00FFB2, rgba(0,255,178,.12));
@@ -219,6 +223,7 @@ body{{background:#000;}}
 .r1{{left:620px;top:400px;width:260px;height:260px;}}
 .r2{{left:1640px;top:700px;width:400px;height:400px;border-color:rgba(255,255,255,.08);}}
 .r3{{left:3860px;top:460px;width:320px;height:320px;}}
+.r4{{left:4700px;top:380px;width:280px;height:280px;border-color:rgba(255,255,255,.1);}}
 
 /* ── Objeto monitor (completo, sin partir UI) — zona slides 1→2 ── */
 .obj-monitor{{
@@ -238,26 +243,7 @@ body{{background:#000;}}
 }}
 .obj-portrait img{{width:100%;height:100%;object-fit:cover;filter:grayscale(.2) contrast(1.06) brightness(.92);}}
 
-/* Foto editorial — objeto completo en zona slide 4 (no dashboard partido) */
-.obj-edit{{
-  position:absolute;left:3160px;top:120px;width:1000px;height:1140px;z-index:12;
-  border-radius:6px;overflow:hidden;
-  box-shadow:0 55px 100px rgba(0,0,0,.65);
-  transform:rotate(-1deg);
-}}
-.obj-edit img{{
-  width:100%;height:100%;object-fit:cover;object-position:center 18%;
-  filter:saturate(.88) contrast(1.05) brightness(.9);
-}}
-.obj-edit::before{{
-  content:'';position:absolute;inset:16px;border:1.5px solid rgba(0,255,178,.5);z-index:2;pointer-events:none;
-}}
-.obj-edit::after{{
-  content:'';position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(180deg, rgba(10,10,10,.15) 0%, transparent 30%, rgba(10,10,10,.55) 100%);
-}}
-
-/* Fragmentos fotográficos adicionales (detalles realistas) */
+/* Fragmento fotográfico solo en zona inicial (slides 1–2) */
 .chip{{
   position:absolute;z-index:11;border-radius:12px;overflow:hidden;
   border:1px solid rgba(255,255,255,.14);
@@ -265,7 +251,6 @@ body{{background:#000;}}
 }}
 .chip img{{width:100%;height:100%;object-fit:cover;filter:brightness(.55) contrast(1.08) saturate(.7);}}
 .chip-a{{left:200px;top:640px;width:180px;height:220px;transform:rotate(-6deg);}}
-.chip-b{{left:4920px;top:520px;width:200px;height:260px;transform:rotate(8deg);}}
 
 /* Orbes de luz */
 .orb{{
@@ -315,25 +300,31 @@ def pano_html() -> str:
 <div class="glass g2"></div>
 <div class="glass g3"></div>
 <div class="glass g4"></div>
+<div class="glass g5"></div>
+<div class="glass g6"></div>
+<div class="glass g7"></div>
 
 <div class="plate p1"><span class="edge"></span></div>
 <div class="plate p2"><span class="edge"></span></div>
 <div class="plate p3"><span class="edge"></span></div>
+<div class="plate p4"><span class="edge"></span></div>
+<div class="plate p5"><span class="edge"></span></div>
 
 <div class="block b1"></div>
 <div class="block b2"></div>
 <div class="block b3"></div>
+<div class="block b4"></div>
+<div class="block b5"></div>
 
 <div class="ring r1"></div>
 <div class="ring r2"></div>
 <div class="ring r3"></div>
+<div class="ring r4"></div>
 
 <div class="chip chip-a"><img src="{URI_SEB}" alt=""></div>
-<div class="chip chip-b"><img src="{URI_SEB}" alt=""></div>
 
 <div class="obj-monitor"><img src="{URI_MON}" alt=""></div>
 <div class="obj-portrait"><img src="{URI_SEB}" alt=""></div>
-<div class="obj-edit"><img src="{URI_EDIT}" alt=""></div>
 """
 
 
