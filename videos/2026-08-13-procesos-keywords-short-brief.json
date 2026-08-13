@@ -1,0 +1,37 @@
+{
+  "id": "2026-08-13-procesos-keywords-short",
+  "titulo": "Sin procesos la IA agranda el desastre — keywords big + cuts",
+  "modelo": "keywords_sueltas",
+  "duracion_s": 51.4,
+  "cortes": [
+    "Eliminado: que esto / que el otro / agente mágico",
+    "Eliminado: onboarding de personas nuevas que ingresan a la empresa + Dale ok",
+    "Silencios largos comprimidos"
+  ],
+  "keywords": [
+    "AUTOMATIZACIONES",
+    "INTELIGENCIA ARTIFICIAL",
+    "EL PROBLEMA",
+    "ORGANIZACIÓN",
+    "NEGOCIO",
+    "TU EMPRESA",
+    "AUTOMATIZAR",
+    "TE CREO",
+    "UN AGENTE",
+    "DECIME",
+    "ONBOARDING",
+    "PROCESOS",
+    "SIN PROCESOS",
+    "PASO A PASO",
+    "CON IA",
+    "EL DESASTRE",
+    "COMENTÁ PROCESOS"
+  ],
+  "tipografia_px": {
+    "huge": 190,
+    "mid": 130,
+    "cta": 82
+  },
+  "export": "/opt/cursor/artifacts/STLabs-sebas-cafeteria-keywords-short.mp4",
+  "download": "https://gofile.io/d/6jihkKyc"
+}

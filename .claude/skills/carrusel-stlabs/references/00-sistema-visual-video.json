@@ -1,0 +1,654 @@
+{
+  "$schema": "sistema-video-stlabs/v1",
+  "nombre": "Sistema Visual Video — Reels / TikTok / Shorts · sebastian.stlabs.ar",
+  "descripcion": "Fuente de verdad legible por máquina para generar CUALQUIER video corto (Reels, TikTok, Shorts) de la marca Sebastián García / STLabs. Consolida paleta, tipografías, voz, firma, overlays neón, cámara cinematográfica, elementos visuales y sonido. No define un guion fijo: define el ADN de edición y diseño que se aplica a cualquier talking-head.",
+  "prioridad": "Estas reglas tienen prioridad sobre cualquier criterio estético improvisado. Ante duda: identidad de `.claude/skills/carrusel-stlabs/references/01-identidad-stlabs.md` + línea gráfica del repo. Verde oficial SIEMPRE #00FFB2.",
+  "origenes_repo": [
+    ".claude/skills/carrusel-stlabs/SKILL.md",
+    ".claude/skills/carrusel-stlabs/references/01-identidad-stlabs.md",
+    ".claude/skills/carrusel-stlabs/references/03-mecanicas.md",
+    ".claude/skills/carrusel-stlabs/references/04-fondos-familias.md",
+    ".claude/skills/carrusel-stlabs/references/06-caption-voz.md",
+    "stlabs_kit.py",
+    "SISTEMA-DISENO-CARRUSELES-STLABS.md",
+    "historial/plantillas_copy.json"
+  ],
+
+  "marca": {
+    "propietario": "Sebastián García",
+    "territorio": "RevOps · CRM · IA",
+    "firma": "sebastian.stlabs.ar",
+    "handle_prohibido": "Nunca usar @handle de Instagram ni de terceros. Solo la URL sebastian.stlabs.ar.",
+    "activo_foto": "seb.jpg",
+    "modo_fondo_mes_vigente": "blanco",
+    "personalidad": "Contraste fuerte · tipografía monumental · verde neón tecnológico · look cinematográfico viral · drama controlado · profesional · voseo argentino"
+  },
+
+  "formatos": {
+    "default": "reel_tiktok_9x16",
+    "reel_tiktok_9x16": {
+      "ratio": "9:16",
+      "resolucion": "1080x1920",
+      "fps": 30,
+      "codec_preferido": "h264",
+      "bitrate_min_mbps": 8,
+      "duracion_tipica_s": [15, 45],
+      "duracion_max_s": 60,
+      "safe_zones": {
+        "superior_px": 140,
+        "inferior_px": 220,
+        "lateral_px": 64,
+        "nota": "Dejar limpio el área inferior (UI de captions/botones TikTok-Reels) y superior (username). Firma y CTA viven dentro del safe zone."
+      },
+      "plataformas": ["instagram_reels", "tiktok", "youtube_shorts"]
+    },
+    "youtube_16x9_opcional": {
+      "ratio": "16:9",
+      "resolucion": "1920x1080",
+      "uso": "Solo si se pide versión horizontal. Misma identidad; menos overlays; más aire."
+    }
+  },
+
+  "paleta": {
+    "verde_neon": {
+      "hex": "#00FFB2",
+      "uso": "Acento único. Palabras sueltas, subrayados, nodos, líneas tech, glows, firma, CTAs, barras de keyword.",
+      "regla": "NUNCA modificar, mezclar ni degradar a otro verde. Máximo 1–2 usos FUERTES por beat visual (más glows/líneas sutiles permitidos)."
+    },
+    "tinta_sobre_verde": { "hex": "#04130b", "uso": "Texto sobre barra/botón verde" },
+    "negro_mineral": { "hex": "#0A0A0A", "uso": "Fondo oscuro / texto en modo claro" },
+    "grafito": { "hex": "#141414", "uso": "Paneles, cards, lower-thirds" },
+    "grafito_medio": { "hex": "#1E1E1E", "uso": "UI secundaria, ventanas de código" },
+    "borde_panel": { "hex": "#2A2A2A" },
+    "blanco_calido": { "hex": "#F2F2F2", "uso": "Texto principal sobre negro" },
+    "blanco": { "hex": "#FFFFFF", "uso": "Fondo modo claro / texto de máximo contraste" },
+    "gris": { "hex": "#9aa39c", "uso": "Texto secundario, meta, timestamps" },
+    "rojo": { "hex": "#FF5247", "uso": "SOLO riesgo / error / ANTES. Nunca decorativo." },
+    "ambar": { "hex": "#FF9D3C", "uso": "Énfasis negativo puntual (raro)" },
+    "naranja_claude": { "hex": "#D97757", "uso": "Solo mascot Claude — nunca teñir a verde" },
+    "glow_verde": "rgba(0,255,178,0.35) — controlado, nunca glow púrpura ni excesivo",
+    "modo_oscuro_video": {
+      "fondo": "#0A0A0A",
+      "texto": "#F2F2F2",
+      "recomendado_para": "talking-head cinematográfico, autoridad, drama"
+    },
+    "modo_claro_video": {
+      "fondo": "#FFFFFF / #F7F7F5",
+      "texto": "#0A0A0A",
+      "verde_solo_acento": true,
+      "recomendado_para": "educativo claro, demos UI"
+    }
+  },
+
+  "tipografia": {
+    "stack": {
+      "display_titulo": {
+        "familias": ["Impact", "Anton", "Bebas Neue"],
+        "peso": "ultra / 400 Bebas (visualmente grueso por diseño)",
+        "uso": "Claims monumentales, palabras neón sueltas, punchlines on-screen",
+        "prohibido_como_titulo": ["Barlow Condensed", "IBM Plex Mono", "Inter fino", "Roboto", "Arial", "system"]
+      },
+      "subtitulo_paso": {
+        "familia": "Poppins",
+        "pesos": [700, 800],
+        "uso": "Subheads, pasos, flechas →"
+      },
+      "cuerpo": {
+        "familia": "Barlow Condensed",
+        "pesos": [400, 500, 600, 700],
+        "uso": "Captions largos, bullets — jamás título"
+      },
+      "mono_ui_firma": {
+        "familia": "IBM Plex Mono",
+        "pesos": [400, 500, 600],
+        "uso": "Firma URL, labels, timestamps, badges, código — jamás título"
+      },
+      "acento_editorial": {
+        "familia": "Lora",
+        "estilo": "italic",
+        "pesos": [400, 600, 700],
+        "color": "#00FFB2",
+        "uso": "Palabras-acento editoriales sueltas (énfasis premium)"
+      }
+    },
+    "escala_9x16": {
+      "claim_monumental_px": [92, 140],
+      "palabra_neon_suelta_px": [130, 190],
+      "palabra_neon_huge_px": 190,
+      "palabra_neon_mid_px": 130,
+      "cta_barra_px": 82,
+      "subtitulo_px": [36, 48],
+      "caption_cuerpo_px": [28, 36],
+      "label_mono_px": [18, 24],
+      "firma_px": [22, 28],
+      "line_height_display": 0.9,
+      "letter_spacing_display": "-0.02em a 0.02em",
+      "letter_spacing_mono": "0.08em a 0.16em"
+    },
+    "regla_titulos": "Grande y grueso. Diversos (recto / inclinado skewX(-6° a -10°) / barra verde detrás / degradé clip). Nunca finitos. Al menos una keyword en verde #00FFB2 por beat de impacto.",
+    "preset_edicion_bloqueado": "sistema-video-edicion-stlabs.json — keywords robóticas Bebas Neue #00FFB2 huge/mid densas; no frases completas por default"
+  },
+
+  "voz": {
+    "idioma": "es-AR",
+    "tratamiento": "voseo",
+    "verbos_ejemplo": ["Empezá", "Elegí", "Dejá", "Hacé", "Creá", "Conectá", "Comentá", "Deslizá", "Querés", "Escogé", "Guardá"],
+    "prohibido": ["emojis", "inglés decorativo", "Inteligencia Artificial (usar IA)", "@handles de Instagram", "párrafos largos"],
+    "tono": "Directo, punchy, autoridad calmada con drama puntual. Frases cortas. Una idea por beat.",
+    "caption_social": {
+      "estructura": [
+        "Gancho literal del problema (1–2 líneas)",
+        "Consecuencia económica o de tiempo",
+        "Procedimiento concreto en bullets cortos",
+        "CTA: Comentá {KEYWORD} y te mando el diagnóstico"
+      ],
+      "max_hashtags": 5,
+      "keywords_tipicas": ["PIPELINE", "ROI", "FOLLOW-UP", "CHECKOUT", "LEAD", "BOT", "CRM", "WEB"]
+    }
+  },
+
+  "firma_on_screen": {
+    "texto": "sebastian.stlabs.ar",
+    "fuente": "IBM Plex Mono",
+    "color": "#00FFB2",
+    "opacidad": 0.9,
+    "peso": 500,
+    "letter_spacing": "0.1em",
+    "posicion_default": "inferior-centro, por encima del safe zone de UI (~ bottom 240–280px en 1920)",
+    "reglas": [
+      "Visible en TODO el video o al menos en intro + cierre + beats de CTA",
+      "Nunca tapada por overlays ni por UI de plataforma",
+      "Nunca reemplazada por @usuario"
+    ]
+  },
+
+  "estilo_cinematografico": {
+    "nombre": "STLabs Cine Viral Talking-Head",
+    "referencia_estetica": "Videos virales de autoridad tech/business: cámara viva, cortes rítmicos, palabras neón que golpean el claim, SFX puntuales, sin clutter SaaS.",
+    "look": {
+      "grade": "Cinemático contrastado. Negros profundos (#0A0A0A), highlights controlados, piel natural. Saturación media. Un acento verde puntual en overlays (no gradear toda la imagen a verde).",
+      "grain": "Film grain sutil 4–8% opcional para textura; nunca ruido digital fuerte",
+      "vignette": "Suave, 8–15%, para enfocar el rostro",
+      "letterbox": false,
+      "prohibido": [
+        "glow púrpura / vaporwave",
+        "3D plástico / robots / cerebros / circuitos inventados",
+        "estética SaaS genérica con cards flotantes excesivas",
+        "emojis animados",
+        "stickers de stock infantiles",
+        "zoom spam cada 0.3s sin motivación",
+        "texto tapando la cara de forma permanente"
+      ]
+    },
+    "ritmo": {
+      "corte_promedio_s": [1.2, 2.8],
+      "beats_impacto": "Alinear corte / zoom / palabra neón / SFX con la sílaba clave del claim",
+      "respiracion": "Después de 2–3 beats densos, 1 beat limpio solo con el speaker (sin overlay) para que respire"
+    }
+  },
+
+  "shot_base": {
+    "tipo": "talking_head_fijo",
+    "descripcion": "Persona hablando frente a cámara desde ángulo fijo (plano medio / medio-corto). La edición DEBE simular cámara viva: reencuadres, pushes y pans sutiles que lo siguen cada tanto.",
+    "encuadre_default": {
+      "plano": "medium_close_up",
+      "ojos": "tercio superior",
+      "mirada": "a lente",
+      "espacio_cabeza_pct": 8,
+      "regla": "El rostro es el ancla. Overlays nunca tapan ojos/boca de forma permanente."
+    },
+    "fondo_grabacion": {
+      "preferido": "limpio o con profundidad suave; si hay oficina/pared, atenuar con grade + vignette",
+      "overlays_atmosfera": ["retícula fina al 4–8% opacidad", "glow verde radial sutil en esquina inferior", "scrim inferior oscuro para legibilidad de captions"]
+    }
+  },
+
+  "camara": {
+    "principio": "El master es fijo, pero la edición MUEVE la cámara: reframe, push-in, pull-out y pan sutil siguiendo micro-movimientos del speaker. No dejar el crop estático más de ~4–6s seguidos.",
+    "movimientos": [
+      {
+        "id": "push_in_enfasis",
+        "tipo": "digital_push_in",
+        "zoom": "105% → 118%",
+        "duracion_s": [0.6, 1.4],
+        "easing": "ease_in_out_cubic",
+        "cuando": "Al decir la keyword / claim fuerte / dato de impacto",
+        "follow": "Anclar el punto de zoom al rostro (ojos/nariz); si el speaker se inclina, el crop lo sigue 10–20px"
+      },
+      {
+        "id": "pull_out_respiracion",
+        "tipo": "digital_pull_out",
+        "zoom": "118% → 100%",
+        "duracion_s": [0.8, 1.6],
+        "cuando": "Después de un beat denso; vuelve al master para respirar"
+      },
+      {
+        "id": "pan_follow",
+        "tipo": "pan_reframe",
+        "desplazamiento_px": [12, 40],
+        "duracion_s": [0.5, 1.2],
+        "cuando": "Cuando el speaker gesticula o se desplaza levemente; la cámara 'lo sigue' cada tanto (cada 3–6s)",
+        "regla": "Suave, cinematográfico. Nunca whip-pan caótico salvo un smash cut intencional."
+      },
+      {
+        "id": "punch_in_hard",
+        "tipo": "hard_cut_to_tighter",
+        "zoom_destino": "125%–135%",
+        "duracion_s": 0,
+        "cuando": "Palabra neón + SFX hit. Corte seco a plano más cerrado.",
+        "frecuencia": "2–5 veces por video de 30s"
+      },
+      {
+        "id": "match_cut_angle",
+        "tipo": "jump_cut_angular",
+        "descripcion": "Salto de ángulo sutil (crop L vs crop R) manteniendo continuidad de habla",
+        "cuando": "Transición entre ideas / lista de pasos"
+      },
+      {
+        "id": "slow_push_largo",
+        "tipo": "slow_dolly_in",
+        "zoom": "100% → 110%",
+        "duracion_s": [4, 8],
+        "cuando": "Hook de apertura o cierre emocional / CTA final"
+      }
+    ],
+    "reglas": [
+      "Máximo un movimiento fuerte a la vez (no push + pan agresivo + shake juntos)",
+      "Seguir al speaker: tracking leve del centro facial entre keyframes",
+      "Evitar crop que corte frente o mentón",
+      "En beats de palabra neón, preferir punch_in_hard o push_in_enfasis",
+      "PRESET PRODUCCIÓN: crop centrado fijo (iw-1080)/2:(ih-1920)/2 — PROHIBIDO offset Y abrupto entre beats (parece corte desalineado). Si hay punch, zoom centrado."
+    ]
+  },
+
+  "preset_produccion": {
+    "archivo": "sistema-video-edicion-stlabs.json",
+    "skill": ".claude/skills/video-stlabs/SKILL.md",
+    "default_modelo_texto": "keywords_sueltas_roboticas",
+    "nota": "Ante duda de edición, prevalece sistema-video-edicion-stlabs.json (validado 2026-08-13)."
+  },
+
+  "overlays_neon": {
+    "nombre": "Palabras sueltas neón robóticas",
+    "descripcion": "Palabras o frases MUY cortas (1–3 palabras) en verde #00FFB2 Bebas Neue, GRANDES y DENSAS, para remarcar lo importante. Estilo viral cinematográfico robótico. NO karaoke de todo el discurso.",
+    "estilo_visual": {
+      "color": "#00FFB2",
+      "glow": "0 0 18px rgba(0,255,178,0.45), 0 0 40px rgba(0,255,178,0.2)",
+      "familia_preferida": "Bebas Neue (default robótico) · Lora italic solo 1 acento editorial puntual",
+      "tamanos_px_default": { "huge": 190, "mid": 130, "cta": 82 },
+      "variantes": [
+        {
+          "id": "display_golpe_robotico",
+          "fuente": "Bebas Neue",
+          "transform": "uppercase",
+          "fontsize_px": 190,
+          "uso": "DEFAULT — claim viral, keyword, dato"
+        },
+        {
+          "id": "display_mid",
+          "fuente": "Bebas Neue",
+          "transform": "uppercase",
+          "fontsize_px": 130,
+          "uso": "keyword secundaria / puente"
+        },
+        {
+          "id": "italic_editorial",
+          "fuente": "Lora",
+          "estilo": "italic",
+          "peso": 600,
+          "uso": "énfasis premium puntual (máx 1 por video)"
+        },
+        {
+          "id": "barra_keyword",
+          "descripcion": "Rectángulo sólido #00FFB2 detrás de la palabra; texto #04130b",
+          "uso": "CTA COMENTÁ {KEYWORD}"
+        },
+        {
+          "id": "degrade_clip",
+          "css_referencia": "linear-gradient(180deg,#B0FFE8 0%,#00FFB2 42%,#007A52 100%) clip text",
+          "uso": "SOLO display gigante, nunca cuerpo"
+        }
+      ],
+      "animacion_entrada": [
+        "fade + scale 0.86→1.0 en 180–280ms",
+        "slide-up 24px + fade",
+        "glitch-cut 2 frames (opcional, 1 vez por video)"
+      ],
+      "animacion_salida": "fade 150–220ms o hard cut con el corte de cámara",
+      "hold_s": [1.4, 2.0],
+      "posicion": "alternar tercio superior / inferior; NUNCA tapar ojos/boca más de 0.4s"
+    },
+    "contenido": {
+      "max_palabras": 3,
+      "coherencia": "Debe ser literalmente la idea clave del beat (fuga, ROI, 8 segundos, pipeline, lead frío). No decorativas.",
+      "ejemplos": [
+        "PIPELINE",
+        "8 SEGUNDOS",
+        "LEAD FRÍO",
+        "SIN SEGUIMIENTO",
+        "AUTOMATIZÁ",
+        "ROI",
+        "HOY",
+        "DEJÁ DE PERDER",
+        "PROCESOS",
+        "ORGANIZACIÓN",
+        "EL DESASTRE"
+      ],
+      "frecuencia": "Alta densidad: ~18+ keywords/min; 1 overlay cada 1.5–3.5s; pico en hook y CTA",
+      "prohibido": [
+        "subtitular TODO el monólogo en neón (frases completas) salvo pedido explícito",
+        "más de 1 overlay simultáneo",
+        "verde distinto a #00FFB2",
+        "emojis junto a la palabra",
+        "tipografía no robótica (Inter/Roboto/Arial) en keywords"
+      ]
+    }
+  },
+
+  "elementos_visuales": {
+    "regla_maestra": "NINGÚN elemento tapa de forma permanente texto, cara, logos ni firma. Cero solapamiento crítico. Si no entra, achicar o sacar.",
+    "catalogo": {
+      "reticula_fina": {
+        "descripcion": "Grid sutil ~48–60px, opacidad 4–8%, blend overlay",
+        "cuando": "atmósfera de marca en intro/cierre"
+      },
+      "lineas_tech": {
+        "color": "#00FFB2",
+        "grosor_px": [1, 3],
+        "cuando": "subrayar keyword, dividir beats, acento de layout"
+      },
+      "nodo_flecha": {
+        "descripcion": "Círculo borde verde con → Poppins 800 (adaptado de carrusel Ø156)",
+        "cuando": "paso siguiente / continuidad de lista",
+        "animacion": "fade + leve scale; SFX whoosh corto"
+      },
+      "corchetes": {
+        "descripcion": "Marcos tipo [ ] en esquinas, borde verde semitransparente",
+        "cuando": "marco de autoridad / cita clave"
+      },
+      "dots_verdes": {
+        "descripcion": "3 puntitos Ø7 con glow verde",
+        "cuando": "microdetalle de marca, esquina"
+      },
+      "barra_progreso": {
+        "track": "#1c1c1c",
+        "fill": "#00FFB2",
+        "cuando": "series / pasos / countdown visual"
+      },
+      "lower_third": {
+        "fondo": "#141414",
+        "borde": "#2A2A2A",
+        "acento": "línea o barra #00FFB2",
+        "texto_nombre": "Sebastián García",
+        "texto_rol": "RevOps · CRM · IA",
+        "cuando": "primeros 3–5s y/o cierre"
+      },
+      "badge_mono": {
+        "fuente": "IBM Plex Mono",
+        "estilo": "pill borde verde o texto verde uppercase",
+        "ejemplos": ["PASO 01", "SISTEMA", "DIAGNÓSTICO"]
+      },
+      "before_after_flash": {
+        "descripcion": "Split o flash rojo→verde para contraste riesgo/seguro",
+        "rojo": "#FF5247",
+        "verde": "#00FFB2",
+        "cuando": "comparación ANTES/DESPUÉS (máx 1–2 por video)"
+      },
+      "ventana_codigo": {
+        "descripcion": "Panel grafito con dots mac + mono; snip de flujo/automatización",
+        "cuando": "demo conceptual breve (<2.5s)"
+      },
+      "foto_scrim": {
+        "filter": "brightness(.5–.6) contrast(1.05) saturate(.6–.85)",
+        "scrim": "gradiente vertical inferior oscuro + glow verde esquina",
+        "cuando": "insert B-roll de Sebastián / producto"
+      }
+    },
+    "fondos_textura_referencia_carrusel": [
+      "piedra_roca",
+      "papel_corrugado",
+      "concreto_industrial",
+      "reticula_fina",
+      "lino_tela",
+      "roca_volcanica",
+      "gradiente_profundo"
+    ],
+    "nota_fondos": "En video talking-head el fondo real de cámara manda; las texturas del catálogo se usan como overlays/atmósfera o en inserts gráficos, no como reemplazo del speaker."
+  },
+
+  "sonido": {
+    "principio": "Sonidos PUNTUALES que agregan drama y énfasis profesional. No saturación. Cada SFX debe caer exactamente con un corte, palabra neón o gesto.",
+    "voz_limpia": {
+      "objetivo": "Solo la voz de Sebastián. Eliminar murmur/cafetería/ruido de fondo.",
+      "ffmpeg": "highpass=f=80,arnndn=m={RNNN}:mix=0.85,afftdn=nf=-25,speechnorm=e=12:r=0.0005:l=1,loudnorm=I=-14:TP=-1.5:LRA=11,volume=1.15",
+      "sync_labios": "Compensar latencia del denoise (atrim/adelay) hasta lag <10ms vs master",
+      "detalle": "Ver sistema-video-edicion-stlabs.json → audio"
+    },
+    "musica": {
+      "estilo": "cinematic tech / dark pulse / minimal tension — bed bajo, no pelear con la voz",
+      "volumen_relativo_voz_db": -18,
+      "ducking": true,
+      "entrada": "fade-in 0.4–0.8s en el hook",
+      "salida": "rise o hit + silence en el CTA final",
+      "prohibido": ["tracks meme infantiles", "música con letra que compita", "EDM a todo volumen"]
+    },
+    "sfx": [
+      {
+        "id": "whoosh_soft",
+        "cuando": "pan_follow, cambio de overlay, nodo flecha",
+        "energia": "baja"
+      },
+      {
+        "id": "hit_impact",
+        "cuando": "punch_in_hard + palabra neón + dato fuerte",
+        "energia": "alta",
+        "regla": "máx 1 cada ~4–6s"
+      },
+      {
+        "id": "sub_bass_drop",
+        "cuando": "hook de apertura o revelación",
+        "energia": "alta",
+        "duracion_ms": [180, 350]
+      },
+      {
+        "id": "tick_ui",
+        "cuando": "badge mono, paso numerado, check de lista",
+        "energia": "muy baja"
+      },
+      {
+        "id": "glitch_short",
+        "cuando": "entrada glitch de keyword (máx 1 por video)",
+        "energia": "media"
+      },
+      {
+        "id": "riser_corto",
+        "cuando": "antes del CTA final (0.8–1.5s)",
+        "energia": "media"
+      },
+      {
+        "id": "click_confirm",
+        "cuando": "CTA keyword / Comentá X",
+        "energia": "media"
+      }
+    ],
+    "voz": {
+      "eq": "presencia clara 2–5kHz; low-cut ~80Hz",
+      "compresion": "suave, broadcast",
+      "ruido": "noise gate leve",
+      "prioridad": "La voz SIEMPRE manda sobre música y SFX"
+    },
+    "sincronizacion": "Keyframe de SFX = keyframe de corte de cámara O aparición de overlay neón. Si no hay beat visual, no hay SFX."
+  },
+
+  "estructura_timeline": {
+    "plantilla_30s": [
+      {
+        "id": "hook",
+        "t": "0.0–3.0s",
+        "camara": "slow_push_largo o punch_in_hard",
+        "visual": "palabra neón del dolor + lower_third opcional",
+        "audio": "sub_bass_drop + bed música fade-in",
+        "copy_on_screen": "1 claim brutal (problema literal)"
+      },
+      {
+        "id": "contexto",
+        "t": "3.0–8.0s",
+        "camara": "pan_follow + pull_out_respiracion",
+        "visual": "1–2 palabras neón coherentes; sin clutter",
+        "audio": "whoosh_soft en cambios",
+        "copy_on_screen": "consecuencia (plata/tiempo)"
+      },
+      {
+        "id": "giro",
+        "t": "8.0–18.0s",
+        "camara": "alternar punch_in_hard y medium; match_cut_angle entre puntos",
+        "visual": "pasos cortos / badges PASO 01… / nodos flecha",
+        "audio": "hit_impact en cada paso clave + tick_ui",
+        "copy_on_screen": "procedimiento concreto (máx 3 beats)"
+      },
+      {
+        "id": "prueba",
+        "t": "18.0–24.0s",
+        "camara": "push_in_enfasis",
+        "visual": "dato / before_after_flash / insert UI",
+        "audio": "hit_impact + riser_corto hacia CTA",
+        "copy_on_screen": "dato verificable o microprueba"
+      },
+      {
+        "id": "cta",
+        "t": "24.0–30.0s",
+        "camara": "pull_out a master + hold",
+        "visual": "barra_keyword con KEYWORD + firma sebastian.stlabs.ar",
+        "audio": "riser → click_confirm; duck música",
+        "copy_on_screen": "Comentá {KEYWORD}"
+      }
+    ],
+    "escala": "Para 15s comprimir; para 45–60s expandir bloque giro con más pasos y respiraciones."
+  },
+
+  "familias_visuales_video": {
+    "rotar_entre_piezas": true,
+    "catalogo": [
+      {
+        "id": "manifiesto_cine",
+        "descripcion": "Claim monumental + 1 dato/badge + push lento"
+      },
+      {
+        "id": "operator_log_motion",
+        "descripcion": "Flujo paso a paso con badges mono y ticks UI"
+      },
+      {
+        "id": "dossier_editorial",
+        "descripcion": "Plano cercano, Lora italic verde, grain, menos UI"
+      },
+      {
+        "id": "before_after_drama",
+        "descripcion": "Flash rojo→verde, contraste riesgo/seguro"
+      },
+      {
+        "id": "blueprint_pasos",
+        "descripcion": "Números grandes + nodos flecha + progreso"
+      },
+      {
+        "id": "dashboard_minimo",
+        "descripcion": "Inserts de métricas/donas breves (≤2s) entre talking-head"
+      }
+    ],
+    "regla": "No repetir la misma familia visual que el video/carrusel anterior salvo pedido explícito (ver stlabs_memory.py suggest)."
+  },
+
+  "reglas_absolutas": {
+    "si": [
+      "Verde exacto #00FFB2",
+      "Firma sebastian.stlabs.ar en mono verde",
+      "Voseo argentino, copy corto",
+      "Palabras neón puntuales y coherentes (no subtítulo completo)",
+      "Cámara que sigue al speaker cada tanto",
+      "SFX alineados a cortes/énfasis",
+      "Contraste fuerte y safe zones libres de UI",
+      "Foto/persona real > render IA",
+      "Claude naranja exacto si aparece"
+    ],
+    "no": [
+      "Otro verde / glow púrpura",
+      "@handles",
+      "Emojis",
+      "Inglés decorativo / 'Inteligencia Artificial'",
+      "Texto tapando cara o firma",
+      "SFX o zooms sin motivación",
+      "Estética SaaS genérica / 3D plástico / robots inventados",
+      "Contador de slides u UI de captura de Instagram"
+    ]
+  },
+
+  "pipeline_produccion": {
+    "inputs_requeridos": [
+      "clip_master talking-head (ángulo fijo)",
+      "guion o transcript con keywords marcadas",
+      "keyword_cta",
+      "familia_visual elegida (o usar suggest de memoria)"
+    ],
+    "pasos": [
+      "1. Extraer beats del speech (hook, problemas, pasos, CTA)",
+      "2. Marcar keywords para overlays_neon (1–3 palabras)",
+      "3. Planificar keyframes de camara[] sincronizados a beats",
+      "4. Insertar elementos_visuales mínimos (1 familia)",
+      "5. Colocar sfx[] solo en impactos",
+      "6. Grade cinemático + vignette + grain opcional",
+      "7. Burn-in firma + CTA keyword",
+      "8. Export 1080x1920 · validar safe zones · caption social voseo"
+    ],
+    "qa_checklist": [
+      "¿La cámara se mueve/sigue al speaker al menos cada 4–6s?",
+      "¿Hay palabras neón #00FFB2 solo en lo importante?",
+      "¿SFX caen con cortes/overlays?",
+      "¿Firma visible y no tapada?",
+      "¿Safe zones libres?",
+      "¿Voseo y sin emojis?",
+      "¿Un solo verde oficial?",
+      "¿El video se entiende sin audio en los primeros 3s? (hook on-screen)"
+    ]
+  },
+
+  "schema_brief_instancia": {
+    "descripcion": "Plantilla para un video concreto. Copiar y completar; el sistema de diseño de este archivo se aplica encima.",
+    "campos": {
+      "id": "YYYY-MM-DD-slug-corto",
+      "titulo": "string",
+      "plataforma": ["instagram_reels", "tiktok", "youtube_shorts"],
+      "duracion_s": 30,
+      "familia_visual": "manifiesto_cine | operator_log_motion | dossier_editorial | before_after_drama | blueprint_pasos | dashboard_minimo",
+      "modo_color": "oscuro | claro",
+      "keyword_cta": "PIPELINE",
+      "hook_on_screen": "string ≤ 6 palabras",
+      "palabras_neon": ["string", "string"],
+      "guion_voseo": "string",
+      "clip_master": "ruta o asset id",
+      "musica": "ref o mood",
+      "origen": "original | clone_ref"
+    }
+  },
+
+  "ejemplo_brief": {
+    "id": "2026-07-31-cada-llamada-perdida",
+    "titulo": "Cada llamada perdida es un cliente menos",
+    "plataforma": ["instagram_reels", "tiktok"],
+    "duracion_s": 30,
+    "familia_visual": "manifiesto_cine",
+    "modo_color": "oscuro",
+    "keyword_cta": "PIPELINE",
+    "hook_on_screen": "CADA LLAMADA PERDIDA",
+    "palabras_neon": ["8 SEGUNDOS", "LEAD FRÍO", "PIPELINE"],
+    "guion_voseo": "Cada llamada perdida es un cliente que se va al siguiente. Tu negocio no pierde por falta de leads: pierde por tardanza. Implementá esto: mensaje en 8 segundos, lead al pipeline, seguimiento automático. Comentá PIPELINE y te mando el diagnóstico.",
+    "clip_master": "talking_head_master.mp4",
+    "musica": "dark cinematic pulse, low bed",
+    "origen": "original",
+    "timeline_resumen": [
+      { "t": "0–3", "cam": "slow_push", "neon": "CADA LLAMADA PERDIDA", "sfx": "sub_bass_drop" },
+      { "t": "3–8", "cam": "pan_follow", "neon": "LEAD FRÍO", "sfx": "whoosh_soft" },
+      { "t": "8–18", "cam": "punch_ins en pasos", "neon": "8 SEGUNDOS", "sfx": "hit_impact + tick_ui" },
+      { "t": "18–24", "cam": "push_in", "neon": null, "sfx": "riser_corto" },
+      { "t": "24–30", "cam": "pull_out hold", "neon": "PIPELINE", "sfx": "click_confirm", "firma": true }
+    ]
+  }
+}

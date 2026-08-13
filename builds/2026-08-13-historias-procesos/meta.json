@@ -1,0 +1,14 @@
+{
+  "titulo": "Historias interacción PROCESOS",
+  "slides": 2,
+  "fondo": "reticula_fina",
+  "familia_visual": "dossier_editorial",
+  "origen": "original",
+  "keyword_portada": "PROCESOS",
+  "tipo": "historias_instagram",
+  "sin_foto_sebastian": true,
+  "interacciones": [
+    "encuesta",
+    "caja_preguntas"
+  ]
+}

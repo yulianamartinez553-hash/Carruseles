@@ -10,3 +10,7 @@ __pycache__/
 .pytest_cache/
 _skill_extract/
 _skill.zip
+
+# video masters / exports (large binaries)
+videos/*.mp4
+videos/*.wav

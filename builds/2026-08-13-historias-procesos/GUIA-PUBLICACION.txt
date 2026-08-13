@@ -1,0 +1,19 @@
+HISTORIAS STLabs — Interacción PROCESOS
+=====================================
+
+HISTORIA 1 — Encuesta (fondo claro)
+Archivo: historia-01-encuesta.png
+1. Subí la imagen a Historias.
+2. Pegá sticker ENCUESTA encima de los botones de muestra.
+   Pregunta del sticker: Antes de meter IA, ¿tenés procesos escritos?
+   Opciones: Sí, los tengo | Todavía no
+3. (Opcional) Ocultá un poco los botones de diseño si se solapan: mové el sticker encima.
+
+HISTORIA 2 — Preguntas (fondo negro)
+Archivo: historia-02-pregunta.png
+1. Subí la imagen.
+2. Pegá sticker CAJA DE PREGUNTAS encima del recuadro verde.
+   Prompt: ¿Qué proceso automatizarías primero?
+3. Alternativa: pedí que comenten PROCESOS en el Reel.
+
+Orden sugerido: 1 → 2 (mismo día que el Reel).
