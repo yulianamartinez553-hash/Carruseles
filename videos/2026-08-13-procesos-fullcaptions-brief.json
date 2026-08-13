@@ -11,8 +11,10 @@
   "duracion_s": 76.87,
   "familia_visual": "manifiesto_cine",
   "keyword_cta": "PROCESOS",
-  "captions": "Frases completas en voseo (texto corregido), sincronizadas al habla; keywords en #00FFB2 dentro de la frase",
+  "captions": "Frases completas continuas (sin slides de 1 palabra); keywords neón dentro de la frase",
   "firma": "sebastian.stlabs.ar",
   "export": "/opt/cursor/artifacts/STLabs-sebas-cafeteria-fullcaptions.mp4",
-  "ass": "/tmp/video-edit/v5/overlays_full.ass"
+  "ass": "/tmp/video-edit/v5/overlays_full.ass",
+  "version": "v5b",
+  "download": "https://gofile.io/d/Oew28olc"
 }

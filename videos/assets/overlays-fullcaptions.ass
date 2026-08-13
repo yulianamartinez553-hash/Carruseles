@@ -1,5 +1,5 @@
 [Script Info]
-Title: STLabs v5 full phrases
+Title: STLabs v5b full phrases continuous
 ScriptType: v4.00+
 PlayResX: 1080
 PlayResY: 1920
@@ -8,8 +8,7 @@ ScaledBorderAndShadow: yes
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Cap,Poppins,46,&H00F2F2F2,&H00F2F2F2,&H000A0A0A,&H78000000,-1,0,0,0,100,100,0,0,1,5,3,2,56,56,460,1
-Style: CapBig,Bebas Neue,110,&H00B2FF00,&H00B2FF00,&H000A0A0A,&H96000000,-1,0,0,0,100,100,2,0,1,4,5,2,50,50,420,1
+Style: Cap,Poppins,48,&H00F2F2F2,&H00F2F2F2,&H000A0A0A,&H78000000,-1,0,0,0,100,100,0,0,1,5,3,2,56,56,470,1
 Style: CapCTA,Bebas Neue,70,&H000B1304,&H000B1304,&H0000FFB2,&H0000FFB2,-1,0,0,0,100,100,2,0,3,18,0,2,70,70,320,1
 Style: Firma,IBM Plex Mono,26,&H00B2FF00,&H00B2FF00,&H00000000,&H64000000,0,0,0,0,100,100,3,0,1,0,0,2,40,40,220,1
 
@@ -19,18 +18,16 @@ Dialogue: 0,0:00:00.00,0:01:16.86,Firma,,0,0,0,,sebastian.stlabs.ar
 
 Dialogue: 1,0:00:00.94,0:00:05.00,Cap,,0,0,0,,{\c&H00F2F2F2&\b1}Todo el mundo hablando de\N{\c&H00F2F2F2&\b1}{\c&H00B2FF00&\b1}AUTOMATIZACIONES{\c&H00F2F2F2&\b1}, de {\c&H00B2FF00&\b1}IA{\c&H00F2F2F2&\b1}
 Dialogue: 1,0:00:06.60,0:00:10.35,Cap,,0,0,0,,{\c&H00F2F2F2&\b1}que esto, que el otro,\N{\c&H00F2F2F2&\b1}que el {\c&H00B2FF00&\b1}AGENTE{\c&H00F2F2F2&\b1} mágico
-Dialogue: 1,0:00:12.38,0:00:16.36,Cap,,0,0,0,,{\c&H00F2F2F2&\b1}Pero realmente nadie se da cuenta\N{\c&H00F2F2F2&\b1}que el problema está en la
-Dialogue: 1,0:00:16.36,0:00:19.14,CapBig,,0,0,0,,ORGANIZACIÓN
+Dialogue: 1,0:00:12.38,0:00:19.14,Cap,,0,0,0,,{\c&H00F2F2F2&\b1}Pero realmente nadie se da cuenta\N{\c&H00F2F2F2&\b1}que el problema está en la {\c&H00B2FF00&\b1}ORGANIZACIÓN{\c&H00F2F2F2&\b1}
 Dialogue: 1,0:00:19.54,0:00:22.07,Cap,,0,0,0,,{\c&H00F2F2F2&\b1}la organización de tu negocio,\N{\c&H00F2F2F2&\b1}de tu {\c&H00B2FF00&\b1}EMPRESA{\c&H00F2F2F2&\b1}
 Dialogue: 1,0:00:23.34,0:00:25.77,Cap,,0,0,0,,{\c&H00F2F2F2&\b1}Sin eso no se puede\N{\c&H00F2F2F2&\b1}avanzar con nada
-Dialogue: 1,0:00:26.79,0:00:32.47,Cap,,0,0,0,,{\c&H00F2F2F2&\b1}Siempre me traen el problema:\N{\c&H00F2F2F2&\b1}quiero automatizar el
-Dialogue: 1,0:00:32.47,0:00:37.91,Cap,,0,0,0,,{\c&H00B2FF00&\b1}ONBOARDING{\c&H00F2F2F2&\b1} de las personas nuevas\Nque ingresan a la empresa
+Dialogue: 1,0:00:26.79,0:00:32.57,Cap,,0,0,0,,{\c&H00F2F2F2&\b1}Siempre me traen el problema:\N{\c&H00F2F2F2&\b1}quiero automatizar el {\c&H00B2FF00&\b1}ONBOARDING{\c&H00F2F2F2&\b1}
+Dialogue: 1,0:00:32.57,0:00:37.91,Cap,,0,0,0,,{\c&H00F2F2F2&\b1}de las personas nuevas\N{\c&H00F2F2F2&\b1}que ingresan a la empresa
 Dialogue: 1,0:00:38.45,0:00:43.15,Cap,,0,0,0,,{\c&H00F2F2F2&\b1}Dale ok, y yo te creo un {\c&H00B2FF00&\b1}AGENTE{\c&H00F2F2F2&\b1}\N{\c&H00F2F2F2&\b1}que te automatice el onboarding
 Dialogue: 1,0:00:43.65,0:00:46.21,Cap,,0,0,0,,{\c&H00F2F2F2&\b1}Decime, ¿cómo es\N{\c&H00F2F2F2&\b1}tu onboarding?
 Dialogue: 1,0:00:47.41,0:00:49.45,Cap,,0,0,0,,{\c&H00F2F2F2&\b1}Pasame los {\c&H00B2FF00&\b1}PROCESOS{\c&H00F2F2F2&\b1}
 Dialogue: 1,0:00:50.62,0:00:51.83,Cap,,0,0,0,,{\c&H00F2F2F2&\b1}Ok. ¿Y ahí?
 Dialogue: 1,0:00:54.05,0:00:58.65,Cap,,0,0,0,,{\c&H00F2F2F2&\b1}No tienen {\c&H00B2FF00&\b1}PROCESOS{\c&H00F2F2F2&\b1},\N{\c&H00F2F2F2&\b1}no saben cuál es el paso a paso
 Dialogue: 1,0:00:59.53,0:01:05.31,Cap,,0,0,0,,{\c&H00F2F2F2&\b1}Si no tenés {\c&H00B2FF00&\b1}PROCESOS{\c&H00F2F2F2&\b1},\N{\c&H00F2F2F2&\b1}si no tenés organizada tu {\c&H00B2FF00&\b1}ORGANIZACIÓN{\c&H00F2F2F2&\b1}
-Dialogue: 1,0:01:06.01,0:01:11.77,Cap,,0,0,0,,{\c&H00F2F2F2&\b1}lo único que vas a lograr con {\c&H00B2FF00&\b1}IA{\c&H00F2F2F2&\b1}\N{\c&H00F2F2F2&\b1}es agrandar
-Dialogue: 1,0:01:11.77,0:01:13.47,CapBig,,0,0,0,,EL DESASTRE
+Dialogue: 1,0:01:06.01,0:01:13.19,Cap,,0,0,0,,{\c&H00F2F2F2&\b1}lo único que vas a lograr con {\c&H00B2FF00&\b1}IA{\c&H00F2F2F2&\b1}\N{\c&H00F2F2F2&\b1}es agrandar el {\c&H00B2FF00&\b1}DESASTRE{\c&H00F2F2F2&\b1}
 Dialogue: 1,0:01:14.02,0:01:16.67,CapCTA,,0,0,0,,COMENTÁ PROCESOS
