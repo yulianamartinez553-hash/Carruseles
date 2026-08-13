@@ -113,7 +113,10 @@
     },
     "escala_9x16": {
       "claim_monumental_px": [92, 140],
-      "palabra_neon_suelta_px": [72, 120],
+      "palabra_neon_suelta_px": [130, 190],
+      "palabra_neon_huge_px": 190,
+      "palabra_neon_mid_px": 130,
+      "cta_barra_px": 82,
       "subtitulo_px": [36, 48],
       "caption_cuerpo_px": [28, 36],
       "label_mono_px": [18, 24],
@@ -122,7 +125,8 @@
       "letter_spacing_display": "-0.02em a 0.02em",
       "letter_spacing_mono": "0.08em a 0.16em"
     },
-    "regla_titulos": "Grande y grueso. Diversos (recto / inclinado skewX(-6° a -10°) / barra verde detrás / degradé clip). Nunca finitos. Al menos una keyword en verde #00FFB2 por beat de impacto."
+    "regla_titulos": "Grande y grueso. Diversos (recto / inclinado skewX(-6° a -10°) / barra verde detrás / degradé clip). Nunca finitos. Al menos una keyword en verde #00FFB2 por beat de impacto.",
+    "preset_edicion_bloqueado": "sistema-video-edicion-stlabs.json — keywords robóticas Bebas Neue #00FFB2 huge/mid densas; no frases completas por default"
   },
 
   "voz": {
@@ -252,35 +256,52 @@
       "Máximo un movimiento fuerte a la vez (no push + pan agresivo + shake juntos)",
       "Seguir al speaker: tracking leve del centro facial entre keyframes",
       "Evitar crop que corte frente o mentón",
-      "En beats de palabra neón, preferir punch_in_hard o push_in_enfasis"
+      "En beats de palabra neón, preferir punch_in_hard o push_in_enfasis",
+      "PRESET PRODUCCIÓN: crop centrado fijo (iw-1080)/2:(ih-1920)/2 — PROHIBIDO offset Y abrupto entre beats (parece corte desalineado). Si hay punch, zoom centrado."
     ]
   },
 
+  "preset_produccion": {
+    "archivo": "sistema-video-edicion-stlabs.json",
+    "skill": ".claude/skills/video-stlabs/SKILL.md",
+    "default_modelo_texto": "keywords_sueltas_roboticas",
+    "nota": "Ante duda de edición, prevalece sistema-video-edicion-stlabs.json (validado 2026-08-13)."
+  },
+
   "overlays_neon": {
-    "nombre": "Palabras sueltas neón",
-    "descripcion": "Palabras o frases MUY cortas (1–3 palabras) en verde #00FFB2 que aparecen puntuales para remarcar lo importante. Estilo viral cinematográfico, no karaoke de todo el discurso.",
+    "nombre": "Palabras sueltas neón robóticas",
+    "descripcion": "Palabras o frases MUY cortas (1–3 palabras) en verde #00FFB2 Bebas Neue, GRANDES y DENSAS, para remarcar lo importante. Estilo viral cinematográfico robótico. NO karaoke de todo el discurso.",
     "estilo_visual": {
       "color": "#00FFB2",
       "glow": "0 0 18px rgba(0,255,178,0.45), 0 0 40px rgba(0,255,178,0.2)",
-      "familia_preferida": "Lora italic para acento editorial · Impact/Anton/Bebas para golpe viral",
+      "familia_preferida": "Bebas Neue (default robótico) · Lora italic solo 1 acento editorial puntual",
+      "tamanos_px_default": { "huge": 190, "mid": 130, "cta": 82 },
       "variantes": [
+        {
+          "id": "display_golpe_robotico",
+          "fuente": "Bebas Neue",
+          "transform": "uppercase",
+          "fontsize_px": 190,
+          "uso": "DEFAULT — claim viral, keyword, dato"
+        },
+        {
+          "id": "display_mid",
+          "fuente": "Bebas Neue",
+          "transform": "uppercase",
+          "fontsize_px": 130,
+          "uso": "keyword secundaria / puente"
+        },
         {
           "id": "italic_editorial",
           "fuente": "Lora",
           "estilo": "italic",
           "peso": 600,
-          "uso": "énfasis premium / una sola palabra"
-        },
-        {
-          "id": "display_golpe",
-          "fuente": "Impact | Anton | Bebas Neue",
-          "transform": "uppercase",
-          "uso": "claim viral, dato, keyword"
+          "uso": "énfasis premium puntual (máx 1 por video)"
         },
         {
           "id": "barra_keyword",
-          "descripcion": "Rectángulo sólido #00FFB2 detrás de la palabra; texto #04130b o blanco",
-          "uso": "punchline / CTA keyword"
+          "descripcion": "Rectángulo sólido #00FFB2 detrás de la palabra; texto #04130b",
+          "uso": "CTA COMENTÁ {KEYWORD}"
         },
         {
           "id": "degrade_clip",
@@ -294,8 +315,8 @@
         "glitch-cut 2 frames (opcional, 1 vez por video)"
       ],
       "animacion_salida": "fade 150–220ms o hard cut con el corte de cámara",
-      "hold_s": [0.7, 1.8],
-      "posicion": "tercio inferior o lateral al rostro; NUNCA tapar ojos/boca más de 0.4s"
+      "hold_s": [1.4, 2.0],
+      "posicion": "alternar tercio superior / inferior; NUNCA tapar ojos/boca más de 0.4s"
     },
     "contenido": {
       "max_palabras": 3,
@@ -308,14 +329,18 @@
         "AUTOMATIZÁ",
         "ROI",
         "HOY",
-        "DEJÁ DE PERDER"
+        "DEJÁ DE PERDER",
+        "PROCESOS",
+        "ORGANIZACIÓN",
+        "EL DESASTRE"
       ],
-      "frecuencia": "1 overlay cada 3–6s en promedio; pico en el hook y en el CTA",
+      "frecuencia": "Alta densidad: ~18+ keywords/min; 1 overlay cada 1.5–3.5s; pico en hook y CTA",
       "prohibido": [
-        "subtitular TODO el monólogo en neón",
-        "más de 2 overlays simultáneos",
+        "subtitular TODO el monólogo en neón (frases completas) salvo pedido explícito",
+        "más de 1 overlay simultáneo",
         "verde distinto a #00FFB2",
-        "emojis junto a la palabra"
+        "emojis junto a la palabra",
+        "tipografía no robótica (Inter/Roboto/Arial) en keywords"
       ]
     }
   },
@@ -393,6 +418,12 @@
 
   "sonido": {
     "principio": "Sonidos PUNTUALES que agregan drama y énfasis profesional. No saturación. Cada SFX debe caer exactamente con un corte, palabra neón o gesto.",
+    "voz_limpia": {
+      "objetivo": "Solo la voz de Sebastián. Eliminar murmur/cafetería/ruido de fondo.",
+      "ffmpeg": "highpass=f=80,arnndn=m={RNNN}:mix=0.85,afftdn=nf=-25,speechnorm=e=12:r=0.0005:l=1,loudnorm=I=-14:TP=-1.5:LRA=11,volume=1.15",
+      "sync_labios": "Compensar latencia del denoise (atrim/adelay) hasta lag <10ms vs master",
+      "detalle": "Ver sistema-video-edicion-stlabs.json → audio"
+    },
     "musica": {
       "estilo": "cinematic tech / dark pulse / minimal tension — bed bajo, no pelear con la voz",
       "volumen_relativo_voz_db": -18,

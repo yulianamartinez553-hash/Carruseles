@@ -1,0 +1,219 @@
+{
+  "$schema": "sistema-video-edicion-stlabs/v1",
+  "nombre": "Preset de edición STLabs — Talking-head Reels/TikTok",
+  "version": "1.0.0",
+  "actualizado": "2026-08-13",
+  "descripcion": "Configuración BLOQUEADA de producción validada con Yuli. Todo video talking-head de Sebastián/STLabs debe seguir este preset: grade profesional, solo voz limpia, palabras sueltas neón grandes (muchas, tamaños variados), framing estable, firma sebastian.stlabs.ar. No improvisar estética.",
+  "marca": {
+    "firma": "sebastian.stlabs.ar",
+    "verde_neon": "#00FFB2",
+    "verde_ass_bgr": "&H00B2FF00",
+    "tinta_sobre_verde": "#04130b",
+    "texto_secundario": "#F2F2F2",
+    "prohibido": ["@handles", "emojis", "texto completo karaoke del monólogo", "glow púrpura", "cambiar el verde"]
+  },
+
+  "formato": {
+    "ratio": "9:16",
+    "resolucion": [1080, 1920],
+    "fps": 30,
+    "codec_video": "libx264",
+    "crf": 17,
+    "preset": "veryfast",
+    "pix_fmt": "yuv420p",
+    "codec_audio": "aac",
+    "audio_bitrate": "256k",
+    "sample_rate": 48000,
+    "duracion_objetivo_s": [35, 55],
+    "duracion_max_s": 60
+  },
+
+  "modelo_texto": {
+    "id": "keywords_sueltas_roboticas",
+    "principio": "NO subtítulos de frases completas. Solo palabras/frases MUY cortas (1–3 palabras) en verde neón robótico, muchas a lo largo del video, con tamaños distintos.",
+    "fuente_principal": "Bebas Neue",
+    "caracter": "robótico · display · uppercase · monumental",
+    "color": "#00FFB2",
+    "outline": "#0A0A0A",
+    "shadow": true,
+    "escalas_px_1080x1920": {
+      "huge": 190,
+      "mid": 130,
+      "cta_barra": 82,
+      "firma": 26
+    },
+    "estilos_ass": {
+      "HugeTop": { "fontsize": 190, "alignment": 8, "margin_v": 90, "color": "#00FFB2" },
+      "HugeBot": { "fontsize": 190, "alignment": 2, "margin_v": 360, "color": "#00FFB2" },
+      "MidTop": { "fontsize": 130, "alignment": 8, "margin_v": 120, "color": "#00FFB2" },
+      "MidBot": { "fontsize": 130, "alignment": 2, "margin_v": 400, "color": "#F2F2F2" },
+      "CapCTA": {
+        "fontsize": 82,
+        "alignment": 2,
+        "margin_v": 300,
+        "fill": "#04130b",
+        "box": "#00FFB2",
+        "border_style": 3
+      },
+      "Firma": {
+        "font": "IBM Plex Mono",
+        "fontsize": 26,
+        "color": "#00FFB2",
+        "alignment": 2,
+        "margin_v": 200,
+        "texto": "sebastian.stlabs.ar",
+        "siempre_visible": true
+      }
+    },
+    "frecuencia": {
+      "min_keywords_por_minuto": 18,
+      "hold_s": [1.4, 2.0],
+      "alternar_posicion": "top/bottom cada keyword",
+      "max_simultaneos": 1
+    },
+    "contenido": {
+      "max_palabras_por_overlay": 3,
+      "transform": "UPPERCASE",
+      "extraer_de": "word timestamps (Whisper) alineados al habla",
+      "densidad": "MÁS keywords que un edit mínimo: claim, problema, verbo de acción, objeto, consecuencia, CTA",
+      "ejemplos_tipicos": [
+        "AUTOMATIZACIONES",
+        "IA",
+        "EL PROBLEMA",
+        "ORGANIZACIÓN",
+        "NEGOCIO",
+        "TU EMPRESA",
+        "AUTOMATIZAR",
+        "UN AGENTE",
+        "DECIME",
+        "ONBOARDING",
+        "PROCESOS",
+        "SIN PROCESOS",
+        "PASO A PASO",
+        "EL DESASTRE",
+        "COMENTÁ {KEYWORD}"
+      ],
+      "prohibido": [
+        "frases completas del monólogo",
+        "karaoke palabra-por-palabra de todo el discurso",
+        "fuentes distintas a Bebas Neue para keywords (salvo Lora italic 1 acento editorial puntual)",
+        "verde ≠ #00FFB2"
+      ]
+    },
+    "cta_final": {
+      "formato": "COMENTÁ {KEYWORD}",
+      "estilo": "CapCTA barra verde",
+      "hold_s": [2.0, 2.5]
+    }
+  },
+
+  "grade_profesional": {
+    "id": "stlabs_pro_realistic_v4",
+    "principio": "Tonos profesionales, piel natural, contraste controlado, saturación viva pero no falsa. NUNCA vignette fuerte ni look púrpura.",
+    "ffmpeg_chain": "colorlevels=rimin=0.035:gimin=0.032:bimin=0.030:rimax=0.965:gimax=0.968:bimax=0.970,eq=contrast=1.07:brightness=0.015:saturation=1.14:gamma=1.03,colorbalance=rs=0.015:gs=0.008:bs=-0.012:rm=0.02:gm=0.01:bm=-0.01:rh=0.01:gh=0.005:bh=-0.008,unsharp=3:3:0.35:3:3:0.0",
+    "notas": [
+      "No teñir la imagen de verde; el verde vive solo en overlays",
+      "Sin vignette en este preset (queda más limpio/profesional en cafetería/oficina)",
+      "Upscale previo a 1620x2880 → crop 1080x1920 → grade → lanczos a 1080x1920"
+    ]
+  },
+
+  "framing": {
+    "id": "crop_centrado_fijo",
+    "principio": "Encuadre continuo y estable. PROHIBIDO saltar el crop en Y entre beats (causaba sensación de cortes desalineados).",
+    "pipeline_ffmpeg": "scale=1620:2880:force_original_aspect_ratio=increase,crop=1620:2880,crop=1080:1920:(iw-1080)/2:(ih-1920)/2",
+    "prohibido": [
+      "offset Y dinámico en punches (±45/±100px)",
+      "crops que corten frente o mentón",
+      "cambiar el centro vertical entre clips concatenados"
+    ],
+    "enfasis_opcional": "Si se pide punch: zoom centrado (mismo X/Y centro), nunca desplazamiento vertical abrupto"
+  },
+
+  "audio": {
+    "objetivo": "Solo la voz de Sebastián. Eliminar murmur de cafetería / ruido de fondo. Voz alta y clara.",
+    "pipeline_ffmpeg": "highpass=f=80,arnndn=m={RNNN_MODEL}:mix=0.85,afftdn=nf=-25,speechnorm=e=12:r=0.0005:l=1,loudnorm=I=-14:TP=-1.5:LRA=11,volume=1.15",
+    "modelo_rnnoise": "bd.rnnn (rnnoise)",
+    "sync": {
+      "medir_lag_vs_master": true,
+      "compensar_con": "atrim o adelay según cross-corr (±35ms típico post-denoise)",
+      "regla": "Labios del master y voz limpia alineados a <10ms"
+    },
+    "mux": {
+      "misma_duracion_av": true,
+      "evitar": "-shortest con tracks de distinta duración sin pad",
+      "usar": "apad=whole_dur + -t DUR_V + asetpts/setpts reset"
+    },
+    "sfx": {
+      "activo": true,
+      "hits_en": "onset de cada keyword Huge + CTA",
+      "archivos": ["hit.wav", "tick.wav"],
+      "volumen_voz": 1.35,
+      "volumen_sfx": 1.1,
+      "limiter": "alimiter=limit=0.97"
+    }
+  },
+
+  "cortes_ritmo": {
+    "principio": "Video corto y denso. Recortar silencios largos y frases de relleno que no aportan al claim.",
+    "silencio": {
+      "gap_max_mantener_s": 0.25,
+      "recortar_gaps_mayores_a_s": 0.7
+    },
+    "contenido": {
+      "eliminar_muletillas": true,
+      "ejemplos_corte": [
+        "listas vacías tipo 'que esto, que el otro, que el agente mágico' si no aportan",
+        "explicaciones largas redundantes (ej. detalle de onboarding ya cubierto por la keyword)"
+      ],
+      "regla_av": "Cada corte de video DEBE aplicarse idéntico al audio (trim/concat sincronizados)"
+    },
+    "concat": {
+      "video": "trim + setpts=PTS-STARTPTS + concat",
+      "audio": "atrim + asetpts=PTS-STARTPTS + concat",
+      "cta_hold": "tpad stop_mode=clone al final para barra COMENTÁ"
+    }
+  },
+
+  "pipeline_ffmpeg_completo": {
+    "orden": [
+      "1. Extraer/limpiar voz (audio.pipeline_ffmpeg) desde master",
+      "2. Compensar lag vs labios",
+      "3. Transcribir Whisper word-level (es)",
+      "4. Definir keep-segments (cortes de relleno + silencios)",
+      "5. Concat A/V con los mismos segmentos",
+      "6. Remapear timestamps de keywords al timeline nuevo",
+      "7. Generar ASS (modelo_texto) + SFX en onsets",
+      "8. Mezclar voz+SFX",
+      "9. Render: framing + grade + ass + audio final",
+      "10. Export 1080x1920 + brief JSON"
+    ],
+    "filter_video_final": "[0:v]scale=1620:2880:force_original_aspect_ratio=increase,crop=1620:2880,crop=1080:1920:(iw-1080)/2:(ih-1920)/2,colorlevels=rimin=0.035:gimin=0.032:bimin=0.030:rimax=0.965:gimax=0.968:bimax=0.970,eq=contrast=1.07:brightness=0.015:saturation=1.14:gamma=1.03,colorbalance=rs=0.015:gs=0.008:bs=-0.012:rm=0.02:gm=0.01:bm=-0.01:rh=0.01:gh=0.005:bh=-0.008,unsharp=3:3:0.35:3:3:0.0,scale=1080:1920:flags=lanczos,ass={ASS}:fontsdir={FONTDIR},setpts=PTS-STARTPTS[v]",
+    "fuentes_dir_requeridas": ["Bebas Neue.ttf", "IBM Plex Mono.ttf", "Poppins.ttf", "Lora.ttf"]
+  },
+
+  "qa_obligatorio": [
+    "¿Solo se oye la voz de Sebastián (sin murmur de fondo)?",
+    "¿Labios y voz alineados?",
+    "¿Keywords verdes #00FFB2 grandes, muchas, tamaños variados (no texto completo)?",
+    "¿Framing estable sin saltos arriba/abajo en cortes?",
+    "¿Firma sebastian.stlabs.ar visible?",
+    "¿Duración ≤60s y sin silencios muertos?",
+    "¿CTA COMENTÁ {KEYWORD} al cierre?",
+    "¿Sin @handles ni emojis?"
+  ],
+
+  "entrega": {
+    "archivo": "STLabs-{slug}-edit.mp4",
+    "brief_json": true,
+    "caption_social_voseo": true,
+    "artifact_path": "/opt/cursor/artifacts/"
+  },
+
+  "referencia_validada": {
+    "pieza": "cafetería · procesos antes que IA",
+    "fecha": "2026-08-13",
+    "duracion_s": 51.4,
+    "preset_usado": "keywords_sueltas_roboticas + grade_pro + crop_centrado_fijo + voice_only"
+  }
+}

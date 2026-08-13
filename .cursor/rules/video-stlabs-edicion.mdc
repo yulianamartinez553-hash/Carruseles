@@ -1,0 +1,12 @@
+# Video STLabs — Memoria obligatoria
+
+Al iniciar trabajo de **video / Reel / TikTok / Short / talking-head** en este repo:
+
+1. Activar skill `.claude/skills/video-stlabs/SKILL.md`
+2. Leer y aplicar `sistema-video-edicion-stlabs.json` (preset bloqueado)
+3. Default siempre: keywords sueltas verdes `#00FFB2` Bebas Neue (grandes, tamaños variados, muchas) + grade profesional + solo voz de Sebastián + framing centrado fijo
+4. No usar frases completas on-screen salvo pedido explícito
+5. Firma siempre `sebastian.stlabs.ar` — nunca @handles
+
+Referencia amplia: `sistema-video-stlabs.json`.  
+Preset de producción: `sistema-video-edicion-stlabs.json`.
