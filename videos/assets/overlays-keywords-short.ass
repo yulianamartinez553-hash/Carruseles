@@ -1,0 +1,39 @@
+[Script Info]
+Title: STLabs v6 keywords big + cuts
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: HugeTop,Bebas Neue,190,&H00B2FF00,&H00B2FF00,&H000A0A0A,&H96000000,-1,0,0,0,100,100,2,0,1,5,7,8,36,36,90,1
+Style: HugeBot,Bebas Neue,190,&H00B2FF00,&H00B2FF00,&H000A0A0A,&H96000000,-1,0,0,0,100,100,2,0,1,5,7,2,36,36,360,1
+Style: MidTop,Bebas Neue,130,&H00B2FF00,&H00B2FF00,&H000A0A0A,&H90000000,-1,0,0,0,100,100,1,0,1,4,5,8,40,40,120,1
+Style: MidBot,Bebas Neue,130,&H00F2F2F2,&H00F2F2F2,&H000A0A0A,&H90000000,-1,0,0,0,100,100,1,0,1,4,5,2,40,40,400,1
+Style: CapCTA,Bebas Neue,82,&H000B1304,&H000B1304,&H0000FFB2,&H0000FFB2,-1,0,0,0,100,100,2,0,3,22,0,2,60,60,300,1
+Style: Firma,IBM Plex Mono,26,&H00B2FF00,&H00B2FF00,&H00000000,&H64000000,0,0,0,0,100,100,3,0,1,0,0,2,40,40,200,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:51.42,Firma,,0,0,0,,sebastian.stlabs.ar
+Dialogue: 1,0:00:01.63,0:00:03.27,HugeTop,,0,0,0,,AUTOMATIZACIONES
+Dialogue: 1,0:00:03.35,0:00:04.90,MidBot,,0,0,0,,INTELIGENCIA\NARTIFICIAL
+Dialogue: 1,0:00:08.83,0:00:10.27,MidTop,,0,0,0,,EL PROBLEMA
+Dialogue: 1,0:00:10.35,0:00:12.13,HugeBot,,0,0,0,,ORGANIZACIÓN
+Dialogue: 1,0:00:12.95,0:00:13.55,MidTop,,0,0,0,,NEGOCIO
+Dialogue: 1,0:00:13.63,0:00:15.18,HugeBot,,0,0,0,,TU EMPRESA
+Dialogue: 1,0:00:19.85,0:00:21.40,HugeTop,,0,0,0,,AUTOMATIZAR
+Dialogue: 1,0:00:21.52,0:00:22.58,MidBot,,0,0,0,,TE CREO
+Dialogue: 1,0:00:22.66,0:00:24.66,HugeBot,,0,0,0,,UN AGENTE
+Dialogue: 1,0:00:25.34,0:00:26.89,MidBot,,0,0,0,,DECIME
+Dialogue: 1,0:00:27.00,0:00:28.55,HugeTop,,0,0,0,,ONBOARDING
+Dialogue: 1,0:00:29.39,0:00:30.94,HugeBot,,0,0,0,,PROCESOS
+Dialogue: 1,0:00:33.11,0:00:35.03,HugeTop,,0,0,0,,SIN PROCESOS
+Dialogue: 1,0:00:35.31,0:00:36.86,MidBot,,0,0,0,,PASO A PASO
+Dialogue: 1,0:00:38.23,0:00:39.91,HugeTop,,0,0,0,,PROCESOS
+Dialogue: 1,0:00:40.39,0:00:41.94,HugeBot,,0,0,0,,ORGANIZACIÓN
+Dialogue: 1,0:00:43.90,0:00:45.72,MidTop,,0,0,0,,CON IA
+Dialogue: 1,0:00:47.40,0:00:48.95,HugeBot,,0,0,0,,EL DESASTRE
+Dialogue: 1,0:00:48.97,0:00:51.07,CapCTA,,0,0,0,,COMENTÁ PROCESOS
