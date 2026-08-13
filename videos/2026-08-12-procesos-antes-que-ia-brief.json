@@ -1,0 +1,88 @@
+{
+  "id": "2026-08-12-procesos-antes-que-ia",
+  "titulo": "Sin procesos, la IA agranda el desastre",
+  "plataforma": [
+    "instagram_reels",
+    "tiktok",
+    "youtube_shorts"
+  ],
+  "duracion_s": 76.87,
+  "familia_visual": "manifiesto_cine",
+  "modo_color": "oscuro",
+  "keyword_cta": "PROCESOS",
+  "hook_on_screen": "AUTOMATIZACIONES",
+  "palabras_neon": [
+    "AUTOMATIZACIONES",
+    "AGENTE",
+    "ORGANIZACIÓN",
+    "TU EMPRESA",
+    "ONBOARDING",
+    "TE CREO UN AGENTE",
+    "DECIME",
+    "PROCESOS",
+    "SIN PROCESOS",
+    "SIN ORGANIZACIÓN",
+    "AGRANDÁS EL DESASTRE"
+  ],
+  "guion_voseo_corregido": "Todo el mundo hablando de automatizaciones, de IA, que esto, que el otro, que el agente mágico. Pero realmente nadie se da cuenta que principalmente el problema está en la organización, la organización de tu negocio, de tu empresa. Sin eso no se puede avanzar con nada. Siempre me traen el problema: quiero automatizar el onboarding de las personas nuevas que ingresan a la empresa. Dale, ok, y yo te creo un agente que te automatice el onboarding. Decime, ¿cómo es tu onboarding? Pasame los procesos. Ok. ¿Y ahí? No tienen procesos, no saben cuál es el paso a paso. Entonces, si no tenés procesos, si no tenés organizada tu organización, lo único que vas a lograr con IA es agrandar el desastre.",
+  "clip_master": "sebas-master.mp4 (Drive)",
+  "audio": {
+    "fuente": "cafetería con murmur",
+    "tratamiento": "highpass+arnndn(rnnoise)+afftdn+speechnorm+loudnorm+gain",
+    "resultado": "voz de Sebas aislada y más alta"
+  },
+  "origen": "original",
+  "timeline_neons": [
+    {
+      "t": "1.0–4.8",
+      "neon": "AUTOMATIZACIONES"
+    },
+    {
+      "t": "7.0–10.2",
+      "neon": "AGENTE"
+    },
+    {
+      "t": "13.0–18.5",
+      "neon": "ORGANIZACIÓN"
+    },
+    {
+      "t": "19.6–22.3",
+      "neon": "TU EMPRESA"
+    },
+    {
+      "t": "28.0–35.5",
+      "neon": "ONBOARDING"
+    },
+    {
+      "t": "39.0–43.0",
+      "neon": "TE CREO UN AGENTE"
+    },
+    {
+      "t": "44.0–46.5",
+      "neon": "DECIME"
+    },
+    {
+      "t": "47.5–51.0",
+      "neon": "PROCESOS"
+    },
+    {
+      "t": "54.0–58.8",
+      "neon": "SIN PROCESOS"
+    },
+    {
+      "t": "59.8–65.0",
+      "neon": "SIN ORGANIZACIÓN"
+    },
+    {
+      "t": "66.5–72.5",
+      "neon": "AGRANDÁS EL DESASTRE"
+    }
+  ],
+  "export": "/opt/cursor/artifacts/STLabs-sebas-cafeteria-edit.mp4",
+  "version": "v4",
+  "fixes_v4": {
+    "framing": "crop centrado fijo (iw-1080)/2:(ih-1920)/2 — sin offset Y en punches (era la causa del salto arriba/abajo)",
+    "audio_sync": "atrim 35ms para alinear voz limpia con labios del master; A/V misma duración 76.863s; sin -shortest desparejo",
+    "diseno": "mismo grade pro + ASS neón + SFX + firma (sin corchetes)"
+  }
+}
