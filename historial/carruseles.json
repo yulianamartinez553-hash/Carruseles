@@ -1,5 +1,5 @@
 {
-  "ultimo_id": "2026-07-01-tu-sitio-web-no-es-una-tarjeta",
+  "ultimo_id": "2026-08-13-historias-procesos",
   "carruseles": [
     {
       "id": "2026-07-01-demo-memoria-stlabs",
@@ -26,6 +26,18 @@
       "fondo": "concreto_industrial",
       "familia_visual": "operator_log",
       "feedback_estado": "publicado"
+    },
+    {
+      "id": "2026-08-13-historias-procesos",
+      "fecha": "2026-08-13",
+      "titulo": "Historias interacción PROCESOS",
+      "slides": 2,
+      "fondo": "reticula_fina",
+      "familia_visual": "dossier_editorial",
+      "origen": "original",
+      "keyword_portada": "PROCESOS",
+      "estado": "listo",
+      "tipo": "historias_instagram"
     }
   ]
 }
