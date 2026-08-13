@@ -1,0 +1,18 @@
+{
+  "id": "2026-08-13-procesos-fullcaptions",
+  "titulo": "Sin procesos, la IA agranda el desastre — frases completas",
+  "modelo": "full_phrases",
+  "base": "v4 framing fijo + A/V sync + grade pro",
+  "plataforma": [
+    "instagram_reels",
+    "tiktok",
+    "youtube_shorts"
+  ],
+  "duracion_s": 76.87,
+  "familia_visual": "manifiesto_cine",
+  "keyword_cta": "PROCESOS",
+  "captions": "Frases completas en voseo (texto corregido), sincronizadas al habla; keywords en #00FFB2 dentro de la frase",
+  "firma": "sebastian.stlabs.ar",
+  "export": "/opt/cursor/artifacts/STLabs-sebas-cafeteria-fullcaptions.mp4",
+  "ass": "/tmp/video-edit/v5/overlays_full.ass"
+}
