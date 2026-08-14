@@ -1,84 +1,75 @@
 [
   {
-    "id": "momento",
-    "nota": "timing",
-    "kicker": "NOTA 01",
+    "id": "excusa",
+    "bg": "rock",
+    "rock": "rock-0.png",
     "lines": [
       {
-        "t": "El momento perfecto",
+        "t": "Tu excusa suena lógica.",
         "c": "w"
       },
       {
-        "t": "no existe.",
-        "c": "w"
+        "t": "Tu resultado,",
+        "c": "muted"
       },
       {
-        "t": "El que arrancás, sí.",
+        "t": "no.",
         "c": "g"
       }
     ],
-    "apoyo": "Dejá de esperar la señal. Sos vos.",
+    "apoyo": "La verdad duele menos que mentirte.",
     "align": "left",
     "accent": "tr",
-    "dots": "bl",
     "size": "lg"
   },
   {
     "id": "manana",
-    "nota": "procrastinación",
-    "kicker": "NOTA 02",
+    "bg": "grid",
     "lines": [
       {
-        "t": "Dejarlo para mañana",
+        "t": "Mañana es un lugar",
         "c": "w"
       },
       {
-        "t": "es la forma más elegante",
-        "c": "w"
-      },
-      {
-        "t": "de no hacerlo nunca.",
+        "t": "donde no vive nadie.",
         "c": "g"
       }
     ],
-    "apoyo": "Hoy también cuenta como decisión.",
+    "apoyo": "Lo que importa, se hace hoy.",
     "align": "left",
     "accent": "tl",
-    "dots": "br",
-    "size": "md"
+    "size": "lg"
   },
   {
-    "id": "rescate",
-    "nota": "autonomía",
-    "kicker": "NOTA 03",
+    "id": "empujon",
+    "bg": "dots",
     "lines": [
       {
-        "t": "Nadie viene",
+        "t": "Nadie te debe",
         "c": "w"
       },
       {
-        "t": "a rescatarte.",
+        "t": "un empujón.",
         "c": "w"
       },
       {
-        "t": "Eso también es",
+        "t": "El primero",
         "c": "muted"
       },
       {
-        "t": "una buena noticia.",
+        "t": "lo das vos.",
         "c": "g"
       }
     ],
-    "apoyo": "La responsabilidad es poder, no castigo.",
+    "apoyo": "Esperar permiso es quedarte quieto.",
     "align": "left",
     "accent": "br",
-    "dots": "tl",
     "size": "lg"
   },
   {
     "id": "miedo",
-    "nota": "miedo",
-    "kicker": "NOTA 04",
+    "bg": "rock",
+    "rock": "rock-2.png",
     "lines": [
       {
         "t": "Tu miedo",
@@ -100,65 +91,56 @@
     "apoyo": "Si te asusta, probablemente importa.",
     "align": "center",
     "accent": "bl",
-    "dots": "tr",
     "size": "lg"
   },
   {
-    "id": "incomodidad",
-    "nota": "crecimiento",
-    "kicker": "NOTA 05",
+    "id": "achica",
+    "bg": "grid",
     "lines": [
       {
-        "t": "Si no te incomoda",
+        "t": "La zona de confort",
         "c": "w"
       },
       {
-        "t": "un poco,",
-        "c": "w"
-      },
-      {
-        "t": "no estás creciendo:",
+        "t": "no te protege:",
         "c": "muted"
       },
       {
-        "t": "estás repitiendo.",
+        "t": "te achica.",
         "c": "g"
       }
     ],
-    "apoyo": "La incomodidad es el peaje del salto.",
+    "apoyo": "Si no te incomoda, no te movés.",
     "align": "left",
     "accent": "tr",
-    "dots": "bl",
-    "size": "md"
+    "size": "lg"
   },
   {
-    "id": "decidir",
-    "nota": "decisión",
-    "kicker": "NOTA 06",
+    "id": "dudar",
+    "bg": "dots",
     "lines": [
       {
-        "t": "Lo que no decidís hoy,",
+        "t": "Dudar no es pensar.",
         "c": "w"
       },
       {
-        "t": "lo decide el tiempo",
-        "c": "w"
+        "t": "Es posponer",
+        "c": "muted"
       },
       {
-        "t": "por vos.",
+        "t": "con estilo.",
         "c": "g"
       }
     ],
-    "apoyo": "Elegir también es una forma de avanzar.",
+    "apoyo": "Decidir limpia más que analizar.",
     "align": "left",
     "accent": "tl",
-    "dots": "br",
     "size": "lg"
   },
   {
     "id": "imperfecto",
-    "nota": "perfeccionismo",
-    "kicker": "NOTA 07",
+    "bg": "rock",
+    "rock": "rock-3.png",
     "lines": [
       {
         "t": "Empezá imperfecto.",
@@ -176,95 +158,69 @@
     "apoyo": "Lo perfecto es la excusa más cara.",
     "align": "center",
     "accent": "br",
-    "dots": "tl",
     "size": "lg"
   },
   {
-    "id": "version",
-    "nota": "identidad",
-    "kicker": "NOTA 08",
+    "id": "talento",
+    "bg": "grid",
     "lines": [
       {
-        "t": "La versión de vos",
+        "t": "No te falta talento.",
         "c": "w"
       },
       {
-        "t": "que querés",
-        "c": "w"
-      },
-      {
-        "t": "ya existe.",
-        "c": "g"
-      },
-      {
-        "t": "Solo le falta",
+        "t": "Te falta",
         "c": "muted"
       },
       {
-        "t": "que la elijas.",
-        "c": "w"
+        "t": "decidirte.",
+        "c": "g"
       }
     ],
-    "apoyo": "No es magia. Es elección repetida.",
+    "apoyo": "El talento sin acción no pesa.",
     "align": "left",
     "accent": "bl",
-    "dots": "tr",
-    "size": "md"
-  },
-  {
-    "id": "paso",
-    "nota": "claridad",
-    "kicker": "NOTA 09",
-    "lines": [
-      {
-        "t": "No hace falta",
-        "c": "w"
-      },
-      {
-        "t": "tener todo claro.",
-        "c": "w"
-      },
-      {
-        "t": "Hace falta dar",
-        "c": "muted"
-      },
-      {
-        "t": "el próximo paso.",
-        "c": "g"
-      }
-    ],
-    "apoyo": "La claridad llega caminando.",
-    "align": "left",
-    "accent": "tr",
-    "dots": "bl",
     "size": "lg"
   },
   {
-    "id": "costo",
-    "nota": "oportunidad",
-    "kicker": "NOTA 10",
+    "id": "mapa",
+    "bg": "dots",
     "lines": [
       {
-        "t": "El costo de",
+        "t": "El mapa completo",
         "c": "w"
       },
       {
-        "t": "no intentarlo",
+        "t": "no existe",
+        "c": "muted"
+      },
+      {
+        "t": "al principio.",
         "c": "g"
-      },
-      {
-        "t": "siempre es más alto",
-        "c": "w"
-      },
-      {
-        "t": "de lo que pensás.",
-        "c": "w"
       }
     ],
-    "apoyo": "Intentarlo duele menos que arrepentirte.",
+    "apoyo": "Se dibuja mientras caminás.",
+    "align": "left",
+    "accent": "tr",
+    "size": "lg"
+  },
+  {
+    "id": "arriesgar",
+    "bg": "rock",
+    "rock": "rock-1.png",
+    "lines": [
+      {
+        "t": "Arrepentirte duele más",
+        "c": "w"
+      },
+      {
+        "t": "que equivocarte.",
+        "c": "g"
+      }
+    ],
+    "apoyo": "El costo de mirar de lejos siempre sube.",
     "align": "center",
     "accent": "tl",
-    "dots": "br",
-    "size": "md"
+    "size": "lg"
   }
 ]

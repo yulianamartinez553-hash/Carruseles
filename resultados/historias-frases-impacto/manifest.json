@@ -1,26 +1,31 @@
 {
   "id": "2026-08-14-historias-frases-impacto",
   "fecha": "2026-08-14",
-  "titulo": "Historias frases de impacto — 10 notas",
+  "titulo": "Historias frases de impacto — 10 notas (fondos mixtos)",
   "slides": 10,
   "fondo": "reticula_fina",
   "familia_visual": "dossier_editorial",
   "origen": "original",
-  "keyword_portada": "arrancás",
+  "keyword_portada": "imperfecto",
   "formato": "instagram_stories_9x16",
   "notas": [
-    "timing",
-    "procrastinación",
-    "autonomía",
+    "excusa",
+    "mañana",
+    "empujón",
     "miedo",
-    "crecimiento",
-    "decisión",
-    "perfeccionismo",
-    "identidad",
-    "claridad",
-    "oportunidad"
+    "confort",
+    "dudar",
+    "imperfecto",
+    "talento",
+    "mapa",
+    "arriesgar"
   ],
   "feedback": {
     "estado": "borrador"
-  }
+  },
+  "fondos_mix": [
+    "piedra_roca",
+    "reticula_fina",
+    "puntos_ordenados"
+  ]
 }
