@@ -1,0 +1,26 @@
+{
+  "id": "historias-highlights-1",
+  "titulo": "Íconos Highlight Instagram Stories",
+  "tipo": "historias_highlights",
+  "historias": 0,
+  "iconos": 5,
+  "nombres": [
+    "RESULTADOS",
+    "PROCESO",
+    "CLIENTES",
+    "SERVICIOS",
+    "CONTACTO"
+  ],
+  "fondo": "negro_lineas_verde",
+  "familia_visual": "manifiesto",
+  "origen": "original",
+  "keyword_portada": "WEB",
+  "keyword_cta": "WEB",
+  "slides": 5,
+  "formato": "1080x1080 → retina 2160x2160",
+  "paleta": {
+    "fondo": "#0A0A0A",
+    "acento": "#00FFB2"
+  },
+  "sistema": "sistema-historias-stlabs.json"
+}

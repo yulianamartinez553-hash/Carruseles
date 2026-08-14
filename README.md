@@ -49,6 +49,7 @@ Campos obligatorios en `meta`: `fondo`, `familia_visual`, `origen`, `slides`, `k
 ## Documentación
 
 - Sistema de diseño: [SISTEMA-DISENO-CARRUSELES-STLABS.md](SISTEMA-DISENO-CARRUSELES-STLABS.md)
+- Historias (Stories 9:16): [sistema-historias-stlabs.json](sistema-historias-stlabs.json) — Resultados · Proceso · Prueba social · Servicios · Contacto
 - Plan de memoria: [docs/plans/2026-07-01-memoria-operativa-carruseles.md](docs/plans/2026-07-01-memoria-operativa-carruseles.md)
 
 ## Tests

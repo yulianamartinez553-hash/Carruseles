@@ -1,0 +1,865 @@
+{
+  "$schema": "sistema-historias-stlabs/v1",
+  "nombre": "Sistema Visual Historias — Instagram Stories · sebastian.stlabs.ar",
+  "descripcion": "Fuente de verdad legible por máquina para generar ÚNICAMENTE Historias de Instagram de la marca Sebastián García / STLabs. No es un carrusel ni un Reel: define canvas 9:16, safe zones de Stories, stickers interactivos, voz, firma y las 5 secciones de contenido (Resultados, Proceso, Prueba social, Servicios, Contacto). No define un post fijo: define el ADN visual + copy que se aplica a cualquier secuencia de historias.",
+  "prioridad": "Estas reglas tienen prioridad sobre cualquier criterio estético improvisado. Ante duda: identidad de `.claude/skills/carrusel-stlabs/references/01-identidad-stlabs.md`. Verde oficial SIEMPRE #00FFB2. Este archivo es SOLO para Historias — no usar para feed 4:5 ni Reels.",
+  "formato_exclusivo": "instagram_stories",
+  "origenes_repo": [
+    ".claude/skills/carrusel-stlabs/SKILL.md",
+    ".claude/skills/carrusel-stlabs/references/01-identidad-stlabs.md",
+    ".claude/skills/carrusel-stlabs/references/04-fondos-familias.md",
+    ".claude/skills/carrusel-stlabs/references/06-caption-voz.md",
+    "sistema-carrusel-stlabs.json",
+    "sistema-video-stlabs.json",
+    "historial/plantillas_copy.json",
+    "SISTEMA-DISENO-CARRUSELES-STLABS.md"
+  ],
+
+  "marca": {
+    "propietario": "Sebastián García",
+    "territorio": "RevOps · CRM · IA · sitios web que venden",
+    "firma": "sebastian.stlabs.ar",
+    "handle_prohibido": "Nunca usar @handle de Instagram ni de terceros. Solo la URL sebastian.stlabs.ar.",
+    "activo_foto": "seb.jpg",
+    "modo_fondo_mes_vigente": "blanco",
+    "personalidad": "Contraste fuerte · tipografía monumental · verde neón · una idea por historia · voseo argentino · CTA accionable"
+  },
+
+  "canvas": {
+    "formato_default": "historia_9x16",
+    "historia_9x16": {
+      "ratio": "9:16",
+      "resolucion": "1080x1920",
+      "resolucion_export": "2x retina (2160x3840) cuando se renderiza desde HTML",
+      "formato_archivo": "PNG (estática) o MP4/MOV ≤15s (motion corta)",
+      "fps_si_video": 30,
+      "duracion_tipica_s": [5, 15],
+      "duracion_max_s": 15,
+      "espacio_color": "sRGB",
+      "plataforma": "instagram_stories"
+    },
+    "margen_seguro": {
+      "superior_px": 180,
+      "inferior_px": 280,
+      "lateral_px": 64,
+      "regla": "NINGÚN texto, CTA ni firma puede vivir fuera del margen seguro. Arriba: perfil, hora, cerrar. Abajo: barra Responder / stickers nativos. La firma y el CTA viven DENTRO del safe zone.",
+      "zona_prohibida_ui": {
+        "top_band_px": [0, 160],
+        "bottom_band_px": [1640, 1920],
+        "nota": "Reservar limpio. Stickers nativos de IG (link, encuesta, pregunta) se colocan en el área central-inferior del safe zone, sin tapar el claim."
+      }
+    },
+    "prohibido": [
+      "canvas 1080x1350 (eso es carrusel/feed)",
+      "contador de slides tipo 1/9",
+      "barra de likes / comentarios del feed",
+      "puntos de carrusel"
+    ]
+  },
+
+  "paleta": {
+    "verde_neon": {
+      "hex": "#00FFB2",
+      "uso": "Acento único. Keywords, subrayados, badges, firma, CTAs, barras, checks de 'después'.",
+      "regla": "NUNCA modificar, mezclar ni degradar a otro verde. Máximo 1–2 usos FUERTES por historia."
+    },
+    "tinta_sobre_verde": { "hex": "#04130b", "uso": "Texto sobre pill/botón verde" },
+    "negro_mineral": { "hex": "#0A0A0A", "uso": "Fondo oscuro / texto en modo claro" },
+    "grafito": { "hex": "#141414", "uso": "Paneles, cards mínimas" },
+    "grafito_medio": { "hex": "#1E1E1E", "uso": "UI secundaria" },
+    "borde_panel": { "hex": "#2A2A2A" },
+    "blanco_calido": { "hex": "#F2F2F2", "uso": "Texto principal sobre negro" },
+    "blanco": { "hex": "#FFFFFF", "uso": "Fondo modo claro / máximo contraste" },
+    "gris": { "hex": "#9aa39c", "uso": "Texto secundario, meta, labels" },
+    "rojo": { "hex": "#FF5247", "uso": "SOLO ANTES / riesgo / error. Nunca decorativo." },
+    "ambar": { "hex": "#FF9D3C", "uso": "Énfasis negativo puntual (raro)" },
+    "naranja_claude": { "hex": "#D97757", "uso": "Solo mascot Claude — nunca teñir a verde" },
+    "modo_oscuro": {
+      "fondo": "#0A0A0A + textura",
+      "texto": "#F2F2F2",
+      "recomendado_para": "autoridad, resultados, contacto"
+    },
+    "modo_claro": {
+      "fondo": "#FFFFFF / #F2F2F2 + textura atenuada",
+      "texto": "#0A0A0A",
+      "verde_solo_acento": true,
+      "recomendado_para": "proceso, servicios, FAQ"
+    }
+  },
+
+  "tipografia": {
+    "stack": {
+      "display_titulo": {
+        "familias": ["Impact", "Anton", "Bebas Neue", "Poppins ExtraBold"],
+        "peso": "ultra / grueso",
+        "uso": "Claim monumental de la historia (1–6 palabras)",
+        "prohibido_como_titulo": ["Barlow Condensed", "IBM Plex Mono", "Inter fino", "Roboto", "Arial", "system"]
+      },
+      "subtitulo": {
+        "familia": "Poppins",
+        "pesos": [700, 800],
+        "uso": "Apoyo corto bajo el claim (máx 2 líneas)"
+      },
+      "cuerpo": {
+        "familia": "Barlow Condensed",
+        "pesos": [500, 600, 700],
+        "uso": "Bullets, FAQ, detalle — jamás título"
+      },
+      "mono_ui_firma": {
+        "familia": "IBM Plex Mono",
+        "pesos": [400, 500, 600],
+        "uso": "Firma URL, labels SECCIÓN / PASO / DESDE, badges — jamás título"
+      },
+      "acento_editorial": {
+        "familia": "Lora",
+        "estilo": "italic",
+        "pesos": [400, 600, 700],
+        "color": "#00FFB2",
+        "uso": "Palabra-acento editorial (1 por historia máx)"
+      }
+    },
+    "escala_9x16": {
+      "claim_monumental_px": [88, 128],
+      "subtitulo_px": [34, 44],
+      "cuerpo_px": [28, 34],
+      "label_mono_px": [18, 24],
+      "firma_px": [22, 28],
+      "dato_gigante_px": [140, 220],
+      "line_height_display": 0.92,
+      "letter_spacing_display": "-0.02em a 0.02em",
+      "letter_spacing_mono": "0.1em a 0.16em"
+    },
+    "regla_titulos": "Grande y grueso. Una sola idea por historia. Al menos una keyword en verde #00FFB2. Si no entra en 6 palabras, dividí en otra historia.",
+    "regla_jerarquia": "Máximo 3 niveles tipográficos visibles por historia. Si hay más, está sobrecargada."
+  },
+
+  "voz": {
+    "idioma": "es-AR",
+    "tratamiento": "voseo",
+    "verbos_ejemplo": ["Empezá", "Elegí", "Dejá", "Hacé", "Creá", "Conectá", "Comentá", "Deslizá", "Querés", "Escogé", "Guardá", "Escribime"],
+    "prohibido": ["emojis", "inglés decorativo", "Inteligencia Artificial (usar IA)", "@handles de Instagram", "párrafos largos", "hilos eternos por DM como único CTA"],
+    "tono": "Directo, punchy, autoridad calmada. Frases de una línea. Demostrás, no vendés humo.",
+    "keyword_cta_default": "WEB",
+    "keywords_tipicas": ["WEB", "LANDING", "SITIO", "SEO", "VELOCIDAD", "REDISEÑO", "MANTENIMIENTO", "DIAGNÓSTICO"]
+  },
+
+  "firma_on_screen": {
+    "texto": "sebastian.stlabs.ar",
+    "fuente": "IBM Plex Mono",
+    "color": "#00FFB2",
+    "opacidad": 0.9,
+    "peso": 500,
+    "letter_spacing": "0.1em",
+    "posicion_default": "inferior-centro, por encima del safe zone de UI (~ bottom 300–340px en 1920)",
+    "reglas": [
+      "Visible en TODA historia, sin excepción",
+      "Nunca tapada por stickers nativos ni por el claim",
+      "Nunca reemplazada por @usuario"
+    ]
+  },
+
+  "fondos": {
+    "regla_maestra": "Una secuencia de historias (un highlight o un día temático) = UN tipo de fondo. No cambiar textura entre historias de la misma sección salvo pedido explícito.",
+    "tipos": {
+      "piedra_roca": { "uso": "resultados, autoridad" },
+      "concreto_industrial": { "uso": "proceso, operator log" },
+      "papel_corrugado": { "uso": "servicios, ofertas" },
+      "reticula_fina": { "uso": "prueba social, dossier" },
+      "lino_tela": { "uso": "contacto, FAQ suave" },
+      "roca_volcanica": { "uso": "impacto, antes/después" },
+      "gradiente_profundo": { "uso": "cierre CTA, portada de highlight" },
+      "negro_puro": {
+        "color": "#0A0A0A",
+        "acento": "halo verde muy sutil en una esquina",
+        "uso": "datos, métricas, velocidad/SEO"
+      },
+      "blanco_mes": {
+        "color": "#FFFFFF / #F2F2F2",
+        "regla": "Si FONDO_MES_VIGENTE = blanco, textura atenuada + texto grafito; verde solo acento",
+        "uso": "según mes vigente"
+      }
+    },
+    "rotar_con_memoria": "Consultar `python stlabs_memory.py suggest` y no repetir fondo/familia del último piece salvo pedido explícito."
+  },
+
+  "familias_visuales_historia": {
+    "rotar_entre_piezas": true,
+    "catalogo": [
+      { "id": "manifiesto", "descripcion": "Claim monumental + 1 dato/badge" },
+      { "id": "before_after", "descripcion": "Dos columnas o split ANTES (rojo) / DESPUÉS (verde)" },
+      { "id": "blueprint", "descripcion": "Un paso numerado gigante por historia" },
+      { "id": "operator_log", "descripcion": "Flujo con microprueba / check" },
+      { "id": "dossier_editorial", "descripcion": "Foto full + texto monumental + Lora italic" },
+      { "id": "dashboard_minimo", "descripcion": "1 métrica gigante (velocidad, SEO, conversión)" },
+      { "id": "guia_editorial", "descripcion": "Corchetes, número de paso, barra de progreso de la secuencia" }
+    ],
+    "regla": "Una secuencia = una familia. No mezclar familias entre historias del mismo highlight."
+  },
+
+  "elementos_visuales": {
+    "regla_maestra_absoluta": "NINGÚN elemento puede tapar a otro. Cero solapamiento. Una idea por historia. Si no entra, se crea otra historia.",
+    "recreables": [
+      "split ANTES / DESPUÉS con divisor VS circular",
+      "dato gigante (LCP, score SEO, % conversión, días de entrega)",
+      "badge PASO 01…05 en mono",
+      "barra de progreso de secuencia (ej: 2/5 del proceso)",
+      "mockup de sitio / clip corto de 'qué arreglé' (≤15s)",
+      "logo de cliente (solo con permiso explícito)",
+      "cita de testimonio en comillas tipográficas",
+      "tarjeta de paquete (nombre + desde $X + 3 bullets máx)",
+      "checklist con check verde",
+      "FAQ: pregunta en display + respuesta en 2 líneas"
+    ],
+    "estilo_panel": {
+      "fondo": "#0D0D0D o #161616 (oscuro) / blanco con borde en modo claro",
+      "borde": "1px #2A2A2A",
+      "border_radius_px": 20,
+      "padding_px": 28,
+      "regla": "Cards solo si contienen una interacción o un paquete comparable. Default: sin cards."
+    },
+    "prohibido": [
+      "collage de 4+ capturas en una sola historia",
+      "stat strips densos tipo dashboard de feed",
+      "emojis",
+      "stickers de stock infantiles generados en el PNG (usar stickers nativos de IG al publicar)",
+      "texto tapando foto de rostro de forma permanente"
+    ]
+  },
+
+  "stickers_nativos_instagram": {
+    "descripcion": "Se agregan AL PUBLICAR en Instagram, no quemados en el PNG (salvo la barra keyword visual de marca).",
+    "permitidos": [
+      { "id": "link", "uso": "Calendly, portfolio, WhatsApp wa.me" },
+      { "id": "pregunta", "uso": "FAQ abierta / '¿Qué te frena a lanzar?'" },
+      { "id": "encuesta", "uso": "Landing vs Sitio / ¿Tu web carga lento?" },
+      { "id": "contador", "uso": "Plazo de oferta o cupos de mantenimiento (raro)" },
+      { "id": "menciones", "uso": "Solo si el cliente autorizó aparecer" }
+    ],
+    "cta_keyword_quemada": {
+      "texto": "Comentá {KEYWORD}",
+      "estilo": "barra o pill verde #00FFB2 con texto #04130b, mono o Poppins 700",
+      "posicion": "centro-inferior del safe zone, por encima de la firma"
+    },
+    "regla": "Máximo 1 sticker interactivo nativo + 1 CTA keyword quemada por historia. No saturar."
+  },
+
+  "estructura_secuencia": {
+    "regla_una_idea": "Una historia = una idea. Sin scroll mental.",
+    "arco_dia_tipico": [
+      "Historia 1 — Hook de sección (eyebrow + claim)",
+      "Historias 2–N — Desarrollo (un paso / un caso / un paquete)",
+      "Historia final — CTA (Comentá WEB / link / WhatsApp)"
+    ],
+    "cantidad_por_secuencia": {
+      "min": 3,
+      "max": 8,
+      "ideal": 5
+    },
+    "highlights": {
+      "descripcion": "Cada sección vive como Highlight permanente en el perfil.",
+      "nombres_sugeridos": [
+        "RESULTADOS",
+        "PROCESO",
+        "CLIENTES",
+        "SERVICIOS",
+        "CONTACTO"
+      ],
+      "portada_highlight": {
+        "estilo": "ícono mono o palabra corta en verde sobre negro/blanco según mes",
+        "sin_foto_suelta": true
+      }
+    }
+  },
+
+  "secciones": {
+    "1_resultados_portfolio": {
+      "id": "resultados",
+      "highlight": "RESULTADOS",
+      "objetivo": "Demostrar que entregás, no solo hablás.",
+      "contenido": [
+        "Antes → después",
+        "Sitios en producción",
+        "Mejoras de velocidad / SEO / conversión",
+        "Clips cortos de 'qué arreglé'"
+      ],
+      "familia_visual_sugerida": ["before_after", "dashboard_minimo", "dossier_editorial"],
+      "plantillas_historia": [
+        {
+          "id": "antes_despues",
+          "eyebrow": "RESULTADOS",
+          "claim": "ANTES → DESPUÉS",
+          "apoyo": "{METRICA_ANTES} → {METRICA_DESPUES}",
+          "visual": "split vertical u horizontal; lado ANTES en rojo #FF5247, DESPUÉS en verde #00FFB2",
+          "cta": "Comentá WEB y te muestro el caso completo."
+        },
+        {
+          "id": "sitio_en_produccion",
+          "eyebrow": "EN PRODUCCIÓN",
+          "claim": "{NOMBRE_PROYECTO}",
+          "apoyo": "Live desde {FECHA}. {RESULTADO_CORTO}.",
+          "visual": "mockup o screenshot del sitio con overlay de marca",
+          "cta": "Deslizá para ver qué arreglé."
+        },
+        {
+          "id": "velocidad_seo",
+          "eyebrow": "VELOCIDAD / SEO",
+          "claim": "{DATO_GIGANTE}",
+          "apoyo": "{EXPLICACION_UNA_LINEA}",
+          "visual": "número monumental (ej: 2.1s LCP · +38% leads)",
+          "cta": "Comentá VELOCIDAD y te paso el checklist."
+        },
+        {
+          "id": "clip_que_arregle",
+          "eyebrow": "QUÉ ARREGLÉ",
+          "claim": "{PROBLEMA_LITERAL}",
+          "apoyo": "Lo resolví en {PLAZO}.",
+          "visual": "clip ≤15s o secuencia de 2–3 frames (bug → fix)",
+          "cta": "¿Tu sitio tiene lo mismo? Comentá WEB."
+        }
+      ],
+      "copy_placeholders": {
+        "METRICA_ANTES": "ej: 8.4s de carga",
+        "METRICA_DESPUES": "ej: 1.9s",
+        "NOMBRE_PROYECTO": "ej: Landing clínica",
+        "FECHA": "ej: marzo 2026",
+        "RESULTADO_CORTO": "ej: +27% consultas",
+        "DATO_GIGANTE": "ej: +41 SEO",
+        "EXPLICACION_UNA_LINEA": "ej: Sin tocar el diseño, solo estructura y peso.",
+        "PROBLEMA_LITERAL": "ej: El formulario no llegaba al CRM",
+        "PLAZO": "ej: 48 horas"
+      }
+    },
+
+    "2_proceso": {
+      "id": "proceso",
+      "highlight": "PROCESO",
+      "objetivo": "Bajar la incertidumbre: sé qué pasa si te contrato.",
+      "contenido": [
+        "Diagnóstico",
+        "Estructura",
+        "Diseño / desarrollo",
+        "Lanzamiento",
+        "Entrega"
+      ],
+      "regla": "UN PASO POR HISTORIA. Nunca juntar dos etapas en la misma frame.",
+      "familia_visual_sugerida": ["blueprint", "guia_editorial", "operator_log"],
+      "secuencia_fija": [
+        {
+          "paso": 1,
+          "eyebrow": "PASO 01 · DIAGNÓSTICO",
+          "claim": "Miramos qué frena tus ventas",
+          "apoyo": "Web, mensajes, embudo y competencia. Sin humo.",
+          "microprueba": "Salís con un mapa de prioridades."
+        },
+        {
+          "paso": 2,
+          "eyebrow": "PASO 02 · ESTRUCTURA",
+          "claim": "Primero el esqueleto, después lo lindo",
+          "apoyo": "Arquitectura, copy base y recorrido del visitante.",
+          "microprueba": "Sabés qué página hace qué."
+        },
+        {
+          "paso": 3,
+          "eyebrow": "PASO 03 · DISEÑO / DEV",
+          "claim": "Diseño que carga y convierte",
+          "apoyo": "UI + desarrollo en el mismo hilo. Nada de maqueta muerta.",
+          "microprueba": "Ves avances reales, no PDFs eternos."
+        },
+        {
+          "paso": 4,
+          "eyebrow": "PASO 04 · LANZAMIENTO",
+          "claim": "Al aire sin drama",
+          "apoyo": "Dominio, formularios, analytics, velocidad.",
+          "microprueba": "Checklist de go-live cerrado."
+        },
+        {
+          "paso": 5,
+          "eyebrow": "PASO 05 · ENTREGA",
+          "claim": "Te lo dejo funcionando",
+          "apoyo": "Capacitación corta + accesos + próximos pasos.",
+          "microprueba": "No dependés de mí para un texto."
+        }
+      ],
+      "historia_cierre_proceso": {
+        "eyebrow": "ASÍ TRABAJO",
+        "claim": "Cero incertidumbre",
+        "apoyo": "5 pasos claros. Sabés qué pasa si me contratás.",
+        "cta": "Comentá PROCESO y te mando el detalle."
+      },
+      "barra_progreso": {
+        "activo": true,
+        "formato": "PASO {N}/5",
+        "estilo": "mono verde o pill"
+      }
+    },
+
+    "3_prueba_social": {
+      "id": "prueba_social",
+      "highlight": "CLIENTES",
+      "objetivo": "Confianza y seriedad.",
+      "contenido": [
+        "Testimonios",
+        "Capturas de clientes",
+        "Logos (con permiso)",
+        "Reseñas",
+        "Proyecto en X días"
+      ],
+      "familia_visual_sugerida": ["dossier_editorial", "manifiesto", "operator_log"],
+      "regla_permisos": "NUNCA publicar logo, nombre, captura o reseña sin permiso explícito del cliente.",
+      "plantillas_historia": [
+        {
+          "id": "testimonio",
+          "eyebrow": "CLIENTES",
+          "claim": "\"{CITA_CORTA}\"",
+          "apoyo": "— {NOMBRE}, {ROL_O_EMPRESA}",
+          "visual": "comillas tipográficas + foto opcional del proyecto (no stock)",
+          "cta": "Comentá WEB si querés un resultado parecido."
+        },
+        {
+          "id": "captura_cliente",
+          "eyebrow": "EN SUS PALABRAS",
+          "claim": "Lo que escriben cuando funciona",
+          "apoyo": "{CONTEXTO_UNA_LINEA}",
+          "visual": "screenshot de mensaje/mail con datos sensibles tapados",
+          "cta": null
+        },
+        {
+          "id": "logo_wall_permiso",
+          "eyebrow": "CONFIAN",
+          "claim": "Marcas que ya están al aire",
+          "apoyo": "Logos con autorización. Sin relleno inventado.",
+          "visual": "1–4 logos oficiales exactos, nunca recreados",
+          "cta": null
+        },
+        {
+          "id": "proyecto_en_x_dias",
+          "eyebrow": "PLAZO REAL",
+          "claim": "Proyecto en {N_DIAS} días",
+          "apoyo": "{ALCANCE_CORTO}. Sin milagros: con foco.",
+          "visual": "número gigante {N_DIAS}",
+          "cta": "Comentá PLAZO y te digo si aplica a tu caso."
+        }
+      ],
+      "copy_placeholders": {
+        "CITA_CORTA": "máx 12 palabras, voseo si el cliente habla así; si no, respetar original",
+        "NOMBRE": "nombre o inicial según permiso",
+        "ROL_O_EMPRESA": "ej: dueña de estudio",
+        "CONTEXTO_UNA_LINEA": "ej: Post lanzamiento de la landing",
+        "N_DIAS": "ej: 14",
+        "ALCANCE_CORTO": "ej: Landing + formularios + analytics"
+      }
+    },
+
+    "4_servicios_ofertas": {
+      "id": "servicios",
+      "highlight": "SERVICIOS",
+      "objetivo": "Que entiendan qué comprar sin un hilo eterno por DM.",
+      "contenido": [
+        "Landing",
+        "Sitio corporativo",
+        "Rediseño",
+        "Mantenimiento",
+        "Velocidad / SEO"
+      ],
+      "familia_visual_sugerida": ["manifiesto", "blueprint", "guia_editorial"],
+      "regla": "UN PAQUETE POR HISTORIA. Precio opcional como 'desde $X'. Si no hay precio cerrado, omitir número — nunca inventar.",
+      "paquetes": [
+        {
+          "id": "landing",
+          "eyebrow": "SERVICIO",
+          "nombre": "LANDING",
+          "claim": "Una página que vende",
+          "incluye": ["Estructura + copy base", "Diseño y desarrollo", "Formularios conectados"],
+          "precio_desde": "desde ${PRECIO_LANDING}",
+          "cta": "Comentá LANDING"
+        },
+        {
+          "id": "sitio_corporativo",
+          "eyebrow": "SERVICIO",
+          "nombre": "SITIO CORPORATIVO",
+          "claim": "Tu marca, ordenada y clara",
+          "incluye": ["Multi-página", "Arquitectura de contenidos", "SEO on-page base"],
+          "precio_desde": "desde ${PRECIO_SITIO}",
+          "cta": "Comentá SITIO"
+        },
+        {
+          "id": "rediseno",
+          "eyebrow": "SERVICIO",
+          "nombre": "REDISEÑO",
+          "claim": "Tu web ya existe. Ahora que venda.",
+          "incluye": ["Diagnóstico de fricción", "Nueva UI/UX", "Migración sin drama"],
+          "precio_desde": "desde ${PRECIO_REDISEÑO}",
+          "cta": "Comentá REDISEÑO"
+        },
+        {
+          "id": "mantenimiento",
+          "eyebrow": "SERVICIO",
+          "nombre": "MANTENIMIENTO",
+          "claim": "Que no se te caiga después del launch",
+          "incluye": ["Updates y backups", "Cambios chicos de copy/UI", "Monitoreo de formularios"],
+          "precio_desde": "desde ${PRECIO_MANTENIMIENTO}/mes",
+          "cta": "Comentá MANTENIMIENTO"
+        },
+        {
+          "id": "velocidad_seo",
+          "eyebrow": "SERVICIO",
+          "nombre": "VELOCIDAD / SEO",
+          "claim": "Más rápido. Más visible.",
+          "incluye": ["Auditoría Core Web Vitals", "Optimización de peso", "SEO técnico base"],
+          "precio_desde": "desde ${PRECIO_SEO}",
+          "cta": "Comentá SEO"
+        }
+      ],
+      "historia_menu_servicios": {
+        "eyebrow": "QUÉ COMPRÁS",
+        "claim": "5 formas de trabajar juntos",
+        "apoyo": "Landing · Sitio · Rediseño · Mantenimiento · Velocidad/SEO",
+        "cta": "Deslizá y elegí el tuyo."
+      },
+      "historia_precio_regla": {
+        "si_hay_precio": "Mostrar 'desde $X' en mono bajo el claim. Sin letra chica interminable.",
+        "si_no_hay_precio": "Omitir cifra. CTA a comentario/keyword o link a diagnóstico.",
+        "prohibido": "Falsos descuentos, precios inventados, 'DM para precio' como único mensaje de la historia de paquete."
+      }
+    },
+
+    "5_contacto": {
+      "id": "contacto",
+      "highlight": "CONTACTO",
+      "objetivo": "Convertir visitas en conversaciones.",
+      "contenido": [
+        "A quién ayudás",
+        "A quién no",
+        "CTA: Comentá WEB",
+        "Calendly / WhatsApp / link al portfolio",
+        "FAQ (plazos, revisiones, qué incluye)"
+      ],
+      "familia_visual_sugerida": ["manifiesto", "guia_editorial", "dossier_editorial"],
+      "plantillas_historia": [
+        {
+          "id": "para_quien_si",
+          "eyebrow": "TRABAJO CON",
+          "claim": "Negocios que necesitan una web que venda",
+          "apoyo": "PyMEs, profesionales y marcas que ya tienen demanda y una web floja o inexistente.",
+          "cta": null
+        },
+        {
+          "id": "para_quien_no",
+          "eyebrow": "NO ES PARA VOS SI",
+          "claim": "Buscás lo más barato o 'para ayer sin brief'",
+          "apoyo": "Sin claridad de oferta, no hay buen sitio. Mejor no arrancar.",
+          "visual": "tono firme, sin soberbia; rojo solo si hay lista de 'no'",
+          "cta": null
+        },
+        {
+          "id": "cta_comenta_web",
+          "eyebrow": "SIGUIENTE PASO",
+          "claim": "Comentá WEB",
+          "apoyo": "Te mando el diagnóstico y cómo arrancar.",
+          "cta": "Comentá WEB",
+          "sticker_nativo": "pregunta opcional: '¿Landing o sitio?'"
+        },
+        {
+          "id": "cta_calendly",
+          "eyebrow": "AGENDA",
+          "claim": "Reservá 20 minutos",
+          "apoyo": "Sin compromiso. Salís con claridad.",
+          "sticker_nativo": "link → Calendly",
+          "cta_visual": "barra LINK / AGENDÁ"
+        },
+        {
+          "id": "cta_whatsapp",
+          "eyebrow": "WHATSAPP",
+          "claim": "Escribime directo",
+          "apoyo": "Contame qué negocio tenés y qué frena tu web.",
+          "sticker_nativo": "link → wa.me",
+          "cta_visual": "Escribime"
+        },
+        {
+          "id": "cta_portfolio",
+          "eyebrow": "PORTFOLIO",
+          "claim": "Mirá el trabajo al aire",
+          "apoyo": "sebastian.stlabs.ar",
+          "sticker_nativo": "link → portfolio",
+          "cta_visual": null
+        },
+        {
+          "id": "faq_plazos",
+          "eyebrow": "FAQ · PLAZOS",
+          "claim": "¿Cuánto tarda?",
+          "apoyo": "Landing típica: {PLAZO_LANDING}. Sitio: {PLAZO_SITIO}. Depende del brief y tus revisiones.",
+          "cta": null
+        },
+        {
+          "id": "faq_revisiones",
+          "eyebrow": "FAQ · REVISIONES",
+          "claim": "¿Cuántas idas y vueltas?",
+          "apoyo": "{N_REVISIONES} rondas incluidas. Después, mantenimiento o alcance extra.",
+          "cta": null
+        },
+        {
+          "id": "faq_incluye",
+          "eyebrow": "FAQ · QUÉ INCLUYE",
+          "claim": "Diseño + desarrollo + puesta al aire",
+          "apoyo": "Formularios, analytics base y entrega de accesos. Copy largo o foto pro: aparte si hace falta.",
+          "cta": "Comentá WEB y te armo el alcance."
+        }
+      ],
+      "copy_placeholders": {
+        "PLAZO_LANDING": "ej: 10–14 días",
+        "PLAZO_SITIO": "ej: 3–5 semanas",
+        "N_REVISIONES": "ej: 2"
+      }
+    }
+  },
+
+  "plantillas_copy": {
+    "descripcion": "Equivalente Stories de historial/plantillas_copy.json. Placeholders con {MAYUSCULAS}.",
+    "resultados_antes_despues": {
+      "eyebrow": "RESULTADOS",
+      "claim": "{METRICA_ANTES} → {METRICA_DESPUES}",
+      "apoyo": "{EXPLICACION_UNA_LINEA}",
+      "cta": "Comentá WEB y te muestro el caso.",
+      "footer_siempre": "sebastian.stlabs.ar"
+    },
+    "proceso_paso": {
+      "eyebrow": "PASO {N}/5 · {TITULO_PASO}",
+      "claim": "{CLAIM_PASO}",
+      "apoyo": "{APOYO_PASO}",
+      "cta": "Deslizá al siguiente paso.",
+      "footer_siempre": "sebastian.stlabs.ar"
+    },
+    "prueba_social_cita": {
+      "eyebrow": "CLIENTES",
+      "claim": "\"{CITA_CORTA}\"",
+      "apoyo": "— {NOMBRE}, {ROL_O_EMPRESA}",
+      "cta": "Comentá WEB",
+      "footer_siempre": "sebastian.stlabs.ar"
+    },
+    "servicio_paquete": {
+      "eyebrow": "SERVICIO",
+      "claim": "{NOMBRE_PAQUETE}",
+      "apoyo": "{CLAIM_PAQUETE}",
+      "precio": "desde ${PRECIO}",
+      "cta": "Comentá {KEYWORD}",
+      "footer_siempre": "sebastian.stlabs.ar"
+    },
+    "contacto_cta": {
+      "eyebrow": "SIGUIENTE PASO",
+      "claim": "Comentá {KEYWORD}",
+      "apoyo": "Te mando el diagnóstico y cómo arrancar.",
+      "cta": "Comentá {KEYWORD}",
+      "footer_siempre": "sebastian.stlabs.ar"
+    },
+    "contacto_faq": {
+      "eyebrow": "FAQ · {TEMA}",
+      "claim": "{PREGUNTA}",
+      "apoyo": "{RESPUESTA}",
+      "cta": "Comentá WEB",
+      "footer_siempre": "sebastian.stlabs.ar"
+    }
+  },
+
+  "limpieza_obligatoria": {
+    "eliminar_siempre": [
+      "contador de slide tipo 1/9",
+      "barra de estado del teléfono en capturas ajenas",
+      "UI de feed (likes, comentarios, compartir)",
+      "nombre de usuario / foto de perfil de terceros",
+      "cualquier firma que no sea sebastian.stlabs.ar",
+      "marcas de agua de bancos de imagen"
+    ],
+    "resultado": "PNG/MP4 limpio, listo para subir a Stories + stickers nativos al publicar."
+  },
+
+  "salida": {
+    "entregables": [
+      "PNG retina 9:16 por historia (01, 02, 03…), sin UI de captura",
+      "HTML standalone opcional (fuentes embebidas) para edición",
+      "Lista de stickers nativos a agregar al publicar (link / pregunta / encuesta)",
+      "Texto sugerido para cada historia (claim + apoyo + CTA) en voseo",
+      "Nombre de Highlight destino"
+    ],
+    "organizacion_archivos": {
+      "carpeta": "resultados/historia-<N>/ o resultados/historias-<seccion>-<slug>/",
+      "meta_minima": [
+        "id",
+        "titulo",
+        "seccion",
+        "historias",
+        "fondo",
+        "familia_visual",
+        "origen",
+        "keyword_cta"
+      ]
+    }
+  },
+
+  "schema_brief_instancia": {
+    "descripcion": "Plantilla para una secuencia concreta de historias. Copiar y completar; este sistema se aplica encima.",
+    "campos": {
+      "id": "YYYY-MM-DD-historias-<seccion>-slug",
+      "titulo": "string",
+      "seccion": "resultados | proceso | prueba_social | servicios | contacto",
+      "highlight": "RESULTADOS | PROCESO | CLIENTES | SERVICIOS | CONTACTO",
+      "cantidad_historias": 5,
+      "familia_visual": "manifiesto | before_after | blueprint | operator_log | dossier_editorial | dashboard_minimo | guia_editorial",
+      "fondo": "piedra_roca | concreto_industrial | papel_corrugado | reticula_fina | lino_tela | roca_volcanica | gradiente_profundo | negro_puro | blanco_mes",
+      "modo_color": "oscuro | claro",
+      "keyword_cta": "WEB",
+      "precios_opcional": {
+        "PRECIO_LANDING": null,
+        "PRECIO_SITIO": null,
+        "PRECIO_REDISEÑO": null,
+        "PRECIO_MANTENIMIENTO": null,
+        "PRECIO_SEO": null
+      },
+      "historias": [
+        {
+          "n": 1,
+          "plantilla_id": "string del catálogo de la sección",
+          "claim": "string",
+          "apoyo": "string",
+          "cta": "string | null",
+          "sticker_nativo": "link | pregunta | encuesta | null",
+          "asset": "ruta mockup/foto/clip | null"
+        }
+      ],
+      "origen": "original | screenshot"
+    }
+  },
+
+  "ejemplo_brief": {
+    "id": "2026-07-31-historias-proceso-web",
+    "titulo": "Proceso — 5 pasos si me contratás",
+    "seccion": "proceso",
+    "highlight": "PROCESO",
+    "cantidad_historias": 6,
+    "familia_visual": "blueprint",
+    "fondo": "reticula_fina",
+    "modo_color": "oscuro",
+    "keyword_cta": "PROCESO",
+    "historias": [
+      {
+        "n": 1,
+        "plantilla_id": "paso",
+        "claim": "Miramos qué frena tus ventas",
+        "apoyo": "Diagnóstico sin humo.",
+        "cta": null,
+        "sticker_nativo": null
+      },
+      {
+        "n": 2,
+        "plantilla_id": "paso",
+        "claim": "Primero el esqueleto, después lo lindo",
+        "apoyo": "Estructura y recorrido.",
+        "cta": null,
+        "sticker_nativo": null
+      },
+      {
+        "n": 3,
+        "plantilla_id": "paso",
+        "claim": "Diseño que carga y convierte",
+        "apoyo": "UI + desarrollo juntos.",
+        "cta": null,
+        "sticker_nativo": null
+      },
+      {
+        "n": 4,
+        "plantilla_id": "paso",
+        "claim": "Al aire sin drama",
+        "apoyo": "Go-live con checklist.",
+        "cta": null,
+        "sticker_nativo": null
+      },
+      {
+        "n": 5,
+        "plantilla_id": "paso",
+        "claim": "Te lo dejo funcionando",
+        "apoyo": "Accesos + próximos pasos.",
+        "cta": null,
+        "sticker_nativo": null
+      },
+      {
+        "n": 6,
+        "plantilla_id": "cierre_proceso",
+        "claim": "Cero incertidumbre",
+        "apoyo": "Sabés qué pasa si me contratás.",
+        "cta": "Comentá PROCESO",
+        "sticker_nativo": "pregunta"
+      }
+    ],
+    "origen": "original"
+  },
+
+  "pipeline_produccion": {
+    "inputs_requeridos": [
+      "sección elegida (1 de 5)",
+      "keyword_cta",
+      "fondo + familia_visual (o suggest de memoria)",
+      "assets reales (mockups, testimonios con permiso, clips)"
+    ],
+    "pasos": [
+      "1. Leer este JSON + identidad STLabs",
+      "2. Elegir UNA sección y armar brief (schema_brief_instancia)",
+      "3. Una idea por historia; completar claims en voseo",
+      "4. generate HTML 1080×1920 con safe zones",
+      "5. render PNG retina → QA geométrico (cero solapamiento)",
+      "6. Listar stickers nativos a colocar al publicar",
+      "7. Empaquetar en resultados/ con meta (seccion, historias, fondo, familia_visual, keyword_cta)",
+      "8. Indicar Highlight destino"
+    ],
+    "qa_checklist": [
+      "¿Canvas 1080×1920 (no 4:5)?",
+      "¿Safe zones libres de UI de Stories?",
+      "¿Una sola idea por historia?",
+      "¿Keyword en verde #00FFB2?",
+      "¿Firma sebastian.stlabs.ar visible y libre?",
+      "¿Voseo, sin emojis, sin @handles?",
+      "¿La secuencia pertenece a UNA sola sección?",
+      "¿Logos/testimonios con permiso?",
+      "¿Precios solo si son reales ('desde $X')?",
+      "¿Stickers nativos documentados aparte (no quemados de más)?"
+    ]
+  },
+
+  "reglas_absolutas": {
+    "si": [
+      "Solo formato Historias 9:16",
+      "Verde exacto #00FFB2",
+      "Firma sebastian.stlabs.ar en mono verde en cada historia",
+      "Voseo argentino, copy corto",
+      "Una idea por historia",
+      "Cinco secciones como pilares de contenido / highlights",
+      "CTA accionable (Comentá KEYWORD / link / WhatsApp)",
+      "Foto/proyecto real > render genérico",
+      "Rotar fondo y familia respecto de la pieza anterior"
+    ],
+    "no": [
+      "Usar este sistema para carruseles 4:5 o Reels largos",
+      "Otro verde / glow púrpura",
+      "@handles",
+      "Emojis",
+      "Inglés decorativo / 'Inteligencia Artificial'",
+      "Texto tapando texto o firma",
+      "Mezclar dos secciones en la misma secuencia",
+      "Dos pasos del proceso en una sola historia",
+      "Logos o reseñas sin permiso",
+      "Precios inventados",
+      "Contador de slides u UI de captura"
+    ]
+  },
+
+  "checklist_final": [
+    "¿Es una Historia 9:16 y no un carrusel?",
+    "¿Pertenece a una de las 5 secciones con Highlight claro?",
+    "¿El título/claim es el elemento más grande y tiene énfasis en #00FFB2?",
+    "¿El fondo se mantiene en toda la secuencia?",
+    "¿Ningún elemento tapa a otro?",
+    "¿Aparece sebastian.stlabs.ar libre en todas?",
+    "¿Safe zones respetados?",
+    "¿CTA claro para convertir (comentario, link o WhatsApp)?",
+    "¿Copy en voseo, sin emojis?",
+    "¿Se listaron los stickers nativos para el momento de publicar?"
+  ]
+}

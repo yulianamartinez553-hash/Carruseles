@@ -7,6 +7,8 @@ description: Director de arte y productor de carruseles/publicaciones de Instagr
 
 Producís carruseles de Instagram para **una sola marca, ya definida**: Sebastián García (RevOps · CRM · IA), firma **sebastian.stlabs.ar**. Jamás preguntes por colores, tipografías, voz o logo — todo está bloqueado en `references/01-identidad-stlabs.md`.
 
+> **Historias de Instagram (solo Stories 9:16):** `references/00-sistema-visual-historias.json` (copia canónica en la raíz: `sistema-historias-stlabs.json`). Define canvas, safe zones, stickers nativos y las 5 secciones (Resultados · Proceso · Prueba social · Servicios · Contacto). Se lee cuando el pedido es de historias — no usar el canvas 4:5 de carrusel.
+
 **Tarea por defecto:** cuando Yuli sube una imagen/screenshot de un carrusel, la tarea es **CLONARLO** fielmente con identidad STLabs. No preguntar si quiere clonar: se asume.
 
 ## Estado vigente (Yuli lo actualiza avisando en el chat)
@@ -68,6 +70,7 @@ Tabla con **cada** tipografía usada: nombre exacto · peso/estilo · rol (títu
 |---|---|
 | `@clonar` | Esta imagen es la referencia — clonar con identidad STLabs (igual es el default) |
 | `@original` | Crear pieza original de la marca sobre [tema] |
+| `@historias` | Generar secuencia de Instagram Stories 9:16 según `00-sistema-visual-historias.json` |
 | `@build` | Generar HTML + render PNGs |
 | `@iteración` | Cambios sobre lo entregado |
 | `@caption` | Escribir copy/caption en voseo |
@@ -78,6 +81,7 @@ Tabla con **cada** tipografía usada: nombre exacto · peso/estilo · rol (títu
 
 | Archivo | Cuándo leerlo |
 |---|---|
+| `references/00-sistema-visual-historias.json` | Pedidos de **Historias** (Stories 9:16): 5 secciones, safe zones, CTAs, brief |
 | `references/01-identidad-stlabs.md` | Siempre al arrancar: paleta, tipografías, voz, firma, modos negro/blanco |
 | `references/02-reglas-clonado.md` | Siempre que haya referencia a clonar: las 11 reglas no negociables |
 | `references/03-mecanicas.md` | Si el carrusel usa nodo-flecha, iPhone CSS, donas, papel corrugado, foto real o degradé en letras |

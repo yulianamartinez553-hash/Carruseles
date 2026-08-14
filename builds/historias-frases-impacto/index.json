@@ -1,0 +1,232 @@
+[
+  {
+    "id": "excusa",
+    "rock": "rock-0.png",
+    "lines": [
+      {
+        "t": "Tu excusa suena lógica.",
+        "c": "w"
+      },
+      {
+        "t": "Tu vida,",
+        "c": "muted"
+      },
+      {
+        "t": "no.",
+        "c": "g"
+      }
+    ],
+    "apoyo": "La mentira más cara es la que te contás vos.",
+    "align": "left",
+    "accent": "tr",
+    "dots": "bl",
+    "size": "lg"
+  },
+  {
+    "id": "manana",
+    "rock": "rock-1.png",
+    "lines": [
+      {
+        "t": "Mañana es el cementerio",
+        "c": "w"
+      },
+      {
+        "t": "de todo lo que",
+        "c": "muted"
+      },
+      {
+        "t": "podías hacer hoy.",
+        "c": "g"
+      }
+    ],
+    "apoyo": "Si lo postergás, ya lo enterraste.",
+    "align": "left",
+    "accent": "tl",
+    "dots": "br",
+    "size": "md"
+  },
+  {
+    "id": "empujon",
+    "rock": "rock-2.png",
+    "lines": [
+      {
+        "t": "Nadie viene a salvarte.",
+        "c": "w"
+      },
+      {
+        "t": "Y eso",
+        "c": "muted"
+      },
+      {
+        "t": "te obliga a moverte.",
+        "c": "g"
+      }
+    ],
+    "apoyo": "La dependencia es otra forma de quedar quieto.",
+    "align": "left",
+    "accent": "br",
+    "dots": "tl",
+    "size": "lg"
+  },
+  {
+    "id": "miedo",
+    "rock": "rock-3.png",
+    "lines": [
+      {
+        "t": "Tu miedo",
+        "c": "w"
+      },
+      {
+        "t": "no es un freno.",
+        "c": "w"
+      },
+      {
+        "t": "Es una brújula",
+        "c": "muted"
+      },
+      {
+        "t": "mal leída.",
+        "c": "g"
+      }
+    ],
+    "apoyo": "Si te asusta, probablemente importa.",
+    "align": "center",
+    "accent": "bl",
+    "dots": "tr",
+    "size": "lg"
+  },
+  {
+    "id": "confort",
+    "rock": "rock-4.png",
+    "lines": [
+      {
+        "t": "Tu zona de confort",
+        "c": "w"
+      },
+      {
+        "t": "no es un refugio.",
+        "c": "muted"
+      },
+      {
+        "t": "Es una jaula.",
+        "c": "g"
+      }
+    ],
+    "apoyo": "Si no te incomoda, no estás avanzando.",
+    "align": "left",
+    "accent": "tr",
+    "dots": "bl",
+    "size": "lg"
+  },
+  {
+    "id": "dudar",
+    "rock": "rock-0.png",
+    "lines": [
+      {
+        "t": "Dudar no es inteligencia.",
+        "c": "w"
+      },
+      {
+        "t": "Es miedo",
+        "c": "muted"
+      },
+      {
+        "t": "disfrazado de cuidado.",
+        "c": "g"
+      }
+    ],
+    "apoyo": "Decidir limpia. Analizar infinito ensucia.",
+    "align": "left",
+    "accent": "tl",
+    "dots": "br",
+    "size": "md"
+  },
+  {
+    "id": "imperfecto",
+    "rock": "rock-2.png",
+    "lines": [
+      {
+        "t": "Empezá imperfecto.",
+        "c": "g"
+      },
+      {
+        "t": "Terminá imposible",
+        "c": "w"
+      },
+      {
+        "t": "si seguís esperando.",
+        "c": "w"
+      }
+    ],
+    "apoyo": "Lo perfecto es la excusa más cara.",
+    "align": "center",
+    "accent": "br",
+    "dots": "tl",
+    "size": "lg"
+  },
+  {
+    "id": "talento",
+    "rock": "rock-1.png",
+    "lines": [
+      {
+        "t": "No te falta potencial.",
+        "c": "w"
+      },
+      {
+        "t": "Te sobra",
+        "c": "muted"
+      },
+      {
+        "t": "cobardía elegante.",
+        "c": "g"
+      }
+    ],
+    "apoyo": "El talento sin decisión no pesa nada.",
+    "align": "left",
+    "accent": "bl",
+    "dots": "tr",
+    "size": "lg"
+  },
+  {
+    "id": "paso",
+    "rock": "rock-3.png",
+    "lines": [
+      {
+        "t": "No necesitás más claridad.",
+        "c": "w"
+      },
+      {
+        "t": "Necesitás",
+        "c": "muted"
+      },
+      {
+        "t": "más coraje.",
+        "c": "g"
+      }
+    ],
+    "apoyo": "La claridad llega después del primer golpe.",
+    "align": "left",
+    "accent": "tr",
+    "dots": "bl",
+    "size": "lg"
+  },
+  {
+    "id": "arriesgar",
+    "rock": "rock-4.png",
+    "lines": [
+      {
+        "t": "Arrepentirte duele más",
+        "c": "w"
+      },
+      {
+        "t": "que equivocarte.",
+        "c": "g"
+      }
+    ],
+    "apoyo": "Mirar de lejos también es una decisión. La peor.",
+    "align": "center",
+    "accent": "tl",
+    "dots": "br",
+    "size": "lg"
+  }
+]
