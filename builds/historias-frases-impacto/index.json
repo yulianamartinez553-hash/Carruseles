@@ -1,0 +1,270 @@
+[
+  {
+    "id": "momento",
+    "nota": "timing",
+    "kicker": "NOTA 01",
+    "lines": [
+      {
+        "t": "El momento perfecto",
+        "c": "w"
+      },
+      {
+        "t": "no existe.",
+        "c": "w"
+      },
+      {
+        "t": "El que arrancás, sí.",
+        "c": "g"
+      }
+    ],
+    "apoyo": "Dejá de esperar la señal. Sos vos.",
+    "align": "left",
+    "accent": "tr",
+    "dots": "bl",
+    "size": "lg"
+  },
+  {
+    "id": "manana",
+    "nota": "procrastinación",
+    "kicker": "NOTA 02",
+    "lines": [
+      {
+        "t": "Dejarlo para mañana",
+        "c": "w"
+      },
+      {
+        "t": "es la forma más elegante",
+        "c": "w"
+      },
+      {
+        "t": "de no hacerlo nunca.",
+        "c": "g"
+      }
+    ],
+    "apoyo": "Hoy también cuenta como decisión.",
+    "align": "left",
+    "accent": "tl",
+    "dots": "br",
+    "size": "md"
+  },
+  {
+    "id": "rescate",
+    "nota": "autonomía",
+    "kicker": "NOTA 03",
+    "lines": [
+      {
+        "t": "Nadie viene",
+        "c": "w"
+      },
+      {
+        "t": "a rescatarte.",
+        "c": "w"
+      },
+      {
+        "t": "Eso también es",
+        "c": "muted"
+      },
+      {
+        "t": "una buena noticia.",
+        "c": "g"
+      }
+    ],
+    "apoyo": "La responsabilidad es poder, no castigo.",
+    "align": "left",
+    "accent": "br",
+    "dots": "tl",
+    "size": "lg"
+  },
+  {
+    "id": "miedo",
+    "nota": "miedo",
+    "kicker": "NOTA 04",
+    "lines": [
+      {
+        "t": "Tu miedo",
+        "c": "w"
+      },
+      {
+        "t": "no es un freno.",
+        "c": "w"
+      },
+      {
+        "t": "Es una brújula",
+        "c": "muted"
+      },
+      {
+        "t": "mal leída.",
+        "c": "g"
+      }
+    ],
+    "apoyo": "Si te asusta, probablemente importa.",
+    "align": "center",
+    "accent": "bl",
+    "dots": "tr",
+    "size": "lg"
+  },
+  {
+    "id": "incomodidad",
+    "nota": "crecimiento",
+    "kicker": "NOTA 05",
+    "lines": [
+      {
+        "t": "Si no te incomoda",
+        "c": "w"
+      },
+      {
+        "t": "un poco,",
+        "c": "w"
+      },
+      {
+        "t": "no estás creciendo:",
+        "c": "muted"
+      },
+      {
+        "t": "estás repitiendo.",
+        "c": "g"
+      }
+    ],
+    "apoyo": "La incomodidad es el peaje del salto.",
+    "align": "left",
+    "accent": "tr",
+    "dots": "bl",
+    "size": "md"
+  },
+  {
+    "id": "decidir",
+    "nota": "decisión",
+    "kicker": "NOTA 06",
+    "lines": [
+      {
+        "t": "Lo que no decidís hoy,",
+        "c": "w"
+      },
+      {
+        "t": "lo decide el tiempo",
+        "c": "w"
+      },
+      {
+        "t": "por vos.",
+        "c": "g"
+      }
+    ],
+    "apoyo": "Elegir también es una forma de avanzar.",
+    "align": "left",
+    "accent": "tl",
+    "dots": "br",
+    "size": "lg"
+  },
+  {
+    "id": "imperfecto",
+    "nota": "perfeccionismo",
+    "kicker": "NOTA 07",
+    "lines": [
+      {
+        "t": "Empezá imperfecto.",
+        "c": "g"
+      },
+      {
+        "t": "Terminá imposible",
+        "c": "w"
+      },
+      {
+        "t": "si seguís esperando.",
+        "c": "w"
+      }
+    ],
+    "apoyo": "Lo perfecto es la excusa más cara.",
+    "align": "center",
+    "accent": "br",
+    "dots": "tl",
+    "size": "lg"
+  },
+  {
+    "id": "version",
+    "nota": "identidad",
+    "kicker": "NOTA 08",
+    "lines": [
+      {
+        "t": "La versión de vos",
+        "c": "w"
+      },
+      {
+        "t": "que querés",
+        "c": "w"
+      },
+      {
+        "t": "ya existe.",
+        "c": "g"
+      },
+      {
+        "t": "Solo le falta",
+        "c": "muted"
+      },
+      {
+        "t": "que la elijas.",
+        "c": "w"
+      }
+    ],
+    "apoyo": "No es magia. Es elección repetida.",
+    "align": "left",
+    "accent": "bl",
+    "dots": "tr",
+    "size": "md"
+  },
+  {
+    "id": "paso",
+    "nota": "claridad",
+    "kicker": "NOTA 09",
+    "lines": [
+      {
+        "t": "No hace falta",
+        "c": "w"
+      },
+      {
+        "t": "tener todo claro.",
+        "c": "w"
+      },
+      {
+        "t": "Hace falta dar",
+        "c": "muted"
+      },
+      {
+        "t": "el próximo paso.",
+        "c": "g"
+      }
+    ],
+    "apoyo": "La claridad llega caminando.",
+    "align": "left",
+    "accent": "tr",
+    "dots": "bl",
+    "size": "lg"
+  },
+  {
+    "id": "costo",
+    "nota": "oportunidad",
+    "kicker": "NOTA 10",
+    "lines": [
+      {
+        "t": "El costo de",
+        "c": "w"
+      },
+      {
+        "t": "no intentarlo",
+        "c": "g"
+      },
+      {
+        "t": "siempre es más alto",
+        "c": "w"
+      },
+      {
+        "t": "de lo que pensás.",
+        "c": "w"
+      }
+    ],
+    "apoyo": "Intentarlo duele menos que arrepentirte.",
+    "align": "center",
+    "accent": "tl",
+    "dots": "br",
+    "size": "md"
+  }
+]
