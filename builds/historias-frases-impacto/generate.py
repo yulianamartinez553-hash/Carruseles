@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-"""10 historias independientes — frases de impacto (estilo 04/07).
-Fondos variados: roca · grilla verde · puntos ordenados.
+"""10 historias — frases duras e impactantes.
+Estilo unificado: negro + textura rocosa + mancha/puntos de esquina.
 Sin kicker NOTA · sin foto.
 """
 from pathlib import Path
@@ -17,52 +17,53 @@ def rock_b64(name: str) -> str:
     return base64.b64encode((TEX / name).read_bytes()).decode("ascii")
 
 
-# Mantener 04 (miedo) y 07 (imperfecto). Resto reescrito al mismo ritmo punchy.
+# Frases motivacionales, impactantes y duras. Mantener ritmo punchy.
 STORIES = [
     {
         "id": "excusa",
-        "bg": "rock",
         "rock": "rock-0.png",
         "lines": [
             {"t": "Tu excusa suena lógica.", "c": "w"},
-            {"t": "Tu resultado,", "c": "muted"},
+            {"t": "Tu vida,", "c": "muted"},
             {"t": "no.", "c": "g"},
         ],
-        "apoyo": "La verdad duele menos que mentirte.",
+        "apoyo": "La mentira más cara es la que te contás vos.",
         "align": "left",
         "accent": "tr",
+        "dots": "bl",
         "size": "lg",
     },
     {
         "id": "manana",
-        "bg": "grid",
+        "rock": "rock-1.png",
         "lines": [
-            {"t": "Mañana es un lugar", "c": "w"},
-            {"t": "donde no vive nadie.", "c": "g"},
+            {"t": "Mañana es el cementerio", "c": "w"},
+            {"t": "de todo lo que", "c": "muted"},
+            {"t": "podías hacer hoy.", "c": "g"},
         ],
-        "apoyo": "Lo que importa, se hace hoy.",
+        "apoyo": "Si lo postergás, ya lo enterraste.",
         "align": "left",
         "accent": "tl",
-        "size": "lg",
+        "dots": "br",
+        "size": "md",
     },
     {
         "id": "empujon",
-        "bg": "dots",
+        "rock": "rock-2.png",
         "lines": [
-            {"t": "Nadie te debe", "c": "w"},
-            {"t": "un empujón.", "c": "w"},
-            {"t": "El primero", "c": "muted"},
-            {"t": "lo das vos.", "c": "g"},
+            {"t": "Nadie viene a salvarte.", "c": "w"},
+            {"t": "Y eso", "c": "muted"},
+            {"t": "te obliga a moverte.", "c": "g"},
         ],
-        "apoyo": "Esperar permiso es quedarte quieto.",
+        "apoyo": "La dependencia es otra forma de quedar quieto.",
         "align": "left",
         "accent": "br",
+        "dots": "tl",
         "size": "lg",
     },
     {
         "id": "miedo",
-        "bg": "rock",
-        "rock": "rock-2.png",
+        "rock": "rock-3.png",
         "lines": [
             {"t": "Tu miedo", "c": "w"},
             {"t": "no es un freno.", "c": "w"},
@@ -72,38 +73,40 @@ STORIES = [
         "apoyo": "Si te asusta, probablemente importa.",
         "align": "center",
         "accent": "bl",
+        "dots": "tr",
         "size": "lg",
     },
     {
-        "id": "achica",
-        "bg": "grid",
+        "id": "confort",
+        "rock": "rock-4.png",
         "lines": [
-            {"t": "La zona de confort", "c": "w"},
-            {"t": "no te protege:", "c": "muted"},
-            {"t": "te achica.", "c": "g"},
+            {"t": "Tu zona de confort", "c": "w"},
+            {"t": "no es un refugio.", "c": "muted"},
+            {"t": "Es una jaula.", "c": "g"},
         ],
-        "apoyo": "Si no te incomoda, no te movés.",
+        "apoyo": "Si no te incomoda, no estás avanzando.",
         "align": "left",
         "accent": "tr",
+        "dots": "bl",
         "size": "lg",
     },
     {
         "id": "dudar",
-        "bg": "dots",
+        "rock": "rock-0.png",
         "lines": [
-            {"t": "Dudar no es pensar.", "c": "w"},
-            {"t": "Es posponer", "c": "muted"},
-            {"t": "con estilo.", "c": "g"},
+            {"t": "Dudar no es inteligencia.", "c": "w"},
+            {"t": "Es miedo", "c": "muted"},
+            {"t": "disfrazado de cuidado.", "c": "g"},
         ],
-        "apoyo": "Decidir limpia más que analizar.",
+        "apoyo": "Decidir limpia. Analizar infinito ensucia.",
         "align": "left",
         "accent": "tl",
-        "size": "lg",
+        "dots": "br",
+        "size": "md",
     },
     {
         "id": "imperfecto",
-        "bg": "rock",
-        "rock": "rock-3.png",
+        "rock": "rock-2.png",
         "lines": [
             {"t": "Empezá imperfecto.", "c": "g"},
             {"t": "Terminá imposible", "c": "w"},
@@ -112,68 +115,113 @@ STORIES = [
         "apoyo": "Lo perfecto es la excusa más cara.",
         "align": "center",
         "accent": "br",
+        "dots": "tl",
         "size": "lg",
     },
     {
         "id": "talento",
-        "bg": "grid",
+        "rock": "rock-1.png",
         "lines": [
-            {"t": "No te falta talento.", "c": "w"},
-            {"t": "Te falta", "c": "muted"},
-            {"t": "decidirte.", "c": "g"},
+            {"t": "No te falta potencial.", "c": "w"},
+            {"t": "Te sobra", "c": "muted"},
+            {"t": "cobardía elegante.", "c": "g"},
         ],
-        "apoyo": "El talento sin acción no pesa.",
+        "apoyo": "El talento sin decisión no pesa nada.",
         "align": "left",
         "accent": "bl",
+        "dots": "tr",
         "size": "lg",
     },
     {
-        "id": "mapa",
-        "bg": "dots",
+        "id": "paso",
+        "rock": "rock-3.png",
         "lines": [
-            {"t": "El mapa completo", "c": "w"},
-            {"t": "no existe", "c": "muted"},
-            {"t": "al principio.", "c": "g"},
+            {"t": "No necesitás más claridad.", "c": "w"},
+            {"t": "Necesitás", "c": "muted"},
+            {"t": "más coraje.", "c": "g"},
         ],
-        "apoyo": "Se dibuja mientras caminás.",
+        "apoyo": "La claridad llega después del primer golpe.",
         "align": "left",
         "accent": "tr",
+        "dots": "bl",
         "size": "lg",
     },
     {
         "id": "arriesgar",
-        "bg": "rock",
-        "rock": "rock-1.png",
+        "rock": "rock-4.png",
         "lines": [
             {"t": "Arrepentirte duele más", "c": "w"},
             {"t": "que equivocarte.", "c": "g"},
         ],
-        "apoyo": "El costo de mirar de lejos siempre sube.",
+        "apoyo": "Mirar de lejos también es una decisión. La peor.",
         "align": "center",
         "accent": "tl",
+        "dots": "br",
         "size": "lg",
     },
 ]
 
 
-def ordered_dots_field(cols: int = 14, rows: int = 26) -> str:
-    """Campo de puntos ordenados sutiles en toda la historia."""
-    html = ['<div class="dots-field">']
-    pad_x, pad_y = 56, 72
-    usable_w, usable_h = 1080 - pad_x * 2, 1920 - pad_y * 2
-    for r in range(rows):
-        for c in range(cols):
-            x = pad_x + (c + 0.5) * (usable_w / cols)
-            y = pad_y + (r + 0.5) * (usable_h / rows)
-            # sutil: más tenues hacia el centro del texto
-            cx, cy = 540, 900
-            dist = math.hypot(x - cx, y - cy) / 1100
-            op = 0.16 + 0.28 * min(1.0, dist)
-            size = 2.8 + 1.6 * min(1.0, dist)
-            html.append(
-                f'<span style="left:{x - size/2:.1f}px;top:{y - size/2:.1f}px;'
-                f'width:{size:.1f}px;height:{size:.1f}px;opacity:{op:.3f};"></span>'
-            )
+def dots_gradient(corner: str, seed: int = 1, w: int = 1080, h: int = 1920) -> str:
+    origins = {
+        "tl": (0, 0),
+        "tr": (w, 0),
+        "bl": (0, h),
+        "br": (w, h),
+    }
+    ox, oy = origins[corner]
+    max_r = 680
+    rings = [
+        (28, 8, 15, 0.92),
+        (70, 12, 12, 0.80),
+        (120, 15, 10, 0.66),
+        (180, 18, 8, 0.50),
+        (250, 22, 6.5, 0.36),
+        (340, 24, 5, 0.24),
+        (440, 22, 3.8, 0.14),
+        (560, 18, 2.8, 0.07),
+    ]
+    html = ['<div class="dots">']
+
+    def place(x, y, size, op):
+        html.append(
+            f'<span style="left:{x - size/2:.1f}px;top:{y - size/2:.1f}px;'
+            f'width:{size:.1f}px;height:{size:.1f}px;opacity:{op:.3f};"></span>'
+        )
+
+    def xy(a, r):
+        if corner == "tl":
+            return ox + math.cos(a) * r, oy + math.sin(a) * r
+        if corner == "tr":
+            return ox - math.sin(a) * r, oy + math.cos(a) * r
+        if corner == "bl":
+            return ox + math.sin(a) * r, oy - math.cos(a) * r
+        return ox - math.cos(a) * r, oy - math.sin(a) * r
+
+    n = 0
+    for r_base, count, size_max, op_max in rings:
+        for i in range(count):
+            t = i / max(count - 1, 1)
+            a = t * (math.pi / 2) * 0.95 + 0.03 + (seed % 7) * 0.008
+            jitter = (((n * 41 + seed * 19) % 31) - 15) * 1.5
+            r = max(10, r_base + jitter)
+            dist_factor = max(0.0, 1.0 - r / max_r)
+            size = size_max * (0.35 + 0.65 * dist_factor)
+            op = op_max * (0.3 + 0.7 * dist_factor)
+            x, y = xy(a, r)
+            place(x, y, size, op)
+            n += 1
+
+    for i in range(50):
+        t = ((i * 17 + seed * 3) % 100) / 100
+        a = t * (math.pi / 2) * 0.96 + 0.02
+        r = 100 + ((i * 53 + seed * 11) % 520)
+        dist_factor = max(0.0, 1.0 - r / (max_r + 40))
+        size = 2.0 + 6.5 * dist_factor
+        op = 0.02 + 0.28 * dist_factor
+        x, y = xy(a, r)
+        place(x, y, size, op)
+
     html.append("</div>")
     return "".join(html)
 
@@ -186,35 +234,17 @@ def claim_html(lines: list) -> str:
     return "<br>".join(parts)
 
 
-def bg_layers(c: dict) -> str:
-    kind = c["bg"]
-    if kind == "rock":
-        b64 = rock_b64(c["rock"])
-        return f'''
+def slide(c: dict, idx: int) -> str:
+    b64 = rock_b64(c["rock"])
+    return f'''
+    <div class="slide accent-{c['accent']} align-{c['align']} size-{c['size']}" data-id="{c['id']}">
+      <div class="bg">
         <div class="tex-rock" style="background-image:url('data:image/png;base64,{b64}');"></div>
-        <div class="wash rock-wash"></div>
-        <div class="stain"></div>
-        <div class="edge"></div>'''
-    if kind == "grid":
-        return '''
-        <div class="reticula"></div>
         <div class="wash"></div>
         <div class="stain"></div>
-        <div class="edge"></div>'''
-    # dots ordenados
-    return f'''
-        <div class="wash soft"></div>
-        <div class="stain"></div>
-        {ordered_dots_field()}
-        <div class="edge"></div>'''
-
-
-def slide(c: dict) -> str:
-    return f'''
-    <div class="slide accent-{c['accent']} align-{c['align']} size-{c['size']} bg-{c['bg']}" data-id="{c['id']}">
-      <div class="bg">
-        {bg_layers(c)}
+        <div class="edge"></div>
       </div>
+      {dots_gradient(c["dots"], seed=idx + 11)}
       <div class="safe">
         <h1 class="claim">{claim_html(c['lines'])}</h1>
         <div class="rule"></div>
@@ -243,34 +273,14 @@ html, body {{ background:#000; }}
 .tex-rock {{
   position:absolute; inset:0; z-index:1;
   background-size:cover; background-position:center;
-  filter: grayscale(1) contrast(1.15) brightness(.42);
-  opacity:.95;
-}}
-.rock-wash {{
-  position:absolute; inset:0; z-index:2;
-  background:
-    radial-gradient(ellipse 85% 50% at 50% 40%, rgba(0,255,178,.07) 0%, transparent 55%),
-    linear-gradient(180deg, rgba(10,10,10,.55) 0%, rgba(10,10,10,.72) 45%, rgba(0,0,0,.88) 100%);
-}}
-
-.reticula {{
-  position:absolute; inset:0; z-index:1;
-  background-image:
-    linear-gradient(rgba(0,255,178,.11) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,255,178,.11) 1px, transparent 1px);
-  background-size:56px 56px;
-  opacity:.85;
+  filter: grayscale(1) contrast(1.18) brightness(.45);
+  opacity:1;
 }}
 .wash {{
   position:absolute; inset:0; z-index:2;
   background:
-    radial-gradient(ellipse 90% 55% at 50% 38%, rgba(0,255,178,.06) 0%, transparent 55%),
-    linear-gradient(180deg, rgba(10,10,10,.12) 0%, rgba(10,10,10,.4) 50%, rgba(0,0,0,.75) 100%);
-}}
-.wash.soft {{
-  background:
-    radial-gradient(ellipse 80% 50% at 50% 42%, rgba(0,255,178,.05) 0%, transparent 60%),
-    linear-gradient(180deg, rgba(10,10,10,.2) 0%, rgba(10,10,10,.45) 55%, rgba(0,0,0,.78) 100%);
+    radial-gradient(ellipse 90% 55% at 50% 38%, rgba(0,255,178,.07) 0%, transparent 55%),
+    linear-gradient(180deg, rgba(10,10,10,.42) 0%, rgba(10,10,10,.62) 50%, rgba(0,0,0,.86) 100%);
 }}
 
 .edge {{
@@ -283,14 +293,14 @@ html, body {{ background:#000; }}
 .accent-br .stain {{ right:-240px; bottom:-200px; left:auto; top:auto; }}
 .stain {{
   position:absolute; width:820px; height:820px; border-radius:50%;
-  background: radial-gradient(circle, rgba(0,255,178,.32) 0%, rgba(0,255,178,.09) 44%, transparent 72%);
+  background: radial-gradient(circle, rgba(0,255,178,.36) 0%, rgba(0,255,178,.10) 44%, transparent 72%);
   filter: blur(10px); pointer-events:none; z-index:2;
 }}
-.bg-rock .stain {{ opacity:.55; }}
 
-.dots-field {{ position:absolute; inset:0; z-index:4; pointer-events:none; }}
-.dots-field span {{
+.dots {{ position:absolute; inset:0; z-index:4; pointer-events:none; }}
+.dots span {{
   position:absolute; border-radius:50%; background:#00FFB2;
+  box-shadow:0 0 8px rgba(0,255,178,.2);
 }}
 
 .safe {{
@@ -342,14 +352,14 @@ html, body {{ background:#000; }}
 
 
 def main():
-    slides = "".join(slide(c) for c in STORIES)
+    slides = "".join(slide(c, i + 1) for i, c in enumerate(STORIES))
     html = f"""<!DOCTYPE html>
 <html lang="es"><head><meta charset="UTF-8"><title>Historias frases impacto STLabs</title>
 <style>{CSS}</style></head>
 <body><div class="sheet">{slides}</div></body></html>"""
     (OUT / "historias.html").write_text(html, encoding="utf-8")
     (OUT / "index.json").write_text(json.dumps(STORIES, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"Wrote {len(STORIES)} stories · fondos: rock/grid/dots · sin NOTA")
+    print(f"Wrote {len(STORIES)} stories · estilo unificado + roca · frases duras")
 
 
 if __name__ == "__main__":

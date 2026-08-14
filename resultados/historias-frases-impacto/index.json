@@ -1,7 +1,6 @@
 [
   {
     "id": "excusa",
-    "bg": "rock",
     "rock": "rock-0.png",
     "lines": [
       {
@@ -9,7 +8,7 @@
         "c": "w"
       },
       {
-        "t": "Tu resultado,",
+        "t": "Tu vida,",
         "c": "muted"
       },
       {
@@ -17,59 +16,61 @@
         "c": "g"
       }
     ],
-    "apoyo": "La verdad duele menos que mentirte.",
+    "apoyo": "La mentira más cara es la que te contás vos.",
     "align": "left",
     "accent": "tr",
+    "dots": "bl",
     "size": "lg"
   },
   {
     "id": "manana",
-    "bg": "grid",
+    "rock": "rock-1.png",
     "lines": [
       {
-        "t": "Mañana es un lugar",
+        "t": "Mañana es el cementerio",
         "c": "w"
       },
       {
-        "t": "donde no vive nadie.",
-        "c": "g"
-      }
-    ],
-    "apoyo": "Lo que importa, se hace hoy.",
-    "align": "left",
-    "accent": "tl",
-    "size": "lg"
-  },
-  {
-    "id": "empujon",
-    "bg": "dots",
-    "lines": [
-      {
-        "t": "Nadie te debe",
-        "c": "w"
-      },
-      {
-        "t": "un empujón.",
-        "c": "w"
-      },
-      {
-        "t": "El primero",
+        "t": "de todo lo que",
         "c": "muted"
       },
       {
-        "t": "lo das vos.",
+        "t": "podías hacer hoy.",
         "c": "g"
       }
     ],
-    "apoyo": "Esperar permiso es quedarte quieto.",
+    "apoyo": "Si lo postergás, ya lo enterraste.",
+    "align": "left",
+    "accent": "tl",
+    "dots": "br",
+    "size": "md"
+  },
+  {
+    "id": "empujon",
+    "rock": "rock-2.png",
+    "lines": [
+      {
+        "t": "Nadie viene a salvarte.",
+        "c": "w"
+      },
+      {
+        "t": "Y eso",
+        "c": "muted"
+      },
+      {
+        "t": "te obliga a moverte.",
+        "c": "g"
+      }
+    ],
+    "apoyo": "La dependencia es otra forma de quedar quieto.",
     "align": "left",
     "accent": "br",
+    "dots": "tl",
     "size": "lg"
   },
   {
     "id": "miedo",
-    "bg": "rock",
-    "rock": "rock-2.png",
+    "rock": "rock-3.png",
     "lines": [
       {
         "t": "Tu miedo",
@@ -91,56 +92,58 @@
     "apoyo": "Si te asusta, probablemente importa.",
     "align": "center",
     "accent": "bl",
+    "dots": "tr",
     "size": "lg"
   },
   {
-    "id": "achica",
-    "bg": "grid",
+    "id": "confort",
+    "rock": "rock-4.png",
     "lines": [
       {
-        "t": "La zona de confort",
+        "t": "Tu zona de confort",
         "c": "w"
       },
       {
-        "t": "no te protege:",
+        "t": "no es un refugio.",
         "c": "muted"
       },
       {
-        "t": "te achica.",
+        "t": "Es una jaula.",
         "c": "g"
       }
     ],
-    "apoyo": "Si no te incomoda, no te movés.",
+    "apoyo": "Si no te incomoda, no estás avanzando.",
     "align": "left",
     "accent": "tr",
+    "dots": "bl",
     "size": "lg"
   },
   {
     "id": "dudar",
-    "bg": "dots",
+    "rock": "rock-0.png",
     "lines": [
       {
-        "t": "Dudar no es pensar.",
+        "t": "Dudar no es inteligencia.",
         "c": "w"
       },
       {
-        "t": "Es posponer",
+        "t": "Es miedo",
         "c": "muted"
       },
       {
-        "t": "con estilo.",
+        "t": "disfrazado de cuidado.",
         "c": "g"
       }
     ],
-    "apoyo": "Decidir limpia más que analizar.",
+    "apoyo": "Decidir limpia. Analizar infinito ensucia.",
     "align": "left",
     "accent": "tl",
-    "size": "lg"
+    "dots": "br",
+    "size": "md"
   },
   {
     "id": "imperfecto",
-    "bg": "rock",
-    "rock": "rock-3.png",
+    "rock": "rock-2.png",
     "lines": [
       {
         "t": "Empezá imperfecto.",
@@ -158,56 +161,58 @@
     "apoyo": "Lo perfecto es la excusa más cara.",
     "align": "center",
     "accent": "br",
+    "dots": "tl",
     "size": "lg"
   },
   {
     "id": "talento",
-    "bg": "grid",
+    "rock": "rock-1.png",
     "lines": [
       {
-        "t": "No te falta talento.",
+        "t": "No te falta potencial.",
         "c": "w"
       },
       {
-        "t": "Te falta",
+        "t": "Te sobra",
         "c": "muted"
       },
       {
-        "t": "decidirte.",
+        "t": "cobardía elegante.",
         "c": "g"
       }
     ],
-    "apoyo": "El talento sin acción no pesa.",
+    "apoyo": "El talento sin decisión no pesa nada.",
     "align": "left",
     "accent": "bl",
+    "dots": "tr",
     "size": "lg"
   },
   {
-    "id": "mapa",
-    "bg": "dots",
+    "id": "paso",
+    "rock": "rock-3.png",
     "lines": [
       {
-        "t": "El mapa completo",
+        "t": "No necesitás más claridad.",
         "c": "w"
       },
       {
-        "t": "no existe",
+        "t": "Necesitás",
         "c": "muted"
       },
       {
-        "t": "al principio.",
+        "t": "más coraje.",
         "c": "g"
       }
     ],
-    "apoyo": "Se dibuja mientras caminás.",
+    "apoyo": "La claridad llega después del primer golpe.",
     "align": "left",
     "accent": "tr",
+    "dots": "bl",
     "size": "lg"
   },
   {
     "id": "arriesgar",
-    "bg": "rock",
-    "rock": "rock-1.png",
+    "rock": "rock-4.png",
     "lines": [
       {
         "t": "Arrepentirte duele más",
@@ -218,9 +223,10 @@
         "c": "g"
       }
     ],
-    "apoyo": "El costo de mirar de lejos siempre sube.",
+    "apoyo": "Mirar de lejos también es una decisión. La peor.",
     "align": "center",
     "accent": "tl",
+    "dots": "br",
     "size": "lg"
   }
 ]
