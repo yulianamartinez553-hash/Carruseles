@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Clon STLabs — 3 pasos para no perder ningún lead
-Referencia: carrusel Migue Baena (grilla blanca, 7 slides).
-Modo: BLANCO · Fondo: lino_tela + grilla · Familia: blueprint
+Modo: NEGRO · Fondo: lino_tela + grilla verde · Familia: blueprint
+Portada sin imagen · Slide 6 mantiene foto de Sebastián.
 """
 from pathlib import Path
 import base64
@@ -16,10 +16,9 @@ def b64(path: Path) -> str:
     return base64.b64encode(path.read_bytes()).decode("ascii")
 
 
-IMG1 = b64(ASSETS / "slide1-hero.png")
 IMG6 = b64(ASSETS / "slide6-hero.png")
 
-# Header / footer chrome (sin contador · firma STLabs)
+
 def chrome_top(badge="SOLUCIÓN"):
     return f'''
     <div class="topbar">
@@ -41,30 +40,16 @@ ICON_CLOCK = '''<svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><circle 
 ICON_CHECK = '''<svg class="ico ico-fill" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="26" fill="#00FFB2"/><path d="M20 33 L29 42 L46 24" fill="none" stroke="#04130b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>'''
 
 
-SLIDES_META = [
-    {"id": "portada", "role": "cover"},
-    {"id": "problema", "role": "problem"},
-    {"id": "paso1", "role": "step"},
-    {"id": "paso2", "role": "step"},
-    {"id": "paso3", "role": "step"},
-    {"id": "cambia", "role": "photo"},
-    {"id": "cta", "role": "cta"},
-]
-
-
 def slide_portada():
     return f'''
     <section class="slide s-cover" data-id="portada">
       <div class="gridbg"></div>
       <div class="linen"></div>
       {chrome_top("SOLUCIÓN")}
-      <div class="cover-body">
+      <div class="mid mid-cover">
         <p class="kicker">KEYWORD · LEAD</p>
         <h1 class="cover-title">3 pasos para<br>no perder<br><span class="gr">ningún lead.</span></h1>
         <p class="cover-sub">Tu problema no es conseguir más.<br>Es dejar de enfriar los que ya llegan.</p>
-      </div>
-      <div class="cover-art">
-        <img src="data:image/png;base64,{IMG1}" alt="">
       </div>
       {chrome_foot()}
     </section>'''
@@ -152,26 +137,26 @@ CSS = f"""
 @font-face {{ font-family:'Barlow Condensed'; src:url('file://{FONTS}/BarlowCondensed-Bold.ttf') format('truetype'); font-weight:700; }}
 
 * {{ box-sizing:border-box; margin:0; padding:0; -webkit-font-smoothing:antialiased; }}
-html, body {{ background:#111; }}
+html, body {{ background:#000; }}
 .sheet {{ display:flex; flex-direction:column; gap:48px; padding:40px; width:max-content; }}
 
 .slide {{
   position:relative; width:1080px; height:1350px; overflow:hidden;
-  background:#FFFFFF; color:#0A0A0A;
+  background:#0A0A0A; color:#F2F2F2;
 }}
 .gridbg {{
   position:absolute; inset:0; z-index:0; pointer-events:none;
   background-image:
-    linear-gradient(rgba(0,255,178,.14) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,255,178,.14) 1px, transparent 1px);
+    linear-gradient(rgba(0,255,178,.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,178,.09) 1px, transparent 1px);
   background-size:48px 48px;
-  opacity:.85;
+  opacity:.9;
 }}
 .linen {{
-  position:absolute; inset:0; z-index:0; pointer-events:none; opacity:.18; mix-blend-mode:multiply;
+  position:absolute; inset:0; z-index:0; pointer-events:none; opacity:.35;
   background:
-    repeating-linear-gradient(0deg, rgba(10,10,10,.035) 0 1px, transparent 1px 3px),
-    repeating-linear-gradient(90deg, rgba(10,10,10,.028) 0 1px, transparent 1px 4px);
+    repeating-linear-gradient(0deg, rgba(255,255,255,.03) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.02) 0 1px, transparent 1px 4px);
 }}
 
 .topbar {{
@@ -180,7 +165,7 @@ html, body {{ background:#111; }}
 }}
 .brand {{
   font-family:'Barlow Condensed', sans-serif; font-weight:600; font-size:28px;
-  color:#0A0A0A; letter-spacing:.02em; display:flex; align-items:center; gap:10px;
+  color:#F2F2F2; letter-spacing:.02em; display:flex; align-items:center; gap:10px;
 }}
 .star {{ color:#00FFB2; font-size:22px; }}
 .badge {{
@@ -199,7 +184,7 @@ html, body {{ background:#111; }}
 }}
 .foot-topic {{
   font-family:'Lora', Georgia, serif; font-style:italic; font-weight:500;
-  font-size:22px; color:#7a847c;
+  font-size:22px; color:#9aa39c;
 }}
 
 .mid {{
@@ -207,7 +192,7 @@ html, body {{ background:#111; }}
   display:flex; flex-direction:column; justify-content:center;
 }}
 .gr {{ color:#00FFB2; }}
-b {{ font-weight:700; color:#0A0A0A; }}
+b {{ font-weight:700; color:#FFFFFF; }}
 
 .eyebrow {{
   font-family:'Lora', Georgia, serif; font-style:italic; font-weight:600;
@@ -215,7 +200,7 @@ b {{ font-weight:700; color:#0A0A0A; }}
 }}
 .h-big {{
   font-family:'Poppins', sans-serif; font-weight:800; font-size:68px;
-  line-height:1.05; letter-spacing:-.02em; color:#0A0A0A; text-align:left;
+  line-height:1.05; letter-spacing:-.02em; color:#F2F2F2; text-align:left;
 }}
 .strike {{
   text-decoration: none;
@@ -226,7 +211,7 @@ b {{ font-weight:700; color:#0A0A0A; }}
 }}
 .punch {{
   margin-top:36px; font-family:'Poppins', sans-serif; font-weight:700;
-  font-size:42px; color:#0A0A0A;
+  font-size:42px; color:#F2F2F2;
 }}
 
 .step-row {{
@@ -234,60 +219,52 @@ b {{ font-weight:700; color:#0A0A0A; }}
 }}
 .step-num {{
   font-family:'Lora', Georgia, serif; font-style:italic; font-weight:700;
-  font-size:120px; line-height:1; color:#0A0A0A;
+  font-size:120px; line-height:1; color:#F2F2F2;
 }}
 .ico {{ width:72px; height:72px; flex-shrink:0; }}
 .step-lab {{
   font-family:'Lora', Georgia, serif; font-style:italic; font-weight:500;
-  font-size:32px; color:#8a938c;
+  font-size:32px; color:#9aa39c;
 }}
 .h-step {{
   font-family:'Poppins', sans-serif; font-weight:800; font-size:54px;
-  line-height:1.12; letter-spacing:-.02em; color:#0A0A0A; text-align:left;
+  line-height:1.12; letter-spacing:-.02em; color:#F2F2F2; text-align:left;
   max-width:900px; margin-bottom:28px;
 }}
 .body-step {{
   font-family:'Barlow Condensed', sans-serif; font-weight:500; font-size:36px;
-  line-height:1.35; color:#3a433c; max-width:860px;
+  line-height:1.35; color:#9aa39c; max-width:860px;
 }}
 
-/* COVER */
-.s-cover .cover-body {{
-  position:absolute; left:64px; right:420px; top:200px; z-index:4;
-}}
+/* COVER — sin imagen */
 .kicker {{
   font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:20px;
   letter-spacing:.22em; color:#00FFB2; margin-bottom:28px;
 }}
 .cover-title {{
-  font-family:'Poppins', sans-serif; font-weight:800; font-size:72px;
-  line-height:1.02; letter-spacing:-.03em; color:#0A0A0A; text-align:left;
+  font-family:'Poppins', sans-serif; font-weight:800; font-size:84px;
+  line-height:1.02; letter-spacing:-.03em; color:#F2F2F2; text-align:left;
 }}
 .cover-sub {{
-  margin-top:28px; font-family:'Barlow Condensed', sans-serif; font-weight:500;
-  font-size:32px; line-height:1.35; color:#5a635c; max-width:520px;
-}}
-.cover-art {{
-  position:absolute; right:-40px; bottom:140px; width:520px; height:640px; z-index:3;
-  overflow:hidden;
-}}
-.cover-art img {{
-  width:100%; height:100%; object-fit:cover; object-position:center;
-  filter: contrast(1.05) saturate(1.05);
+  margin-top:32px; font-family:'Barlow Condensed', sans-serif; font-weight:500;
+  font-size:34px; line-height:1.35; color:#9aa39c; max-width:780px;
 }}
 
-/* PHOTO SLIDE */
-.s-photo {{ background:#0A0A0A; }}
+/* PHOTO SLIDE — foto Sebas + wash negro */
+.s-photo .gridbg, .s-photo .linen {{ display:none; }}
 .s-photo .ph {{
   position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;
-  filter: brightness(.72) contrast(1.05) saturate(.9);
+  filter: brightness(.78) contrast(1.05) saturate(.95);
 }}
 .s-photo .ph-wash {{
   position:absolute; inset:0; z-index:1;
-  background: linear-gradient(180deg, rgba(255,255,255,.55) 0%, rgba(255,255,255,.2) 28%,
-              rgba(255,255,255,.82) 58%, #FFFFFF 78%);
+  background: linear-gradient(180deg,
+    rgba(10,10,10,.55) 0%,
+    rgba(10,10,10,.15) 28%,
+    rgba(10,10,10,.55) 52%,
+    rgba(10,10,10,.92) 72%,
+    #0A0A0A 90%);
 }}
-.s-photo .brand {{ color:#0A0A0A; }}
 .mid-photo {{ justify-content:flex-end; padding-bottom:40px; }}
 .script {{
   font-family:'Lora', Georgia, serif; font-style:italic; font-weight:600;
@@ -295,11 +272,11 @@ b {{ font-weight:700; color:#0A0A0A; }}
 }}
 .h-photo {{
   font-family:'Poppins', sans-serif; font-weight:800; font-size:64px;
-  line-height:1.05; letter-spacing:-.02em; color:#0A0A0A; text-align:left;
+  line-height:1.05; letter-spacing:-.02em; color:#F2F2F2; text-align:left;
 }}
 .h-photo-sub {{
   margin-top:22px; font-family:'Poppins', sans-serif; font-weight:700;
-  font-size:36px; line-height:1.25; color:#0A0A0A;
+  font-size:36px; line-height:1.25; color:#F2F2F2;
 }}
 .script-inline {{
   font-family:'Lora', Georgia, serif; font-style:italic; font-weight:600;
@@ -309,7 +286,7 @@ b {{ font-weight:700; color:#0A0A0A; }}
 /* CTA */
 .h-cta {{
   font-family:'Poppins', sans-serif; font-weight:800; font-size:56px;
-  line-height:1.1; letter-spacing:-.02em; color:#0A0A0A; text-align:left;
+  line-height:1.1; letter-spacing:-.02em; color:#F2F2F2; text-align:left;
   margin-bottom:48px;
 }}
 .cta-row {{
@@ -317,17 +294,17 @@ b {{ font-weight:700; color:#0A0A0A; }}
 }}
 .cta-box {{
   font-family:'Poppins', sans-serif; font-weight:800; font-size:42px;
-  letter-spacing:.06em; color:#04130b; background:transparent;
+  letter-spacing:.06em; color:#00FFB2; background:transparent;
   border:3px solid #00FFB2; padding:22px 36px; border-radius:8px;
 }}
 .cta-hint {{
   font-family:'Lora', Georgia, serif; font-style:italic; font-weight:600;
-  font-size:28px; color:#5a635c; display:flex; align-items:center; gap:10px;
+  font-size:28px; color:#9aa39c; display:flex; align-items:center; gap:10px;
 }}
 .arrow {{ color:#00FFB2; font-style:normal; font-family:'Poppins', sans-serif; font-weight:800; }}
 .cta-line {{
   font-family:'Barlow Condensed', sans-serif; font-weight:500; font-size:34px;
-  color:#3a433c;
+  color:#9aa39c;
 }}
 """
 
@@ -363,9 +340,9 @@ def main():
         "familia_visual": "blueprint",
         "origen": "screenshot",
         "keyword_portada": "LEAD",
-        "modo": "blanco",
+        "modo": "negro",
     }, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"Wrote {len(slides)} slides")
+    print(f"Wrote {len(slides)} slides · negro · sin imagen portada")
 
 
 if __name__ == "__main__":
