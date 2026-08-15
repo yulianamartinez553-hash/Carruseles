@@ -97,7 +97,6 @@ def slide_cambia():
     <section class="slide s-photo" data-id="cambia">
       <img class="ph" src="data:image/png;base64,{IMG6}" alt="">
       <div class="ph-wash"></div>
-      <div class="gridbg gridbg-photo"></div>
       {chrome_top("SOLUCIÓN")}
       <div class="mid mid-photo">
         <p class="script">Lo que cambia</p>
@@ -251,7 +250,7 @@ b {{ font-weight:700; color:#FFFFFF; }}
   font-size:34px; line-height:1.35; color:#9aa39c; max-width:780px;
 }}
 
-/* PHOTO SLIDE — foto Sebas + wash negro + grilla verde */
+/* PHOTO SLIDE — foto Sebas + wash negro (sin grilla) */
 .s-photo .ph {{
   position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;
   filter: brightness(.78) contrast(1.05) saturate(.95);
@@ -264,13 +263,6 @@ b {{ font-weight:700; color:#FFFFFF; }}
     rgba(10,10,10,.55) 52%,
     rgba(10,10,10,.92) 72%,
     #0A0A0A 90%);
-}}
-.s-photo .gridbg-photo {{
-  z-index:2;
-  background-image:
-    linear-gradient(rgba(0,255,178,.22) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,255,178,.22) 1px, transparent 1px);
-  background-size:44px 44px;
 }}
 .mid-photo {{ justify-content:flex-end; padding-bottom:40px; }}
 .script {{
