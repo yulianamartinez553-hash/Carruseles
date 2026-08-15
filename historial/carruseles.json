@@ -1,5 +1,5 @@
 {
-  "ultimo_id": "2026-08-15-sistema-control",
+  "ultimo_id": "2026-08-15-si-tu-negocio-te-necesita-para-todo-no-ten-s-un-sistema",
   "carruseles": [
     {
       "id": "2026-07-01-demo-memoria-stlabs",
@@ -35,6 +35,22 @@
       "fondo": "reticula_fina",
       "familia_visual": "dossier_editorial",
       "feedback_estado": "borrador"
+    },
+    {
+      "id": "2026-08-15-si-tu-negocio-te-necesita-para-todo-no-ten-s-un-sistema",
+      "fecha": "2026-08-15",
+      "titulo": "Si tu negocio te necesita para todo, no tenés un sistema",
+      "slides": 10,
+      "fondo": "reticula_fina",
+      "familia_visual": "dossier_editorial"
+    },
+    {
+      "id": "2026-08-15-si-tu-negocio-te-necesita-para-todo-no-ten-s-un-sistema",
+      "fecha": "2026-08-15",
+      "titulo": "Si tu negocio te necesita para todo, no tenés un sistema",
+      "slides": 10,
+      "fondo": "reticula_fina",
+      "familia_visual": "dossier_editorial"
     }
   ]
 }
