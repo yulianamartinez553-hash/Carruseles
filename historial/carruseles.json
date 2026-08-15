@@ -1,5 +1,5 @@
 {
-  "ultimo_id": "2026-07-01-tu-sitio-web-no-es-una-tarjeta",
+  "ultimo_id": "2026-08-15-sistema-control",
   "carruseles": [
     {
       "id": "2026-07-01-demo-memoria-stlabs",
@@ -26,6 +26,15 @@
       "fondo": "concreto_industrial",
       "familia_visual": "operator_log",
       "feedback_estado": "publicado"
+    },
+    {
+      "id": "2026-08-15-sistema-control",
+      "fecha": "2026-08-15",
+      "titulo": "Si tu empresa solo funciona cuando vos estás encima",
+      "slides": 10,
+      "fondo": "reticula_fina",
+      "familia_visual": "dossier_editorial",
+      "feedback_estado": "borrador"
     }
   ]
 }
