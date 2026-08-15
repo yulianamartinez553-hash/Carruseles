@@ -147,12 +147,12 @@ html, body {{ background:#000; }}
 .gridbg {{
   position:absolute; inset:0; z-index:0; pointer-events:none;
   background-image:
-    linear-gradient(rgba(0,255,178,.10) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,255,178,.10) 1px, transparent 1px);
+    linear-gradient(rgba(0,255,178,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,178,.06) 1px, transparent 1px);
   background-size:44px 44px;
   opacity:1;
-  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 48%, transparent 0%, transparent 35%, rgba(0,0,0,.35) 70%, rgba(0,0,0,.85) 100%);
-  mask-image: radial-gradient(ellipse 70% 60% at 50% 48%, transparent 0%, transparent 35%, rgba(0,0,0,.35) 70%, rgba(0,0,0,.85) 100%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 65% at 45% 45%, transparent 0%, transparent 45%, rgba(0,0,0,.25) 75%, #000 100%);
+  mask-image: radial-gradient(ellipse 75% 65% at 45% 45%, transparent 0%, transparent 45%, rgba(0,0,0,.25) 75%, #000 100%);
 }}
 .linen {{
   position:absolute; inset:0; z-index:0; pointer-events:none; opacity:.35;
