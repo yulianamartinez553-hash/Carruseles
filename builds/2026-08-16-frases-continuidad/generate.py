@@ -153,10 +153,28 @@ html, body {{ background:#000; }}
 .tex {{
   position:absolute; inset:0; z-index:0; pointer-events:none;
   background:
-    radial-gradient(ellipse 90% 70% at 82% 16%, rgba(0,255,178,.09), transparent 55%),
-    radial-gradient(ellipse 70% 55% at 8% 90%, rgba(0,255,178,.04), transparent 50%),
-    repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,.018) 3px, rgba(255,255,255,.018) 4px),
-    repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(255,255,255,.012) 3px, rgba(255,255,255,.012) 4px);
+    /* Manchas verdes — esquina sup-izq y inf-der */
+    radial-gradient(ellipse 58% 42% at -5% -5%, rgba(0,255,178,.22), transparent 68%),
+    radial-gradient(ellipse 52% 48% at 105% 105%, rgba(0,255,178,.18), transparent 70%),
+    radial-gradient(ellipse 28% 22% at 8% 12%, rgba(0,255,178,.10), transparent 72%);
+}}
+.tex::before,
+.tex::after {{
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background-image:
+    linear-gradient(rgba(0,255,178,.075) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,178,.075) 1px, transparent 1px);
+  background-size:36px 36px;
+}}
+/* Cuadrícula sutil — esquina superior derecha */
+.tex::before {{
+  -webkit-mask-image: radial-gradient(ellipse 50% 40% at 100% 0%, #000 15%, transparent 72%);
+  mask-image: radial-gradient(ellipse 50% 40% at 100% 0%, #000 15%, transparent 72%);
+}}
+/* Cuadrícula sutil — esquina inferior izquierda */
+.tex::after {{
+  -webkit-mask-image: radial-gradient(ellipse 50% 40% at 0% 100%, #000 15%, transparent 72%);
+  mask-image: radial-gradient(ellipse 50% 40% at 0% 100%, #000 15%, transparent 72%);
 }}
 
 .seam-num {{
