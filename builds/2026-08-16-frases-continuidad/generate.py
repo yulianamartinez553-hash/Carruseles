@@ -85,9 +85,20 @@ def geo_bar_in():
     return '<div class="geo geo-bar geo-bar-in" aria-hidden="true"></div>'
 
 
+def stain_out(pos: str) -> str:
+    """Mitad izquierda de mancha — sale por la derecha (continúa en la siguiente)."""
+    return f'<div class="stain stain-out stain-{pos}" aria-hidden="true"></div>'
+
+
+def stain_in(pos: str) -> str:
+    """Mitad derecha de mancha — entra por la izquierda."""
+    return f'<div class="stain stain-in stain-{pos}" aria-hidden="true"></div>'
+
+
 def slide_01():
     return (
         '<section class="slide" data-id="01"><div class="tex"></div>'
+        + stain_out('hi')
         + seam_nums(1) + geo_circle_out() + geo_arrow_out()
         + '<div class="mid">'
         '<p class="kicker">Para dueños que no dan abasto</p>'
@@ -100,6 +111,7 @@ def slide_01():
 def slide_02():
     return (
         '<section class="slide" data-id="02"><div class="tex"></div>'
+        + stain_in('hi') + stain_out('lo')
         + seam_nums(2) + geo_circle_in() + geo_arrow_in() + geo_ring_out() + geo_bar_out()
         + '<div class="mid mid-r">'
         '<h1 class="display">RESPONDE<br><span class="sm">CADA</span><br><span class="ac">LEAD</span></h1>'
@@ -112,6 +124,7 @@ def slide_02():
 def slide_03():
     return (
         '<section class="slide" data-id="03"><div class="tex"></div>'
+        + stain_in('lo') + stain_out('mid')
         + seam_nums(3) + geo_ring_in() + geo_bar_in() + geo_circle_out()
         + '<div class="mid">'
         '<h1 class="display">SIN VOS<br><span class="sm">ENCIMA</span><br><span class="ac">24/7</span></h1>'
@@ -124,6 +137,7 @@ def slide_03():
 def slide_04():
     return (
         '<section class="slide" data-id="04"><div class="tex"></div>'
+        + stain_in('mid')
         + seam_nums(4) + geo_circle_in() + geo_arrow_in()
         + '<div class="mid mid-cta">'
         '<p class="cta-pre">Comentá</p>'
@@ -152,30 +166,42 @@ html, body {{ background:#000; }}
 }}
 .tex {{
   position:absolute; inset:0; z-index:0; pointer-events:none;
-  background:
-    /* Manchas verdes — esquina sup-izq y inf-der */
-    radial-gradient(ellipse 58% 42% at -5% -5%, rgba(0,255,178,.22), transparent 68%),
-    radial-gradient(ellipse 52% 48% at 105% 105%, rgba(0,255,178,.18), transparent 70%),
-    radial-gradient(ellipse 28% 22% at 8% 12%, rgba(0,255,178,.10), transparent 72%);
+  background: transparent;
 }}
 .tex::before,
 .tex::after {{
   content:''; position:absolute; inset:0; pointer-events:none;
   background-image:
-    linear-gradient(rgba(0,255,178,.075) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,255,178,.075) 1px, transparent 1px);
-  background-size:36px 36px;
+    linear-gradient(rgba(0,255,178,.20) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,178,.20) 1px, transparent 1px);
+  background-size:32px 32px;
 }}
-/* Cuadrícula sutil — esquina superior derecha */
+/* Cuadrícula más notoria — esquina superior derecha */
 .tex::before {{
-  -webkit-mask-image: radial-gradient(ellipse 50% 40% at 100% 0%, #000 15%, transparent 72%);
-  mask-image: radial-gradient(ellipse 50% 40% at 100% 0%, #000 15%, transparent 72%);
+  -webkit-mask-image: radial-gradient(ellipse 58% 48% at 100% 0%, #000 25%, transparent 78%);
+  mask-image: radial-gradient(ellipse 58% 48% at 100% 0%, #000 25%, transparent 78%);
 }}
-/* Cuadrícula sutil — esquina inferior izquierda */
+/* Cuadrícula más notoria — esquina inferior izquierda */
 .tex::after {{
-  -webkit-mask-image: radial-gradient(ellipse 50% 40% at 0% 100%, #000 15%, transparent 72%);
-  mask-image: radial-gradient(ellipse 50% 40% at 0% 100%, #000 15%, transparent 72%);
+  -webkit-mask-image: radial-gradient(ellipse 58% 48% at 0% 100%, #000 25%, transparent 78%);
+  mask-image: radial-gradient(ellipse 58% 48% at 0% 100%, #000 25%, transparent 78%);
 }}
+
+/* Manchas verdes continuas entre slides (centro en la costura) */
+.stain {{
+  position:absolute; z-index:0; pointer-events:none;
+  width:560px; height:560px; border-radius:50%;
+  background: radial-gradient(circle at 50% 50%,
+    rgba(0,255,178,.38) 0%,
+    rgba(0,255,178,.22) 32%,
+    rgba(0,255,178,.08) 55%,
+    transparent 72%);
+}}
+.stain-out {{ right:-280px; }}
+.stain-in  {{ left:-280px; }}
+.stain-hi  {{ top:40px; }}
+.stain-lo  {{ bottom:120px; }}
+.stain-mid {{ top:42%; }}
 
 .seam-num {{
   position:absolute; z-index:2; pointer-events:none;
