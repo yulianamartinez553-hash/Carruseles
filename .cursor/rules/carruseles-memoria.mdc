@@ -15,3 +15,9 @@ Al iniciar trabajo de carrusel en este repo:
 5. Si el carrusel se publica, registrar feedback con `python stlabs_memory.py feedback <id> --estado publicado`
 
 Referencia: `SISTEMA-DISENO-CARRUSELES-STLABS.md` secciones 7 y 8.
+
+## Mensaje agente (bloqueado)
+
+Si el carrusel habla de un **agente**: el eje es **ayudar a armar procesos**.
+Prohibido como pitch: leads perdidos, calificar/agendar leads, follow-up de leads.
+Detalle: `.claude/skills/carrusel-stlabs/SKILL.md` §Mensaje de producto — AGENTE.

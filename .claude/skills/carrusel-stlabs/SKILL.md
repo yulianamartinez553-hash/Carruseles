@@ -62,6 +62,20 @@ Tabla con **cada** tipografía usada: nombre exacto · peso/estilo · rol (títu
 - Footer `sebastian.stlabs.ar` · IBM Plex Mono · verde · centrado · bottom ~70px · **en cada slide**. Nunca un @handle de Instagram.
 - Captions: plantillas en `references/06-caption-voz.md`.
 
+## Mensaje de producto — AGENTE (bloqueado)
+
+Cuando el carrusel hable de un **agente** / sistema para la empresa de Sebastián:
+
+**SÍ (eje obligatorio):** el agente **ayuda a armar procesos** — diseñar, documentar, ordenar flujos, dejar la operación clara para que no dependa del dueño.
+
+**NO (prohibido como pitch principal):**
+- leads perdidos / “no perder leads”
+- calificar leads, agendar leads, follow-up de leads
+- “responde cada lead” como promesa central
+- agente = chatbot de ventas / SDR automático
+
+Si la referencia trae ese framing de leads, **reencuadrarlo** a procesos operativos (armar, ordenar, que ande sin vos encima). Keyword típica: `PROCESOS`.
+
 ## Atajos que Yuli puede usar
 
 | Shortcut | Significado |
@@ -89,4 +103,4 @@ Tabla con **cada** tipografía usada: nombre exacto · peso/estilo · rol (títu
 
 **SÍ:** contraste fuerte · textura física distinta por carrusel · título grande y grueso con familia diversa · escala monumental · composición asimétrica · microdetalles auténticos · keyword literal en portada · foto real de Sebastián/familia · recrear/recortar las imágenes de referencia · mantener logo Claude naranja · voseo · firma en cada slide · declarar el manifiesto de fuentes con sus códigos de carga.
 
-**NO:** título en fuentes finitas (Barlow Condensed / IBM Plex Mono como título) · reubicar, redimensionar o alterar la posición de un elemento respecto del original · robots/cerebros/circuitos **inventados** (los de la referencia sí se recrean) · 3D plástico · estética SaaS genérica · simetría perfecta · glow excesivo · verde disperso o modificado · emojis · inglés · "Inteligencia Artificial" · @handle de Instagram · contador de slides del screenshot · reemplazar imágenes de referencia por texto · texto tapando texto.
+**NO:** título en fuentes finitas (Barlow Condensed / IBM Plex Mono como título) · reubicar, redimensionar o alterar la posición de un elemento respecto del original · robots/cerebros/circuitos **inventados** (los de la referencia sí se recrean) · 3D plástico · estética SaaS genérica · simetría perfecta · glow excesivo · verde disperso o modificado · emojis · inglés · "Inteligencia Artificial" · @handle de Instagram · contador de slides del screenshot · reemplazar imágenes de referencia por texto · texto tapando texto · pitch de **leads perdidos / calificar-agendar leads** cuando el tema es un agente (usar **armar procesos**).
