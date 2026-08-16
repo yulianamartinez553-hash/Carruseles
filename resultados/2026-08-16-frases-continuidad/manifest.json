@@ -1,12 +1,12 @@
 {
-  "titulo": "Si todo depende de vos, no tenés empresa",
+  "titulo": "Tu empresa necesita un agente",
   "slides": 4,
   "fondo": "piedra_roca",
   "familia_visual": "manifiesto",
   "origen": "original",
-  "keyword_portada": "SISTEMA",
-  "modo": "blanco",
+  "keyword_portada": "AGENTE",
+  "modo": "negro",
   "id": "2026-08-16-frases-continuidad",
   "fecha": "2026-08-16",
-  "notas": "4 slides. Continuidad: círculos/flechas/barras partidos + números seam. Bebas display."
+  "notas": "Negro + Poppins ExtraBold. Vende agente/sistema. Continuidad geométrica."
 }

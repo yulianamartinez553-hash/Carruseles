@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
-"""Carrusel 4 slides — frases impacto + continuidad geométrica
-Fondo: piedra_roca · Familia: manifiesto · Modo: blanco
+"""Carrusel 4 slides — vende un agente/sistema para la empresa
+Fondo: piedra_roca · Familia: manifiesto · Modo: negro
+Títulos: Poppins ExtraBold (grueso) · Acentos: Lora italic
 """
 from pathlib import Path
 import json
@@ -89,9 +90,9 @@ def slide_01():
         '<section class="slide" data-id="01"><div class="tex"></div>'
         + seam_nums(1) + geo_circle_out() + geo_arrow_out()
         + '<div class="mid">'
-        '<p class="kicker">La trampa del dueño</p>'
-        '<h1 class="display">SI TODO<br>DEPENDE<br>DE <span class="ac">VOS</span></h1>'
-        '<p class="punch">no tenés empresa.<br><span class="ac xl">Tenés un puesto.</span></p>'
+        '<p class="kicker">Para dueños que no dan abasto</p>'
+        '<h1 class="display">TU EMPRESA<br>NECESITA<br>UN <span class="ac">AGENTE</span></h1>'
+        '<p class="punch">No otra persona.<br><span class="ac xl">Un sistema que vende.</span></p>'
         '</div>' + foot() + '</section>'
     )
 
@@ -101,8 +102,9 @@ def slide_02():
         '<section class="slide" data-id="02"><div class="tex"></div>'
         + seam_nums(2) + geo_circle_in() + geo_arrow_in() + geo_ring_out() + geo_bar_out()
         + '<div class="mid mid-r">'
-        '<h1 class="display">ATENDER<br>TODO<br><span class="sm">NO ES</span><br><span class="ac">LIDERAR</span></h1>'
-        '<p class="punch soft">Es tapar agujeros<br>con tu tiempo.</p>'
+        '<h1 class="display">RESPONDE<br><span class="sm">CADA</span><br><span class="ac">LEAD</span></h1>'
+        '<p class="punch soft">Califica. Agenda. Hace follow-up.<br>'
+        '<span class="ac">Mientras vos liderás.</span></p>'
         '</div>' + foot() + '</section>'
     )
 
@@ -112,9 +114,9 @@ def slide_03():
         '<section class="slide" data-id="03"><div class="tex"></div>'
         + seam_nums(3) + geo_ring_in() + geo_bar_in() + geo_circle_out()
         + '<div class="mid">'
-        '<h1 class="display">EL CONTROL<br><span class="sm">NO ESTÁ</span><br><span class="ac">EN MIRAR</span></h1>'
-        '<p class="punch">Se <span class="ac xl">diseña.</span></p>'
-        '<p class="sub">Procesos que corrigen solos<br>antes de llegar a vos.</p>'
+        '<h1 class="display">SIN VOS<br><span class="sm">ENCIMA</span><br><span class="ac">24/7</span></h1>'
+        '<p class="punch">Un agente instalado<br>en tu operación.</p>'
+        '<p class="sub">WhatsApp, web, CRM:<br>un solo sistema que no se cansa.</p>'
         '</div>' + foot() + '</section>'
     )
 
@@ -125,9 +127,9 @@ def slide_04():
         + seam_nums(4) + geo_circle_in() + geo_arrow_in()
         + '<div class="mid mid-cta">'
         '<p class="cta-pre">Comentá</p>'
-        '<h1 class="cta-kw">SISTEMA</h1>'
-        '<p class="cta-mid">y te mando el mapa<br>para que tu empresa<br>'
-        '<span class="ac">ande sin vos encima.</span></p>'
+        '<h1 class="cta-kw">AGENTE</h1>'
+        '<p class="cta-mid">y te muestro cómo meter<br>un sistema que venda<br>'
+        '<span class="ac">aunque vos no estés.</span></p>'
         '</div>' + foot(arrow=False) + '</section>'
     )
 
@@ -135,39 +137,38 @@ def slide_04():
 def build_css():
     f = str(FONTS)
     return f"""
-@font-face {{ font-family:'Bebas Neue'; src:url('file://{f}/BebasNeue-Regular.ttf') format('truetype'); font-weight:400; }}
 @font-face {{ font-family:'Poppins'; src:url('file://{f}/Poppins-ExtraBold.ttf') format('truetype'); font-weight:800; }}
 @font-face {{ font-family:'Poppins'; src:url('file://{f}/Poppins-Bold.ttf') format('truetype'); font-weight:700; }}
 @font-face {{ font-family:'Lora'; src:url('file://{f}/Lora-Italic-Variable.ttf') format('truetype'); font-style:italic; font-weight:400 700; }}
 @font-face {{ font-family:'IBM Plex Mono'; src:url('file://{f}/IBMPlexMono-Medium.ttf') format('truetype'); font-weight:500; }}
 
 * {{ box-sizing:border-box; margin:0; padding:0; -webkit-font-smoothing:antialiased; }}
-html, body {{ background:#ddd; }}
+html, body {{ background:#000; }}
 .sheet {{ display:flex; flex-direction:column; gap:48px; padding:40px; width:max-content; }}
 
 .slide {{
   position:relative; width:1080px; height:1350px; overflow:hidden;
-  background:#F2F2F2; color:#0A0A0A;
+  background:#0A0A0A; color:#F2F2F2;
 }}
 .tex {{
   position:absolute; inset:0; z-index:0; pointer-events:none;
   background:
-    radial-gradient(ellipse 90% 70% at 80% 18%, rgba(0,255,178,.08), transparent 55%),
-    radial-gradient(ellipse 70% 55% at 8% 88%, rgba(0,0,0,.045), transparent 50%),
-    repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,.02) 3px, rgba(0,0,0,.02) 4px),
-    repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(0,0,0,.015) 3px, rgba(0,0,0,.015) 4px);
+    radial-gradient(ellipse 90% 70% at 82% 16%, rgba(0,255,178,.09), transparent 55%),
+    radial-gradient(ellipse 70% 55% at 8% 90%, rgba(0,255,178,.04), transparent 50%),
+    repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,.018) 3px, rgba(255,255,255,.018) 4px),
+    repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(255,255,255,.012) 3px, rgba(255,255,255,.012) 4px);
 }}
 
 .seam-num {{
   position:absolute; z-index:2; pointer-events:none;
-  font-family:'Bebas Neue', sans-serif; font-weight:400;
-  font-size:280px; line-height:.8; letter-spacing:-.02em;
-  color:rgba(10,10,10,.12);
+  font-family:'Poppins', sans-serif; font-weight:800;
+  font-size:260px; line-height:.8; letter-spacing:-.04em;
+  color:rgba(0,255,178,.18);
   width:340px; text-align:center;
 }}
 .seam-out {{ left:900px; }}
 .seam-in  {{ left:-180px; }}
-.seam-solo {{ left:auto; right:40px; color:rgba(10,10,10,.18); font-size:220px; }}
+.seam-solo {{ left:auto; right:40px; color:rgba(0,255,178,.28); font-size:200px; }}
 .seam-top {{ top:28px; }}
 .seam-bot {{ bottom:180px; }}
 
@@ -181,7 +182,7 @@ html, body {{ background:#ddd; }}
 
 .geo-ring {{
   width:560px; height:560px; border-radius:50%;
-  border:3px solid rgba(10,10,10,.14); background:transparent;
+  border:3px solid rgba(0,255,178,.2); background:transparent;
 }}
 .geo-ring.geo-out-mid {{ right:-280px; bottom:120px; }}
 .geo-ring.geo-in-mid  {{ left:-280px; bottom:120px; }}
@@ -213,42 +214,42 @@ html, body {{ background:#ddd; }}
   font-size:26px; color:#00FFB2; margin-bottom:18px;
 }}
 .display {{
-  font-family:'Bebas Neue', sans-serif; font-weight:400;
-  font-size:128px; line-height:.88; letter-spacing:.01em;
-  color:#0A0A0A; text-align:left;
+  font-family:'Poppins', sans-serif; font-weight:800;
+  font-size:92px; line-height:.92; letter-spacing:-.035em;
+  color:#F2F2F2; text-align:left;
 }}
 .display .sm {{
-  font-size:.48em; letter-spacing:.04em;
-  font-family:'Poppins', sans-serif; font-weight:800; color:#3a3a3a;
+  font-size:.55em; letter-spacing:-.02em;
+  font-weight:800; color:#9aa39c;
 }}
 .ac {{
-  font-family:'Lora', Georgia, serif; font-style:italic; font-weight:600;
+  font-family:'Lora', Georgia, serif; font-style:italic; font-weight:700;
   color:#00FFB2;
 }}
-.xl {{ font-size:1.15em; }}
+.xl {{ font-size:1.12em; }}
 
 .punch {{
-  margin-top:36px; font-family:'Poppins', sans-serif; font-weight:800;
-  font-size:42px; line-height:1.15; color:#0A0A0A;
+  margin-top:32px; font-family:'Poppins', sans-serif; font-weight:800;
+  font-size:40px; line-height:1.15; color:#F2F2F2;
 }}
-.punch.soft {{ color:#3a3a3a; font-size:36px; }}
+.punch.soft {{ color:#c5cdc6; font-size:34px; }}
 .sub {{
-  margin-top:28px; font-family:'Poppins', sans-serif; font-weight:700;
-  font-size:28px; line-height:1.35; color:#5a5a5a;
+  margin-top:24px; font-family:'Poppins', sans-serif; font-weight:700;
+  font-size:26px; line-height:1.35; color:#9aa39c;
 }}
 
 .cta-pre {{
   font-family:'Poppins', sans-serif; font-weight:800;
-  font-size:40px; color:#0A0A0A;
+  font-size:38px; color:#F2F2F2;
 }}
 .cta-kw {{
-  font-family:'Bebas Neue', sans-serif;
-  font-size:148px; line-height:.9; letter-spacing:.03em;
-  color:#00FFB2; margin:4px 0 20px;
+  font-family:'Poppins', sans-serif; font-weight:800;
+  font-size:118px; line-height:.9; letter-spacing:-.03em;
+  color:#00FFB2; margin:4px 0 18px;
 }}
 .cta-mid {{
   font-family:'Poppins', sans-serif; font-weight:700;
-  font-size:34px; line-height:1.3; color:#0A0A0A; max-width:720px;
+  font-size:32px; line-height:1.3; color:#F2F2F2; max-width:720px;
 }}
 """
 
@@ -258,25 +259,25 @@ def main():
     css = build_css()
     html = (
         "<!DOCTYPE html>\n<html lang=\"es\"><head><meta charset=\"UTF-8\">\n"
-        "<title>Si todo depende de vos — STLabs</title>\n"
+        "<title>Tu empresa necesita un agente — STLabs</title>\n"
         f"<style>{css}</style></head>\n"
         f"<body><div class=\"sheet\">{''.join(slides)}</div></body></html>"
     )
     (B / "carrusel.html").write_text(html, encoding="utf-8")
     meta = {
-        "titulo": "Si todo depende de vos, no tenés empresa",
+        "titulo": "Tu empresa necesita un agente",
         "slides": 4,
         "fondo": "piedra_roca",
         "familia_visual": "manifiesto",
         "origen": "original",
-        "keyword_portada": "SISTEMA",
-        "modo": "blanco",
+        "keyword_portada": "AGENTE",
+        "modo": "negro",
         "id": "2026-08-16-frases-continuidad",
         "fecha": "2026-08-16",
-        "notas": "4 slides. Continuidad: círculos/flechas/barras partidos + números seam. Bebas display.",
+        "notas": "Negro + Poppins ExtraBold. Vende agente/sistema. Continuidad geométrica.",
     }
     (B / "index.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"Wrote {len(slides)} slides · manifiesto blanco · continuidad geométrica")
+    print(f"Wrote {len(slides)} slides · negro · Poppins ExtraBold · vende agente")
 
 
 if __name__ == "__main__":
