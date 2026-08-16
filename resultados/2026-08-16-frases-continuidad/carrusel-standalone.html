@@ -23,36 +23,37 @@ html, body { background:#000; }
 .tex::after {
   content:''; position:absolute; inset:0; pointer-events:none;
   background-image:
-    linear-gradient(rgba(0,255,178,.20) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,255,178,.20) 1px, transparent 1px);
-  background-size:32px 32px;
+    linear-gradient(rgba(0,255,178,.38) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(0,255,178,.38) 2px, transparent 2px);
+  background-size:40px 40px;
 }
-/* Cuadrícula más notoria — esquina superior derecha */
+/* Cuadrícula más grande y notoria — esquina superior derecha */
 .tex::before {
-  -webkit-mask-image: radial-gradient(ellipse 58% 48% at 100% 0%, #000 25%, transparent 78%);
-  mask-image: radial-gradient(ellipse 58% 48% at 100% 0%, #000 25%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse 72% 58% at 100% 0%, #000 30%, transparent 82%);
+  mask-image: radial-gradient(ellipse 72% 58% at 100% 0%, #000 30%, transparent 82%);
 }
-/* Cuadrícula más notoria — esquina inferior izquierda */
+/* Cuadrícula más grande y notoria — esquina inferior izquierda */
 .tex::after {
-  -webkit-mask-image: radial-gradient(ellipse 58% 48% at 0% 100%, #000 25%, transparent 78%);
-  mask-image: radial-gradient(ellipse 58% 48% at 0% 100%, #000 25%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse 72% 58% at 0% 100%, #000 30%, transparent 82%);
+  mask-image: radial-gradient(ellipse 72% 58% at 0% 100%, #000 30%, transparent 82%);
 }
 
-/* Manchas verdes continuas entre slides (centro en la costura) */
+/* Manchas verdes grandes y continuas entre slides */
 .stain {
   position:absolute; z-index:0; pointer-events:none;
-  width:560px; height:560px; border-radius:50%;
+  width:820px; height:820px; border-radius:50%;
   background: radial-gradient(circle at 50% 50%,
-    rgba(0,255,178,.38) 0%,
-    rgba(0,255,178,.22) 32%,
-    rgba(0,255,178,.08) 55%,
-    transparent 72%);
+    rgba(0,255,178,.55) 0%,
+    rgba(0,255,178,.34) 28%,
+    rgba(0,255,178,.16) 48%,
+    rgba(0,255,178,.06) 62%,
+    transparent 74%);
 }
-.stain-out { right:-280px; }
-.stain-in  { left:-280px; }
-.stain-hi  { top:40px; }
-.stain-lo  { bottom:120px; }
-.stain-mid { top:42%; }
+.stain-out { right:-410px; }
+.stain-in  { left:-410px; }
+.stain-hi  { top:-40px; }
+.stain-lo  { bottom:-20px; }
+.stain-mid { top:28%; }
 
 .seam-num {
   position:absolute; z-index:2; pointer-events:none;
