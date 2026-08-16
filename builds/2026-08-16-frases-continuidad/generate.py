@@ -229,8 +229,11 @@ html, body {{ background:#000; }}
 .geo-circle.geo-in  {{ left:-190px; top:58%; transform:translateY(-50%); }}
 /* Círculo bajo en costura 03↔04: no tapa el CTA */
 .geo-circle.geo-lo {{
-  top:auto; bottom:200px; transform:none;
+  top:auto; bottom:140px; transform:none;
+  width:300px; height:300px;
 }}
+.geo-circle.geo-out.geo-lo {{ right:-160px; }}
+.geo-circle.geo-in.geo-lo {{ left:-160px; }}
 
 .geo-ring {{
   width:560px; height:560px; border-radius:50%;
@@ -259,7 +262,7 @@ html, body {{ background:#000; }}
   display:flex; flex-direction:column; justify-content:center;
 }}
 .mid-r {{ align-items:flex-start; padding-left:168px; }}
-.mid-cta {{ justify-content:center; padding-left:48px; }}
+.mid-cta {{ justify-content:center; padding-left:72px; }}
 
 .kicker {{
   font-family:'Lora', Georgia, serif; font-style:italic; font-weight:600;
