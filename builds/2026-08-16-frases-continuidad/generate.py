@@ -103,7 +103,7 @@ def slide_02():
         + seam_nums(2) + geo_circle_in() + geo_arrow_in() + geo_ring_out() + geo_bar_out()
         + '<div class="mid mid-r">'
         '<h1 class="display">RESPONDE<br><span class="sm">CADA</span><br><span class="ac">LEAD</span></h1>'
-        '<p class="punch soft">Califica. Agenda. Hace follow-up.<br>'
+        '<p class="punch soft">Califica. Agenda. Hace el seguimiento.<br>'
         '<span class="ac">Mientras vos liderás.</span></p>'
         '</div>' + foot() + '</section>'
     )
