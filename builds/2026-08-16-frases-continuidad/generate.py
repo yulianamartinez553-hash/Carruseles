@@ -103,7 +103,7 @@ def slide_01():
         + '<div class="mid">'
         '<p class="kicker">Para dueños que no dan abasto</p>'
         '<h1 class="display">TU EMPRESA<br>NECESITA<br>UN <span class="ac">AGENTE</span></h1>'
-        '<p class="punch">No otra persona.<br><span class="ac xl">Un sistema que vende.</span></p>'
+        '<p class="punch">No otra persona.<br><span class="ac xl">Un sistema de procesos.</span></p>'
         '</div>' + foot() + '</section>'
     )
 
@@ -114,8 +114,8 @@ def slide_02():
         + stain_in('hi') + stain_out('lo')
         + seam_nums(2) + geo_circle_in() + geo_arrow_in() + geo_ring_out() + geo_bar_out()
         + '<div class="mid mid-r">'
-        '<h1 class="display">RESPONDE<br><span class="sm">CADA</span><br><span class="ac">LEAD</span></h1>'
-        '<p class="punch soft">Califica. Agenda. Hace el seguimiento.<br>'
+        '<h1 class="display">CORRE<br><span class="sm">CADA</span><br><span class="ac">PROCESO</span></h1>'
+        '<p class="punch soft">Detecta. Ejecuta. Escala.<br>'
         '<span class="ac">Mientras vos liderás.</span></p>'
         '</div>' + foot() + '</section>'
     )
@@ -125,11 +125,12 @@ def slide_03():
     return (
         '<section class="slide" data-id="03"><div class="tex"></div>'
         + stain_in('lo') + stain_out('mid')
-        + seam_nums(3) + geo_ring_in() + geo_bar_in() + geo_circle_out()
+        + seam_nums(3) + geo_ring_in() + geo_bar_in()
+        + '<div class="geo geo-circle geo-out geo-lo" aria-hidden="true"></div>'
         + '<div class="mid">'
         '<h1 class="display">SIN VOS<br><span class="sm">ENCIMA</span><br><span class="ac">24/7</span></h1>'
-        '<p class="punch">Un agente instalado<br>en tu operación.</p>'
-        '<p class="sub">WhatsApp, web, CRM:<br>un solo sistema que no se cansa.</p>'
+        '<p class="punch">Un agente que corre<br>tus procesos.</p>'
+        '<p class="sub">Operación, seguimiento y CRM:<br>un solo flujo que no se traba.</p>'
         '</div>' + foot() + '</section>'
     )
 
@@ -138,12 +139,14 @@ def slide_04():
     return (
         '<section class="slide" data-id="04"><div class="tex"></div>'
         + stain_in('mid')
-        + seam_nums(4) + geo_circle_in() + geo_arrow_in()
+        + seam_nums(4)
+        + '<div class="geo geo-circle geo-in geo-lo" aria-hidden="true"></div>'
+        + geo_arrow_in()
         + '<div class="mid mid-cta">'
         '<p class="cta-pre">Comentá</p>'
-        '<h1 class="cta-kw">AGENTE</h1>'
-        '<p class="cta-mid">y te muestro cómo meter<br>un sistema que venda<br>'
-        '<span class="ac">aunque vos no estés.</span></p>'
+        '<h1 class="cta-kw">PROCESOS</h1>'
+        '<p class="cta-mid">y te muestro cómo meter<br>un agente que ordene<br>'
+        '<span class="ac">la operación sin vos encima.</span></p>'
         '</div>' + foot(arrow=False) + '</section>'
     )
 
@@ -224,6 +227,10 @@ html, body {{ background:#000; }}
 }}
 .geo-circle.geo-out {{ right:-190px; top:58%; transform:translateY(-50%); }}
 .geo-circle.geo-in  {{ left:-190px; top:58%; transform:translateY(-50%); }}
+/* Círculo bajo en costura 03↔04: no tapa el CTA */
+.geo-circle.geo-lo {{
+  top:auto; bottom:200px; transform:none;
+}}
 
 .geo-ring {{
   width:560px; height:560px; border-radius:50%;
@@ -252,7 +259,7 @@ html, body {{ background:#000; }}
   display:flex; flex-direction:column; justify-content:center;
 }}
 .mid-r {{ align-items:flex-start; padding-left:168px; }}
-.mid-cta {{ justify-content:center; }}
+.mid-cta {{ justify-content:center; padding-left:48px; }}
 
 .kicker {{
   font-family:'Lora', Georgia, serif; font-style:italic; font-weight:600;
@@ -289,7 +296,7 @@ html, body {{ background:#000; }}
 }}
 .cta-kw {{
   font-family:'Poppins', sans-serif; font-weight:800;
-  font-size:118px; line-height:.9; letter-spacing:-.03em;
+  font-size:96px; line-height:.9; letter-spacing:-.03em;
   color:#00FFB2; margin:4px 0 18px;
 }}
 .cta-mid {{
@@ -310,19 +317,19 @@ def main():
     )
     (B / "carrusel.html").write_text(html, encoding="utf-8")
     meta = {
-        "titulo": "Tu empresa necesita un agente",
+        "titulo": "Tu empresa necesita un agente de procesos",
         "slides": 4,
         "fondo": "piedra_roca",
         "familia_visual": "manifiesto",
         "origen": "original",
-        "keyword_portada": "AGENTE",
+        "keyword_portada": "PROCESOS",
         "modo": "negro",
         "id": "2026-08-16-frases-continuidad",
         "fecha": "2026-08-16",
-        "notas": "Negro + Poppins ExtraBold. Vende agente/sistema. Continuidad geométrica.",
+        "notas": "Copy de procesos (no solo leads). Círculo 03↔04 abajo para no tapar CTA.",
     }
     (B / "index.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"Wrote {len(slides)} slides · negro · Poppins ExtraBold · vende agente")
+    print(f"Wrote {len(slides)} slides · procesos · círculo CTA libre")
 
 
 if __name__ == "__main__":
