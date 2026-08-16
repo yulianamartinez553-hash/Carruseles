@@ -1,5 +1,5 @@
 {
-  "ultimo_id": "2026-07-01-tu-sitio-web-no-es-una-tarjeta",
+  "ultimo_id": "2026-08-16-frases-continuidad",
   "carruseles": [
     {
       "id": "2026-07-01-demo-memoria-stlabs",
@@ -26,6 +26,26 @@
       "fondo": "concreto_industrial",
       "familia_visual": "operator_log",
       "feedback_estado": "publicado"
+    },
+    {
+      "id": "2026-08-16-frases-continuidad",
+      "fecha": "2026-08-16",
+      "titulo": "Si todo depende de vos, no tenés empresa",
+      "slides": 4,
+      "fondo": "piedra_roca",
+      "familia_visual": "manifiesto",
+      "origen": "original",
+      "keyword_portada": "SISTEMA",
+      "modo": "blanco",
+      "notas": "4 slides. Continuidad geométrica + números seam. Bebas. Modo blanco."
+    },
+    {
+      "id": "2026-08-16-frases-continuidad",
+      "fecha": "2026-08-16",
+      "titulo": "Si todo depende de vos, no tenés empresa",
+      "slides": 4,
+      "fondo": "piedra_roca",
+      "familia_visual": "manifiesto"
     }
   ]
 }
