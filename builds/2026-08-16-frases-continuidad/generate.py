@@ -103,7 +103,7 @@ def slide_01():
         + '<div class="mid">'
         '<p class="kicker">Para dueños que no dan abasto</p>'
         '<h1 class="display">TU EMPRESA<br>NECESITA<br>UN <span class="ac">AGENTE</span></h1>'
-        '<p class="punch">No otra persona.<br><span class="ac xl">Un sistema de procesos.</span></p>'
+        '<p class="punch">No otra persona.<br><span class="ac xl">Uno que te ayude a armar procesos.</span></p>'
         '</div>' + foot() + '</section>'
     )
 
@@ -114,9 +114,9 @@ def slide_02():
         + stain_in('hi') + stain_out('lo')
         + seam_nums(2) + geo_circle_in() + geo_arrow_in() + geo_ring_out() + geo_bar_out()
         + '<div class="mid mid-r">'
-        '<h1 class="display">CORRE<br><span class="sm">CADA</span><br><span class="ac">PROCESO</span></h1>'
-        '<p class="punch soft">Detecta. Ejecuta. Escala.<br>'
-        '<span class="ac">Mientras vos liderás.</span></p>'
+        '<h1 class="display">ARMÁ<br><span class="sm">PROCESOS</span><br><span class="ac">QUE ANDEN</span></h1>'
+        '<p class="punch soft">Diseñá. Documentá. Delegá.<br>'
+        '<span class="ac">El agente te guía paso a paso.</span></p>'
         '</div>' + foot() + '</section>'
     )
 
@@ -128,9 +128,9 @@ def slide_03():
         + seam_nums(3) + geo_ring_in() + geo_bar_in()
         + '<div class="geo geo-circle geo-out geo-lo" aria-hidden="true"></div>'
         + '<div class="mid">'
-        '<h1 class="display">SIN VOS<br><span class="sm">ENCIMA</span><br><span class="ac">24/7</span></h1>'
-        '<p class="punch">Un agente que corre<br>tus procesos.</p>'
-        '<p class="sub">Operación, seguimiento y CRM:<br>un solo flujo que no se traba.</p>'
+        '<h1 class="display">DEL CAOS<br><span class="sm">A UN</span><br><span class="ac">SISTEMA</span></h1>'
+        '<p class="punch">Procesos claros.<br>Responsables claros.</p>'
+        '<p class="sub">El agente te ayuda a armarlos<br>para que la empresa no dependa de vos.</p>'
         '</div>' + foot() + '</section>'
     )
 
@@ -145,8 +145,8 @@ def slide_04():
         + '<div class="mid mid-cta">'
         '<p class="cta-pre">Comentá</p>'
         '<h1 class="cta-kw">PROCESOS</h1>'
-        '<p class="cta-mid">y te muestro cómo meter<br>un agente que ordene<br>'
-        '<span class="ac">la operación sin vos encima.</span></p>'
+        '<p class="cta-mid">y te muestro cómo un agente<br>te ayuda a armar los procesos<br>'
+        '<span class="ac">de tu empresa.</span></p>'
         '</div>' + foot(arrow=False) + '</section>'
     )
 
@@ -317,7 +317,7 @@ def main():
     )
     (B / "carrusel.html").write_text(html, encoding="utf-8")
     meta = {
-        "titulo": "Tu empresa necesita un agente de procesos",
+        "titulo": "Un agente que te ayuda a armar procesos",
         "slides": 4,
         "fondo": "piedra_roca",
         "familia_visual": "manifiesto",
@@ -326,10 +326,10 @@ def main():
         "modo": "negro",
         "id": "2026-08-16-frases-continuidad",
         "fecha": "2026-08-16",
-        "notas": "Copy de procesos (no solo leads). Círculo 03↔04 abajo para no tapar CTA.",
+        "notas": "Agente = armar procesos. Prohibido pitch de leads. Círculo CTA abajo.",
     }
     (B / "index.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"Wrote {len(slides)} slides · procesos · círculo CTA libre")
+    print(f"Wrote {len(slides)} slides · agente arma procesos")
 
 
 if __name__ == "__main__":

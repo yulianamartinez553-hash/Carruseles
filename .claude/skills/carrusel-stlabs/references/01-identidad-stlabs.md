@@ -42,6 +42,12 @@ Archivos TTF empaquetados en `assets/fonts/`; instalar con `assets/install_fonts
 Español argentino, **voseo**: Empezá, Elegí, Dejá, Hacé, Creá, Conectá, Comentá, Deslizá, Querés, Escogé.
 **Sin emojis. Sin inglés. Sin "Inteligencia Artificial".** Mayúsculas en display. Copy corto y punchy.
 
+### Agente = armar procesos (bloqueado)
+
+- El **agente** se vende como ayuda para **armar procesos** de la empresa (diseñar, documentar, ordenar la operación).
+- **Prohibido** como eje: leads perdidos, calificar/agendar leads, follow-up de leads, “responde cada lead”.
+- Preferir: procesos, flujos, operación, responsables, que ande sin el dueño encima.
+
 ## Firma (obligatoria en cada slide)
 
 `sebastian.stlabs.ar` · IBM Plex Mono · verde · centrado · `bottom ~70px`.
