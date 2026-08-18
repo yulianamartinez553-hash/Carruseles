@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
-"""Renderiza el reloj STLabs a MP4 9:16 con agujas en loop exacto."""
+"""Renderiza el reloj STLabs a MP4 6:7 con agujas en loop exacto."""
 from pathlib import Path
 import shutil
 import subprocess
 from playwright.sync_api import sync_playwright
 
 B = Path(__file__).resolve().parent
-W, H = 1080, 1920
+W, H = 1080, 1260  # 6:7
 DURATION = 8.0
 FPS = 30
 FRAMES = int(DURATION * FPS)
