@@ -166,7 +166,7 @@ svg {{ position:absolute; inset:0; }}
 <svg viewBox="0 0 {W} {H}" width="{W}" height="{H}" aria-hidden="true">
   {ticks()}
   {circular_text()}
-  <text class="circ green hoy" x="{CX}" y="{CY + R_TICK_OUT + 78}"
+  <text class="circ green hoy" x="{CX}" y="{CY + R_TICK_OUT + 90}"
         text-anchor="middle" dominant-baseline="middle">HOY</text>
   <g id="hour">
     <rect x="{CX - 9}" y="{CY - 152}" width="18" height="168" rx="2" fill="{GREEN}"/>

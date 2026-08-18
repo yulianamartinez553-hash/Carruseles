@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Dentro de un año — STLabs</title>
+<title>DENTRO DE UN AÑO — STLabs</title>
 <style>
 @font-face {
   font-family:'Poppins';
@@ -15,138 +15,144 @@
   font-weight:500;
 }
 * { box-sizing:border-box; margin:0; padding:0; }
-html, body { background:#0A0A0A; width:1080px; height:1920px; overflow:hidden; }
+html, body { background:#0A0A0A; width:1080px; height:1260px; overflow:hidden; }
 .stage {
-  position:relative; width:1080px; height:1920px; background:#0A0A0A;
+  position:relative; width:1080px; height:1260px; background:#0A0A0A;
 }
 svg { position:absolute; inset:0; }
 .circ {
   font-family:'Poppins', sans-serif; font-weight:800;
-  fill:#00FFB2; letter-spacing:0;
+  letter-spacing:0; paint-order:stroke fill;
+  stroke-width:3.2px; stroke-linejoin:round;
+}
+.circ.white { fill:#F2F2F2; stroke:#F2F2F2; }
+.circ.green { fill:#00FFB2; stroke:#00FFB2; }
+.hoy {
+  font-size:72px; letter-spacing:.08em;
+  stroke-width:4px;
 }
 .firma {
-  position:absolute; left:0; right:0; bottom:72px; text-align:center;
+  position:absolute; left:0; right:0; bottom:44px; text-align:center;
   font-family:'IBM Plex Mono', monospace; font-weight:500;
-  font-size:22px; letter-spacing:.14em; color:#00FFB2;
+  font-size:20px; letter-spacing:.14em; color:#00FFB2;
 }
 </style>
 </head>
 <body>
 <div class="stage" id="stage">
-<svg viewBox="0 0 1080 1920" width="1080" height="1920" aria-hidden="true">
-  <line x1="540.00" y1="608.00" x2="540.00" y2="562.00" stroke="#00FFB2" stroke-width="6" stroke-linecap="square"/>
-<line x1="572.61" y1="589.71" x2="575.33" y2="563.85" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="604.87" y1="594.82" x2="610.27" y2="569.39" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="636.41" y1="603.27" x2="644.45" y2="578.54" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="666.90" y1="614.97" x2="677.48" y2="591.22" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="686.00" y1="647.12" x2="709.00" y2="607.28" stroke="#00FFB2" stroke-width="6" stroke-linecap="square"/>
-<line x1="723.39" y1="647.59" x2="738.67" y2="626.55" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="748.77" y1="668.14" x2="766.17" y2="648.82" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="771.86" y1="691.23" x2="791.18" y2="673.83" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="792.41" y1="716.61" x2="813.45" y2="701.33" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="792.88" y1="754.00" x2="832.72" y2="731.00" stroke="#00FFB2" stroke-width="6" stroke-linecap="square"/>
-<line x1="825.03" y1="773.10" x2="848.78" y2="762.52" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="836.73" y1="803.59" x2="861.46" y2="795.55" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="845.18" y1="835.13" x2="870.61" y2="829.73" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="850.29" y1="867.39" x2="876.15" y2="864.67" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="832.00" y1="900.00" x2="878.00" y2="900.00" stroke="#00FFB2" stroke-width="6" stroke-linecap="square"/>
-<line x1="850.29" y1="932.61" x2="876.15" y2="935.33" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="845.18" y1="964.87" x2="870.61" y2="970.27" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="836.73" y1="996.41" x2="861.46" y2="1004.45" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="825.03" y1="1026.90" x2="848.78" y2="1037.48" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="792.88" y1="1046.00" x2="832.72" y2="1069.00" stroke="#00FFB2" stroke-width="6" stroke-linecap="square"/>
-<line x1="792.41" y1="1083.39" x2="813.45" y2="1098.67" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="771.86" y1="1108.77" x2="791.18" y2="1126.17" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="748.77" y1="1131.86" x2="766.17" y2="1151.18" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="723.39" y1="1152.41" x2="738.67" y2="1173.45" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="686.00" y1="1152.88" x2="709.00" y2="1192.72" stroke="#00FFB2" stroke-width="6" stroke-linecap="square"/>
-<line x1="666.90" y1="1185.03" x2="677.48" y2="1208.78" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="636.41" y1="1196.73" x2="644.45" y2="1221.46" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="604.87" y1="1205.18" x2="610.27" y2="1230.61" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="572.61" y1="1210.29" x2="575.33" y2="1236.15" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="540.00" y1="1192.00" x2="540.00" y2="1238.00" stroke="#00FFB2" stroke-width="6" stroke-linecap="square"/>
-<line x1="507.39" y1="1210.29" x2="504.67" y2="1236.15" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="475.13" y1="1205.18" x2="469.73" y2="1230.61" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="443.59" y1="1196.73" x2="435.55" y2="1221.46" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="413.10" y1="1185.03" x2="402.52" y2="1208.78" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="394.00" y1="1152.88" x2="371.00" y2="1192.72" stroke="#00FFB2" stroke-width="6" stroke-linecap="square"/>
-<line x1="356.61" y1="1152.41" x2="341.33" y2="1173.45" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="331.23" y1="1131.86" x2="313.83" y2="1151.18" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="308.14" y1="1108.77" x2="288.82" y2="1126.17" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="287.59" y1="1083.39" x2="266.55" y2="1098.67" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="287.12" y1="1046.00" x2="247.28" y2="1069.00" stroke="#00FFB2" stroke-width="6" stroke-linecap="square"/>
-<line x1="254.97" y1="1026.90" x2="231.22" y2="1037.48" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="243.27" y1="996.41" x2="218.54" y2="1004.45" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="234.82" y1="964.87" x2="209.39" y2="970.27" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="229.71" y1="932.61" x2="203.85" y2="935.33" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="248.00" y1="900.00" x2="202.00" y2="900.00" stroke="#00FFB2" stroke-width="6" stroke-linecap="square"/>
-<line x1="229.71" y1="867.39" x2="203.85" y2="864.67" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="234.82" y1="835.13" x2="209.39" y2="829.73" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="243.27" y1="803.59" x2="218.54" y2="795.55" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="254.97" y1="773.10" x2="231.22" y2="762.52" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="287.12" y1="754.00" x2="247.28" y2="731.00" stroke="#00FFB2" stroke-width="6" stroke-linecap="square"/>
-<line x1="287.59" y1="716.61" x2="266.55" y2="701.33" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="308.14" y1="691.23" x2="288.82" y2="673.83" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="331.23" y1="668.14" x2="313.83" y2="648.82" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="356.61" y1="647.59" x2="341.33" y2="626.55" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="394.00" y1="647.12" x2="371.00" y2="607.28" stroke="#00FFB2" stroke-width="6" stroke-linecap="square"/>
-<line x1="413.10" y1="614.97" x2="402.52" y2="591.22" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="443.59" y1="603.27" x2="435.55" y2="578.54" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="475.13" y1="594.82" x2="469.73" y2="569.39" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-<line x1="507.39" y1="589.71" x2="504.67" y2="563.85" stroke="#00FFB2" stroke-width="2.4" stroke-linecap="square"/>
-  <text class="circ" x="540" y="900" font-size="40" transform="rotate(-66.000 540 900) translate(0 -418)" text-anchor="middle" dominant-baseline="middle">D</text>
-<text class="circ" x="540" y="900" font-size="40" transform="rotate(-57.750 540 900) translate(0 -418)" text-anchor="middle" dominant-baseline="middle">e</text>
-<text class="circ" x="540" y="900" font-size="40" transform="rotate(-49.500 540 900) translate(0 -418)" text-anchor="middle" dominant-baseline="middle">n</text>
-<text class="circ" x="540" y="900" font-size="40" transform="rotate(-41.250 540 900) translate(0 -418)" text-anchor="middle" dominant-baseline="middle">t</text>
-<text class="circ" x="540" y="900" font-size="40" transform="rotate(-33.000 540 900) translate(0 -418)" text-anchor="middle" dominant-baseline="middle">r</text>
-<text class="circ" x="540" y="900" font-size="40" transform="rotate(-24.750 540 900) translate(0 -418)" text-anchor="middle" dominant-baseline="middle">o</text>
-<text class="circ" x="540" y="900" font-size="40" transform="rotate(-8.250 540 900) translate(0 -418)" text-anchor="middle" dominant-baseline="middle">d</text>
-<text class="circ" x="540" y="900" font-size="40" transform="rotate(0.000 540 900) translate(0 -418)" text-anchor="middle" dominant-baseline="middle">e</text>
-<text class="circ" x="540" y="900" font-size="40" transform="rotate(16.500 540 900) translate(0 -418)" text-anchor="middle" dominant-baseline="middle">u</text>
-<text class="circ" x="540" y="900" font-size="40" transform="rotate(24.750 540 900) translate(0 -418)" text-anchor="middle" dominant-baseline="middle">n</text>
-<text class="circ" x="540" y="900" font-size="40" transform="rotate(41.250 540 900) translate(0 -418)" text-anchor="middle" dominant-baseline="middle">a</text>
-<text class="circ" x="540" y="900" font-size="40" transform="rotate(49.500 540 900) translate(0 -418)" text-anchor="middle" dominant-baseline="middle">ñ</text>
-<text class="circ" x="540" y="900" font-size="40" transform="rotate(57.750 540 900) translate(0 -418)" text-anchor="middle" dominant-baseline="middle">o</text>
-<text class="circ" x="540" y="900" font-size="40" transform="rotate(66.000 540 900) translate(0 -418)" text-anchor="middle" dominant-baseline="middle">,</text>
-<text class="circ" x="540" y="900" font-size="38" transform="rotate(64.000 540 900) translate(0 -418)" text-anchor="middle" dominant-baseline="middle">a</text>
-<text class="circ" x="540" y="900" font-size="38" transform="rotate(68.320 540 900) translate(0 -418)" text-anchor="middle" dominant-baseline="middle">g</text>
-<text class="circ" x="540" y="900" font-size="38" transform="rotate(72.640 540 900) translate(0 -418)" text-anchor="middle" dominant-baseline="middle">r</text>
-<text class="circ" x="540" y="900" font-size="38" transform="rotate(76.960 540 900) translate(0 -418)" text-anchor="middle" dominant-baseline="middle">a</text>
-<text class="circ" x="540" y="900" font-size="38" transform="rotate(81.280 540 900) translate(0 -418)" text-anchor="middle" dominant-baseline="middle">d</text>
-<text class="circ" x="540" y="900" font-size="38" transform="rotate(85.600 540 900) translate(0 -418)" text-anchor="middle" dominant-baseline="middle">e</text>
-<text class="circ" x="540" y="900" font-size="38" transform="rotate(89.920 540 900) translate(0 -418)" text-anchor="middle" dominant-baseline="middle">c</text>
-<text class="circ" x="540" y="900" font-size="38" transform="rotate(94.240 540 900) translate(0 -418)" text-anchor="middle" dominant-baseline="middle">e</text>
-<text class="circ" x="540" y="900" font-size="38" transform="rotate(98.560 540 900) translate(0 -418)" text-anchor="middle" dominant-baseline="middle">r</text>
-<text class="circ" x="540" y="900" font-size="38" transform="rotate(102.880 540 900) translate(0 -418)" text-anchor="middle" dominant-baseline="middle">á</text>
-<text class="circ" x="540" y="900" font-size="38" transform="rotate(107.200 540 900) translate(0 -418)" text-anchor="middle" dominant-baseline="middle">s</text>
-<text class="circ" x="540" y="900" font-size="38" transform="rotate(115.840 540 900) translate(0 -418)" text-anchor="middle" dominant-baseline="middle">h</text>
-<text class="circ" x="540" y="900" font-size="38" transform="rotate(120.160 540 900) translate(0 -418)" text-anchor="middle" dominant-baseline="middle">a</text>
-<text class="circ" x="540" y="900" font-size="38" transform="rotate(124.480 540 900) translate(0 -418)" text-anchor="middle" dominant-baseline="middle">b</text>
-<text class="circ" x="540" y="900" font-size="38" transform="rotate(128.800 540 900) translate(0 -418)" text-anchor="middle" dominant-baseline="middle">e</text>
-<text class="circ" x="540" y="900" font-size="38" transform="rotate(133.120 540 900) translate(0 -418)" text-anchor="middle" dominant-baseline="middle">r</text>
-<text class="circ" x="540" y="900" font-size="38" transform="rotate(141.760 540 900) translate(0 -418)" text-anchor="middle" dominant-baseline="middle">e</text>
-<text class="circ" x="540" y="900" font-size="38" transform="rotate(146.080 540 900) translate(0 -418)" text-anchor="middle" dominant-baseline="middle">m</text>
-<text class="circ" x="540" y="900" font-size="38" transform="rotate(150.400 540 900) translate(0 -418)" text-anchor="middle" dominant-baseline="middle">p</text>
-<text class="circ" x="540" y="900" font-size="38" transform="rotate(154.720 540 900) translate(0 -418)" text-anchor="middle" dominant-baseline="middle">e</text>
-<text class="circ" x="540" y="900" font-size="38" transform="rotate(159.040 540 900) translate(0 -418)" text-anchor="middle" dominant-baseline="middle">z</text>
-<text class="circ" x="540" y="900" font-size="38" transform="rotate(163.360 540 900) translate(0 -418)" text-anchor="middle" dominant-baseline="middle">a</text>
-<text class="circ" x="540" y="900" font-size="38" transform="rotate(167.680 540 900) translate(0 -418)" text-anchor="middle" dominant-baseline="middle">d</text>
-<text class="circ" x="540" y="900" font-size="38" transform="rotate(172.000 540 900) translate(0 -418)" text-anchor="middle" dominant-baseline="middle">o</text>
-<text class="circ" x="540" y="900" font-size="58" transform="rotate(163.000 540 900) translate(0 -424)" text-anchor="middle" dominant-baseline="middle">h</text>
-<text class="circ" x="540" y="900" font-size="58" transform="rotate(180.000 540 900) translate(0 -424)" text-anchor="middle" dominant-baseline="middle">o</text>
-<text class="circ" x="540" y="900" font-size="58" transform="rotate(197.000 540 900) translate(0 -424)" text-anchor="middle" dominant-baseline="middle">y</text>
+<svg viewBox="0 0 1080 1260" width="1080" height="1260" aria-hidden="true">
+  <line x1="540.00" y1="330.00" x2="540.00" y2="286.00" stroke="#00FFB2" stroke-width="7" stroke-linecap="square"/>
+<line x1="569.90" y1="313.57" x2="572.61" y2="287.71" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="599.46" y1="318.25" x2="604.87" y2="292.82" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="628.38" y1="326.00" x2="636.41" y2="301.27" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="656.33" y1="336.73" x2="666.90" y2="312.97" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="674.00" y1="365.91" x2="696.00" y2="327.80" stroke="#00FFB2" stroke-width="7" stroke-linecap="square"/>
+<line x1="708.11" y1="366.62" x2="723.39" y2="345.59" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="731.37" y1="385.46" x2="748.77" y2="366.14" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="752.54" y1="406.63" x2="771.86" y2="389.23" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="771.38" y1="429.89" x2="792.41" y2="414.61" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="772.09" y1="464.00" x2="810.20" y2="442.00" stroke="#00FFB2" stroke-width="7" stroke-linecap="square"/>
+<line x1="801.27" y1="481.67" x2="825.03" y2="471.10" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="812.00" y1="509.62" x2="836.73" y2="501.59" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="819.75" y1="538.54" x2="845.18" y2="533.13" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="824.43" y1="568.10" x2="850.29" y2="565.39" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="808.00" y1="598.00" x2="852.00" y2="598.00" stroke="#00FFB2" stroke-width="7" stroke-linecap="square"/>
+<line x1="824.43" y1="627.90" x2="850.29" y2="630.61" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="819.75" y1="657.46" x2="845.18" y2="662.87" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="812.00" y1="686.38" x2="836.73" y2="694.41" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="801.27" y1="714.33" x2="825.03" y2="724.90" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="772.09" y1="732.00" x2="810.20" y2="754.00" stroke="#00FFB2" stroke-width="7" stroke-linecap="square"/>
+<line x1="771.38" y1="766.11" x2="792.41" y2="781.39" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="752.54" y1="789.37" x2="771.86" y2="806.77" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="731.37" y1="810.54" x2="748.77" y2="829.86" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="708.11" y1="829.38" x2="723.39" y2="850.41" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="674.00" y1="830.09" x2="696.00" y2="868.20" stroke="#00FFB2" stroke-width="7" stroke-linecap="square"/>
+<line x1="656.33" y1="859.27" x2="666.90" y2="883.03" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="628.38" y1="870.00" x2="636.41" y2="894.73" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="599.46" y1="877.75" x2="604.87" y2="903.18" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="569.90" y1="882.43" x2="572.61" y2="908.29" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="540.00" y1="866.00" x2="540.00" y2="910.00" stroke="#00FFB2" stroke-width="7" stroke-linecap="square"/>
+<line x1="510.10" y1="882.43" x2="507.39" y2="908.29" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="480.54" y1="877.75" x2="475.13" y2="903.18" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="451.62" y1="870.00" x2="443.59" y2="894.73" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="423.67" y1="859.27" x2="413.10" y2="883.03" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="406.00" y1="830.09" x2="384.00" y2="868.20" stroke="#00FFB2" stroke-width="7" stroke-linecap="square"/>
+<line x1="371.89" y1="829.38" x2="356.61" y2="850.41" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="348.63" y1="810.54" x2="331.23" y2="829.86" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="327.46" y1="789.37" x2="308.14" y2="806.77" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="308.62" y1="766.11" x2="287.59" y2="781.39" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="307.91" y1="732.00" x2="269.80" y2="754.00" stroke="#00FFB2" stroke-width="7" stroke-linecap="square"/>
+<line x1="278.73" y1="714.33" x2="254.97" y2="724.90" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="268.00" y1="686.38" x2="243.27" y2="694.41" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="260.25" y1="657.46" x2="234.82" y2="662.87" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="255.57" y1="627.90" x2="229.71" y2="630.61" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="272.00" y1="598.00" x2="228.00" y2="598.00" stroke="#00FFB2" stroke-width="7" stroke-linecap="square"/>
+<line x1="255.57" y1="568.10" x2="229.71" y2="565.39" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="260.25" y1="538.54" x2="234.82" y2="533.13" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="268.00" y1="509.62" x2="243.27" y2="501.59" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="278.73" y1="481.67" x2="254.97" y2="471.10" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="307.91" y1="464.00" x2="269.80" y2="442.00" stroke="#00FFB2" stroke-width="7" stroke-linecap="square"/>
+<line x1="308.62" y1="429.89" x2="287.59" y2="414.61" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="327.46" y1="406.63" x2="308.14" y2="389.23" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="348.63" y1="385.46" x2="331.23" y2="366.14" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="371.89" y1="366.62" x2="356.61" y2="345.59" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="406.00" y1="365.91" x2="384.00" y2="327.80" stroke="#00FFB2" stroke-width="7" stroke-linecap="square"/>
+<line x1="423.67" y1="336.73" x2="413.10" y2="312.97" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="451.62" y1="326.00" x2="443.59" y2="301.27" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="480.54" y1="318.25" x2="475.13" y2="292.82" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+<line x1="510.10" y1="313.57" x2="507.39" y2="287.71" stroke="#00FFB2" stroke-width="2.6" stroke-linecap="square"/>
+  <text class="circ white" x="0" y="0" font-size="46" fill="#F2F2F2" stroke="#F2F2F2" transform="translate(540 598) rotate(-68.932) translate(0 -378)" text-anchor="middle" dominant-baseline="middle">D</text>
+<text class="circ white" x="0" y="0" font-size="46" fill="#F2F2F2" stroke="#F2F2F2" transform="translate(540 598) rotate(-63.354) translate(0 -378)" text-anchor="middle" dominant-baseline="middle">E</text>
+<text class="circ white" x="0" y="0" font-size="46" fill="#F2F2F2" stroke="#F2F2F2" transform="translate(540 598) rotate(-57.706) translate(0 -378)" text-anchor="middle" dominant-baseline="middle">N</text>
+<text class="circ white" x="0" y="0" font-size="46" fill="#F2F2F2" stroke="#F2F2F2" transform="translate(540 598) rotate(-52.198) translate(0 -378)" text-anchor="middle" dominant-baseline="middle">T</text>
+<text class="circ white" x="0" y="0" font-size="46" fill="#F2F2F2" stroke="#F2F2F2" transform="translate(540 598) rotate(-46.969) translate(0 -378)" text-anchor="middle" dominant-baseline="middle">R</text>
+<text class="circ white" x="0" y="0" font-size="46" fill="#F2F2F2" stroke="#F2F2F2" transform="translate(540 598) rotate(-41.042) translate(0 -378)" text-anchor="middle" dominant-baseline="middle">O</text>
+<text class="circ white" x="0" y="0" font-size="46" fill="#F2F2F2" stroke="#F2F2F2" transform="translate(540 598) rotate(-31.978) translate(0 -378)" text-anchor="middle" dominant-baseline="middle">D</text>
+<text class="circ white" x="0" y="0" font-size="46" fill="#F2F2F2" stroke="#F2F2F2" transform="translate(540 598) rotate(-26.400) translate(0 -378)" text-anchor="middle" dominant-baseline="middle">E</text>
+<text class="circ white" x="0" y="0" font-size="46" fill="#F2F2F2" stroke="#F2F2F2" transform="translate(540 598) rotate(-17.893) translate(0 -378)" text-anchor="middle" dominant-baseline="middle">U</text>
+<text class="circ white" x="0" y="0" font-size="46" fill="#F2F2F2" stroke="#F2F2F2" transform="translate(540 598) rotate(-11.688) translate(0 -378)" text-anchor="middle" dominant-baseline="middle">N</text>
+<text class="circ green" x="0" y="0" font-size="46" fill="#00FFB2" stroke="#00FFB2" transform="translate(540 598) rotate(-2.693) translate(0 -378)" text-anchor="middle" dominant-baseline="middle">A</text>
+<text class="circ green" x="0" y="0" font-size="46" fill="#00FFB2" stroke="#00FFB2" transform="translate(540 598) rotate(3.373) translate(0 -378)" text-anchor="middle" dominant-baseline="middle">Ñ</text>
+<text class="circ green" x="0" y="0" font-size="46" fill="#00FFB2" stroke="#00FFB2" transform="translate(540 598) rotate(9.578) translate(0 -378)" text-anchor="middle" dominant-baseline="middle">O</text>
+<text class="circ white" x="0" y="0" font-size="46" fill="#F2F2F2" stroke="#F2F2F2" transform="translate(540 598) rotate(14.110) translate(0 -378)" text-anchor="middle" dominant-baseline="middle">,</text>
+<text class="circ white" x="0" y="0" font-size="43" fill="#F2F2F2" stroke="#F2F2F2" transform="translate(540 598) rotate(28.219) translate(0 -382)" text-anchor="middle" dominant-baseline="middle">A</text>
+<text class="circ white" x="0" y="0" font-size="43" fill="#F2F2F2" stroke="#F2F2F2" transform="translate(540 598) rotate(33.572) translate(0 -382)" text-anchor="middle" dominant-baseline="middle">G</text>
+<text class="circ white" x="0" y="0" font-size="43" fill="#F2F2F2" stroke="#F2F2F2" transform="translate(540 598) rotate(38.861) translate(0 -382)" text-anchor="middle" dominant-baseline="middle">R</text>
+<text class="circ white" x="0" y="0" font-size="43" fill="#F2F2F2" stroke="#F2F2F2" transform="translate(540 598) rotate(44.085) translate(0 -382)" text-anchor="middle" dominant-baseline="middle">A</text>
+<text class="circ white" x="0" y="0" font-size="43" fill="#F2F2F2" stroke="#F2F2F2" transform="translate(540 598) rotate(49.502) translate(0 -382)" text-anchor="middle" dominant-baseline="middle">D</text>
+<text class="circ white" x="0" y="0" font-size="43" fill="#F2F2F2" stroke="#F2F2F2" transform="translate(540 598) rotate(54.533) translate(0 -382)" text-anchor="middle" dominant-baseline="middle">E</text>
+<text class="circ white" x="0" y="0" font-size="43" fill="#F2F2F2" stroke="#F2F2F2" transform="translate(540 598) rotate(59.435) translate(0 -382)" text-anchor="middle" dominant-baseline="middle">C</text>
+<text class="circ white" x="0" y="0" font-size="43" fill="#F2F2F2" stroke="#F2F2F2" transform="translate(540 598) rotate(64.336) translate(0 -382)" text-anchor="middle" dominant-baseline="middle">E</text>
+<text class="circ white" x="0" y="0" font-size="43" fill="#F2F2F2" stroke="#F2F2F2" transform="translate(540 598) rotate(69.173) translate(0 -382)" text-anchor="middle" dominant-baseline="middle">R</text>
+<text class="circ white" x="0" y="0" font-size="43" fill="#F2F2F2" stroke="#F2F2F2" transform="translate(540 598) rotate(74.398) translate(0 -382)" text-anchor="middle" dominant-baseline="middle">Á</text>
+<text class="circ white" x="0" y="0" font-size="43" fill="#F2F2F2" stroke="#F2F2F2" transform="translate(540 598) rotate(79.364) translate(0 -382)" text-anchor="middle" dominant-baseline="middle">S</text>
+<text class="circ white" x="0" y="0" font-size="43" fill="#F2F2F2" stroke="#F2F2F2" transform="translate(540 598) rotate(87.039) translate(0 -382)" text-anchor="middle" dominant-baseline="middle">H</text>
+<text class="circ white" x="0" y="0" font-size="43" fill="#F2F2F2" stroke="#F2F2F2" transform="translate(540 598) rotate(92.456) translate(0 -382)" text-anchor="middle" dominant-baseline="middle">A</text>
+<text class="circ white" x="0" y="0" font-size="43" fill="#F2F2F2" stroke="#F2F2F2" transform="translate(540 598) rotate(97.551) translate(0 -382)" text-anchor="middle" dominant-baseline="middle">B</text>
+<text class="circ white" x="0" y="0" font-size="43" fill="#F2F2F2" stroke="#F2F2F2" transform="translate(540 598) rotate(102.259) translate(0 -382)" text-anchor="middle" dominant-baseline="middle">E</text>
+<text class="circ white" x="0" y="0" font-size="43" fill="#F2F2F2" stroke="#F2F2F2" transform="translate(540 598) rotate(107.097) translate(0 -382)" text-anchor="middle" dominant-baseline="middle">R</text>
+<text class="circ white" x="0" y="0" font-size="43" fill="#F2F2F2" stroke="#F2F2F2" transform="translate(540 598) rotate(114.514) translate(0 -382)" text-anchor="middle" dominant-baseline="middle">E</text>
+<text class="circ white" x="0" y="0" font-size="43" fill="#F2F2F2" stroke="#F2F2F2" transform="translate(540 598) rotate(120.060) translate(0 -382)" text-anchor="middle" dominant-baseline="middle">M</text>
+<text class="circ white" x="0" y="0" font-size="43" fill="#F2F2F2" stroke="#F2F2F2" transform="translate(540 598) rotate(125.736) translate(0 -382)" text-anchor="middle" dominant-baseline="middle">P</text>
+<text class="circ white" x="0" y="0" font-size="43" fill="#F2F2F2" stroke="#F2F2F2" transform="translate(540 598) rotate(130.379) translate(0 -382)" text-anchor="middle" dominant-baseline="middle">E</text>
+<text class="circ white" x="0" y="0" font-size="43" fill="#F2F2F2" stroke="#F2F2F2" transform="translate(540 598) rotate(134.959) translate(0 -382)" text-anchor="middle" dominant-baseline="middle">Z</text>
+<text class="circ white" x="0" y="0" font-size="43" fill="#F2F2F2" stroke="#F2F2F2" transform="translate(540 598) rotate(139.925) translate(0 -382)" text-anchor="middle" dominant-baseline="middle">A</text>
+<text class="circ white" x="0" y="0" font-size="43" fill="#F2F2F2" stroke="#F2F2F2" transform="translate(540 598) rotate(145.342) translate(0 -382)" text-anchor="middle" dominant-baseline="middle">D</text>
+<text class="circ white" x="0" y="0" font-size="43" fill="#F2F2F2" stroke="#F2F2F2" transform="translate(540 598) rotate(150.889) translate(0 -382)" text-anchor="middle" dominant-baseline="middle">O</text>
+  <text class="circ green hoy" x="540" y="1000"
+        text-anchor="middle" dominant-baseline="middle">HOY</text>
   <g id="hour">
-    <rect x="532" y="732" width="16" height="186" rx="2" fill="#00FFB2"/>
+    <rect x="531" y="446" width="18" height="168" rx="2" fill="#00FFB2"/>
   </g>
   <g id="minute">
-    <rect x="535.5" y="638" width="9" height="278" rx="2" fill="#00FFB2"/>
+    <rect x="535" y="360" width="10" height="252" rx="2" fill="#00FFB2"/>
   </g>
-  <circle cx="540" cy="900" r="14" fill="#00FFB2"/>
+  <circle cx="540" cy="598" r="15" fill="#00FFB2"/>
 </svg>
 <div class="firma">sebastian.stlabs.ar</div>
 </div>
 <script>
-const CX = 540, CY = 900, DURATION = 8.0;
+const CX = 540, CY = 598, DURATION = 8.0;
 function setClock(t) {
   const u = ((t % DURATION) + DURATION) % DURATION;
   const min = (u / DURATION) * 360;
