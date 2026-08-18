@@ -1,0 +1,436 @@
+# -*- coding: utf-8 -*-
+"""Carrusel 6 slides — clon editorial STLabs
+Fondo: reticula_fina + glows · Familia: dossier_editorial · Modo: negro
+Títulos: Playfair Display (serif elegante, gruesa) · Cuerpo: Poppins
+JSON: 00-sistema-visual-carrusel.json (estilo editorial)
+"""
+from pathlib import Path
+import json
+
+B = Path(__file__).resolve().parent
+A = B / "assets"
+FONTS = Path("/tmp/stlabs-fonts")
+G = "#00FFB2"
+W = "#F2F2F2"
+BG = "#0A0A0A"
+
+
+def uri(p: Path) -> str:
+    return p.resolve().as_uri()
+
+
+def build_css() -> str:
+    f = str(FONTS)
+    hero = uri(A / "sebas-hero.png")
+    dude = uri(A / "pixel-dude.png")
+    av = uri(A / "sebas-avatar.png")
+    wch = uri(A / "pixel-wrench.png")
+    cost = uri(A / "pixel-cost.png")
+    bell = uri(A / "pixel-bell.png")
+    return f"""
+@font-face {{ font-family:'Playfair'; src:url('file://{f}/PlayfairDisplay.ttf') format('truetype'); font-weight:400 900; font-style:normal; }}
+@font-face {{ font-family:'Playfair'; src:url('file://{f}/PlayfairDisplay-Italic.ttf') format('truetype'); font-weight:400 900; font-style:italic; }}
+@font-face {{ font-family:'Poppins'; src:url('file://{f}/Poppins-ExtraBold.ttf') format('truetype'); font-weight:800; }}
+@font-face {{ font-family:'Poppins'; src:url('file://{f}/Poppins-Bold.ttf') format('truetype'); font-weight:700; }}
+@font-face {{ font-family:'IBM Plex Mono'; src:url('file://{f}/IBMPlexMono-Medium.ttf') format('truetype'); font-weight:500; }}
+@font-face {{ font-family:'IBM Plex Mono'; src:url('file://{f}/IBMPlexMono-SemiBold.ttf') format('truetype'); font-weight:600; }}
+
+* {{ box-sizing:border-box; margin:0; padding:0; -webkit-font-smoothing:antialiased; }}
+html, body {{ background:#000; }}
+.sheet {{ display:flex; flex-direction:column; gap:48px; padding:40px; width:max-content; }}
+.slide {{
+  position:relative; width:1080px; height:1350px; overflow:hidden;
+  background:{BG}; color:{W};
+}}
+.tex {{
+  position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-image:
+    linear-gradient(rgba(0,255,178,.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,178,.07) 1px, transparent 1px);
+  background-size:56px 56px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 20%, transparent 78%);
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 20%, transparent 78%);
+}}
+.glow {{ position:absolute; border-radius:50%; pointer-events:none; z-index:0; filter:blur(48px); }}
+.glow-tr {{
+  top:-220px; right:-180px; width:560px; height:560px;
+  background:radial-gradient(circle, rgba(0,255,178,.30) 0%, rgba(0,255,178,.10) 42%, transparent 72%);
+}}
+.glow-bl {{
+  bottom:-180px; left:-160px; width:560px; height:560px;
+  background:radial-gradient(circle, rgba(0,255,178,.26) 0%, rgba(0,255,178,.09) 42%, transparent 74%);
+}}
+.hline {{
+  position:absolute; left:72px; right:72px; height:1px; background:rgba(0,255,178,.35); z-index:3;
+}}
+.hline.top {{ top:92px; }}
+.hline.bot {{ bottom:118px; }}
+.plus {{
+  position:absolute; top:72px; right:72px; z-index:4;
+  font-family:'Poppins',sans-serif; font-weight:800; font-size:28px; color:{G};
+}}
+.brand {{
+  position:absolute; top:48px; left:72px; z-index:4;
+  font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:18px;
+  letter-spacing:.12em; color:{G}; text-transform:uppercase;
+}}
+.kicker {{
+  position:absolute; top:112px; left:72px; z-index:4;
+  font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:18px;
+  letter-spacing:.14em; color:{G}; text-transform:uppercase;
+}}
+.pill {{
+  position:absolute; top:42px; right:72px; z-index:4;
+  display:flex; align-items:center; gap:10px;
+  border:1.5px solid {G}; border-radius:999px; padding:8px 16px;
+  font-family:'Poppins',sans-serif; font-weight:700; font-size:16px; color:{G};
+  text-transform:uppercase; letter-spacing:.06em;
+}}
+.pill i {{ width:10px; height:10px; border-radius:50%; background:{G}; display:block; }}
+.firma {{
+  position:absolute; left:0; right:0; bottom:48px; text-align:center; z-index:8;
+  font-family:'IBM Plex Mono',monospace; font-weight:500; font-size:20px;
+  letter-spacing:.14em; color:{G};
+}}
+.cta-side {{
+  position:absolute; right:72px; bottom:148px; z-index:6;
+  font-family:'Playfair',Georgia,serif; font-style:italic; font-weight:700;
+  font-size:22px; color:{G}; text-align:right;
+}}
+
+/* PORTADA */
+.hero {{
+  position:absolute; left:0; right:0; bottom:0; height:64%; z-index:1;
+  background:url('{hero}') center 18% / cover no-repeat;
+}}
+.hero-fade {{
+  position:absolute; left:0; right:0; top:0; height:46%; z-index:2; pointer-events:none;
+  background:linear-gradient(180deg, {BG} 0%, {BG} 38%, rgba(10,10,10,.55) 70%, transparent 100%);
+}}
+.display {{
+  position:absolute; left:72px; right:90px; top:168px; z-index:5;
+  font-family:'Playfair',Georgia,serif; font-weight:800;
+  font-size:64px; line-height:.98; letter-spacing:-.02em; color:{W};
+  text-align:left;
+}}
+.display em {{ font-style:italic; color:{G}; font-weight:700; }}
+.clip {{
+  position:absolute; z-index:6; width:132px; height:132px;
+}}
+.clip img {{ width:88px; height:88px; image-rendering:pixelated; display:block; margin:22px auto; }}
+.clip.dude {{ left:48px; top:58%; }}
+.clip.cf {{ right:40px; top:62%; width:170px; height:auto; }}
+.corners {{
+  position:absolute; inset:0; pointer-events:none;
+}}
+.corners span {{
+  position:absolute; width:22px; height:22px; border:2px solid {G};
+}}
+.corners .tl {{ top:0; left:0; border-right:none; border-bottom:none; }}
+.corners .tr {{ top:0; right:0; border-left:none; border-bottom:none; }}
+.corners .bl {{ bottom:0; left:0; border-right:none; border-top:none; }}
+.corners .br {{ bottom:0; right:0; border-left:none; border-top:none; }}
+.cf-mark {{
+  font-family:'Poppins',sans-serif; font-weight:800; font-size:13px;
+  letter-spacing:.16em; color:{W}; text-align:center; margin-top:6px;
+}}
+
+/* SLIDE 2 CARDS */
+.h2 {{
+  position:absolute; left:72px; right:72px; top:168px; z-index:4;
+  font-family:'Playfair',Georgia,serif; font-weight:800;
+  font-size:58px; line-height:1.02; color:{W}; text-align:left;
+}}
+.h2 em {{ font-style:italic; color:{G}; font-weight:700; }}
+.sub {{
+  position:absolute; left:72px; right:72px; top:300px; z-index:4;
+  font-family:'Poppins',sans-serif; font-weight:700; font-size:28px; color:{W};
+}}
+.cards {{ position:absolute; left:72px; right:72px; top:380px; z-index:4; display:flex; flex-direction:column; gap:18px; }}
+.card {{
+  display:flex; align-items:center; gap:18px;
+  background:#141414; border:1px solid #2A2A2A; border-radius:18px; padding:18px 22px;
+}}
+.card img {{ width:72px; height:72px; image-rendering:pixelated; flex-shrink:0; }}
+.card .div {{ width:2px; height:64px; background:{G}; flex-shrink:0; }}
+.card h3 {{ font-family:'Poppins',sans-serif; font-weight:800; font-size:26px; color:{W}; margin-bottom:6px; }}
+.card p {{ font-family:'Poppins',sans-serif; font-weight:700; font-size:20px; color:#9aa39c; line-height:1.3; }}
+
+/* SLIDE 3 */
+.bubble {{
+  position:absolute; left:72px; top:430px; z-index:4;
+  max-width:640px; background:#141414; color:{W};
+  font-family:'Poppins',sans-serif; font-weight:700; font-size:24px; line-height:1.35;
+  padding:22px 26px; border-radius:18px 18px 18px 6px;
+  border:1px solid #2A2A2A;
+}}
+.tag80 {{
+  position:absolute; left:740px; top:448px; z-index:4;
+  display:flex; align-items:center; gap:8px;
+  border:1.5px solid {G}; border-radius:999px; padding:8px 16px;
+  font-family:'Poppins',sans-serif; font-weight:800; font-size:18px; color:{G};
+}}
+.tag80 i {{ width:10px; height:10px; border-radius:50%; background:{G}; display:block; }}
+.metric {{
+  position:absolute; left:72px; right:72px; top:640px; z-index:4;
+  border:1.5px dashed {G}; border-radius:18px; padding:36px 40px;
+  background:rgba(0,255,178,.04);
+}}
+.metric .lab {{ font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:18px; color:#9aa39c; letter-spacing:.06em; }}
+.metric .num {{
+  font-family:'Playfair',Georgia,serif; font-weight:800; font-size:120px; line-height:.9;
+  color:{G}; margin:8px 0 4px;
+}}
+.metric .num span {{ font-size:36px; letter-spacing:.12em; margin-left:8px; vertical-align:super; }}
+.metric .foot {{ font-family:'Poppins',sans-serif; font-weight:700; font-size:22px; color:{G}; }}
+
+/* SLIDE 4 EQUATION */
+.eq {{
+  position:absolute; left:72px; right:72px; top:430px; z-index:4;
+  display:flex; align-items:flex-start; justify-content:center; gap:28px;
+}}
+.eq-item {{ text-align:center; width:280px; }}
+.eq-box {{
+  width:160px; height:160px; margin:0 auto 16px; border-radius:28px;
+  background:#141414; border:1px solid #2A2A2A;
+  display:flex; align-items:center; justify-content:center;
+}}
+.eq-item strong {{ display:block; font-family:'Poppins',sans-serif; font-weight:800; font-size:24px; color:{W}; }}
+.eq-item em {{ display:block; font-family:'Playfair',Georgia,serif; font-style:italic; font-weight:700; font-size:20px; color:{G}; }}
+.plus-lg {{
+  font-family:'Poppins',sans-serif; font-weight:800; font-size:64px; color:{G}; padding-top:48px;
+}}
+.result {{
+  position:absolute; left:72px; right:72px; top:820px; z-index:4; text-align:center;
+  font-family:'Playfair',Georgia,serif; font-style:italic; font-weight:700;
+  font-size:42px; color:{G};
+}}
+
+/* SLIDE 5 CHAT */
+.phone {{
+  position:absolute; left:120px; right:120px; top:430px; z-index:4;
+  background:#141414; border:1px solid #2A2A2A; border-radius:28px; overflow:hidden;
+}}
+.ph-head {{
+  background:#0A0A0A; padding:16px 20px; display:flex; align-items:center; gap:12px;
+  border-bottom:1px solid #2A2A2A;
+}}
+.ph-head .nm {{ font-family:'Poppins',sans-serif; font-weight:800; font-size:22px; color:{W}; }}
+.ph-head .hr {{ font-family:'IBM Plex Mono',monospace; font-weight:500; font-size:16px; color:#9aa39c; margin-left:auto; }}
+.ph-body {{ padding:22px 20px 28px; display:flex; flex-direction:column; gap:16px; }}
+.row {{ display:flex; align-items:flex-end; gap:10px; }}
+.row.me {{ justify-content:flex-end; }}
+.bubble-u {{
+  background:{G}; color:#0A0A0A; border-radius:18px 18px 4px 18px;
+  padding:14px 16px; max-width:70%;
+  font-family:'Poppins',sans-serif; font-weight:700; font-size:20px; line-height:1.3;
+}}
+.bubble-a {{
+  background:#1E1E1E; color:{W}; border-radius:18px 18px 18px 4px;
+  padding:14px 16px; max-width:74%;
+  font-family:'Poppins',sans-serif; font-weight:700; font-size:20px; line-height:1.3;
+}}
+.av {{ width:44px; height:44px; border-radius:50%; object-fit:cover; flex-shrink:0; }}
+.ts {{ font-family:'IBM Plex Mono',monospace; font-size:13px; color:#9aa39c; margin-top:4px; }}
+
+/* SLIDE 6 CTA */
+.ask {{
+  position:absolute; left:72px; right:72px; top:200px; z-index:4; text-align:center;
+  font-family:'Playfair',Georgia,serif; font-weight:800; font-size:52px; line-height:1.08; color:{W};
+}}
+.ask em {{ font-style:italic; color:{G}; font-weight:700; }}
+.pre {{
+  position:absolute; left:72px; right:72px; top:430px; z-index:4; text-align:center;
+  font-family:'Poppins',sans-serif; font-weight:700; font-size:24px; color:{W};
+}}
+.kwbox {{
+  position:absolute; left:120px; right:120px; top:490px; z-index:4;
+  border:2px solid {G}; border-radius:18px; padding:36px 20px; text-align:center;
+}}
+.kwbox span {{
+  font-family:'Playfair',Georgia,serif; font-weight:800; font-size:72px;
+  letter-spacing:.18em; color:{G};
+}}
+.bottom-row {{
+  position:absolute; left:72px; right:72px; top:780px; z-index:4;
+  display:flex; align-items:center; gap:22px;
+}}
+.avatar-wrap {{ position:relative; width:168px; height:168px; flex-shrink:0; }}
+.avatar-wrap img {{ width:140px; height:140px; border-radius:50%; object-fit:cover; position:absolute; top:14px; left:14px; }}
+.send {{
+  font-family:'Poppins',sans-serif; font-weight:700; font-size:26px; color:{W}; line-height:1.3;
+}}
+.send em {{ font-style:normal; color:{G}; }}
+"""
+
+
+def chrome(kicker: str, pill: str | None = None, plus: bool = True) -> str:
+    p = ""
+    if pill:
+        p = f'<div class="pill"><i></i>{pill}</div>'
+    pl = '<div class="plus">+</div>' if plus else ""
+    return (
+        '<div class="tex"></div><div class="glow glow-tr"></div><div class="glow glow-bl"></div>'
+        '<div class="hline top"></div><div class="hline bot"></div>'
+        f'<div class="brand">STLabs</div>{pl}'
+        f'<div class="kicker">{kicker}</div>{p}'
+        '<div class="firma">sebastian.stlabs.ar</div>'
+    )
+
+
+def cf_icon() -> str:
+    return (
+        '<svg viewBox="0 0 64 40" width="88" height="56">'
+        '<path fill="#F38020" d="M52 24c1.8-6.2-2.2-12-9-12-1.2 0-2.4.2-3.5.6C38 8.2 33.4 5 28 5c-7.4 0-13.4 5.6-14 12.8C8.6 18.6 4 23.8 4 30c0 .7 0 1.4.1 2h50.6c.7-1.2 1.3-2.6 1.3-4.2 0-1.4-.3-2.6-.8-3.8z"/>'
+        '</svg>'
+    )
+
+
+def cf_svg() -> str:
+    return cf_icon() + '<div class="cf-mark">CLOUDFLARE</div>'
+
+
+def claude_svg(size: int = 88) -> str:
+    return (
+        f'<svg viewBox="0 0 80 80" width="{size}" height="{size}">'
+        '<g fill="#D97757">'
+        '<rect x="36" y="4" width="8" height="22" rx="2"/>'
+        '<rect x="36" y="54" width="8" height="22" rx="2"/>'
+        '<rect x="4" y="36" width="22" height="8" rx="2"/>'
+        '<rect x="54" y="36" width="22" height="8" rx="2"/>'
+        '<rect x="14" y="14" width="8" height="22" rx="2" transform="rotate(-45 18 25)"/>'
+        '<rect x="54" y="14" width="8" height="22" rx="2" transform="rotate(45 58 25)"/>'
+        '<rect x="14" y="46" width="8" height="22" rx="2" transform="rotate(45 18 57)"/>'
+        '<rect x="54" y="46" width="8" height="22" rx="2" transform="rotate(-45 58 57)"/>'
+        '</g></svg>'
+    )
+
+
+def slide_01() -> str:
+    dude = uri(A / "pixel-dude.png")
+    return (
+        '<section class="slide" data-id="01">'
+        + chrome("01 / 05", pill="Nadie lo cuenta", plus=False)
+        + '<div class="hero"></div><div class="hero-fade"></div>'
+        + '<h1 class="display"><em>La nueva</em><br>forma de crear<br><em>agentes IA.</em></h1>'
+        + f'<div class="clip dude"><div class="corners"><span class="tl"></span><span class="tr"></span><span class="bl"></span><span class="br"></span></div><img src="{dude}" alt=""></div>'
+        + f'<div class="clip cf">{cf_svg()}</div>'
+        + '<div class="cta-side">esto va a cambiar todo →</div>'
+        + "</section>"
+    )
+
+
+def slide_02() -> str:
+    wch, cost, bell = uri(A / "pixel-wrench.png"), uri(A / "pixel-cost.png"), uri(A / "pixel-bell.png")
+    cards = [
+        (wch, "Mantenimiento eterno", "Cada error que ve tu cliente lo arreglás a mano. Una y otra vez."),
+        (cost, "Costos que se acumulan", "Hosting, APIs y suscripciones. La factura crece cada mes."),
+        (bell, "Sin descanso real", "Tu cliente depende de que vos estés disponible las 24 horas."),
+    ]
+    html_cards = "".join(
+        f'<div class="card"><img src="{img}" alt=""><div class="div"></div><div><h3>{t}</h3><p>{d}</p></div></div>'
+        for img, t, d in cards
+    )
+    return (
+        '<section class="slide" data-id="02">'
+        + chrome("01 / 05 — El problema")
+        + '<h1 class="h2">Los <em>3</em> dolores</h1>'
+        + '<p class="sub">de tener un agente IA en producción.</p>'
+        + f'<div class="cards">{html_cards}</div>'
+        + '<div class="cta-side">y casi todos eligen la salida fácil →</div>'
+        + "</section>"
+    )
+
+
+def slide_03() -> str:
+    return (
+        '<section class="slide" data-id="03">'
+        + chrome("02 / 05 — La salida fácil")
+        + '<h1 class="h2">La salida <em>fácil</em><br>que todos toman</h1>'
+        + '<p class="sub">que el 80% toma… y les sale <b style="color:#00FFB2">100 veces más cara.</b></p>'
+        + '<div class="bubble">Uso la API de Claude directo, así me ahorro las plataformas</div>'
+        + '<div class="tag80"><i></i>el 80%</div>'
+        + '<div class="metric"><div class="lab">Anthropic API · 1 agente · 30 días</div>'
+        '<div class="num">300<span>USD</span></div>'
+        '<div class="foot">y eso es UN solo agente</div></div>'
+        + '<div class="cta-side">pero hay una forma 100 veces más barata →</div>'
+        + "</section>"
+    )
+
+
+def slide_04() -> str:
+    return (
+        '<section class="slide" data-id="04">'
+        + chrome("03 / 05 — El secreto")
+        + '<h1 class="h2">El <em>secreto</em></h1>'
+        + '<p class="sub">Claude Code lo construye. Cloudflare lo aloja.</p>'
+        + '<div class="eq">'
+        f'<div class="eq-item"><div class="eq-box">{claude_svg()}</div><strong>Claude Code</strong><em>el ingeniero</em></div>'
+        '<div class="plus-lg">+</div>'
+        f'<div class="eq-item"><div class="eq-box">{cf_icon()}</div><strong>Cloudflare</strong><em>la casa 24/7</em></div>'
+        "</div>"
+        + '<div class="result">= tu agente listo</div>'
+        + '<div class="cta-side">seguime para más métodos así →</div>'
+        + "</section>"
+    )
+
+
+def slide_05() -> str:
+    av = uri(A / "sebas-avatar.png")
+    return (
+        '<section class="slide" data-id="05">'
+        + chrome("05 / 05 — Lo mejor")
+        + '<h1 class="h2"><em>Lo mejor</em> del método</h1>'
+        + '<p class="sub">El cliente reporta un error de madrugada → Claude lo arregla <b style="color:#00FFB2">mientras dormís.</b></p>'
+        + '<div class="phone"><div class="ph-head">'
+        f'{claude_svg(28)}<div class="nm">Claude</div><div class="hr">03:00</div></div>'
+        '<div class="ph-body">'
+        f'<div class="row me"><div><div class="bubble-u">Se cayó el agente del cliente</div><div class="ts" style="text-align:right">03:00</div></div><img class="av" src="{av}" alt=""></div>'
+        f'<div class="row">{claude_svg(36)}<div><div class="bubble-a">Listo, ya lo arreglé. Seguí durmiendo.</div><div class="ts">03:02</div></div></div>'
+        "</div></div>"
+        + '<div class="cta-side">seguime para más métodos así →</div>'
+        + "</section>"
+    )
+
+
+def slide_06() -> str:
+    av = uri(A / "sebas-avatar.png")
+    return (
+        '<section class="slide" data-id="06">'
+        + chrome("", pill="100% gratis", plus=False)
+        + '<h1 class="ask">¿Querés el agente<br>que arma <em>todo esto</em>?</h1>'
+        + '<p class="pre">Comentá esta palabra</p>'
+        + '<div class="kwbox"><span>AGENTE</span></div>'
+        + f'<div class="bottom-row"><div class="avatar-wrap"><div class="corners"><span class="tl"></span><span class="tr"></span><span class="bl"></span><span class="br"></span></div><img src="{av}" alt=""></div>'
+        '<div class="send">y te lo mando al privado <em>→</em></div></div>'
+        + "</section>"
+    )
+
+
+def main():
+    slides = [slide_01(), slide_02(), slide_03(), slide_04(), slide_05(), slide_06()]
+    html = (
+        "<!DOCTYPE html>\n<html lang=\"es\"><head><meta charset=\"UTF-8\">\n"
+        "<title>La nueva forma de crear agentes IA — STLabs</title>\n"
+        f"<style>{build_css()}</style></head>\n"
+        f"<body><div class=\"sheet\">{''.join(slides)}</div></body></html>"
+    )
+    (B / "carrusel.html").write_text(html, encoding="utf-8")
+    meta = {
+        "titulo": "La nueva forma de crear agentes IA",
+        "slides": 6,
+        "fondo": "reticula_fina",
+        "familia_visual": "dossier_editorial",
+        "origen": "clonado",
+        "keyword_portada": "AGENTE",
+        "modo": "negro",
+        "id": "2026-08-18-nueva-forma-agentes",
+        "fecha": "2026-08-18",
+        "notas": "Clon editorial 6 slides. Sebas pensativo + MacBook. JSON sistema visual editorial. Sin contador IG.",
+    }
+    (B / "index.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"Wrote {len(slides)} slides")
+
+
+if __name__ == "__main__":
+    main()
