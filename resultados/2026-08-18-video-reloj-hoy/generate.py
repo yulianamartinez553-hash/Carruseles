@@ -141,8 +141,29 @@ def build_html() -> str:
 html, body {{ background:{BG}; width:{W}px; height:{H}px; overflow:hidden; }}
 .stage {{
   position:relative; width:{W}px; height:{H}px; background:{BG};
+  overflow:hidden;
 }}
-svg {{ position:absolute; inset:0; }}
+.glow {{
+  position:absolute; border-radius:50%; pointer-events:none; z-index:0;
+  filter:blur(48px);
+}}
+.glow-tr {{
+  top:-220px; right:-200px; width:560px; height:560px;
+  background:radial-gradient(circle,
+    rgba(0,255,178,.32) 0%,
+    rgba(0,255,178,.14) 38%,
+    rgba(0,255,178,.04) 58%,
+    transparent 72%);
+}}
+.glow-bl {{
+  bottom:-140px; left:-130px; width:580px; height:580px;
+  background:radial-gradient(circle,
+    rgba(0,255,178,.30) 0%,
+    rgba(0,255,178,.13) 38%,
+    rgba(0,255,178,.04) 58%,
+    transparent 74%);
+}}
+svg {{ position:absolute; inset:0; z-index:1; }}
 .circ {{
   font-family:'Poppins', sans-serif; font-weight:800;
   letter-spacing:0; paint-order:stroke fill;
@@ -155,7 +176,7 @@ svg {{ position:absolute; inset:0; }}
   stroke-width:4px;
 }}
 .firma {{
-  position:absolute; left:0; right:0; bottom:44px; text-align:center;
+  position:absolute; left:0; right:0; bottom:44px; text-align:center; z-index:2;
   font-family:'IBM Plex Mono', monospace; font-weight:500;
   font-size:20px; letter-spacing:.14em; color:{GREEN};
 }}
@@ -163,6 +184,8 @@ svg {{ position:absolute; inset:0; }}
 </head>
 <body>
 <div class="stage" id="stage">
+<div class="glow glow-tr" aria-hidden="true"></div>
+<div class="glow glow-bl" aria-hidden="true"></div>
 <svg viewBox="0 0 {W} {H}" width="{W}" height="{H}" aria-hidden="true">
   {ticks()}
   {circular_text()}
@@ -219,7 +242,7 @@ def main():
         "origen": "clonado",
         "id": "2026-08-18-video-reloj-hoy",
         "fecha": "2026-08-18",
-        "notas": "6:7 · caja alta extra gruesa · blanco en costados · AÑO y HOY verdes · agujas en loop.",
+        "notas": "6:7 · caja alta extra gruesa · blanco en costados · AÑO y HOY verdes · blur verde sutil en esquinas · agujas en loop.",
     }
     (B / "index.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"Wrote reloj.html · {W}x{H} · {DURATION}s loop")
