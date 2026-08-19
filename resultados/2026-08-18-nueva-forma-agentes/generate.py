@@ -29,14 +29,14 @@ def build_css() -> str:
     bell = uri(A / "pixel-bell.png")
     claude = uri(A / "claude.png")
     return f"""
-@font-face {{ font-family:'Playfair'; src:url('file://{f}/PlayfairDisplay.ttf') format('truetype'); font-weight:400 900; font-style:normal; }}
-@font-face {{ font-family:'Playfair'; src:url('file://{f}/PlayfairDisplay-Italic.ttf') format('truetype'); font-weight:400 900; font-style:italic; }}
+@font-face {{ font-family:'Playfair'; src:url('file://{f}/PlayfairDisplay.ttf') format('truetype'); font-weight:400 900; font-style:normal; font-display:block; }}
+@font-face {{ font-family:'Playfair'; src:url('file://{f}/PlayfairDisplay-Italic.ttf') format('truetype'); font-weight:400 900; font-style:italic; font-display:block; }}
 @font-face {{ font-family:'Poppins'; src:url('file://{f}/Poppins-ExtraBold.ttf') format('truetype'); font-weight:800; }}
 @font-face {{ font-family:'Poppins'; src:url('file://{f}/Poppins-Bold.ttf') format('truetype'); font-weight:700; }}
 @font-face {{ font-family:'IBM Plex Mono'; src:url('file://{f}/IBMPlexMono-Medium.ttf') format('truetype'); font-weight:500; }}
 @font-face {{ font-family:'IBM Plex Mono'; src:url('file://{f}/IBMPlexMono-SemiBold.ttf') format('truetype'); font-weight:600; }}
 
-* {{ box-sizing:border-box; margin:0; padding:0; -webkit-font-smoothing:antialiased; }}
+* {{ box-sizing:border-box; margin:0; padding:0; -webkit-font-smoothing:antialiased; text-rendering:geometricPrecision; font-synthesis:none; }}
 html, body {{ background:#000; }}
 .sheet {{ display:flex; flex-direction:column; gap:48px; padding:40px; width:max-content; }}
 .slide {{
@@ -44,15 +44,15 @@ html, body {{ background:#000; }}
   background:{BG}; color:{W};
 }}
 .tex {{
-  position:absolute; inset:0; z-index:0; pointer-events:none;
+  position:absolute; inset:0; z-index:0; pointer-events:none; isolation:isolate;
   background-image:
-    linear-gradient(rgba(0,255,178,.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,255,178,.07) 1px, transparent 1px);
+    linear-gradient(rgba(0,255,178,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,178,.04) 1px, transparent 1px);
   background-size:56px 56px;
   -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 20%, transparent 78%);
   mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 20%, transparent 78%);
 }}
-.glow {{ position:absolute; border-radius:50%; pointer-events:none; z-index:0; filter:blur(48px); }}
+.glow {{ position:absolute; border-radius:50%; pointer-events:none; z-index:0; }}
 .glow-tr {{
   top:-220px; right:-180px; width:560px; height:560px;
   background:radial-gradient(circle, rgba(0,255,178,.30) 0%, rgba(0,255,178,.10) 42%, transparent 72%);
@@ -62,7 +62,7 @@ html, body {{ background:#000; }}
   background:radial-gradient(circle, rgba(0,255,178,.26) 0%, rgba(0,255,178,.09) 42%, transparent 74%);
 }}
 .hline {{
-  position:absolute; left:72px; right:72px; height:1px; background:rgba(0,255,178,.35); z-index:3;
+  position:absolute; left:72px; right:72px; height:2px; background:rgba(0,255,178,.45); z-index:3;
 }}
 .hline.top {{ top:92px; }}
 .hline.bot {{ bottom:118px; }}
@@ -96,6 +96,7 @@ html, body {{ background:#000; }}
 .cta-side {{
   position:absolute; right:72px; bottom:148px; z-index:6;
   font-family:'Playfair',Georgia,serif; font-style:italic; font-weight:700;
+  font-variation-settings:'wght' 700;
   font-size:22px; color:{G}; text-align:right;
 }}
 
@@ -113,10 +114,11 @@ html, body {{ background:#000; }}
 .display {{
   position:absolute; left:72px; right:90px; top:168px; z-index:5;
   font-family:'Playfair',Georgia,serif; font-weight:800;
+  font-variation-settings:'wght' 800;
   font-size:64px; line-height:.98; letter-spacing:-.02em; color:{W};
   text-align:left;
 }}
-.display em {{ font-style:italic; color:{G}; font-weight:700; }}
+.display em {{ font-style:italic; color:{G}; font-weight:700; font-variation-settings:'wght' 700; }}
 .clip {{
   position:absolute; z-index:6; width:132px; height:132px;
 }}
@@ -143,9 +145,10 @@ html, body {{ background:#000; }}
 .h2 {{
   position:absolute; left:72px; right:72px; top:168px; z-index:4;
   font-family:'Playfair',Georgia,serif; font-weight:800;
+  font-variation-settings:'wght' 800;
   font-size:58px; line-height:1.02; color:{W}; text-align:left;
 }}
-.h2 em {{ font-style:italic; color:{G}; font-weight:700; }}
+.h2 em {{ font-style:italic; color:{G}; font-weight:700; font-variation-settings:'wght' 700; }}
 .sub {{
   position:absolute; left:72px; right:72px; top:300px; z-index:4;
   font-family:'Poppins',sans-serif; font-weight:700; font-size:28px; color:{W};
@@ -177,12 +180,13 @@ html, body {{ background:#000; }}
 .tag80 i {{ width:10px; height:10px; border-radius:50%; background:{G}; display:block; }}
 .metric {{
   position:absolute; left:72px; right:72px; top:640px; z-index:4;
-  border:1.5px dashed {G}; border-radius:18px; padding:36px 40px;
+  border:2px solid {G}; border-radius:18px; padding:36px 40px;
   background:rgba(0,255,178,.04);
 }}
 .metric .lab {{ font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:18px; color:#9aa39c; letter-spacing:.06em; }}
 .metric .num {{
-  font-family:'Playfair',Georgia,serif; font-weight:800; font-size:120px; line-height:.9;
+  font-family:'Playfair',Georgia,serif; font-weight:800; font-variation-settings:'wght' 800;
+  font-size:120px; line-height:.9;
   color:{G}; margin:8px 0 4px;
 }}
 .metric .num span {{ font-size:36px; letter-spacing:.12em; margin-left:8px; vertical-align:super; }}
@@ -200,13 +204,16 @@ html, body {{ background:#000; }}
   display:flex; align-items:center; justify-content:center;
 }}
 .eq-item strong {{ display:block; font-family:'Poppins',sans-serif; font-weight:800; font-size:24px; color:{W}; }}
-.eq-item em {{ display:block; font-family:'Playfair',Georgia,serif; font-style:italic; font-weight:700; font-size:20px; color:{G}; }}
+.eq-item em {{ display:block; font-family:'Playfair',Georgia,serif; font-style:italic; font-weight:700; font-variation-settings:'wght' 700; font-size:20px; color:{G}; }}
+.eq-box svg {{ display:block; shape-rendering:geometricPrecision; }}
+.claude {{ image-rendering:-webkit-optimize-contrast; }}
 .plus-lg {{
   font-family:'Poppins',sans-serif; font-weight:800; font-size:64px; color:{G}; padding-top:48px;
 }}
 .result {{
   position:absolute; left:72px; right:72px; top:820px; z-index:4; text-align:center;
   font-family:'Playfair',Georgia,serif; font-style:italic; font-weight:700;
+  font-variation-settings:'wght' 700;
   font-size:42px; color:{G};
 }}
 
@@ -240,9 +247,10 @@ html, body {{ background:#000; }}
 /* SLIDE 6 CTA */
 .ask {{
   position:absolute; left:72px; right:72px; top:200px; z-index:4; text-align:center;
-  font-family:'Playfair',Georgia,serif; font-weight:800; font-size:52px; line-height:1.08; color:{W};
+  font-family:'Playfair',Georgia,serif; font-weight:800; font-variation-settings:'wght' 800;
+  font-size:52px; line-height:1.08; color:{W};
 }}
-.ask em {{ font-style:italic; color:{G}; font-weight:700; }}
+.ask em {{ font-style:italic; color:{G}; font-weight:700; font-variation-settings:'wght' 700; }}
 .pre {{
   position:absolute; left:72px; right:72px; top:380px; z-index:4; text-align:center;
   font-family:'Poppins',sans-serif; font-weight:700; font-size:22px; line-height:1.35; color:{W};
@@ -252,7 +260,7 @@ html, body {{ background:#000; }}
   border:2px solid {G}; border-radius:18px; padding:36px 20px; text-align:center;
 }}
 .kwbox span {{
-  font-family:'Playfair',Georgia,serif; font-weight:800; font-size:72px;
+  font-family:'Playfair',Georgia,serif; font-weight:800; font-variation-settings:'wght' 800; font-size:72px;
   letter-spacing:.18em; color:{G};
 }}
 .bottom-row {{
@@ -283,14 +291,8 @@ def chrome(kicker: str, pill: str | None = None, plus: bool = True, bot_line: bo
 
 
 def mapa_icon() -> str:
-    return (
-        '<svg viewBox="0 0 64 64" width="88" height="88">'
-        '<rect x="8" y="8" width="48" height="14" rx="4" fill="none" stroke="#00FFB2" stroke-width="3"/>'
-        '<rect x="8" y="28" width="30" height="14" rx="4" fill="none" stroke="#00FFB2" stroke-width="3"/>'
-        '<rect x="8" y="48" width="40" height="14" rx="4" fill="none" stroke="#00FFB2" stroke-width="3"/>'
-        '<path d="M32 22v6M23 42v6" fill="none" stroke="#00FFB2" stroke-width="3"/>'
-        '</svg>'
-    )
+    src = uri(A / "mapa-icon.png")
+    return f'<img src="{src}" width="96" height="96" alt="" style="width:96px;height:96px;">'
 
 
 def claude_img(size: int = 88) -> str:
@@ -362,7 +364,7 @@ def slide_04() -> str:
         + '<div class="eq">'
         f'<div class="eq-item"><div class="eq-box">{mapa_icon()}</div><strong>El mapa</strong><em>tu operación</em></div>'
         '<div class="plus-lg">+</div>'
-        f'<div class="eq-item"><div class="eq-box">{claude_img(96)}</div><strong>Claude</strong><em>lo genera</em></div>'
+        f'<div class="eq-item"><div class="eq-box">{claude_img(120)}</div><strong>Claude</strong><em>lo genera</em></div>'
         "</div>"
         + '<div class="result">= tu agente a medida</div>'
         + '<div class="cta-side">así se ve cuando lo pedís →</div>'
