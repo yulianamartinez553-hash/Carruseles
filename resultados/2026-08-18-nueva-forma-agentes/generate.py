@@ -283,16 +283,15 @@ def chrome(kicker: str, pill: str | None = None, plus: bool = True, bot_line: bo
     )
 
 
-def cf_icon() -> str:
+def mapa_icon() -> str:
     return (
-        '<svg viewBox="0 0 64 40" width="88" height="56">'
-        '<path fill="#F38020" d="M52 24c1.8-6.2-2.2-12-9-12-1.2 0-2.4.2-3.5.6C38 8.2 33.4 5 28 5c-7.4 0-13.4 5.6-14 12.8C8.6 18.6 4 23.8 4 30c0 .7 0 1.4.1 2h50.6c.7-1.2 1.3-2.6 1.3-4.2 0-1.4-.3-2.6-.8-3.8z"/>'
+        '<svg viewBox="0 0 64 64" width="88" height="88">'
+        '<rect x="8" y="8" width="48" height="14" rx="4" fill="none" stroke="#00FFB2" stroke-width="3"/>'
+        '<rect x="8" y="28" width="30" height="14" rx="4" fill="none" stroke="#00FFB2" stroke-width="3"/>'
+        '<rect x="8" y="48" width="40" height="14" rx="4" fill="none" stroke="#00FFB2" stroke-width="3"/>'
+        '<path d="M32 22v6M23 42v6" fill="none" stroke="#00FFB2" stroke-width="3"/>'
         '</svg>'
     )
-
-
-def cf_svg() -> str:
-    return cf_icon() + '<div class="cf-mark">CLOUDFLARE</div>'
 
 
 def claude_img(size: int = 88) -> str:
@@ -307,12 +306,12 @@ def slide_01() -> str:
     dude = uri(A / "pixel-dude.png")
     return (
         '<section class="slide" data-id="01">'
-        + chrome("01 / 05", pill="Nadie lo cuenta", plus=False, bot_line=False)
+        + chrome("01 / 05", pill="A medida", plus=False, bot_line=False)
         + '<div class="hero"></div><div class="hero-fade"></div>'
-        + '<h1 class="display"><em>La nueva</em><br>forma de crear<br><em>agentes IA.</em></h1>'
+        + '<h1 class="display"><em>Así se genera</em><br>un agente<br><em>a medida.</em></h1>'
         + f'<div class="clip dude"><div class="corners"><span class="tl"></span><span class="tr"></span><span class="bl"></span><span class="br"></span></div><img src="{dude}" alt=""></div>'
         + f'<div class="clip cf">{claude_img(96)}</div>'
-        + '<div class="cta-side">esto va a cambiar todo →</div>'
+        + '<div class="cta-side">primero el proceso →</div>'
         + "</section>"
     )
 
@@ -320,9 +319,9 @@ def slide_01() -> str:
 def slide_02() -> str:
     wch, cost, bell = uri(A / "pixel-wrench.png"), uri(A / "pixel-cost.png"), uri(A / "pixel-bell.png")
     cards = [
-        (wch, "Mantenimiento eterno", "Cada error que ve tu cliente lo arreglás a mano. Una y otra vez."),
-        (cost, "Costos que se acumulan", "Hosting, APIs y suscripciones. La factura crece cada mes."),
-        (bell, "Sin descanso real", "Tu cliente depende de que vos estés disponible las 24 horas."),
+        (wch, "Mapear la operación", "Sacamos de tu cabeza cada paso, dueño y excepción."),
+        (cost, "Documentar el flujo", "Queda escrito, claro y delegable. Sin improvisar."),
+        (bell, "Generar el agente", "Lo armamos sobre ESE proceso, no sobre uno genérico."),
     ]
     html_cards = "".join(
         f'<div class="card"><img src="{img}" alt=""><div class="div"></div><div><h3>{t}</h3><p>{d}</p></div></div>'
@@ -330,11 +329,11 @@ def slide_02() -> str:
     )
     return (
         '<section class="slide" data-id="02">'
-        + chrome("01 / 05 — El problema")
-        + '<h1 class="h2">Los <em>3</em> dolores</h1>'
-        + '<p class="sub">de tener un agente IA en producción.</p>'
+        + chrome("01 / 05 — El proceso")
+        + '<h1 class="h2">Los <em>3</em> pasos</h1>'
+        + '<p class="sub">para generar un agente que arme tu operación.</p>'
         + f'<div class="cards">{html_cards}</div>'
-        + '<div class="cta-side">y casi todos eligen la salida fácil →</div>'
+        + '<div class="cta-side">y casi todos se saltean el primero →</div>'
         + "</section>"
     )
 
@@ -342,15 +341,15 @@ def slide_02() -> str:
 def slide_03() -> str:
     return (
         '<section class="slide" data-id="03">'
-        + chrome("02 / 05 — La salida fácil")
-        + '<h1 class="h2">La salida <em>fácil</em><br>que todos toman</h1>'
-        + '<p class="sub">que el 80% toma… y les sale <b style="color:#00FFB2">100 veces más cara.</b></p>'
-        + '<div class="bubble">Uso la API de Claude directo, así me ahorro las plataformas</div>'
-        + '<div class="tag80"><i></i>el 80%</div>'
-        + '<div class="metric"><div class="lab">Anthropic API · 1 agente · 30 días</div>'
-        '<div class="num">300<span>USD</span></div>'
-        '<div class="foot">y eso es UN solo agente</div></div>'
-        + '<div class="cta-side">pero hay una forma 100 veces más barata →</div>'
+        + chrome("02 / 05 — Lo que se saltea")
+        + '<h1 class="h2">Lo que casi<br><em>nadie</em> hace</h1>'
+        + '<p class="sub">arrancan el agente sin mapa… y después <b style="color:#00FFB2">no escala.</b></p>'
+        + '<div class="bubble">Poné un agente y que resuelva. El proceso lo vemos después.</div>'
+        + '<div class="tag80"><i></i>9 de 10</div>'
+        + '<div class="metric"><div class="lab">Primera sesión de mapeo · 1 operación</div>'
+        '<div class="num">12<span>pasos</span></div>'
+        '<div class="foot">y de ese mapa nace el agente</div></div>'
+        + '<div class="cta-side">el método correcto es al revés →</div>'
         + "</section>"
     )
 
@@ -358,16 +357,16 @@ def slide_03() -> str:
 def slide_04() -> str:
     return (
         '<section class="slide" data-id="04">'
-        + chrome("03 / 05 — El secreto")
-        + '<h1 class="h2">El <em>secreto</em></h1>'
-        + '<p class="sub">Claude Code lo construye. Cloudflare lo aloja.</p>'
+        + chrome("03 / 05 — El método")
+        + '<h1 class="h2">El <em>método</em></h1>'
+        + '<p class="sub">Primero el mapa. Después se genera el agente.</p>'
         + '<div class="eq">'
-        f'<div class="eq-item"><div class="eq-box">{claude_img(96)}</div><strong>Claude Code</strong><em>el ingeniero</em></div>'
+        f'<div class="eq-item"><div class="eq-box">{mapa_icon()}</div><strong>El mapa</strong><em>tu operación</em></div>'
         '<div class="plus-lg">+</div>'
-        f'<div class="eq-item"><div class="eq-box">{cf_icon()}</div><strong>Cloudflare</strong><em>la casa 24/7</em></div>'
+        f'<div class="eq-item"><div class="eq-box">{claude_img(96)}</div><strong>Claude</strong><em>lo genera</em></div>'
         "</div>"
-        + '<div class="result">= tu agente listo</div>'
-        + '<div class="cta-side">seguime para más métodos así →</div>'
+        + '<div class="result">= tu agente a medida</div>'
+        + '<div class="cta-side">así se ve cuando lo pedís →</div>'
         + "</section>"
     )
 
@@ -376,16 +375,16 @@ def slide_05() -> str:
     av = uri(A / "sebas-avatar.png")
     return (
         '<section class="slide" data-id="05">'
-        + chrome("05 / 05 — Lo mejor")
-        + '<h1 class="h2"><em>Lo mejor</em> del método</h1>'
-        + '<p class="sub">El cliente reporta un error de madrugada → Claude lo arregla <b style="color:#00FFB2">mientras dormís.</b></p>'
+        + chrome("04 / 05 — En vivo")
+        + '<h1 class="h2"><em>Así</em> se genera</h1>'
+        + '<p class="sub">Pedís el proceso. El agente queda mapeado y <b style="color:#00FFB2">listo para ejecutar.</b></p>'
         + '<div class="phone"><div class="ph-head">'
-        f'{claude_img(32)}<div class="nm">Claude</div><div class="hr">03:00</div></div>'
+        f'{claude_img(32)}<div class="nm">Claude</div><div class="hr">11:20</div></div>'
         '<div class="ph-body">'
-        f'<div class="row me"><div><div class="bubble-u">Se cayó el agente del cliente</div><div class="ts" style="text-align:right">03:00</div></div><img class="av" src="{av}" alt=""></div>'
-        f'<div class="row">{claude_img(36)}<div><div class="bubble-a">Listo, ya lo arreglé. Seguí durmiendo.</div><div class="ts">03:02</div></div></div>'
+        f'<div class="row me"><div><div class="bubble-u">Armá el agente con el seguimiento comercial.</div><div class="ts" style="text-align:right">11:20</div></div><img class="av" src="{av}" alt=""></div>'
+        f'<div class="row">{claude_img(36)}<div><div class="bubble-a">Listo. 12 pasos documentados y el agente ya corre el flujo.</div><div class="ts">11:24</div></div></div>'
         "</div></div>"
-        + '<div class="cta-side">seguime para más métodos así →</div>'
+        + '<div class="cta-side">esto lo hacemos sobre tu operación →</div>'
         + "</section>"
     )
 
@@ -395,11 +394,11 @@ def slide_06() -> str:
     return (
         '<section class="slide" data-id="06">'
         + chrome("", pill="A medida", plus=False)
-        + '<h1 class="ask">¿Querés que te arme<br>este <em>proceso</em> a medida?</h1>'
-        + '<p class="pre">Diseño el flujo, lo documento y te genero un agente personalizado para tu operación.</p>'
-        + '<div class="kwbox"><span>AGENTE</span></div>'
+        + '<h1 class="ask">¿Querés que te genere<br>el <em>agente</em> a medida?</h1>'
+        + '<p class="pre">Mapeo tu operación, documento el flujo y te dejo el agente personalizado listo.</p>'
+        + '<div class="kwbox"><span>PROCESO</span></div>'
         + f'<div class="bottom-row"><div class="avatar-wrap"><div class="corners"><span class="tl"></span><span class="tr"></span><span class="bl"></span><span class="br"></span></div><img src="{av}" alt=""></div>'
-        '<div class="send">Comentá <em>AGENTE</em> y arrancamos tu generación personalizada <em>→</em></div></div>'
+        '<div class="send">Comentá <em>PROCESO</em> y arrancamos la generación <em>→</em></div></div>'
         + "</section>"
     )
 
@@ -408,22 +407,22 @@ def main():
     slides = [slide_01(), slide_02(), slide_03(), slide_04(), slide_05(), slide_06()]
     html = (
         "<!DOCTYPE html>\n<html lang=\"es\"><head><meta charset=\"UTF-8\">\n"
-        "<title>La nueva forma de crear agentes IA — STLabs</title>\n"
+        "<title>Así se genera un agente a medida — STLabs</title>\n"
         f"<style>{build_css()}</style></head>\n"
         f"<body><div class=\"sheet\">{''.join(slides)}</div></body></html>"
     )
     (B / "carrusel.html").write_text(html, encoding="utf-8")
     meta = {
-        "titulo": "La nueva forma de crear agentes IA",
+        "titulo": "Así se genera un agente a medida",
         "slides": 6,
         "fondo": "reticula_fina",
         "familia_visual": "dossier_editorial",
         "origen": "clonado",
-        "keyword_portada": "AGENTE",
+        "keyword_portada": "PROCESO",
         "modo": "negro",
         "id": "2026-08-18-nueva-forma-agentes",
         "fecha": "2026-08-18",
-        "notas": "Portada full-bleed sin línea. Hombrecito recortado a verde. Logo Claude estrella naranja. CTA vende el proceso de generación a medida.",
+        "notas": "Copy nuevo: proceso de generación (mapear, documentar, generar). Datos 12 pasos / 9 de 10. Chat distinto. Keyword PROCESO.",
     }
     (B / "index.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"Wrote {len(slides)} slides")

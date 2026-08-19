@@ -1,7 +1,11 @@
-Si la operación vive en tu cabeza, no hay sistema.
+Un agente genérico no arma tu operación.
+Se arma sobre un proceso que hoy vive en tu cabeza.
 
-Diseño el proceso y te genero un agente a medida: documentado, personalizado y listo para tu empresa.
+El método es al revés:
+— Mapeamos cada paso.
+— Lo documentamos.
+— Recién ahí se genera el agente.
 
-Comentá AGENTE y arrancamos la generación.
+Comentá PROCESO y arrancamos la generación a medida.
 
 #procesos #agente #stlabs
