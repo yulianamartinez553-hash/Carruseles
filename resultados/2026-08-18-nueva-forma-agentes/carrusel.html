@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8">
+<title>Así se genera un agente a medida — STLabs</title>
+<style>
+@font-face { font-family:'Playfair'; src:url('file:///tmp/stlabs-fonts/PlayfairDisplay.ttf') format('truetype'); font-weight:400 900; font-style:normal; font-display:block; }
+@font-face { font-family:'Playfair'; src:url('file:///tmp/stlabs-fonts/PlayfairDisplay-Italic.ttf') format('truetype'); font-weight:400 900; font-style:italic; font-display:block; }
+@font-face { font-family:'Poppins'; src:url('file:///tmp/stlabs-fonts/Poppins-ExtraBold.ttf') format('truetype'); font-weight:800; }
+@font-face { font-family:'Poppins'; src:url('file:///tmp/stlabs-fonts/Poppins-Bold.ttf') format('truetype'); font-weight:700; }
+@font-face { font-family:'IBM Plex Mono'; src:url('file:///tmp/stlabs-fonts/IBMPlexMono-Medium.ttf') format('truetype'); font-weight:500; }
+@font-face { font-family:'IBM Plex Mono'; src:url('file:///tmp/stlabs-fonts/IBMPlexMono-SemiBold.ttf') format('truetype'); font-weight:600; }
+
+* { box-sizing:border-box; margin:0; padding:0; -webkit-font-smoothing:antialiased; text-rendering:geometricPrecision; font-synthesis:none; }
+html, body { background:#000; }
+.sheet { display:flex; flex-direction:column; gap:48px; padding:40px; width:max-content; }
+.slide {
+  position:relative; width:1080px; height:1350px; overflow:hidden;
+  background:#0A0A0A; color:#F2F2F2;
+}
+.tex {
+  position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-image:
+    linear-gradient(rgba(0,255,178,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,178,.04) 1px, transparent 1px);
+  background-size:56px 56px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 20%, transparent 78%);
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 20%, transparent 78%);
+}
+.glow { position:absolute; border-radius:50%; pointer-events:none; z-index:0; }
+.glow-tr {
+  top:-220px; right:-180px; width:560px; height:560px;
+  background:radial-gradient(circle, rgba(0,255,178,.30) 0%, rgba(0,255,178,.10) 42%, transparent 72%);
+}
+.glow-bl {
+  bottom:-180px; left:-160px; width:560px; height:560px;
+  background:radial-gradient(circle, rgba(0,255,178,.26) 0%, rgba(0,255,178,.09) 42%, transparent 74%);
+}
+.hline {
+  position:absolute; left:72px; right:72px; height:2px; background:rgba(0,255,178,.45); z-index:3;
+}
+.hline.top { top:92px; }
+.hline.bot { bottom:118px; }
+.plus {
+  position:absolute; top:72px; right:72px; z-index:4;
+  font-family:'Poppins',sans-serif; font-weight:800; font-size:28px; color:#00FFB2;
+}
+.brand {
+  position:absolute; top:48px; left:72px; z-index:4;
+  font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:18px;
+  letter-spacing:.12em; color:#00FFB2; text-transform:uppercase;
+}
+.kicker {
+  position:absolute; top:112px; left:72px; z-index:4;
+  font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:18px;
+  letter-spacing:.14em; color:#00FFB2; text-transform:uppercase;
+}
+.pill {
+  position:absolute; top:42px; right:72px; z-index:4;
+  display:flex; align-items:center; gap:10px;
+  border:1.5px solid #00FFB2; border-radius:999px; padding:8px 16px;
+  font-family:'Poppins',sans-serif; font-weight:700; font-size:16px; color:#00FFB2;
+  text-transform:uppercase; letter-spacing:.06em;
+}
+.pill i { width:10px; height:10px; border-radius:50%; background:#00FFB2; display:block; }
+.firma {
+  position:absolute; left:0; right:0; bottom:48px; text-align:center; z-index:8;
+  font-family:'IBM Plex Mono',monospace; font-weight:500; font-size:20px;
+  letter-spacing:.14em; color:#00FFB2;
+}
+.cta-side {
+  position:absolute; right:72px; bottom:148px; z-index:6;
+  font-family:'Playfair',Georgia,serif; font-style:italic; font-weight:700;
+  font-variation-settings:'wght' 700;
+  font-size:22px; color:#00FFB2; text-align:right;
+}
+
+/* PORTADA — foto a tamaño de la referencia (llena el 4:5), sin línea que la corte */
+.hero {
+  position:absolute; inset:0; z-index:1;
+  background:url('file:///workspace/builds/2026-08-18-nueva-forma-agentes/assets/sebas-hero.png') center top / cover no-repeat;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 100%);
+}
+.hero-fade {
+  position:absolute; left:0; right:0; top:0; height:38%; z-index:2; pointer-events:none;
+  background:linear-gradient(180deg, #0A0A0A 0%, #0A0A0A 48%, rgba(10,10,10,.45) 78%, transparent 100%);
+}
+.display {
+  position:absolute; left:72px; right:90px; top:168px; z-index:5;
+  font-family:'Playfair',Georgia,serif; font-weight:800;
+  font-variation-settings:'wght' 800;
+  font-size:64px; line-height:.98; letter-spacing:-.02em; color:#F2F2F2;
+  text-align:left;
+}
+.display em { font-style:italic; color:#00FFB2; font-weight:700; font-variation-settings:'wght' 700; }
+.clip {
+  position:absolute; z-index:6; width:132px; height:132px;
+}
+.clip img { width:88px; height:88px; image-rendering:pixelated; display:block; margin:22px auto; }
+.clip.dude { left:48px; top:58%; }
+.clip.cf { right:28px; top:60%; width:160px; height:auto; display:flex; flex-direction:column; align-items:center; }
+.claude { display:block; object-fit:contain; }
+.corners {
+  position:absolute; inset:0; pointer-events:none;
+}
+.corners span {
+  position:absolute; width:22px; height:22px; border:2px solid #00FFB2;
+}
+.corners .tl { top:0; left:0; border-right:none; border-bottom:none; }
+.corners .tr { top:0; right:0; border-left:none; border-bottom:none; }
+.corners .bl { bottom:0; left:0; border-right:none; border-top:none; }
+.corners .br { bottom:0; right:0; border-left:none; border-top:none; }
+.cf-mark {
+  font-family:'Poppins',sans-serif; font-weight:800; font-size:13px;
+  letter-spacing:.16em; color:#F2F2F2; text-align:center; margin-top:6px;
+}
+
+/* SLIDE 2 CARDS */
+.h2 {
+  position:absolute; left:72px; right:72px; top:168px; z-index:4;
+  font-family:'Playfair',Georgia,serif; font-weight:800;
+  font-variation-settings:'wght' 800;
+  font-size:58px; line-height:1.02; color:#F2F2F2; text-align:left;
+}
+.h2 em { font-style:italic; color:#00FFB2; font-weight:700; font-variation-settings:'wght' 700; }
+.sub {
+  position:absolute; left:72px; right:72px; top:300px; z-index:4;
+  font-family:'Poppins',sans-serif; font-weight:700; font-size:28px; color:#F2F2F2;
+}
+.cards { position:absolute; left:72px; right:72px; top:380px; z-index:4; display:flex; flex-direction:column; gap:18px; }
+.card {
+  display:flex; align-items:center; gap:18px;
+  background:#141414; border:1px solid #2A2A2A; border-radius:18px; padding:18px 22px;
+}
+.card img { width:72px; height:72px; image-rendering:pixelated; flex-shrink:0; }
+.card .div { width:2px; height:64px; background:#00FFB2; flex-shrink:0; }
+.card h3 { font-family:'Poppins',sans-serif; font-weight:800; font-size:26px; color:#F2F2F2; margin-bottom:6px; }
+.card p { font-family:'Poppins',sans-serif; font-weight:700; font-size:20px; color:#9aa39c; line-height:1.3; }
+
+/* SLIDE 3 */
+.bubble {
+  position:absolute; left:72px; top:430px; z-index:4;
+  max-width:640px; background:#141414; color:#F2F2F2;
+  font-family:'Poppins',sans-serif; font-weight:700; font-size:24px; line-height:1.35;
+  padding:22px 26px; border-radius:18px 18px 18px 6px;
+  border:1px solid #2A2A2A;
+}
+.tag80 {
+  position:absolute; left:740px; top:448px; z-index:4;
+  display:flex; align-items:center; gap:8px;
+  border:1.5px solid #00FFB2; border-radius:999px; padding:8px 16px;
+  font-family:'Poppins',sans-serif; font-weight:800; font-size:18px; color:#00FFB2;
+}
+.tag80 i { width:10px; height:10px; border-radius:50%; background:#00FFB2; display:block; }
+.metric {
+  position:absolute; left:72px; right:72px; top:640px; z-index:4;
+  border:2px solid #00FFB2; border-radius:18px; padding:36px 40px;
+  background:rgba(0,255,178,.04);
+}
+.metric .lab { font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:18px; color:#9aa39c; letter-spacing:.06em; }
+.metric .num {
+  font-family:'Playfair',Georgia,serif; font-weight:800; font-variation-settings:'wght' 800;
+  font-size:120px; line-height:.9;
+  color:#00FFB2; margin:8px 0 4px;
+}
+.metric .num span { font-size:36px; letter-spacing:.12em; margin-left:8px; vertical-align:super; }
+.metric .foot { font-family:'Poppins',sans-serif; font-weight:700; font-size:22px; color:#00FFB2; }
+
+/* SLIDE 4 EQUATION */
+.eq {
+  position:absolute; left:72px; right:72px; top:430px; z-index:4;
+  display:flex; align-items:flex-start; justify-content:center; gap:28px;
+}
+.eq-item { text-align:center; width:280px; }
+.eq-box {
+  width:160px; height:160px; margin:0 auto 16px; border-radius:28px;
+  background:#141414; border:1px solid #2A2A2A;
+  display:flex; align-items:center; justify-content:center;
+}
+.eq-item strong { display:block; font-family:'Poppins',sans-serif; font-weight:800; font-size:24px; color:#F2F2F2; }
+.eq-item em { display:block; font-family:'Playfair',Georgia,serif; font-style:italic; font-weight:700; font-variation-settings:'wght' 700; font-size:20px; color:#00FFB2; }
+.eq-box svg { display:block; shape-rendering:geometricPrecision; }
+.claude { image-rendering:-webkit-optimize-contrast; }
+.plus-lg {
+  font-family:'Poppins',sans-serif; font-weight:800; font-size:64px; color:#00FFB2; padding-top:48px;
+}
+.result {
+  position:absolute; left:72px; right:72px; top:820px; z-index:4; text-align:center;
+  font-family:'Playfair',Georgia,serif; font-style:italic; font-weight:700;
+  font-variation-settings:'wght' 700;
+  font-size:42px; color:#00FFB2;
+}
+
+/* SLIDE 5 CHAT */
+.phone {
+  position:absolute; left:120px; right:120px; top:430px; z-index:4;
+  background:#141414; border:1px solid #2A2A2A; border-radius:28px; overflow:hidden;
+}
+.ph-head {
+  background:#0A0A0A; padding:16px 20px; display:flex; align-items:center; gap:12px;
+  border-bottom:1px solid #2A2A2A;
+}
+.ph-head .nm { font-family:'Poppins',sans-serif; font-weight:800; font-size:22px; color:#F2F2F2; }
+.ph-head .hr { font-family:'IBM Plex Mono',monospace; font-weight:500; font-size:16px; color:#9aa39c; margin-left:auto; }
+.ph-body { padding:22px 20px 28px; display:flex; flex-direction:column; gap:16px; }
+.row { display:flex; align-items:flex-end; gap:10px; }
+.row.me { justify-content:flex-end; }
+.bubble-u {
+  background:#00FFB2; color:#0A0A0A; border-radius:18px 18px 4px 18px;
+  padding:14px 16px; max-width:70%;
+  font-family:'Poppins',sans-serif; font-weight:700; font-size:20px; line-height:1.3;
+}
+.bubble-a {
+  background:#1E1E1E; color:#F2F2F2; border-radius:18px 18px 18px 4px;
+  padding:14px 16px; max-width:74%;
+  font-family:'Poppins',sans-serif; font-weight:700; font-size:20px; line-height:1.3;
+}
+.av { width:44px; height:44px; border-radius:50%; object-fit:cover; flex-shrink:0; }
+.ts { font-family:'IBM Plex Mono',monospace; font-size:13px; color:#9aa39c; margin-top:4px; }
+
+/* SLIDE 6 CTA */
+.ask {
+  position:absolute; left:72px; right:72px; top:200px; z-index:4; text-align:center;
+  font-family:'Playfair',Georgia,serif; font-weight:800; font-variation-settings:'wght' 800;
+  font-size:52px; line-height:1.08; color:#F2F2F2;
+}
+.ask em { font-style:italic; color:#00FFB2; font-weight:700; font-variation-settings:'wght' 700; }
+.pre {
+  position:absolute; left:72px; right:72px; top:380px; z-index:4; text-align:center;
+  font-family:'Poppins',sans-serif; font-weight:700; font-size:22px; line-height:1.35; color:#F2F2F2;
+}
+.kwbox {
+  position:absolute; left:120px; right:120px; top:510px; z-index:4;
+  border:2px solid #00FFB2; border-radius:18px; padding:36px 20px; text-align:center;
+}
+.kwbox span {
+  font-family:'Playfair',Georgia,serif; font-weight:800; font-variation-settings:'wght' 800; font-size:72px;
+  letter-spacing:.18em; color:#00FFB2;
+}
+.bottom-row {
+  position:absolute; left:72px; right:72px; top:800px; z-index:4;
+  display:flex; align-items:center; justify-content:center;
+}
+.send {
+  font-family:'Poppins',sans-serif; font-weight:700; font-size:26px; color:#F2F2F2; line-height:1.3;
+  text-align:center;
+}
+.send em { font-style:normal; color:#00FFB2; }
+</style></head>
+<body><div class="sheet"><section class="slide" data-id="01"><div class="tex"></div><div class="glow glow-tr"></div><div class="glow glow-bl"></div><div class="hline top"></div><div class="brand">STLabs</div><div class="kicker">01 / 05</div><div class="pill"><i></i>A medida</div><div class="firma">sebastian.stlabs.ar</div><div class="hero"></div><div class="hero-fade"></div><h1 class="display"><em>Así se genera</em><br>un agente<br><em>a medida.</em></h1><div class="clip dude"><div class="corners"><span class="tl"></span><span class="tr"></span><span class="bl"></span><span class="br"></span></div><img src="file:///workspace/builds/2026-08-18-nueva-forma-agentes/assets/pixel-dude.png" alt=""></div><div class="clip cf"><img class="claude" src="file:///workspace/builds/2026-08-18-nueva-forma-agentes/assets/claude.png" width="96" height="96" alt="" style="width:96px;height:96px;object-fit:contain;"></div><div class="cta-side">primero el proceso →</div></section><section class="slide" data-id="02"><div class="tex"></div><div class="glow glow-tr"></div><div class="glow glow-bl"></div><div class="hline top"></div><div class="hline bot"></div><div class="brand">STLabs</div><div class="plus">+</div><div class="kicker">01 / 05 — El proceso</div><div class="firma">sebastian.stlabs.ar</div><h1 class="h2">Los <em>3</em> pasos</h1><p class="sub">para generar un agente que arme tu operación.</p><div class="cards"><div class="card"><img src="file:///workspace/builds/2026-08-18-nueva-forma-agentes/assets/pixel-wrench.png" alt=""><div class="div"></div><div><h3>Mapear la operación</h3><p>Sacamos de tu cabeza cada paso, dueño y excepción.</p></div></div><div class="card"><img src="file:///workspace/builds/2026-08-18-nueva-forma-agentes/assets/pixel-cost.png" alt=""><div class="div"></div><div><h3>Documentar el flujo</h3><p>Queda escrito, claro y delegable. Sin improvisar.</p></div></div><div class="card"><img src="file:///workspace/builds/2026-08-18-nueva-forma-agentes/assets/pixel-bell.png" alt=""><div class="div"></div><div><h3>Generar el agente</h3><p>Lo armamos sobre ESE proceso, no sobre uno genérico.</p></div></div></div><div class="cta-side">y casi todos se saltean el primero →</div></section><section class="slide" data-id="03"><div class="tex"></div><div class="glow glow-tr"></div><div class="glow glow-bl"></div><div class="hline top"></div><div class="hline bot"></div><div class="brand">STLabs</div><div class="plus">+</div><div class="kicker">02 / 05 — Lo que se saltea</div><div class="firma">sebastian.stlabs.ar</div><h1 class="h2">Lo que casi<br><em>nadie</em> hace</h1><p class="sub">arrancan el agente sin mapa… y después <b style="color:#00FFB2">no escala.</b></p><div class="bubble">Poné un agente y que resuelva. El proceso lo vemos después.</div><div class="tag80"><i></i>9 de 10</div><div class="metric"><div class="lab">Primera sesión de mapeo · 1 operación</div><div class="num">12<span>pasos</span></div><div class="foot">y de ese mapa nace el agente</div></div><div class="cta-side">el método correcto es al revés →</div></section><section class="slide" data-id="04"><div class="tex"></div><div class="glow glow-tr"></div><div class="glow glow-bl"></div><div class="hline top"></div><div class="hline bot"></div><div class="brand">STLabs</div><div class="plus">+</div><div class="kicker">03 / 05 — El método</div><div class="firma">sebastian.stlabs.ar</div><h1 class="h2">El <em>método</em></h1><p class="sub">Primero el mapa. Después se genera el agente.</p><div class="eq"><div class="eq-item"><div class="eq-box"><img src="file:///workspace/builds/2026-08-18-nueva-forma-agentes/assets/mapa-icon.png" width="96" height="96" alt="" style="width:96px;height:96px;"></div><strong>El mapa</strong><em>tu operación</em></div><div class="plus-lg">+</div><div class="eq-item"><div class="eq-box"><img class="claude" src="file:///workspace/builds/2026-08-18-nueva-forma-agentes/assets/claude.png" width="120" height="120" alt="" style="width:120px;height:120px;object-fit:contain;"></div><strong>Claude</strong><em>lo genera</em></div></div><div class="result">= tu agente a medida</div><div class="cta-side">así se ve cuando lo pedís →</div></section><section class="slide" data-id="05"><div class="tex"></div><div class="glow glow-tr"></div><div class="glow glow-bl"></div><div class="hline top"></div><div class="hline bot"></div><div class="brand">STLabs</div><div class="plus">+</div><div class="kicker">04 / 05 — En vivo</div><div class="firma">sebastian.stlabs.ar</div><h1 class="h2"><em>Así</em> se genera</h1><p class="sub">Pedís el proceso. El agente queda mapeado y <b style="color:#00FFB2">listo para ejecutar.</b></p><div class="phone"><div class="ph-head"><img class="claude" src="file:///workspace/builds/2026-08-18-nueva-forma-agentes/assets/claude.png" width="32" height="32" alt="" style="width:32px;height:32px;object-fit:contain;"><div class="nm">Claude</div><div class="hr">11:20</div></div><div class="ph-body"><div class="row me"><div><div class="bubble-u">Armá el agente con el seguimiento comercial.</div><div class="ts" style="text-align:right">11:20</div></div></div><div class="row"><img class="claude" src="file:///workspace/builds/2026-08-18-nueva-forma-agentes/assets/claude.png" width="36" height="36" alt="" style="width:36px;height:36px;object-fit:contain;"><div><div class="bubble-a">Listo. 12 pasos documentados y el agente ya corre el flujo.</div><div class="ts">11:24</div></div></div></div></div><div class="cta-side">esto lo hacemos sobre tu operación →</div></section><section class="slide" data-id="06"><div class="tex"></div><div class="glow glow-tr"></div><div class="glow glow-bl"></div><div class="hline top"></div><div class="hline bot"></div><div class="brand">STLabs</div><div class="kicker"></div><div class="pill"><i></i>A medida</div><div class="firma">sebastian.stlabs.ar</div><h1 class="ask">¿Querés que te genere<br>el <em>agente</em> a medida?</h1><p class="pre">Mapeo tu operación, documento el flujo y te dejo el agente personalizado listo.</p><div class="kwbox"><span>PROCESO</span></div><div class="bottom-row"><div class="send">Comentá <em>PROCESO</em> y arrancamos la generación <em>→</em></div></div></section></div></body></html>
