@@ -27,6 +27,7 @@ def build_css() -> str:
     wch = uri(A / "pixel-wrench.png")
     cost = uri(A / "pixel-cost.png")
     bell = uri(A / "pixel-bell.png")
+    claude = uri(A / "claude.png")
     return f"""
 @font-face {{ font-family:'Playfair'; src:url('file://{f}/PlayfairDisplay.ttf') format('truetype'); font-weight:400 900; font-style:normal; }}
 @font-face {{ font-family:'Playfair'; src:url('file://{f}/PlayfairDisplay-Italic.ttf') format('truetype'); font-weight:400 900; font-style:italic; }}
@@ -98,14 +99,16 @@ html, body {{ background:#000; }}
   font-size:22px; color:{G}; text-align:right;
 }}
 
-/* PORTADA */
+/* PORTADA — foto a tamaño de la referencia (llena el 4:5), sin línea que la corte */
 .hero {{
-  position:absolute; left:0; right:0; bottom:0; height:68%; z-index:1;
-  background:url('{hero}') center 48% / cover no-repeat;
+  position:absolute; inset:0; z-index:1;
+  background:url('{hero}') center top / cover no-repeat;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 100%);
 }}
 .hero-fade {{
-  position:absolute; left:0; right:0; top:0; height:42%; z-index:2; pointer-events:none;
-  background:linear-gradient(180deg, {BG} 0%, {BG} 42%, rgba(10,10,10,.4) 78%, transparent 100%);
+  position:absolute; left:0; right:0; top:0; height:38%; z-index:2; pointer-events:none;
+  background:linear-gradient(180deg, {BG} 0%, {BG} 48%, rgba(10,10,10,.45) 78%, transparent 100%);
 }}
 .display {{
   position:absolute; left:72px; right:90px; top:168px; z-index:5;
@@ -119,7 +122,8 @@ html, body {{ background:#000; }}
 }}
 .clip img {{ width:88px; height:88px; image-rendering:pixelated; display:block; margin:22px auto; }}
 .clip.dude {{ left:48px; top:58%; }}
-.clip.cf {{ right:40px; top:62%; width:170px; height:auto; }}
+.clip.cf {{ right:28px; top:60%; width:160px; height:auto; display:flex; flex-direction:column; align-items:center; }}
+.claude {{ display:block; object-fit:contain; }}
 .corners {{
   position:absolute; inset:0; pointer-events:none;
 }}
@@ -240,11 +244,11 @@ html, body {{ background:#000; }}
 }}
 .ask em {{ font-style:italic; color:{G}; font-weight:700; }}
 .pre {{
-  position:absolute; left:72px; right:72px; top:430px; z-index:4; text-align:center;
-  font-family:'Poppins',sans-serif; font-weight:700; font-size:24px; color:{W};
+  position:absolute; left:72px; right:72px; top:380px; z-index:4; text-align:center;
+  font-family:'Poppins',sans-serif; font-weight:700; font-size:22px; line-height:1.35; color:{W};
 }}
 .kwbox {{
-  position:absolute; left:120px; right:120px; top:490px; z-index:4;
+  position:absolute; left:120px; right:120px; top:510px; z-index:4;
   border:2px solid {G}; border-radius:18px; padding:36px 20px; text-align:center;
 }}
 .kwbox span {{
@@ -264,15 +268,16 @@ html, body {{ background:#000; }}
 """
 
 
-def chrome(kicker: str, pill: str | None = None, plus: bool = True) -> str:
+def chrome(kicker: str, pill: str | None = None, plus: bool = True, bot_line: bool = True) -> str:
     p = ""
     if pill:
         p = f'<div class="pill"><i></i>{pill}</div>'
     pl = '<div class="plus">+</div>' if plus else ""
+    bot = '<div class="hline bot"></div>' if bot_line else ""
     return (
         '<div class="tex"></div><div class="glow glow-tr"></div><div class="glow glow-bl"></div>'
-        '<div class="hline top"></div><div class="hline bot"></div>'
-        f'<div class="brand">STLabs</div>{pl}'
+        '<div class="hline top"></div>' + bot
+        + f'<div class="brand">STLabs</div>{pl}'
         f'<div class="kicker">{kicker}</div>{p}'
         '<div class="firma">sebastian.stlabs.ar</div>'
     )
@@ -290,19 +295,11 @@ def cf_svg() -> str:
     return cf_icon() + '<div class="cf-mark">CLOUDFLARE</div>'
 
 
-def claude_svg(size: int = 88) -> str:
+def claude_img(size: int = 88) -> str:
+    src = uri(A / "claude.png")
     return (
-        f'<svg viewBox="0 0 80 80" width="{size}" height="{size}">'
-        '<g fill="#D97757">'
-        '<rect x="36" y="4" width="8" height="22" rx="2"/>'
-        '<rect x="36" y="54" width="8" height="22" rx="2"/>'
-        '<rect x="4" y="36" width="22" height="8" rx="2"/>'
-        '<rect x="54" y="36" width="22" height="8" rx="2"/>'
-        '<rect x="14" y="14" width="8" height="22" rx="2" transform="rotate(-45 18 25)"/>'
-        '<rect x="54" y="14" width="8" height="22" rx="2" transform="rotate(45 58 25)"/>'
-        '<rect x="14" y="46" width="8" height="22" rx="2" transform="rotate(45 18 57)"/>'
-        '<rect x="54" y="46" width="8" height="22" rx="2" transform="rotate(-45 58 57)"/>'
-        '</g></svg>'
+        f'<img class="claude" src="{src}" width="{size}" height="{size}" alt="" '
+        f'style="width:{size}px;height:{size}px;object-fit:contain;">'
     )
 
 
@@ -310,11 +307,11 @@ def slide_01() -> str:
     dude = uri(A / "pixel-dude.png")
     return (
         '<section class="slide" data-id="01">'
-        + chrome("01 / 05", pill="Nadie lo cuenta", plus=False)
+        + chrome("01 / 05", pill="Nadie lo cuenta", plus=False, bot_line=False)
         + '<div class="hero"></div><div class="hero-fade"></div>'
         + '<h1 class="display"><em>La nueva</em><br>forma de crear<br><em>agentes IA.</em></h1>'
         + f'<div class="clip dude"><div class="corners"><span class="tl"></span><span class="tr"></span><span class="bl"></span><span class="br"></span></div><img src="{dude}" alt=""></div>'
-        + f'<div class="clip cf">{cf_svg()}</div>'
+        + f'<div class="clip cf">{claude_img(96)}</div>'
         + '<div class="cta-side">esto va a cambiar todo →</div>'
         + "</section>"
     )
@@ -365,7 +362,7 @@ def slide_04() -> str:
         + '<h1 class="h2">El <em>secreto</em></h1>'
         + '<p class="sub">Claude Code lo construye. Cloudflare lo aloja.</p>'
         + '<div class="eq">'
-        f'<div class="eq-item"><div class="eq-box">{claude_svg()}</div><strong>Claude Code</strong><em>el ingeniero</em></div>'
+        f'<div class="eq-item"><div class="eq-box">{claude_img(96)}</div><strong>Claude Code</strong><em>el ingeniero</em></div>'
         '<div class="plus-lg">+</div>'
         f'<div class="eq-item"><div class="eq-box">{cf_icon()}</div><strong>Cloudflare</strong><em>la casa 24/7</em></div>'
         "</div>"
@@ -383,10 +380,10 @@ def slide_05() -> str:
         + '<h1 class="h2"><em>Lo mejor</em> del método</h1>'
         + '<p class="sub">El cliente reporta un error de madrugada → Claude lo arregla <b style="color:#00FFB2">mientras dormís.</b></p>'
         + '<div class="phone"><div class="ph-head">'
-        f'{claude_svg(28)}<div class="nm">Claude</div><div class="hr">03:00</div></div>'
+        f'{claude_img(32)}<div class="nm">Claude</div><div class="hr">03:00</div></div>'
         '<div class="ph-body">'
         f'<div class="row me"><div><div class="bubble-u">Se cayó el agente del cliente</div><div class="ts" style="text-align:right">03:00</div></div><img class="av" src="{av}" alt=""></div>'
-        f'<div class="row">{claude_svg(36)}<div><div class="bubble-a">Listo, ya lo arreglé. Seguí durmiendo.</div><div class="ts">03:02</div></div></div>'
+        f'<div class="row">{claude_img(36)}<div><div class="bubble-a">Listo, ya lo arreglé. Seguí durmiendo.</div><div class="ts">03:02</div></div></div>'
         "</div></div>"
         + '<div class="cta-side">seguime para más métodos así →</div>'
         + "</section>"
@@ -397,12 +394,12 @@ def slide_06() -> str:
     av = uri(A / "sebas-avatar.png")
     return (
         '<section class="slide" data-id="06">'
-        + chrome("", pill="100% gratis", plus=False)
-        + '<h1 class="ask">¿Querés el agente<br>que arma <em>todo esto</em>?</h1>'
-        + '<p class="pre">Comentá esta palabra</p>'
+        + chrome("", pill="A medida", plus=False)
+        + '<h1 class="ask">¿Querés que te arme<br>este <em>proceso</em> a medida?</h1>'
+        + '<p class="pre">Diseño el flujo, lo documento y te genero un agente personalizado para tu operación.</p>'
         + '<div class="kwbox"><span>AGENTE</span></div>'
         + f'<div class="bottom-row"><div class="avatar-wrap"><div class="corners"><span class="tl"></span><span class="tr"></span><span class="bl"></span><span class="br"></span></div><img src="{av}" alt=""></div>'
-        '<div class="send">y te lo mando al privado <em>→</em></div></div>'
+        '<div class="send">Comentá <em>AGENTE</em> y arrancamos tu generación personalizada <em>→</em></div></div>'
         + "</section>"
     )
 
@@ -426,7 +423,7 @@ def main():
         "modo": "negro",
         "id": "2026-08-18-nueva-forma-agentes",
         "fecha": "2026-08-18",
-        "notas": "Clon editorial 6 slides. Sebas pensativo + MacBook. JSON sistema visual editorial. Sin contador IG.",
+        "notas": "Portada full-bleed sin línea. Hombrecito recortado a verde. Logo Claude estrella naranja. CTA vende el proceso de generación a medida.",
     }
     (B / "index.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"Wrote {len(slides)} slides")
