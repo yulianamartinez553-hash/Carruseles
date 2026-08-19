@@ -256,13 +256,12 @@ html, body {{ background:#000; }}
   letter-spacing:.18em; color:{G};
 }}
 .bottom-row {{
-  position:absolute; left:72px; right:72px; top:780px; z-index:4;
-  display:flex; align-items:center; gap:22px;
+  position:absolute; left:72px; right:72px; top:800px; z-index:4;
+  display:flex; align-items:center; justify-content:center;
 }}
-.avatar-wrap {{ position:relative; width:168px; height:168px; flex-shrink:0; }}
-.avatar-wrap img {{ width:140px; height:140px; border-radius:50%; object-fit:cover; position:absolute; top:14px; left:14px; }}
 .send {{
   font-family:'Poppins',sans-serif; font-weight:700; font-size:26px; color:{W}; line-height:1.3;
+  text-align:center;
 }}
 .send em {{ font-style:normal; color:{G}; }}
 """
@@ -390,15 +389,13 @@ def slide_05() -> str:
 
 
 def slide_06() -> str:
-    av = uri(A / "sebas-avatar.png")
     return (
         '<section class="slide" data-id="06">'
         + chrome("", pill="A medida", plus=False)
         + '<h1 class="ask">¿Querés que te genere<br>el <em>agente</em> a medida?</h1>'
         + '<p class="pre">Mapeo tu operación, documento el flujo y te dejo el agente personalizado listo.</p>'
         + '<div class="kwbox"><span>PROCESO</span></div>'
-        + f'<div class="bottom-row"><div class="avatar-wrap"><div class="corners"><span class="tl"></span><span class="tr"></span><span class="bl"></span><span class="br"></span></div><img src="{av}" alt=""></div>'
-        '<div class="send">Comentá <em>PROCESO</em> y arrancamos la generación <em>→</em></div></div>'
+        + '<div class="bottom-row"><div class="send">Comentá <em>PROCESO</em> y arrancamos la generación <em>→</em></div></div>'
         + "</section>"
     )
 
