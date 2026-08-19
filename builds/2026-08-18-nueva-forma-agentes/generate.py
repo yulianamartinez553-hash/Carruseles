@@ -371,7 +371,6 @@ def slide_04() -> str:
 
 
 def slide_05() -> str:
-    av = uri(A / "sebas-avatar.png")
     return (
         '<section class="slide" data-id="05">'
         + chrome("04 / 05 — En vivo")
@@ -380,7 +379,7 @@ def slide_05() -> str:
         + '<div class="phone"><div class="ph-head">'
         f'{claude_img(32)}<div class="nm">Claude</div><div class="hr">11:20</div></div>'
         '<div class="ph-body">'
-        f'<div class="row me"><div><div class="bubble-u">Armá el agente con el seguimiento comercial.</div><div class="ts" style="text-align:right">11:20</div></div><img class="av" src="{av}" alt=""></div>'
+        '<div class="row me"><div><div class="bubble-u">Armá el agente con el seguimiento comercial.</div><div class="ts" style="text-align:right">11:20</div></div></div>'
         f'<div class="row">{claude_img(36)}<div><div class="bubble-a">Listo. 12 pasos documentados y el agente ya corre el flujo.</div><div class="ts">11:24</div></div></div>'
         "</div></div>"
         + '<div class="cta-side">esto lo hacemos sobre tu operación →</div>'
