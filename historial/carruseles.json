@@ -1,5 +1,5 @@
 {
-  "ultimo_id": "2026-08-18-nueva-forma-agentes",
+  "ultimo_id": "2026-08-19-historias-proceso",
   "carruseles": [
     {
       "id": "2026-07-01-demo-memoria-stlabs",
@@ -34,6 +34,14 @@
       "slides": 6,
       "fondo": "reticula_fina",
       "familia_visual": "dossier_editorial"
+    },
+    {
+      "id": "2026-08-19-historias-proceso",
+      "fecha": "2026-08-19",
+      "titulo": "Historias: necesidad del agente",
+      "slides": 6,
+      "fondo": "lino_tela",
+      "familia_visual": "manifiesto"
     }
   ]
 }

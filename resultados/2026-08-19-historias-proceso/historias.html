@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8">
+<title>Historias PROCESO — STLabs</title>
+<style>
+@font-face { font-family:'Bebas Neue'; src:url('file:///tmp/stlabs-fonts/BebasNeue-Regular.ttf') format('truetype'); font-weight:400; font-display:block; }
+@font-face { font-family:'Lora'; src:url('file:///tmp/stlabs-fonts/Lora-Italic-Variable.ttf') format('truetype'); font-style:italic; font-weight:400 700; font-display:block; }
+@font-face { font-family:'Barlow Condensed'; src:url('file:///tmp/stlabs-fonts/BarlowCondensed-Medium.ttf') format('truetype'); font-weight:500; font-display:block; }
+@font-face { font-family:'IBM Plex Mono'; src:url('file:///tmp/stlabs-fonts/IBMPlexMono-Medium.ttf') format('truetype'); font-weight:500; font-display:block; }
+@font-face { font-family:'IBM Plex Mono'; src:url('file:///tmp/stlabs-fonts/IBMPlexMono-SemiBold.ttf') format('truetype'); font-weight:600; font-display:block; }
+
+* { box-sizing:border-box; margin:0; padding:0; -webkit-font-smoothing:antialiased; text-rendering:geometricPrecision; font-synthesis:none; }
+html, body { background:#000; }
+.sheet { display:flex; flex-direction:column; gap:40px; padding:32px; width:max-content; }
+
+.story {
+  position:relative; width:1080px; height:1920px; overflow:hidden;
+  background:#0A0A0A; color:#F2F2F2;
+}
+
+/* lino_tela — cruzado 0°/90°, opacidad baja + halo de esquina */
+.tex {
+  position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(242,242,242,.028) 0 1px, transparent 1px 7px),
+    repeating-linear-gradient(90deg, rgba(242,242,242,.022) 0 1px, transparent 1px 7px);
+}
+.glow {
+  position:absolute; border-radius:50%; pointer-events:none; z-index:0;
+}
+.glow-tr {
+  top:-260px; right:-180px; width:760px; height:760px;
+  background:radial-gradient(circle, rgba(0,255,178,.26) 0%, rgba(0,255,178,.07) 46%, transparent 72%);
+}
+.glow-bl {
+  bottom:-200px; left:-160px; width:620px; height:620px;
+  background:radial-gradient(circle, rgba(0,255,178,.16) 0%, rgba(0,255,178,.05) 44%, transparent 74%);
+}
+.edge {
+  position:absolute; inset:40px; z-index:2; pointer-events:none;
+  border:1px solid rgba(0,255,178,.16);
+}
+
+.safe {
+  position:absolute; left:80px; right:80px; top:220px; bottom:360px;
+  z-index:5; display:flex; flex-direction:column;
+}
+.top {
+  display:flex; justify-content:space-between; align-items:baseline;
+}
+.brand {
+  font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:18px;
+  letter-spacing:.16em; color:#9aa39c; text-transform:uppercase;
+}
+.kicker {
+  font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:18px;
+  letter-spacing:.14em; color:#F2F2F2; text-transform:uppercase;
+}
+.bars {
+  display:flex; gap:8px; margin-top:22px;
+}
+.bars i {
+  flex:1; height:3px; background:rgba(242,242,242,.16); border-radius:99px; display:block;
+}
+.bars i.on { background:#F2F2F2; }
+
+.mid {
+  flex:1; display:flex; flex-direction:column; justify-content:center;
+}
+.claim {
+  font-family:'Bebas Neue', Impact, sans-serif; font-weight:400;
+  font-size:96px; line-height:.92; letter-spacing:.01em; color:#F2F2F2;
+  text-align:left; max-width:920px;
+}
+.claim.xl { font-size:128px; line-height:.88; }
+.claim.cta { font-size:88px; text-align:center; width:100%; max-width:none; }
+.claim em {
+  font-family:'Lora', Georgia, serif; font-style:italic; font-weight:600;
+  color:#00FFB2; font-size:0.72em; letter-spacing:0;
+  display:inline-block; line-height:1;
+}
+.rule {
+  width:112px; height:5px; background:#00FFB2; border-radius:2px;
+  margin:36px 0 28px;
+}
+.cta .rule { margin-left:auto; margin-right:auto; }
+.apoyo {
+  font-family:'Barlow Condensed', sans-serif; font-weight:500; font-size:36px;
+  line-height:1.32; color:#9aa39c; max-width:820px;
+}
+.cta .apoyo { text-align:center; max-width:none; color:#F2F2F2; }
+
+.kw {
+  margin:8px auto 0; width:100%; max-width:720px;
+  border:3px solid #00FFB2; border-radius:18px; padding:28px 16px; text-align:center;
+}
+.kw span {
+  font-family:'Bebas Neue', Impact, sans-serif; font-size:72px;
+  letter-spacing:.18em; color:#00FFB2;
+}
+.hint {
+  margin-top:36px; text-align:center;
+  font-family:'Barlow Condensed', sans-serif; font-weight:500; font-size:32px;
+  line-height:1.35; color:#F2F2F2;
+}
+.hint strong { font-weight:500; color:#00FFB2; }
+
+.firma {
+  position:absolute; left:0; right:0; bottom:300px; text-align:center; z-index:8;
+  font-family:'IBM Plex Mono',monospace; font-weight:500; font-size:22px;
+  letter-spacing:.14em; color:#00FFB2; opacity:.92;
+}
+</style></head>
+<body><div class="sheet"><section class="story" data-id="01"><div class="tex"></div><div class="glow glow-tr"></div><div class="glow glow-bl"></div><div class="edge"></div><div class="safe"><div class="top"><div class="brand">STLabs</div><div class="kicker">GANCHO</div></div><div class="bars"><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div><div class="mid"><h1 class="claim lg">Si el seguimiento<br>vive en tu <em>cabeza</em>,<br>no tenés operación.</h1><div class="rule"></div><p class="apoyo">Tenés un puesto.</p></div></div><div class="firma">sebastian.stlabs.ar</div></section><section class="story" data-id="02"><div class="tex"></div><div class="glow glow-tr"></div><div class="glow glow-bl"></div><div class="edge"></div><div class="safe"><div class="top"><div class="brand">STLabs</div><div class="kicker">DOLOR</div></div><div class="bars"><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div><div class="mid"><h1 class="claim lg">Cada excepción<br>la resolvés <em>vos</em>.</h1><div class="rule"></div><p class="apoyo">Cada seguimiento depende de que te acuerdes.</p></div></div><div class="firma">sebastian.stlabs.ar</div></section><section class="story" data-id="03"><div class="tex"></div><div class="glow glow-tr"></div><div class="glow glow-bl"></div><div class="edge"></div><div class="safe"><div class="top"><div class="brand">STLabs</div><div class="kicker">CONSECUENCIA</div></div><div class="bars"><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></div><div class="mid"><h1 class="claim xl">Eso no<br><em>escala</em>.</h1><div class="rule"></div><p class="apoyo">El día que no estás, el proceso se cae.</p></div></div><div class="firma">sebastian.stlabs.ar</div></section><section class="story" data-id="04"><div class="tex"></div><div class="glow glow-tr"></div><div class="glow glow-bl"></div><div class="edge"></div><div class="safe"><div class="top"><div class="brand">STLabs</div><div class="kicker">INSIGHT</div></div><div class="bars"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></div><div class="mid"><h1 class="claim lg">Un agente genérico<br>no te <em>salva</em>.</h1><div class="rule"></div><p class="apoyo">Si el proceso no está escrito, no hay nada que ejecutar.</p></div></div><div class="firma">sebastian.stlabs.ar</div></section><section class="story" data-id="05"><div class="tex"></div><div class="glow glow-tr"></div><div class="glow glow-bl"></div><div class="edge"></div><div class="safe"><div class="top"><div class="brand">STLabs</div><div class="kicker">MÉTODO</div></div><div class="bars"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i></div><div class="mid"><h1 class="claim lg">Primero mapeamos<br>tu <em>operación</em>.</h1><div class="rule"></div><p class="apoyo">Después se genera el agente. A medida.</p></div></div><div class="firma">sebastian.stlabs.ar</div></section><section class="story" data-id="06"><div class="tex"></div><div class="glow glow-tr"></div><div class="glow glow-bl"></div><div class="edge"></div><div class="safe"><div class="top"><div class="brand">STLabs</div><div class="kicker">RESPONDÉ</div></div><div class="bars"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div><div class="mid cta"><h1 class="claim cta">¿Querés que te<br>lo <em>genere</em>?</h1><div class="rule"></div><div class="kw"><span>PROCESO</span></div><p class="hint">Respondé esta historia con <strong>PROCESO</strong><br>y te escribo para arrancar.</p></div></div><div class="firma">sebastian.stlabs.ar</div></section></div></body></html>
