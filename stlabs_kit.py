@@ -25,20 +25,32 @@ def _font_dir(linux_path: pathlib.Path) -> str:
 
 STLABS = _font_dir(_LINUX_STLABS)
 GFONTS = _font_dir(_LINUX_GFONTS)
+LOCAL = str(_LOCAL_FONTS) + "/"
+
+def _resolve_font(*candidates: str) -> str:
+    for c in candidates:
+        if pathlib.Path(c).exists():
+            return c
+    return candidates[0]
 
 # (familia, archivo, peso, estilo)
+# Impact = Super-Heavy · Anton = Ultra-Heavy (skeleton carrusel-studio / 05-template-html)
 FONT_FACES = [
-    ("Poppins", GFONTS+"Poppins-Bold.ttf", 700, "normal"),
+    ("Impact", _resolve_font(LOCAL + "Impact.ttf", STLABS + "Impact.ttf"), 400, "normal"),
+    ("Impact", _resolve_font(LOCAL + "Impact.ttf", STLABS + "Impact.ttf"), 900, "normal"),
+    ("Anton", _resolve_font(LOCAL + "Anton-Regular.ttf", GFONTS + "Anton-Regular.ttf"), 400, "normal"),
+    ("Anton", _resolve_font(LOCAL + "Anton-Regular.ttf", GFONTS + "Anton-Regular.ttf"), 900, "normal"),
+    ("Poppins", GFONTS + "Poppins-Bold.ttf", 700, "normal"),
     ("Poppins", GFONTS+"Poppins-Bold.ttf", 800, "normal"),
-    ("Bebas Neue", STLABS+"BebasNeue-Regular.ttf", 400, "normal"),
-    ("IBM Plex Mono", STLABS+"IBMPlexMono-Regular.ttf", 400, "normal"),
-    ("IBM Plex Mono", STLABS+"IBMPlexMono-Medium.ttf", 500, "normal"),
-    ("IBM Plex Mono", STLABS+"IBMPlexMono-SemiBold.ttf", 600, "normal"),
-    ("Barlow Condensed", STLABS+"BarlowCondensed-Regular.ttf", 400, "normal"),
-    ("Barlow Condensed", STLABS+"BarlowCondensed-Medium.ttf", 500, "normal"),
-    ("Barlow Condensed", STLABS+"BarlowCondensed-SemiBold.ttf", 600, "normal"),
-    ("Barlow Condensed", STLABS+"BarlowCondensed-Bold.ttf", 700, "normal"),
-    ("Lora", GFONTS+"Lora-Italic-Variable.ttf", "400 700", "italic"),
+    ("Bebas Neue", _resolve_font(LOCAL + "BebasNeue-Regular.ttf", STLABS + "BebasNeue-Regular.ttf"), 400, "normal"),
+    ("IBM Plex Mono", _resolve_font(LOCAL + "IBMPlexMono-Regular.ttf", STLABS + "IBMPlexMono-Regular.ttf"), 400, "normal"),
+    ("IBM Plex Mono", _resolve_font(LOCAL + "IBMPlexMono-Medium.ttf", STLABS + "IBMPlexMono-Medium.ttf"), 500, "normal"),
+    ("IBM Plex Mono", _resolve_font(LOCAL + "IBMPlexMono-SemiBold.ttf", STLABS + "IBMPlexMono-SemiBold.ttf"), 600, "normal"),
+    ("Barlow Condensed", _resolve_font(LOCAL + "BarlowCondensed-Regular.ttf", STLABS + "BarlowCondensed-Regular.ttf"), 400, "normal"),
+    ("Barlow Condensed", _resolve_font(LOCAL + "BarlowCondensed-Medium.ttf", STLABS + "BarlowCondensed-Medium.ttf"), 500, "normal"),
+    ("Barlow Condensed", _resolve_font(LOCAL + "BarlowCondensed-SemiBold.ttf", STLABS + "BarlowCondensed-SemiBold.ttf"), 600, "normal"),
+    ("Barlow Condensed", _resolve_font(LOCAL + "BarlowCondensed-Bold.ttf", STLABS + "BarlowCondensed-Bold.ttf"), 700, "normal"),
+    ("Lora", _resolve_font(LOCAL + "Lora-Italic-Variable.ttf", GFONTS + "Lora-Italic-Variable.ttf"), "400 700", "italic"),
 ]
 
 def _face(fam, path, w, style):
@@ -65,7 +77,10 @@ NEG="#0A0A0A"; GRAF="#141414"; GRIS="#1E1E1E"; BLANCO="#F2F2F2"; GRAY="#9aa39c"
 BASE_CSS = """
 :root{--verde:#00FFB2;--red:#FF5247;--am:#FF9D3C;--neg:#0A0A0A;--graf:#141414;--gris:#1E1E1E;
  --blanco:#F2F2F2;--gray:#9aa39c;
- --mono:'IBM Plex Mono',monospace;--cond:'Barlow Condensed',sans-serif;--disp:'Bebas Neue',sans-serif;
+ --impact:'Impact',sans-serif;--anton:'Anton',sans-serif;--bebas:'Bebas Neue',sans-serif;
+ --mono:'IBM Plex Mono',monospace;--cond:'Barlow Condensed',sans-serif;
+ --disp:'Bebas Neue','Anton','Impact',sans-serif;
+ --title:'Bebas Neue',sans-serif;
  --pop:'Poppins',sans-serif;--serif:'Lora',serif;}
 *{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased;}
 body{background:#000;}
