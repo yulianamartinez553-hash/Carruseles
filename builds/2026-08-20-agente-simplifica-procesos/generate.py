@@ -58,18 +58,18 @@ EXTRA_CSS = """
 .body-t b{color:#F2F2F2;font-weight:700;}
 
 .t-mega{
-  font-family:var(--impact);font-weight:900;line-height:.86;color:#F2F2F2;
-  letter-spacing:0.03em;text-align:left;text-transform:uppercase;
+  font-family:'Bebas Neue',sans-serif;font-weight:400;line-height:.9;color:#F2F2F2;
+  letter-spacing:0.02em;text-align:left;text-transform:uppercase;
   text-shadow:0 2px 24px rgba(0,0,0,.55);
 }
-.t-mega .gr{color:#00FFB2;}
+.t-mega .gr{color:#00FFB2;text-shadow:0 0 28px rgba(0,255,178,.35);}
 .t-mega .ac{
-  font-family:var(--serif);font-style:italic;font-weight:700;color:#00FFB2;
-  text-transform:uppercase;
+  font-family:'Bebas Neue',sans-serif;font-style:normal;font-weight:400;color:#00FFB2;
+  text-transform:uppercase;text-shadow:0 0 28px rgba(0,255,178,.35);
 }
-.t-stat{font-family:var(--impact);font-weight:900;font-size:210px;line-height:.74;letter-spacing:0.02em;}
-.t-head{font-size:128px;line-height:.86;letter-spacing:0.04em;}
-.t-mid{font-family:var(--impact);font-weight:900;font-size:108px;margin-top:6px;line-height:.86;letter-spacing:0.03em;}
+.t-stat{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:230px;line-height:.78;letter-spacing:0.01em;}
+.t-head{font-size:136px;line-height:.9;letter-spacing:0.02em;}
+.t-mid{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:118px;margin-top:6px;line-height:.9;letter-spacing:0.02em;}
 
 /* Slide 1 — foto protagonista + título Impact ancho */
 .s1-wrap{position:relative;height:100%;overflow:hidden;background:#0A0A0A;}
@@ -96,13 +96,14 @@ EXTRA_CSS = """
   padding:0 72px 118px;
 }
 .s1-copy .t-head{
-  font-family:var(--impact);font-weight:900;
-  font-size:112px;line-height:.84;letter-spacing:0.05em;
+  font-family:'Bebas Neue',sans-serif;font-weight:400;
+  font-size:118px;line-height:.88;letter-spacing:0.02em;
   max-width:980px;
 }
 .s1-copy .t-head .gr{
-  font-family:var(--serif);font-style:italic;font-weight:700;
-  letter-spacing:0.01em;
+  font-family:'Bebas Neue',sans-serif;font-style:normal;font-weight:400;
+  letter-spacing:0.02em;color:#00FFB2;
+  text-shadow:0 0 28px rgba(0,255,178,.35);
 }
 .s1-sub{
   margin-top:20px;font-family:var(--cond);font-weight:700;font-size:34px;
@@ -153,11 +154,11 @@ EXTRA_CSS = """
   padding:96px 84px 120px;height:100%;display:flex;flex-direction:column;
   justify-content:center;align-items:flex-start;
 }
-.s8-wrap .t-mega{font-family:var(--impact);font-weight:900;font-size:96px;max-width:920px;line-height:.86;letter-spacing:0.04em;}
+.s8-wrap .t-mega{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:108px;max-width:940px;line-height:.9;letter-spacing:0.02em;}
 .s8-wrap .s8-q{
-  font-family:var(--cond);font-weight:700;font-size:72px;
-  display:inline-block;vertical-align:top;margin-right:10px;
-  letter-spacing:0;
+  font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:108px;
+  display:inline-block;vertical-align:baseline;margin-right:6px;
+  letter-spacing:0.02em;
 }
 .cta-pill{
   margin-top:44px;display:inline-flex;align-items:center;gap:16px;
