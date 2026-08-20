@@ -25,11 +25,11 @@ def main() -> None:
         "id": BUILD_ID,
         "titulo": "Agente Simplifica Procesos",
         "slides": 8,
-        "fondo": "lino_tela",
+        "fondo": "reticula_fina",
         "familia_visual": "before_after",
         "origen": "screenshot",
         "keyword_portada": "PROCESOS",
-        "notas": "Clon editorial verificación→agente. Modo blanco. Portada B&W generada. CTA Comentá PROCESOS.",
+        "notas": "Modo negro + retícula verde. Portada Sebastián B&W. CTA Comentá PROCESOS.",
     }
     out = package(BUILD, "STLabs-Agente-Simplifica-Procesos", meta=meta, output_dir=BUILD)
     print(f"✓ Package → {out}")

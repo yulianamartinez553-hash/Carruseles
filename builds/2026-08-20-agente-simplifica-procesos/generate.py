@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Carrusel STLabs — Agente que simplifica procesos
-Clon editorial @ninodirector · 8 slides · modo blanco · lino_tela · before_after
+Clon editorial @ninodirector · 8 slides · modo negro · retícula verde · before_after
 """
 from __future__ import annotations
 
@@ -16,74 +16,87 @@ sys.path.insert(0, str(REPO))
 from stlabs_kit import chrome, write_html
 
 N = 8
-PORTADA = BUILD / "assets" / "portada-hombre-papeles.png"
+PORTADA = BUILD / "assets" / "portada-sebas-papeles.png"
 PORTADA_URI = f"data:image/png;base64,{base64.b64encode(PORTADA.read_bytes()).decode()}"
 
 EXTRA_CSS = """
-/* ── Modo BLANCO + textura lino_tela ── */
+/* ── Modo NEGRO STLabs + retícula verde + manchas ── */
 .slide{
-  background:#F5F0E8;color:#0A0A0A;
-  box-shadow:inset 0 0 0 1px rgba(10,10,10,.04);
+  background:#0A0A0A;color:#F2F2F2;
+  box-shadow:none;
 }
 .slide::before{
-  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.35;
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(0,255,178,.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,178,.055) 1px, transparent 1px);
+  background-size:60px 60px;
+  opacity:.85;
+}
+.slide::after{
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
   background:
-    repeating-linear-gradient(0deg, rgba(10,10,10,.025) 0 1px, transparent 1px 4px),
-    repeating-linear-gradient(90deg, rgba(10,10,10,.018) 0 1px, transparent 1px 5px);
+    radial-gradient(38% 32% at 12% 18%, rgba(0,255,178,.14), transparent 68%),
+    radial-gradient(42% 36% at 88% 72%, rgba(0,255,178,.10), transparent 65%),
+    radial-gradient(28% 24% at 72% 12%, rgba(0,255,178,.08), transparent 70%),
+    radial-gradient(22% 20% at 24% 88%, rgba(0,255,178,.06), transparent 72%);
 }
 .slide>*{position:relative;z-index:2;}
-.web{color:#00FFB2;text-shadow:none;bottom:64px;font-size:23px;letter-spacing:2px;}
+.web{color:#00FFB2;text-shadow:0 0 18px rgba(0,255,178,.35);bottom:64px;font-size:23px;letter-spacing:2px;}
 
 .badge{
-  display:inline-block;background:#0A0A0A;color:#F5F0E8;
+  display:inline-block;background:#0A0A0A;color:#00FFB2;
+  border:2px solid rgba(0,255,178,.65);
   font-family:var(--mono);font-size:18px;font-weight:600;letter-spacing:2px;
   padding:10px 16px;margin-bottom:36px;text-transform:uppercase;
+  box-shadow:0 0 20px rgba(0,255,178,.12);
 }
 .body-t{
-  font-family:var(--cond);font-size:32px;line-height:1.35;color:#3a3a3a;
+  font-family:var(--cond);font-size:34px;line-height:1.32;color:#9aa39c;
   max-width:900px;margin-top:36px;
 }
-.body-t b{color:#0A0A0A;font-weight:700;}
+.body-t b{color:#F2F2F2;font-weight:700;}
 
 .t-mega{
-  font-family:var(--disp);font-weight:400;line-height:.88;color:#0A0A0A;
-  letter-spacing:.5px;text-align:left;
+  font-family:var(--disp);font-weight:400;line-height:.84;color:#F2F2F2;
+  letter-spacing:1px;text-align:left;
+  text-shadow:0 2px 24px rgba(0,0,0,.45);
 }
 .t-mega .gr{color:#00FFB2;}
 .t-mega .ac{
   font-family:var(--serif);font-style:italic;font-weight:700;color:#00FFB2;
 }
-.t-stat{font-size:168px;line-height:.82;}
-.t-head{font-size:118px;}
-.t-mid{font-size:96px;margin-top:4px;}
+.t-stat{font-size:196px;line-height:.78;letter-spacing:-2px;}
+.t-head{font-size:128px;}
+.t-mid{font-size:104px;margin-top:6px;}
 
 /* Slide 1 — portada dividida */
-.s1-wrap{position:relative;height:100%;overflow:hidden;background:#F5F0E8;}
+.s1-wrap{position:relative;height:100%;overflow:hidden;background:#0A0A0A;}
 .s1-photo{
   position:absolute;left:0;right:0;top:0;height:47%;overflow:hidden;
-  background:#111;
+  background:#050505;
 }
 .s1-photo img{
-  width:100%;height:100%;object-fit:cover;object-position:center 22%;
-  filter:grayscale(1) contrast(1.08) brightness(.92);
+  width:100%;height:100%;object-fit:cover;object-position:center 18%;
+  filter:grayscale(1) contrast(1.12) brightness(.88);
 }
 .s1-photo::after{
   content:'';position:absolute;inset:0;
-  background:linear-gradient(180deg, transparent 55%, rgba(245,240,232,.92) 100%);
+  background:linear-gradient(180deg, transparent 42%, rgba(10,10,10,.88) 78%, #0A0A0A 100%);
 }
 .s1-copy{
   position:absolute;left:0;right:0;bottom:0;height:53%;
-  padding:28px 72px 120px;display:flex;flex-direction:column;justify-content:center;
+  padding:20px 72px 120px;display:flex;flex-direction:column;justify-content:center;
 }
 .s1-sub{
-  margin-top:22px;font-family:var(--cond);font-weight:700;font-size:34px;
-  letter-spacing:1px;color:#0A0A0A;text-transform:uppercase;
+  margin-top:24px;font-family:var(--cond);font-weight:700;font-size:36px;
+  letter-spacing:2px;color:#9aa39c;text-transform:uppercase;
 }
 .s1-chip{
   position:absolute;right:56px;bottom:52%;transform:translateY(50%);
   width:54px;height:54px;z-index:4;
-  background:#00FFB2;border:4px solid #F5F0E8;border-radius:10px;
-  box-shadow:0 8px 24px rgba(0,0,0,.18);
+  background:#00FFB2;border:4px solid #0A0A0A;border-radius:10px;
+  box-shadow:0 0 28px rgba(0,255,178,.45);
   image-rendering:pixelated;
 }
 .s1-chip::before{
@@ -99,44 +112,48 @@ EXTRA_CSS = """
   display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:28px;max-width:960px;
 }
 .ba-col{
-  border:2px solid rgba(10,10,10,.12);padding:28px 24px;background:rgba(255,255,255,.45);
+  border:2px solid rgba(255,255,255,.12);padding:28px 24px;background:rgba(20,20,20,.72);
 }
 .ba-col h3{
   font-family:var(--mono);font-size:18px;letter-spacing:2px;margin-bottom:18px;
-  color:#0A0A0A;
+  color:#F2F2F2;
 }
 .ba-col ul{list-style:none;display:flex;flex-direction:column;gap:12px;}
 .ba-col li{
-  font-family:var(--cond);font-size:26px;line-height:1.25;color:#3a3a3a;
+  font-family:var(--cond);font-size:28px;line-height:1.25;color:#9aa39c;
   padding-left:18px;position:relative;
 }
 .ba-col li::before{
-  content:'';position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:50%;
-  background:#0A0A0A;
+  content:'';position:absolute;left:0;top:12px;width:8px;height:8px;border-radius:50%;
+  background:#666;
 }
 .ba-col.good{border-color:rgba(0,255,178,.55);background:rgba(0,255,178,.06);}
-.ba-col.good h3{color:#00a874;}
-.ba-col.good li::before{background:#00FFB2;}
+.ba-col.good h3{color:#00FFB2;}
+.ba-col.good li{color:#d8e8e0;}
+.ba-col.good li::before{background:#00FFB2;box-shadow:0 0 8px rgba(0,255,178,.55);}
 
 /* Slide 8 — CTA */
 .s8-wrap{
   padding:96px 84px 120px;height:100%;display:flex;flex-direction:column;
   justify-content:center;align-items:flex-start;
 }
-.s8-wrap .t-mega{font-size:92px;max-width:920px;}
+.s8-wrap .t-mega{font-size:102px;max-width:920px;line-height:.86;}
 .cta-pill{
   margin-top:44px;display:inline-flex;align-items:center;gap:16px;
-  background:#0A0A0A;border-radius:999px;padding:20px 36px;
-  font-family:var(--pop);font-weight:800;font-size:34px;color:#F5F0E8;
+  background:rgba(0,255,178,.08);border:2px solid rgba(0,255,178,.65);
+  border-radius:999px;padding:20px 36px;
+  font-family:var(--pop);font-weight:800;font-size:36px;color:#F2F2F2;
+  box-shadow:0 0 32px rgba(0,255,178,.18);
 }
 .cta-pill span{
   font-family:var(--mono);font-weight:600;font-size:28px;letter-spacing:2px;
   color:#04130b;background:#00FFB2;border-radius:10px;padding:10px 16px;
 }
 .s8-note{
-  margin-top:32px;font-family:var(--cond);font-size:30px;line-height:1.35;
-  color:#3a3a3a;max-width:860px;
+  margin-top:32px;font-family:var(--cond);font-size:32px;line-height:1.35;
+  color:#9aa39c;max-width:860px;
 }
+.s8-note b{color:#F2F2F2;}
 """
 
 
