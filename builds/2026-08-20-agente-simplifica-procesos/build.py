@@ -29,7 +29,7 @@ def main() -> None:
         "familia_visual": "before_after",
         "origen": "screenshot",
         "keyword_portada": "PROCESOS",
-        "notas": "Modo negro + retícula verde. Portada Sebastián B&W. CTA Comentá PROCESOS.",
+        "notas": "Modo negro + retícula verde. Portada Sebastián a color, expresión cercana. CTA Comentá PROCESOS.",
     }
     out = package(BUILD, "STLabs-Agente-Simplifica-Procesos", meta=meta, output_dir=BUILD)
     print(f"✓ Package → {out}")

@@ -78,17 +78,17 @@ EXTRA_CSS = """
   background:#050505;
 }
 .s1-photo img{
-  width:100%;height:100%;object-fit:cover;object-position:center 20%;
-  filter:grayscale(1) contrast(1.18) brightness(.96);
+  width:100%;height:100%;object-fit:cover;object-position:center 18%;
+  filter:contrast(1.06) saturate(1.08) brightness(1.02);
 }
 .s1-photo::after{
   content:'';position:absolute;inset:0;
   background:linear-gradient(180deg,
-    rgba(10,10,10,.08) 0%,
-    transparent 28%,
-    rgba(10,10,10,.35) 52%,
-    rgba(10,10,10,.82) 68%,
-    rgba(10,10,10,.96) 78%,
+    rgba(10,10,10,.04) 0%,
+    transparent 32%,
+    rgba(10,10,10,.22) 50%,
+    rgba(10,10,10,.72) 66%,
+    rgba(10,10,10,.94) 78%,
     #0A0A0A 88%);
 }
 .s1-copy{
