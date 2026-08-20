@@ -139,10 +139,10 @@ EXTRA_CSS = """
   padding:0 72px 118px;
 }
 .s1-copy .t-head{
-  font-family:'Bebas Neue',sans-serif;font-weight:400;
-  font-size:118px;line-height:.88;letter-spacing:0.01em;
-  max-width:980px;
-  -webkit-text-stroke:5px #F2F2F2;
+  font-family:'Impact',sans-serif;font-weight:900;
+  font-size:112px;line-height:.82;letter-spacing:0.01em;
+  max-width:1000px;
+  -webkit-text-stroke:6px #F2F2F2;
   paint-order:stroke fill;
   text-shadow:
     0 0 0 #F2F2F2,
@@ -151,14 +151,16 @@ EXTRA_CSS = """
     3px 0 0 #F2F2F2,-3px 0 0 #F2F2F2,0 3px 0 #F2F2F2,0 -3px 0 #F2F2F2,
     4px 0 0 #F2F2F2,-4px 0 0 #F2F2F2,0 4px 0 #F2F2F2,0 -4px 0 #F2F2F2,
     5px 0 0 #F2F2F2,-5px 0 0 #F2F2F2,0 5px 0 #F2F2F2,0 -5px 0 #F2F2F2,
-    3px 3px 0 #F2F2F2,-3px 3px 0 #F2F2F2,3px -3px 0 #F2F2F2,-3px -3px 0 #F2F2F2,
+    6px 0 0 #F2F2F2,-6px 0 0 #F2F2F2,0 6px 0 #F2F2F2,0 -6px 0 #F2F2F2,
     4px 4px 0 #F2F2F2,-4px 4px 0 #F2F2F2,4px -4px 0 #F2F2F2,-4px -4px 0 #F2F2F2,
-    0 8px 24px rgba(0,0,0,.75);
+    5px 5px 0 #F2F2F2,-5px 5px 0 #F2F2F2,5px -5px 0 #F2F2F2,-5px -5px 0 #F2F2F2,
+    0 10px 28px rgba(0,0,0,.8);
 }
 .s1-copy .t-head .gr{
-  font-family:'Bebas Neue',sans-serif;font-style:normal;font-weight:400;
+  font-family:'Impact',sans-serif;font-style:normal;font-weight:900;
   letter-spacing:0.01em;color:#00FFB2;
-  -webkit-text-stroke:5px #00FFB2;
+  white-space:nowrap;
+  -webkit-text-stroke:6px #00FFB2;
   paint-order:stroke fill;
   text-shadow:
     0 0 0 #00FFB2,
@@ -167,9 +169,10 @@ EXTRA_CSS = """
     3px 0 0 #00FFB2,-3px 0 0 #00FFB2,0 3px 0 #00FFB2,0 -3px 0 #00FFB2,
     4px 0 0 #00FFB2,-4px 0 0 #00FFB2,0 4px 0 #00FFB2,0 -4px 0 #00FFB2,
     5px 0 0 #00FFB2,-5px 0 0 #00FFB2,0 5px 0 #00FFB2,0 -5px 0 #00FFB2,
-    3px 3px 0 #00FFB2,-3px 3px 0 #00FFB2,3px -3px 0 #00FFB2,-3px -3px 0 #00FFB2,
+    6px 0 0 #00FFB2,-6px 0 0 #00FFB2,0 6px 0 #00FFB2,0 -6px 0 #00FFB2,
     4px 4px 0 #00FFB2,-4px 4px 0 #00FFB2,4px -4px 0 #00FFB2,-4px -4px 0 #00FFB2,
-    0 0 40px rgba(0,255,178,.7),0 8px 24px rgba(0,0,0,.7);
+    5px 5px 0 #00FFB2,-5px 5px 0 #00FFB2,5px -5px 0 #00FFB2,-5px -5px 0 #00FFB2,
+    0 0 44px rgba(0,255,178,.75),0 10px 28px rgba(0,0,0,.75);
 }
 .s1-sub{
   margin-top:20px;font-family:var(--cond);font-weight:700;font-size:34px;
