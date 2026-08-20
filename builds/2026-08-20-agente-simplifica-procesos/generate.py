@@ -154,6 +154,11 @@ EXTRA_CSS = """
   justify-content:center;align-items:flex-start;
 }
 .s8-wrap .t-mega{font-family:var(--impact);font-weight:900;font-size:96px;max-width:920px;line-height:.86;letter-spacing:0.04em;}
+.s8-wrap .s8-q{
+  font-family:var(--cond);font-weight:700;font-size:72px;
+  display:inline-block;vertical-align:top;margin-right:10px;
+  letter-spacing:0;
+}
 .cta-pill{
   margin-top:44px;display:inline-flex;align-items:center;gap:16px;
   background:rgba(0,255,178,.08);border:2px solid rgba(0,255,178,.65);
@@ -182,7 +187,7 @@ def slide1() -> str:
   <span class="s1-chip" aria-hidden="true"></span>
   <div class="s1-copy">
     <h1 class="t-mega t-head">LA IA NO TE<br>SIMPLIFICA<br><span class="gr">TUS PROCESOS</span></h1>
-    <p class="s1-sub">Solo te los mueve de lugar</p>
+    <p class="s1-sub">Solo te lo mueve de lugar</p>
   </div>
 </div>
 """,
@@ -235,7 +240,7 @@ def slide4() -> str:
   <span class="badge">El cómo / 1</span>
   <h2 class="t-mega t-head">EVALUÁ POR<br><span class="gr">IMPACTO</span></h2>
   <p class="body-t">Tres preguntas: <b>qué se repite</b>, quién lo hace hoy y cuántas horas te come por semana.
-  Si no pasa esas tres, no va al agente.</p>
+  Si no cumple las tres, no va al agente.</p>
 </div>
 """,
         total=N,
@@ -251,7 +256,7 @@ def slide5() -> str:
 <div class="ed">
   <span class="badge">El cómo / 2</span>
   <h2 class="t-mega t-head">DELEGÁ LO<br><span class="gr">REPETITIVO</span></h2>
-  <p class="body-t">Publicaciones, recordatorios, seguimientos, respuestas frecuentes, armado de landings.
+  <p class="body-t">Publicaciones, recordatorios, seguimientos, respuestas frecuentes, armado de páginas de captura.
   Eso lo ejecuta el agente — <b>con reglas claras</b> y trazabilidad.</p>
 </div>
 """,
@@ -267,7 +272,7 @@ def slide6() -> str:
         """
 <div class="ed">
   <span class="badge">El cómo / 3</span>
-  <h2 class="t-mega t-head">QUEDATE CON<br><span class="gr">EL JUICIO</span></h2>
+  <h2 class="t-mega t-head">QUÉDATE CON<br><span class="gr">EL JUICIO</span></h2>
   <p class="body-t">Vos decidís excepciones, cierres y estrategia. El agente corre lo predecible
   y te avisa cuando algo necesita <b>tu cabeza</b>, no tu tiempo muerto.</p>
 </div>
@@ -291,7 +296,7 @@ def slide7() -> str:
       <ul>
         <li>Revisás cada respuesta</li>
         <li>Copiás recordatorios a mano</li>
-        <li>Seguís leads uno por uno</li>
+        <li>Seguís prospectos uno por uno</li>
         <li>La operación depende de vos</li>
       </ul>
     </div>
@@ -300,7 +305,7 @@ def slide7() -> str:
       <ul>
         <li>Ejecuta lo repetitivo 24/7</li>
         <li>Publica, recuerda y sigue</li>
-        <li>Te escala sin sumar horas</li>
+        <li>Escala sin sumarte horas</li>
         <li>Vos supervisás, no empujás</li>
       </ul>
     </div>
@@ -318,7 +323,7 @@ def slide8() -> str:
         8,
         """
 <div class="s8-wrap">
-  <h2 class="t-mega">¿QUERÉS UN AGENTE QUE<br><span class="gr">SIMPLIFIQUE</span><br>TUS PROCESOS?</h2>
+  <h2 class="t-mega"><span class="s8-q">¿</span>QUERÉS UN AGENTE QUE<br><span class="gr">SIMPLIFIQUE</span><br>TUS PROCESOS?</h2>
   <div class="cta-pill">Comentá <span>PROCESOS</span></div>
   <p class="s8-note">Te muestro qué tareas delegar primero, cómo armarlo en tu operación
   y qué resultados podés esperar en la primera semana.</p>
