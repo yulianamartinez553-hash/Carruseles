@@ -33,15 +33,10 @@
       "titulo": "Agente Simplifica Procesos",
       "slides": 8,
       "fondo": "lino_tela",
-      "familia_visual": "before_after"
-    },
-    {
-      "id": "2026-08-20-agente-simplifica-procesos",
-      "fecha": "2026-08-20",
-      "titulo": "Agente Simplifica Procesos",
-      "slides": 8,
-      "fondo": "lino_tela",
-      "familia_visual": "before_after"
+      "familia_visual": "before_after",
+      "origen": "screenshot",
+      "keyword_portada": "PROCESOS",
+      "notas": "Clon editorial. CTA Comentá PROCESOS."
     }
   ]
 }
