@@ -223,7 +223,7 @@ def slide3() -> str:
   <span class="badge">El nombre</span>
   <h2 class="t-mega t-head">COSTO<br><span class="ac">OPERATIVO</span></h2>
   <p class="body-t">Así lo llamamos cuando automatizás la escritura pero seguís pagando con
-  <b>revisiones, copias y coordinación manual</b>. Produís más rápido. Pagás operando.</p>
+  <b>revisiones, copias y coordinación manual</b>. Producís más rápido. Pagás operando.</p>
 </div>
 """,
         total=N,
@@ -272,7 +272,7 @@ def slide6() -> str:
         """
 <div class="ed">
   <span class="badge">El cómo / 3</span>
-  <h2 class="t-mega t-head">QUÉDATE CON<br><span class="gr">EL JUICIO</span></h2>
+  <h2 class="t-mega t-head">QUEDATE CON<br><span class="gr">EL JUICIO</span></h2>
   <p class="body-t">Vos decidís excepciones, cierres y estrategia. El agente corre lo predecible
   y te avisa cuando algo necesita <b>tu cabeza</b>, no tu tiempo muerto.</p>
 </div>
