@@ -58,43 +58,58 @@ EXTRA_CSS = """
 .body-t b{color:#F2F2F2;font-weight:700;}
 
 .t-mega{
-  font-family:var(--anton);font-weight:400;line-height:.82;color:#F2F2F2;
-  letter-spacing:-0.01em;text-align:left;text-transform:uppercase;
-  text-shadow:0 2px 24px rgba(0,0,0,.45);
+  font-family:var(--impact);font-weight:900;line-height:.86;color:#F2F2F2;
+  letter-spacing:0.03em;text-align:left;text-transform:uppercase;
+  text-shadow:0 2px 24px rgba(0,0,0,.55);
 }
 .t-mega .gr{color:#00FFB2;}
 .t-mega .ac{
   font-family:var(--serif);font-style:italic;font-weight:700;color:#00FFB2;
-  text-transform:none;
+  text-transform:uppercase;
 }
-.t-stat{font-size:220px;line-height:.76;letter-spacing:-0.02em;}
-.t-head{font-size:136px;line-height:.82;}
-.t-mid{font-size:112px;margin-top:6px;line-height:.84;}
+.t-stat{font-family:var(--impact);font-weight:900;font-size:210px;line-height:.74;letter-spacing:0.02em;}
+.t-head{font-size:128px;line-height:.86;letter-spacing:0.04em;}
+.t-mid{font-family:var(--impact);font-weight:900;font-size:108px;margin-top:6px;line-height:.86;letter-spacing:0.03em;}
 
-/* Slide 1 — portada dividida */
+/* Slide 1 — foto protagonista + título Impact ancho */
 .s1-wrap{position:relative;height:100%;overflow:hidden;background:#0A0A0A;}
 .s1-photo{
-  position:absolute;left:0;right:0;top:0;height:47%;overflow:hidden;
+  position:absolute;inset:0;z-index:1;overflow:hidden;
   background:#050505;
 }
 .s1-photo img{
-  width:100%;height:100%;object-fit:cover;object-position:center 18%;
-  filter:grayscale(1) contrast(1.12) brightness(.88);
+  width:100%;height:100%;object-fit:cover;object-position:center 20%;
+  filter:grayscale(1) contrast(1.18) brightness(.96);
 }
 .s1-photo::after{
   content:'';position:absolute;inset:0;
-  background:linear-gradient(180deg, transparent 42%, rgba(10,10,10,.88) 78%, #0A0A0A 100%);
+  background:linear-gradient(180deg,
+    rgba(10,10,10,.08) 0%,
+    transparent 28%,
+    rgba(10,10,10,.35) 52%,
+    rgba(10,10,10,.82) 68%,
+    rgba(10,10,10,.96) 78%,
+    #0A0A0A 88%);
 }
 .s1-copy{
-  position:absolute;left:0;right:0;bottom:0;height:53%;
-  padding:20px 72px 120px;display:flex;flex-direction:column;justify-content:center;
+  position:absolute;left:0;right:0;bottom:0;z-index:3;
+  padding:0 72px 118px;
+}
+.s1-copy .t-head{
+  font-family:var(--impact);font-weight:900;
+  font-size:112px;line-height:.84;letter-spacing:0.05em;
+  max-width:980px;
+}
+.s1-copy .t-head .gr{
+  font-family:var(--serif);font-style:italic;font-weight:700;
+  letter-spacing:0.01em;
 }
 .s1-sub{
-  margin-top:24px;font-family:var(--cond);font-weight:700;font-size:36px;
-  letter-spacing:2px;color:#9aa39c;text-transform:uppercase;
+  margin-top:20px;font-family:var(--cond);font-weight:700;font-size:34px;
+  letter-spacing:3px;color:#9aa39c;text-transform:uppercase;
 }
 .s1-chip{
-  position:absolute;right:56px;bottom:52%;transform:translateY(50%);
+  position:absolute;right:56px;top:42%;transform:translateY(-50%);
   width:54px;height:54px;z-index:4;
   background:#00FFB2;border:4px solid #0A0A0A;border-radius:10px;
   box-shadow:0 0 28px rgba(0,255,178,.45);
@@ -138,7 +153,7 @@ EXTRA_CSS = """
   padding:96px 84px 120px;height:100%;display:flex;flex-direction:column;
   justify-content:center;align-items:flex-start;
 }
-.s8-wrap .t-mega{font-size:108px;max-width:920px;line-height:.84;}
+.s8-wrap .t-mega{font-family:var(--impact);font-weight:900;font-size:96px;max-width:920px;line-height:.86;letter-spacing:0.04em;}
 .cta-pill{
   margin-top:44px;display:inline-flex;align-items:center;gap:16px;
   background:rgba(0,255,178,.08);border:2px solid rgba(0,255,178,.65);
