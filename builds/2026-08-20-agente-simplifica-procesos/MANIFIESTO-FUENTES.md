@@ -2,14 +2,11 @@
 
 | Fuente | Peso / estilo | Rol | Origen | Código / comando |
 |---|---|---|---|---|
-| Bebas Neue | 400 | Títulos display (mega headlines) | GitHub google/fonts `ofl/bebasneue/` | `@font-face` embebido vía `stlabs_kit.embedded_fonts_css()` |
-| Poppins | 700 / 800 | CTA pill | GitHub google/fonts `ofl/poppins/` | idem |
-| Barlow Condensed | 400–700 | Cuerpo, subtítulos | GitHub google/fonts `ofl/barlowcondensed/` | idem |
-| IBM Plex Mono | 400–600 | Badges, footer `sebastian.stlabs.ar` | apt / repo `fonts/` | idem |
-| Lora | 400–700 itálica | Palabras acento (`OPERATIVO`) | GitHub google/fonts `ofl/lora/` | idem |
+| **Anton** | 400 | Títulos display (ultra-heavy) | Google Fonts `ofl/anton/` → `fonts/Anton-Regular.ttf` | `@font-face` embebido vía `stlabs_kit.embedded_fonts_css()` |
+| **Impact** | 400 / 900 | Fallback display super-heavy | `fonts/Impact.ttf` | idem |
+| Poppins | 700 / 800 | CTA pill | `fonts/Poppins-Bold.ttf` | idem |
+| Barlow Condensed | 400–700 | Cuerpo, subtítulos | `fonts/BarlowCondensed-*.ttf` | idem |
+| IBM Plex Mono | 400–600 | Badges, footer | `fonts/IBMPlexMono-*.ttf` | idem |
+| Lora | 400–700 itálica | Palabras acento (`OPERATIVO`) | `fonts/Lora-Italic-Variable.ttf` | idem |
 
-Instalación local (si hace falta regenerar):
-
-```bash
-python .claude/skills/carrusel-stlabs/assets/install_fonts.py
-```
+Referencia skeleton: `carrusel-studio/references/05-template-html.md` → `--f-display: 'Anton', Impact, …`

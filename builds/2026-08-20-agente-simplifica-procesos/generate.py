@@ -58,17 +58,18 @@ EXTRA_CSS = """
 .body-t b{color:#F2F2F2;font-weight:700;}
 
 .t-mega{
-  font-family:var(--disp);font-weight:400;line-height:.84;color:#F2F2F2;
-  letter-spacing:1px;text-align:left;
+  font-family:var(--anton);font-weight:400;line-height:.82;color:#F2F2F2;
+  letter-spacing:-0.01em;text-align:left;text-transform:uppercase;
   text-shadow:0 2px 24px rgba(0,0,0,.45);
 }
 .t-mega .gr{color:#00FFB2;}
 .t-mega .ac{
   font-family:var(--serif);font-style:italic;font-weight:700;color:#00FFB2;
+  text-transform:none;
 }
-.t-stat{font-size:196px;line-height:.78;letter-spacing:-2px;}
-.t-head{font-size:128px;}
-.t-mid{font-size:104px;margin-top:6px;}
+.t-stat{font-size:220px;line-height:.76;letter-spacing:-0.02em;}
+.t-head{font-size:136px;line-height:.82;}
+.t-mid{font-size:112px;margin-top:6px;line-height:.84;}
 
 /* Slide 1 — portada dividida */
 .s1-wrap{position:relative;height:100%;overflow:hidden;background:#0A0A0A;}
@@ -137,7 +138,7 @@ EXTRA_CSS = """
   padding:96px 84px 120px;height:100%;display:flex;flex-direction:column;
   justify-content:center;align-items:flex-start;
 }
-.s8-wrap .t-mega{font-size:102px;max-width:920px;line-height:.86;}
+.s8-wrap .t-mega{font-size:108px;max-width:920px;line-height:.84;}
 .cta-pill{
   margin-top:44px;display:inline-flex;align-items:center;gap:16px;
   background:rgba(0,255,178,.08);border:2px solid rgba(0,255,178,.65);
