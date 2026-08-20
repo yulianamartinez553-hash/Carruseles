@@ -59,17 +59,60 @@ EXTRA_CSS = """
 
 .t-mega{
   font-family:'Bebas Neue',sans-serif;font-weight:400;line-height:.9;color:#F2F2F2;
-  letter-spacing:0.02em;text-align:left;text-transform:uppercase;
-  text-shadow:0 2px 24px rgba(0,0,0,.55);
+  letter-spacing:0.01em;text-align:left;text-transform:uppercase;
+  -webkit-text-stroke:5px #F2F2F2;
+  paint-order:stroke fill;
+  text-shadow:
+    0 0 0 #F2F2F2,
+    1px 0 0 #F2F2F2,-1px 0 0 #F2F2F2,0 1px 0 #F2F2F2,0 -1px 0 #F2F2F2,
+    2px 0 0 #F2F2F2,-2px 0 0 #F2F2F2,0 2px 0 #F2F2F2,0 -2px 0 #F2F2F2,
+    3px 0 0 #F2F2F2,-3px 0 0 #F2F2F2,0 3px 0 #F2F2F2,0 -3px 0 #F2F2F2,
+    4px 0 0 #F2F2F2,-4px 0 0 #F2F2F2,0 4px 0 #F2F2F2,0 -4px 0 #F2F2F2,
+    5px 0 0 #F2F2F2,-5px 0 0 #F2F2F2,0 5px 0 #F2F2F2,0 -5px 0 #F2F2F2,
+    3px 3px 0 #F2F2F2,-3px 3px 0 #F2F2F2,3px -3px 0 #F2F2F2,-3px -3px 0 #F2F2F2,
+    4px 3px 0 #F2F2F2,-4px 3px 0 #F2F2F2,4px -3px 0 #F2F2F2,-4px -3px 0 #F2F2F2,
+    3px 4px 0 #F2F2F2,-3px 4px 0 #F2F2F2,3px -4px 0 #F2F2F2,-3px -4px 0 #F2F2F2,
+    4px 4px 0 #F2F2F2,-4px 4px 0 #F2F2F2,4px -4px 0 #F2F2F2,-4px -4px 0 #F2F2F2,
+    0 8px 22px rgba(0,0,0,.7);
 }
-.t-mega .gr{color:#00FFB2;text-shadow:0 0 28px rgba(0,255,178,.35);}
+.t-mega .gr{
+  color:#00FFB2;
+  -webkit-text-stroke:5px #00FFB2;
+  paint-order:stroke fill;
+  text-shadow:
+    0 0 0 #00FFB2,
+    1px 0 0 #00FFB2,-1px 0 0 #00FFB2,0 1px 0 #00FFB2,0 -1px 0 #00FFB2,
+    2px 0 0 #00FFB2,-2px 0 0 #00FFB2,0 2px 0 #00FFB2,0 -2px 0 #00FFB2,
+    3px 0 0 #00FFB2,-3px 0 0 #00FFB2,0 3px 0 #00FFB2,0 -3px 0 #00FFB2,
+    4px 0 0 #00FFB2,-4px 0 0 #00FFB2,0 4px 0 #00FFB2,0 -4px 0 #00FFB2,
+    5px 0 0 #00FFB2,-5px 0 0 #00FFB2,0 5px 0 #00FFB2,0 -5px 0 #00FFB2,
+    3px 3px 0 #00FFB2,-3px 3px 0 #00FFB2,3px -3px 0 #00FFB2,-3px -3px 0 #00FFB2,
+    4px 3px 0 #00FFB2,-4px 3px 0 #00FFB2,4px -3px 0 #00FFB2,-4px -3px 0 #00FFB2,
+    3px 4px 0 #00FFB2,-3px 4px 0 #00FFB2,3px -4px 0 #00FFB2,-3px -4px 0 #00FFB2,
+    4px 4px 0 #00FFB2,-4px 4px 0 #00FFB2,4px -4px 0 #00FFB2,-4px -4px 0 #00FFB2,
+    0 0 36px rgba(0,255,178,.65),0 8px 22px rgba(0,0,0,.6);
+}
 .t-mega .ac{
   font-family:'Bebas Neue',sans-serif;font-style:normal;font-weight:400;color:#00FFB2;
-  text-transform:uppercase;text-shadow:0 0 28px rgba(0,255,178,.35);
+  text-transform:uppercase;
+  -webkit-text-stroke:5px #00FFB2;
+  paint-order:stroke fill;
+  text-shadow:
+    0 0 0 #00FFB2,
+    1px 0 0 #00FFB2,-1px 0 0 #00FFB2,0 1px 0 #00FFB2,0 -1px 0 #00FFB2,
+    2px 0 0 #00FFB2,-2px 0 0 #00FFB2,0 2px 0 #00FFB2,0 -2px 0 #00FFB2,
+    3px 0 0 #00FFB2,-3px 0 0 #00FFB2,0 3px 0 #00FFB2,0 -3px 0 #00FFB2,
+    4px 0 0 #00FFB2,-4px 0 0 #00FFB2,0 4px 0 #00FFB2,0 -4px 0 #00FFB2,
+    5px 0 0 #00FFB2,-5px 0 0 #00FFB2,0 5px 0 #00FFB2,0 -5px 0 #00FFB2,
+    3px 3px 0 #00FFB2,-3px 3px 0 #00FFB2,3px -3px 0 #00FFB2,-3px -3px 0 #00FFB2,
+    4px 3px 0 #00FFB2,-4px 3px 0 #00FFB2,4px -3px 0 #00FFB2,-4px -3px 0 #00FFB2,
+    3px 4px 0 #00FFB2,-3px 4px 0 #00FFB2,3px -4px 0 #00FFB2,-3px -4px 0 #00FFB2,
+    4px 4px 0 #00FFB2,-4px 4px 0 #00FFB2,4px -4px 0 #00FFB2,-4px -4px 0 #00FFB2,
+    0 0 36px rgba(0,255,178,.65),0 8px 22px rgba(0,0,0,.6);
 }
 .t-stat{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:230px;line-height:.78;letter-spacing:0.01em;}
-.t-head{font-size:136px;line-height:.9;letter-spacing:0.02em;}
-.t-mid{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:118px;margin-top:6px;line-height:.9;letter-spacing:0.02em;}
+.t-head{font-size:136px;line-height:.9;letter-spacing:0.01em;}
+.t-mid{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:118px;margin-top:6px;line-height:.9;letter-spacing:0.01em;}
 
 /* Slide 1 — foto protagonista + título Impact ancho */
 .s1-wrap{position:relative;height:100%;overflow:hidden;background:#0A0A0A;}
@@ -97,13 +140,36 @@ EXTRA_CSS = """
 }
 .s1-copy .t-head{
   font-family:'Bebas Neue',sans-serif;font-weight:400;
-  font-size:118px;line-height:.88;letter-spacing:0.02em;
+  font-size:118px;line-height:.88;letter-spacing:0.01em;
   max-width:980px;
+  -webkit-text-stroke:5px #F2F2F2;
+  paint-order:stroke fill;
+  text-shadow:
+    0 0 0 #F2F2F2,
+    1px 0 0 #F2F2F2,-1px 0 0 #F2F2F2,0 1px 0 #F2F2F2,0 -1px 0 #F2F2F2,
+    2px 0 0 #F2F2F2,-2px 0 0 #F2F2F2,0 2px 0 #F2F2F2,0 -2px 0 #F2F2F2,
+    3px 0 0 #F2F2F2,-3px 0 0 #F2F2F2,0 3px 0 #F2F2F2,0 -3px 0 #F2F2F2,
+    4px 0 0 #F2F2F2,-4px 0 0 #F2F2F2,0 4px 0 #F2F2F2,0 -4px 0 #F2F2F2,
+    5px 0 0 #F2F2F2,-5px 0 0 #F2F2F2,0 5px 0 #F2F2F2,0 -5px 0 #F2F2F2,
+    3px 3px 0 #F2F2F2,-3px 3px 0 #F2F2F2,3px -3px 0 #F2F2F2,-3px -3px 0 #F2F2F2,
+    4px 4px 0 #F2F2F2,-4px 4px 0 #F2F2F2,4px -4px 0 #F2F2F2,-4px -4px 0 #F2F2F2,
+    0 8px 24px rgba(0,0,0,.75);
 }
 .s1-copy .t-head .gr{
   font-family:'Bebas Neue',sans-serif;font-style:normal;font-weight:400;
-  letter-spacing:0.02em;color:#00FFB2;
-  text-shadow:0 0 28px rgba(0,255,178,.35);
+  letter-spacing:0.01em;color:#00FFB2;
+  -webkit-text-stroke:5px #00FFB2;
+  paint-order:stroke fill;
+  text-shadow:
+    0 0 0 #00FFB2,
+    1px 0 0 #00FFB2,-1px 0 0 #00FFB2,0 1px 0 #00FFB2,0 -1px 0 #00FFB2,
+    2px 0 0 #00FFB2,-2px 0 0 #00FFB2,0 2px 0 #00FFB2,0 -2px 0 #00FFB2,
+    3px 0 0 #00FFB2,-3px 0 0 #00FFB2,0 3px 0 #00FFB2,0 -3px 0 #00FFB2,
+    4px 0 0 #00FFB2,-4px 0 0 #00FFB2,0 4px 0 #00FFB2,0 -4px 0 #00FFB2,
+    5px 0 0 #00FFB2,-5px 0 0 #00FFB2,0 5px 0 #00FFB2,0 -5px 0 #00FFB2,
+    3px 3px 0 #00FFB2,-3px 3px 0 #00FFB2,3px -3px 0 #00FFB2,-3px -3px 0 #00FFB2,
+    4px 4px 0 #00FFB2,-4px 4px 0 #00FFB2,4px -4px 0 #00FFB2,-4px -4px 0 #00FFB2,
+    0 0 40px rgba(0,255,178,.7),0 8px 24px rgba(0,0,0,.7);
 }
 .s1-sub{
   margin-top:20px;font-family:var(--cond);font-weight:700;font-size:34px;
@@ -154,11 +220,19 @@ EXTRA_CSS = """
   padding:96px 84px 120px;height:100%;display:flex;flex-direction:column;
   justify-content:center;align-items:flex-start;
 }
-.s8-wrap .t-mega{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:108px;max-width:940px;line-height:.9;letter-spacing:0.02em;}
+.s8-wrap .t-mega{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:100px;max-width:960px;line-height:.9;letter-spacing:0.01em;}
 .s8-wrap .s8-q{
-  font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:108px;
+  font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:100px;
   display:inline-block;vertical-align:baseline;margin-right:6px;
-  letter-spacing:0.02em;
+  letter-spacing:0.01em;
+  -webkit-text-stroke:5px #F2F2F2;
+  paint-order:stroke fill;
+  text-shadow:
+    0 0 0 #F2F2F2,
+    2px 0 0 #F2F2F2,-2px 0 0 #F2F2F2,0 2px 0 #F2F2F2,0 -2px 0 #F2F2F2,
+    4px 0 0 #F2F2F2,-4px 0 0 #F2F2F2,0 4px 0 #F2F2F2,0 -4px 0 #F2F2F2,
+    3px 3px 0 #F2F2F2,-3px 3px 0 #F2F2F2,3px -3px 0 #F2F2F2,-3px -3px 0 #F2F2F2,
+    0 8px 22px rgba(0,0,0,.7);
 }
 .cta-pill{
   margin-top:44px;display:inline-flex;align-items:center;gap:16px;
