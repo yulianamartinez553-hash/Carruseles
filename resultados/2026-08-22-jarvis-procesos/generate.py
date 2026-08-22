@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-"""Carrusel STLabs — JARVIS OS (10 slides, fondo negro).
+"""Carrusel STLabs — TURBO OS (10 slides, fondo negro).
 Sistema: sistema-carrusel-stlabs.json + skill carrusel-stlabs.
-Copy: Sebastián te genera el Jarvis · CTA PROCESOS.
+Copy: Sebastián te genera el Turbo · CTA PROCESOS.
 """
 from __future__ import annotations
 import base64, json
@@ -40,7 +40,7 @@ def font_css() -> str:
     return "\n".join(out)
 
 
-ROBOT = b64(A / "robot-sphere.png")
+PARTICLE_BG = b64(A / "sebastian-jarvis-particles.png")
 GRAPH = b64(A / "vault-graph.png")
 SEB = b64(A / "seb.jpg")
 
@@ -116,9 +116,13 @@ html,body{{background:#000;}}
 .table td.t{{font-family:'IBM Plex Mono',monospace;font-size:18px;color:{G};width:160px;}}
 .table td b{{color:{W};font-weight:700;display:block;margin-bottom:2px;font-family:'Poppins',sans-serif;font-size:20px;}}
 .table td span{{color:#9aa39c;font-size:20px;}}
-.cover{{display:grid;grid-template-columns:1.05fr .95fr;gap:16px;height:100%;}}
-.cover-right{{display:flex;align-items:flex-end;justify-content:center;}}
-.cover-right img{{width:100%;max-height:820px;object-fit:contain;}}
+.cover-bg{{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;}}
+.cover-scrim{{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(90deg,rgba(10,10,10,.92) 0%,rgba(10,10,10,.78) 42%,rgba(10,10,10,.35) 68%,rgba(10,10,10,.55) 100%),
+  linear-gradient(180deg,rgba(10,10,10,.25) 0%,transparent 28%,rgba(10,10,10,.55) 100%);}}
+.cover{{position:relative;z-index:5;display:flex;flex-direction:column;justify-content:center;height:100%;max-width:620px;}}
+.cover .row{{background:rgba(18,18,18,.72);backdrop-filter:blur(6px);}}
+.cover .term{{background:rgba(17,17,17,.78);backdrop-filter:blur(6px);}}
 .profile{{display:flex;align-items:center;gap:22px;background:#141414;border:1px solid #2A2A2A;border-radius:22px;padding:22px;}}
 .profile img{{width:110px;height:110px;border-radius:50%;object-fit:cover;border:3px solid {G};}}
 .profile .name{{font-family:'Poppins',sans-serif;font-weight:800;font-size:32px;}}
@@ -144,11 +148,13 @@ def build() -> str:
     slides = []
 
     slides.append(f"""
-<section class="slide" data-id="01">{chrome()}
+<section class="slide" data-id="01">
+  <img class="cover-bg" src="data:image/png;base64,{PARTICLE_BG}" alt=""/>
+  <div class="cover-scrim"></div>
+  <div class="firma">sebastian.stlabs.ar</div>
   <div class="content cover">
-    <div>
-      <div class="badge">JARVIS A MEDIDA</div>
-      <h1 class="title" style="margin-top:24px">Te genero<br>tu <span class="g">JARVIS</span><br>OS</h1>
+      <div class="badge">TURBO A MEDIDA</div>
+      <h1 class="title" style="margin-top:24px">Te genero<br>tu <span class="g">TURBO</span><br>OS</h1>
       <div class="rule"></div>
       <p class="sub">Con el último paso, te funciona<br><b>todo el día</b>.</p>
       <div class="stack">
@@ -164,8 +170,6 @@ def build() -> str:
         <div class="ln">&gt; recordar</div>
         <div class="hi">&gt; TE FUNCIONA TODO EL DÍA_</div>
       </div>
-    </div>
-    <div class="cover-right"><img src="data:image/png;base64,{ROBOT}" alt="jarvis"/></div>
   </div>
 </section>""")
 
@@ -176,7 +180,7 @@ def build() -> str:
     <h1 class="title" style="margin-top:22px">¿Qué es<br><span class="g">esto</span>?</h1>
     <div class="rule"></div>
     <div class="note">UNA VOZ. CADA FLUJO DE TRABAJO. CERO PESTAÑAS.</div>
-    <p class="sub" style="margin-top:28px">Vos <b>hablás</b>. JARVIS ejecuta el trabajo.</p>
+    <p class="sub" style="margin-top:28px">Vos <b>hablás</b>. TURBO ejecuta el trabajo.</p>
     <div class="bullet"><div class="m">▸</div><div class="txt">Claude Code es el <em>motor</em>. Obsidian es la <em>memoria</em>.</div></div>
     <div class="bullet"><div class="m">▸</div><div class="txt">Armado con Fable 5 — corre en <em>cualquier modelo local</em>.</div></div>
     <div class="bullet"><div class="m">▸</div><div class="txt">Totalmente modular. Intercambiás cualquier pieza.</div></div>
@@ -198,7 +202,7 @@ def build() -> str:
     <div class="rule"></div>
     <div class="bullet"><div class="m x">✕</div><div class="txt"><b>Forma antigua:</b> manejás cada herramienta a mano. Pestañas. Tipeo. Contexto perdido.</div></div>
     <div class="bullet"><div class="m">✓</div><div class="txt"><b>Nueva forma:</b> una capa de voz. Hablás y se ejecuta la habilidad correcta. La respuesta vuelve hablada.</div></div>
-    <div class="bullet"><div class="m">↻</div><div class="txt">El ciclo: <em>Voz → JARVIS → Claude Code → habilidad → respuesta hablada</em>.</div></div>
+    <div class="bullet"><div class="m">↻</div><div class="txt">El ciclo: <em>Voz → TURBO → Claude Code → habilidad → respuesta hablada</em>.</div></div>
     <div class="note" style="margin-top:18px">LA VENTAJA · Sin cambio de contexto · Sin notas perdidas · Sin base de datos · Solo markdown</div>
     <div class="hud" style="margin-top:18px">
       <div class="hud-bar"><span style="color:{G}">●</span>&nbsp; BÓVEDA — INTELIGENCIA CENTRALIZADA</div>
@@ -215,7 +219,7 @@ def build() -> str:
 <section class="slide" data-id="04">{chrome()}
   <div class="content">
     <div class="badge">EL MÉTODO</div>
-    <h1 class="title sm" style="margin-top:22px">Los 4 pasos<br>con los que<br><span class="g">genero</span> tu Jarvis</h1>
+    <h1 class="title sm" style="margin-top:22px">Los 4 pasos<br>con los que<br><span class="g">genero</span> tu Turbo</h1>
     <div class="rule"></div>
     <p class="sub">No es un tutorial para que lo armes solo.<br>Es el proceso que usa Sebastián para <b>generártelo</b>.</p>
     <div class="steps">
@@ -259,11 +263,11 @@ def build() -> str:
       <div class="hi">bóveda/</div>
       <div class="ln">&nbsp;&nbsp;raw/ — todo capturado</div>
       <div class="ln">&nbsp;&nbsp;wiki/ — conocimiento depurado</div>
-      <div class="ln">&nbsp;&nbsp;outputs/ — todo lo que JARVIS entrega</div>
+      <div class="ln">&nbsp;&nbsp;outputs/ — todo lo que TURBO entrega</div>
     </div>
     <div class="bullet"><div class="m">1</div><div class="txt">Cada reporte aterriza como Markdown. Sin base de datos.</div></div>
     <div class="bullet"><div class="m">2</div><div class="txt">Las notas se enlazan en un gráfico — el sistema Karpathy.</div></div>
-    <div class="bullet"><div class="m">3</div><div class="txt">JARVIS consulta el gráfico y responde rápido.</div></div>
+    <div class="bullet"><div class="m">3</div><div class="txt">TURBO consulta el gráfico y responde rápido.</div></div>
     <div class="bullet"><div class="m">4</div><div class="txt">Podés leer todo lo que sabe. Son solo archivos.</div></div>
     <div style="margin-top:14px;border-radius:16px;overflow:hidden;border:1px solid #2A2A2A;height:260px">
       <img src="data:image/png;base64,{GRAPH}" style="width:100%;height:100%;object-fit:cover" alt="grafo"/>
@@ -281,7 +285,7 @@ def build() -> str:
     <p class="sub" style="margin-top:16px">Sebastián conecta la capa de voz para que hables con el sistema sin abrir una sola pestaña.</p>
     <div class="steps">
       <div class="step"><div class="n">ENTRADA</div><div class="tt">Escucha</div><div class="dd">Voz local → texto. Sin mandar audio a la nube.</div></div>
-      <div class="step"><div class="n">ENRUTEO</div><div class="tt">Elige skill</div><div class="dd">JARVIS elige la habilidad correcta según lo que pediste.</div></div>
+      <div class="step"><div class="n">ENRUTEO</div><div class="tt">Elige skill</div><div class="dd">TURBO elige la habilidad correcta según lo que pediste.</div></div>
       <div class="step"><div class="n">SALIDA</div><div class="tt">Responde</div><div class="dd">La respuesta vuelve hablada. Vos seguís en flujo.</div></div>
       <div class="step"><div class="n">MEMORIA</div><div class="tt">Guarda</div><div class="dd">Todo queda escrito en la bóveda. Nada se pierde.</div></div>
     </div>
@@ -300,7 +304,7 @@ def build() -> str:
     <div class="badge ghost">PASO 04</div>
     <h1 class="title sm" style="margin-top:14px">Construí<br>la <span class="g">cara</span></h1>
     <div class="rule"></div>
-    <div class="note">UNA PANTALLA. TODO LO QUE JARVIS TIENE QUE SABER.</div>
+    <div class="note">UNA PANTALLA. TODO LO QUE TURBO TIENE QUE SABER.</div>
     <p class="sub" style="margin-top:12px;font-size:28px">Prompt que usa Sebastián para generar el HUD:</p>
     <div class="term" style="font-size:18px">
       “Armá un HUD de terminal oscuro para mi OS: vitales · comandos · agenda · audio · datos de la bóveda. <span class="hi">Una pantalla. Sin pestañas.</span>”
@@ -349,7 +353,7 @@ def build() -> str:
         <div class="handle">sebastian.stlabs.ar</div>
       </div>
     </div>
-    <h1 class="title xs" style="margin-top:44px;text-align:center">¿Querés que te<br>genere tu <span class="g">Jarvis</span>?</h1>
+    <h1 class="title xs" style="margin-top:44px;text-align:center">¿Querés que te<br>genere tu <span class="g">Turbo</span>?</h1>
     <div class="cta-box">
       <div class="kw">PROCESOS</div>
       <div class="hint">Comentá <b style="color:{G}">PROCESOS</b> y te escribo para arrancar.</div>
@@ -366,7 +370,7 @@ def build() -> str:
 def main():
     html = (
         "<!DOCTYPE html><html lang='es'><head><meta charset='UTF-8'>"
-        "<title>JARVIS OS — STLabs</title>"
+        "<title>TURBO OS — STLabs</title>"
         f"<style>{CSS}</style></head><body><div class='sheet'>"
         f"{build()}</div></body></html>"
     )
@@ -374,14 +378,14 @@ def main():
     meta = {
         "id": "2026-08-22-jarvis-procesos",
         "fecha": "2026-08-22",
-        "titulo": "Te genero tu JARVIS OS",
+        "titulo": "Te genero tu TURBO OS",
         "slides": 10,
         "fondo": "reticula_fina",
         "familia_visual": "dossier_editorial",
         "origen": "screenshot",
         "keyword_portada": "PROCESOS",
         "modo": "negro",
-        "notas": "Clon Jarvis reframed: Sebastián genera el sistema. CTA PROCESOS. Perfil en slide 10.",
+        "notas": "Portada: Sebastián blur + partículas azules. Agente TURBO. CTA PROCESOS. Perfil slide 10.",
     }
     (B / "manifest.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
     print("OK 10 slides →", B / "carrusel.html")
