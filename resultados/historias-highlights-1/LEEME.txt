@@ -1,0 +1,19 @@
+Íconos Highlight — Instagram Stories · sebastian.stlabs.ar
+==========================================================
+
+Formato: 1080×1080 (export retina 2160×2160)
+Paleta: fondo #0A0A0A · acento #00FFB2
+Sistema: sistema-historias-stlabs.json
+
+Archivos (subir como portada de cada Highlight):
+  1. highlight-01-resultados.png  → Highlight "RESULTADOS"
+  2. highlight-02-proceso.png     → Highlight "PROCESO"
+  3. highlight-03-clientes.png    → Highlight "CLIENTES"
+  4. highlight-04-servicios.png   → Highlight "SERVICIOS"
+  5. highlight-05-contacto.png    → Highlight "CONTACTO"
+
+preview-circulo/ muestra el recorte circular como en Instagram.
+_preview-tira.png = vista rápida de los 5.
+
+Fuente HTML editable: highlights.html
+Build: builds/highlights-stlabs/generate.py + render.py

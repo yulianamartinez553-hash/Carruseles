@@ -1,6 +1,8 @@
 # Sistema de Diseño de Carruseles — STLabs / Sebastián García
 > **Estándar absoluto del proyecto.** Todo chat nuevo arranca aquí.
 > Marca: Sebastián García (RevOps · CRM · IA). Firma: **sebastian.stlabs.ar**
+>
+> Historias de Instagram (solo Stories 9:16): ver **`sistema-historias-stlabs.json`** (5 secciones: Resultados · Proceso · Prueba social · Servicios · Contacto).
 
 ---
 

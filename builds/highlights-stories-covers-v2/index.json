@@ -1,0 +1,52 @@
+[
+  {
+    "id": "resultados",
+    "highlight": "RESULTADOS",
+    "kicker": "DESTACADA",
+    "claim": "Menos tarjeta digital.\nMás máquina de ventas.",
+    "apoyo": "Entrá y mirá casos reales de antes y después.",
+    "glyph": "resultados",
+    "accent": "tr",
+    "dots": "bl"
+  },
+  {
+    "id": "proceso",
+    "highlight": "PROCESO",
+    "kicker": "DESTACADA",
+    "claim": "Cero humo.\nCinco pasos claros.",
+    "apoyo": "Deslizá y conocé cómo trabajo de punta a punta.",
+    "glyph": "proceso",
+    "accent": "tl",
+    "dots": "br"
+  },
+  {
+    "id": "clientes",
+    "highlight": "CLIENTES",
+    "kicker": "DESTACADA",
+    "claim": "Lo que escriben\ncuando funciona.",
+    "apoyo": "Entrá a ver testimonios, plazos y permisos reales.",
+    "glyph": "clientes",
+    "accent": "br",
+    "dots": "tl"
+  },
+  {
+    "id": "servicios",
+    "highlight": "SERVICIOS",
+    "kicker": "DESTACADA",
+    "claim": "Elegí qué comprar.\nSin dar vueltas.",
+    "apoyo": "Landing, sitio, rediseño, mantenimiento o SEO.",
+    "glyph": "servicios",
+    "accent": "bl",
+    "dots": "tr"
+  },
+  {
+    "id": "contacto",
+    "highlight": "CONTACTO",
+    "kicker": "DESTACADA",
+    "claim": "Dejá de pensarlo.\nEmpezá a medir.",
+    "apoyo": "Entrá, comentá WEB o agendá 20 minutos.",
+    "glyph": "contacto",
+    "accent": "br",
+    "dots": "tl"
+  }
+]

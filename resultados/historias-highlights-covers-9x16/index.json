@@ -1,0 +1,52 @@
+[
+  {
+    "id": "resultados",
+    "highlight": "RESULTADOS",
+    "kicker": "DESTACADA",
+    "claim": "Tu web ya existe.\nAhora que venda.",
+    "apoyo": "Entrá y mirá qué cambia cuando se entrega de verdad.",
+    "glyph": "resultados",
+    "accent": "tl",
+    "dots": "br"
+  },
+  {
+    "id": "proceso",
+    "highlight": "PROCESO",
+    "kicker": "DESTACADA",
+    "claim": "Sabés qué pasa\nsi me contratás.",
+    "apoyo": "Deslizá y mirá el camino completo, sin sorpresas.",
+    "glyph": "proceso",
+    "accent": "tr",
+    "dots": "bl"
+  },
+  {
+    "id": "clientes",
+    "highlight": "CLIENTES",
+    "kicker": "DESTACADA",
+    "claim": "Confianza se construye\ncon entregas.",
+    "apoyo": "Entrá a ver plazos reales, permisos y resultados.",
+    "glyph": "clientes",
+    "accent": "bl",
+    "dots": "tr"
+  },
+  {
+    "id": "servicios",
+    "highlight": "SERVICIOS",
+    "kicker": "DESTACADA",
+    "claim": "Sin hilo eterno\npor DM.",
+    "apoyo": "Elegí el camino: landing, sitio, rediseño o SEO.",
+    "glyph": "servicios",
+    "accent": "br",
+    "dots": "tl"
+  },
+  {
+    "id": "contacto",
+    "highlight": "CONTACTO",
+    "kicker": "DESTACADA",
+    "claim": "Si esto te suena,\ncomentá WEB.",
+    "apoyo": "Entrá y mirá cómo arrancamos, plazos y agenda.",
+    "glyph": "contacto",
+    "accent": "tl",
+    "dots": "br"
+  }
+]
