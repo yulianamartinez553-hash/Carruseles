@@ -1,4 +1,4 @@
-# Manifiesto de fuentes — Te genero tu JARVIS OS
+# Manifiesto de fuentes — Te genero tu TURBO OS
 
 | Fuente | Peso / estilo | Rol | Origen | Código de carga |
 |---|---|---|---|---|
