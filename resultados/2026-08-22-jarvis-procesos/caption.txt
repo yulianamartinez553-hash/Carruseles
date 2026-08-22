@@ -1,10 +1,18 @@
 Tu operación no necesita más pestañas.
-Necesita un Turbo que hable, ejecute y recuerde.
+Necesita un agente que hable, ejecute y recuerde.
 
-Sebastián te lo genera a medida:
-cerebro · memoria · voz · cara.
+TURBO es eso:
+— Claude Code como motor
+— Obsidian como memoria
+— Voz local para pedirle y que te responda
+— Una sola interfaz para verlo todo
+
+Sebastián te lo genera a medida.
+No es un tutorial. Es tu sistema, listo para laburar.
 
 Comentá PROCESOS
 y te escribo para arrancar.
 
 sebastian.stlabs.ar
+
+#RevOps #CRM #Automatizacion #Agentes #Operaciones
