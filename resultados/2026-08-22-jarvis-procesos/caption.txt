@@ -7,7 +7,7 @@ TURBO es eso:
 — Voz local para pedirle y que te responda
 — Una sola interfaz para verlo todo
 
-Sebastián te lo genera a medida.
+Te lo genero a medida.
 No es un tutorial. Es tu sistema, listo para laburar.
 
 Comentá PROCESOS

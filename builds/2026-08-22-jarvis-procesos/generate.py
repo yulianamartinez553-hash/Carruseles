@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Carrusel STLabs — TURBO OS (10 slides, fondo negro).
 Sistema: sistema-carrusel-stlabs.json + skill carrusel-stlabs.
-Copy: Sebastián te genera el Turbo · CTA PROCESOS.
+Copy: primera persona (te lo genero) · CTA PROCESOS.
 """
 from __future__ import annotations
 import base64, json
@@ -161,7 +161,7 @@ def build() -> str:
       <div class="badge">CONOCÉ A TURBO</div>
       <h1 class="title" style="margin-top:22px">Tu agente<br><span class="g">TURBO</span><br>a medida</h1>
       <div class="rule"></div>
-      <p class="sub">Habla, ejecuta y recuerda.<br>Sebastián te lo <b>arma completo</b>.</p>
+      <p class="sub">Habla, ejecuta y recuerda.<br>Te lo <b>armo completo</b>.</p>
       <div class="stack">
         <div class="row"><div class="ico">01</div><div><div class="t">CLAUDE CODE</div><div class="d">El motor</div></div></div>
         <div class="row"><div class="ico">02</div><div><div class="t">OBSIDIAN</div><div class="d">La memoria</div></div></div>
@@ -197,7 +197,7 @@ def build() -> str:
       <div class="row"><div class="ico">03</div><div class="t">EJECUTAR</div></div>
       <div class="row"><div class="ico">04</div><div class="t">RECORDAR</div></div>
     </div>
-    <p class="sub" style="margin-top:28px">Sebastián te lo <b>genera</b>. No tenés que armarlo vos.</p>
+    <p class="sub" style="margin-top:28px">Te lo <b>genero</b>. No tenés que armarlo vos.</p>
   </div>
 </section>""")
 
@@ -228,7 +228,7 @@ def build() -> str:
     <div class="badge">EL MÉTODO</div>
     <h1 class="title sm" style="margin-top:22px">Los 4 pasos<br>con los que<br><span class="g">genero</span> tu Turbo</h1>
     <div class="rule"></div>
-    <p class="sub">No es un tutorial para que lo armes solo.<br>Es el proceso que usa Sebastián para <b>generártelo</b>.</p>
+    <p class="sub">No es un tutorial para que lo armes solo.<br>Es el proceso con el que <b>te lo genero</b>.</p>
     <div class="steps">
       <div class="step"><div class="n">PASO 01</div><div class="tt">Cablear el cerebro</div><div class="dd">Skills en Claude Code. Cada habilidad = un SKILL.md</div></div>
       <div class="step"><div class="n">PASO 02</div><div class="tt">Construir la memoria</div><div class="dd">Bóveda Obsidian. Si no está en la bóveda, no pasó.</div></div>
@@ -289,7 +289,7 @@ def build() -> str:
     <h1 class="title sm" style="margin-top:16px">Conectá<br>la <span class="g">voz</span></h1>
     <div class="rule"></div>
     <div class="note">TUS OÍDOS + TU BOCA. TODO LOCAL.</div>
-    <p class="sub" style="margin-top:16px">Sebastián conecta la capa de voz para que hables con el sistema sin abrir una sola pestaña.</p>
+    <p class="sub" style="margin-top:16px">Conecto la capa de voz para que hables con el sistema sin abrir una sola pestaña.</p>
     <div class="steps">
       <div class="step"><div class="n">ENTRADA</div><div class="tt">Escucha</div><div class="dd">Voz local → texto. Sin mandar audio a la nube.</div></div>
       <div class="step"><div class="n">ENRUTEO</div><div class="tt">Elige skill</div><div class="dd">TURBO elige la habilidad correcta según lo que pediste.</div></div>
@@ -312,7 +312,7 @@ def build() -> str:
     <h1 class="title sm" style="margin-top:14px">Construí<br>la <span class="g">cara</span></h1>
     <div class="rule"></div>
     <div class="note">UNA PANTALLA. TODO LO QUE TURBO TIENE QUE SABER.</div>
-    <p class="sub" style="margin-top:12px;font-size:28px">Prompt que usa Sebastián para generar el HUD:</p>
+    <p class="sub" style="margin-top:12px;font-size:28px">El prompt que uso para generar el HUD:</p>
     <div class="term" style="font-size:18px">
       “Armá un HUD de terminal oscuro para mi OS: vitales · comandos · agenda · audio · datos de la bóveda. <span class="hi">Una pantalla. Sin pestañas.</span>”
     </div>

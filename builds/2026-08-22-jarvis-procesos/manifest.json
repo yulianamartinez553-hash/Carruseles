@@ -3,12 +3,10 @@
   "fecha": "2026-08-22",
   "titulo": "Tu agente TURBO a medida",
   "slides": 10,
-  "resoluciones": {
-    "4k": "4320x5400",
-    "fhd": "1920x2400",
-    "retina": "2160x2700",
-    "feed": "1080x1350"
-  },
+  "fondo": "reticula_fina",
+  "familia_visual": "dossier_editorial",
+  "origen": "screenshot",
   "keyword_portada": "PROCESOS",
-  "notas": "Set completo corregido: 4K nativo + Full HD 1920x2400 + retina. Ratio 4:5 exacto sin deformar."
+  "modo": "negro",
+  "notas": "Master 4K 4320x5400 + retina 2160. Sin stretch. CTA PROCESOS."
 }
