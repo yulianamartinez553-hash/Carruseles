@@ -41,12 +41,13 @@ def font_css() -> str:
 
 
 PARTICLE_BG = b64(A / "sebastian-jarvis-particles.png")
+TURBO = b64(A / "turbo-agent.png")
 GRAPH = b64(A / "vault-graph.png")
 SEB = b64(A / "seb.jpg")
 
 CSS = f"""
 {font_css()}
-*{{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased;font-synthesis:none;}}
+*{{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:geometricPrecision;font-synthesis:none;}}
 html,body{{background:#000;}}
 .sheet{{display:flex;flex-direction:column;gap:40px;padding:32px;width:max-content;}}
 .slide{{position:relative;width:1080px;height:1350px;overflow:hidden;background:{BG};color:{W};}}
@@ -118,11 +119,14 @@ html,body{{background:#000;}}
 .table td span{{color:#9aa39c;font-size:20px;}}
 .cover-bg{{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;}}
 .cover-scrim{{position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:linear-gradient(90deg,rgba(10,10,10,.92) 0%,rgba(10,10,10,.78) 42%,rgba(10,10,10,.35) 68%,rgba(10,10,10,.55) 100%),
+  background:linear-gradient(90deg,rgba(10,10,10,.94) 0%,rgba(10,10,10,.82) 38%,rgba(10,10,10,.28) 62%,rgba(10,10,10,.5) 100%),
   linear-gradient(180deg,rgba(10,10,10,.25) 0%,transparent 28%,rgba(10,10,10,.55) 100%);}}
-.cover{{position:relative;z-index:5;display:flex;flex-direction:column;justify-content:center;height:100%;max-width:620px;}}
-.cover .row{{background:rgba(18,18,18,.72);backdrop-filter:blur(6px);}}
-.cover .term{{background:rgba(17,17,17,.78);backdrop-filter:blur(6px);}}
+.cover{{position:relative;z-index:5;display:grid;grid-template-columns:1.05fr .95fr;gap:12px;align-items:center;height:100%;}}
+.cover-left{{display:flex;flex-direction:column;justify-content:center;}}
+.cover-agent{{display:flex;align-items:center;justify-content:center;}}
+.cover-agent img{{width:100%;max-width:560px;image-rendering:auto;filter:drop-shadow(0 0 48px rgba(0,255,178,.35));}}
+.cover .row{{background:rgba(18,18,18,.88);}}
+.cover .term{{background:rgba(17,17,17,.92);}}
 .profile{{display:flex;align-items:center;gap:22px;background:#141414;border:1px solid #2A2A2A;border-radius:22px;padding:22px;}}
 .profile img{{width:110px;height:110px;border-radius:50%;object-fit:cover;border:3px solid {G};}}
 .profile .name{{font-family:'Poppins',sans-serif;font-weight:800;font-size:32px;}}
@@ -153,10 +157,11 @@ def build() -> str:
   <div class="cover-scrim"></div>
   <div class="firma">sebastian.stlabs.ar</div>
   <div class="content cover">
-      <div class="badge">TURBO A MEDIDA</div>
-      <h1 class="title" style="margin-top:24px">Te genero<br>tu <span class="g">TURBO</span><br>OS</h1>
+    <div class="cover-left">
+      <div class="badge">CONOCÉ A TURBO</div>
+      <h1 class="title" style="margin-top:22px">Tu agente<br><span class="g">TURBO</span><br>a medida</h1>
       <div class="rule"></div>
-      <p class="sub">Con el último paso, te funciona<br><b>todo el día</b>.</p>
+      <p class="sub">Habla, ejecuta y recuerda.<br>Sebastián te lo <b>arma completo</b>.</p>
       <div class="stack">
         <div class="row"><div class="ico">01</div><div><div class="t">CLAUDE CODE</div><div class="d">El motor</div></div></div>
         <div class="row"><div class="ico">02</div><div><div class="t">OBSIDIAN</div><div class="d">La memoria</div></div></div>
@@ -168,8 +173,10 @@ def build() -> str:
         <div class="ln">&gt; hablar</div>
         <div class="ln">&gt; ejecutar</div>
         <div class="ln">&gt; recordar</div>
-        <div class="hi">&gt; TE FUNCIONA TODO EL DÍA_</div>
+        <div class="hi">&gt; TURBO TRABAJA POR VOS_</div>
       </div>
+    </div>
+    <div class="cover-agent"><img src="data:image/png;base64,{TURBO}" alt="TURBO"/></div>
   </div>
 </section>""")
 
@@ -378,14 +385,14 @@ def main():
     meta = {
         "id": "2026-08-22-jarvis-procesos",
         "fecha": "2026-08-22",
-        "titulo": "Te genero tu TURBO OS",
+        "titulo": "Tu agente TURBO a medida",
         "slides": 10,
         "fondo": "reticula_fina",
         "familia_visual": "dossier_editorial",
         "origen": "screenshot",
         "keyword_portada": "PROCESOS",
         "modo": "negro",
-        "notas": "Portada: Sebastián blur + partículas azules. Agente TURBO. CTA PROCESOS. Perfil slide 10.",
+        "notas": "Render HQ 3x→2x + sharpen. Sin backdrop blur. CTA PROCESOS.",
     }
     (B / "manifest.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
     print("OK 10 slides →", B / "carrusel.html")

@@ -47,7 +47,7 @@ SEB = b64(A / "seb.jpg")
 
 CSS = f"""
 {font_css()}
-*{{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased;font-synthesis:none;}}
+*{{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:geometricPrecision;font-synthesis:none;}}
 html,body{{background:#000;}}
 .sheet{{display:flex;flex-direction:column;gap:40px;padding:32px;width:max-content;}}
 .slide{{position:relative;width:1080px;height:1350px;overflow:hidden;background:{BG};color:{W};}}
@@ -125,8 +125,8 @@ html,body{{background:#000;}}
 .cover-left{{display:flex;flex-direction:column;justify-content:center;}}
 .cover-agent{{display:flex;align-items:center;justify-content:center;}}
 .cover-agent img{{width:100%;max-width:560px;image-rendering:auto;filter:drop-shadow(0 0 48px rgba(0,255,178,.35));}}
-.cover .row{{background:rgba(18,18,18,.72);backdrop-filter:blur(6px);}}
-.cover .term{{background:rgba(17,17,17,.78);backdrop-filter:blur(6px);}}
+.cover .row{{background:rgba(18,18,18,.88);}}
+.cover .term{{background:rgba(17,17,17,.92);}}
 .profile{{display:flex;align-items:center;gap:22px;background:#141414;border:1px solid #2A2A2A;border-radius:22px;padding:22px;}}
 .profile img{{width:110px;height:110px;border-radius:50%;object-fit:cover;border:3px solid {G};}}
 .profile .name{{font-family:'Poppins',sans-serif;font-weight:800;font-size:32px;}}
@@ -392,7 +392,7 @@ def main():
         "origen": "screenshot",
         "keyword_portada": "PROCESOS",
         "modo": "negro",
-        "notas": "Portada HQ: TURBO 2048px + particulas upscale. CTA PROCESOS.",
+        "notas": "Render HQ 3x→2x + sharpen. Sin backdrop blur. CTA PROCESOS.",
     }
     (B / "manifest.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
     print("OK 10 slides →", B / "carrusel.html")

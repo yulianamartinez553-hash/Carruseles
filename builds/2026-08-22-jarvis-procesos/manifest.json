@@ -8,5 +8,5 @@
   "origen": "screenshot",
   "keyword_portada": "PROCESOS",
   "modo": "negro",
-  "notas": "Portada HQ: TURBO 2048px + particulas upscale. CTA PROCESOS."
+  "notas": "Render HQ supersample 3x→2x + sharpen. JPG @2x. CTA PROCESOS."
 }
