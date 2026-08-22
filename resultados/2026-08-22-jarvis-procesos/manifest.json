@@ -8,5 +8,6 @@
   "origen": "screenshot",
   "keyword_portada": "PROCESOS",
   "modo": "negro",
-  "notas": "Render HQ supersample 3x→2x + sharpen. JPG @2x. CTA PROCESOS."
+  "notas": "Master 4K 4320x5400 (4x nativo, sin stretch). Retina 2160 + JPG @4k/@2x/feed.",
+  "resolucion_master": "4320x5400"
 }

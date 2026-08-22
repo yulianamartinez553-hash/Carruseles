@@ -50,7 +50,7 @@ CSS = f"""
 *{{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:geometricPrecision;font-synthesis:none;}}
 html,body{{background:#000;}}
 .sheet{{display:flex;flex-direction:column;gap:40px;padding:32px;width:max-content;}}
-.slide{{position:relative;width:1080px;height:1350px;overflow:hidden;background:{BG};color:{W};}}
+.slide{{position:relative;width:1080px;height:1350px;overflow:hidden;transform:translateZ(0);-webkit-backface-visibility:hidden;image-rendering:auto;background:{BG};color:{W};}}
 .tex{{position:absolute;inset:0;z-index:0;pointer-events:none;
   background-image:linear-gradient(rgba(0,255,178,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,178,.04) 1px,transparent 1px);
   background-size:60px 60px;
@@ -124,7 +124,7 @@ html,body{{background:#000;}}
 .cover{{position:relative;z-index:5;display:grid;grid-template-columns:1.05fr .95fr;gap:12px;align-items:center;height:100%;}}
 .cover-left{{display:flex;flex-direction:column;justify-content:center;}}
 .cover-agent{{display:flex;align-items:center;justify-content:center;}}
-.cover-agent img{{width:100%;max-width:560px;image-rendering:auto;filter:drop-shadow(0 0 48px rgba(0,255,178,.35));}}
+.cover-agent img{{width:100%;max-width:580px;image-rendering:auto;-webkit-user-drag:none;filter:drop-shadow(0 0 48px rgba(0,255,178,.32));}}
 .cover .row{{background:rgba(18,18,18,.88);}}
 .cover .term{{background:rgba(17,17,17,.92);}}
 .profile{{display:flex;align-items:center;gap:22px;background:#141414;border:1px solid #2A2A2A;border-radius:22px;padding:22px;}}
@@ -392,7 +392,7 @@ def main():
         "origen": "screenshot",
         "keyword_portada": "PROCESOS",
         "modo": "negro",
-        "notas": "Render HQ 3x→2x + sharpen. Sin backdrop blur. CTA PROCESOS.",
+        "notas": "Master 4K 4320x5400 + retina 2160. Sin stretch. CTA PROCESOS.",
     }
     (B / "manifest.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
     print("OK 10 slides →", B / "carrusel.html")
