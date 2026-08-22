@@ -40,7 +40,7 @@ def font_css() -> str:
     return "\n".join(out)
 
 
-ROBOT = b64(A / "robot-sphere.png")
+ROBOT = b64(A / "bichito-naranja.png")
 GRAPH = b64(A / "vault-graph.png")
 SEB = b64(A / "seb.jpg")
 
@@ -117,8 +117,8 @@ html,body{{background:#000;}}
 .table td b{{color:{W};font-weight:700;display:block;margin-bottom:2px;font-family:'Poppins',sans-serif;font-size:20px;}}
 .table td span{{color:#9aa39c;font-size:20px;}}
 .cover{{display:grid;grid-template-columns:1.05fr .95fr;gap:16px;height:100%;}}
-.cover-right{{display:flex;align-items:flex-end;justify-content:center;}}
-.cover-right img{{width:100%;max-height:820px;object-fit:contain;}}
+.cover-right{{display:flex;align-items:center;justify-content:center;}}
+.cover-right img{{width:92%;max-height:720px;object-fit:contain;filter:drop-shadow(0 18px 40px rgba(0,255,178,.18));}}
 .profile{{display:flex;align-items:center;gap:22px;background:#141414;border:1px solid #2A2A2A;border-radius:22px;padding:22px;}}
 .profile img{{width:110px;height:110px;border-radius:50%;object-fit:cover;border:3px solid {G};}}
 .profile .name{{font-family:'Poppins',sans-serif;font-weight:800;font-size:32px;}}
