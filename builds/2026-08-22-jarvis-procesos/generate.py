@@ -124,7 +124,7 @@ html,body{{background:#000;}}
 .cover{{position:relative;z-index:5;display:grid;grid-template-columns:1.05fr .95fr;gap:12px;align-items:center;height:100%;}}
 .cover-left{{display:flex;flex-direction:column;justify-content:center;}}
 .cover-agent{{display:flex;align-items:center;justify-content:center;}}
-.cover-agent img{{width:100%;max-width:480px;filter:drop-shadow(0 0 42px rgba(0,255,178,.28));}}
+.cover-agent img{{width:100%;max-width:560px;image-rendering:auto;filter:drop-shadow(0 0 48px rgba(0,255,178,.35));}}
 .cover .row{{background:rgba(18,18,18,.72);backdrop-filter:blur(6px);}}
 .cover .term{{background:rgba(17,17,17,.78);backdrop-filter:blur(6px);}}
 .profile{{display:flex;align-items:center;gap:22px;background:#141414;border:1px solid #2A2A2A;border-radius:22px;padding:22px;}}
@@ -392,7 +392,7 @@ def main():
         "origen": "screenshot",
         "keyword_portada": "PROCESOS",
         "modo": "negro",
-        "notas": "Portada vende TURBO con personaje del agente. Blur+particulas. CTA PROCESOS.",
+        "notas": "Portada HQ: TURBO 2048px + particulas upscale. CTA PROCESOS.",
     }
     (B / "manifest.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
     print("OK 10 slides →", B / "carrusel.html")
