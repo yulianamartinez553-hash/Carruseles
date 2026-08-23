@@ -99,15 +99,15 @@ html,body{background:#000;}
 .pat .desc{font-family:'Barlow Condensed',sans-serif;font-size:19px;color:#9aa39c;line-height:1.25;}
 .plan{display:grid;grid-template-columns:220px 1fr 220px;gap:12px;margin-top:12px;flex:1;min-height:0;}
 .plan-mid{border:1px solid rgba(255,255,255,.16);border-radius:6px;background:#1E1E1E;padding:14px;position:relative;overflow:hidden;}
-.chart{position:relative;height:calc(100% - 48px);border-left:1px solid rgba(255,255,255,.16);border-bottom:1px solid rgba(255,255,255,.16);}
+.chart{position:relative;height:calc(100% - 48px);border-left:1px solid rgba(255,255,255,.16);border-bottom:1px solid rgba(255,255,255,.16);margin-right:0;padding-right:132px;}
 .candle{position:absolute;bottom:18%;width:10px;background:#F2F2F2;}
 .candle::before{content:'';position:absolute;left:50%;width:1px;background:#F2F2F2;transform:translateX(-50%);height:120%;top:-10%;}
-.zone{position:absolute;left:8%;right:8%;border:1px dashed #9aa39c;background:rgba(0,255,178,.04);}
-.line-t{position:absolute;left:0;right:118px;border-top:2px dashed #00FFB2;}
-.line-s{position:absolute;left:0;right:118px;border-top:2px dashed #FF5247;}
-.line-i{position:absolute;left:0;right:118px;border-top:1px dashed #9aa39c;opacity:.7;}
-.lbl-side{font-family:'IBM Plex Mono',monospace;font-size:12px;position:absolute;right:4px;top:-9px;
-  padding:2px 6px;background:#1E1E1E;letter-spacing:.04em;white-space:nowrap;}
+.zone{position:absolute;left:8%;right:140px;border:1px dashed #9aa39c;background:rgba(0,255,178,.04);}
+.line-t{position:absolute;left:0;right:132px;border-top:2px dashed #00FFB2;pointer-events:none;}
+.line-s{position:absolute;left:0;right:132px;border-top:2px dashed #FF5247;pointer-events:none;}
+.line-i{position:absolute;left:0;right:132px;border-top:1px dashed #9aa39c;opacity:.7;pointer-events:none;}
+.lbl-side{font-family:'IBM Plex Mono',monospace;font-size:12px;position:absolute;right:4px;transform:translateY(-50%);
+  padding:3px 6px;background:#1E1E1E;letter-spacing:.04em;white-space:nowrap;z-index:3;}
 .risk{display:grid;grid-template-columns:1fr 310px 1fr;gap:12px;margin-top:12px;flex:1;min-height:0;}
 .risk-mid{border:1px solid rgba(255,255,255,.16);border-radius:6px;padding:18px;background:#1E1E1E;}
 .chk{display:flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:15px;margin:10px 0;color:#F2F2F2;}
@@ -291,9 +291,12 @@ html,body{background:#000;}
         <div style="font-family:'IBM Plex Mono',monospace;font-size:15px;margin-bottom:10px">PLAN DE GESTIÓN</div>
         <div class="chart">
           <div class="zone" style="top:35%;height:28%"></div>
-          <div class="line-t" style="top:18%"><span class="lbl-side" style="color:#00FFB2">OBJETIVO</span></div>
-          <div class="line-s" style="top:62%"><span class="lbl-side" style="color:#FF5247">LÍMITE</span></div>
-          <div class="line-i" style="top:82%"><span class="lbl-side">INVALIDACIÓN</span></div>
+          <div class="line-t" style="top:18%"></div>
+          <div class="lbl-side" style="top:18%;color:#00FFB2">OBJETIVO</div>
+          <div class="line-s" style="top:62%"></div>
+          <div class="lbl-side" style="top:62%;color:#FF5247">LÍMITE</div>
+          <div class="line-i" style="top:82%"></div>
+          <div class="lbl-side" style="top:82%">INVALIDACIÓN</div>
           <div class="candle" style="left:20%;height:35%"></div><div class="candle" style="left:32%;height:45%"></div>
           <div class="candle" style="left:44%;height:38%"></div><div class="candle" style="left:56%;height:52%"></div>
           <div class="candle" style="left:68%;height:48%"></div>

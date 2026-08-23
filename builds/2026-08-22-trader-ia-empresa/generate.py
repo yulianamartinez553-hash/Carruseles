@@ -155,15 +155,15 @@ html,body{{background:#000;}}
 .pat .desc{{font-family:'Barlow Condensed',sans-serif;font-size:19px;color:{GY};line-height:1.25;}}
 .plan{{display:grid;grid-template-columns:220px 1fr 220px;gap:12px;margin-top:12px;flex:1;min-height:0;}}
 .plan-mid{{border:1px solid {BDR};border-radius:6px;background:{CARD2};padding:14px;position:relative;overflow:hidden;}}
-.chart{{position:relative;height:calc(100% - 48px);border-left:1px solid {BDR};border-bottom:1px solid {BDR};}}
+.chart{{position:relative;height:calc(100% - 48px);border-left:1px solid {BDR};border-bottom:1px solid {BDR};margin-right:0;padding-right:132px;}}
 .candle{{position:absolute;bottom:18%;width:10px;background:{TX};}}
 .candle::before{{content:'';position:absolute;left:50%;width:1px;background:{TX};transform:translateX(-50%);height:120%;top:-10%;}}
-.zone{{position:absolute;left:8%;right:8%;border:1px dashed {GY};background:rgba(0,255,178,.04);}}
-.line-t{{position:absolute;left:0;right:130px;border-top:2px dashed {V};pointer-events:none;}}
-.line-s{{position:absolute;left:0;right:130px;border-top:2px dashed {RED};pointer-events:none;}}
-.line-i{{position:absolute;left:0;right:130px;border-top:1px dashed {GY};opacity:.7;pointer-events:none;}}
-.lbl-side{{font-family:'IBM Plex Mono',monospace;font-size:12px;position:absolute;right:6px;transform:translateY(-50%);
-  padding:3px 7px;background:{CARD2};letter-spacing:.04em;white-space:nowrap;z-index:2;}}
+.zone{{position:absolute;left:8%;right:140px;border:1px dashed {GY};background:rgba(0,255,178,.04);}}
+.line-t{{position:absolute;left:0;right:132px;border-top:2px dashed {V};pointer-events:none;}}
+.line-s{{position:absolute;left:0;right:132px;border-top:2px dashed {RED};pointer-events:none;}}
+.line-i{{position:absolute;left:0;right:132px;border-top:1px dashed {GY};opacity:.7;pointer-events:none;}}
+.lbl-side{{font-family:'IBM Plex Mono',monospace;font-size:12px;position:absolute;right:4px;transform:translateY(-50%);
+  padding:3px 6px;background:{CARD2};letter-spacing:.04em;white-space:nowrap;z-index:3;}}
 .risk{{display:grid;grid-template-columns:1fr 310px 1fr;gap:12px;margin-top:12px;flex:1;min-height:0;}}
 .risk-mid{{border:1px solid {BDR};border-radius:6px;padding:18px;background:{CARD2};}}
 .chk{{display:flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:15px;margin:10px 0;color:{TX};}}
@@ -325,9 +325,9 @@ def build() -> str:
           <div class="lbl-side" style="top:62%;color:{RED}">LÍMITE</div>
           <div class="line-i" style="top:82%"></div>
           <div class="lbl-side" style="top:82%">INVALIDACIÓN</div>
-          <div class="candle" style="left:20%;height:35%"></div><div class="candle" style="left:32%;height:45%"></div>
-          <div class="candle" style="left:44%;height:38%"></div><div class="candle" style="left:56%;height:52%"></div>
-          <div class="candle" style="left:68%;height:48%"></div>
+          <div class="candle" style="left:12%;height:35%"></div><div class="candle" style="left:24%;height:45%"></div>
+          <div class="candle" style="left:36%;height:38%"></div><div class="candle" style="left:48%;height:52%"></div>
+          <div class="candle" style="left:58%;height:48%"></div>
         </div>
         <div style="display:flex;gap:16px;margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:14px">
           <span>DIRECCIÓN: <b class="v">OPTIMIZAR</b></span>
