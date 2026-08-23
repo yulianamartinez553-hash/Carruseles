@@ -73,137 +73,140 @@ html,body{{background:#000;}}
 .corner{{position:absolute;width:28px;height:28px;z-index:2;pointer-events:none;}}
 .corner::before,.corner::after{{content:'';position:absolute;background:{TX};opacity:.28;}}
 .corner.tl{{top:36px;left:36px;}} .corner.tr{{top:36px;right:36px;}}
-.corner.bl{{bottom:96px;left:36px;}} .corner.br{{bottom:96px;right:36px;}}
+.corner.bl{{bottom:90px;left:36px;}} .corner.br{{bottom:90px;right:36px;}}
 .corner.tl::before{{width:14px;height:1px;top:0;left:0;}} .corner.tl::after{{width:1px;height:14px;top:0;left:0;}}
 .corner.tr::before{{width:14px;height:1px;top:0;right:0;}} .corner.tr::after{{width:1px;height:14px;top:0;right:0;}}
 .corner.bl::before{{width:14px;height:1px;bottom:0;left:0;}} .corner.bl::after{{width:1px;height:14px;bottom:0;left:0;}}
 .corner.br::before{{width:14px;height:1px;bottom:0;right:0;}} .corner.br::after{{width:1px;height:14px;bottom:0;right:0;}}
-.firma{{position:absolute;left:0;right:0;bottom:46px;text-align:center;z-index:30;
-  font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:20px;letter-spacing:.12em;color:{V};}}
-.ruler{{position:absolute;left:72px;right:72px;bottom:78px;height:18px;z-index:3;display:flex;justify-content:space-between;align-items:flex-end;
-  border-bottom:1px solid rgba(255,255,255,.18);font-family:'IBM Plex Mono',monospace;font-size:11px;color:{GY};}}
+.firma{{position:absolute;left:0;right:0;bottom:40px;text-align:center;z-index:30;
+  font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:22px;letter-spacing:.12em;color:{V};}}
+.ruler{{position:absolute;left:56px;right:56px;bottom:70px;height:18px;z-index:3;display:flex;justify-content:space-between;align-items:flex-end;
+  border-bottom:1px solid rgba(255,255,255,.18);font-family:'IBM Plex Mono',monospace;font-size:12px;color:{GY};}}
 .ruler span::before{{content:'';display:block;width:1px;height:6px;background:rgba(255,255,255,.28);margin:0 auto 2px;}}
-.meta{{position:absolute;top:44px;left:52px;z-index:10;border:1px solid {BDR};padding:10px 14px;
-  font-family:'IBM Plex Mono',monospace;font-size:11px;line-height:1.55;letter-spacing:.06em;background:rgba(20,20,20,.94);}}
+.meta{{position:absolute;top:30px;left:34px;z-index:10;border:1px solid {BDR};padding:12px 16px;
+  font-family:'IBM Plex Mono',monospace;font-size:14px;line-height:1.45;letter-spacing:.05em;background:rgba(20,20,20,.94);}}
 .meta span{{color:{GY};margin-right:6px;}}
 .meta b{{color:{TX};font-weight:600;}} .meta b.v{{color:{V};}}
-.content{{position:absolute;left:52px;right:52px;top:128px;bottom:132px;z-index:5;overflow:hidden;}}
-.title{{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:72px;line-height:.92;letter-spacing:.01em;color:{TX};text-transform:uppercase;}}
+.content{{position:absolute;left:30px;right:30px;top:98px;bottom:90px;z-index:5;overflow:hidden;
+  display:flex;flex-direction:column;}}
+.title{{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:104px;line-height:.84;letter-spacing:.01em;color:{TX};text-transform:uppercase;}}
 .title .o,.title .v{{color:{V};}}
-.title.xl{{font-size:82px;}} .title.lg{{font-size:62px;}} .title.md{{font-size:54px;}}
-.sub{{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:24px;letter-spacing:.08em;color:{TX};margin-top:10px;text-transform:uppercase;}}
+.title.xl{{font-size:118px;}} .title.lg{{font-size:96px;}} .title.md{{font-size:84px;}}
+.sub{{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:36px;letter-spacing:.04em;color:{TX};margin-top:8px;text-transform:uppercase;}}
 .sub .o,.sub .v{{color:{V};}}
-.body{{font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:21px;line-height:1.35;color:{GY};margin-top:12px;}}
+.body{{font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:32px;line-height:1.22;color:{GY};margin-top:10px;}}
 .body b{{color:{TX};font-weight:700;}}
-.tag{{display:inline-block;margin-top:12px;padding:8px 14px;border:1px dashed {V};font-family:'IBM Plex Mono',monospace;
-  font-size:12px;letter-spacing:.1em;color:{V};background:rgba(0,255,178,.06);}}
-.box{{border:1px solid {BDR};border-radius:6px;background:{CARD};padding:11px;}}
-.box h4{{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:{TX};margin-bottom:5px;}}
-.box p{{font-family:'Barlow Condensed',sans-serif;font-size:16px;line-height:1.25;color:{GY};}}
-.box .bar{{height:3px;width:42px;background:{V};margin-top:7px;}}
-.hub{{position:relative;width:100%;height:300px;margin-top:0;}}
-.hub-core{{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);width:164px;height:164px;border:2px solid {V};
-  border-radius:4px;background:{CARD2};display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10px;}}
-.hub-core .ico{{width:42px;height:42px;border:2px solid {V};border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-family:'IBM Plex Mono',monospace;font-size:17px;font-weight:600;color:{V};margin-bottom:7px;}}
-.hub-core .t1{{font-family:'Bebas Neue',sans-serif;font-size:26px;line-height:1;color:{TX};}}
-.hub-core .t2{{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:{GY};}}
-.hub-core .bar{{width:56px;height:3px;background:{V};margin:5px 0;}}
-.node{{position:absolute;width:116px;text-align:center;}}
-.node .sq{{width:52px;height:52px;border:1px solid {BDR};border-radius:4px;margin:0 auto 6px;background:{CARD};
-  display:flex;align-items:center;justify-content:center;font-size:20px;color:{V};font-family:'IBM Plex Mono',monospace;}}
-.node .lbl{{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;font-weight:600;color:{TX};}}
+.tag{{display:inline-block;margin-top:14px;padding:10px 16px;border:1px dashed {V};font-family:'IBM Plex Mono',monospace;
+  font-size:14px;letter-spacing:.1em;color:{V};background:rgba(0,255,178,.06);}}
+.box{{border:1px solid {BDR};border-radius:6px;background:{CARD};padding:14px;}}
+.box h4{{font-family:'IBM Plex Mono',monospace;font-size:15px;letter-spacing:.08em;color:{TX};margin-bottom:6px;}}
+.box p{{font-family:'Barlow Condensed',sans-serif;font-size:24px;line-height:1.2;color:{GY};}}
+.box .bar{{height:3px;width:48px;background:{V};margin-top:8px;}}
+.hub{{position:relative;width:100%;height:420px;margin-top:0;flex:1;min-height:380px;}}
+.hub-core{{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);width:190px;height:190px;border:2px solid {V};
+  border-radius:4px;background:{CARD2};display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12px;}}
+.hub-core .ico{{width:50px;height:50px;border:2px solid {V};border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-family:'IBM Plex Mono',monospace;font-size:20px;font-weight:600;color:{V};margin-bottom:8px;}}
+.hub-core .t1{{font-family:'Bebas Neue',sans-serif;font-size:32px;line-height:1;color:{TX};}}
+.hub-core .t2{{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.1em;color:{GY};}}
+.hub-core .bar{{width:64px;height:3px;background:{V};margin:6px 0;}}
+.node{{position:absolute;width:132px;text-align:center;}}
+.node .sq{{width:62px;height:62px;border:1px solid {BDR};border-radius:4px;margin:0 auto 8px;background:{CARD};
+  display:flex;align-items:center;justify-content:center;font-size:24px;color:{V};font-family:'IBM Plex Mono',monospace;}}
+.node .lbl{{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;font-weight:600;color:{TX};}}
 .hub-line{{position:absolute;background:{TX};opacity:.22;}}
-.cards4{{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:14px;}}
-.card{{border:1px solid {BDR};border-radius:8px;padding:12px 10px;background:{CARD};position:relative;}}
-.card .n{{font-family:'IBM Plex Mono',monospace;font-size:12px;color:{V};font-weight:600;}}
-.card .t{{font-family:'Bebas Neue',sans-serif;font-size:24px;margin-top:3px;line-height:1;color:{TX};}}
-.card .d{{font-family:'Barlow Condensed',sans-serif;font-size:15px;color:{GY};margin-top:5px;line-height:1.2;}}
-.card::after{{content:'→';position:absolute;right:-12px;top:50%;transform:translateY(-50%);color:{V};opacity:.35;font-size:16px;}}
+.cards4{{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:auto;padding-top:16px;}}
+.card{{border:1px solid {BDR};border-radius:8px;padding:18px 14px;background:{CARD};position:relative;}}
+.card .n{{font-family:'IBM Plex Mono',monospace;font-size:15px;color:{V};font-weight:600;}}
+.card .t{{font-family:'Bebas Neue',sans-serif;font-size:40px;margin-top:4px;line-height:1;color:{TX};}}
+.card .d{{font-family:'Barlow Condensed',sans-serif;font-size:24px;color:{GY};margin-top:8px;line-height:1.18;}}
+.card::after{{content:'→';position:absolute;right:-14px;top:50%;transform:translateY(-50%);color:{V};opacity:.35;font-size:18px;}}
 .card:last-child::after{{display:none;}}
-.scan{{display:grid;grid-template-columns:1fr 210px 1fr;grid-template-rows:1fr 1fr;gap:10px;height:470px;margin-top:12px;}}
+.scan{{display:grid;grid-template-columns:1fr 230px 1fr;grid-template-rows:1fr 1fr;gap:14px;flex:1;min-height:0;margin-top:14px;}}
 .scan-mid{{grid-row:1/span 2;grid-column:2;display:flex;align-items:center;justify-content:center;}}
-.radar{{width:190px;height:190px;border:2px solid {V};border-radius:50%;position:relative;background:{CARD2};}}
+.radar{{width:210px;height:210px;border:2px solid {V};border-radius:50%;position:relative;background:{CARD2};}}
 .radar::before,.radar::after{{content:'';position:absolute;border:1px dashed rgba(255,255,255,.18);border-radius:50%;}}
-.radar::before{{inset:26px;}} .radar::after{{inset:52px;}}
+.radar::before{{inset:28px;}} .radar::after{{inset:56px;}}
 .radar .cross{{position:absolute;inset:0;}}
 .radar .cross::before,.radar .cross::after{{content:'';position:absolute;background:rgba(255,255,255,.12);}}
 .radar .cross::before{{left:50%;top:8%;bottom:8%;width:1px;transform:translateX(-50%);}}
 .radar .cross::after{{top:50%;left:8%;right:8%;height:1px;transform:translateY(-50%);}}
-.radar .dot{{position:absolute;width:6px;height:6px;border-radius:50%;background:{V};}}
-.pane{{border:1px solid {BDR};border-radius:6px;padding:9px;background:{CARD};}}
-.pane .ic{{font-family:'IBM Plex Mono',monospace;font-size:18px;color:{V};margin-bottom:5px;font-weight:600;}}
-.pane .h{{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.06em;color:{TX};}}
-.pane .p{{font-family:'Barlow Condensed',sans-serif;font-size:14px;color:{GY};margin-top:3px;line-height:1.2;}}
-.pane .bar{{height:3px;width:36px;background:{V};margin-top:7px;}}
-.engine{{display:grid;grid-template-columns:1.05fr .95fr;gap:12px;margin-top:10px;height:500px;}}
-.gear-box{{border:2px dashed rgba(255,255,255,.2);border-radius:8px;padding:14px;background:{CARD};display:flex;flex-direction:column;align-items:center;}}
-.gear{{width:84px;height:84px;border:3px solid {V};border-radius:50%;position:relative;margin:16px 0;
+.radar .dot{{position:absolute;width:7px;height:7px;border-radius:50%;background:{V};}}
+.pane{{border:1px solid {BDR};border-radius:6px;padding:16px;background:{CARD};display:flex;flex-direction:column;justify-content:center;}}
+.pane .ic{{font-family:'IBM Plex Mono',monospace;font-size:24px;color:{V};margin-bottom:8px;font-weight:600;}}
+.pane .h{{font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:600;letter-spacing:.05em;color:{TX};}}
+.pane .p{{font-family:'Barlow Condensed',sans-serif;font-size:22px;color:{GY};margin-top:6px;line-height:1.22;}}
+.pane .bar{{height:3px;width:44px;background:{V};margin-top:12px;}}
+.engine{{display:grid;grid-template-columns:1.05fr .95fr;gap:14px;margin-top:12px;flex:1;min-height:0;}}
+.gear-box{{border:2px dashed rgba(255,255,255,.2);border-radius:8px;padding:18px;background:{CARD};display:flex;flex-direction:column;align-items:center;justify-content:center;}}
+.gear{{width:100px;height:100px;border:3px solid {V};border-radius:50%;position:relative;margin:18px 0;
   background:conic-gradient(from 0deg,{CARD2} 0 30deg,transparent 30deg 60deg,{CARD2} 60deg 90deg,transparent 90deg 120deg,{CARD2} 120deg 150deg,transparent 150deg 180deg,{CARD2} 180deg 210deg,transparent 210deg 240deg,{CARD2} 240deg 270deg,transparent 270deg 300deg,{CARD2} 300deg 330deg,transparent 330deg 360deg);}}
-.gear::after{{content:'';position:absolute;inset:28px;border-radius:50%;background:{CARD};border:2px solid {V};}}
-.steps3{{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;width:100%;margin-top:8px;}}
-.step-mini{{text-align:center;padding:7px;border-top:1px solid {BDR};}}
-.step-mini .n{{font-family:'IBM Plex Mono',monospace;font-size:10px;color:{V};}}
-.step-mini .t{{font-family:'Bebas Neue',sans-serif;font-size:20px;color:{TX};}}
-.step-mini .d{{font-family:'Barlow Condensed',sans-serif;font-size:13px;color:{GY};}}
-.patterns{{display:flex;flex-direction:column;gap:7px;}}
-.pat{{display:grid;grid-template-columns:84px 1fr;gap:9px;align-items:center;border:1px solid {BDR};border-radius:6px;padding:7px;background:{CARD};}}
-.pat .mini{{height:44px;border:1px solid {BDR};border-radius:4px;background:{CARD2};position:relative;overflow:hidden;}}
-.pat .lbl{{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:{TX};}}
-.pat .desc{{font-family:'Barlow Condensed',sans-serif;font-size:14px;color:{GY};line-height:1.2;}}
-.plan{{display:grid;grid-template-columns:190px 1fr 190px;gap:9px;margin-top:10px;height:490px;}}
-.plan-mid{{border:1px solid {BDR};border-radius:6px;background:{CARD2};padding:11px;position:relative;overflow:hidden;}}
-.chart{{position:relative;height:calc(100% - 36px);border-left:1px solid {BDR};border-bottom:1px solid {BDR};}}
-.candle{{position:absolute;bottom:18%;width:8px;background:{TX};}}
+.gear::after{{content:'';position:absolute;inset:32px;border-radius:50%;background:{CARD};border:2px solid {V};}}
+.steps3{{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;width:100%;margin-top:12px;}}
+.step-mini{{text-align:center;padding:12px;border-top:1px solid {BDR};}}
+.step-mini .n{{font-family:'IBM Plex Mono',monospace;font-size:13px;color:{V};}}
+.step-mini .t{{font-family:'Bebas Neue',sans-serif;font-size:28px;color:{TX};}}
+.step-mini .d{{font-family:'Barlow Condensed',sans-serif;font-size:17px;color:{GY};}}
+.patterns{{display:flex;flex-direction:column;gap:10px;flex:1;}}
+.pat{{display:grid;grid-template-columns:100px 1fr;gap:12px;align-items:center;border:1px solid {BDR};border-radius:6px;padding:14px;background:{CARD};flex:1;}}
+.pat .mini{{height:58px;border:1px solid {BDR};border-radius:4px;background:{CARD2};position:relative;overflow:hidden;}}
+.pat .lbl{{font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:600;color:{TX};}}
+.pat .desc{{font-family:'Barlow Condensed',sans-serif;font-size:19px;color:{GY};line-height:1.25;}}
+.plan{{display:grid;grid-template-columns:220px 1fr 220px;gap:12px;margin-top:12px;flex:1;min-height:0;}}
+.plan-mid{{border:1px solid {BDR};border-radius:6px;background:{CARD2};padding:14px;position:relative;overflow:hidden;}}
+.chart{{position:relative;height:calc(100% - 48px);border-left:1px solid {BDR};border-bottom:1px solid {BDR};}}
+.candle{{position:absolute;bottom:18%;width:10px;background:{TX};}}
 .candle::before{{content:'';position:absolute;left:50%;width:1px;background:{TX};transform:translateX(-50%);height:120%;top:-10%;}}
 .zone{{position:absolute;left:8%;right:8%;border:1px dashed {GY};background:rgba(0,255,178,.04);}}
 .line-t{{position:absolute;left:0;right:0;border-top:2px dashed {V};}}
 .line-s{{position:absolute;left:0;right:0;border-top:2px dashed {RED};}}
 .line-i{{position:absolute;left:0;right:0;border-top:1px dashed {GY};opacity:.6;}}
-.lbl-side{{font-family:'IBM Plex Mono',monospace;font-size:10px;position:absolute;right:4px;transform:translateY(-50%);}}
-.risk{{display:grid;grid-template-columns:1fr 270px 1fr;gap:10px;margin-top:10px;height:490px;}}
-.risk-mid{{border:1px solid {BDR};border-radius:6px;padding:12px;background:{CARD2};}}
-.chk{{display:flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;margin:5px 0;color:{TX};}}
+.lbl-side{{font-family:'IBM Plex Mono',monospace;font-size:12px;position:absolute;right:4px;transform:translateY(-50%);}}
+.risk{{display:grid;grid-template-columns:1fr 310px 1fr;gap:12px;margin-top:12px;flex:1;min-height:0;}}
+.risk-mid{{border:1px solid {BDR};border-radius:6px;padding:18px;background:{CARD2};}}
+.chk{{display:flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:15px;margin:10px 0;color:{TX};}}
 .chk .ok{{color:{V};font-weight:700;}}
-.loop{{position:relative;height:450px;margin-top:10px;}}
-.ring{{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:260px;height:260px;border:2px solid {V};border-radius:50%;}}
-.ring-dash{{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:205px;height:205px;border:2px dashed rgba(255,255,255,.2);border-radius:50%;}}
-.loop-core{{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;width:180px;}}
-.loop-core .big{{font-family:'Bebas Neue',sans-serif;font-size:52px;color:{V};line-height:1;}}
-.loop-core .subt{{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:{TX};}}
-.memo{{border:1px solid {BDR};border-radius:8px;background:{CARD2};padding:14px;margin-top:10px;}}
-.memo-h{{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid {BDR};padding-bottom:8px;margin-bottom:8px;}}
-.memo-h h3{{font-family:'Bebas Neue',sans-serif;font-size:26px;color:{TX};}}
-.memo-h span{{font-family:'IBM Plex Mono',monospace;font-size:10px;color:{GY};}}
-.memo-row{{display:grid;grid-template-columns:24px 1fr 80px;gap:8px;align-items:center;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);}}
-.memo-row .num{{font-family:'IBM Plex Mono',monospace;font-size:11px;color:{V};font-weight:600;}}
-.memo-row .txt{{font-family:'Barlow Condensed',sans-serif;font-size:17px;line-height:1.22;color:{TX};}}
-.memo-row .ico{{font-family:'IBM Plex Mono',monospace;font-size:14px;color:{V};text-align:right;}}
-.decisions{{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;margin-top:10px;}}
-.dec{{border:2px solid {BDR};border-radius:8px;padding:12px;text-align:center;background:{CARD};}}
+.loop{{position:relative;flex:1;min-height:560px;margin-top:8px;}}
+.ring{{position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);width:360px;height:360px;border:2px solid {V};border-radius:50%;}}
+.ring-dash{{position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);width:285px;height:285px;border:2px dashed rgba(255,255,255,.2);border-radius:50%;}}
+.loop-core{{position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);text-align:center;width:210px;}}
+.loop-core .big{{font-family:'Bebas Neue',sans-serif;font-size:84px;color:{V};line-height:1;}}
+.loop-core .subt{{font-family:'IBM Plex Mono',monospace;font-size:14px;letter-spacing:.1em;color:{TX};}}
+.memo{{border:1px solid {BDR};border-radius:8px;background:{CARD2};padding:18px;margin-top:14px;flex:1;}}
+.memo-h{{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid {BDR};padding-bottom:10px;margin-bottom:8px;}}
+.memo-h h3{{font-family:'Bebas Neue',sans-serif;font-size:40px;color:{TX};}}
+.memo-h span{{font-family:'IBM Plex Mono',monospace;font-size:13px;color:{GY};}}
+.memo-row{{display:grid;grid-template-columns:30px 1fr 90px;gap:10px;align-items:center;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06);}}
+.memo-row .num{{font-family:'IBM Plex Mono',monospace;font-size:15px;color:{V};font-weight:600;}}
+.memo-row .txt{{font-family:'Barlow Condensed',sans-serif;font-size:26px;line-height:1.22;color:{TX};}}
+.memo-row .ico{{font-family:'IBM Plex Mono',monospace;font-size:16px;color:{V};text-align:right;}}
+.decisions{{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:14px;}}
+.dec{{border:2px solid {BDR};border-radius:8px;padding:18px;text-align:center;background:{CARD};}}
 .dec.go{{border-color:{V};background:rgba(0,255,178,.08);}}
 .dec.wait{{border-color:{GY};background:rgba(154,163,156,.08);}}
 .dec.no{{border-color:{RED};background:rgba(255,82,71,.08);}}
-.dec .ic{{font-family:'IBM Plex Mono',monospace;font-size:24px;color:{V};font-weight:700;}}
+.dec .ic{{font-family:'IBM Plex Mono',monospace;font-size:30px;color:{V};font-weight:700;}}
 .dec.no .ic{{color:{RED};}}
-.dec .t{{font-family:'Bebas Neue',sans-serif;font-size:22px;margin-top:5px;color:{TX};}}
-.dec .d{{font-family:'Barlow Condensed',sans-serif;font-size:14px;color:{GY};}}
-.flow6{{display:flex;justify-content:space-between;align-items:flex-start;margin:22px 0 16px;}}
+.dec .t{{font-family:'Bebas Neue',sans-serif;font-size:36px;margin-top:6px;color:{TX};}}
+.dec .d{{font-family:'Barlow Condensed',sans-serif;font-size:22px;color:{GY};}}
+.flow6{{display:flex;justify-content:space-between;align-items:flex-start;margin:36px 0 28px;width:100%;}}
 .flow6 .f{{text-align:center;flex:1;position:relative;}}
-.flow6 .f::after{{content:'→';position:absolute;right:-8px;top:16px;color:{V};opacity:.3;}}
+.flow6 .f::after{{content:'→';position:absolute;right:-8px;top:22px;color:{V};opacity:.3;font-size:22px;}}
 .flow6 .f:last-child::after{{display:none;}}
-.flow6 .ic{{width:50px;height:50px;border:1px solid {BDR};border-radius:6px;margin:0 auto 7px;background:{CARD};display:flex;align-items:center;justify-content:center;font-size:18px;color:{V};font-family:'IBM Plex Mono',monospace;}}
-.flow6 .l{{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.06em;color:{TX};}}
-.cta-frame{{margin:18px auto 0;max-width:600px;border:2px solid {V};padding:24px 22px;text-align:center;position:relative;background:{CARD};}}
-.cta-frame::before,.cta-frame::after{{content:'';position:absolute;width:16px;height:16px;border:2px solid {V};}}
-.cta-frame::before{{top:-7px;left:-7px;border-right:none;border-bottom:none;}}
-.cta-frame::after{{bottom:-7px;right:-7px;border-left:none;border-top:none;}}
-.cta-kw{{font-family:'Bebas Neue',sans-serif;font-size:60px;color:{V};letter-spacing:.08em;}}
-.cta-hint{{font-family:'Barlow Condensed',sans-serif;font-size:24px;margin-top:8px;color:{TX};}}
-.status{{display:flex;justify-content:space-between;gap:10px;margin-top:10px;}}
-.status .sbox{{flex:1;border:1px solid {BDR};border-radius:6px;padding:9px 11px;background:{CARD};
-  font-family:'IBM Plex Mono',monospace;font-size:10px;line-height:1.45;color:{TX};}}
+.flow6 .ic{{width:78px;height:78px;border:1px solid {BDR};border-radius:6px;margin:0 auto 10px;background:{CARD};display:flex;align-items:center;justify-content:center;font-size:24px;color:{V};font-family:'IBM Plex Mono',monospace;}}
+.flow6 .l{{font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:600;letter-spacing:.05em;color:{TX};}}
+.cta-frame{{margin:28px auto 0;max-width:860px;width:100%;border:2px solid {V};padding:42px 32px;text-align:center;position:relative;background:{CARD};}}
+.cta-frame::before,.cta-frame::after{{content:'';position:absolute;width:18px;height:18px;border:2px solid {V};}}
+.cta-frame::before{{top:-8px;left:-8px;border-right:none;border-bottom:none;}}
+.cta-frame::after{{bottom:-8px;right:-8px;border-left:none;border-top:none;}}
+.cta-kw{{font-family:'Bebas Neue',sans-serif;font-size:110px;color:{V};letter-spacing:.06em;}}
+.cta-hint{{font-family:'Barlow Condensed',sans-serif;font-size:40px;margin-top:14px;color:{TX};}}
+.status{{display:flex;justify-content:space-between;gap:12px;margin-top:auto;padding-top:14px;}}
+.status .sbox{{flex:1;border:1px solid {BDR};border-radius:6px;padding:20px;background:{CARD};
+  font-family:'IBM Plex Mono',monospace;font-size:18px;line-height:1.35;color:{TX};}}
 .status .sbox b.v{{color:{V};}}
+.v{{color:{V};}}
+.b.v,.status .sbox b.v{{color:{V};}}
 """
 
 
@@ -219,7 +222,7 @@ def build() -> str:
         <p class="sub"><span class="v">+</span> diagnóstico · señales · riesgo · 24/7 <span class="v">+</span></p>
         <p class="body">Mapeo tu área financiera, detecto oportunidades y te dejo un sistema que <b>opera con control</b>.</p>
       </div>
-      <div class="hub" style="height:300px;margin-top:0">
+      <div class="hub">
         <div class="hub-line" style="width:1px;height:70px;left:50%;top:18%;"></div>
         <div class="hub-line" style="width:70px;height:1px;left:18%;top:38%;"></div>
         <div class="hub-line" style="width:70px;height:1px;right:18%;top:38%;"></div>
@@ -259,7 +262,7 @@ def build() -> str:
             <div class="dot" style="left:62%;top:28%"></div><div class="dot" style="left:35%;top:55%"></div>
             <div class="dot" style="left:70%;top:68%"></div><div class="dot" style="left:48%;top:40%"></div>
           </div>
-          <div class="sub" style="margin-top:12px;font-size:17px">ESCANEANDO<br><span class="v">TU OPERACIÓN</span></div>
+          <div class="sub" style="margin-top:14px;font-size:24px">ESCANEANDO<br><span class="v">TU OPERACIÓN</span></div>
         </div>
       </div>
       <div class="pane"><div class="ic">%</div><div class="h">MÁRGENES</div><div class="p">Rentabilidad por línea y unidad de negocio.</div><div class="bar"></div></div>
@@ -279,7 +282,7 @@ def build() -> str:
     <p class="sub"><span class="v">+</span> setups de alta probabilidad para tu gestión <span class="v">+</span></p>
     <div class="engine">
       <div class="gear-box">
-        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em">MOTOR DE SEÑALES</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:15px;letter-spacing:.1em">MOTOR DE SEÑALES</div>
         <div class="gear"></div>
         <div class="steps3">
           <div class="step-mini"><div class="n">01</div><div class="t">ESCANEA</div><div class="d">Lee tus datos financieros</div></div>
@@ -305,13 +308,13 @@ def build() -> str:
     <h1 class="title md">Después armo el<br><span class="v">plan de gestión</span></h1>
     <p class="sub"><span class="v">+</span> acción · objetivo · límite · invalidación <span class="v">+</span></p>
     <div class="plan">
-      <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;flex-direction:column;gap:14px">
         <div class="box"><h4>ZONA DE ACCIÓN</h4><p>Rango óptimo para mover capital o recursos.</p><div class="bar"></div></div>
         <div class="box"><h4>LÍMITE DE RIESGO</h4><p>Tope definido antes de ejecutar cualquier movimiento.</p><div class="bar"></div></div>
         <div class="box"><h4>RIESGO / BENEFICIO</h4><p>Ratio calculado: <b style="color:{V}">1 : 2.2</b></p><div class="bar"></div></div>
       </div>
       <div class="plan-mid">
-        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;margin-bottom:8px">PLAN DE GESTIÓN</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:15px;margin-bottom:10px">PLAN DE GESTIÓN</div>
         <div class="chart">
           <div class="zone" style="top:35%;height:28%"></div>
           <div class="line-t" style="top:18%"><span class="lbl-side" style="color:{V}">OBJETIVO</span></div>
@@ -321,13 +324,13 @@ def build() -> str:
           <div class="candle" style="left:44%;height:38%"></div><div class="candle" style="left:56%;height:52%"></div>
           <div class="candle" style="left:68%;height:48%"></div>
         </div>
-        <div style="display:flex;gap:16px;margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:11px">
+        <div style="display:flex;gap:16px;margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:14px">
           <span>DIRECCIÓN: <b class="v">OPTIMIZAR</b></span>
           <span>HORIZONTE: <b>TRIMESTRE</b></span>
           <span>CONFIANZA: <b class="v">ALTA</b></span>
         </div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;flex-direction:column;gap:14px">
         <div class="box"><h4>OBJETIVO</h4><p>Meta de retorno o eficiencia definida.</p><div class="bar"></div></div>
         <div class="box"><h4>INVALIDACIÓN</h4><p>Condición que cancela el plan si se rompe.</p><div class="bar"></div></div>
         <div class="box"><h4>PLAN LISTO</h4><p>Todos los niveles confirmados.</p><div class="bar"></div></div>
@@ -342,13 +345,13 @@ def build() -> str:
     <h1 class="title md">Pero el módulo<br>de <span class="v">riesgo</span> revisa todo</h1>
     <p class="sub"><span class="v">+</span> tamaño · exposición · pérdida · <span class="v">+</span></p>
     <div class="risk">
-      <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;flex-direction:column;gap:14px">
         <div class="box"><h4>01 TAMAÑO</h4><p>Calcula cuánto mover según el riesgo por decisión.</p><div class="bar"></div></div>
         <div class="box"><h4>02 EXPOSICIÓN</h4><p>Revisa el total comprometido en todas las posiciones.</p><div class="bar"></div></div>
         <div class="box"><h4>03 DRAWDOWN</h4><p>Verifica el límite de caída permitido.</p><div class="bar"></div></div>
       </div>
       <div class="risk-mid">
-        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;margin-bottom:10px">MÓDULO DE RIESGO</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:15px;margin-bottom:12px">MÓDULO DE RIESGO</div>
         <div class="chk"><span class="ok">✓</span> CHECK DE TAMAÑO — OK</div>
         <div class="chk"><span class="ok">✓</span> CHECK DE EXPOSICIÓN — OK</div>
         <div class="chk"><span class="ok">✓</span> CHECK DE DRAWDOWN — OK</div>
@@ -359,7 +362,7 @@ def build() -> str:
           <div class="dec no" style="flex:1;padding:10px"><div class="t" style="font-size:20px">FALLA</div><div class="d">Bloquea</div></div>
         </div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;flex-direction:column;gap:14px">
         <div class="box"><h4>04 VOLATILIDAD</h4><p>Confirma que el entorno sea aceptable.</p><div class="bar"></div></div>
         <div class="box"><h4>05 PÉRDIDA MÁX</h4><p>Asegura que no se supere el tope definido.</p><div class="bar"></div></div>
         <div class="box"><h4>RIESGO OK</h4><p>Protegiendo el capital en cada decisión.</p><div class="bar"></div></div>
@@ -375,7 +378,7 @@ def build() -> str:
     <p class="sub" style="text-align:center"><span class="v">+</span> monitoreo · alertas · revisión · <span class="v">+</span></p>
     <div class="loop">
       <div class="ring"></div><div class="ring-dash"></div>
-      <div class="loop-core"><div class="big">24/7</div><div class="subt">LOOP DE MONITOREO</div><div class="body" style="font-size:15px;margin-top:6px">Seguimiento continuo de tu área financiera</div></div>
+      <div class="loop-core"><div class="big">24/7</div><div class="subt">LOOP DE MONITOREO</div><div class="body" style="font-size:20px;margin-top:8px;color:#9aa39c">Seguimiento continuo de tu área financiera</div></div>
       <div class="node" style="left:8%;top:18%"><div class="sq">=</div><div class="lbl">WATCHLIST</div></div>
       <div class="node" style="right:8%;top:18%"><div class="sq">!</div><div class="lbl">ALERTAS</div></div>
       <div class="node" style="left:4%;top:48%"><div class="sq">%</div><div class="lbl">ESTADO</div></div>
@@ -402,7 +405,7 @@ def build() -> str:
       <div class="memo-row"><div class="num">2</div><div class="txt"><b>Fuerza de señal:</b> 4/5 — <span style="color:{V}">FUERTE</span></div><div class="ico">O</div></div>
       <div class="memo-row"><div class="num">3</div><div class="txt"><b>Nivel de riesgo:</b> MODERADO</div><div class="ico">●●●○</div></div>
       <div class="memo-row"><div class="num">4</div><div class="txt"><b>Plan:</b> acción definida · límite · objetivo calculado.</div><div class="ico">=</div></div>
-      <div class="memo-row"><div class="num">5</div><div class="txt" style="font-family:'Bebas Neue',sans-serif;font-size:26px;color:{V}">DECISIÓN LISTA</div><div class="ico"></div></div>
+      <div class="memo-row"><div class="num">5</div><div class="txt" style="font-family:'Bebas Neue',sans-serif;font-size:34px;color:{V}">DECISIÓN LISTA</div><div class="ico"></div></div>
     </div>
     <p class="tag" style="display:block;text-align:center;margin:10px auto 0;max-width:420px">— REVISIÓN HUMANA INCLUIDA —</p>
     <div class="decisions">
@@ -415,10 +418,10 @@ def build() -> str:
 
     s.append(f"""
 <section class="slide" data-id="08">{chrome(meta("TRADER IA EMPRESARIAL", "A MEDIDA", "COORDINAR REUNIÓN"))}
-  <div class="content" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;top:130px">
+  <div class="content" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center">
     <h1 class="title xl">Tu empresa merece<br><span class="v">gestión financiera</span><br>con ia</h1>
     <p class="sub"><span class="v">—</span> coordinemos una reunión <span class="v">—</span></p>
-    <div class="flow6" style="max-width:900px">
+    <div class="flow6" style="max-width:1000px;width:100%">
       <div class="f"><div class="ic">+</div><div class="l">DIAGNÓSTICO</div></div>
       <div class="f"><div class="ic">/</div><div class="l">SEÑALES</div></div>
       <div class="f"><div class="ic">=</div><div class="l">PLAN</div></div>
@@ -430,8 +433,8 @@ def build() -> str:
       <div class="cta-kw">REUNIÓN</div>
       <div class="cta-hint">Comentá <b style="color:{V}">REUNIÓN</b> y te escribo para coordinar.</div>
     </div>
-    <p class="body" style="max-width:680px;margin-top:16px">Te genero el trader IA, lo adapto a tu operación y te muestro cómo gestionar tu área financiera con control total.</p>
-    <p class="tag" style="margin-top:16px">HECHO PARA ESCALAR. DISEÑADO PARA DECIDIR.</p>
+    <p class="body" style="max-width:900px;margin-top:22px;font-size:34px">Te genero el trader IA, lo adapto a tu operación y te muestro cómo gestionar tu área financiera con control total.</p>
+    <p class="tag" style="margin-top:22px;font-size:18px;padding:12px 18px">HECHO PARA ESCALAR. DISEÑADO PARA DECIDIR.</p>
   </div>
 </section>""")
 
