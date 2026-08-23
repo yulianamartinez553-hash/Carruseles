@@ -10,7 +10,7 @@ from pathlib import Path
 
 from PIL import Image
 
-REPO = Path(__file__).resolve().parents[1]
+REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO))
 from stlabs_memory import registrar_carrusel
 
