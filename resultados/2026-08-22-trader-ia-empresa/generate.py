@@ -83,16 +83,17 @@ html,body{{background:#000;}}
 .ruler{{position:absolute;left:56px;right:56px;bottom:70px;height:18px;z-index:3;display:flex;justify-content:space-between;align-items:flex-end;
   border-bottom:1px solid rgba(255,255,255,.18);font-family:'IBM Plex Mono',monospace;font-size:12px;color:{GY};}}
 .ruler span::before{{content:'';display:block;width:1px;height:6px;background:rgba(255,255,255,.28);margin:0 auto 2px;}}
-.meta{{position:absolute;top:30px;left:34px;z-index:10;border:1px solid {BDR};padding:12px 16px;
-  font-family:'IBM Plex Mono',monospace;font-size:14px;line-height:1.45;letter-spacing:.05em;background:rgba(20,20,20,.94);}}
+.meta{{position:absolute;top:28px;left:30px;z-index:20;border:1px solid {BDR};padding:10px 14px;
+  font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.4;letter-spacing:.05em;background:rgba(10,10,10,.96);}}
 .meta span{{color:{GY};margin-right:6px;}}
 .meta b{{color:{TX};font-weight:600;}} .meta b.v{{color:{V};}}
-.content{{position:absolute;left:30px;right:30px;top:98px;bottom:90px;z-index:5;overflow:hidden;
+.content{{position:absolute;left:30px;right:30px;top:158px;bottom:96px;z-index:5;overflow:hidden;
   display:flex;flex-direction:column;}}
-.title{{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:104px;line-height:.84;letter-spacing:.01em;color:{TX};text-transform:uppercase;}}
+.content.center{{justify-content:center;align-items:center;text-align:center;}}
+.title{{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:96px;line-height:.94;letter-spacing:.01em;color:{TX};text-transform:uppercase;}}
 .title .o,.title .v{{color:{V};}}
-.title.xl{{font-size:118px;}} .title.lg{{font-size:96px;}} .title.md{{font-size:84px;}}
-.sub{{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:36px;letter-spacing:.04em;color:{TX};margin-top:8px;text-transform:uppercase;}}
+.title.xl{{font-size:102px;}} .title.lg{{font-size:88px;}} .title.md{{font-size:78px;}}
+.sub{{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:36px;letter-spacing:.04em;color:{TX};margin-top:10px;text-transform:uppercase;}}
 .sub .o,.sub .v{{color:{V};}}
 .body{{font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:32px;line-height:1.22;color:{GY};margin-top:10px;}}
 .body b{{color:{TX};font-weight:700;}}
@@ -102,8 +103,8 @@ html,body{{background:#000;}}
 .box h4{{font-family:'IBM Plex Mono',monospace;font-size:15px;letter-spacing:.08em;color:{TX};margin-bottom:6px;}}
 .box p{{font-family:'Barlow Condensed',sans-serif;font-size:24px;line-height:1.2;color:{GY};}}
 .box .bar{{height:3px;width:48px;background:{V};margin-top:8px;}}
-.hub{{position:relative;width:100%;height:420px;margin-top:0;flex:1;min-height:380px;}}
-.hub-core{{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);width:190px;height:190px;border:2px solid {V};
+.hub{{position:relative;width:100%;height:360px;margin-top:0;flex:0 0 auto;min-height:340px;}}
+.hub-core{{position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);width:176px;height:176px;border:2px solid {V};
   border-radius:4px;background:{CARD2};display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12px;}}
 .hub-core .ico{{width:50px;height:50px;border:2px solid {V};border-radius:50%;display:flex;align-items:center;justify-content:center;
   font-family:'IBM Plex Mono',monospace;font-size:20px;font-weight:600;color:{V};margin-bottom:8px;}}
@@ -158,10 +159,11 @@ html,body{{background:#000;}}
 .candle{{position:absolute;bottom:18%;width:10px;background:{TX};}}
 .candle::before{{content:'';position:absolute;left:50%;width:1px;background:{TX};transform:translateX(-50%);height:120%;top:-10%;}}
 .zone{{position:absolute;left:8%;right:8%;border:1px dashed {GY};background:rgba(0,255,178,.04);}}
-.line-t{{position:absolute;left:0;right:0;border-top:2px dashed {V};}}
-.line-s{{position:absolute;left:0;right:0;border-top:2px dashed {RED};}}
-.line-i{{position:absolute;left:0;right:0;border-top:1px dashed {GY};opacity:.6;}}
-.lbl-side{{font-family:'IBM Plex Mono',monospace;font-size:12px;position:absolute;right:4px;transform:translateY(-50%);}}
+.line-t{{position:absolute;left:0;right:118px;border-top:2px dashed {V};}}
+.line-s{{position:absolute;left:0;right:118px;border-top:2px dashed {RED};}}
+.line-i{{position:absolute;left:0;right:118px;border-top:1px dashed {GY};opacity:.7;}}
+.lbl-side{{font-family:'IBM Plex Mono',monospace;font-size:12px;position:absolute;right:4px;top:-9px;
+  padding:2px 6px;background:{CARD2};letter-spacing:.04em;white-space:nowrap;}}
 .risk{{display:grid;grid-template-columns:1fr 310px 1fr;gap:12px;margin-top:12px;flex:1;min-height:0;}}
 .risk-mid{{border:1px solid {BDR};border-radius:6px;padding:18px;background:{CARD2};}}
 .chk{{display:flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:15px;margin:10px 0;color:{TX};}}
@@ -233,10 +235,10 @@ def build() -> str:
           <div class="bar"></div>
           <div class="t2">TRADER IA</div>
         </div>
-        <div class="node" style="left:38%;top:2%"><div class="sq">+</div><div class="lbl">DIAGNÓSTICO</div></div>
-        <div class="node" style="right:2%;top:32%"><div class="sq">/</div><div class="lbl">SEÑALES</div></div>
-        <div class="node" style="left:2%;top:32%"><div class="sq">!</div><div class="lbl">RIESGO</div></div>
-        <div class="node" style="left:38%;bottom:0%"><div class="sq">O</div><div class="lbl">MONITOR 24/7</div></div>
+        <div class="node" style="left:36%;top:0%"><div class="sq">+</div><div class="lbl">DIAGNÓSTICO</div></div>
+        <div class="node" style="right:0%;top:30%"><div class="sq">/</div><div class="lbl">SEÑALES</div></div>
+        <div class="node" style="left:0%;top:30%"><div class="sq">!</div><div class="lbl">RIESGO</div></div>
+        <div class="node" style="left:34%;bottom:-6%"><div class="sq">O</div><div class="lbl">MONITOR 24/7</div></div>
       </div>
     </div>
     <div class="cards4">
@@ -379,13 +381,13 @@ def build() -> str:
     <div class="loop">
       <div class="ring"></div><div class="ring-dash"></div>
       <div class="loop-core"><div class="big">24/7</div><div class="subt">LOOP DE MONITOREO</div><div class="body" style="font-size:20px;margin-top:8px;color:#9aa39c">Seguimiento continuo de tu área financiera</div></div>
-      <div class="node" style="left:8%;top:18%"><div class="sq">=</div><div class="lbl">WATCHLIST</div></div>
-      <div class="node" style="right:8%;top:18%"><div class="sq">!</div><div class="lbl">ALERTAS</div></div>
-      <div class="node" style="left:4%;top:48%"><div class="sq">%</div><div class="lbl">ESTADO</div></div>
-      <div class="node" style="right:4%;top:48%"><div class="sq">~</div><div class="lbl">SEÑAL</div></div>
-      <div class="node" style="left:18%;bottom:10%"><div class="sq">M</div><div class="lbl">MONITOR</div></div>
-      <div class="node" style="right:18%;bottom:10%"><div class="sq">!</div><div class="lbl">RIESGO</div></div>
-      <div class="node" style="left:42%;top:4%"><div class="sq">+</div><div class="lbl">ESCANEO</div></div>
+      <div class="node" style="left:2%;top:14%"><div class="sq">=</div><div class="lbl">WATCHLIST</div></div>
+      <div class="node" style="right:2%;top:14%"><div class="sq">!</div><div class="lbl">ALERTAS</div></div>
+      <div class="node" style="left:0%;top:46%"><div class="sq">%</div><div class="lbl">ESTADO</div></div>
+      <div class="node" style="right:0%;top:46%"><div class="sq">~</div><div class="lbl">SEÑAL</div></div>
+      <div class="node" style="left:14%;bottom:4%"><div class="sq">M</div><div class="lbl">MONITOR</div></div>
+      <div class="node" style="right:14%;bottom:4%"><div class="sq">!</div><div class="lbl">RIESGO</div></div>
+      <div class="node" style="left:42%;top:0%"><div class="sq">+</div><div class="lbl">ESCANEO</div></div>
     </div>
     <div class="status">
       <div class="sbox">SISTEMA EN LÍNEA 24/7<br><b class="v">Sin pausas. Sin botón de apagado.</b></div>
@@ -418,7 +420,7 @@ def build() -> str:
 
     s.append(f"""
 <section class="slide" data-id="08">{chrome(meta("TRADER IA EMPRESARIAL", "A MEDIDA", "COORDINAR REUNIÓN"))}
-  <div class="content" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center">
+  <div class="content center">
     <h1 class="title xl">Tu empresa merece<br><span class="v">gestión financiera</span><br>con ia</h1>
     <p class="sub"><span class="v">—</span> coordinemos una reunión <span class="v">—</span></p>
     <div class="flow6" style="max-width:1000px;width:100%">
