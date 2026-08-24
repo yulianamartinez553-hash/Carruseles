@@ -74,8 +74,8 @@ html,body{{background:#000;}}
   display:flex;flex-direction:column;}}
 
 /* Turbo: marca de agua chica, arriba-derecha, discreta pero legible */
-.turbo{{position:absolute;z-index:3;right:58px;top:100px;width:132px;height:132px;
-  pointer-events:none;opacity:.28;
+.turbo{{position:absolute;z-index:3;right:54px;top:96px;width:152px;height:152px;
+  pointer-events:none;opacity:.30;
   -webkit-mask-image:radial-gradient(ellipse 75% 75% at 50% 48%, #000 25%, transparent 72%);
   mask-image:radial-gradient(ellipse 75% 75% at 50% 48%, #000 25%, transparent 72%);}}
 .turbo img{{width:100%;height:100%;object-fit:contain;display:block;
