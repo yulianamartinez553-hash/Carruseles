@@ -73,14 +73,16 @@ html,body{{background:#000;}}
 .content{{position:absolute;left:72px;right:72px;top:88px;bottom:120px;z-index:8;
   display:flex;flex-direction:column;}}
 
-/* Foto Turbo + degradé */
-.ph-bg{{position:absolute;inset:0;z-index:1;background:
-  url('{TURBO_URI}') center 42%/cover no-repeat;
-  filter:brightness(.55) contrast(1.08) saturate(.85);}}
-.ph-scrim{{position:absolute;inset:0;z-index:2;pointer-events:none;background:
-  linear-gradient(180deg, rgba(10,10,10,.55) 0%, rgba(10,10,10,.25) 38%, rgba(10,10,10,.55) 62%, rgba(10,10,10,.94) 100%),
-  radial-gradient(ellipse 70% 50% at 70% 35%, rgba(0,255,178,.12), transparent 60%);}}
-.slide.has-photo .frame{{border-color:rgba(0,255,178,.22);}}
+/* Turbo: marca de agua chica, arriba-derecha, discreta pero legible */
+.turbo{{position:absolute;z-index:3;right:58px;top:100px;width:132px;height:132px;
+  pointer-events:none;opacity:.28;
+  -webkit-mask-image:radial-gradient(ellipse 75% 75% at 50% 48%, #000 25%, transparent 72%);
+  mask-image:radial-gradient(ellipse 75% 75% at 50% 48%, #000 25%, transparent 72%);}}
+.turbo img{{width:100%;height:100%;object-fit:contain;display:block;
+  filter:brightness(.62) contrast(1.05) saturate(.7);}}
+.turbo::after{{content:'';position:absolute;inset:-12%;pointer-events:none;
+  background:radial-gradient(ellipse 48% 48% at 50% 48%, rgba(0,255,178,.07), transparent 70%);}}
+.slide.has-photo .frame{{border-color:rgba(255,255,255,.12);}}
 .slide.has-photo .content{{z-index:8;}}
 
 .kicker{{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:18px;letter-spacing:.2em;
@@ -143,10 +145,12 @@ def chrome() -> str:
 
 def slide(body: str, photo: bool = False) -> str:
     cls = "slide has-photo" if photo else "slide"
-    photo_layers = (
-        '<div class="ph-bg"></div><div class="ph-scrim"></div>' if photo else ""
+    turbo = (
+        f'<div class="turbo" aria-hidden="true"><img src="{TURBO_URI}" alt=""/></div>'
+        if photo
+        else ""
     )
-    return f'<div class="{cls}">{photo_layers}{chrome()}<div class="content">{body}</div></div>'
+    return f'<div class="{cls}">{turbo}{chrome()}<div class="content">{body}</div></div>'
 
 
 SLIDES = [
