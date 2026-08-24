@@ -1,5 +1,5 @@
 {
-  "ultimo_id": "2026-08-22-trader-ia-empresa",
+  "ultimo_id": "2026-08-24-agente-mercado",
   "carruseles": [
     {
       "id": "2026-07-01-demo-memoria-stlabs",
@@ -34,6 +34,54 @@
       "slides": 8,
       "fondo": "lino_tela",
       "familia_visual": "before_after"
+    },
+    {
+      "id": "2026-08-22-trader-ia-empresa",
+      "fecha": "2026-08-22",
+      "titulo": "Te genero un trader IA para tu empresa",
+      "slides": 8,
+      "fondo": "reticula_fina",
+      "familia_visual": "before_after"
+    },
+    {
+      "id": "2026-08-22-trader-ia-empresa",
+      "fecha": "2026-08-22",
+      "titulo": "Te genero un trader IA para tu empresa",
+      "slides": 8,
+      "fondo": "reticula_fina",
+      "familia_visual": "before_after"
+    },
+    {
+      "id": "2026-08-22-trader-ia-empresa",
+      "fecha": "2026-08-22",
+      "titulo": "Te genero un trader IA para tu empresa",
+      "slides": 8,
+      "fondo": "reticula_fina",
+      "familia_visual": "before_after"
+    },
+    {
+      "id": "2026-08-22-trader-ia-empresa",
+      "fecha": "2026-08-22",
+      "titulo": "Te genero un trader IA para tu empresa",
+      "slides": 8,
+      "fondo": "reticula_fina",
+      "familia_visual": "before_after"
+    },
+    {
+      "id": "2026-08-22-trader-ia-empresa",
+      "fecha": "2026-08-22",
+      "titulo": "Te genero un trader IA para tu empresa",
+      "slides": 8,
+      "fondo": "reticula_fina",
+      "familia_visual": "before_after"
+    },
+    {
+      "id": "2026-08-24-agente-mercado",
+      "fecha": "2026-08-24",
+      "titulo": "Agente a medida que lee tu mercado",
+      "slides": 8,
+      "fondo": "piedra_roca",
+      "familia_visual": "manifiesto"
     }
   ]
 }
