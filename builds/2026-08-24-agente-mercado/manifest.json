@@ -3,10 +3,11 @@
   "fecha": "2026-08-24",
   "titulo": "Agente a medida que lee tu mercado",
   "slides": 8,
-  "fondo": "piedra_roca",
+  "fondo": "roca_volcanica",
   "familia_visual": "manifiesto",
   "origen": "original",
   "keyword_portada": "AGENTE",
-  "modo": "blanco",
-  "cta": "AGENTE"
+  "modo": "negro",
+  "cta": "AGENTE",
+  "notas": "Foto Turbo + degradé en títulos display; portada y CTA con scrim"
 }
