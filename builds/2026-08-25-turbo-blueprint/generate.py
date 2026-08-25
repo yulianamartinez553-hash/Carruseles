@@ -121,7 +121,7 @@ def slide(
 SLIDES = [
     slide(
         1,
-        "TURBO · BLUEPRINT",
+        "TURBO · PLANO",
         'TE ARMO <span class="g">TURBO</span><br>BUSCA CLIENTES<br><span class="g">24/7</span>',
         "Un sistema que sale a buscar prospectos y se mejora solo, todos los días.",
         1,
@@ -163,7 +163,7 @@ SLIDES = [
         6,
         "EVOLUCIÓN",
         'SE CONSTRUYE<br><span class="g">MEJOR</span>',
-        "Convierte feedback en upgrades reales del sistema.",
+        "Convierte la retroalimentación en mejoras reales del sistema.",
         6,
         fill=True,
     ),
