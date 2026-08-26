@@ -69,8 +69,13 @@ html,body{{background:#000;}}
 .title.sm{{font-size:60px;}}
 .lead{{font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:30px;line-height:1.22;
   color:{GY};margin-top:8px;max-width:960px;}}
+.lead.compact{{font-size:26px;margin-top:4px;}}
 .lead b{{color:{TX};font-weight:700;}}
 .graphic{{flex:1 1 auto;display:flex;align-items:center;justify-content:center;min-height:0;margin-top:6px;overflow:hidden;}}
+.graphic.hero{{margin-top:0;align-items:stretch;}}
+.slide-hero .title{{font-size:64px;line-height:.9;margin-bottom:2px;}}
+.slide-hero .meta{{margin-bottom:8px;}}
+.slide-hero .content{{bottom:88px;}}
 .graphic.compact{{max-height:640px;}}
 .badge{{display:inline-block;margin-top:10px;padding:12px 18px;border:2px solid {V};
   font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:17px;letter-spacing:.14em;
@@ -93,6 +98,7 @@ def slide(
     lead: str = "",
     diagram_n: int | None = None,
     compact: bool = False,
+    hero: bool = False,
     extra: str = "",
 ) -> str:
     dhtml = ""
@@ -100,9 +106,15 @@ def slide(
         cls = "graphic"
         if compact:
             cls += " compact"
+        if hero:
+            cls += " hero"
         dhtml = f'<div class="{cls}">{diagram(diagram_n)}</div>'
-    lead_html = f'<div class="lead">{lead}</div>' if lead else ""
-    return f"""<div class="slide">{chrome()}<div class="content">
+    lead_html = ""
+    if lead:
+        lcls = "lead compact" if hero else "lead"
+        lead_html = f'<div class="{lcls}">{lead}</div>'
+    slide_cls = "slide slide-hero" if hero else "slide"
+    return f"""<div class="{slide_cls}">{chrome()}<div class="content">
   <div class="meta"><div class="n">{num:02d}</div><div class="tag">{tag}</div><div class="dot"></div></div>
   <div class="title">{title}</div>
   {lead_html}
@@ -118,6 +130,7 @@ SLIDES = [
         'TE ARMO UN <span class="g">TURBO</span><br>QUE SE MEJORA<br><span class="g">SOLO</span>',
         "Mejora todos los días. <b>24/7.</b>",
         1,
+        hero=True,
     ),
     slide(
         2,

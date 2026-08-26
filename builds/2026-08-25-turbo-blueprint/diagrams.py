@@ -45,29 +45,29 @@ def _turbo_icon(cx: int, cy: int, r: int = 28) -> str:
 def diagram_01() -> str:
     return f"""
 <div class="dia dia-01">
-<svg viewBox="0 0 920 520" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<svg viewBox="0 0 920 720" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 {SVG_DEFS}
-<circle cx="460" cy="260" r="195" fill="none" stroke="{V}" stroke-width="2.5" opacity=".35"/>
-<path d="M460,65 A195,195 0 1,1 458,65" fill="none" stroke="{V}" stroke-width="3" marker-end="url(#arr)"/>
-<marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-  <path d="M0,0 L8,3 L0,6 Z" fill="{V}"/>
+<circle cx="460" cy="360" r="250" fill="none" stroke="{V}" stroke-width="3" opacity=".35"/>
+<path d="M460,110 A250,250 0 1,1 458,110" fill="none" stroke="{V}" stroke-width="3.5" marker-end="url(#arr)"/>
+<marker id="arr" markerWidth="10" markerHeight="10" refX="7" refY="4" orient="auto">
+  <path d="M0,0 L10,4 L0,8 Z" fill="{V}"/>
 </marker>
-{_turbo_icon(460, 260, 32)}
-<g font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="20" fill="{TX}" text-anchor="middle">
-  <g transform="translate(460,42)"><circle cx="0" cy="20" r="22" fill="none" stroke="{V}" stroke-width="2"/>
-    <polygon points="-6,20 4,15 4,25" fill="{V}"/><text y="54" fill="{V}">HACÉ</text></g>
-  <g transform="translate(645,145)"><circle cx="0" cy="20" r="22" fill="none" stroke="{V}" stroke-width="2"/>
-    <rect x="-9" y="12" width="4" height="14" fill="{V}"/><rect x="-2" y="9" width="4" height="18" fill="{V}"/><rect x="5" y="6" width="4" height="22" fill="{V}"/>
-    <text y="54" fill="{V}">MEDÍ</text></g>
-  <g transform="translate(645,375)"><circle cx="0" cy="20" r="22" fill="none" stroke="{V}" stroke-width="2"/>
-    <path d="M-7,24 L-1,14 L5,20 L11,8" fill="none" stroke="{V}" stroke-width="2.5" stroke-linecap="round"/>
-    <text y="54" fill="{V}">PROBÁ</text></g>
-  <g transform="translate(460,455)"><circle cx="0" cy="20" r="22" fill="none" stroke="{V}" stroke-width="2"/>
-    <path d="M-5,16 L0,8 L5,16 L0,24 Z" fill="none" stroke="{V}" stroke-width="2"/><line x1="0" y1="24" x2="0" y2="30" stroke="{V}" stroke-width="2"/>
-    <text y="54" fill="{V}">MEJORÁ</text></g>
-  <g transform="translate(275,375)"><circle cx="0" cy="20" r="22" fill="none" stroke="{V}" stroke-width="2"/>
-    <circle cx="0" cy="20" r="9" fill="none" stroke="{V}" stroke-width="2"/><path d="M-4,24 L0,30 L8,16" fill="none" stroke="{V}" stroke-width="2.5"/>
-    <text y="54" fill="{V}">REFLEXIONÁ</text></g>
+{_turbo_icon(460, 360, 44)}
+<g font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="28" fill="{TX}" text-anchor="middle">
+  <g transform="translate(460,28)"><circle cx="0" cy="26" r="30" fill="none" stroke="{V}" stroke-width="2.5"/>
+    <polygon points="-8,26 6,18 6,34" fill="{V}"/><text y="72" fill="{V}">HACÉ</text></g>
+  <g transform="translate(670,175)"><circle cx="0" cy="26" r="30" fill="none" stroke="{V}" stroke-width="2.5"/>
+    <rect x="-11" y="14" width="5" height="18" fill="{V}"/><rect x="-3" y="10" width="5" height="22" fill="{V}"/><rect x="6" y="6" width="5" height="26" fill="{V}"/>
+    <text y="68" fill="{V}">MEDÍ</text></g>
+  <g transform="translate(670,545)"><circle cx="0" cy="26" r="30" fill="none" stroke="{V}" stroke-width="2.5"/>
+    <path d="M-9,30 L-1,16 L6,24 L13,8" fill="none" stroke="{V}" stroke-width="3" stroke-linecap="round"/>
+    <text y="68" fill="{V}">PROBÁ</text></g>
+  <g transform="translate(460,640)"><circle cx="0" cy="26" r="30" fill="none" stroke="{V}" stroke-width="2.5"/>
+    <path d="M-6,20 L0,10 L6,20 L0,30 Z" fill="none" stroke="{V}" stroke-width="2.5"/><line x1="0" y1="30" x2="0" y2="38" stroke="{V}" stroke-width="2.5"/>
+    <text y="68" fill="{V}">MEJORÁ</text></g>
+  <g transform="translate(250,545)"><circle cx="0" cy="26" r="30" fill="none" stroke="{V}" stroke-width="2.5"/>
+    <circle cx="0" cy="26" r="11" fill="none" stroke="{V}" stroke-width="2.5"/><path d="M-5,30 L0,38 L10,20" fill="none" stroke="{V}" stroke-width="3"/>
+    <text y="68" fill="{V}">REFLEXIONÁ</text></g>
 </g>
 </svg>
 </div>"""
@@ -146,7 +146,7 @@ def diagram_03() -> str:
 <div class="dia dia-03">
   <div class="dia-panel agent">
     <div class="dia-panel-hd">AGENTE TURBO</div>
-    <img src="{elem('robot-metricas.png')}" alt="" class="dia-robot"/>
+    <div class="dia-robot-wrap"><img src="{elem('robot-metricas.png')}" alt="" class="dia-robot"/></div>
   </div>
   <div class="dia-arrow-col">
     <div class="dia-arrow-line"></div>
@@ -181,7 +181,7 @@ def diagram_04() -> str:
 <div class="dia dia-04">
   <div class="dia-panel agent">
     <div class="dia-panel-hd">AGENTE</div>
-    <img src="{elem('robot-agent.png')}" alt="" class="dia-robot sm"/>
+    <div class="dia-robot-wrap"><img src="{elem('robot-agent.png')}" alt="" class="dia-robot sm"/></div>
     <div class="dia-subbox">
       <div class="dia-subhd">TRABAJO ENTREGADO</div>
       <div class="dia-subtxt">Resultados, acciones y decisiones de la corrida.</div>
@@ -194,7 +194,7 @@ def diagram_04() -> str:
   </div>
   <div class="dia-panel critic">
     <div class="dia-panel-hd">CRÍTICO</div>
-    <img src="{elem('robot-critico.png')}" alt="" class="dia-robot md"/>
+    <div class="dia-robot-wrap"><img src="{elem('robot-critico.png')}" alt="" class="dia-robot md"/></div>
     <div class="dia-checklist">{clist}</div>
   </div>
 </div>"""
@@ -244,7 +244,7 @@ def diagram_06() -> str:
 <div class="dia dia-06">
   <div class="dia-ver v1">
     <div class="dia-ver-hd">TURBO V1</div>
-    <img src="{elem('robot-v1.png')}" alt="" class="dia-robot sm"/>
+    <div class="dia-robot-wrap"><img src="{elem('robot-v1.png')}" alt="" class="dia-robot sm"/></div>
     {l1}
   </div>
   <div class="dia-mid">
@@ -255,7 +255,7 @@ def diagram_06() -> str:
   </div>
   <div class="dia-ver v2 glow">
     <div class="dia-ver-hd g">TURBO V2</div>
-    <img src="{elem('robot-v2.png')}" alt="" class="dia-robot sm"/>
+    <div class="dia-robot-wrap"><img src="{elem('robot-v2.png')}" alt="" class="dia-robot sm"/></div>
     {l2}
   </div>
 </div>"""
@@ -266,7 +266,7 @@ def diagram_07() -> str:
 <div class="dia dia-07">
   <div class="dia-verbox old">
     <div class="dia-ver-hd">VERSIÓN 1 (ANTERIOR)</div>
-    <img src="{elem('robot-vs-old.png')}" alt="" class="dia-robot xs"/>
+    <div class="dia-robot-wrap"><img src="{elem('robot-vs-old.png')}" alt="" class="dia-robot xs"/></div>
     <div class="met-list">
       <div><span>PRECISIÓN</span><b>82%</b></div>
       <div><span>CALIDAD</span><b>7.4/10</b></div>
@@ -278,7 +278,7 @@ def diagram_07() -> str:
   <div class="dia-vs"><div class="vs-ring">VS</div></div>
   <div class="dia-verbox new glow">
     <div class="dia-ver-hd g">VERSIÓN 2 (NUEVA)</div>
-    <img src="{elem('robot-vs-new.png')}" alt="" class="dia-robot xs"/>
+    <div class="dia-robot-wrap"><img src="{elem('robot-vs-new.png')}" alt="" class="dia-robot xs"/></div>
     <div class="met-list g">
       <div><span>PRECISIÓN</span><b>91%</b></div>
       <div><span>CALIDAD</span><b>8.9/10</b></div>
@@ -364,12 +364,19 @@ DIAGRAM_CSS = f"""
 .dia-wires{{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;}}
 .dia-03,.dia-04{{display:flex;align-items:center;justify-content:center;gap:16px;width:100%;max-width:920px;flex-wrap:nowrap;}}
 .dia-panel{{border:2px solid rgba(0,255,178,.5);border-radius:14px;padding:14px;background:rgba(0,0,0,.35);flex:0 0 auto;}}
-.dia-panel.agent{{width:220px;text-align:center;}}
-.dia-panel.critic{{width:300px;}}
+.dia-01{{min-height:760px;align-items:stretch;}}
+.dia-01 svg{{max-height:none;min-height:720px;height:100%;width:100%;}}
+.dia-panel.agent{{width:240px;text-align:center;}}
+.dia-panel.critic{{width:320px;}}
 .dia-panel.score{{width:340px;}}
 .dia-panel-hd{{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px;letter-spacing:.12em;color:{V};margin-bottom:10px;text-transform:uppercase;}}
-.dia-robot{{width:160px;height:auto;object-fit:contain;display:block;margin:0 auto;filter:drop-shadow(0 4px 16px rgba(0,255,178,.15));}}
-.dia-robot.sm{{width:130px;}}.dia-robot.md{{width:150px;}}.dia-robot.xs{{width:110px;}}
+.dia-robot-wrap{{display:flex;align-items:center;justify-content:center;min-height:240px;padding:4px 0;}}
+.dia-robot{{max-width:100%;max-height:280px;width:auto;height:auto;object-fit:contain;object-position:center;display:block;margin:0 auto;
+  filter:drop-shadow(0 4px 16px rgba(0,255,178,.15));}}
+.dia-robot.sm{{max-height:250px;}}.dia-robot.md{{max-height:280px;}}.dia-robot.xs{{max-height:250px;min-width:140px;}}
+.dia-ver .dia-robot-wrap{{min-height:220px;overflow:visible;}}
+.dia-verbox .dia-robot-wrap{{min-height:220px;overflow:visible;}}
+.dia-panel.agent .dia-robot-wrap{{min-height:260px;overflow:visible;}}
 .dia-arrow-col{{display:flex;flex-direction:column;align-items:center;gap:6px;flex:0 0 100px;}}
 .dia-arrow-col.wide{{flex-basis:120px;}}
 .dia-arrow-line{{width:70px;height:4px;background:linear-gradient(90deg,{V},rgba(0,255,178,.3));border-radius:2px;box-shadow:0 0 10px rgba(0,255,178,.5);}}
