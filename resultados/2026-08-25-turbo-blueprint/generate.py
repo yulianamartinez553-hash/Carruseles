@@ -65,18 +65,18 @@ html,body{{background:#000;}}
 .meta .tag{{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:15px;letter-spacing:.16em;
   text-transform:uppercase;color:{GY};}}
 .meta .dot{{width:8px;height:8px;border-radius:50%;background:{V};box-shadow:0 0 10px rgba(0,255,178,.6);}}
-.title{{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:82px;line-height:.92;
+.title{{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:76px;line-height:.92;
   letter-spacing:.01em;text-transform:uppercase;text-align:left;color:{TX};}}
 .title .g{{color:{V};}}
-.title.md{{font-size:72px;}}
-.title.sm{{font-size:64px;}}
-.lead{{font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:32px;line-height:1.22;
-  color:{GY};margin-top:10px;max-width:960px;}}
+.title.md{{font-size:68px;}}
+.title.sm{{font-size:60px;}}
+.lead{{font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:30px;line-height:1.22;
+  color:{GY};margin-top:8px;max-width:960px;}}
 .lead b{{color:{TX};font-weight:700;}}
-.graphic{{flex:1 1 auto;display:flex;align-items:center;justify-content:center;min-height:0;margin-top:8px;overflow:hidden;}}
-.graphic img{{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block;}}
-.graphic.fill img{{width:100%;max-height:920px;object-fit:contain;}}
-.graphic.compact img{{max-height:720px;}}
+.graphic{{flex:1 1 auto;display:flex;align-items:center;justify-content:center;min-height:0;margin-top:6px;overflow:hidden;}}
+.graphic img{{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;object-position:center;display:block;}}
+.graphic.fill img{{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;}}
+.graphic.compact img{{max-height:640px;}}
 .badge{{display:inline-block;margin-top:10px;padding:12px 18px;border:2px solid {V};
   font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:17px;letter-spacing:.14em;
   text-transform:uppercase;color:{TX};background:rgba(0,255,178,.1);}}

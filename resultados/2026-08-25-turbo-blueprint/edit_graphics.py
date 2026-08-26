@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-"""Traduce texto EN→ES en el mismo lugar/estilo + refuerza verde #00FFB2.
+"""Traduce EN→ES en gráficos Turbo + verde #00FFB2.
 
-Estrategia: tapa con negro el bbox completo del inglés y escribe ES
-en las mismas coordenadas, misma escala aproximada.
+Recorta basura de bordes. Tapa EN con negro justo en el texto
+(fondo negro → invisible) y escribe ES en el mismo lugar.
 """
 from __future__ import annotations
 
@@ -20,7 +20,20 @@ V = (0, 255, 178)
 W = (242, 242, 242)
 RED = (255, 90, 90)
 GY = (180, 180, 180)
+YEL = (255, 210, 80)
 TARGET_H = colorsys.rgb_to_hsv(0, 1, 178 / 255)[0]
+
+# Recortes limpios sobre .orig.png (sin leads EN cortados ni franjas basura)
+CROPS: dict[int, tuple[int, int, int, int]] = {
+    1: (40, 140, 1095, 900),  # incluye ícono MEDÍ completo
+    2: (8, 55, 1085, 725),  # sin franja inferior de íconos
+    3: (8, 130, 1065, 840),
+    4: (8, 115, 1055, 810),
+    5: (8, 115, 1065, 840),
+    6: (8, 70, 1065, 840),
+    7: (25, 60, 1045, 840),
+    8: (60, 20, 1005, 540),
+}
 
 
 @dataclass
@@ -35,7 +48,7 @@ class T:
     align: str = "left"
     font: str = "poppins"
     lines: list[str] = field(default_factory=list)
-    skip_cover: bool = False
+    cover: bool = True
 
 
 def get_font(kind: str, size: int) -> ImageFont.FreeTypeFont:
@@ -70,10 +83,8 @@ def boost_green(img: Image.Image, strength: float = 0.42) -> Image.Image:
     return Image.fromarray(arr.astype(np.uint8), "RGBA")
 
 
-def erase_roi(img: Image.Image, x: int, y: int, w: int, h: int) -> None:
-    """Pinta negro sólido en el ROI (tapa cualquier resto EN)."""
-    draw = ImageDraw.Draw(img)
-    draw.rectangle([x, y, x + w, y + h], fill=(0, 0, 0, 255))
+def cover(img: Image.Image, x: int, y: int, w: int, h: int) -> None:
+    ImageDraw.Draw(img).rectangle([x, y, x + w, y + h], fill=(0, 0, 0, 255))
 
 
 def fit_size(text: str, max_w: int, start: int, kind: str) -> int:
@@ -114,172 +125,190 @@ def draw_t(draw: ImageDraw.ImageDraw, t: T) -> None:
 def apply(img: Image.Image, labels: list[T]) -> Image.Image:
     out = img.copy()
     for t in labels:
-        if not t.skip_cover:
-            erase_roi(out, t.x, t.y, t.w, t.h)
+        if t.cover:
+            cover(out, t.x, t.y, t.w, t.h)
     draw = ImageDraw.Draw(out)
     for t in labels:
         draw_t(draw, t)
     return out
 
 
-# ═══════════════════════════════════════════════════════════════════════════
-# Coordenadas = bbox del texto EN original (generoso) → ES en el mismo sitio
-# ═══════════════════════════════════════════════════════════════════════════
-
+# ── Coords relativas a CROPS ───────────────────────────────────────────────
+# G1: voseo correcto — covers altos; MEDÍ a la derecha del ícono (no lo tapa)
 G1 = [
-    # tapa todo el headline EN (incluye 24/7. original con glow)
-    T(55, 70, 520, 55),
-    T(60, 78, 200, 42, "MEJORA", 34, W, skip_cover=True),
-    T(230, 78, 180, 42, "24/7.", 34, V, skip_cover=True),
-    T(600, 78, 90, 45, "HACÉ", 28, W, "center"),
-    T(95, 430, 110, 45, "PROBÁ", 26, W),
-    T(1045, 428, 120, 45, "MEDÍ", 26, W),
-    T(165, 780, 190, 45, "MEJORÁ", 26, W),
-    T(910, 780, 210, 45, "REFLEXIONÁ", 22, W),
+    T(500, 0, 120, 42, "HACÉ", 26, W, "center"),
+    T(25, 280, 130, 55, "PROBÁ", 24, W, "center"),
+    T(1005, 280, 90, 55, "MEDÍ", 20, W, "center"),  # derecha del ícono
+    T(100, 640, 210, 80, "MEJORÁ", 24, W, "center"),
+    T(850, 640, 180, 80, "REFLEXIONÁ", 16, W, "center"),
 ]
 
+# G2: OUTPUT labels izq de íconos; covers altos en INPUT
 G2 = [
-    T(0, 0, 410, 42, "...datos de los que puede aprender.", 20, V, font="barlow"),
-    T(520, 52, 200, 48, "MEMORIA", 30, V, "center"),
-    T(60, 110, 120, 40, "ENTRADA", 20, V, "center"),
-    T(960, 110, 160, 40, "SALIDA", 20, V, "center"),
-    T(90, 210, 140, 40, "TAREA", 18, W),
-    T(90, 332, 140, 40, "ACCIÓN", 18, W),
-    T(90, 454, 150, 40, "RESULTADO", 16, W),
-    T(90, 576, 160, 40, "CONTEXTO", 16, W),
-    T(1030, 210, 90, 40, "ÉXITO", 14, W),
-    T(1030, 332, 90, 40, "FALLO", 14, W),
-    T(1030, 454, 90, 40, "MEJORA", 13, W),
-    T(1030, 576, 90, 40, "APRENDIZ.", 12, W),
+    T(495, 2, 220, 42, "MEMORIA", 26, V, "center"),
+    T(50, 50, 135, 40, "ENTRADA", 18, V, "center"),
+    T(950, 50, 130, 40, "SALIDA", 18, V, "center"),
+    T(85, 145, 155, 45, "TAREA", 16, W),
+    T(85, 265, 155, 45, "ACCIÓN", 16, W),
+    T(85, 383, 160, 48, "RESULTADO", 14, W),
+    T(85, 503, 165, 48, "CONTEXTO", 14, W),
+    T(855, 152, 95, 38, "ÉXITO", 14, W, "center"),
+    T(1025, 152, 55, 38),
+    T(855, 272, 95, 38, "FALLO", 14, W, "center"),
+    T(1025, 272, 55, 38),
+    T(855, 392, 95, 38, "MEJORA", 13, W, "center"),
+    T(1025, 392, 55, 38),
+    T(855, 512, 95, 38, "CAMBIO", 13, W, "center"),
+    T(1025, 512, 55, 38),
 ]
 
 G3 = [
-    # tapa headline EN completo (incluye "it scores every result")
-    T(0, 0, 750, 100),
-    T(0, 12, 520, 30, "En vez de adivinar,", 22, W, skip_cover=True),
-    T(0, 42, 95, 30, "puntúa", 22, V, skip_cover=True),
-    T(100, 42, 300, 30, "cada resultado.", 22, W, skip_cover=True),
-    T(100, 185, 180, 40, "AGENTE IA", 20, V, "center"),
-    T(400, 400, 190, 80, lines=["EVALÚA", "CADA CORRIDA"], size=15, align="center"),
-    # métricas — tapa más baja/alta para cubrir EN completo
-    T(740, 100, 240, 55, "PRECISIÓN", 18, W),
-    T(740, 205, 240, 75, "CALIDAD", 18, W),
-    T(740, 315, 230, 80, "ERRORES", 18, W),
-    # GOAL COMPLETED está en y=499-518
-    T(740, 445, 320, 85, "OBJETIVO CUMPLIDO", 15, W),
-    T(630, 560, 480, 55, "Basado en tus métricas personalizadas.", 14, GY, font="barlow"),
-    T(660, 630, 440, 55, "DATOS > ANÁLISIS > MEJORA", 14, V),
+    T(75, 45, 185, 36, "AGENTE IA", 16, V, "center"),
+    T(350, 250, 210, 65, lines=["EVALÚA", "CADA CORRIDA"], size=12, align="center"),
+    T(680, 15, 175, 36, "PRECISIÓN", 14, W),
+    T(680, 115, 165, 36, "CALIDAD", 14, W),
+    T(680, 215, 155, 36, "ERRORES", 14, W),
+    T(680, 310, 290, 40, "OBJETIVO CUMPLIDO", 12, W),
+    T(580, 405, 400, 36, "Basado en tus métricas.", 12, GY, font="barlow"),
+    T(605, 470, 370, 38, "DATOS > ANÁLISIS > MEJORA", 11, V),
 ]
 
+# G4: NO tapar robots — solo texto
 G4 = [
-    T(0, 20, 560, 80),
-    T(0, 28, 520, 30, "Un segundo agente revisa cada corrida", 18, W, skip_cover=True),
-    T(0, 55, 50, 30, "sin", 18, W, skip_cover=True),
-    T(48, 55, 140, 30, "sesgo.", 18, V, skip_cover=True),
-    T(130, 165, 200, 50, "AGENTE IA", 20, V, "center"),
-    T(60, 530, 320, 50, "TRABAJO ENTREGADO", 16, V, "center"),
-    T(60, 575, 350, 90, lines=["Salida, acciones,", "decisiones y resultados."], size=14, font="barlow"),
-    T(400, 390, 190, 120, lines=["ENVÍA TODO", "A REVISIÓN"], size=14, align="center"),
-    # AI CRITIC — tapa desde más arriba el glow EN
-    T(750, 110, 300, 110, "CRÍTICO IA", 20, V, "center"),
-    T(760, 505, 360, 65, "¿QUÉ FUNCIONÓ?", 16, W, font="mono"),
-    T(760, 555, 360, 65, "¿QUÉ FALLÓ?", 16, W, font="mono"),
-    T(760, 610, 360, 65, "¿POR QUÉ FALLÓ?", 14, W, font="mono"),
-    # WHAT SHOULD CHANGE y=723-742
-    T(760, 660, 360, 95, "¿QUÉ CAMBIAR?", 16, W, font="mono"),
+    T(115, 40, 180, 36, "AGENTE IA", 16, V, "center"),
+    T(55, 400, 280, 36, "TRABAJO ENTREGADO", 13, V, "center"),
+    T(55, 440, 300, 55, lines=["Salida, acciones,", "decisiones y resultados."], size=11, font="barlow"),
+    T(360, 250, 190, 70, lines=["ENVÍA TODO", "A REVISIÓN"], size=11, align="center"),
+    T(710, 5, 280, 55, "CRÍTICO IA", 16, V, "center"),
+    T(720, 360, 280, 36, "¿QUÉ FUNCIONÓ?", 13, W, font="mono"),
+    T(720, 408, 280, 36, "¿QUÉ FALLÓ?", 13, W, font="mono"),
+    T(720, 460, 280, 36, "¿POR QUÉ FALLÓ?", 11, W, font="mono"),
+    T(720, 512, 280, 36, "¿QUÉ CAMBIAR?", 13, W, font="mono"),
 ]
 
 G5 = [
-    T(0, 10, 560, 95),
-    T(0, 20, 500, 30, "Un fallo no importa.", 20, W, skip_cover=True),
-    T(0, 50, 130, 30, "Un patrón", 20, V, skip_cover=True),
-    T(135, 50, 280, 30, "cambia todo.", 20, W, skip_cover=True),
-    T(110, 145, 320, 55, "HISTORIAL DE TAREAS", 18, V, "center"),
-    T(25, 705, 500, 55, "20 TAREAS EJECUTADAS", 14, W),
-    T(290, 705, 200, 55, "6 FALLOS", 14, RED, skip_cover=True),
-    T(670, 150, 440, 55, "6 FALLOS DETECTADOS", 17, W),
-    T(670, 195, 440, 50, "El agente no solo los registró.", 13, W, font="barlow"),
-    T(670, 285, 420, 55, "ANALIZANDO CAUSAS", 17, W),
-    T(600, 330, 510, 60, "Compara entradas, acciones, decisiones y resultados.", 12, W, font="barlow"),
-    T(670, 445, 440, 55, "4 CAUSAS RAÍZ IGUALES", 15, W),
-    T(630, 505, 480, 50, "Tareas distintas. Mismo problema de fondo.", 12, W, font="barlow"),
-    T(690, 620, 400, 55, "PATRÓN ENCONTRADO", 17, V),
-    T(670, 675, 440, 70, "El agente sigue saltando el Paso #3 del flujo.", 12, W, font="barlow"),
+    T(80, 20, 300, 40, "HISTORIAL DE TAREAS", 14, V, "center"),
+    T(15, 545, 280, 40, "20 TAREAS EJECUTADAS", 12, W),
+    T(280, 545, 155, 40, "6 FALLOS", 12, RED),
+    T(620, 25, 370, 36, "6 FALLOS DETECTADOS", 13, W),
+    T(620, 62, 370, 30, "El agente no solo los registró.", 11, W, font="barlow"),
+    T(620, 145, 370, 36, "ANALIZANDO CAUSAS", 13, W),
+    T(585, 185, 430, 34, "Compara entradas, acciones y resultados.", 10, W, font="barlow"),
+    T(620, 295, 370, 36, "4 CAUSAS RAÍZ IGUALES", 12, W),
+    T(595, 338, 400, 30, "Tareas distintas. Mismo problema.", 10, W, font="barlow"),
+    T(645, 450, 340, 36, "PATRÓN ENCONTRADO", 13, V),
+    T(625, 492, 380, 40, "El agente salta el Paso #3 del flujo.", 10, W, font="barlow"),
 ]
 
 G6 = [
-    T(0, 0, 750, 55, "...convierte la retro en mejoras en cada parte del agente.", 15, W, font="barlow"),
-    T(80, 105, 240, 55, "AGENTE V1", 24, W, "center"),
-    T(70, 455, 270, 50, "PIERDE CONTEXTO", 15, W),
-    T(70, 510, 280, 50, "OLVIDA PASOS CRÍTICOS", 14, W),
-    T(70, 565, 290, 50, "RESULTADOS INCONSISTENTES", 13, W),
-    T(70, 735, 260, 50, "PUNTAJE: 72/100", 16, W),
-    T(440, 90, 220, 50, "REFLEXIÓN", 18, W, "center"),
-    T(410, 395, 300, 50, "MEJORAS HECHAS:", 16, V),
-    T(450, 450, 270, 50, "INSTRUCCIÓN ACTUALIZADA", 12, W),
-    T(450, 505, 270, 50, "REGLAS REFINADAS", 14, W),
-    T(450, 555, 270, 50, "MEMORIA EXPANDIDA", 14, W),
-    T(450, 600, 270, 50, "FLUJO OPTIMIZADO", 14, W),
-    T(450, 650, 270, 50, "HERRAMIENTAS MEJORADAS", 12, W),
-    T(870, 90, 240, 55, "AGENTE V2", 24, V, "center"),
-    T(820, 455, 290, 50, "MEJOR CONTEXTO", 15, W),
-    T(820, 510, 290, 50, "MENOS ERRORES", 15, W),
-    T(820, 565, 290, 50, "MÁS CONSISTENTE", 15, W),
-    T(820, 615, 290, 50, "MEJOR CALIDAD", 15, W),
-    T(850, 730, 260, 50, "PUNTAJE: 91/100", 16, V),
+    T(55, 25, 250, 42, "AGENTE V1", 18, W, "center"),
+    # cada línea EN completa (evita ghosting)
+    T(45, 345, 290, 130),
+    T(55, 350, 270, 34, "PIERDE CONTEXTO", 12, W, cover=False),
+    T(55, 395, 280, 34, "OLVIDA PASOS CRÍTICOS", 11, W, cover=False),
+    T(55, 440, 290, 34, "RESULTADOS INCONSISTENTES", 10, W, cover=False),
+    T(50, 615, 260, 42, "PUNTAJE: 72/100", 13, W),
+    T(385, 10, 240, 40, "REFLEXIÓN", 14, W, "center"),
+    T(370, 290, 300, 270),
+    T(385, 295, 270, 32, "MEJORAS HECHAS:", 12, V, cover=False),
+    T(400, 340, 250, 30, "INSTRUCCIÓN ACTUALIZADA", 10, W, cover=False),
+    T(400, 385, 250, 30, "REGLAS REFINADAS", 11, W, cover=False),
+    T(400, 430, 250, 30, "MEMORIA EXPANDIDA", 11, W, cover=False),
+    T(400, 475, 250, 30, "FLUJO OPTIMIZADO", 11, W, cover=False),
+    T(400, 520, 250, 30, "HERRAMIENTAS MEJORADAS", 10, W, cover=False),
+    T(815, 10, 240, 42, "AGENTE V2", 18, V, "center"),
+    T(765, 345, 295, 180),
+    T(780, 350, 270, 34, "MEJOR CONTEXTO", 12, W, cover=False),
+    T(780, 395, 270, 34, "MENOS ERRORES", 12, W, cover=False),
+    T(780, 440, 270, 34, "MÁS CONSISTENTE", 12, W, cover=False),
+    T(780, 485, 270, 34, "MEJOR CALIDAD", 12, W, cover=False),
+    T(785, 615, 260, 42, "PUNTAJE: 91/100", 13, V),
 ]
 
 G7 = [
-    T(0, 0, 300, 40, "...antes de lanzarlo.", 18, W, font="barlow"),
-    T(80, 80, 300, 50, "VERSIÓN 1 (ANTERIOR)", 18, W, "center"),
-    T(95, 275, 180, 40, "PRECISIÓN", 16, W),
-    T(95, 330, 180, 40, "CALIDAD", 16, W),
-    T(95, 375, 240, 40, "TAREAS APROBADAS", 14, W),
-    T(95, 425, 160, 40, "ERRORES", 16, W),
-    T(100, 555, 280, 50, "PUNTAJE: 82/100", 18, W),
-    T(760, 75, 300, 50, "VERSIÓN 2 (NUEVA)", 18, V, "center"),
-    T(770, 275, 180, 40, "PRECISIÓN", 16, W),
-    T(770, 330, 180, 40, "CALIDAD", 16, W),
-    T(770, 375, 240, 40, "TAREAS APROBADAS", 14, W),
-    T(770, 425, 160, 40, "ERRORES", 16, W),
-    T(770, 555, 280, 50, "PUNTAJE: 91/100", 18, V),
-    T(30, 670, 250, 60, lines=["¿MEJOR?", "CONSERVALA."], size=15, align="center"),
-    T(80, 750, 200, 45, "DESPLEGAR", 18, V, "center"),
-    T(380, 670, 250, 60, lines=["¿PEOR?", "REVERTIR."], size=15, align="center"),
-    T(400, 750, 200, 45, "DESCARTAR", 18, RED, "center"),
-    T(700, 670, 300, 60, lines=["¿IGUAL?", "SEGUIR PROBANDO"], size=14, align="center"),
-    T(760, 750, 200, 45, "ITERAR", 18, (255, 210, 80), "center"),
-    T(380, 820, 400, 45, "EL FLUJO DE PRUEBAS", 16, V, "center"),
+    T(40, 10, 290, 40, "VERSIÓN 1 (ANTERIOR)", 14, W, "center"),
+    T(265, 185, 180, 190),
+    T(275, 190, 160, 30, "PRECISIÓN", 11, W, cover=False),
+    T(275, 238, 160, 30, "CALIDAD", 11, W, cover=False),
+    T(265, 280, 175, 30, "APROBADAS", 11, W, cover=False),
+    T(275, 328, 140, 30, "ERRORES", 11, W, cover=False),
+    T(60, 450, 280, 48, "PUNTAJE: 82/100", 14, W),
+    T(650, 5, 290, 40, "VERSIÓN 2 (NUEVA)", 14, V, "center"),
+    T(735, 185, 180, 190),
+    T(745, 190, 160, 30, "PRECISIÓN", 11, W, cover=False),
+    T(745, 238, 160, 30, "CALIDAD", 11, W, cover=False),
+    T(735, 280, 175, 30, "APROBADAS", 11, W, cover=False),
+    T(745, 328, 140, 30, "ERRORES", 11, W, cover=False),
+    T(680, 450, 280, 48, "PUNTAJE: 91/100", 14, V),
+    T(10, 555, 245, 100),
+    T(20, 560, 225, 48, lines=["¿MEJOR?", "CONSERVÁLA."], size=12, align="center", cover=False),
+    T(40, 630, 180, 36, "DESPLEGAR", 14, V, "center", cover=False),
+    T(315, 555, 245, 100),
+    T(325, 560, 225, 48, lines=["¿PEOR?", "REVERTIR."], size=12, align="center", cover=False),
+    T(340, 630, 180, 36, "DESCARTAR", 14, RED, "center", cover=False),
+    T(620, 555, 290, 100),
+    T(630, 560, 270, 48, lines=["¿IGUAL?", "SEGUIR PROBANDO"], size=11, align="center", cover=False),
+    T(665, 630, 180, 36, "ITERAR", 14, YEL, "center", cover=False),
+    T(300, 695, 380, 40, "EL FLUJO DE PRUEBAS", 13, V, "center"),
 ]
 
 G8 = [
-    T(0, 0, 210, 140, lines=["Corre.", "Aprende.", "Evoluciona.", "24/7."], size=16),
-    T(200, 30, 280, 40, "DESPLEGÁ", 22, V),
-    T(200, 70, 280, 35, "Lanzá la mejor versión", 13, W, font="barlow"),
-    T(860, 30, 250, 40, "MEDÍ", 22, V),
-    T(860, 70, 250, 35, "Puntúa cada resultado", 13, W, font="barlow"),
-    T(140, 285, 200, 40, "PROBÁ", 22, V),
-    T(140, 325, 240, 35, "Demostrá que es mejor", 13, W, font="barlow"),
-    T(850, 275, 250, 40, "REFLEXIONÁ", 18, V),
-    T(850, 315, 260, 35, "Criticá y encontrá fallos", 12, W, font="barlow"),
-    T(460, 490, 220, 40, "MEJORÁ", 22, V, "center"),
-    T(420, 530, 280, 35, "Mejorá el agente", 13, W, "center", font="barlow"),
-    T(440, 365, 300, 40, "SIEMPRE MEJORANDO.", 14, W, "center"),
-    T(900, 540, 220, 70, lines=["AGENTE", "AUTOMEJORABLE"], size=13, color=V, align="center"),
+    T(0, 0, 155, 115, lines=["Corré.", "Aprendé.", "Evolucioná.", "24/7."], size=13),
+    T(125, 0, 270, 80),
+    T(135, 2, 240, 32, "DESPLEGÁ", 16, V, cover=False),
+    T(135, 38, 250, 26, "Lanzá la mejor versión", 10, W, font="barlow", cover=False),
+    T(700, 0, 250, 80),
+    T(715, 2, 210, 32, "MEDÍ", 16, V, cover=False),
+    T(715, 38, 230, 26, "Puntuá cada resultado", 10, W, font="barlow", cover=False),
+    T(60, 200, 260, 95),
+    T(75, 205, 170, 32, "PROBÁ", 16, V, cover=False),
+    T(75, 242, 210, 26, "Demostrá que es mejor", 10, W, font="barlow", cover=False),
+    T(690, 195, 270, 95),
+    T(705, 200, 220, 32, "REFLEXIONÁ", 14, V, cover=False),
+    T(705, 237, 240, 26, "Criticá y encontrá fallos", 10, W, font="barlow", cover=False),
+    T(330, 375, 290, 100),
+    T(360, 385, 220, 32, "MEJORÁ", 16, V, "center", cover=False),
+    T(340, 425, 260, 26, "Mejorá el agente", 10, W, "center", font="barlow", cover=False),
+    T(340, 265, 300, 42, "SIEMPRE MEJORANDO.", 11, W, "center"),
+    T(750, 410, 200, 65, lines=["AGENTE", "AUTOMEJORABLE"], size=11, color=V, align="center"),
 ]
 
 ALL = {1: G1, 2: G2, 3: G3, 4: G4, 5: G5, 6: G6, 7: G7, 8: G8}
 
 
+def clean_edges(n: int, img: Image.Image) -> Image.Image:
+    out = img.copy()
+    w, h = out.size
+    if n == 1:
+        # basura derecha más allá de MEDÍ
+        cover(out, w - 30, 0, 30, h)
+    elif n == 2:
+        cover(out, 0, h - 12, w, 12)
+        cover(out, w - 8, 130, 8, 420)
+        cover(out, w - 100, h - 180, 70, 50)  # ... UI
+    elif n == 3:
+        cover(out, w - 18, h - 85, 18, 85)
+    elif n == 7:
+        cover(out, w - 22, 0, 22, 55)
+        cover(out, w - 25, h - 70, 25, 70)
+    elif n == 8:
+        cover(out, w - 15, 0, 15, h)
+        cover(out, w - 160, h - 60, 160, 60)
+    return out
+
+
 def process(n: int) -> None:
-    src = ASSETS / f"graphic-{n:02d}.png"
     bak = ASSETS / f"graphic-{n:02d}.orig.png"
+    src = ASSETS / f"graphic-{n:02d}.png"
     if not bak.exists():
         Image.open(src).save(bak)
-    img = boost_green(Image.open(bak).convert("RGBA"))
+    img = Image.open(bak).convert("RGBA")
+    img = img.crop(CROPS[n])
+    img = boost_green(img)
+    img = clean_edges(n, img)
     img = apply(img, ALL[n])
     img.save(src, optimize=True)
-    print(f"OK graphic-{n:02d}")
+    print(f"OK graphic-{n:02d} → {img.size}")
 
 
 def main() -> None:
