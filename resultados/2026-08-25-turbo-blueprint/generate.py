@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 """Carrusel STLabs — Cómo funciona Turbo (8 slides).
-Gráficos recortados de referencia @seb.ai · fondo negro · CTA TURBO.
+Diagramas nativos SVG/CSS + elementos 3D aislados · fondo negro · CTA TURBO.
 """
 from __future__ import annotations
 
-import base64
 import json
 from pathlib import Path
 
+from diagrams import DIAGRAM_CSS, diagram
+
 B = Path(__file__).resolve().parent
-ASSETS = B / "assets"
 FONTS = Path("/tmp/stlabs-fonts")
 V = "#00FFB2"
 BG = "#0A0A0A"
@@ -18,6 +18,8 @@ GY = "#9aa39c"
 
 
 def b64(p: Path) -> str:
+    import base64
+
     return base64.b64encode(p.read_bytes()).decode()
 
 
@@ -38,11 +40,6 @@ def font_css() -> str:
             f"font-display:block;src:url(data:font/ttf;base64,{data}) format('truetype');}}"
         )
     return "\n".join(out)
-
-
-def img_uri(n: int) -> str:
-    p = ASSETS / f"graphic-{n:02d}.png"
-    return f"data:image/png;base64,{b64(p)}"
 
 
 CSS = f"""
@@ -74,15 +71,14 @@ html,body{{background:#000;}}
   color:{GY};margin-top:8px;max-width:960px;}}
 .lead b{{color:{TX};font-weight:700;}}
 .graphic{{flex:1 1 auto;display:flex;align-items:center;justify-content:center;min-height:0;margin-top:6px;overflow:hidden;}}
-.graphic img{{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;object-position:center;display:block;}}
-.graphic.fill img{{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;}}
-.graphic.compact img{{max-height:640px;}}
+.graphic.compact{{max-height:640px;}}
 .badge{{display:inline-block;margin-top:10px;padding:12px 18px;border:2px solid {V};
   font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:17px;letter-spacing:.14em;
   text-transform:uppercase;color:{TX};background:rgba(0,255,178,.1);}}
 .cta{{margin-top:auto;border:2.5px solid {V};background:rgba(0,255,178,.08);padding:22px 24px;text-align:center;}}
 .cta .kw{{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:88px;letter-spacing:.06em;color:{V};line-height:1;}}
 .cta .hint{{font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:28px;color:{GY};margin-top:10px;}}
+{DIAGRAM_CSS}
 """
 
 
@@ -95,25 +91,22 @@ def slide(
     tag: str,
     title: str,
     lead: str = "",
-    graphic_n: int | None = None,
-    fill: bool = False,
+    diagram_n: int | None = None,
     compact: bool = False,
     extra: str = "",
 ) -> str:
-    ghtml = ""
-    if graphic_n:
+    dhtml = ""
+    if diagram_n:
         cls = "graphic"
-        if fill:
-            cls += " fill"
         if compact:
             cls += " compact"
-        ghtml = f'<div class="{cls}"><img src="{img_uri(graphic_n)}" alt=""/></div>'
+        dhtml = f'<div class="{cls}">{diagram(diagram_n)}</div>'
     lead_html = f'<div class="lead">{lead}</div>' if lead else ""
     return f"""<div class="slide">{chrome()}<div class="content">
   <div class="meta"><div class="n">{num:02d}</div><div class="tag">{tag}</div><div class="dot"></div></div>
   <div class="title">{title}</div>
   {lead_html}
-  {ghtml}
+  {dhtml}
   {extra}
 </div></div>"""
 
@@ -125,7 +118,6 @@ SLIDES = [
         'TE ARMO UN <span class="g">TURBO</span><br>QUE SE MEJORA<br><span class="g">SOLO</span>',
         "Mejora todos los días. <b>24/7.</b>",
         1,
-        fill=True,
     ),
     slide(
         2,
@@ -133,7 +125,6 @@ SLIDES = [
         'RECUERDA<br><span class="g">CADA BÚSQUEDA</span>',
         "Cada corrida se convierte en dato que Turbo usa para aprender.",
         2,
-        fill=True,
     ),
     slide(
         3,
@@ -141,7 +132,6 @@ SLIDES = [
         'MIDE SU<br><span class="g">RENDIMIENTO</span>',
         "En vez de adivinar, puntúa cada resultado con tus criterios.",
         3,
-        fill=True,
     ),
     slide(
         4,
@@ -149,7 +139,6 @@ SLIDES = [
         'SE <span class="g">CRITICA</span><br>SOLO',
         "Un crítico revisa cada corrida sin sesgo.",
         4,
-        fill=True,
     ),
     slide(
         5,
@@ -157,7 +146,6 @@ SLIDES = [
         'ENCUENTRA<br><span class="g">SUS ERRORES</span>',
         "Un fallo no importa. Un <b>patrón</b> cambia todo.",
         5,
-        fill=True,
     ),
     slide(
         6,
@@ -165,7 +153,6 @@ SLIDES = [
         'SE CONSTRUYE<br><span class="g">MEJOR</span>',
         "Convierte la retroalimentación en mejoras reales del sistema.",
         6,
-        fill=True,
     ),
     slide(
         7,
@@ -173,7 +160,6 @@ SLIDES = [
         'TIENE QUE<br><span class="g">PROBARLO</span>',
         "Cada mejora se prueba antes de quedarse en producción.",
         7,
-        fill=True,
     ),
     slide(
         8,
@@ -181,7 +167,6 @@ SLIDES = [
         'ARMÁ TU<br><span class="g">TURBO</span>',
         "Corré, aprendé, evolucioná — sin que tu equipo persiga leads a mano.",
         8,
-        fill=True,
         compact=True,
         extra="""
   <div class="cta">
@@ -216,7 +201,7 @@ def main() -> None:
         "keyword_portada": "TURBO",
         "modo": "negro",
         "cta": "TURBO",
-        "notas": "Gráficos recortados de referencia @seb.ai; copy Turbo STLabs",
+        "notas": "Diagramas SVG/CSS nativos ES; robots/cerebro recortados como elementos 3D",
     }
     (B / "manifest.json").write_text(
         json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8"
