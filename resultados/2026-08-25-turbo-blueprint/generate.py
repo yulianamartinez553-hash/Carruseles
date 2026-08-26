@@ -71,18 +71,20 @@ html,body{{background:#000;}}
   color:{GY};margin-top:8px;max-width:960px;}}
 .lead.compact{{font-size:26px;margin-top:4px;}}
 .lead b{{color:{TX};font-weight:700;}}
-.graphic{{flex:1 1 auto;display:flex;align-items:center;justify-content:center;min-height:0;margin-top:6px;overflow:hidden;}}
-.graphic.hero{{margin-top:0;align-items:stretch;}}
-.slide-hero .title{{font-size:64px;line-height:.9;margin-bottom:2px;}}
-.slide-hero .meta{{margin-bottom:8px;}}
-.slide-hero .content{{bottom:88px;}}
-.graphic.compact{{max-height:640px;}}
+.graphic{{flex:1 1 auto;display:flex;align-items:center;justify-content:center;min-height:0;margin-top:4px;overflow:visible;}}
+.graphic.hero{{margin-top:0;align-items:stretch;overflow:visible;}}
+.slide-hero .title{{font-size:54px;line-height:.88;margin-bottom:0;}}
+.slide-hero .meta{{margin-bottom:6px;}}
+.slide-hero .content{{bottom:84px;}}
+.slide-hero .lead.compact{{font-size:22px;margin-top:2px;line-height:1.15;}}
+.graphic.compact{{max-height:none;flex:1 1 auto;}}
 .badge{{display:inline-block;margin-top:10px;padding:12px 18px;border:2px solid {V};
   font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:17px;letter-spacing:.14em;
   text-transform:uppercase;color:{TX};background:rgba(0,255,178,.1);}}
-.cta{{margin-top:auto;border:2.5px solid {V};background:rgba(0,255,178,.08);padding:22px 24px;text-align:center;}}
-.cta .kw{{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:88px;letter-spacing:.06em;color:{V};line-height:1;}}
-.cta .hint{{font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:28px;color:{GY};margin-top:10px;}}
+.cta{{margin-top:auto;border:2.5px solid {V};background:rgba(0,255,178,.08);padding:18px 22px;text-align:center;}}
+.cta .kw{{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:72px;letter-spacing:.06em;color:{V};line-height:1;}}
+.cta .hint{{font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:24px;color:{GY};margin-top:8px;}}
+.slide-last .graphic{{flex:0 1 auto;margin-bottom:8px;}}
 {DIAGRAM_CSS}
 """
 
@@ -113,7 +115,7 @@ def slide(
     if lead:
         lcls = "lead compact" if hero else "lead"
         lead_html = f'<div class="{lcls}">{lead}</div>'
-    slide_cls = "slide slide-hero" if hero else "slide"
+    slide_cls = "slide slide-hero" if hero else ("slide slide-last" if num == 8 else "slide")
     return f"""<div class="{slide_cls}">{chrome()}<div class="content">
   <div class="meta"><div class="n">{num:02d}</div><div class="tag">{tag}</div><div class="dot"></div></div>
   <div class="title">{title}</div>
@@ -180,7 +182,6 @@ SLIDES = [
         'ARMÁ TU<br><span class="g">TURBO</span>',
         "Corré, aprendé, evolucioná — sin que tu equipo persiga leads a mano.",
         8,
-        compact=True,
         extra="""
   <div class="cta">
     <div class="kw">TURBO</div>

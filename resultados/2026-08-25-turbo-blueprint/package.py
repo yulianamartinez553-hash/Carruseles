@@ -58,7 +58,11 @@ def main() -> None:
 
     if OUT.exists():
         shutil.rmtree(OUT)
-    shutil.copytree(B, OUT, ignore=shutil.ignore_patterns("*.pyc", "__pycache__", "html"))
+    shutil.copytree(
+        B,
+        OUT,
+        ignore=shutil.ignore_patterns("*.pyc", "__pycache__", "html", "debug*", "debug"),
+    )
 
     registrar_carrusel(B, meta)
 

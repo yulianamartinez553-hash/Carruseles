@@ -45,6 +45,13 @@ def trim_alpha(im: Image.Image, thresh: int = 22, pad: int = 4) -> Image.Image:
     )
 
 
+def black_to_alpha(im: Image.Image, thresh: int = 24) -> Image.Image:
+    arr = np.array(im.convert("RGBA"))
+    bright = arr[:, :, :3].max(axis=2) > thresh
+    arr[:, :, 3] = np.where(bright, 255, 0).astype(np.uint8)
+    return Image.fromarray(arr)
+
+
 def main() -> None:
     for name, (ref_name, box) in REF_CROPS.items():
         src = ASSETS / ref_name
@@ -53,7 +60,7 @@ def main() -> None:
         print(f"OK {name} <- {ref_name} {crop.size}")
 
     num, box = CEREBRO_BOX
-    cerebro = Image.open(ASSETS / f"graphic-{num:02d}.orig.png").convert("RGBA").crop(box)
+    cerebro = black_to_alpha(Image.open(ASSETS / f"graphic-{num:02d}.orig.png").convert("RGBA").crop(box))
     cerebro.save(OUT / "cerebro.png", optimize=True)
     print(f"OK cerebro.png <- G{num} {cerebro.size}")
 
