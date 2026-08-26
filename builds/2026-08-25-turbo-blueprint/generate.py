@@ -179,7 +179,7 @@ SLIDES = [
         8,
         "PRÓXIMO PASO",
         'ARMÁ TU<br><span class="g">TURBO</span>',
-        "Corre, aprende, evoluciona — sin que tu equipo persiga leads a mano.",
+        "Corré, aprendé, evolucioná — sin que tu equipo persiga leads a mano.",
         8,
         fill=True,
         compact=True,
