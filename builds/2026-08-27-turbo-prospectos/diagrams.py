@@ -61,7 +61,7 @@ def _node(x: int, y: int, icon_svg: str, label: str, r: int = 42) -> str:
 
 def diagram_01() -> str:
     # Orden como la referencia: HACÉ → MEDÍ → REFLEXIONÁ → MEJORÁ → PROBÁ
-    cx, cy, rad = 460, 400, 275
+    cx, cy, rad = 460, 390, 255
     nodes = [
         (cx, cy - rad,  # top HACÉ
          f'<polygon points="-13,-17 19,0 -13,17" fill="{V}"/>', "HACÉ"),
@@ -103,7 +103,7 @@ def diagram_01() -> str:
 <circle cx="{cx}" cy="{cy}" r="{rad + 55}" fill="url(#nebula)"/>
 <circle cx="{cx}" cy="{cy}" r="{rad}" fill="none" stroke="{V}" stroke-width="5" opacity=".4" filter="url(#glowStrong)"/>
 <path d="M{cx},{cy - rad} A{rad},{rad} 0 1,1 {cx - 2},{cy - rad}" fill="none" stroke="{V}" stroke-width="6" marker-end="url(#arr)" opacity=".95" filter="url(#glowStrong)"/>
-{_turbo_center(cx, cy, 210)}
+{_turbo_center(cx, cy, 190)}
 {parts}
 </svg>
 </div>"""
@@ -394,9 +394,9 @@ DIAGRAM_CSS = f"""
 .mejora-badge{{position:absolute;left:24px;top:0;z-index:6;font-family:'Impact','Anton',sans-serif;
   font-size:38px;letter-spacing:.05em;color:{TX};padding-bottom:10px;border-bottom:6px solid {V};line-height:1;}}
 .dia{{position:relative;width:100%;height:100%;min-height:520px;display:flex;align-items:center;justify-content:center;}}
-.dia-01{{flex-direction:column;align-items:stretch;justify-content:flex-start;padding-top:52px;}}
+
 .dia svg{{width:100%;height:auto;max-height:620px;display:block;}}
-.dia-01 svg{{max-height:680px;}}
+
 .dia-hd{{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:17px;letter-spacing:.14em;color:{V};margin-bottom:14px;text-transform:uppercase;}}
 .dia-side{{position:relative;z-index:2;width:250px;}}
 .dia-boxes{{position:relative;height:400px;}}
