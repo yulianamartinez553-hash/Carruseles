@@ -1,15 +1,14 @@
 # -*- coding: utf-8 -*-
-"""Carrusel STLabs — Cómo funciona Turbo (8 slides).
-Diagramas nativos SVG/CSS + elementos 3D aislados · fondo negro · CTA TURBO.
+"""Carrusel STLabs — Turbo (8 slides).
+Gráficos clonados de referencia @seb.ai + overlays HTML en español.
 """
 from __future__ import annotations
 
 import json
 from pathlib import Path
 
-from diagrams import DIAGRAM_CSS, diagram
-
 B = Path(__file__).resolve().parent
+ASSETS = B / "assets"
 FONTS = Path("/tmp/stlabs-fonts")
 V = "#00FFB2"
 BG = "#0A0A0A"
@@ -42,6 +41,12 @@ def font_css() -> str:
     return "\n".join(out)
 
 
+def graphic(n: int) -> str:
+    src = ASSETS / f"graphic-{n:02d}.png"
+    data = f"data:image/png;base64,{b64(src)}"
+    return f'<div class="g-wrap g{n}"><img class="g-bg" src="{data}" alt=""/></div>'
+
+
 CSS = f"""
 {font_css()}
 *{{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision;}}
@@ -65,27 +70,22 @@ html,body{{background:#000;}}
 .title{{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:76px;line-height:.92;
   letter-spacing:.01em;text-transform:uppercase;text-align:left;color:{TX};}}
 .title .g{{color:{V};}}
-.title.md{{font-size:68px;}}
-.title.sm{{font-size:60px;}}
 .lead{{font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:30px;line-height:1.22;
   color:{GY};margin-top:8px;max-width:960px;}}
-.lead.compact{{font-size:26px;margin-top:4px;}}
 .lead b{{color:{TX};font-weight:700;}}
-.graphic{{flex:1 1 auto;display:flex;align-items:center;justify-content:center;min-height:0;margin-top:4px;overflow:visible;}}
-.graphic.hero{{margin-top:0;align-items:stretch;overflow:visible;}}
-.slide-hero .title{{font-size:54px;line-height:.88;margin-bottom:0;}}
-.slide-hero .meta{{margin-bottom:6px;}}
-.slide-hero .content{{bottom:84px;}}
-.slide-hero .lead.compact{{font-size:22px;margin-top:2px;line-height:1.15;}}
-.graphic.compact{{max-height:none;flex:1 1 auto;}}
-.badge{{display:inline-block;margin-top:10px;padding:12px 18px;border:2px solid {V};
-  font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:17px;letter-spacing:.14em;
-  text-transform:uppercase;color:{TX};background:rgba(0,255,178,.1);}}
+.graphic{{flex:1 1 auto;display:flex;align-items:center;justify-content:center;min-height:0;margin-top:6px;}}
+.slide-hero .title{{font-size:68px;line-height:.9;}}
+.slide-hero .lead{{font-size:26px;margin-top:4px;}}
+.slide-last .graphic{{flex:0 1 auto;margin-bottom:6px;}}
+.g-wrap{{position:relative;width:100%;max-width:968px;line-height:0;}}
+.g-bg{{width:100%;height:auto;display:block;}}
+.g1 .g-bg{{max-height:720px;object-fit:contain;}}
+.g2 .g-bg{{max-height:680px;object-fit:contain;}}
+.g3 .g-bg,.g4 .g-bg,.g5 .g-bg,.g6 .g-bg,.g7 .g-bg{{max-height:660px;object-fit:contain;}}
+.g8 .g-bg{{max-height:520px;object-fit:contain;}}
 .cta{{margin-top:auto;border:2.5px solid {V};background:rgba(0,255,178,.08);padding:18px 22px;text-align:center;}}
 .cta .kw{{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:72px;letter-spacing:.06em;color:{V};line-height:1;}}
 .cta .hint{{font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:24px;color:{GY};margin-top:8px;}}
-.slide-last .graphic{{flex:0 1 auto;margin-bottom:8px;}}
-{DIAGRAM_CSS}
 """
 
 
@@ -98,29 +98,18 @@ def slide(
     tag: str,
     title: str,
     lead: str = "",
-    diagram_n: int | None = None,
-    compact: bool = False,
+    graphic_n: int | None = None,
     hero: bool = False,
     extra: str = "",
 ) -> str:
-    dhtml = ""
-    if diagram_n:
-        cls = "graphic"
-        if compact:
-            cls += " compact"
-        if hero:
-            cls += " hero"
-        dhtml = f'<div class="{cls}">{diagram(diagram_n)}</div>'
-    lead_html = ""
-    if lead:
-        lcls = "lead compact" if hero else "lead"
-        lead_html = f'<div class="{lcls}">{lead}</div>'
+    ghtml = f'<div class="graphic">{graphic(graphic_n)}</div>' if graphic_n else ""
+    lead_html = f'<div class="lead">{lead}</div>' if lead else ""
     slide_cls = "slide slide-hero" if hero else ("slide slide-last" if num == 8 else "slide")
     return f"""<div class="{slide_cls}">{chrome()}<div class="content">
   <div class="meta"><div class="n">{num:02d}</div><div class="tag">{tag}</div><div class="dot"></div></div>
   <div class="title">{title}</div>
   {lead_html}
-  {dhtml}
+  {ghtml}
   {extra}
 </div></div>"""
 
@@ -215,7 +204,7 @@ def main() -> None:
         "keyword_portada": "TURBO",
         "modo": "negro",
         "cta": "TURBO",
-        "notas": "Diagramas SVG/CSS nativos ES; robots/cerebro recortados como elementos 3D",
+        "notas": "Gráficos clonados de ref @seb.ai — elementos visuales exactos, copy ES baked en PNG",
     }
     (B / "manifest.json").write_text(
         json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8"
