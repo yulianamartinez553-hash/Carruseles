@@ -366,7 +366,7 @@ def diagram_08() -> str:
 {SVG_DEFS}
 <circle cx="{cx}" cy="{cy}" r="{rad}" fill="none" stroke="{V}" stroke-width="2.5" opacity=".35"/>
 <path d="M{cx},{cy - rad} A{rad},{rad} 0 1,1 {cx - 2},{cy - rad}" fill="none" stroke="{V}" stroke-width="3" opacity=".85"/>
-<image href="{brain}" x="{cx - 48}" y="{cy - 44}" width="96" height="76" preserveAspectRatio="xMidYMid meet"/>
+<image href="{brain}" x="{cx - 56}" y="{cy - 50}" width="112" height="90" preserveAspectRatio="xMidYMid meet"/>
 <text x="{cx}" y="{cy + 52}" text-anchor="middle" fill="{V}" font-family="'Bebas Neue',sans-serif" font-size="36">24/7</text>
 <text x="{cx}" y="{cy + 72}" text-anchor="middle" fill="{TX}" font-family="'Barlow Condensed',sans-serif" font-size="13" letter-spacing=".12em">SIEMPRE MEJORANDO</text>
 {dots}
@@ -416,10 +416,10 @@ DIAGRAM_CSS = f"""
 .dia-mem{{display:flex;flex-direction:column;align-items:center;z-index:2;}}
 .dia-mem .mem{{text-align:center;font-size:18px;}}
 .dia-cylinder{{position:relative;width:220px;height:260px;display:flex;align-items:center;justify-content:center;}}
-.cyl-stack{{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:8px;padding:0 12px;}}
-.cyl-ring{{height:34px;border:2.5px solid {V};border-radius:50%;opacity:.6;box-shadow:0 0 16px rgba(0,255,178,.3);}}
-.cyl-brain{{position:relative;z-index:3;width:140px;height:140px;object-fit:contain;
-  filter:drop-shadow(0 0 16px rgba(0,255,178,.75));mix-blend-mode:screen;}}
+.cyl-stack{{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:8px;padding:0 12px;pointer-events:none;}}
+.cyl-ring{{height:34px;border:2.5px solid {V};border-radius:50%;opacity:.45;box-shadow:0 0 16px rgba(0,255,178,.22);}}
+.cyl-brain{{position:relative;z-index:3;width:168px;height:148px;object-fit:contain;
+  filter:drop-shadow(0 0 14px rgba(0,255,178,.7)) drop-shadow(0 0 28px rgba(0,255,178,.35));}}
 .cyl-base{{position:absolute;bottom:10px;width:170px;height:10px;border:2.5px solid {V};border-radius:50%;opacity:.65;
   box-shadow:0 0 20px rgba(0,255,178,.35);}}
 .cyl-glow{{position:absolute;inset:20px;border-radius:50%;background:radial-gradient(circle,rgba(0,255,178,.12),transparent 70%);pointer-events:none;}}
