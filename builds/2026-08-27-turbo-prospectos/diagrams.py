@@ -392,8 +392,12 @@ def diagram(n: int) -> str:
 
 
 DIAGRAM_CSS = f"""
+.mejora-badge{{position:absolute;left:24px;top:0;z-index:6;font-family:'Impact','Anton',sans-serif;
+  font-size:38px;letter-spacing:.05em;color:{TX};padding-bottom:10px;border-bottom:6px solid {V};line-height:1;}}
 .dia{{position:relative;width:100%;height:100%;min-height:520px;display:flex;align-items:center;justify-content:center;}}
+.dia-01{{flex-direction:column;align-items:stretch;justify-content:flex-start;padding-top:52px;}}
 .dia svg{{width:100%;height:auto;max-height:620px;display:block;}}
+.dia-01 svg{{max-height:680px;}}
 .dia-hd{{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:17px;letter-spacing:.14em;color:{V};margin-bottom:14px;text-transform:uppercase;}}
 .dia-side{{position:relative;z-index:2;width:250px;}}
 .dia-boxes{{position:relative;height:400px;}}
