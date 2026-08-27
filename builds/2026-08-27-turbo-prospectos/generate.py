@@ -83,9 +83,11 @@ html,body{{background:#000;}}
 .slide-hero .title{{font-size:124px;line-height:.8;letter-spacing:.01em;max-width:1000px;}}
 .slide-hero .title .line-24{{display:block;font-size:140px;line-height:.8;color:{V};margin-top:2px;}}
 .slide-hero .lead{{font-size:36px;margin-top:16px;max-width:920px;color:#c8c8c8;font-weight:500;}}
-.slide-hero .graphic{{margin-top:8px;align-items:flex-start;}}
-.slide-hero .dia-01{{width:100%;max-width:980px;min-height:720px;}}
-.slide-hero .dia-01 svg{{max-height:700px;width:100%;}}
+.slide-hero .mejora-line{{margin-top:18px;font-family:'Impact','Anton',sans-serif;font-size:40px;
+  letter-spacing:.06em;color:{TX};display:inline-block;padding-bottom:10px;border-bottom:6px solid {V};line-height:1;}}
+.slide-hero .graphic{{margin-top:10px;align-items:flex-start;}}
+.slide-hero .dia-01{{width:100%;max-width:980px;min-height:680px;}}
+.slide-hero .dia-01 svg{{max-height:660px;width:100%;}}
 
 .slide-last .graphic{{flex:0 1 auto;max-height:500px;}}
 .cta{{margin-top:auto;border:2.5px solid {V};background:rgba(0,255,178,.08);padding:16px 20px;text-align:left;}}
@@ -130,6 +132,7 @@ SLIDES = [
         "Un sistema que sale a buscar prospectos y se mejora solo, todos los días.",
         1,
         hero=True,
+        extra='<div class="mejora-line">MEJORA 24/7.</div>',
     ),
     slide(
         2,

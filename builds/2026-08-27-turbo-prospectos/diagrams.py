@@ -84,7 +84,6 @@ def diagram_01() -> str:
     parts = "".join(_node(x, y, ico, lbl) for x, y, ico, lbl in nodes)
     return f"""
 <div class="dia dia-01">
-  <div class="mejora-badge">MEJORA 24/7.</div>
 <svg viewBox="0 0 920 820" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 {SVG_DEFS}
 <defs>
