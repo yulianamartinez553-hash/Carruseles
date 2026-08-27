@@ -40,65 +40,71 @@ def _turbo_center(cx: int, cy: int, size: int = 160) -> str:
     half = size // 2
     return f"""
 <g filter="url(#glow)">
-  <circle cx="{cx}" cy="{cy}" r="{half + 10}" fill="rgba(0,255,178,.08)" stroke="{V}" stroke-width="3"/>
+  <circle cx="{cx}" cy="{cy}" r="{half + 14}" fill="rgba(0,255,178,.07)" stroke="{V}" stroke-width="3.5"/>
   <image href="{src}" x="{cx - half}" y="{cy - half}" width="{size}" height="{size}"
     preserveAspectRatio="xMidYMid meet"/>
 </g>"""
 
 
-def _node(x: int, y: int, icon_svg: str, label: str, r: int = 44) -> str:
-    bw = max(88, len(label) * 17)
+def _node(x: int, y: int, icon_svg: str, label: str, r: int = 42) -> str:
+    bw = max(96, len(label) * 18)
     return f"""
 <g transform="translate({x},{y})">
-  <circle cx="0" cy="0" r="{r}" fill="#0A0A0A" stroke="{V}" stroke-width="3" filter="url(#glowS)"/>
+  <circle cx="0" cy="0" r="{r}" fill="#050505" stroke="{V}" stroke-width="3.5" filter="url(#glowS)"/>
   <g transform="translate(0,-2)">{icon_svg}</g>
-  <rect x="{-bw/2}" y="{r + 14}" width="{bw}" height="36" rx="6"
-    fill="#0A0A0A" stroke="rgba(255,255,255,.18)" stroke-width="1.5"/>
-  <text y="{r + 38}" fill="{TX}" font-family="'Poppins',sans-serif" font-weight="800"
-    font-size="20" text-anchor="middle" letter-spacing=".08em">{label}</text>
+  <rect x="{-bw/2}" y="{r + 16}" width="{bw}" height="40" rx="4"
+    fill="#050505" stroke="rgba(255,255,255,.22)" stroke-width="1.5"/>
+  <text y="{r + 43}" fill="{TX}" font-family="'Impact','Anton',sans-serif" font-weight="400"
+    font-size="24" text-anchor="middle" letter-spacing=".06em">{label}</text>
 </g>"""
 
 
 def diagram_01() -> str:
-    cx, cy, rad = 460, 430, 300
+    # Orden como la referencia: HACÉ → MEDÍ → REFLEXIONÁ → MEJORÁ → PROBÁ
+    cx, cy, rad = 460, 400, 275
     nodes = [
-        (cx, cy - rad,
-         f'<polygon points="-12,-16 18,0 -12,16" fill="{V}"/>', "HACÉ"),
-        (cx + int(rad * 0.81), cy - int(rad * 0.45),
-         f'<rect x="-14" y="2" width="7" height="16" fill="{V}"/><rect x="-3" y="-6" width="7" height="24" fill="{V}"/><rect x="8" y="-12" width="7" height="30" fill="{V}"/>',
+        (cx, cy - rad,  # top HACÉ
+         f'<polygon points="-13,-17 19,0 -13,17" fill="{V}"/>', "HACÉ"),
+        (cx + int(rad * 0.88), cy - int(rad * 0.22),  # right MEDÍ
+         f'<rect x="-15" y="4" width="8" height="16" fill="{V}"/><rect x="-3" y="-4" width="8" height="24" fill="{V}"/><rect x="9" y="-12" width="8" height="32" fill="{V}"/>',
          "MEDÍ"),
-        (cx + int(rad * 0.5), cy + int(rad * 0.78),
-         f'<path d="M-14,2 L-2,14 L16,-12" fill="none" stroke="{V}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>',
-         "PROBÁ"),
-        (cx - int(rad * 0.5), cy + int(rad * 0.78),
-         f'<path d="M0,-16 L12,2 L5,2 L5,16 L-5,16 L-5,2 L-12,2 Z" fill="{V}"/>',
-         "MEJORÁ"),
-        (cx - int(rad * 0.81), cy - int(rad * 0.45),
-         f'<rect x="-11" y="-14" width="22" height="28" rx="3" fill="none" stroke="{V}" stroke-width="3"/>'
+        (cx + int(rad * 0.55), cy + int(rad * 0.78),  # bottom-right REFLEXIONÁ
+         f'<rect x="-12" y="-15" width="24" height="30" rx="3" fill="none" stroke="{V}" stroke-width="3"/>'
          f'<line x1="-5" y1="-5" x2="5" y2="-5" stroke="{V}" stroke-width="2.5"/>'
          f'<line x1="-5" y1="2" x2="5" y2="2" stroke="{V}" stroke-width="2.5"/>'
          f'<line x1="-5" y1="9" x2="2" y2="9" stroke="{V}" stroke-width="2.5"/>',
          "REFLEXIONÁ"),
+        (cx - int(rad * 0.55), cy + int(rad * 0.78),  # bottom-left MEJORÁ
+         f'<path d="M-10,10 L0,-14 L10,10 L4,10 L4,18 L-4,18 L-4,10 Z" fill="{V}"/>',
+         "MEJORÁ"),
+        (cx - int(rad * 0.88), cy - int(rad * 0.22),  # left PROBÁ
+         f'<path d="M-15,2 L-3,14 L17,-12" fill="none" stroke="{V}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>',
+         "PROBÁ"),
     ]
     parts = "".join(_node(x, y, ico, lbl) for x, y, ico, lbl in nodes)
     return f"""
 <div class="dia dia-01">
-<svg viewBox="0 0 920 860" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <div class="mejora-badge">MEJORA 24/7.</div>
+<svg viewBox="0 0 920 820" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 {SVG_DEFS}
 <defs>
-  <marker id="arr" markerWidth="14" markerHeight="14" refX="10" refY="5" orient="auto">
-    <path d="M0,0 L14,5 L0,10 Z" fill="{V}"/>
+  <marker id="arr" markerWidth="16" markerHeight="16" refX="11" refY="6" orient="auto">
+    <path d="M0,0 L16,6 L0,12 Z" fill="{V}"/>
   </marker>
-  <radialGradient id="nebula" cx="50%" cy="45%" r="55%">
-    <stop offset="0%" stop-color="{V}" stop-opacity=".18"/>
-    <stop offset="55%" stop-color="{V}" stop-opacity=".04"/>
+  <filter id="glowStrong" x="-60%" y="-60%" width="220%" height="220%">
+    <feGaussianBlur stdDeviation="6" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <radialGradient id="nebula" cx="50%" cy="42%" r="58%">
+    <stop offset="0%" stop-color="{V}" stop-opacity=".22"/>
+    <stop offset="40%" stop-color="{V}" stop-opacity=".08"/>
     <stop offset="100%" stop-color="#000" stop-opacity="0"/>
   </radialGradient>
 </defs>
-<circle cx="{cx}" cy="{cy}" r="{rad + 40}" fill="url(#nebula)"/>
-<circle cx="{cx}" cy="{cy}" r="{rad}" fill="none" stroke="{V}" stroke-width="4" opacity=".35"/>
-<path d="M{cx},{cy - rad} A{rad},{rad} 0 1,1 {cx - 2},{cy - rad}" fill="none" stroke="{V}" stroke-width="5" marker-end="url(#arr)" opacity=".95"/>
-{_turbo_center(cx, cy, 200)}
+<circle cx="{cx}" cy="{cy}" r="{rad + 55}" fill="url(#nebula)"/>
+<circle cx="{cx}" cy="{cy}" r="{rad}" fill="none" stroke="{V}" stroke-width="5" opacity=".4" filter="url(#glowStrong)"/>
+<path d="M{cx},{cy - rad} A{rad},{rad} 0 1,1 {cx - 2},{cy - rad}" fill="none" stroke="{V}" stroke-width="6" marker-end="url(#arr)" opacity=".95" filter="url(#glowStrong)"/>
+{_turbo_center(cx, cy, 210)}
 {parts}
 </svg>
 </div>"""
