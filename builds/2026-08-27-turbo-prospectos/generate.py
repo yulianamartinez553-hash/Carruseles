@@ -111,6 +111,7 @@ def slide(
     dia_n: int | None = None,
     hero: bool = False,
     extra: str = "",
+    after_lead: str = "",
 ) -> str:
     ghtml = f'<div class="graphic">{diagram(dia_n)}</div>' if dia_n else ""
     lead_html = f'<div class="lead">{lead}</div>' if lead else ""
@@ -119,6 +120,7 @@ def slide(
   <div class="meta"><div class="n">{num:02d}</div><div class="tag">{tag}</div><div class="dot"></div></div>
   <div class="title">{title}</div>
   {lead_html}
+  {after_lead}
   {ghtml}
   {extra}
 </div></div>"""
@@ -132,7 +134,7 @@ SLIDES = [
         "Un sistema que sale a buscar prospectos y se mejora solo, todos los días.",
         1,
         hero=True,
-        extra='<div class="mejora-line">MEJORA 24/7.</div>',
+        after_lead='<div class="mejora-line">MEJORA 24/7.</div>',
     ),
     slide(
         2,
