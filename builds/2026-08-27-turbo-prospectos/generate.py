@@ -61,26 +61,28 @@ html,body{{background:#000;}}
   font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:24px;letter-spacing:.14em;color:{V};}}
 .content{{position:absolute;left:56px;right:56px;top:56px;bottom:100px;z-index:8;
   display:flex;flex-direction:column;}}
-.meta{{display:flex;align-items:center;gap:12px;margin-bottom:12px;}}
-.meta .n{{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:16px;letter-spacing:.08em;
-  color:{TX};border:1.5px solid rgba(255,255,255,.22);padding:8px 12px;line-height:1;}}
-.meta .tag{{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:15px;letter-spacing:.16em;
+.meta{{display:flex;align-items:center;gap:12px;margin-bottom:8px;}}
+.meta .n{{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:15px;letter-spacing:.08em;
+  color:{TX};border:1.5px solid rgba(255,255,255,.22);padding:7px 11px;line-height:1;}}
+.meta .tag{{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px;letter-spacing:.16em;
   text-transform:uppercase;color:{GY};}}
 .meta .dot{{width:8px;height:8px;border-radius:50%;background:{V};box-shadow:0 0 10px rgba(0,255,178,.6);}}
-.title{{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:78px;line-height:.9;
-  letter-spacing:.01em;text-transform:uppercase;text-align:left;color:{TX};}}
+.title{{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:88px;line-height:.88;
+  letter-spacing:.02em;text-transform:uppercase;text-align:left;color:{TX};}}
 .title .g{{color:{V};}}
-.lead{{font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:30px;line-height:1.22;
-  color:{GY};margin-top:8px;max-width:960px;}}
+.lead{{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:34px;line-height:1.2;
+  color:{GY};margin-top:10px;max-width:960px;}}
 .lead b{{color:{TX};font-weight:700;}}
-.graphic{{flex:1 1 auto;display:flex;align-items:center;justify-content:center;min-height:0;margin-top:4px;}}
-.slide-hero .title{{font-size:96px;line-height:.88;letter-spacing:.02em;}}
-.slide-hero .lead{{font-size:34px;margin-top:10px;color:{TX};}}
+.graphic{{flex:1 1 auto;display:flex;align-items:center;justify-content:center;min-height:0;margin-top:2px;}}
+.slide-hero .title{{font-size:112px;line-height:.84;letter-spacing:.015em;max-width:980px;}}
+.slide-hero .lead{{font-size:40px;margin-top:14px;color:{TX};letter-spacing:.02em;}}
 .slide-hero .lead b{{color:{V};}}
-.slide-last .graphic{{flex:0 1 auto;max-height:520px;}}
+.slide-hero .graphic{{margin-top:0;}}
+.slide-hero .meta{{margin-bottom:6px;}}
+.slide-last .graphic{{flex:0 1 auto;max-height:500px;}}
 .cta{{margin-top:auto;border:2.5px solid {V};background:rgba(0,255,178,.08);padding:16px 20px;text-align:left;}}
-.cta .kw{{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:56px;letter-spacing:.06em;color:{V};line-height:1;}}
-.cta .hint{{font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:24px;color:{GY};margin-top:6px;line-height:1.25;}}
+.cta .kw{{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:60px;letter-spacing:.06em;color:{V};line-height:1;}}
+.cta .hint{{font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:26px;color:{GY};margin-top:6px;line-height:1.25;}}
 .cta .hint b{{color:{TX};font-weight:700;}}
 /* Turbo mascot drop — sin cajas de foto genéricas */
 .dia-robot{{background:transparent !important;border-radius:0 !important;}}

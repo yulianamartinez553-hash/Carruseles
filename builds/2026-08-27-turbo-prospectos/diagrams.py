@@ -60,7 +60,7 @@ def _node(x: int, y: int, icon_svg: str, label: str, r: int = 44) -> str:
 
 
 def diagram_01() -> str:
-    cx, cy, rad = 460, 420, 285
+    cx, cy, rad = 460, 430, 300
     nodes = [
         (cx, cy - rad,
          f'<polygon points="-12,-16 18,0 -12,16" fill="{V}"/>', "HACÉ"),
@@ -98,7 +98,7 @@ def diagram_01() -> str:
 <circle cx="{cx}" cy="{cy}" r="{rad + 40}" fill="url(#nebula)"/>
 <circle cx="{cx}" cy="{cy}" r="{rad}" fill="none" stroke="{V}" stroke-width="4" opacity=".35"/>
 <path d="M{cx},{cy - rad} A{rad},{rad} 0 1,1 {cx - 2},{cy - rad}" fill="none" stroke="{V}" stroke-width="5" marker-end="url(#arr)" opacity=".95"/>
-{_turbo_center(cx, cy, 168)}
+{_turbo_center(cx, cy, 200)}
 {parts}
 </svg>
 </div>"""
