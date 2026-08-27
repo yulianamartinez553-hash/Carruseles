@@ -3,3 +3,6 @@ Clone blueprint → sebastian.stlabs.ar
 Slides: 8 · Keyword: TURBO
 Accent #00FFB2 · Fondo negro (lino_tela) · Solo español
 Cierre: Turbo + especialización 1ª persona (Sebastián)
+
+Mascota oficial Turbo: assets/turbo/turbo-mascot.png (al borde).
+Nunca usar otro robot generado.

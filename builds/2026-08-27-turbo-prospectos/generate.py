@@ -67,20 +67,24 @@ html,body{{background:#000;}}
 .meta .tag{{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:15px;letter-spacing:.16em;
   text-transform:uppercase;color:{GY};}}
 .meta .dot{{width:8px;height:8px;border-radius:50%;background:{V};box-shadow:0 0 10px rgba(0,255,178,.6);}}
-.title{{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:72px;line-height:.92;
+.title{{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:78px;line-height:.9;
   letter-spacing:.01em;text-transform:uppercase;text-align:left;color:{TX};}}
 .title .g{{color:{V};}}
-.lead{{font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:28px;line-height:1.22;
-  color:{GY};margin-top:6px;max-width:960px;}}
+.lead{{font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:30px;line-height:1.22;
+  color:{GY};margin-top:8px;max-width:960px;}}
 .lead b{{color:{TX};font-weight:700;}}
 .graphic{{flex:1 1 auto;display:flex;align-items:center;justify-content:center;min-height:0;margin-top:4px;}}
-.slide-hero .title{{font-size:66px;line-height:.9;}}
-.slide-hero .lead{{font-size:26px;margin-top:4px;}}
+.slide-hero .title{{font-size:96px;line-height:.88;letter-spacing:.02em;}}
+.slide-hero .lead{{font-size:34px;margin-top:10px;color:{TX};}}
+.slide-hero .lead b{{color:{V};}}
 .slide-last .graphic{{flex:0 1 auto;max-height:520px;}}
 .cta{{margin-top:auto;border:2.5px solid {V};background:rgba(0,255,178,.08);padding:16px 20px;text-align:left;}}
 .cta .kw{{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:56px;letter-spacing:.06em;color:{V};line-height:1;}}
 .cta .hint{{font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:24px;color:{GY};margin-top:6px;line-height:1.25;}}
 .cta .hint b{{color:{TX};font-weight:700;}}
+/* Turbo mascot drop — sin cajas de foto genéricas */
+.dia-robot{{background:transparent !important;border-radius:0 !important;}}
+.dia-robot-wrap{{background:transparent !important;}}
 """
 
 
@@ -113,8 +117,8 @@ SLIDES = [
     slide(
         1,
         "TURBO · PROSPECTOS",
-        'TE ARMO UN <span class="g">TURBO</span><br>QUE BUSCA<br><span class="g">CLIENTES</span>',
-        "Encuentra prospectos y se mejora solo. <b>24/7.</b>",
+        'ARMÉ UN <span class="g">TURBO</span><br>QUE BUSCA<br><span class="g">CLIENTES</span>',
+        "Se mejora solo. <b>24/7.</b>",
         1,
         hero=True,
     ),

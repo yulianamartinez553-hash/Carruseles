@@ -34,58 +34,71 @@ SVG_DEFS = """
 </defs>"""
 
 
-def _turbo_icon(cx: int, cy: int, r: int = 28) -> str:
+def _turbo_center(cx: int, cy: int, size: int = 160) -> str:
+    """Mascota oficial de Turbo en el centro del loop (nunca inventar otra cara)."""
+    src = elem("turbo.png")
+    half = size // 2
     return f"""
-<g transform="translate({cx},{cy})" filter="url(#glow)">
-  <circle cx="0" cy="0" r="{r}" fill="rgba(0,255,178,.08)" stroke="{V}" stroke-width="3"/>
-  <polygon points="-10,-16 16,0 -10,16 -10,6 -2,6 -2,-6 -10,-6" fill="{V}"/>
+<g filter="url(#glow)">
+  <circle cx="{cx}" cy="{cy}" r="{half + 10}" fill="rgba(0,255,178,.08)" stroke="{V}" stroke-width="3"/>
+  <image href="{src}" x="{cx - half}" y="{cy - half}" width="{size}" height="{size}"
+    preserveAspectRatio="xMidYMid meet"/>
 </g>"""
 
 
-def _node(x: int, y: int, icon_svg: str, label: str, r: int = 48) -> str:
+def _node(x: int, y: int, icon_svg: str, label: str, r: int = 44) -> str:
+    bw = max(88, len(label) * 17)
     return f"""
 <g transform="translate({x},{y})">
-  <circle cx="0" cy="0" r="{r}" fill="rgba(0,255,178,.06)" stroke="{V}" stroke-width="3" filter="url(#glowS)"/>
-  <g transform="translate(0,-4)">{icon_svg}</g>
-  <text y="{r + 34}" fill="{V}" font-family="'Barlow Condensed',sans-serif" font-weight="700"
-    font-size="34" text-anchor="middle" letter-spacing=".06em">{label}</text>
+  <circle cx="0" cy="0" r="{r}" fill="#0A0A0A" stroke="{V}" stroke-width="3" filter="url(#glowS)"/>
+  <g transform="translate(0,-2)">{icon_svg}</g>
+  <rect x="{-bw/2}" y="{r + 14}" width="{bw}" height="36" rx="6"
+    fill="#0A0A0A" stroke="rgba(255,255,255,.18)" stroke-width="1.5"/>
+  <text y="{r + 38}" fill="{TX}" font-family="'Poppins',sans-serif" font-weight="800"
+    font-size="20" text-anchor="middle" letter-spacing=".08em">{label}</text>
 </g>"""
 
 
 def diagram_01() -> str:
-    cx, cy, rad = 460, 430, 300
+    cx, cy, rad = 460, 420, 285
     nodes = [
-        (cx, cy - rad,  # top — HACÉ (play)
-         f'<polygon points="-14,-18 20,0 -14,18" fill="{V}"/>', "HACÉ"),
-        (cx + int(rad * 0.81), cy - int(rad * 0.45),  # MEDÍ (barras)
-         f'<rect x="-16" y="4" width="8" height="18" fill="{V}"/><rect x="-4" y="-6" width="8" height="28" fill="{V}"/><rect x="8" y="-14" width="8" height="36" fill="{V}"/>',
+        (cx, cy - rad,
+         f'<polygon points="-12,-16 18,0 -12,16" fill="{V}"/>', "HACÉ"),
+        (cx + int(rad * 0.81), cy - int(rad * 0.45),
+         f'<rect x="-14" y="2" width="7" height="16" fill="{V}"/><rect x="-3" y="-6" width="7" height="24" fill="{V}"/><rect x="8" y="-12" width="7" height="30" fill="{V}"/>',
          "MEDÍ"),
-        (cx + int(rad * 0.5), cy + int(rad * 0.78),  # PROBÁ (check)
-         f'<path d="M-16,2 L-4,16 L18,-14" fill="none" stroke="{V}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>',
+        (cx + int(rad * 0.5), cy + int(rad * 0.78),
+         f'<path d="M-14,2 L-2,14 L16,-12" fill="none" stroke="{V}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>',
          "PROBÁ"),
-        (cx - int(rad * 0.5), cy + int(rad * 0.78),  # MEJORÁ (flecha up)
-         f'<path d="M0,-18 L14,4 L6,4 L6,18 L-6,18 L-6,4 L-14,4 Z" fill="{V}"/>',
+        (cx - int(rad * 0.5), cy + int(rad * 0.78),
+         f'<path d="M0,-16 L12,2 L5,2 L5,16 L-5,16 L-5,2 L-12,2 Z" fill="{V}"/>',
          "MEJORÁ"),
-        (cx - int(rad * 0.81), cy - int(rad * 0.45),  # REFLEXIONÁ (doc)
-         f'<rect x="-12" y="-16" width="24" height="32" rx="3" fill="none" stroke="{V}" stroke-width="3"/>'
-         f'<line x1="-6" y1="-6" x2="6" y2="-6" stroke="{V}" stroke-width="2.5"/>'
-         f'<line x1="-6" y1="2" x2="6" y2="2" stroke="{V}" stroke-width="2.5"/>'
-         f'<line x1="-6" y1="10" x2="2" y2="10" stroke="{V}" stroke-width="2.5"/>',
+        (cx - int(rad * 0.81), cy - int(rad * 0.45),
+         f'<rect x="-11" y="-14" width="22" height="28" rx="3" fill="none" stroke="{V}" stroke-width="3"/>'
+         f'<line x1="-5" y1="-5" x2="5" y2="-5" stroke="{V}" stroke-width="2.5"/>'
+         f'<line x1="-5" y1="2" x2="5" y2="2" stroke="{V}" stroke-width="2.5"/>'
+         f'<line x1="-5" y1="9" x2="2" y2="9" stroke="{V}" stroke-width="2.5"/>',
          "REFLEXIONÁ"),
     ]
-    parts = ""
-    for x, y, ico, lbl in nodes:
-        parts += _node(x, y, ico, lbl)
+    parts = "".join(_node(x, y, ico, lbl) for x, y, ico, lbl in nodes)
     return f"""
 <div class="dia dia-01">
 <svg viewBox="0 0 920 860" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 {SVG_DEFS}
-<circle cx="{cx}" cy="{cy}" r="{rad}" fill="none" stroke="{V}" stroke-width="3.5" opacity=".3"/>
-<path d="M{cx},{cy - rad} A{rad},{rad} 0 1,1 {cx - 2},{cy - rad}" fill="none" stroke="{V}" stroke-width="4.5" marker-end="url(#arr)"/>
-<defs><marker id="arr" markerWidth="14" markerHeight="14" refX="10" refY="5" orient="auto">
-  <path d="M0,0 L14,5 L0,10 Z" fill="{V}"/>
-</marker></defs>
-{_turbo_icon(cx, cy, 54)}
+<defs>
+  <marker id="arr" markerWidth="14" markerHeight="14" refX="10" refY="5" orient="auto">
+    <path d="M0,0 L14,5 L0,10 Z" fill="{V}"/>
+  </marker>
+  <radialGradient id="nebula" cx="50%" cy="45%" r="55%">
+    <stop offset="0%" stop-color="{V}" stop-opacity=".18"/>
+    <stop offset="55%" stop-color="{V}" stop-opacity=".04"/>
+    <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+  </radialGradient>
+</defs>
+<circle cx="{cx}" cy="{cy}" r="{rad + 40}" fill="url(#nebula)"/>
+<circle cx="{cx}" cy="{cy}" r="{rad}" fill="none" stroke="{V}" stroke-width="4" opacity=".35"/>
+<path d="M{cx},{cy - rad} A{rad},{rad} 0 1,1 {cx - 2},{cy - rad}" fill="none" stroke="{V}" stroke-width="5" marker-end="url(#arr)" opacity=".95"/>
+{_turbo_center(cx, cy, 168)}
 {parts}
 </svg>
 </div>"""
@@ -196,7 +209,7 @@ def diagram_04() -> str:
     return f"""
 <div class="dia dia-04">
   <div class="dia-panel agent">
-    <div class="dia-panel-hd">AGENTE</div>
+    <div class="dia-panel-hd">TURBO</div>
     <div class="dia-robot-wrap"><img src="{elem('robot-agent.png')}" alt="" class="dia-robot sm"/></div>
     <div class="dia-subbox">
       <div class="dia-subhd">TRABAJO ENTREGADO</div>
@@ -412,11 +425,13 @@ DIAGRAM_CSS = f"""
 .dia-panel-hd{{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:16px;letter-spacing:.12em;color:{V};margin-bottom:14px;text-transform:uppercase;}}
 .dia-robot-wrap{{display:flex;align-items:center;justify-content:center;min-height:260px;padding:6px 0;overflow:visible;}}
 .dia-robot{{max-width:100%;max-height:300px;width:auto;height:auto;object-fit:contain;object-position:center;display:block;margin:0 auto;
-  filter:drop-shadow(0 4px 20px rgba(0,255,178,.2));}}
-.dia-robot.sm{{max-height:270px;}}.dia-robot.md{{max-height:300px;}}.dia-robot.xs{{max-height:280px;min-width:160px;}}
-.dia-ver .dia-robot-wrap{{min-height:240px;}}
-.dia-verbox .dia-robot-wrap{{min-height:240px;}}
-.dia-panel.agent .dia-robot-wrap{{min-height:280px;}}
+  filter:drop-shadow(0 0 18px rgba(0,255,178,.35));background:transparent;}}
+.dia-robot.sm{{max-height:250px;}}.dia-robot.md{{max-height:280px;}}.dia-robot.xs{{max-height:240px;min-width:140px;}}
+.dia-ver .dia-robot-wrap{{min-height:220px;}}
+.dia-verbox .dia-robot-wrap{{min-height:220px;}}
+.dia-panel.agent .dia-robot-wrap{{min-height:240px;}}
+.dia-panel.agent,.dia-panel.critic{{overflow:visible;}}
+.dia-robot-wrap{{overflow:visible !important;}}
 .dia-arrow-col{{display:flex;flex-direction:column;align-items:center;gap:8px;flex:0 0 110px;}}
 .dia-arrow-col.wide{{flex-basis:130px;}}
 .dia-arrow-line{{width:80px;height:5px;background:linear-gradient(90deg,{V},rgba(0,255,178,.3));border-radius:2px;box-shadow:0 0 12px rgba(0,255,178,.55);}}
