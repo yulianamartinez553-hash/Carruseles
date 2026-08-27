@@ -129,7 +129,7 @@ SLIDES = [
         3,
         "TURBO · PROSPECTOS",
         'MIDE SI EL<br><span class="g">PROSPECTO SIRVE</span>',
-        "Puntuá cada prospecto con tus criterios: ajuste, urgencia y ticket.",
+        "Puntuá cada prospecto con tus criterios: ajuste, urgencia y monto.",
         3,
     ),
     slide(

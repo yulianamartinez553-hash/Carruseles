@@ -37,8 +37,8 @@ SVG_DEFS = """
 def _turbo_icon(cx: int, cy: int, r: int = 28) -> str:
     return f"""
 <g transform="translate({cx},{cy})" filter="url(#glow)">
-  <circle cx="0" cy="0" r="{r}" fill="none" stroke="{V}" stroke-width="3"/>
-  <path d="M-5,-18 L10,0 L-3,0 L5,18 L-10,0 L3,0 Z" fill="{V}"/>
+  <circle cx="0" cy="0" r="{r}" fill="rgba(0,255,178,.08)" stroke="{V}" stroke-width="3"/>
+  <polygon points="-10,-16 16,0 -10,16 -10,6 -2,6 -2,-6 -10,-6" fill="{V}"/>
 </g>"""
 
 
@@ -46,28 +46,31 @@ def _node(x: int, y: int, icon_svg: str, label: str, r: int = 48) -> str:
     return f"""
 <g transform="translate({x},{y})">
   <circle cx="0" cy="0" r="{r}" fill="rgba(0,255,178,.06)" stroke="{V}" stroke-width="3" filter="url(#glowS)"/>
-  {icon_svg}
-  <text y="{r + 36}" fill="{V}" font-family="'Barlow Condensed',sans-serif" font-weight="700"
-    font-size="38" text-anchor="middle" letter-spacing=".06em">{label}</text>
+  <g transform="translate(0,-4)">{icon_svg}</g>
+  <text y="{r + 34}" fill="{V}" font-family="'Barlow Condensed',sans-serif" font-weight="700"
+    font-size="34" text-anchor="middle" letter-spacing=".06em">{label}</text>
 </g>"""
 
 
 def diagram_01() -> str:
-    cx, cy, rad = 460, 455, 335
+    cx, cy, rad = 460, 430, 300
     nodes = [
-        (cx, cy - rad,  # top — HACÉ
-         '<polygon points="-12,0 10,-10 10,10" fill="' + V + '"/>', "HACÉ"),
-        (cx + int(rad * 0.59), cy - int(rad * 0.81),  # ~2h — MEDÍ
-         f'<rect x="-14" y="6" width="6" height="22" fill="{V}"/><rect x="-4" y="0" width="6" height="28" fill="{V}"/><rect x="8" y="-6" width="6" height="34" fill="{V}"/>',
+        (cx, cy - rad,  # top — HACÉ (play)
+         f'<polygon points="-14,-18 20,0 -14,18" fill="{V}"/>', "HACÉ"),
+        (cx + int(rad * 0.81), cy - int(rad * 0.45),  # MEDÍ (barras)
+         f'<rect x="-16" y="4" width="8" height="18" fill="{V}"/><rect x="-4" y="-6" width="8" height="28" fill="{V}"/><rect x="8" y="-14" width="8" height="36" fill="{V}"/>',
          "MEDÍ"),
-        (cx + int(rad * 0.59), cy + int(rad * 0.81),  # ~4h — PROBÁ
-         f'<path d="M-14,12 L-2,-8 L8,2 L18,-14" fill="none" stroke="{V}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>',
+        (cx + int(rad * 0.5), cy + int(rad * 0.78),  # PROBÁ (check)
+         f'<path d="M-16,2 L-4,16 L18,-14" fill="none" stroke="{V}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>',
          "PROBÁ"),
-        (cx, cy + rad,  # bottom — MEJORÁ
-         f'<path d="M-8,24 L0,8 L8,24 L0,36 Z" fill="none" stroke="{V}" stroke-width="3"/><line x1="0" y1="36" x2="0" y2="48" stroke="{V}" stroke-width="3"/>',
+        (cx - int(rad * 0.5), cy + int(rad * 0.78),  # MEJORÁ (flecha up)
+         f'<path d="M0,-18 L14,4 L6,4 L6,18 L-6,18 L-6,4 L-14,4 Z" fill="{V}"/>',
          "MEJORÁ"),
-        (cx - int(rad * 0.59), cy + int(rad * 0.81),  # ~8h — REFLEXIONÁ
-         f'<circle cx="0" cy="0" r="16" fill="none" stroke="{V}" stroke-width="3"/><path d="M-8,6 L0,18 L16,-4" fill="none" stroke="{V}" stroke-width="4" stroke-linecap="round"/>',
+        (cx - int(rad * 0.81), cy - int(rad * 0.45),  # REFLEXIONÁ (doc)
+         f'<rect x="-12" y="-16" width="24" height="32" rx="3" fill="none" stroke="{V}" stroke-width="3"/>'
+         f'<line x1="-6" y1="-6" x2="6" y2="-6" stroke="{V}" stroke-width="2.5"/>'
+         f'<line x1="-6" y1="2" x2="6" y2="2" stroke="{V}" stroke-width="2.5"/>'
+         f'<line x1="-6" y1="10" x2="2" y2="10" stroke="{V}" stroke-width="2.5"/>',
          "REFLEXIONÁ"),
     ]
     parts = ""
@@ -75,14 +78,14 @@ def diagram_01() -> str:
         parts += _node(x, y, ico, lbl)
     return f"""
 <div class="dia dia-01">
-<svg viewBox="0 0 920 900" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<svg viewBox="0 0 920 860" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 {SVG_DEFS}
 <circle cx="{cx}" cy="{cy}" r="{rad}" fill="none" stroke="{V}" stroke-width="3.5" opacity=".3"/>
 <path d="M{cx},{cy - rad} A{rad},{rad} 0 1,1 {cx - 2},{cy - rad}" fill="none" stroke="{V}" stroke-width="4.5" marker-end="url(#arr)"/>
-<marker id="arr" markerWidth="14" markerHeight="14" refX="10" refY="5" orient="auto">
+<defs><marker id="arr" markerWidth="14" markerHeight="14" refX="10" refY="5" orient="auto">
   <path d="M0,0 L14,5 L0,10 Z" fill="{V}"/>
-</marker>
-{_turbo_icon(cx, cy, 58)}
+</marker></defs>
+{_turbo_icon(cx, cy, 54)}
 {parts}
 </svg>
 </div>"""
@@ -240,7 +243,7 @@ def diagram_05() -> str:
   <div class="dia-history">
     <div class="dia-panel-hd">HISTORIAL DE TAREAS</div>
     <div class="task-grid">{cards}</div>
-    <div class="task-foot">20 CORRIDAS | <span class="g">6 FALLAS</span></div>
+    <div class="task-foot">20 CORRIDAS | <span class="bad">6 FALLAS</span></div>
   </div>
   <div class="dia-flow">{shtml}</div>
 </div>"""
@@ -259,6 +262,7 @@ def diagram_06() -> str:
     <div class="dia-ver-hd">TURBO V1</div>
     <div class="dia-robot-wrap"><img src="{elem('robot-v1.png')}" alt="" class="dia-robot sm"/></div>
     {l1}
+    <div class="score-bar bad">PUNTAJE: <b>72</b> / 100</div>
   </div>
   <div class="dia-mid">
     <div class="dia-ver-hd">REFLEXIÓN</div>
@@ -270,6 +274,7 @@ def diagram_06() -> str:
     <div class="dia-ver-hd g">TURBO V2</div>
     <div class="dia-robot-wrap"><img src="{elem('robot-v2.png')}" alt="" class="dia-robot sm"/></div>
     {l2}
+    <div class="score-bar good">PUNTAJE: <b>91</b> / 100</div>
   </div>
 </div>"""
 
@@ -309,34 +314,43 @@ def diagram_07() -> str:
 
 
 def diagram_08() -> str:
-    cx, cy, rad = 460, 248, 195
+    cx, cy, rad = 460, 250, 160
+    # labels siempre hacia afuera del anillo, dentro del viewBox
     nodes = [
-        (cx, cy - rad, "▶", "HACÉ", "Ejecutá la tarea"),
-        (cx + int(rad * 0.87), cy - int(rad * 0.5), "▮", "MEDÍ", "Puntuá cada resultado"),
-        (cx + int(rad * 0.87), cy + int(rad * 0.5), "◎", "REFLEXIONÁ", "Criticá y detectá fallas"),
-        (cx, cy + rad - 8, "↗", "MEJORÁ", "Aplicá mejoras"),
-        (cx - int(rad * 0.87), cy + int(rad * 0.5), "✓", "PROBÁ", "Demostrá que funciona"),
-        (cx - int(rad * 0.87), cy - int(rad * 0.5), "▲", "DESPLEGÁ", "Liberá la mejor versión"),
+        (cx, cy - rad, "▶", "HACÉ", "Ejecutá la tarea", "above"),
+        (cx + int(rad * 0.92), cy - int(rad * 0.4), "▮", "MEDÍ", "Puntuá cada resultado", "right"),
+        (cx + int(rad * 0.92), cy + int(rad * 0.45), "◎", "REFLEXIONÁ", "Criticá y detectá fallas", "right"),
+        (cx, cy + rad, "↗", "MEJORÁ", "Aplicá mejoras", "below"),
+        (cx - int(rad * 0.92), cy + int(rad * 0.45), "✓", "PROBÁ", "Demostrá que funciona", "left"),
+        (cx - int(rad * 0.92), cy - int(rad * 0.4), "▲", "DESPLEGÁ", "Liberá la mejor versión", "left"),
     ]
     dots = ""
-    for x, y, ico, title, sub in nodes:
+    for x, y, ico, title, sub, side in nodes:
+        if side == "above":
+            ty1, ty2, anchor, tx = -48, -30, "middle", 0
+        elif side == "below":
+            ty1, ty2, anchor, tx = 48, 66, "middle", 0
+        elif side == "right":
+            ty1, ty2, anchor, tx = 6, 24, "start", 42
+        else:  # left
+            ty1, ty2, anchor, tx = 6, 24, "end", -42
         dots += f"""
 <g transform="translate({x},{y})">
-  <circle r="36" fill="rgba(0,255,178,.06)" stroke="{V}" stroke-width="2.5" filter="url(#glowS)"/>
-  <text text-anchor="middle" y="8" font-size="22">{ico}</text>
-  <text text-anchor="middle" y="58" fill="{V}" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="22">{title}</text>
-  <text text-anchor="middle" y="78" fill="{GY}" font-family="'Barlow Condensed',sans-serif" font-size="14">{sub}</text>
+  <circle r="30" fill="rgba(0,255,178,.06)" stroke="{V}" stroke-width="2.5" filter="url(#glowS)"/>
+  <text text-anchor="middle" y="7" font-size="18" fill="{V}">{ico}</text>
+  <text x="{tx}" y="{ty1}" text-anchor="{anchor}" fill="{V}" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="20">{title}</text>
+  <text x="{tx}" y="{ty2}" text-anchor="{anchor}" fill="{GY}" font-family="'Barlow Condensed',sans-serif" font-size="13">{sub}</text>
 </g>"""
     brain = elem("cerebro.png")
     return f"""
 <div class="dia dia-08">
-<svg viewBox="0 0 920 500" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<svg viewBox="0 0 920 540" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 {SVG_DEFS}
 <circle cx="{cx}" cy="{cy}" r="{rad}" fill="none" stroke="{V}" stroke-width="2.5" opacity=".35"/>
 <path d="M{cx},{cy - rad} A{rad},{rad} 0 1,1 {cx - 2},{cy - rad}" fill="none" stroke="{V}" stroke-width="3" opacity=".85"/>
-<image href="{brain}" x="{cx - 60}" y="{cy - 52}" width="120" height="95" preserveAspectRatio="xMidYMid meet"/>
-<text x="{cx}" y="{cy + 68}" text-anchor="middle" fill="{V}" font-family="'Bebas Neue',sans-serif" font-size="46">24/7</text>
-<text x="{cx}" y="{cy + 92}" text-anchor="middle" fill="{TX}" font-family="'Barlow Condensed',sans-serif" font-size="14" letter-spacing=".12em">SIEMPRE MEJORANDO</text>
+<image href="{brain}" x="{cx - 48}" y="{cy - 44}" width="96" height="76" preserveAspectRatio="xMidYMid meet"/>
+<text x="{cx}" y="{cy + 52}" text-anchor="middle" fill="{V}" font-family="'Bebas Neue',sans-serif" font-size="36">24/7</text>
+<text x="{cx}" y="{cy + 72}" text-anchor="middle" fill="{TX}" font-family="'Barlow Condensed',sans-serif" font-size="13" letter-spacing=".12em">SIEMPRE MEJORANDO</text>
 {dots}
 </svg>
 </div>"""
@@ -433,7 +447,7 @@ DIAGRAM_CSS = f"""
 .task-card.ok .tm{{color:{V};}}.task-card.bad .tm{{color:{RD};}}
 .tn{{display:block;color:{GY};font-size:13px;}}.tm{{display:block;font-size:20px;font-weight:700;}}
 .task-foot{{font-family:'IBM Plex Mono',monospace;font-size:14px;letter-spacing:.06em;color:{TX};border-top:1px solid rgba(255,255,255,.1);padding-top:12px;}}
-.task-foot .g{{color:{V};}}
+.task-foot .g{{color:{V};}}.task-foot .bad{{color:{RD};}}
 .dia-flow{{flex:1;display:flex;flex-direction:column;gap:16px;justify-content:center;}}
 .flow-step{{display:flex;gap:14px;align-items:flex-start;padding:18px;border:2px solid rgba(255,255,255,.12);border-radius:14px;background:rgba(0,0,0,.35);}}
 .flow-step.glow{{border-color:{V};box-shadow:0 0 24px rgba(0,255,178,.18);}}
