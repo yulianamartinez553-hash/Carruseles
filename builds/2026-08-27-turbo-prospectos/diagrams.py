@@ -418,8 +418,8 @@ DIAGRAM_CSS = f"""
 .dia-cylinder{{position:relative;width:220px;height:260px;display:flex;align-items:center;justify-content:center;}}
 .cyl-stack{{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:8px;padding:0 12px;}}
 .cyl-ring{{height:34px;border:2.5px solid {V};border-radius:50%;opacity:.6;box-shadow:0 0 16px rgba(0,255,178,.3);}}
-.cyl-brain{{position:relative;z-index:3;width:120px;height:120px;object-fit:contain;
-  filter:drop-shadow(0 0 14px rgba(0,255,178,.75));mix-blend-mode:screen;}}
+.cyl-brain{{position:relative;z-index:3;width:140px;height:140px;object-fit:contain;
+  filter:drop-shadow(0 0 16px rgba(0,255,178,.75));mix-blend-mode:screen;}}
 .cyl-base{{position:absolute;bottom:10px;width:170px;height:10px;border:2.5px solid {V};border-radius:50%;opacity:.65;
   box-shadow:0 0 20px rgba(0,255,178,.35);}}
 .cyl-glow{{position:absolute;inset:20px;border-radius:50%;background:radial-gradient(circle,rgba(0,255,178,.12),transparent 70%);pointer-events:none;}}

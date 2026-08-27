@@ -54,10 +54,23 @@ CSS = f"""
 html,body{{background:#000;}}
 .sheet{{display:flex;flex-direction:column;gap:36px;padding:28px;width:max-content;}}
 .slide{{position:relative;width:1080px;height:1350px;overflow:hidden;background:{BG};color:{TX};}}
+/* Retícula verde bien marcada + manchas blur verdes */
 .slide::before{{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(0,255,178,.20) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,178,.20) 1px, transparent 1px);
+  background-size:52px 52px;
+  background-position:0 0;
+  opacity:1;}}
+.slide::after{{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
   background:
-    radial-gradient(ellipse 75% 50% at 80% 8%, rgba(0,255,178,.07), transparent 58%),
-    radial-gradient(ellipse 55% 40% at 8% 92%, rgba(0,255,178,.035), transparent 52%);}}
+    radial-gradient(ellipse 420px 320px at 12% 18%, rgba(0,255,178,.22), transparent 70%),
+    radial-gradient(ellipse 380px 300px at 88% 12%, rgba(0,255,178,.18), transparent 68%),
+    radial-gradient(ellipse 500px 360px at 78% 72%, rgba(0,255,178,.16), transparent 70%),
+    radial-gradient(ellipse 360px 280px at 18% 82%, rgba(0,255,178,.14), transparent 68%),
+    radial-gradient(ellipse 280px 220px at 50% 48%, rgba(0,255,178,.10), transparent 72%);
+  filter:blur(28px);
+  opacity:.95;}}
 .frame{{position:absolute;inset:36px;border:1.5px solid rgba(255,255,255,.08);z-index:4;pointer-events:none;}}
 .firma{{position:absolute;left:0;right:0;bottom:52px;text-align:center;z-index:30;
   font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:24px;letter-spacing:.14em;color:{V};}}
