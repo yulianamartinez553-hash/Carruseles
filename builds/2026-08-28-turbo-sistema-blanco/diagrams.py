@@ -118,16 +118,25 @@ def diagram_02() -> str:
         ("SEÑALES", IC["bolt"]),
         ("DATOS", IC["folder"]),
     ]
-    orbit = ""
     import math
 
-    cx, cy, r = 230, 210, 155
+    vb_w, vb_h = 640, 480
+    cx, cy = vb_w // 2, vb_h // 2 - 10
+    r_ring = 200
+    r_node = 200
+
+    node_marks = ""
     for i, (lbl, ico) in enumerate(nodes):
         ang = -math.pi / 2 + i * (2 * math.pi / len(nodes))
-        x = cx + int(r * math.cos(ang))
-        y = cy + int(r * math.sin(ang))
-        orbit += f"""<div class="onode" style="left:{x}px;top:{y}px">
-          <div class="onico">{ico}</div><div class="olbl">{lbl}</div></div>"""
+        nx = cx + int(r_node * math.cos(ang))
+        ny = cy + int(r_node * math.sin(ang))
+        node_marks += f"""
+    <g class="onode-svg" transform="translate({nx},{ny})">
+      <rect x="-36" y="-36" width="72" height="72" rx="14" fill="#121212" stroke="{V}" stroke-width="2" opacity="0.95"/>
+      <g transform="translate(-18,-18)">{ico.replace('width="36"', 'width="36"').replace('<svg ', '<svg ')}</g>
+      <text x="0" y="52" text-anchor="middle" fill="{TX}" font-family="'IBM Plex Mono',monospace" font-size="11" font-weight="600" letter-spacing="0.06em">{lbl}</text>
+    </g>"""
+
     side = "".join(
         [
             side_item(IC["clip"], "RECIBE", "Tu brief de mercado ideal"),
@@ -139,19 +148,18 @@ def diagram_02() -> str:
     return f"""
 <div class="dia dia-02">
   <div class="dia-orbit-wrap">
-    <svg class="orbit-lines" viewBox="0 0 400 360"><circle cx="200" cy="180" r="130" fill="none" stroke="{V}" stroke-width="1.5" stroke-dasharray="6 4" opacity=".5"/>
-    <line x1="200" y1="180" x2="200" y2="50" stroke="{V}" stroke-width="1" opacity=".3"/>
-    <line x1="200" y1="180" x2="330" y2="180" stroke="{V}" stroke-width="1" opacity=".3"/>
-    <line x1="200" y1="180" x2="200" y2="310" stroke="{V}" stroke-width="1" opacity=".3"/>
-    <line x1="200" y1="180" x2="70" y2="180" stroke="{V}" stroke-width="1" opacity=".3"/>
+    <svg class="orbit-svg" viewBox="0 0 {vb_w} {vb_h}" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="{cx}" cy="{cy}" r="{r_ring}" fill="none" stroke="{V}" stroke-width="2.5" stroke-dasharray="8 6" opacity="0.55"/>
+      <circle cx="{cx}" cy="{cy}" r="128" fill="rgba(0,255,178,0.04)" stroke="{V}" stroke-width="1.5" opacity="0.25"/>
+      <g transform="translate({cx},{cy})">
+        <circle r="86" fill="rgba(0,255,178,0.06)" stroke="{V}" stroke-width="2" opacity="0.45"/>
+        <image href="{turbo}" x="-76" y="-76" width="152" height="152" preserveAspectRatio="xMidYMid meet"/>
+        <text y="102" text-anchor="middle" fill="{V}" font-family="'IBM Plex Mono',monospace" font-size="13" font-weight="600" letter-spacing="0.14em">AGENTE TURBO</text>
+      </g>
+      {node_marks}
     </svg>
-    <div class="ocenter">
-      <img src="{turbo}" alt="Turbo"/>
-      <div class="ocap">AGENTE TURBO</div>
-    </div>
-    {orbit}
   </div>
-  <div class="dia-side-list"><div class="side-hd">QUÉ HACE</div>{side}</div>
+  <div class="dia-side-grid"><div class="side-hd">QUÉ HACE</div><div class="side-items">{side}</div></div>
   <div class="flow-bar mini">{flow_step(IC['clip'],'RECIBE')}{flow_step(IC['people'],'DIVIDE')}{flow_step(IC['target'],'ASIGNA',False)}</div>
 </div>"""
 
@@ -438,17 +446,13 @@ DIAGRAM_CSS = """
   font-size:13px;letter-spacing:.08em;color:{TX};}}
 .farr{{color:{V};font-size:20px;font-weight:700;margin:0 4px;}}
 
-/* Slide 02 orbit */
-.dia-02{{display:grid;grid-template-columns:1fr 240px;gap:16px;align-items:start;min-height:420px;}}
-.dia-orbit-wrap{{position:relative;height:360px;}}
-.orbit-lines{{position:absolute;inset:0;width:100%;height:100%;}}
-.ocenter{{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;z-index:3;}}
-.ocenter img{{width:100px;height:100px;object-fit:contain;}}
-.ocap{{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.14em;color:{V};margin-top:6px;}}
-.onode{{position:absolute;transform:translate(-50%,-50%);text-align:center;z-index:2;}}
-.onico{{width:48px;height:48px;background:{PN};border:1.5px solid rgba(0,255,178,.45);border-radius:12px;
-  display:flex;align-items:center;justify-content:center;margin:0 auto;box-shadow:0 2px 8px rgba(0,0,0,.06);}}
-.olbl{{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.08em;color:{TX};margin-top:4px;}}
+/* Slide 02 orbit — SVG único centrado, sin superposición */
+.dia-02{{display:flex;flex-direction:column;align-items:center;gap:14px;width:100%;}}
+.dia-orbit-wrap{{width:100%;display:flex;justify-content:center;align-items:center;}}
+.orbit-svg{{width:100%;max-width:740px;height:auto;display:block;margin:0 auto;}}
+.onode-svg{{pointer-events:none;}}
+.dia-side-grid{{width:100%;max-width:960px;background:{PN};border:1.5px solid {BD};border-radius:14px;padding:16px 18px;}}
+.dia-side-grid .side-items{{display:grid;grid-template-columns:repeat(2,1fr);gap:0 20px;}}
 .dia-side-list{{background:{PN};border:1.5px solid {BD};border-radius:14px;padding:16px;}}
 .side-hd{{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:13px;letter-spacing:.14em;color:{V};margin-bottom:12px;}}
 .sitem{{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid {BD};}}
@@ -456,7 +460,7 @@ DIAGRAM_CSS = """
 .sico{{width:40px;height:40px;background:rgba(0,255,178,.06);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}}
 .stit{{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:13px;color:{TX};}}
 .sdesc{{font-size:14px;font-weight:500;color:{GY};margin-top:2px;line-height:1.25;}}
-.dia-02 .flow-bar{{grid-column:1/-1;}}
+.dia-02 .flow-bar{{width:100%;max-width:960px;}}
 
 /* Slide 03 memoria */
 .dia-03{{display:grid;grid-template-columns:220px 52px 200px 52px 220px;gap:4px;align-items:center;min-height:380px;}}
@@ -557,7 +561,7 @@ DIAGRAM_CSS = """
 /* Slide 09 hardware */
 .dia-09{{display:grid;grid-template-columns:1fr 220px;gap:14px;}}
 .hw-wrap{{position:relative;height:320px;display:flex;align-items:center;justify-content:center;}}
-.hw-base{{position:absolute;bottom:40px;width:200px;height:20px;background:linear-gradient(180deg,{V},rgba(0,255,178,.3));border-radius:50%;filter:blur(2px);}}
+.hw-base{{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);width:200px;height:20px;background:linear-gradient(180deg,{V},rgba(0,255,178,.3));border-radius:50%;filter:blur(2px);}}
 .hw-turbo{{width:140px;height:140px;object-fit:contain;position:relative;z-index:2;filter:drop-shadow(0 8px 24px rgba(0,255,178,.25));}}
 .hw-screen{{position:absolute;top:20px;right:0;width:220px;background:{PN};border:1.5px solid {BD};border-radius:14px;padding:16px;box-shadow:0 8px 24px rgba(0,0,0,.06);}}
 .hw-hd{{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.12em;color:{V};margin-bottom:12px;}}
