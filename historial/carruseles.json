@@ -1,5 +1,5 @@
 {
-  "ultimo_id": "2026-08-27-turbo-prospectos",
+  "ultimo_id": "2026-08-28-turbo-sistema-blanco",
   "carruseles": [
     {
       "id": "2026-07-01-demo-memoria-stlabs",
@@ -170,6 +170,14 @@
       "slides": 8,
       "fondo": "lino_tela",
       "familia_visual": "before_after"
+    },
+    {
+      "id": "2026-08-28-turbo-sistema-blanco",
+      "fecha": "2026-08-28",
+      "titulo": "Así funciona el sistema Turbo de prospectos",
+      "slides": 10,
+      "fondo": "papel_blanco",
+      "familia_visual": "manifiesto"
     }
   ]
 }

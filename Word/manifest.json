@@ -1,16 +1,11 @@
 {
-  "id": "2026-08-27-turbo-prospectos",
-  "fecha": "2026-08-27",
-  "titulo": "Turbo busca prospectos para tu negocio",
-  "slides": 8,
-  "fondo": "lino_tela",
-  "familia_visual": "before_after",
-  "origen": "clonado",
+  "id": "2026-08-28-turbo-sistema-blanco",
+  "titulo": "Así funciona el sistema Turbo de prospectos",
+  "slides": 10,
+  "fondo": "papel_blanco",
+  "familia_visual": "manifiesto",
+  "origen": "original",
   "keyword_portada": "TURBO",
-  "modo": "negro",
-  "cta": "TURBO",
-  "accent": "#00FFB2",
-  "firma": "sebastian.stlabs.ar",
-  "idioma": "es-AR",
-  "notas": "Portada estilo referencia (Impact + 24/7 grande). Mascota oficial Turbo al centro. Solo español."
+  "build": "builds/2026-08-28-turbo-sistema-blanco",
+  "entrega": "Word/STLabs-Turbo-Sistema-Blanco"
 }

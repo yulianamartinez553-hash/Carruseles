@@ -1,5 +1,5 @@
-STLabs — Turbo busca prospectos
-Clone blueprint → sebastian.stlabs.ar
-Slides: 8 · Keyword: TURBO
-Accent #00FFB2 · Fondo negro (lino_tela) · Solo español
+STLabs — Sistema Turbo (fondo blanco)
+Dashboard técnico → sebastian.stlabs.ar
+Slides: 10 · Keyword: TURBO
+Accent #00FFB2 · Fondo papel_blanco · Solo español
 Cierre: Turbo + especialización 1ª persona (Sebastián)
