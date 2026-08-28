@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Carrusel STLabs — Sistema Turbo (10 slides, fondo blanco, dashboard técnico)."""
+"""Carrusel STLabs — Sistema Turbo (10 slides, fondo negro, dashboard técnico)."""
 from __future__ import annotations
 
 import json
@@ -10,11 +10,11 @@ from diagrams import DIAGRAM_CSS, diagram
 B = Path(__file__).resolve().parent
 FONTS = Path("/tmp/stlabs-fonts")
 V = "#00FFB2"
-BG = "#F3F2EE"
-TX = "#0A0A0A"
-GY = "#6B7280"
-BD = "#D8D6D0"
-PN = "#FFFFFF"
+BG = "#0A0A0A"
+TX = "#F2F2F2"
+GY = "#9aa39c"
+BD = "#2A2A2A"
+PN = "#141414"
 TOTAL = 10
 
 
@@ -52,62 +52,69 @@ CSS = f"""
 {font_css()}
 {DIAGRAM_CSS}
 *{{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision;}}
-html,body{{background:#E8E7E3;}}
+html,body{{background:#000;}}
 .sheet{{display:flex;flex-direction:column;gap:36px;padding:28px;width:max-content;}}
 .slide{{position:relative;width:1080px;height:1350px;overflow:hidden;background:{BG};color:{TX};}}
 
-/* Textura papel + retícula técnica */
-.slide::before{{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.55;
+/* Retícula verde + manchas blur */
+.slide::before{{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
   background-image:
-    linear-gradient(rgba(0,255,178,.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,255,178,.06) 1px, transparent 1px);
-  background-size:48px 48px;}}
-.slide::after{{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.35;
-  background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.012) 3px,rgba(0,0,0,.012) 4px);}}
+    linear-gradient(rgba(0,255,178,.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,178,.18) 1px, transparent 1px);
+  background-size:52px 52px;opacity:1;}}
+.slide::after{{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(ellipse 420px 320px at 12% 18%, rgba(0,255,178,.16), transparent 70%),
+    radial-gradient(ellipse 380px 300px at 88% 12%, rgba(0,255,178,.12), transparent 68%),
+    radial-gradient(ellipse 500px 360px at 78% 72%, rgba(0,255,178,.10), transparent 70%),
+    radial-gradient(ellipse 360px 280px at 18% 82%, rgba(0,255,178,.08), transparent 68%);
+  filter:blur(28px);opacity:.9;}}
 
 /* HUD marco técnico */
 .hud-tl{{position:absolute;top:44px;left:48px;z-index:20;display:flex;align-items:center;gap:10px;
-  font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:15px;color:{TX};letter-spacing:.06em;}}
-.hud-tl .sun{{color:{V};font-size:18px;}}
+  font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:16px;color:{TX};letter-spacing:.06em;}}
+.hud-tl .sun{{color:{V};font-size:20px;}}
 .hud-tr{{position:absolute;top:44px;right:48px;z-index:20;font-family:'IBM Plex Mono',monospace;font-weight:600;
-  font-size:12px;letter-spacing:.1em;color:{GY};display:flex;align-items:center;gap:8px;}}
-.hud-tr .dot{{width:7px;height:7px;border-radius:50%;background:{V};box-shadow:0 0 6px rgba(0,255,178,.5);}}
+  font-size:13px;letter-spacing:.1em;color:{GY};display:flex;align-items:center;gap:8px;}}
+.hud-tr .dot{{width:8px;height:8px;border-radius:50%;background:{V};box-shadow:0 0 8px rgba(0,255,178,.6);}}
 .hud-br{{position:absolute;bottom:108px;left:48px;right:48px;z-index:20;display:flex;justify-content:space-between;
-  font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:11px;letter-spacing:.12em;color:{GY};opacity:.7;}}
-.corner{{position:absolute;width:28px;height:28px;border:2px solid rgba(0,255,178,.35);z-index:19;pointer-events:none;}}
+  font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:12px;letter-spacing:.12em;color:{GY};opacity:.85;}}
+.corner{{position:absolute;width:32px;height:32px;border:2px solid rgba(0,255,178,.45);z-index:19;pointer-events:none;}}
 .corner-tl{{top:36px;left:36px;border-right:none;border-bottom:none;}}
 .corner-tr{{top:36px;right:36px;border-left:none;border-bottom:none;}}
 .corner-bl{{bottom:96px;left:36px;border-right:none;border-top:none;}}
 .corner-br{{bottom:96px;right:36px;border-left:none;border-top:none;}}
-.prog{{position:absolute;left:48px;right:48px;bottom:88px;height:3px;background:{BD};z-index:18;border-radius:2px;overflow:hidden;}}
-.prog span{{display:block;height:100%;background:{V};box-shadow:0 0 8px rgba(0,255,178,.4);}}
+.prog{{position:absolute;left:48px;right:48px;bottom:88px;height:4px;background:#1a1a1a;z-index:18;border-radius:2px;overflow:hidden;}}
+.prog span{{display:block;height:100%;background:{V};box-shadow:0 0 10px rgba(0,255,178,.5);}}
 
-.frame{{position:absolute;inset:32px;border:1.5px solid rgba(0,0,0,.06);z-index:4;pointer-events:none;border-radius:4px;}}
+.frame{{position:absolute;inset:32px;border:1.5px solid rgba(255,255,255,.08);z-index:4;pointer-events:none;border-radius:4px;}}
 .firma{{position:absolute;left:0;right:0;bottom:52px;text-align:center;z-index:30;
-  font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:22px;letter-spacing:.14em;color:{V};}}
-.content{{position:absolute;left:52px;right:52px;top:88px;bottom:120px;z-index:8;
+  font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:24px;letter-spacing:.14em;color:{V};}}
+.content{{position:absolute;left:48px;right:48px;top:82px;bottom:118px;z-index:8;
   display:flex;flex-direction:column;}}
-.meta{{display:flex;align-items:center;gap:12px;margin-bottom:8px;flex:0 0 auto;}}
-.meta .n{{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:15px;letter-spacing:.08em;
-  color:{TX};border:1.5px solid {BD};padding:7px 11px;line-height:1;background:{PN};}}
-.meta .tag{{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px;letter-spacing:.14em;
+.meta{{display:flex;align-items:center;gap:12px;margin-bottom:6px;flex:0 0 auto;}}
+.meta .n{{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:16px;letter-spacing:.08em;
+  color:{TX};border:1.5px solid rgba(0,255,178,.35);padding:8px 12px;line-height:1;background:rgba(0,0,0,.5);}}
+.meta .tag{{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:15px;letter-spacing:.14em;
   text-transform:uppercase;color:{GY};}}
-.meta .dot{{width:7px;height:7px;border-radius:50%;background:{V};box-shadow:0 0 8px rgba(0,255,178,.5);}}
-.title{{font-family:'Impact','Anton','Bebas Neue',sans-serif;font-weight:400;font-size:72px;line-height:.92;
+.meta .dot{{width:8px;height:8px;border-radius:50%;background:{V};box-shadow:0 0 10px rgba(0,255,178,.6);}}
+.title{{font-family:'Impact','Anton','Bebas Neue',sans-serif;font-weight:400;font-size:64px;line-height:.9;
   letter-spacing:.01em;text-transform:uppercase;text-align:left;color:{TX};flex:0 0 auto;}}
 .title .g{{color:{V};}}
-.title-u{{display:block;width:200px;height:5px;background:{V};margin-top:10px;border-radius:2px;}}
-.lead{{font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:30px;line-height:1.25;
-  color:{GY};margin-top:8px;max-width:960px;flex:0 0 auto;}}
+.title-u{{display:block;width:220px;height:6px;background:{V};margin-top:8px;border-radius:2px;box-shadow:0 0 12px rgba(0,255,178,.4);}}
+.lead{{font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:28px;line-height:1.22;
+  color:{GY};margin-top:6px;max-width:960px;flex:0 0 auto;}}
 .lead b{{color:{TX};font-weight:700;}}
-.graphic{{flex:1 1 auto;display:flex;align-items:center;justify-content:center;min-height:0;margin-top:8px;overflow:hidden;}}
+.graphic{{flex:1 1 auto;display:flex;align-items:center;justify-content:center;min-height:0;margin-top:4px;overflow:visible;}}
+.graphic .dia{{transform:scale(1.22);transform-origin:center center;}}
 
-.slide-hero .title{{font-size:68px;line-height:.9;}}
-.slide-hero .lead{{font-size:28px;}}
+.slide-hero .title{{font-size:62px;line-height:.88;}}
+.slide-hero .lead{{font-size:26px;}}
 .slide-last .graphic{{flex:0 1 auto;}}
-.slide-last .cta-inline{{margin-top:auto;border:2.5px solid {V};background:rgba(0,255,178,.06);padding:14px 18px;border-radius:12px;}}
-.slide-last .cta-inline .kw{{font-family:'Impact',sans-serif;font-size:52px;color:{V};letter-spacing:.06em;line-height:1;}}
-.slide-last .cta-inline .hint{{font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:26px;color:{GY};margin-top:6px;line-height:1.25;}}
+.slide-last .graphic .dia{{transform:scale(1.08);transform-origin:center top;}}
+.slide-last .cta-inline{{margin-top:auto;border:2.5px solid {V};background:rgba(0,255,178,.08);padding:16px 20px;border-radius:14px;}}
+.slide-last .cta-inline .kw{{font-family:'Impact',sans-serif;font-size:58px;color:{V};letter-spacing:.06em;line-height:1;}}
+.slide-last .cta-inline .hint{{font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:28px;color:{GY};margin-top:8px;line-height:1.25;}}
 .slide-last .cta-inline .hint b{{color:{TX};font-weight:700;}}
 """
 

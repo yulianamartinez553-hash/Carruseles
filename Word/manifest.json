@@ -1,11 +1,16 @@
 {
   "id": "2026-08-28-turbo-sistema-blanco",
+  "fecha": "2026-08-28",
   "titulo": "Así funciona el sistema Turbo de prospectos",
   "slides": 10,
   "fondo": "papel_blanco",
   "familia_visual": "manifiesto",
   "origen": "original",
   "keyword_portada": "TURBO",
-  "build": "builds/2026-08-28-turbo-sistema-blanco",
-  "entrega": "Word/STLabs-Turbo-Sistema-Blanco"
+  "modo": "blanco",
+  "cta": "TURBO",
+  "accent": "#00FFB2",
+  "firma": "sebastian.stlabs.ar",
+  "idioma": "es-AR",
+  "notas": "Dashboard técnico fondo blanco. Mínimo 3-6 elementos visuales por slide. Mascota oficial Turbo."
 }

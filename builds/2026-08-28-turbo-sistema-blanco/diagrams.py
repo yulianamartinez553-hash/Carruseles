@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Diagramas ricos estilo dashboard técnico — Turbo sistema (fondo blanco)."""
+"""Diagramas ricos estilo dashboard técnico — Turbo sistema (fondo negro)."""
 from __future__ import annotations
 
 import base64
@@ -9,11 +9,11 @@ B = Path(__file__).resolve().parent
 ELEM = B / "assets" / "elements"
 
 V = "#00FFB2"
-TX = "#0A0A0A"
-GY = "#6B7280"
-BD = "#D8D6D0"
-PN = "#FFFFFF"
-RD = "#E5484D"
+TX = "#F2F2F2"
+GY = "#9aa39c"
+BD = "#2A2A2A"
+PN = "#121212"
+RD = "#FF5247"
 
 
 def elem(name: str) -> str:
@@ -48,28 +48,28 @@ def side_item(icon: str, title: str, desc: str) -> str:
 
 # ── Iconos SVG inline ──
 IC = {
-    "wheel": f'<svg viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="9" fill="none" stroke="{V}" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="{V}"/><line x1="12" y1="3" x2="12" y2="7" stroke="{V}" stroke-width="2"/><line x1="12" y1="17" x2="12" y2="21" stroke="{V}" stroke-width="2"/><line x1="3" y1="12" x2="7" y2="12" stroke="{V}" stroke-width="2"/><line x1="17" y1="12" x2="21" y2="12" stroke="{V}" stroke-width="2"/></svg>',
-    "search": f'<svg viewBox="0 0 24 24" width="28" height="28"><circle cx="10" cy="10" r="7" fill="none" stroke="{V}" stroke-width="2"/><line x1="15" y1="15" x2="21" y2="21" stroke="{V}" stroke-width="2.5" stroke-linecap="round"/></svg>',
-    "chart": f'<svg viewBox="0 0 24 24" width="28" height="28"><rect x="4" y="12" width="4" height="8" fill="{V}"/><rect x="10" y="8" width="4" height="12" fill="{V}"/><rect x="16" y="4" width="4" height="16" fill="{V}"/></svg>',
-    "eye": f'<svg viewBox="0 0 24 24" width="28" height="28"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z" fill="none" stroke="{V}" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="{V}"/></svg>',
-    "brain": f'<svg viewBox="0 0 24 24" width="28" height="28"><path d="M12 4c-3 0-5 2-5 5 0 1 .5 2 1 3-1 1-2 2-2 4 0 2 2 4 4 4h4c2 0 4-2 4-4 0-2-1-3-2-4 1-1 1-2 1-3 0-3-2-5-5-5z" fill="none" stroke="{V}" stroke-width="2"/></svg>',
-    "bolt": f'<svg viewBox="0 0 24 24" width="28" height="28"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" fill="{V}"/></svg>',
-    "people": f'<svg viewBox="0 0 24 24" width="28" height="28"><circle cx="9" cy="8" r="3" fill="none" stroke="{V}" stroke-width="2"/><path d="M2 20c0-4 3-6 7-6s7 2 7 6" fill="none" stroke="{V}" stroke-width="2"/><circle cx="17" cy="9" r="2.5" fill="none" stroke="{V}" stroke-width="1.5"/><path d="M14 20c0-3 2-4 5-4" fill="none" stroke="{V}" stroke-width="1.5"/></svg>',
-    "rocket": f'<svg viewBox="0 0 24 24" width="28" height="28"><path d="M12 2c4 4 6 8 6 14-3-1-5-2-6-4-1 2-3 3-6 4 0-6 2-10 6-14z" fill="none" stroke="{V}" stroke-width="2"/><circle cx="12" cy="11" r="2" fill="{V}"/></svg>',
-    "clip": f'<svg viewBox="0 0 24 24" width="28" height="28"><path d="M8 12l8-8a4 4 0 016 6l-10 10a4 4 0 01-6-6l9-9" fill="none" stroke="{V}" stroke-width="2" stroke-linecap="round"/></svg>',
-    "target": f'<svg viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="9" fill="none" stroke="{V}" stroke-width="2"/><circle cx="12" cy="12" r="5" fill="none" stroke="{V}" stroke-width="2"/><circle cx="12" cy="12" r="1.5" fill="{V}"/></svg>',
-    "db": f'<svg viewBox="0 0 24 24" width="28" height="28"><ellipse cx="12" cy="6" rx="8" ry="3" fill="none" stroke="{V}" stroke-width="2"/><path d="M4 6v12c0 2 4 3 8 3s8-1 8-3V6" fill="none" stroke="{V}" stroke-width="2"/></svg>',
-    "shield": f'<svg viewBox="0 0 24 24" width="28" height="28"><path d="M12 2l8 4v6c0 5-4 9-8 10C8 21 4 17 4 12V6l8-4z" fill="none" stroke="{V}" stroke-width="2"/></svg>',
-    "check": f'<svg viewBox="0 0 24 24" width="28" height="28"><path d="M4 12l6 6L20 6" fill="none" stroke="{V}" stroke-width="2.5" stroke-linecap="round"/></svg>',
-    "x": f'<svg viewBox="0 0 24 24" width="28" height="28"><path d="M6 6l12 12M18 6L6 18" stroke="{RD}" stroke-width="2.5" stroke-linecap="round"/></svg>',
-    "up": f'<svg viewBox="0 0 24 24" width="28" height="28"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="{V}" stroke-width="2.5" stroke-linecap="round"/></svg>',
-    "play": f'<svg viewBox="0 0 24 24" width="28" height="28"><polygon points="8,5 19,12 8,19" fill="{V}"/></svg>',
-    "globe": f'<svg viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="9" fill="none" stroke="{V}" stroke-width="2"/><ellipse cx="12" cy="12" rx="4" ry="9" fill="none" stroke="{V}" stroke-width="1.5"/><line x1="3" y1="12" x2="21" y2="12" stroke="{V}" stroke-width="1.5"/></svg>',
-    "folder": f'<svg viewBox="0 0 24 24" width="28" height="28"><path d="M3 7h7l2 2h9v10H3V7z" fill="none" stroke="{V}" stroke-width="2"/></svg>',
-    "msg": f'<svg viewBox="0 0 24 24" width="28" height="28"><rect x="3" y="5" width="18" height="13" rx="3" fill="none" stroke="{V}" stroke-width="2"/><path d="M8 18l-3 3v-3" fill="none" stroke="{V}" stroke-width="2"/></svg>',
-    "clock": f'<svg viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="9" fill="none" stroke="{V}" stroke-width="2"/><path d="M12 7v5l3 3" fill="none" stroke="{V}" stroke-width="2" stroke-linecap="round"/></svg>',
-    "chip": f'<svg viewBox="0 0 24 24" width="28" height="28"><rect x="5" y="5" width="14" height="14" rx="2" fill="none" stroke="{V}" stroke-width="2"/><rect x="9" y="9" width="6" height="6" fill="{V}"/></svg>',
-    "star": f'<svg viewBox="0 0 24 24" width="28" height="28"><polygon points="12,2 15,9 22,9 16,14 18,21 12,17 6,21 8,14 2,9 9,9" fill="none" stroke="{V}" stroke-width="2"/></svg>',
+    "wheel": f'<svg viewBox="0 0 24 24" width="36" height="36"><circle cx="12" cy="12" r="9" fill="none" stroke="{V}" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="{V}"/><line x1="12" y1="3" x2="12" y2="7" stroke="{V}" stroke-width="2"/><line x1="12" y1="17" x2="12" y2="21" stroke="{V}" stroke-width="2"/><line x1="3" y1="12" x2="7" y2="12" stroke="{V}" stroke-width="2"/><line x1="17" y1="12" x2="21" y2="12" stroke="{V}" stroke-width="2"/></svg>',
+    "search": f'<svg viewBox="0 0 24 24" width="36" height="36"><circle cx="10" cy="10" r="7" fill="none" stroke="{V}" stroke-width="2"/><line x1="15" y1="15" x2="21" y2="21" stroke="{V}" stroke-width="2.5" stroke-linecap="round"/></svg>',
+    "chart": f'<svg viewBox="0 0 24 24" width="36" height="36"><rect x="4" y="12" width="4" height="8" fill="{V}"/><rect x="10" y="8" width="4" height="12" fill="{V}"/><rect x="16" y="4" width="4" height="16" fill="{V}"/></svg>',
+    "eye": f'<svg viewBox="0 0 24 24" width="36" height="36"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z" fill="none" stroke="{V}" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="{V}"/></svg>',
+    "brain": f'<svg viewBox="0 0 24 24" width="36" height="36"><path d="M12 4c-3 0-5 2-5 5 0 1 .5 2 1 3-1 1-2 2-2 4 0 2 2 4 4 4h4c2 0 4-2 4-4 0-2-1-3-2-4 1-1 1-2 1-3 0-3-2-5-5-5z" fill="none" stroke="{V}" stroke-width="2"/></svg>',
+    "bolt": f'<svg viewBox="0 0 24 24" width="36" height="36"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" fill="{V}"/></svg>',
+    "people": f'<svg viewBox="0 0 24 24" width="36" height="36"><circle cx="9" cy="8" r="3" fill="none" stroke="{V}" stroke-width="2"/><path d="M2 20c0-4 3-6 7-6s7 2 7 6" fill="none" stroke="{V}" stroke-width="2"/><circle cx="17" cy="9" r="2.5" fill="none" stroke="{V}" stroke-width="1.5"/><path d="M14 20c0-3 2-4 5-4" fill="none" stroke="{V}" stroke-width="1.5"/></svg>',
+    "rocket": f'<svg viewBox="0 0 24 24" width="36" height="36"><path d="M12 2c4 4 6 8 6 14-3-1-5-2-6-4-1 2-3 3-6 4 0-6 2-10 6-14z" fill="none" stroke="{V}" stroke-width="2"/><circle cx="12" cy="11" r="2" fill="{V}"/></svg>',
+    "clip": f'<svg viewBox="0 0 24 24" width="36" height="36"><path d="M8 12l8-8a4 4 0 016 6l-10 10a4 4 0 01-6-6l9-9" fill="none" stroke="{V}" stroke-width="2" stroke-linecap="round"/></svg>',
+    "target": f'<svg viewBox="0 0 24 24" width="36" height="36"><circle cx="12" cy="12" r="9" fill="none" stroke="{V}" stroke-width="2"/><circle cx="12" cy="12" r="5" fill="none" stroke="{V}" stroke-width="2"/><circle cx="12" cy="12" r="1.5" fill="{V}"/></svg>',
+    "db": f'<svg viewBox="0 0 24 24" width="36" height="36"><ellipse cx="12" cy="6" rx="8" ry="3" fill="none" stroke="{V}" stroke-width="2"/><path d="M4 6v12c0 2 4 3 8 3s8-1 8-3V6" fill="none" stroke="{V}" stroke-width="2"/></svg>',
+    "shield": f'<svg viewBox="0 0 24 24" width="36" height="36"><path d="M12 2l8 4v6c0 5-4 9-8 10C8 21 4 17 4 12V6l8-4z" fill="none" stroke="{V}" stroke-width="2"/></svg>',
+    "check": f'<svg viewBox="0 0 24 24" width="36" height="36"><path d="M4 12l6 6L20 6" fill="none" stroke="{V}" stroke-width="2.5" stroke-linecap="round"/></svg>',
+    "x": f'<svg viewBox="0 0 24 24" width="36" height="36"><path d="M6 6l12 12M18 6L6 18" stroke="{RD}" stroke-width="2.5" stroke-linecap="round"/></svg>',
+    "up": f'<svg viewBox="0 0 24 24" width="36" height="36"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="{V}" stroke-width="2.5" stroke-linecap="round"/></svg>',
+    "play": f'<svg viewBox="0 0 24 24" width="36" height="36"><polygon points="8,5 19,12 8,19" fill="{V}"/></svg>',
+    "globe": f'<svg viewBox="0 0 24 24" width="36" height="36"><circle cx="12" cy="12" r="9" fill="none" stroke="{V}" stroke-width="2"/><ellipse cx="12" cy="12" rx="4" ry="9" fill="none" stroke="{V}" stroke-width="1.5"/><line x1="3" y1="12" x2="21" y2="12" stroke="{V}" stroke-width="1.5"/></svg>',
+    "folder": f'<svg viewBox="0 0 24 24" width="36" height="36"><path d="M3 7h7l2 2h9v10H3V7z" fill="none" stroke="{V}" stroke-width="2"/></svg>',
+    "msg": f'<svg viewBox="0 0 24 24" width="36" height="36"><rect x="3" y="5" width="18" height="13" rx="3" fill="none" stroke="{V}" stroke-width="2"/><path d="M8 18l-3 3v-3" fill="none" stroke="{V}" stroke-width="2"/></svg>',
+    "clock": f'<svg viewBox="0 0 24 24" width="36" height="36"><circle cx="12" cy="12" r="9" fill="none" stroke="{V}" stroke-width="2"/><path d="M12 7v5l3 3" fill="none" stroke="{V}" stroke-width="2" stroke-linecap="round"/></svg>',
+    "chip": f'<svg viewBox="0 0 24 24" width="36" height="36"><rect x="5" y="5" width="14" height="14" rx="2" fill="none" stroke="{V}" stroke-width="2"/><rect x="9" y="9" width="6" height="6" fill="{V}"/></svg>',
+    "star": f'<svg viewBox="0 0 24 24" width="36" height="36"><polygon points="12,2 15,9 22,9 16,14 18,21 12,17 6,21 8,14 2,9 9,9" fill="none" stroke="{V}" stroke-width="2"/></svg>',
 }
 
 
@@ -121,7 +121,7 @@ def diagram_02() -> str:
     orbit = ""
     import math
 
-    cx, cy, r = 200, 180, 130
+    cx, cy, r = 230, 210, 155
     for i, (lbl, ico) in enumerate(nodes):
         ang = -math.pi / 2 + i * (2 * math.pi / len(nodes))
         x = cx + int(r * math.cos(ang))
@@ -161,17 +161,17 @@ def diagram_03() -> str:
     left = "".join(
         [
             _box("TAREA", "◇", 0),
-            _box("ACCIÓN", "▶", 72),
-            _box("RESULTADO", "■", 144),
-            _box("CONTEXTO", "◎", 216),
+            _box("ACCIÓN", "▶", 88),
+            _box("RESULTADO", "■", 176),
+            _box("CONTEXTO", "◎", 264),
         ]
     )
     right = "".join(
         [
             _box("QUÉ FUNCIONA", "★", 0),
-            _box("QUÉ FALLÓ", "✕", 72),
-            _box("QUÉ MEJORÓ", "↗", 144),
-            _box("QUÉ CAMBIAR", "◇", 216),
+            _box("QUÉ FALLÓ", "✕", 88),
+            _box("QUÉ MEJORÓ", "↗", 176),
+            _box("QUÉ CAMBIAR", "◇", 264),
         ]
     )
     return f"""
@@ -196,7 +196,7 @@ def _box(label: str, icon: str, y: int) -> str:
 
 
 def _arrows(n: int, rev: bool = False) -> str:
-    ys = [22 + i * 72 for i in range(n)]
+    ys = [28 + i * 88 for i in range(n)]
     cls = "dia-arrow-h rev" if rev else "dia-arrow-h"
     return "".join(f'<div class="{cls}" style="top:{y}px"></div>' for y in ys)
 
@@ -404,32 +404,31 @@ def diagram_10() -> str:
 
 
 DIAGRAM_CSS = """
-/* ── Diagramas fondo blanco ── */
-.dia{{width:100%;max-width:968px;margin:0 auto;position:relative;}}
+/* ── Diagramas fondo negro (elementos grandes) ── */
+.dia{{width:100%;max-width:976px;margin:0 auto;position:relative;}}
 .dia svg{{display:block;max-width:100%;}}
 
 /* Slide 01 portada dashboard */
 .dia-01{{display:flex;flex-direction:column;gap:14px;align-items:stretch;}}
-.dia-hero{{position:relative;height:280px;display:flex;align-items:center;justify-content:center;}}
-.dia-hero-num{{position:absolute;right:0;top:-10px;font-family:'Impact',sans-serif;font-size:180px;line-height:1;
-  color:rgba(0,255,178,.12);letter-spacing:-.04em;pointer-events:none;}}
+.dia-hero{{position:relative;height:340px;display:flex;align-items:center;justify-content:center;}}
+.dia-hero-num{{position:absolute;right:-10px;top:-20px;font-family:'Impact',sans-serif;font-size:240px;line-height:1;
+  color:rgba(0,255,178,.14);letter-spacing:-.04em;pointer-events:none;}}
 .dia-hero-img{{position:relative;z-index:2;}}
-.dia-hero-img img{{width:200px;height:200px;object-fit:contain;filter:drop-shadow(0 8px 24px rgba(0,255,178,.25));}}
+.dia-hero-img img{{width:280px;height:280px;object-fit:contain;filter:drop-shadow(0 10px 32px rgba(0,255,178,.35));}}
 .dia-glow{{position:absolute;inset:-40px;border-radius:50%;background:radial-gradient(circle,rgba(0,255,178,.15),transparent 70%);z-index:-1;}}
-.focus-box{{display:flex;gap:14px;align-items:flex-start;padding:14px 18px;background:{PN};border:1.5px solid rgba(0,255,178,.45);
-  border-radius:14px;box-shadow:0 4px 20px rgba(0,0,0,.04);}}
-.focus-ico{{flex-shrink:0;width:44px;height:44px;display:flex;align-items:center;justify-content:center;
+.focus-box{{display:flex;gap:16px;align-items:flex-start;padding:18px 22px;background:{PN};border:2px solid rgba(0,255,178,.5);
+  border-radius:16px;box-shadow:0 0 24px rgba(0,255,178,.08);}}
+.focus-ico{{flex-shrink:0;width:56px;height:56px;display:flex;align-items:center;justify-content:center;
   background:rgba(0,255,178,.08);border-radius:10px;border:1px solid rgba(0,255,178,.3);}}
-.focus-t{{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px;letter-spacing:.12em;color:{V};}}
-.focus-d{{font-size:18px;font-weight:600;color:{GY};margin-top:4px;line-height:1.3;}}
-.vcard-row{{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}}
+.focus-t{{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:16px;letter-spacing:.12em;color:{V};}}
+.focus-d{{font-size:22px;font-weight:600;color:{GY};margin-top:6px;line-height:1.3;}}
+.vcard-row{{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}}
 .vcard-row.sm{{grid-template-columns:repeat(3,1fr);}}
-.vcard{{background:{PN};border:1.5px solid {BD};border-radius:14px;padding:14px 12px;text-align:center;
-  box-shadow:0 2px 12px rgba(0,0,0,.04);transition:border-color .2s;}}
-.vcard:hover{{border-color:rgba(0,255,178,.5);}}
-.ico{{display:flex;align-items:center;justify-content:center;margin:0 auto 8px;}}
-.vcard-t{{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:13px;letter-spacing:.1em;color:{TX};}}
-.vcard-d{{font-size:14px;font-weight:500;color:{GY};margin-top:6px;line-height:1.25;}}
+.vcard{{background:{PN};border:2px solid rgba(0,255,178,.35);border-radius:16px;padding:18px 14px;text-align:center;
+  box-shadow:0 0 16px rgba(0,255,178,.06);}}
+.ico{{display:flex;align-items:center;justify-content:center;margin:0 auto 10px;}}
+.vcard-t{{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:15px;letter-spacing:.1em;color:{TX};}}
+.vcard-d{{font-size:17px;font-weight:600;color:{GY};margin-top:8px;line-height:1.25;}}
 .vcard-col{{display:flex;flex-direction:column;gap:10px;}}
 .vcard-col.sm .vcard{{padding:12px;}}
 .flow-bar{{display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 16px;
