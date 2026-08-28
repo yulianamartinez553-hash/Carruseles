@@ -404,8 +404,8 @@ def diagram_10() -> str:
 
 
 DIAGRAM_CSS = """
-/* ── Diagramas fondo negro (elementos grandes) ── */
-.dia{{width:100%;max-width:976px;margin:0 auto;position:relative;}}
+/* ── Diagramas fondo negro (HQ nativo, sin transform CSS) ── */
+.dia{{width:100%;max-width:100%;margin:0 auto;position:relative;}}
 .dia svg{{display:block;max-width:100%;}}
 
 /* Slide 01 portada dashboard */

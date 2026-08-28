@@ -194,6 +194,14 @@
       "slides": 10,
       "fondo": "lino_tela",
       "familia_visual": "manifiesto"
+    },
+    {
+      "id": "2026-08-28-turbo-sistema-blanco",
+      "fecha": "2026-08-28",
+      "titulo": "Así funciona el sistema Turbo de prospectos",
+      "slides": 10,
+      "fondo": "lino_tela",
+      "familia_visual": "manifiesto"
     }
   ]
 }

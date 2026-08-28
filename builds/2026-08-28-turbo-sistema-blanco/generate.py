@@ -51,7 +51,7 @@ def font_css() -> str:
 CSS = f"""
 {font_css()}
 {DIAGRAM_CSS}
-*{{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision;}}
+*{{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:subpixel-antialiased;text-rendering:optimizeLegibility;}}
 html,body{{background:#000;}}
 .sheet{{display:flex;flex-direction:column;gap:36px;padding:28px;width:max-content;}}
 .slide{{position:relative;width:1080px;height:1350px;overflow:hidden;background:{BG};color:{TX};}}
@@ -106,12 +106,11 @@ html,body{{background:#000;}}
   color:{GY};margin-top:6px;max-width:960px;flex:0 0 auto;}}
 .lead b{{color:{TX};font-weight:700;}}
 .graphic{{flex:1 1 auto;display:flex;align-items:center;justify-content:center;min-height:0;margin-top:4px;overflow:visible;}}
-.graphic .dia{{transform:scale(1.22);transform-origin:center center;}}
+.graphic .dia{{width:100%;max-width:100%;}}
 
 .slide-hero .title{{font-size:62px;line-height:.88;}}
 .slide-hero .lead{{font-size:26px;}}
 .slide-last .graphic{{flex:0 1 auto;}}
-.slide-last .graphic .dia{{transform:scale(1.08);transform-origin:center top;}}
 .slide-last .cta-inline{{margin-top:auto;border:2.5px solid {V};background:rgba(0,255,178,.08);padding:16px 20px;border-radius:14px;}}
 .slide-last .cta-inline .kw{{font-family:'Impact',sans-serif;font-size:58px;color:{V};letter-spacing:.06em;line-height:1;}}
 .slide-last .cta-inline .hint{{font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:28px;color:{GY};margin-top:8px;line-height:1.25;}}
