@@ -120,10 +120,10 @@ def diagram_02() -> str:
     ]
     import math
 
-    vb_w, vb_h = 640, 480
-    cx, cy = vb_w // 2, vb_h // 2 - 10
-    r_ring = 200
-    r_node = 200
+    vb_w, vb_h = 640, 520
+    cx, cy = vb_w // 2, 280
+    r_ring = 168
+    r_node = 168
 
     node_marks = ""
     for i, (lbl, ico) in enumerate(nodes):
@@ -150,11 +150,11 @@ def diagram_02() -> str:
   <div class="dia-orbit-wrap">
     <svg class="orbit-svg" viewBox="0 0 {vb_w} {vb_h}" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <circle cx="{cx}" cy="{cy}" r="{r_ring}" fill="none" stroke="{V}" stroke-width="2.5" stroke-dasharray="8 6" opacity="0.55"/>
-      <circle cx="{cx}" cy="{cy}" r="128" fill="rgba(0,255,178,0.04)" stroke="{V}" stroke-width="1.5" opacity="0.25"/>
+      <circle cx="{cx}" cy="{cy}" r="108" fill="rgba(0,255,178,0.04)" stroke="{V}" stroke-width="1.5" opacity="0.25"/>
       <g transform="translate({cx},{cy})">
-        <circle r="86" fill="rgba(0,255,178,0.06)" stroke="{V}" stroke-width="2" opacity="0.45"/>
-        <image href="{turbo}" x="-76" y="-76" width="152" height="152" preserveAspectRatio="xMidYMid meet"/>
-        <text y="102" text-anchor="middle" fill="{V}" font-family="'IBM Plex Mono',monospace" font-size="13" font-weight="600" letter-spacing="0.14em">AGENTE TURBO</text>
+        <circle r="72" fill="rgba(0,255,178,0.06)" stroke="{V}" stroke-width="2" opacity="0.45"/>
+        <image href="{turbo}" x="-64" y="-64" width="128" height="128" preserveAspectRatio="xMidYMid meet"/>
+        <text y="88" text-anchor="middle" fill="{V}" font-family="'IBM Plex Mono',monospace" font-size="12" font-weight="600" letter-spacing="0.14em">AGENTE TURBO</text>
       </g>
       {node_marks}
     </svg>
@@ -374,16 +374,21 @@ def diagram_09() -> str:
     )
     return f"""
 <div class="dia dia-09">
-  <div class="hw-wrap">
-    <div class="hw-base"></div>
-    <img class="hw-turbo" src="{turbo}" alt=""/>
+  <div class="hw-main">
+    <div class="hw-turbo-col">
+      <div class="hw-base"></div>
+      <img class="hw-turbo" src="{turbo}" alt=""/>
+    </div>
     <div class="hw-screen">
       <div class="hw-hd">SISTEMA TURBO</div>
       {tag_html}
       <div class="hw-status"><span class="dot-on"></span> OPERANDO</div>
     </div>
+    <div class="hw-side-list">
+      <div class="side-hd">QUÉ TE DA</div>
+      {side}
+    </div>
   </div>
-  <div class="dia-side-list"><div class="side-hd">QUÉ TE DA</div>{side}</div>
   <div class="flow-bar mini">{flow_step(IC['play'],'INICIA')}{flow_step(IC['search'],'BUSCA')}{flow_step(IC['check'],'CONTROLA',False)}</div>
 </div>"""
 
@@ -446,13 +451,16 @@ DIAGRAM_CSS = """
   font-size:13px;letter-spacing:.08em;color:{TX};}}
 .farr{{color:{V};font-size:20px;font-weight:700;margin:0 4px;}}
 
-/* Slide 02 orbit — SVG único centrado, sin superposición */
-.dia-02{{display:flex;flex-direction:column;align-items:center;gap:14px;width:100%;}}
-.dia-orbit-wrap{{width:100%;display:flex;justify-content:center;align-items:center;}}
-.orbit-svg{{width:100%;max-width:740px;height:auto;display:block;margin:0 auto;}}
+/* Slide 02 orbit — SVG único centrado, sin superposición con texto */
+.dia-02{{display:flex;flex-direction:column;align-items:center;gap:12px;width:100%;padding-top:8px;}}
+.dia-orbit-wrap{{width:100%;display:flex;justify-content:center;align-items:flex-start;}}
+.orbit-svg{{width:100%;max-width:580px;height:auto;display:block;margin:0 auto;}}
 .onode-svg{{pointer-events:none;}}
-.dia-side-grid{{width:100%;max-width:960px;background:{PN};border:1.5px solid {BD};border-radius:14px;padding:16px 18px;}}
+.dia-side-grid{{width:100%;max-width:960px;background:{PN};border:1.5px solid {BD};border-radius:14px;padding:14px 18px;}}
 .dia-side-grid .side-items{{display:grid;grid-template-columns:repeat(2,1fr);gap:0 20px;}}
+.dia-side-grid .side-hd{{margin-bottom:8px;}}
+.dia-side-grid .sitem{{padding:8px 0;}}
+.dia-02 .flow-bar{{width:100%;max-width:960px;}}
 .dia-side-list{{background:{PN};border:1.5px solid {BD};border-radius:14px;padding:16px;}}
 .side-hd{{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:13px;letter-spacing:.14em;color:{V};margin-bottom:12px;}}
 .sitem{{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid {BD};}}
@@ -460,7 +468,6 @@ DIAGRAM_CSS = """
 .sico{{width:40px;height:40px;background:rgba(0,255,178,.06);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}}
 .stit{{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:13px;color:{TX};}}
 .sdesc{{font-size:14px;font-weight:500;color:{GY};margin-top:2px;line-height:1.25;}}
-.dia-02 .flow-bar{{width:100%;max-width:960px;}}
 
 /* Slide 03 memoria */
 .dia-03{{display:grid;grid-template-columns:220px 52px 200px 52px 220px;gap:4px;align-items:center;min-height:380px;}}
@@ -558,19 +565,29 @@ DIAGRAM_CSS = """
 .store-ico{{width:32px;height:32px;display:flex;align-items:center;justify-content:center;}}
 .store-chip span{{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.08em;color:{TX};}}
 
-/* Slide 09 hardware */
-.dia-09{{display:grid;grid-template-columns:1fr 220px;gap:14px;}}
-.hw-wrap{{position:relative;height:320px;display:flex;align-items:center;justify-content:center;}}
-.hw-base{{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);width:200px;height:20px;background:linear-gradient(180deg,{V},rgba(0,255,178,.3));border-radius:50%;filter:blur(2px);}}
-.hw-turbo{{width:140px;height:140px;object-fit:contain;position:relative;z-index:2;filter:drop-shadow(0 8px 24px rgba(0,255,178,.25));}}
-.hw-screen{{position:absolute;top:20px;right:0;width:220px;background:{PN};border:1.5px solid {BD};border-radius:14px;padding:16px;box-shadow:0 8px 24px rgba(0,0,0,.06);}}
-.hw-hd{{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.12em;color:{V};margin-bottom:12px;}}
-.htag{{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid {BD};font-size:14px;color:{TX};}}
-.htag b{{color:{V};font-family:'IBM Plex Mono',monospace;}}
-.hw-status{{margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:{V};display:flex;align-items:center;gap:8px;}}
+/* Slide 09 hardware — panel centrado y grande */
+.dia-09{{display:flex;flex-direction:column;align-items:center;gap:12px;width:100%;flex:1;}}
+.hw-main{{display:flex;align-items:stretch;justify-content:center;gap:0;width:100%;max-width:984px;
+  background:{PN};border:2px solid rgba(0,255,178,.35);border-radius:18px;padding:36px 40px;
+  box-shadow:0 0 28px rgba(0,255,178,.08);min-height:400px;}}
+.hw-turbo-col{{position:relative;flex:0 0 220px;display:flex;align-items:center;justify-content:center;min-height:220px;}}
+.hw-base{{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);width:190px;height:24px;
+  background:linear-gradient(180deg,{V},rgba(0,255,178,.3));border-radius:50%;filter:blur(2px);}}
+.hw-turbo{{width:200px;height:200px;object-fit:contain;position:relative;z-index:2;
+  filter:drop-shadow(0 8px 24px rgba(0,255,178,.25));}}
+.hw-screen{{flex:1 1 300px;min-width:280px;background:rgba(0,255,178,.04);border:1.5px solid {BD};
+  border-radius:14px;padding:22px 24px;margin:0 28px;align-self:center;}}
+.hw-hd{{font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:600;letter-spacing:.12em;color:{V};margin-bottom:16px;}}
+.htag{{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid {BD};font-size:17px;color:{TX};}}
+.htag b{{color:{V};font-family:'IBM Plex Mono',monospace;font-size:17px;}}
+.hw-status{{margin-top:16px;font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:600;color:{V};display:flex;align-items:center;gap:8px;}}
+.hw-side-list{{flex:0 0 300px;border-left:1.5px solid {BD};padding-left:28px;display:flex;flex-direction:column;justify-content:center;}}
+.hw-side-list .side-hd{{margin-bottom:16px;font-size:14px;}}
+.hw-side-list .sitem{{padding:14px 0;}}
+.hw-side-list .sdesc{{font-size:15px;}}
 .dot-on{{width:8px;height:8px;border-radius:50%;background:{V};box-shadow:0 0 8px rgba(0,255,178,.6);animation:pulse 2s infinite;}}
 @keyframes pulse{{0%,100%{{opacity:1}}50%{{opacity:.5}}}}
-.dia-09 .flow-bar{{grid-column:1/-1;}}
+.dia-09 .flow-bar{{width:100%;max-width:984px;}}
 
 /* Slide 10 CTA */
 .dia-10{{display:flex;flex-direction:column;gap:14px;align-items:center;}}

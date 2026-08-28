@@ -107,6 +107,12 @@ html,body{{background:#000;}}
 .lead b{{color:{TX};font-weight:700;}}
 .graphic{{flex:1 1 auto;display:flex;align-items:center;justify-content:center;min-height:0;margin-top:4px;overflow:visible;}}
 .graphic .dia{{width:100%;max-width:100%;}}
+.graphic-stack{{align-items:flex-start;justify-content:flex-start;padding-top:24px;margin-top:4px;}}
+.slide-agente .lead{{margin-bottom:10px;font-size:26px;line-height:1.2;}}
+.graphic-center{{align-items:center;justify-content:center;padding-top:4px;flex:1;}}
+.slide-hw .lead{{margin-bottom:4px;}}
+.slide-hw .dia-09{{flex:1;justify-content:center;min-height:0;}}
+.slide-hw .hw-main{{min-height:400px;}}
 
 .slide-hero .title{{font-size:62px;line-height:.88;}}
 .slide-hero .lead{{font-size:26px;}}
@@ -139,10 +145,14 @@ def slide(
     hero: bool = False,
     last: bool = False,
     extra: str = "",
+    slide_cls: str = "",
+    graphic_cls: str = "",
 ) -> str:
-    ghtml = f'<div class="graphic">{diagram(dia_n)}</div>' if dia_n else ""
+    gcls = " ".join(p for p in ("graphic", graphic_cls) if p)
+    ghtml = f'<div class="{gcls}">{diagram(dia_n)}</div>' if dia_n else ""
     lead_html = f'<div class="lead">{lead}</div>' if lead else ""
-    cls = "slide slide-hero" if hero else ("slide slide-last" if last else "slide")
+    base = "slide slide-hero" if hero else ("slide slide-last" if last else "slide")
+    cls = f"{base} {slide_cls}".strip()
     underline = '<div class="title-u"></div>' if num <= 3 else ""
     return f"""<div class="{cls}">{chrome(num)}<div class="content">
   <div class="meta"><div class="n">{num:02d}</div><div class="tag">{tag}</div><div class="dot"></div></div>
@@ -169,6 +179,8 @@ SLIDES = [
         'TODO EMPIEZA CON<br><span class="g">TURBO</span>',
         "Recibe tu brief, divide la búsqueda y coordina cada canal de prospección.",
         2,
+        slide_cls="slide-agente",
+        graphic_cls="graphic-stack",
     ),
     slide(
         3,
@@ -218,6 +230,8 @@ SLIDES = [
         'CORRE <span class="g">TODO EL TIEMPO</span>',
         "Busca prospectos de noche, fin de semana y feriados. Sin pausas.",
         9,
+        slide_cls="slide-hw",
+        graphic_cls="graphic-center",
     ),
     slide(
         10,
