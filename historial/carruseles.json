@@ -1,5 +1,5 @@
 {
-  "ultimo_id": "2026-08-28-turbo-sistema-blanco",
+  "ultimo_id": "2026-08-29-turbo-construccion-manifiesto",
   "carruseles": [
     {
       "id": "2026-07-01-demo-memoria-stlabs",
@@ -242,6 +242,22 @@
       "slides": 10,
       "fondo": "lino_tela",
       "familia_visual": "manifiesto"
+    },
+    {
+      "id": "2026-08-29-turbo-construccion-manifiesto",
+      "fecha": "2026-08-29",
+      "titulo": "Cómo construí el agente Turbo",
+      "slides": 10,
+      "fondo": "lino_tela",
+      "familia_visual": "blueprint"
+    },
+    {
+      "id": "2026-08-29-turbo-construccion-manifiesto",
+      "fecha": "2026-08-29",
+      "titulo": "Cómo construí el agente Turbo",
+      "slides": 10,
+      "fondo": "lino_tela",
+      "familia_visual": "blueprint"
     }
   ]
 }
