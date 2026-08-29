@@ -1,0 +1,17 @@
+---
+description: Mascota oficial de Turbo — usar SIEMPRE este asset, nunca inventar otro
+globs: "**/*"
+alwaysApply: true
+---
+
+# Turbo — mascota oficial (obligatoria)
+
+Cuando el carrusel o la pieza hable de **Turbo** (agente de prospectos):
+
+1. Usar **únicamente** el asset oficial:
+   - `assets/turbo/turbo-mascot.png` (recorte transparente, al borde)
+   - Fuente: `assets/turbo/turbo-oficial-fuente.jpg`
+2. **Prohibido** generar otro robot, cerebro inventado, o mascota distinta.
+3. Recorte: muy al borde de la silueta (sin padding negro grande).
+4. Variantes permitidas del **mismo** PNG: escala, gris (V1), glow — nunca un diseño nuevo.
+5. En builds: copiar a `assets/elements/turbo.png` y usarlo donde vaya la cara de Turbo.
