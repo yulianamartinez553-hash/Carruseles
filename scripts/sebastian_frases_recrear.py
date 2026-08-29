@@ -34,8 +34,8 @@ def add_grain(im: Image.Image, seed: int = 42) -> Image.Image:
     return Image.fromarray(np.clip(arr, 0, 255).astype(np.uint8))
 
 
-def subtle_sebastian_layer(path: Path, opacity: float = 0.22) -> Image.Image:
-    """Foto muy tenue: blur fuerte, oscura, desaturada, bajo opacidad."""
+def subtle_sebastian_layer(path: Path, opacity: float = 0.38) -> Image.Image:
+    """Foto tenue pero más legible sobre negro."""
     im = Image.open(path).convert("RGB")
     iw, ih = im.size
     target = W / H
@@ -48,16 +48,16 @@ def subtle_sebastian_layer(path: Path, opacity: float = 0.22) -> Image.Image:
         im = im.crop((0, y0, iw, min(ih, y0 + nh)))
     im = im.resize((W, H), Image.Resampling.LANCZOS)
 
-    arr = cv2.GaussianBlur(np.array(im), (0, 0), 18).astype(np.float32)
-    arr *= 0.55
+    arr = cv2.GaussianBlur(np.array(im), (0, 0), 14).astype(np.float32)
+    arr *= 0.72
     gray = arr.mean(axis=2, keepdims=True)
-    arr = arr * 0.35 + gray * 0.65
+    arr = arr * 0.55 + gray * 0.45
 
-    # viñeta fuerte → negro en bordes
+    # viñeta suave → negro en bordes
     xs = (np.arange(W, dtype=np.float32) - W * 0.5) / (W * 0.62)
     ys = (np.arange(H, dtype=np.float32) - H * 0.44) / (H * 0.58)
     dist = np.sqrt(xs[np.newaxis, :] ** 2 + ys[:, np.newaxis] ** 2)
-    vig = 1.0 - np.clip(dist, 0, 1) ** 1.5 * 0.92
+    vig = 1.0 - np.clip(dist, 0, 1) ** 1.4 * 0.75
     arr *= vig[..., np.newaxis]
 
     photo = Image.fromarray(np.clip(arr, 0, 255).astype(np.uint8))
@@ -81,7 +81,7 @@ def draw_firma(draw: ImageDraw.ImageDraw, y: int = H - 72) -> None:
 
 
 def slide_01_portada() -> Image.Image:
-    im = subtle_sebastian_layer(PHOTO, opacity=0.20)
+    im = subtle_sebastian_layer(PHOTO, opacity=0.38)
     im = add_grain(im, seed=42)
     draw = ImageDraw.Draw(im)
     font = ImageFont.truetype(SERIF, 58)
