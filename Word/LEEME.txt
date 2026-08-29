@@ -1,0 +1,10 @@
+STLabs — Sistema Turbo (fondo negro)
+Dashboard técnico → sebastian.stlabs.ar
+Slides: 10 · Keyword: TURBO
+
+Resoluciones:
+  slide-XX.png + 4k/  → 4320×5400 PNG (4K, máxima calidad)
+  fhd/slide-XX.png    → 1920×2400 PNG (Full HD)
+  4k/slide-XX@4k.jpg  → JPEG 4K · fhd/slide-XX@fhd.jpg → JPEG FHD
+
+Accent #00FFB2 · Solo español
