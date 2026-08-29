@@ -48,16 +48,16 @@ def subtle_sebastian_layer(path: Path, opacity: float = 0.38) -> Image.Image:
         im = im.crop((0, y0, iw, min(ih, y0 + nh)))
     im = im.resize((W, H), Image.Resampling.LANCZOS)
 
-    arr = cv2.GaussianBlur(np.array(im), (0, 0), 10).astype(np.float32)
-    arr *= 0.88
+    arr = cv2.GaussianBlur(np.array(im), (0, 0), 8).astype(np.float32)
+    arr *= 0.92
     gray = arr.mean(axis=2, keepdims=True)
-    arr = arr * 0.72 + gray * 0.28
+    arr = arr * 0.78 + gray * 0.22
 
     # viñeta suave → negro en bordes
     xs = (np.arange(W, dtype=np.float32) - W * 0.5) / (W * 0.68)
     ys = (np.arange(H, dtype=np.float32) - H * 0.44) / (H * 0.62)
     dist = np.sqrt(xs[np.newaxis, :] ** 2 + ys[:, np.newaxis] ** 2)
-    vig = 1.0 - np.clip(dist, 0, 1) ** 1.25 * 0.55
+    vig = 1.0 - np.clip(dist, 0, 1) ** 1.25 * 0.48
     arr *= vig[..., np.newaxis]
 
     photo = Image.fromarray(np.clip(arr, 0, 255).astype(np.uint8))
@@ -81,8 +81,7 @@ def draw_firma(draw: ImageDraw.ImageDraw, y: int = H - 72) -> None:
 
 
 def slide_01_portada() -> Image.Image:
-    im = subtle_sebastian_layer(PHOTO, opacity=0.58)
-    im = add_grain(im, seed=42)
+    im = subtle_sebastian_layer(PHOTO, opacity=0.66)
     draw = ImageDraw.Draw(im)
     font = ImageFont.truetype(SERIF, 58)
 
