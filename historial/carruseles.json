@@ -1,5 +1,5 @@
 {
-  "ultimo_id": "2026-08-29-turbo-construccion-manifiesto",
+  "ultimo_id": "2026-08-30-turbo-ui-anatomy",
   "carruseles": [
     {
       "id": "2026-07-01-demo-memoria-stlabs",
@@ -258,6 +258,14 @@
       "slides": 10,
       "fondo": "lino_tela",
       "familia_visual": "blueprint"
+    },
+    {
+      "id": "2026-08-30-turbo-ui-anatomy",
+      "fecha": "2026-08-30",
+      "titulo": "Anatomía UI Turbo — panel y prospección",
+      "slides": 2,
+      "fondo": "piedra_roca",
+      "familia_visual": "operator_log"
     }
   ]
 }
