@@ -12,8 +12,13 @@ BG = "#0A0A0A"
 TX = "#F2F2F2"
 GY = "#9aa39c"
 
-# Phone frame in slide coords (1080×1350)
-PH = {"x": 370, "y": 268, "w": 340, "h": 662}
+# Phone frame in slide coords (1080×1350) — grande para lectura en IG
+PH = {"x": 315, "y": 188, "w": 450, "h": 880}
+ANN_W = 268
+ANN_L_X = 20
+ANN_R_X = 1080 - 20 - ANN_W  # 792
+WIRE_L_X = ANN_L_X + ANN_W + 4
+WIRE_R_X = ANN_R_X - 4
 
 
 def b64(p: Path) -> str:
@@ -59,34 +64,34 @@ html,body{{background:#000;}}
 .slide::after{{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
   background:radial-gradient(ellipse 500px 400px at 50% 42%, rgba(0,255,178,.08), transparent 70%);}}
 
-.head{{position:absolute;left:48px;right:48px;top:44px;z-index:12;text-align:center;}}
-.kicker{{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;letter-spacing:.16em;color:{GY};text-transform:uppercase;}}
-.title{{font-family:'Impact','Anton',sans-serif;font-size:46px;line-height:.95;letter-spacing:.02em;
-  text-transform:uppercase;color:{TX};margin-top:8px;}}
+.head{{position:absolute;left:40px;right:40px;top:32px;z-index:12;text-align:center;}}
+.kicker{{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.16em;color:{GY};text-transform:uppercase;}}
+.title{{font-family:'Impact','Anton',sans-serif;font-size:38px;line-height:.92;letter-spacing:.02em;
+  text-transform:uppercase;color:{TX};margin-top:6px;}}
 .title .g{{color:{V};}}
-.sub{{font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:22px;color:{GY};margin-top:8px;line-height:1.2;}}
+.sub{{font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:18px;color:{GY};margin-top:6px;line-height:1.15;}}
 
 .stage{{position:absolute;inset:0;z-index:8;}}
 .wires{{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;}}
-.wires path{{fill:none;stroke:rgba(242,242,242,.55);stroke-width:1.5;}}
-.wires circle{{fill:{V};}}
+.wires path{{fill:none;stroke:rgba(242,242,242,.72);stroke-width:2.5;}}
+.wires circle{{fill:{V};stroke:{BG};stroke-width:1.5;}}
 
 .phone{{position:absolute;left:{PH['x']}px;top:{PH['y']}px;width:{PH['w']}px;height:{PH['h']}px;z-index:6;}}
-.phone-shell{{width:100%;height:100%;padding:10px;border-radius:44px;
+.phone-shell{{width:100%;height:100%;padding:12px;border-radius:52px;
   background:linear-gradient(145deg,#3a3e44,#121316,#080809,#151618);
-  box-shadow:0 40px 80px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.08),inset 0 1px 0 rgba(255,255,255,.25);}}
-.phone-bezel{{width:100%;height:100%;border-radius:36px;background:#050505;padding:8px;overflow:hidden;position:relative;}}
-.phone-island{{position:absolute;top:14px;left:50%;transform:translateX(-50%);width:92px;height:24px;background:#000;border-radius:14px;z-index:3;}}
-.phone-screen{{width:100%;height:100%;border-radius:28px;overflow:hidden;background:#0A0A0A;}}
+  box-shadow:0 48px 96px rgba(0,0,0,.7),0 0 0 1.5px rgba(255,255,255,.1),inset 0 1px 0 rgba(255,255,255,.28);}}
+.phone-bezel{{width:100%;height:100%;border-radius:42px;background:#050505;padding:9px;overflow:hidden;position:relative;}}
+.phone-island{{position:absolute;top:16px;left:50%;transform:translateX(-50%);width:108px;height:28px;background:#000;border-radius:16px;z-index:3;}}
+.phone-screen{{width:100%;height:100%;border-radius:34px;overflow:hidden;background:#0A0A0A;}}
 .phone-screen img{{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;}}
-.phone-shine{{position:absolute;inset:0;border-radius:36px;pointer-events:none;
-  background:linear-gradient(120deg,rgba(255,255,255,.12),transparent 28%,transparent 72%,rgba(255,255,255,.05));}}
+.phone-shine{{position:absolute;inset:0;border-radius:42px;pointer-events:none;
+  background:linear-gradient(120deg,rgba(255,255,255,.14),transparent 28%,transparent 72%,rgba(255,255,255,.06));}}
 
-.ann{{position:absolute;z-index:10;width:248px;}}
-.ann-l{{text-align:right;}}
-.ann-r{{text-align:left;}}
-.ann-t{{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:19px;color:{TX};line-height:1.15;margin-bottom:4px;}}
-.ann ul{{list-style:none;font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:15px;color:{GY};line-height:1.28;}}
+.ann{{position:absolute;z-index:10;width:{ANN_W}px;}}
+.ann-l{{text-align:right;padding-right:2px;}}
+.ann-r{{text-align:left;padding-left:2px;}}
+.ann-t{{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:22px;color:{TX};line-height:1.12;margin-bottom:5px;}}
+.ann ul{{list-style:none;font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:17px;color:{GY};line-height:1.32;}}
 .ann li{{position:relative;padding-left:0;}}
 .ann-l li::before{{content:'· ';color:{V};}}
 .ann-r li::before{{content:'· ';color:{V};}}
@@ -115,7 +120,7 @@ def phone_html(img: str) -> str:
 def ann_html(side: str, top: int, title: str, bullets: list[str]) -> str:
     lis = "".join(f"<li>{b}</li>" for b in bullets)
     cls = "ann ann-l" if side == "l" else "ann ann-r"
-    x = 44 if side == "l" else 788
+    x = ANN_L_X if side == "l" else ANN_R_X
     return f'<div class="{cls}" style="left:{x}px;top:{top}px"><div class="ann-t">{title}</div><ul>{lis}</ul></div>'
 
 
@@ -124,12 +129,12 @@ def wire_path(side: str, box_y: int, ax: float, ay: float) -> str:
     px = PH["x"] + PH["w"] * ax
     py = PH["y"] + PH["h"] * ay
     if side == "l":
-        x1, y1 = 292, box_y + 28
-        cx, cy = x1 + 40, (y1 + py) / 2
+        x1, y1 = WIRE_L_X, box_y + 34
+        cx, cy = x1 + 36, (y1 + py) / 2
     else:
-        x1, y1 = 788, box_y + 28
-        cx, cy = x1 - 40, (y1 + py) / 2
-    return f'<path d="M{x1},{y1} Q{cx},{cy} {px},{py}"/><circle cx="{px}" cy="{py}" r="3.5"/>'
+        x1, y1 = WIRE_R_X, box_y + 34
+        cx, cy = x1 - 36, (y1 + py) / 2
+    return f'<path d="M{x1},{y1} Q{cx},{cy} {px},{py}"/><circle cx="{px}" cy="{py}" r="5.5"/>'
 
 
 def wires_svg(items: list[tuple]) -> str:
@@ -166,23 +171,23 @@ def anatomy_slide(
 
 
 SLIDE_1_ITEMS = [
-    ("l", 248, 0.50, 0.06, "Navegación", ["Menú e inicio del panel", "Acceso rápido al tablero"]),
-    ("l", 318, 0.28, 0.28, "Pendientes", ["Prospectos sin contactar", "Tu cola de trabajo"]),
-    ("l", 408, 0.28, 0.42, "Contactados", ["Ya respondieron o hablaste", "Seguimiento en curso"]),
-    ("r", 318, 0.72, 0.28, "Vencidos", ["Seguimientos atrasados", "Alertas que pedís acción"]),
-    ("r", 408, 0.72, 0.42, "Ganados", ["Ventas cerradas", "Conversión del pipeline"]),
-    ("r", 498, 0.50, 0.56, "Esta semana", ["Nuevos vs semana anterior", "Contactos de la semana"]),
-    ("r", 588, 0.50, 0.82, "Tendencia", ["Nuevos y contactos por día", "Últimos 30 días"]),
+    ("l", 208, 0.50, 0.06, "Navegación", ["Menú e inicio", "Acceso al tablero"]),
+    ("l", 288, 0.28, 0.28, "Pendientes", ["Sin contactar", "Tu cola de trabajo"]),
+    ("l", 378, 0.28, 0.42, "Contactados", ["Ya respondieron", "Seguimiento activo"]),
+    ("r", 288, 0.72, 0.28, "Vencidos", ["Seguimientos atrasados", "Pedís acción"]),
+    ("r", 378, 0.72, 0.42, "Ganados", ["Ventas cerradas", "Conversión"]),
+    ("r", 478, 0.50, 0.56, "Esta semana", ["Nuevos vs anterior", "Contactos"]),
+    ("r", 578, 0.50, 0.82, "Tendencia", ["Por día · 30 días", "Nuevos y contactos"]),
 ]
 
 SLIDE_2_ITEMS = [
-    ("l", 248, 0.50, 0.10, "Turbo · chat", ["Te pregunta qué vendés", "Define tu mercado ideal"]),
-    ("l", 358, 0.50, 0.26, "Sugerencias", ["Ejemplos para arrancar", "Un tap y seguís"]),
-    ("l", 448, 0.50, 0.36, "Tu mensaje", ["Escribí tu brief", "Turbo arma el plan"]),
-    ("r", 318, 0.72, 0.48, "Aprobar y buscar", ["Lanza la prospección", "Cuando el plan cierra"]),
-    ("r", 418, 0.50, 0.58, "Plan de caza", ["Dónde busca", "Cuántos · costo · tiempo"]),
-    ("r", 528, 0.50, 0.74, "Requisitos extra", ["Solo WhatsApp", "Con web · sin web · rubro"]),
-    ("r", 628, 0.50, 0.88, "Filtros editables", ["Sacá lo que no cierra", "Pedile cambios a Turbo"]),
+    ("l", 208, 0.50, 0.10, "Turbo · chat", ["Qué vendés y a quién", "Define tu mercado"]),
+    ("l", 308, 0.50, 0.26, "Sugerencias", ["Ejemplos para arrancar", "Un tap y seguís"]),
+    ("l", 408, 0.50, 0.36, "Tu mensaje", ["Escribí el brief", "Turbo arma el plan"]),
+    ("r", 288, 0.72, 0.48, "Aprobar y buscar", ["Lanza prospección", "Cuando cierra"]),
+    ("r", 398, 0.50, 0.58, "Plan de caza", ["Dónde · cuántos", "Costo y tiempo"]),
+    ("r", 508, 0.50, 0.74, "Requisitos extra", ["Solo WhatsApp", "Web · rubro"]),
+    ("r", 618, 0.50, 0.88, "Filtros", ["Sacá lo que no cierra", "Pedile cambios"]),
 ]
 
 

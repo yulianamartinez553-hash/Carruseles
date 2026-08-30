@@ -266,6 +266,14 @@
       "slides": 2,
       "fondo": "piedra_roca",
       "familia_visual": "operator_log"
+    },
+    {
+      "id": "2026-08-30-turbo-ui-anatomy",
+      "fecha": "2026-08-30",
+      "titulo": "Anatomía UI Turbo — panel y prospección",
+      "slides": 2,
+      "fondo": "piedra_roca",
+      "familia_visual": "operator_log"
     }
   ]
 }
