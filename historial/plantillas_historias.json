@@ -1,0 +1,45 @@
+{
+  "resultados_antes_despues": {
+    "eyebrow": "RESULTADOS",
+    "claim": "{METRICA_ANTES} → {METRICA_DESPUES}",
+    "apoyo": "{EXPLICACION_UNA_LINEA}",
+    "cta": "Comentá WEB y te muestro el caso.",
+    "footer_siempre": "sebastian.stlabs.ar"
+  },
+  "proceso_paso": {
+    "eyebrow": "PASO {N}/5 · {TITULO_PASO}",
+    "claim": "{CLAIM_PASO}",
+    "apoyo": "{APOYO_PASO}",
+    "cta": "Deslizá al siguiente paso.",
+    "footer_siempre": "sebastian.stlabs.ar"
+  },
+  "prueba_social_cita": {
+    "eyebrow": "CLIENTES",
+    "claim": "\"{CITA_CORTA}\"",
+    "apoyo": "— {NOMBRE}, {ROL_O_EMPRESA}",
+    "cta": "Comentá WEB",
+    "footer_siempre": "sebastian.stlabs.ar"
+  },
+  "servicio_paquete": {
+    "eyebrow": "SERVICIO",
+    "claim": "{NOMBRE_PAQUETE}",
+    "apoyo": "{CLAIM_PAQUETE}",
+    "precio": "desde ${PRECIO}",
+    "cta": "Comentá {KEYWORD}",
+    "footer_siempre": "sebastian.stlabs.ar"
+  },
+  "contacto_cta": {
+    "eyebrow": "SIGUIENTE PASO",
+    "claim": "Comentá {KEYWORD}",
+    "apoyo": "Te mando el diagnóstico y cómo arrancar.",
+    "cta": "Comentá {KEYWORD}",
+    "footer_siempre": "sebastian.stlabs.ar"
+  },
+  "contacto_faq": {
+    "eyebrow": "FAQ · {TEMA}",
+    "claim": "{PREGUNTA}",
+    "apoyo": "{RESPUESTA}",
+    "cta": "Comentá WEB",
+    "footer_siempre": "sebastian.stlabs.ar"
+  }
+}

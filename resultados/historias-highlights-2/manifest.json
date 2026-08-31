@@ -1,0 +1,20 @@
+{
+  "id": "historias-highlights-2",
+  "titulo": "Portadas Highlight por tema — puntos degradé amplios",
+  "iconos": 5,
+  "formato": "1080x1080",
+  "fondo": "negro_mancha_verde",
+  "familia_visual": "manifiesto",
+  "origen": "original",
+  "keyword_portada": "WEB",
+  "keyword_cta": "WEB",
+  "slides": 5,
+  "nota": "Sin líneas en esquinas. Puntos amplios con degradé progresivo. Tema independiente por portada.",
+  "nombres": [
+    "RESULTADOS",
+    "PROCESO",
+    "CLIENTES",
+    "SERVICIOS",
+    "CONTACTO"
+  ]
+}
