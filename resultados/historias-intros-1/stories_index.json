@@ -1,0 +1,227 @@
+[
+  {
+    "n": 1,
+    "tema": "01-evidencia",
+    "id": "ev-01",
+    "layout": "claim",
+    "kicker": "01 / 05",
+    "claim": "Tu web ya existe.",
+    "apoyo": "Tener sitio no alcanza si no genera consultas."
+  },
+  {
+    "n": 2,
+    "tema": "01-evidencia",
+    "id": "ev-02",
+    "layout": "dato",
+    "kicker": "02 / 05",
+    "claim": "Si tarda,\nla gente se va.",
+    "apoyo": "La misma marca puede cargar en menos de 2 segundos."
+  },
+  {
+    "n": 3,
+    "tema": "01-evidencia",
+    "id": "ev-03",
+    "layout": "split",
+    "kicker": "03 / 05",
+    "claim": null,
+    "apoyo": "También se pierde la venta cuando el mensaje no llega."
+  },
+  {
+    "n": 4,
+    "tema": "01-evidencia",
+    "id": "ev-04",
+    "layout": "dato",
+    "kicker": "04 / 05",
+    "claim": "Con estructura,\nla conversión responde.",
+    "apoyo": "Copy, recorrido y peso alineados al objetivo."
+  },
+  {
+    "n": 5,
+    "tema": "01-evidencia",
+    "id": "ev-05",
+    "layout": "claim",
+    "kicker": "05 / 05",
+    "claim": "Así tu web\nvende de verdad.",
+    "apoyo": "Live, midiendo y trayendo consultas reales."
+  },
+  {
+    "n": 6,
+    "tema": "02-metodo",
+    "id": "me-01",
+    "layout": "claim",
+    "kicker": "01 / 05",
+    "claim": "Si me contratás,\nno arrancamos diseñando.",
+    "apoyo": "Primero hay que ver dónde se frena la venta."
+  },
+  {
+    "n": 7,
+    "tema": "02-metodo",
+    "id": "me-02",
+    "layout": "claim",
+    "kicker": "02 / 05",
+    "claim": "Miramos web,\nmensajes y embudo.",
+    "apoyo": "Salís con un mapa de prioridades, sin humo."
+  },
+  {
+    "n": 8,
+    "tema": "02-metodo",
+    "id": "me-03",
+    "layout": "claim",
+    "kicker": "03 / 05",
+    "claim": "Después viene\nel esqueleto.",
+    "apoyo": "Recién cuando el recorrido cierra, diseñamos lo lindo."
+  },
+  {
+    "n": 9,
+    "tema": "02-metodo",
+    "id": "me-04",
+    "layout": "pasos",
+    "kicker": "04 / 05",
+    "claim": "Diseño y desarrollo\nvan juntos.",
+    "apoyo": "Cinco momentos claros desde el día uno."
+  },
+  {
+    "n": 10,
+    "tema": "02-metodo",
+    "id": "me-05",
+    "layout": "claim",
+    "kicker": "05 / 05",
+    "claim": "Al final,\nte lo dejo funcionando.",
+    "apoyo": "Accesos, checklist y próximos pasos. Cerrado."
+  },
+  {
+    "n": 11,
+    "tema": "03-confianza",
+    "id": "co-01",
+    "layout": "cita",
+    "kicker": "01 / 05",
+    "claim": "Por fin entiendo\nqué hace mi web.",
+    "apoyo": "Eso aparece cuando el sitio ordena el negocio."
+  },
+  {
+    "n": 12,
+    "tema": "03-confianza",
+    "id": "co-02",
+    "layout": "dato",
+    "kicker": "02 / 05",
+    "claim": "Son plazos reales\ny alcance claro.",
+    "apoyo": "Sin milagros. Con prioridades definidas."
+  },
+  {
+    "n": 13,
+    "tema": "03-confianza",
+    "id": "co-03",
+    "layout": "claim",
+    "kicker": "03 / 05",
+    "claim": "Los logos aparecen\nsolo con permiso.",
+    "apoyo": "Nada inventado. Nada prestado sin autorización."
+  },
+  {
+    "n": 14,
+    "tema": "03-confianza",
+    "id": "co-04",
+    "layout": "cita",
+    "kicker": "04 / 05",
+    "claim": "El formulario\nempezó a llegar.",
+    "apoyo": "Capturas reales, con datos sensibles tapados."
+  },
+  {
+    "n": 15,
+    "tema": "03-confianza",
+    "id": "co-05",
+    "layout": "claim",
+    "kicker": "05 / 05",
+    "claim": "La confianza se construye\ncon entregas.",
+    "apoyo": "No con promesas enormes en un story."
+  },
+  {
+    "n": 16,
+    "tema": "04-oferta",
+    "id": "of-01",
+    "layout": "claim",
+    "kicker": "01 / 05",
+    "claim": "No hace falta\nun hilo eterno por DM.",
+    "apoyo": "Hay caminos claros según lo que necesitás."
+  },
+  {
+    "n": 17,
+    "tema": "04-oferta",
+    "id": "of-02",
+    "layout": "claim",
+    "kicker": "02 / 05",
+    "claim": "Si querés vender una cosa,\nuna landing alcanza.",
+    "apoyo": "Una página, un objetivo, formularios conectados."
+  },
+  {
+    "n": 18,
+    "tema": "04-oferta",
+    "id": "of-03",
+    "layout": "split",
+    "kicker": "03 / 05",
+    "claim": null,
+    "apoyo": "Si necesitás más espacio, armamos el sitio completo."
+  },
+  {
+    "n": 19,
+    "tema": "04-oferta",
+    "id": "of-04",
+    "layout": "claim",
+    "kicker": "04 / 05",
+    "claim": "Cuando ya está al aire,\nno se puede caer.",
+    "apoyo": "Mantenimiento: updates, backups y cambios chicos."
+  },
+  {
+    "n": 20,
+    "tema": "04-oferta",
+    "id": "of-05",
+    "layout": "dato",
+    "kicker": "05 / 05",
+    "claim": "Si el freno es\nvisibilidad, lo atacamos.",
+    "apoyo": "Core Web Vitals y peso bajo control."
+  },
+  {
+    "n": 21,
+    "tema": "05-siguiente",
+    "id": "si-01",
+    "layout": "claim",
+    "kicker": "01 / 05",
+    "claim": "Trabajo con negocios\nque ya tienen demanda.",
+    "apoyo": "Y una web floja, o ninguna."
+  },
+  {
+    "n": 22,
+    "tema": "05-siguiente",
+    "id": "si-02",
+    "layout": "claim",
+    "kicker": "02 / 05",
+    "claim": "No es para quien busca\nlo más barato sin brief.",
+    "apoyo": "Sin claridad de oferta, mejor no arrancar."
+  },
+  {
+    "n": 23,
+    "tema": "05-siguiente",
+    "id": "si-03",
+    "layout": "cta",
+    "kicker": "03 / 05",
+    "claim": "Si esto te suena,\ncomentá WEB.",
+    "apoyo": "Te mando el diagnóstico y cómo arrancar."
+  },
+  {
+    "n": 24,
+    "tema": "05-siguiente",
+    "id": "si-04",
+    "layout": "dato",
+    "kicker": "04 / 05",
+    "claim": "También podés\nagendar y salir con claridad.",
+    "apoyo": "Calendly o WhatsApp, como te quede mejor."
+  },
+  {
+    "n": 25,
+    "tema": "05-siguiente",
+    "id": "si-05",
+    "layout": "faq",
+    "kicker": "05 / 05",
+    "claim": "¿Cuánto tarda?",
+    "apoyo": "Dos rondas de revisión incluidas. Empezá cuando quieras."
+  }
+]
