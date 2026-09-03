@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 """Carrusel STLabs — 12 repos de GitHub (clon @juanbertorello.ia).
 Identidad negro + verde · sebastian.stlabs.ar
+Fondos: retícula verde + manchas que se continúan entre slides.
 """
 from __future__ import annotations
 
 import json
+import math
 import random
 import sys
 from pathlib import Path
@@ -18,12 +20,58 @@ from stlabs_kit import chrome, write_html, render, package
 DATA = json.loads((BUILD / "index.json").read_text(encoding="utf-8"))
 REPOS = DATA["repos"]
 CTA = DATA.get("cta", "AHORRO")
+TOTAL = 14
+W, H = 1080, 1350
+GRID = 45  # 1080 / 45 = 24 → costuras alineadas
 
 MONTHS = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
 
+# Manchas puente entre slides consecutivos (centro en la costura vertical).
+# y, rx, ry, opacity — la mitad derecha va al slide i, la mitad izquierda al i+1.
+BRIDGE_BLOBS = [
+    # entre 1→2
+    {"y": 220, "rx": 320, "ry": 240, "op": 0.42},
+    {"y": 980, "rx": 260, "ry": 300, "op": 0.34},
+    # 2→3
+    {"y": 480, "rx": 360, "ry": 220, "op": 0.40},
+    {"y": 1100, "rx": 220, "ry": 260, "op": 0.30},
+    # 3→4
+    {"y": 160, "rx": 280, "ry": 280, "op": 0.38},
+    {"y": 720, "rx": 340, "ry": 200, "op": 0.42},
+    # 4→5
+    {"y": 360, "rx": 300, "ry": 340, "op": 0.36},
+    {"y": 1050, "rx": 260, "ry": 220, "op": 0.32},
+    # 5→6
+    {"y": 280, "rx": 240, "ry": 260, "op": 0.40},
+    {"y": 860, "rx": 380, "ry": 240, "op": 0.38},
+    # 6→7
+    {"y": 140, "rx": 320, "ry": 200, "op": 0.34},
+    {"y": 640, "rx": 280, "ry": 320, "op": 0.42},
+    # 7→8
+    {"y": 420, "rx": 340, "ry": 240, "op": 0.38},
+    {"y": 1180, "rx": 240, "ry": 220, "op": 0.30},
+    # 8→9
+    {"y": 200, "rx": 300, "ry": 300, "op": 0.36},
+    {"y": 780, "rx": 320, "ry": 200, "op": 0.40},
+    # 9→10
+    {"y": 520, "rx": 260, "ry": 280, "op": 0.34},
+    {"y": 1000, "rx": 340, "ry": 240, "op": 0.36},
+    # 10→11
+    {"y": 180, "rx": 280, "ry": 220, "op": 0.42},
+    {"y": 700, "rx": 360, "ry": 260, "op": 0.38},
+    # 11→12
+    {"y": 340, "rx": 320, "ry": 240, "op": 0.32},
+    {"y": 920, "rx": 260, "ry": 300, "op": 0.40},
+    # 12→13
+    {"y": 260, "rx": 340, "ry": 220, "op": 0.40},
+    {"y": 1080, "rx": 280, "ry": 240, "op": 0.30},
+    # 13→14
+    {"y": 400, "rx": 300, "ry": 320, "op": 0.38},
+    {"y": 880, "rx": 320, "ry": 200, "op": 0.44},
+]
+
 
 def github_graph_svg() -> str:
-    """Gráfico de contribuciones estilo GitHub en verde STLabs."""
     random.seed(42)
     cols, rows = 52, 7
     cells = []
@@ -36,9 +84,10 @@ def github_graph_svg() -> str:
             cells.append(
                 f'<rect x="{x}" y="{y}" width="12" height="12" rx="2" fill="{colors[lvl]}"/>'
             )
-    month_labels = ""
-    for i, m in enumerate(MONTHS):
-        month_labels += f'<text x="{4 + i * 44}" y="16" fill="#9aa39c" font-family="IBM Plex Mono,monospace" font-size="11">{m}</text>'
+    month_labels = "".join(
+        f'<text x="{4 + i * 44}" y="16" fill="#9aa39c" font-family="IBM Plex Mono,monospace" font-size="11">{m}</text>'
+        for i, m in enumerate(MONTHS)
+    )
     legend = (
         '<text x="580" y="130" fill="#9aa39c" font-family="IBM Plex Mono,monospace" font-size="11">Menos</text>'
         + "".join(
@@ -53,29 +102,159 @@ def github_graph_svg() -> str:
     )
 
 
+def _ellipse(cx, cy, rx, ry, op, rotate=0) -> str:
+    t = f' transform="rotate({rotate} {cx} {cy})"' if rotate else ""
+    return (
+        f'<ellipse cx="{cx:.1f}" cy="{cy:.1f}" rx="{rx:.1f}" ry="{ry:.1f}"'
+        f' fill="url(#blobGrad)" opacity="{op:.3f}"{t}/>'
+    )
+
+
+def _interior_blobs(slide_idx: int) -> str:
+    """Manchas propias del slide (no en la costura), distintas por índice."""
+    rng = random.Random(100 + slide_idx * 17)
+    parts = []
+    # Esquinas / bordes superior e inferior — visibles alrededor de la card
+    presets = [
+        # (cx, cy, rx, ry, op, rot) — esquinas / bordes visibles alrededor de la card
+        (140, 70, 260, 180, 0.36, -18),
+        (940, 100, 240, 200, 0.32, 22),
+        (100, 1280, 280, 180, 0.34, 12),
+        (980, 1240, 250, 200, 0.30, -25),
+        (540, 60, 340, 130, 0.22, 0),
+        (540, 1300, 360, 120, 0.22, 0),
+        (80, 500, 180, 220, 0.28, 30),
+        (1000, 650, 190, 240, 0.28, -20),
+    ]
+    start = slide_idx % len(presets)
+    chosen = [presets[(start + k) % len(presets)] for k in range(4)]
+    for cx, cy, rx, ry, op, rot in chosen:
+        jx = rng.uniform(-35, 35)
+        jy = rng.uniform(-25, 25)
+        parts.append(
+            _ellipse(
+                cx + jx,
+                cy + jy,
+                rx * rng.uniform(0.92, 1.12),
+                ry * rng.uniform(0.92, 1.12),
+                op,
+                rot,
+            )
+        )
+    angle = (slide_idx * 37) % 360
+    parts.append(
+        _ellipse(
+            160 + (slide_idx * 70) % 760,
+            280 + (slide_idx * 95) % 750,
+            200 + (slide_idx % 5) * 24,
+            150 + (slide_idx % 4) * 20,
+            0.26,
+            angle,
+        )
+    )
+    return "".join(parts)
+
+
+def _bridge_for_seam(seam_idx: int) -> list[dict]:
+    """2 manchas por costura (índice 0 = entre slide 1 y 2)."""
+    i = seam_idx * 2
+    if i + 1 >= len(BRIDGE_BLOBS):
+        return []
+    return [BRIDGE_BLOBS[i], BRIDGE_BLOBS[i + 1]]
+
+
+def bg_layer(slide_idx: int) -> str:
+    """Fondo creativo: retícula verde alineada + manchas puente entre slides.
+
+    slide_idx: 1..14
+    """
+    i = slide_idx - 1  # 0-based
+    # Grid offset continuo: cada slide desplaza la retícula en X por W
+    # (mismas líneas verticales al pasar de slide a slide)
+    ox = -(i * W) % GRID
+
+    blobs = []
+
+    # Mitad derecha de la costura con el slide anterior (centro en x=0)
+    if i > 0:
+        for b in _bridge_for_seam(i - 1):
+            blobs.append(_ellipse(0, b["y"], b["rx"], b["ry"], b["op"]))
+
+    # Mitad izquierda de la costura con el siguiente (centro en x=W)
+    if i < TOTAL - 1:
+        for b in _bridge_for_seam(i):
+            blobs.append(_ellipse(W, b["y"], b["rx"], b["ry"], b["op"]))
+
+    blobs.append(_interior_blobs(slide_idx))
+
+    # Líneas de acento diagonales sutiles distintas por slide
+    diag = ""
+    rng = random.Random(50 + slide_idx)
+    for k in range(4):
+        x1 = rng.randint(-100, W + 100)
+        y1 = rng.randint(0, H)
+        length = rng.randint(240, 560)
+        ang = math.radians(rng.choice([25, -25, 40, -40, 15, -55]))
+        x2 = x1 + length * math.cos(ang)
+        y2 = y1 + length * math.sin(ang)
+        diag += (
+            f'<line x1="{x1:.0f}" y1="{y1:.0f}" x2="{x2:.0f}" y2="{y2:.0f}" '
+            f'stroke="rgba(0,255,178,{0.10 + (k * 0.03):.2f})" stroke-width="2"/>'
+        )
+
+    return f"""
+<div class="bg-layer" aria-hidden="true">
+  <svg class="bg-svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <defs>
+      <radialGradient id="blobGrad" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#00FFB2" stop-opacity="1"/>
+        <stop offset="40%" stop-color="#00FFB2" stop-opacity="0.55"/>
+        <stop offset="100%" stop-color="#00FFB2" stop-opacity="0"/>
+      </radialGradient>
+      <pattern id="grid{slide_idx}" width="{GRID}" height="{GRID}" patternUnits="userSpaceOnUse" x="{ox}" y="0">
+        <path d="M {GRID} 0 L 0 0 0 {GRID}" fill="none" stroke="rgba(0,255,178,0.18)" stroke-width="1.2"/>
+      </pattern>
+      <pattern id="gridFine{slide_idx}" width="{GRID // 3}" height="{GRID // 3}" patternUnits="userSpaceOnUse" x="{ox}" y="0">
+        <path d="M {GRID // 3} 0 L 0 0 0 {GRID // 3}" fill="none" stroke="rgba(0,255,178,0.07)" stroke-width="0.7"/>
+      </pattern>
+      <filter id="blurSoft" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="22"/>
+      </filter>
+    </defs>
+    <rect width="{W}" height="{H}" fill="#0A0A0A"/>
+    <rect width="{W}" height="{H}" fill="url(#gridFine{slide_idx})"/>
+    <rect width="{W}" height="{H}" fill="url(#grid{slide_idx})"/>
+    <g filter="url(#blurSoft)">{''.join(blobs)}</g>
+    {diag}
+  </svg>
+</div>"""
+
+
 EXTRA_CSS = """
-.slide.grid-bg::before{content:'';position:absolute;inset:0;z-index:0;opacity:.55;
- background-image:linear-gradient(rgba(0,255,178,.025) 1px,transparent 1px),
-  linear-gradient(90deg,rgba(0,255,178,.025) 1px,transparent 1px);background-size:48px 48px;}
+.slide{background:#0A0A0A !important;}
+.slide::before{display:none !important;} /* apaga glow genérico del kit */
+.bg-layer{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.bg-svg{position:absolute;inset:0;width:100%;height:100%;display:block;}
 
 /* ── PORTADA ── */
 .s-cover{display:flex;flex-direction:column;height:100%;padding:72px 72px 120px;position:relative;z-index:5;}
-.gh-pill{display:inline-flex;align-items:center;gap:10px;background:#141414;border:1px solid rgba(0,255,178,.35);
- border-radius:999px;padding:10px 18px;width:fit-content;margin-bottom:28px;}
+.gh-pill{display:inline-flex;align-items:center;gap:10px;background:rgba(20,20,20,.92);border:1px solid rgba(0,255,178,.35);
+ border-radius:999px;padding:10px 18px;width:fit-content;margin-bottom:28px;backdrop-filter:blur(8px);}
 .gh-pill svg{width:22px;height:22px;fill:#F2F2F2;}
 .gh-pill span{font-family:var(--mono);font-size:18px;color:var(--blanco);letter-spacing:.04em;}
-.gh-wrap{background:#141414;border:1px solid rgba(0,255,178,.22);border-radius:14px;padding:18px 20px 14px;
- margin-bottom:36px;box-shadow:0 24px 64px rgba(0,0,0,.55);}
+.gh-wrap{background:rgba(20,20,20,.9);border:1px solid rgba(0,255,178,.22);border-radius:14px;padding:18px 20px 14px;
+ margin-bottom:36px;box-shadow:0 24px 64px rgba(0,0,0,.55);backdrop-filter:blur(10px);}
 .gh-graph{width:100%;height:auto;display:block;}
-.cover-title{font-family:var(--pop);font-weight:800;font-size:62px;line-height:1.02;color:var(--blanco);max-width:920px;}
+.cover-title{font-family:var(--pop);font-weight:800;font-size:62px;line-height:1.02;color:var(--blanco);max-width:920px;
+ text-shadow:0 4px 28px rgba(0,0,0,.75);}
 .cover-title .gr{color:var(--verde);}
 .cover-sub{margin-top:18px;font-family:var(--cond);font-size:32px;color:var(--gray);}
 
 /* ── CARD REPO ── */
 .card-wrap{display:flex;align-items:center;justify-content:center;height:100%;padding:48px 56px 110px;position:relative;z-index:5;}
-.repo-card{width:100%;max-width:920px;background:linear-gradient(165deg,#161616 0%,#121212 100%);
- border:1.5px solid rgba(0,255,178,.28);border-radius:22px;padding:36px 40px 32px;
- box-shadow:0 32px 80px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.04) inset;}
+.repo-card{width:100%;max-width:920px;background:linear-gradient(165deg,rgba(22,22,22,.96) 0%,rgba(14,14,14,.97) 100%);
+ border:1.5px solid rgba(0,255,178,.32);border-radius:22px;padding:36px 40px 32px;
+ box-shadow:0 32px 80px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.04) inset;backdrop-filter:blur(12px);}
 .card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;}
 .win-dots{display:flex;gap:8px;}
 .win-dots i{width:12px;height:12px;border-radius:50%;display:block;}
@@ -107,8 +286,9 @@ EXTRA_CSS = """
 /* ── CIERRE ── */
 .close-wrap{display:flex;flex-direction:column;height:100%;padding:56px 64px 110px;position:relative;z-index:5;}
 .close-kicker{font-family:var(--mono);font-size:16px;letter-spacing:.18em;color:var(--gray);text-transform:uppercase;margin-bottom:20px;}
-.close-card{flex:1;background:linear-gradient(165deg,#161616,#111);border:1.5px solid rgba(0,255,178,.25);
- border-radius:20px;padding:32px 36px;display:flex;flex-direction:column;}
+.close-card{flex:1;background:linear-gradient(165deg,rgba(22,22,22,.96),rgba(14,14,14,.97));border:1.5px solid rgba(0,255,178,.28);
+ border-radius:20px;padding:32px 36px;display:flex;flex-direction:column;backdrop-filter:blur(12px);
+ box-shadow:0 32px 80px rgba(0,0,0,.7);}
 .close-head{display:flex;align-items:center;gap:14px;margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,.08);}
 .close-avatar{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,rgba(0,255,178,.3),rgba(0,255,178,.05));
  border:1.5px solid rgba(0,255,178,.4);display:flex;align-items:center;justify-content:center;
@@ -124,11 +304,15 @@ EXTRA_CSS = """
 .repo-row .st::before{content:'★';font-size:14px;}
 .close-title{font-family:var(--pop);font-weight:800;font-size:44px;color:var(--blanco);margin-top:28px;}
 .close-body{font-family:var(--cond);font-size:26px;line-height:1.35;color:var(--gray);margin-top:12px;max-width:880px;}
-.close-cta{margin-top:24px;background:var(--verde);color:#04130b;border-radius:14px;padding:22px 32px;
+.close-cta{margin-top:28px;background:var(--verde);color:#04130b;border-radius:14px;padding:22px 32px;
  font-family:var(--pop);font-weight:800;font-size:32px;text-align:center;letter-spacing:.04em;
  box-shadow:0 0 48px rgba(0,255,178,.35);}
-.close-foot{margin-top:12px;font-family:var(--mono);font-size:16px;color:var(--gray);text-align:center;}
 """
+
+
+def _wrap(idx: int, inner: str) -> str:
+    html = chrome(idx, bg_layer(idx) + inner, total=TOTAL, bridges=None, footer=True, counter=False)
+    return html
 
 
 def slide_cover():
@@ -146,7 +330,7 @@ def slide_cover():
   <h1 class="cover-title">12 repos de GitHub que reemplazan apps<br><span class="gr">que vos ya pagás</span></h1>
   <p class="cover-sub">(gratis, open source y andan hoy)</p>
 </div>"""
-    return chrome(1, inner, total=14, bridges=None, footer=True, counter=False)
+    return _wrap(1, inner)
 
 
 def slide_repo(repo: dict, idx: int):
@@ -170,13 +354,16 @@ def slide_repo(repo: dict, idx: int):
     <div class="repo-url">{repo['url']}</div>
   </article>
 </div>"""
-    return chrome(idx, inner, total=14, bridges=None, footer=True, counter=False)
+    return _wrap(idx, inner)
 
 
 def slide_close():
     rows = ""
     for r in REPOS:
-        rows += f"""<div class="repo-row"><span class="num">{r['num']}</span><span class="nm">{r['name']}</span><span class="st">{r['stars']}</span></div>"""
+        rows += (
+            f"""<div class="repo-row"><span class="num">{r['num']}</span>"""
+            f"""<span class="nm">{r['name']}</span><span class="st">{r['stars']}</span></div>"""
+        )
     inner = f"""
 <div class="close-wrap">
   <div class="close-kicker">GitHub repos · lista completa</div>
@@ -192,10 +379,9 @@ def slide_close():
     <h2 class="close-title">Guardá estos 12.</h2>
     <p class="close-body">Sumá lo que pagás por mes en apps y vas a entender por qué armé esta lista. Te la paso completa, con los links, gratis.</p>
     <div class="close-cta">Comentá {CTA}</div>
-    <div class="close-foot">→ también te la dejo en la bio</div>
   </div>
 </div>"""
-    return chrome(14, inner, total=14, bridges=None, footer=True, counter=False)
+    return _wrap(14, inner)
 
 
 def build_slides():
@@ -207,7 +393,7 @@ def build_slides():
 
 
 def main():
-    slides = [s.replace('class="slide"', 'class="slide grid-bg"', 1) for s in build_slides()]
+    slides = build_slides()
     write_html(slides, BUILD / "carrusel.html", extra_css=EXTRA_CSS)
     print("HTML generado →", BUILD / "carrusel.html")
     pngs = render(BUILD)
