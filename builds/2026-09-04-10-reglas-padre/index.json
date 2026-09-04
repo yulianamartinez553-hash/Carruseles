@@ -1,0 +1,53 @@
+{
+  "id": "2026-09-04-10-reglas-padre",
+  "titulo": "Un hombre perdió a su hijo de 3 años y escribió 10 reglas",
+  "slides": 12,
+  "fondo": "piedra_roca",
+  "familia_visual": "manifiesto",
+  "origen": "screenshot",
+  "keyword_portada": "PADRES",
+  "cta": "PADRE",
+  "reglas": [
+    {
+      "n": 1,
+      "texto": "Todo el amor y los besos que le des a tu hijo nunca van a ser demasiados."
+    },
+    {
+      "n": 2,
+      "texto": "Siempre tenés tiempo para lo que realmente importa, aunque sea un solo minuto. Nada es tan urgente que no pueda esperar."
+    },
+    {
+      "n": 3,
+      "texto": "Sacá todas las fotos y videos que puedas, porque un día eso puede ser lo único que te quede."
+    },
+    {
+      "n": 4,
+      "texto": "No gastes plata, gastá tiempo. ¿Creés que importa lo que gastás? No importa. Lo que importa es lo que hacés."
+    },
+    {
+      "n": 5,
+      "texto": "Canten juntos. Mis recuerdos más felices con mi hijo son de él sobre mis hombros o en el auto, cantando nuestras canciones favoritas."
+    },
+    {
+      "n": 6,
+      "texto": "Disfrutá de las cosas chiquitas. Desvelarte, acostarlos, leer cuentos, cenar juntos, domingos tranquilos. Atesorá los momentos chicos."
+    },
+    {
+      "n": 7,
+      "texto": "Siempre dale un beso de despedida a quienes amás. Y si te olvidás, volvé a dárselo."
+    },
+    {
+      "n": 8,
+      "texto": "Hacé que lo aburrido sea divertido. Hacé boludeces, contá chistes, reíte, sonreí y divertite juntos. Esas tareas solo son aburridas si vos las hacés así."
+    },
+    {
+      "n": 9,
+      "texto": "Llevá un diario. Anotá todo lo que hace tu peque: las cosas graciosas que dice, las cosas lindas que hace."
+    },
+    {
+      "n": 10,
+      "texto": "Si tenés a tu hijo con vos, dale un beso de buenas noches. Desayuná con él, andá a su casamiento.",
+      "extra": ["¡Qué suerte tenés!", "¡No lo olvides nunca!"]
+    }
+  ]
+}
