@@ -163,8 +163,11 @@ EXTRA_CSS = """
 .bg-svg{position:absolute;inset:0;width:100%;height:100%;display:block;}
 
 .s-cover{position:relative;z-index:5;height:100%;display:flex;flex-direction:column;}
-.cover-photos{width:100%;height:720px;object-fit:cover;object-position:center top;display:block;flex-shrink:0;}
-.cover-body{flex:1;display:flex;flex-direction:column;justify-content:center;padding:28px 56px 110px;text-align:center;}
+.cover-photos{width:100%;height:780px;object-fit:cover;object-position:center top;display:block;flex-shrink:0;
+ mask-image:linear-gradient(to bottom, #000 0%, #000 72%, transparent 100%);
+ -webkit-mask-image:linear-gradient(to bottom, #000 0%, #000 72%, transparent 100%);}
+.cover-body{flex:1;display:flex;flex-direction:column;justify-content:center;padding:8px 56px 110px;text-align:center;
+ margin-top:-48px;position:relative;z-index:6;}
 .cover-kicker{font-family:var(--mono);font-size:15px;letter-spacing:.2em;color:var(--verde);text-transform:uppercase;margin-bottom:18px;}
 .cover-title{font-family:var(--pop);font-weight:800;font-size:44px;line-height:1.1;color:var(--blanco);
  text-transform:uppercase;letter-spacing:-.01em;text-shadow:0 4px 28px rgba(0,0,0,.75);}
