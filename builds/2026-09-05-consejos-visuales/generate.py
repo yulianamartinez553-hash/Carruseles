@@ -185,44 +185,34 @@ EXTRA_CSS = """
 .bg-layer{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
 .bg-svg{position:absolute;inset:0;width:100%;height:100%;display:block;}
 
-/* PORTADA */
+/* PORTADA — tipografía + iconos, sin chips ni pills */
 .s-cover{position:relative;z-index:5;height:100%;display:flex;flex-direction:column;
  justify-content:center;padding:80px 64px 130px;}
-.cover-badge{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:16px;
- letter-spacing:.18em;color:var(--verde);border:1.5px solid rgba(0,255,178,.4);border-radius:999px;
- padding:10px 18px;width:fit-content;margin-bottom:36px;text-transform:uppercase;}
-.cover-badge i{width:8px;height:8px;border-radius:50%;background:var(--verde);display:block;
- box-shadow:0 0 12px rgba(0,255,178,.8);}
+.cover-kicker{font-family:var(--mono);font-size:18px;letter-spacing:.22em;color:var(--verde);
+ text-transform:uppercase;margin-bottom:28px;}
 .cover-title{font-family:var(--pop);font-weight:900;font-size:74px;line-height:.98;color:var(--blanco);
  max-width:940px;text-transform:uppercase;letter-spacing:-.02em;
  -webkit-text-stroke:0.4px rgba(242,242,242,.35);}
 .cover-title .gr{color:var(--verde);-webkit-text-stroke:0.4px rgba(0,255,178,.35);}
 .cover-sub{margin-top:28px;font-family:var(--cond);font-size:34px;line-height:1.3;color:var(--gray);max-width:820px;}
-.cover-visual{margin-top:48px;display:flex;gap:16px;flex-wrap:wrap;}
-.cover-chip{font-family:var(--mono);font-size:15px;color:rgba(0,255,178,.85);border:1px solid rgba(0,255,178,.28);
- border-radius:10px;padding:12px 16px;background:rgba(0,255,178,.05);}
+.cover-icons{margin-top:56px;display:flex;gap:28px;align-items:center;flex-wrap:wrap;}
+.cover-icons .ico{width:72px;height:72px;opacity:.9;}
 
-/* CONSEJO */
+/* CONSEJO — número + icono + texto; sin cajas ni barras */
 .s-tip{position:relative;z-index:5;height:100%;display:flex;flex-direction:column;
  padding:72px 64px 130px;}
-.tip-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:36px;}
-.tip-num{font-family:var(--mono);font-size:18px;letter-spacing:.2em;color:var(--verde);text-transform:uppercase;}
-.tip-num span{display:inline-block;border:1.5px solid rgba(0,255,178,.5);border-radius:10px;
- padding:10px 14px;margin-right:12px;font-size:24px;letter-spacing:.06em;}
-.tip-icon-wrap{width:140px;height:140px;border-radius:28px;border:1.5px solid rgba(0,255,178,.35);
- background:linear-gradient(145deg,rgba(0,255,178,.1),rgba(0,255,178,.02));
- display:flex;align-items:center;justify-content:center;
- box-shadow:0 0 40px rgba(0,255,178,.12);}
+.tip-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:28px;}
+.tip-num{font-family:var(--mono);font-size:22px;letter-spacing:.18em;color:var(--verde);text-transform:uppercase;}
+.tip-icon{width:160px;height:160px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.tip-icon .ico{width:140px;height:140px;display:block;}
 .ico{width:88px;height:88px;display:block;}
 .tip-body{flex:1;display:flex;flex-direction:column;justify-content:center;}
 .tip-title{font-family:var(--pop);font-weight:900;font-size:54px;line-height:1.06;color:var(--blanco);
  max-width:920px;margin-bottom:24px;letter-spacing:-.015em;
  -webkit-text-stroke:0.35px rgba(242,242,242,.3);}
 .tip-text{font-family:var(--cond);font-size:32px;line-height:1.35;color:var(--gray);max-width:880px;}
-.tip-bar{margin-top:auto;height:4px;background:#1a1a1a;border-radius:4px;overflow:hidden;}
-.tip-bar span{display:block;height:100%;background:var(--verde);box-shadow:0 0 12px rgba(0,255,178,.5);}
 
-/* CIERRE */
+/* CIERRE — solo texto, sin botón */
 .s-close{position:relative;z-index:5;height:100%;display:flex;flex-direction:column;
  justify-content:center;align-items:center;padding:80px 64px 130px;text-align:center;}
 .close-kicker{font-family:var(--mono);font-size:16px;letter-spacing:.2em;color:var(--verde);
@@ -232,10 +222,9 @@ EXTRA_CSS = """
  -webkit-text-stroke:0.4px rgba(242,242,242,.3);}
 .close-title .gr{color:var(--verde);-webkit-text-stroke:0.4px rgba(0,255,178,.35);}
 .close-body{font-family:var(--cond);font-size:30px;line-height:1.35;color:var(--gray);
- max-width:820px;margin-bottom:40px;}
-.close-cta{display:inline-block;background:var(--verde);color:#04130b;border-radius:14px;padding:24px 42px;
- font-family:var(--pop);font-weight:900;font-size:30px;letter-spacing:.04em;
- box-shadow:0 0 48px rgba(0,255,178,.35);}
+ max-width:820px;margin-bottom:36px;}
+.close-line{font-family:var(--mono);font-size:22px;letter-spacing:.06em;color:var(--verde);}
+.close-line span{color:var(--blanco);}
 """
 
 
@@ -244,35 +233,30 @@ def _wrap(idx: int, inner: str) -> str:
 
 
 def slide_cover() -> str:
-    chips = "".join(
-        f'<div class="cover-chip">0{c["n"] if c["n"] < 10 else c["n"]} · {c["icon"].upper()}</div>'
-        for c in CONSEJOS[:4]
-    )
+    icons = "".join(ICONS.get(c["icon"], ICONS["check"]) for c in CONSEJOS[:5])
     inner = f"""
 <div class="s-cover">
-  <div class="cover-badge"><i></i> 10 reglas · vida diaria</div>
+  <div class="cover-kicker">10 reglas · vida diaria</div>
   <h1 class="cover-title">10 reglas para no vivir en <span class="gr">piloto automático</span></h1>
   <p class="cover-sub">Consejos simples. Visuales. Para aplicar hoy, no para guardar y olvidar.</p>
-  <div class="cover-visual">{chips}</div>
+  <div class="cover-icons">{icons}</div>
 </div>"""
     return _wrap(1, inner)
 
 
 def slide_tip(c: dict, idx: int) -> str:
     n = int(c["n"])
-    pct = int(round(n / 10 * 100))
     icon = ICONS.get(c["icon"], ICONS["check"])
     inner = f"""
 <div class="s-tip">
   <div class="tip-top">
-    <div class="tip-num"><span>{n:02d}</span> Regla {n}</div>
-    <div class="tip-icon-wrap">{icon}</div>
+    <div class="tip-num">{n:02d} · regla</div>
+    <div class="tip-icon">{icon}</div>
   </div>
   <div class="tip-body">
     <h2 class="tip-title">{c['titulo']}</h2>
     <p class="tip-text">{c['texto']}</p>
   </div>
-  <div class="tip-bar"><span style="width:{pct}%"></span></div>
 </div>"""
     return _wrap(idx, inner)
 
@@ -283,7 +267,7 @@ def slide_close() -> str:
   <div class="close-kicker">Cierre</div>
   <h2 class="close-title">El piloto automático se apaga <span class="gr">con una decisión</span>.</h2>
   <p class="close-body">Elegí una sola regla de estas 10 y aplicála hoy. Mañana, otra. Así se sale del modo zombie.</p>
-  <div class="close-cta">Comentá {CTA} y te mando las 10</div>
+  <p class="close-line">Comentá <span>{CTA}</span> y te mando las 10</p>
 </div>"""
     return _wrap(TOTAL, inner)
 
@@ -328,7 +312,7 @@ def main():
 |---|---|---|---|
 | Poppins | 800 | Títulos / reglas | `/workspace/fonts/Poppins-Bold.ttf` |
 | Barlow Condensed | 400–700 | Cuerpo | `/workspace/fonts/BarlowCondensed-*.ttf` |
-| IBM Plex Mono | 400–600 | Labels, firma, chips | `/workspace/fonts/IBMPlexMono-*.ttf` |
+| IBM Plex Mono | 400–600 | Labels, firma, kickers | `/workspace/fonts/IBMPlexMono-*.ttf` |
 
 Carga: `@font-face` base64 vía `stlabs_kit.embedded_fonts_css()`.
 """,
