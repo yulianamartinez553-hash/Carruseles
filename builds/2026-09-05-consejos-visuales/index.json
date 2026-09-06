@@ -1,0 +1,72 @@
+{
+  "id": "2026-09-05-consejos-visuales",
+  "titulo": "10 reglas para no vivir en piloto automático",
+  "slides": 12,
+  "fondo": "papel_corrugado",
+  "familia_visual": "blueprint",
+  "origen": "original",
+  "keyword_portada": "AUTOMÁTICO",
+  "cta": "CLARO",
+  "consejos": [
+    {
+      "n": 1,
+      "icon": "clock",
+      "titulo": "Protegé tu tiempo como si fuera plata.",
+      "texto": "Si alguien te pide una hora, pedile el motivo. Tu agenda no es sala de espera de nadie."
+    },
+    {
+      "n": 2,
+      "icon": "phone",
+      "titulo": "El celular no manda. Mandás vos.",
+      "texto": "Si lo primero que mirás al despertar es una pantalla, el día ya te lo diseñó otro."
+    },
+    {
+      "n": 3,
+      "icon": "check",
+      "titulo": "Terminá una cosa antes de empezar tres.",
+      "texto": "La lista infinita no es productividad. Es ansiedad disfrazada de orden."
+    },
+    {
+      "n": 4,
+      "icon": "moon",
+      "titulo": "Dormí como si tu rendimiento dependiera de eso.",
+      "texto": "Porque depende. No hay hack que gane a un cerebro cansado."
+    },
+    {
+      "n": 5,
+      "icon": "move",
+      "titulo": "Mové el cuerpo aunque no tengas ganas.",
+      "texto": "Diez minutos caminando cambian más el día que una hora scrolleando consejos de motivación."
+    },
+    {
+      "n": 6,
+      "icon": "chat",
+      "titulo": "Una charla de verdad vale más que cien likes.",
+      "texto": "Mirar a alguien a los ojos y escuchar sin el teléfono encima. Eso sí queda."
+    },
+    {
+      "n": 7,
+      "icon": "pen",
+      "titulo": "Si no lo escribís, se te escapa.",
+      "texto": "Ideas, acuerdos, lo que te dolió, lo que te ilusionó. El papel no miente. La memoria sí."
+    },
+    {
+      "n": 8,
+      "icon": "no",
+      "titulo": "Decí que no sin pedir perdón.",
+      "texto": "Cada sí automático es un no a algo que sí te importa. Elegí con intención."
+    },
+    {
+      "n": 9,
+      "icon": "steps",
+      "titulo": "Invertí en vos antes que en cosas.",
+      "texto": "Cursos, hábitos, salud, oficios. Lo que comprás se devalúa. Lo que aprendés, no."
+    },
+    {
+      "n": 10,
+      "icon": "play",
+      "titulo": "Empezá antes de sentirte listo.",
+      "texto": "La preparación infinita es otra forma de miedo. El primer paso imperfecto ya te pone adelante."
+    }
+  ]
+}
