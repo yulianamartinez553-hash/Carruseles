@@ -1,9 +1,11 @@
-El stack para lanzar una app: de encontrar el dolor a cobrar y medir.
+La mayoría no tiene un problema de ideas.
 
-Reddit → Typeform → Claude Code → Vercel → Stripe → Resend → Loom → Meta Ads → PostHog.
+Tiene un problema de fricción:
+demasiadas herramientas sueltas, cero sistema, y la app se queda en el Notion eterno.
 
-Una sola persona. Sin equipo. Sin permiso.
+Lo que cambia el juego no es “usar IA”.
+Es armar un recorrido cerrado: del dolor al cobro, sin pedirle permiso a nadie.
 
-Comentá STACK y te paso la guía de cómo conectarlas.
+Deslizá. Al final hay una keyword.
 
-#Stack #Apps #Productividad #STLabs #sebastian
+#STLabs #sebastian #productividad #lanzamiento
