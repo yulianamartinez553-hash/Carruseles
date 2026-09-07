@@ -72,10 +72,7 @@ LOGO_SVG = {
     "posthog": svg_wrap(
         '<path fill="#F54E00" d="M9.854 14.5 5 9.647.854 5.5A.5.5 0 0 0 0 5.854V8.44a.5.5 0 0 0 .146.353L5 13.647l.147.146L9.854 18.5l.146.147v-.049c.065.03.134.049.207.049h2.586a.5.5 0 0 0 .353-.854L9.854 14.5zm0-5-4-4a.487.487 0 0 0-.409-.144.515.515 0 0 0-.356.21.493.493 0 0 0-.089.288V8.44a.5.5 0 0 0 .147.353l9 9a.5.5 0 0 0 .853-.354v-2.585a.5.5 0 0 0-.146-.354l-5-5zm1-4a.5.5 0 0 0-.854.354V8.44a.5.5 0 0 0 .147.353l4 4a.5.5 0 0 0 .853-.354V9.854a.5.5 0 0 0-.146-.354l-4-4zm12.647 11.515a3.863 3.863 0 0 1-2.232-1.1l-4.708-4.707a.5.5 0 0 0-.854.354v6.585a.5.5 0 0 0 .5.5H23.5a.5.5 0 0 0 .5-.5v-.6c0-.276-.225-.497-.499-.532zm-5.394.032a.8.8 0 1 1 0-1.6.8.8 0 0 1 0 1.6zM.854 15.5a.5.5 0 0 0-.854.354v2.293a.5.5 0 0 0 .5.5h2.293c.222 0 .39-.135.462-.309a.493.493 0 0 0-.109-.545L.854 15.501zM5 14.647.854 10.5a.5.5 0 0 0-.854.353v2.586a.5.5 0 0 0 .146.353L4.854 18.5l.146.147h2.793a.5.5 0 0 0 .353-.854L5 14.647z"/>'
     ),
-    "claude": svg_wrap(
-        # starburst tipo Claude (misma silueta que la ref)
-        '<path fill="#D48C69" d="M12 1.2l1.6 6.2 5.9-2.6-2.6 5.9 6.2 1.6-6.2 1.6 2.6 5.9-5.9-2.6L12 22.8l-1.6-6.2-5.9 2.6 2.6-5.9L1.2 12l6.2-1.6-2.6-5.9 5.9 2.6z"/>'
-    ),
+    # claude: PNG recortado de la ref (no SVG) — ver logo_mark / logo_grid_html
     "bubble": svg_wrap(
         '<rect x="2" y="7" width="20" height="1.6" rx=".6" fill="#FF7828"/>'
         '<path fill="none" stroke="#FF7828" stroke-width="1.8" stroke-linecap="round" '
@@ -86,6 +83,9 @@ LOGO_SVG = {
 
 
 def logo_mark(key: str) -> str:
+    # Claude: mantener el spark original de la referencia (PNG recortado HQ)
+    if key == "claude":
+        return logo_img("04-claude.png")
     if key in LOGO_SVG:
         return LOGO_SVG[key]
     return logo_img(key)
@@ -93,8 +93,17 @@ def logo_mark(key: str) -> str:
 
 def logo_grid_html() -> str:
     keys = ["reddit", "typeform", "claude", "vercel", "stripe", "resend", "loom", "meta", "posthog"]
-    cells = "".join(f'<div class="gcell">{LOGO_SVG[k]}</div>' for k in keys)
-    return f'<div class="logo-grid"><div class="gline"></div><div class="gcells">{cells}</div><div class="gline"></div></div>'
+    cells = []
+    for k in keys:
+        if k == "claude":
+            cells.append(f'<div class="gcell">{logo_img("04-claude.png")}</div>')
+        else:
+            cells.append(f'<div class="gcell">{LOGO_SVG[k]}</div>')
+    return (
+        '<div class="logo-grid"><div class="gline"></div>'
+        f'<div class="gcells">{"".join(cells)}</div>'
+        '<div class="gline"></div></div>'
+    )
 
 
 def font_css() -> str:
@@ -158,7 +167,7 @@ html,body{{background:#111;}}
 .logo-grid .gline{{width:100%;height:6px;background:#FF7828;border-radius:3px;opacity:.9;}}
 .logo-grid .gcells{{display:grid;grid-template-columns:repeat(3,1fr);gap:36px 48px;width:100%;align-items:center;justify-items:center;}}
 .logo-grid .gcell{{width:140px;height:140px;display:flex;align-items:center;justify-content:center;}}
-.logo-grid .gcell .logo-svg{{width:120px;height:120px;}}
+.logo-grid .gcell .logo-svg,.logo-grid .gcell img{{width:120px;height:120px;object-fit:contain;}}
 
 .box{{margin-top:28px;border:3px solid {V};border-radius:18px;padding:28px 36px;background:rgba(20,20,20,.85);
   max-width:820px;width:100%;box-shadow:0 0 24px rgba(0,255,178,.08);}}

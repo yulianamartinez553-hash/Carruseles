@@ -75,6 +75,14 @@
       "slides": 12,
       "fondo": "piedra_roca",
       "familia_visual": "before_after"
+    },
+    {
+      "id": "2026-09-07-stack-lanzar-ia",
+      "fecha": "2026-09-07",
+      "titulo": "El stack para lanzar aplicaciones con IA",
+      "slides": 12,
+      "fondo": "piedra_roca",
+      "familia_visual": "before_after"
     }
   ]
 }
