@@ -1,5 +1,5 @@
 {
-  "ultimo_id": "2026-07-16-tus-leads-no-son-un-chat",
+  "ultimo_id": "2026-09-07-stack-lanzar-ia",
   "carruseles": [
     {
       "id": "2026-07-01-demo-memoria-stlabs",
@@ -35,6 +35,22 @@
       "fondo": "reticula_fina",
       "familia_visual": "dossier_editorial",
       "feedback_estado": "borrador"
+    },
+    {
+      "id": "2026-09-07-stack-lanzar-ia",
+      "fecha": "2026-09-07",
+      "titulo": "El stack para lanzar aplicaciones con IA",
+      "slides": 12,
+      "fondo": "lino_tela",
+      "familia_visual": "before_after"
+    },
+    {
+      "id": "2026-09-07-stack-lanzar-ia",
+      "fecha": "2026-09-07",
+      "titulo": "El stack para lanzar aplicaciones con IA",
+      "slides": 12,
+      "fondo": "lino_tela",
+      "familia_visual": "before_after"
     }
   ]
 }
