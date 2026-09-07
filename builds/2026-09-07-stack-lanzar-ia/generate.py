@@ -11,12 +11,11 @@ B = Path(__file__).resolve().parent
 FONTS = Path("/tmp/stlabs-fonts")
 LOGOS = B / "assets" / "logos"
 
-# Modo BLANCO + lino (sugerido por memoria)
-BG = "#EDE8DC"
-TX = "#0A0A0A"
-GY = "#4A4540"
+# Modo NEGRO STLabs
+BG = "#0A0A0A"
+TX = "#F2F2F2"
+GY = "#9aa39c"
 V = "#00FFB2"  # acento STLabs (reemplaza naranja de la ref)
-NAVY = "#0A0A0A"
 TOTAL = 12
 
 
@@ -58,12 +57,15 @@ CSS = f"""
 html,body{{background:#111;}}
 .sheet{{display:flex;flex-direction:column;gap:36px;padding:28px;width:max-content;}}
 .slide{{position:relative;width:1080px;height:1350px;overflow:hidden;background:{BG};color:{TX};}}
-/* Textura lino clara */
-.slide::before{{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.55;
+/* Textura piedra/roca + retícula sutil */
+.slide::before{{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.45;
   background-image:
-    repeating-linear-gradient(0deg,rgba(10,10,10,.035) 0 1px,transparent 1px 3px),
-    repeating-linear-gradient(90deg,rgba(10,10,10,.035) 0 1px,transparent 1px 3px);}}
-.spark{{position:absolute;z-index:1;pointer-events:none;color:rgba(0,255,178,.35);font-size:14px;}}
+    linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+  background-size:48px 48px;}}
+.slide::after{{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(ellipse 70% 50% at 50% 30%, rgba(0,255,178,.06), transparent 70%);}}
+.spark{{position:absolute;z-index:2;pointer-events:none;color:rgba(0,255,178,.45);font-size:14px;}}
 
 .content{{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;
   padding:72px 64px 120px;}}
@@ -82,15 +84,15 @@ html,body{{background:#111;}}
 .hero.grid img{{max-width:860px;max-height:560px;}}
 .hero.cover img{{max-height:620px;}}
 
-.box{{margin-top:28px;border:3px solid {V};border-radius:18px;padding:28px 36px;background:rgba(255,255,255,.35);
-  max-width:820px;width:100%;}}
+.box{{margin-top:28px;border:3px solid {V};border-radius:18px;padding:28px 36px;background:rgba(20,20,20,.85);
+  max-width:820px;width:100%;box-shadow:0 0 24px rgba(0,255,178,.08);}}
 .box ul{{list-style:none;font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:28px;
   line-height:1.55;color:{TX};}}
 .box li::before{{content:'- ';color:{V};}}
 .box.cta-box{{font-family:'IBM Plex Mono',monospace;font-size:24px;line-height:1.45;text-align:left;color:{TX};}}
 
 .note{{margin-top:22px;font-family:'Lora',serif;font-style:italic;font-weight:600;font-size:26px;
-  color:{TX};text-align:center;max-width:780px;line-height:1.3;}}
+  color:{GY};text-align:center;max-width:780px;line-height:1.3;}}
 .note .arr{{display:inline-block;margin-left:10px;color:{V};font-style:normal;font-size:28px;}}
 
 .foot{{position:absolute;left:56px;right:56px;bottom:48px;z-index:10;

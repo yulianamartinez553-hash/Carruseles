@@ -1,14 +1,9 @@
 {
-  "titulo": "Tus Leads No Son Un Chat",
-  "slides": 6,
-  "fondo": "reticula_fina",
-  "familia_visual": "dossier_editorial",
-  "origen": "original",
-  "keyword_portada": "LEADS",
-  "modo_fondo": "blanco",
-  "feedback": {
-    "estado": "borrador"
-  },
-  "id": "2026-07-16-tus-leads-no-son-un-chat",
-  "fecha": "2026-07-16"
+  "id": "2026-09-07-stack-lanzar-ia",
+  "titulo": "El stack para lanzar aplicaciones con IA",
+  "slides": 12,
+  "fondo": "piedra_roca",
+  "familia_visual": "before_after",
+  "origen": "screenshot",
+  "keyword_portada": "STACK"
 }

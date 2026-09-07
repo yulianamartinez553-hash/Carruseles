@@ -3,14 +3,14 @@
   "fecha": "2026-09-07",
   "titulo": "El stack para lanzar aplicaciones con IA",
   "slides": 12,
-  "fondo": "lino_tela",
+  "fondo": "piedra_roca",
   "familia_visual": "before_after",
   "origen": "screenshot",
   "keyword_portada": "STACK",
-  "modo": "blanco",
+  "modo": "negro",
   "cta": "STACK",
   "accent": "#00FFB2",
   "firma": "sebastian.stlabs.ar",
   "idioma": "es-AR",
-  "notas": "Clon 12 slides. Logos e ilustraciones recortados de la referencia. Naranja→verde STLabs. Sin @handle ni contador."
+  "notas": "Clon 12 slides fondo negro. Logos recortados de la referencia. Naranja→verde STLabs."
 }

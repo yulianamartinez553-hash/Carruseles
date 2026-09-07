@@ -1,12 +1,12 @@
-# Manifiesto de fuentes — Tus Leads No Son Un Chat
+# Manifiesto de fuentes — El stack para lanzar apps
 
-| Fuente | Peso / estilo | Rol | Origen | Código / comando de carga |
+| Fuente | Peso / estilo | Rol | Origen | Carga |
 |---|---|---|---|---|
-| Bebas Neue | 400 | números / acentos tipográficos | `fonts/BebasNeue-Regular.ttf` (skill STLabs) | `@font-face{font-family:'Bebas Neue';src:url(data:font/ttf;base64,...) format('truetype');}` embebido en HTML |
-| Poppins | 800 ExtraBold | títulos portada, CTA y pasos | `fonts/Poppins-ExtraBold.ttf` | `@font-face` base64 en HTML final |
-| Lora | 600 italic | palabra-acento `.ac` en verde | `fonts/Lora-Italic-Variable.ttf` | `@font-face` italic variable base64 |
-| Barlow Condensed | 400–700 | cuerpo / claims | `fonts/BarlowCondensed-*.ttf` | `@font-face` base64 |
-| IBM Plex Mono | 400–600 | kickers, footer, URL | `fonts/IBMPlexMono-*.ttf` | `@font-face` base64 |
+| Poppins | 800 ExtraBold | títulos display | skill STLabs / google-fonts | `@font-face` base64 en HTML |
+| Poppins | 700 Bold | fallback título | skill STLabs | `@font-face` base64 |
+| Bebas Neue | 400 | display alt | skill STLabs | `@font-face` base64 |
+| IBM Plex Mono | 500 / 600 | bullets caja, firma | skill STLabs | `@font-face` base64 |
+| Barlow Condensed | 500 / 700 | cuerpo auxiliar | skill STLabs | `@font-face` base64 |
+| Lora | italic 400–700 | notas script | skill STLabs | `@font-face` base64 |
 
-Modo: **blanco** · Textura: **retícula fina** · Familia visual: **dossier editorial**
-Firma en todos los slides: `sebastian.stlabs.ar`
+Instalación local: `python carrusel-stlabs/assets/install_fonts.py` o copiar TTF a `/tmp/stlabs-fonts/`.
