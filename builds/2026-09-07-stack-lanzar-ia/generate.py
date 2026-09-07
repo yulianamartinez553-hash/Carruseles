@@ -166,8 +166,9 @@ html,body{{background:#111;}}
 .logo-grid{{display:flex;flex-direction:column;align-items:center;gap:22px;width:min(900px,100%);}}
 .logo-grid .gline{{width:100%;height:6px;background:#FF7828;border-radius:3px;opacity:.9;}}
 .logo-grid .gcells{{display:grid;grid-template-columns:repeat(3,1fr);gap:36px 48px;width:100%;align-items:center;justify-items:center;}}
-.logo-grid .gcell{{width:140px;height:140px;display:flex;align-items:center;justify-content:center;}}
-.logo-grid .gcell .logo-svg,.logo-grid .gcell img{{width:120px;height:120px;object-fit:contain;}}
+.logo-grid .gcell{{width:140px;height:140px;display:flex;align-items:center;justify-content:center;overflow:hidden;}}
+.logo-grid .gcell .logo-svg,
+.logo-grid .gcell img{{width:120px!important;height:120px!important;max-width:120px!important;max-height:120px!important;object-fit:contain;}}
 
 .box{{margin-top:28px;border:3px solid {V};border-radius:18px;padding:28px 36px;background:rgba(20,20,20,.85);
   max-width:820px;width:100%;box-shadow:0 0 24px rgba(0,255,178,.08);}}
