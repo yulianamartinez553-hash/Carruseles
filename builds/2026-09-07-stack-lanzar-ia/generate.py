@@ -83,9 +83,11 @@ LOGO_SVG = {
 
 
 def logo_mark(key: str) -> str:
-    # Claude: mantener el spark original de la referencia (PNG recortado HQ)
+    # Claude + bubble: PNG recortados de la referencia
     if key == "claude":
         return logo_img("04-claude.png")
+    if key == "bubble":
+        return logo_img("12-bubble.png")
     if key in LOGO_SVG:
         return LOGO_SVG[key]
     return logo_img(key)
@@ -232,7 +234,7 @@ def slide_cta() -> str:
   <div class="content">
     <div class="title cta">COMENTÁ<br><span class="g uline">STACK</span></div>
     <div class="hero logo">{logo_mark('bubble')}</div>
-    <div class="box cta-box">y te paso la guía: cómo conectar cada herramienta para manejarlas desde un solo lugar, cuáles no se pueden y en qué orden hacerlo.</div>
+    <div class="box cta-box">y te paso la guía: cómo conectar cada herramienta a Claude Code para manejarlas todas desde un solo lugar, cuáles no se pueden y en qué orden hacerlo.</div>
     <div class="note">deslizá y guardalo<span class="arr">↓</span></div>
   </div>{foot()}</div>"""
 
