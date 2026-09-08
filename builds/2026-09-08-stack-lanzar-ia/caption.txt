@@ -1,0 +1,10 @@
+El stack para lanzar aplicaciones con IA.
+
+Una sola persona. Sin equipo. Sin permiso.
+Reddit → Typeform → Claude Code → Vercel → Stripe → Resend → Loom → Meta → PostHog.
+
+Deslizá. Guardá. Aplicá.
+
+Comentá LANZAR y te mando la guía de conexión.
+
+#ia #lanzamiento #productividad #stlabs #automatizacion
