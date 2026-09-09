@@ -28,23 +28,23 @@ TITLE = (
 
 ITEMS = [
     "Ocultá claves API",
-    "Eliminá secretos de Git",
+    "Eliminá secretos Git",
     "Clave pública DB",
     "Seguridad row-level",
     "Cifrado de datos",
-    "Forzá la autenticación",
-    "Restringí acceso a registros",
-    "Bloqueá manipulación de campos",
-    "Protegé las cookies",
-    "Hasheá las contraseñas",
+    "Forzá autenticación",
+    "Restringí registros",
+    "Bloqueá campos",
+    "Protegé cookies",
+    "Hasheá contraseñas",
     "Limitá logins",
     "Protección bots",
     "Parametrizá consultas",
     "Validá entradas",
-    "Escapá contenido de usuario",
+    "Escapá contenido",
     "Restringí archivos",
     "Limitá API",
-    "Cabeceras de seguridad",
+    "Cabeceras seguridad",
     "Forzá HTTPS",
     "manus.im",
 ]
@@ -89,11 +89,11 @@ def draw_timer(draw: ImageDraw.ImageDraw, t: float, font: ImageFont.FreeTypeFont
     label = f"{int(remain // 60):02d}:{int(remain % 60):02d},{int((remain % 1) * 100):02d}"
     bbox = draw.textbbox((0, 0), label, font=font)
     tw, th = bbox[2] - bbox[0], bbox[3] - bbox[1]
-    pad_x, pad_y = 22, 12
-    x, y = (W - tw) // 2, 300
+    pad_x, pad_y = 28, 14
+    x, y = (W - tw) // 2, 318
     draw.rounded_rectangle(
         [x - pad_x, y - pad_y, x + tw + pad_x, y + th + pad_y],
-        radius=10, fill=(0, 0, 0, 220), outline=GREEN, width=2,
+        radius=12, fill=(0, 0, 0, 220), outline=GREEN, width=3,
     )
     draw.text((x, y), label, font=font, fill=WHITE)
 
@@ -103,40 +103,56 @@ def draw_items(
     visible: int,
     f_num: ImageFont.FreeTypeFont,
     f_item: ImageFont.FreeTypeFont,
+    f_prog: ImageFont.FreeTypeFont,
 ) -> None:
-    left_x, right_x, top_y, line_h = 48, 560, 390, 68
-    for i in range(min(visible, 19)):
-        col = 0 if i < 10 else 1
-        row = i if i < 10 else i - 10
-        x = left_x if col == 0 else right_x
-        y = top_y + row * line_h
-        num = f"{i + 1}."
-        draw.text((x, y), num, font=f_num, fill=GREEN)
-        nw = draw.textbbox((0, 0), num, font=f_num)[2]
-        draw.text((x + nw + 8, y + 2), ITEMS[i], font=f_item, fill=WHITE)
+    """Un tip grande a la vez (legible en móvil)."""
+    if visible < 1:
+        return
+    i = min(visible, 19) - 1
+    num = f"{i + 1}."
+    text = ITEMS[i]
+    # progreso arriba del tip
+    prog = f"{i + 1} / 20"
+    pb = draw.textbbox((0, 0), prog, font=f_prog)
+    draw.text(((W - (pb[2] - pb[0])) // 2, 430), prog, font=f_prog, fill=GREEN)
+
+    bn = draw.textbbox((0, 0), num, font=f_num)
+    bt = draw.textbbox((0, 0), text, font=f_item)
+    total_w = (bn[2] - bn[0]) + 24 + (bt[2] - bt[0])
+    # si no entra en una línea, tip debajo del número
+    y = 560
+    if total_w > W - 80:
+        x_num = (W - (bn[2] - bn[0])) // 2
+        draw.text((x_num, y), num, font=f_num, fill=GREEN)
+        x_txt = (W - (bt[2] - bt[0])) // 2
+        draw.text((x_txt, y + (bn[3] - bn[1]) + 20), text, font=f_item, fill=WHITE)
+    else:
+        x0 = (W - total_w) // 2
+        draw.text((x0, y), num, font=f_num, fill=GREEN)
+        draw.text((x0 + (bn[2] - bn[0]) + 24, y + 18), text, font=f_item, fill=WHITE)
 
 
 def draw_hero(draw: ImageDraw.ImageDraw, f_num: ImageFont.FreeTypeFont, f_txt: ImageFont.FreeTypeFont) -> None:
     n, t = "20.", "manus.im"
     bn = draw.textbbox((0, 0), n, font=f_num)
     bt = draw.textbbox((0, 0), t, font=f_txt)
-    total_w = (bn[2] - bn[0]) + 18 + (bt[2] - bt[0])
+    total_w = (bn[2] - bn[0]) + 22 + (bt[2] - bt[0])
     x0 = (W - total_w) // 2
-    y = H // 2 - 70
+    y = H // 2 - 90
     draw.text((x0, y), n, font=f_num, fill=GREEN)
-    draw.text((x0 + (bn[2] - bn[0]) + 18, y + 18), t, font=f_txt, fill=WHITE)
-    draw.rectangle([x0, y + (bn[3] - bn[1]) + 22, x0 + total_w, y + (bn[3] - bn[1]) + 28], fill=GREEN)
+    draw.text((x0 + (bn[2] - bn[0]) + 22, y + 22), t, font=f_txt, fill=WHITE)
+    draw.rectangle([x0, y + (bn[3] - bn[1]) + 28, x0 + total_w, y + (bn[3] - bn[1]) + 36], fill=GREEN)
 
 
 def make_overlay(t: float, fonts: dict) -> Image.Image:
     img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     draw = ImageDraw.Draw(img)
 
-    y = 100
+    y = 72
     for line in TITLE.split("\n"):
         bbox = draw.textbbox((0, 0), line, font=fonts["title"])
         draw.text(((W - (bbox[2] - bbox[0])) // 2, y), line, font=fonts["title"], fill=WHITE)
-        y += bbox[3] - bbox[1] + 4
+        y += bbox[3] - bbox[1] + 2
 
     draw_timer(draw, t, fonts["timer"])
 
@@ -145,9 +161,8 @@ def make_overlay(t: float, fonts: dict) -> Image.Image:
 
     if t0 <= t < t_final:
         visible = min(19, int((t - t0) / per) + 1)
-        draw_items(draw, visible, fonts["num"], fonts["item"])
+        draw_items(draw, visible, fonts["num"], fonts["item"], fonts["prog"])
     elif t >= t_final:
-        draw_items(draw, 19, fonts["num"], fonts["item"])
         img = Image.alpha_composite(img, Image.new("RGBA", (W, H), (10, 10, 10, 170)))
         draw = ImageDraw.Draw(img)
         draw_timer(draw, t, fonts["timer"])
@@ -155,20 +170,21 @@ def make_overlay(t: float, fonts: dict) -> Image.Image:
 
     foot = "sebastian.stlabs.ar"
     fb = draw.textbbox((0, 0), foot, font=fonts["foot"])
-    draw.text(((W - (fb[2] - fb[0])) // 2, H - 110), foot, font=fonts["foot"], fill=GREEN)
+    draw.text(((W - (fb[2] - fb[0])) // 2, H - 120), foot, font=fonts["foot"], fill=GREEN)
     return img
 
 
 def render_overlays() -> None:
     OVER_DIR.mkdir(parents=True, exist_ok=True)
     fonts = {
-        "title": fnt("Poppins-Bold.ttf", 34),
-        "timer": fnt("IBMPlexMono-SemiBold.ttf", 32),
-        "num": fnt("Poppins-Bold.ttf", 28),
-        "item": fnt("BarlowCondensed-Medium.ttf", 28),
-        "foot": fnt("IBMPlexMono-Medium.ttf", 26),
-        "hero_num": fnt("BebasNeue-Regular.ttf", 130),
-        "hero_txt": fnt("Poppins-Bold.ttf", 88),
+        "title": fnt("Poppins-Bold.ttf", 48),
+        "timer": fnt("IBMPlexMono-SemiBold.ttf", 52),
+        "num": fnt("BebasNeue-Regular.ttf", 120),
+        "item": fnt("Poppins-Bold.ttf", 64),
+        "prog": fnt("IBMPlexMono-Medium.ttf", 36),
+        "foot": fnt("IBMPlexMono-Medium.ttf", 40),
+        "hero_num": fnt("BebasNeue-Regular.ttf", 200),
+        "hero_txt": fnt("Poppins-Bold.ttf", 128),
     }
     n_frames = int(DURATION * FPS)
     for i in range(n_frames):
