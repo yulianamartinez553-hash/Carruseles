@@ -25,5 +25,9 @@
       {"texto": "SIN TENER QUE PEDIR PERMISO.", "color": "blanco"}
     ]
   },
-  "foto": "assets/familia.jpg"
+  "foto": "assets/familia.jpg",
+  "layout": {
+    "foto": "horizontal_completa_arriba_sin_crop",
+    "texto": "zona_negra_inferior"
+  }
 }

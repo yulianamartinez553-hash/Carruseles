@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Publicación STLabs — foto familia + frase tiempo (fondo negro, degradé)."""
+"""Publicación STLabs — foto horizontal completa arriba + texto en negro inferior."""
 from __future__ import annotations
 
 import json
@@ -14,8 +14,9 @@ FONTS = REPO / "fonts"
 OUT = BUILD / "out"
 DATA = json.loads((BUILD / "index.json").read_text(encoding="utf-8"))
 
+# Formato feed IG ~4:5 (1080×1350). La foto 4:3 queda arriba; abajo, negro natural.
 W, H = 1080, 1350
-SCALE = 2  # retina
+SCALE = 2
 RW, RH = W * SCALE, H * SCALE
 
 NEGRO = (10, 10, 10, 255)
@@ -27,147 +28,95 @@ def font(name: str, size: int) -> ImageFont.FreeTypeFont:
     return ImageFont.truetype(str(FONTS / name), size)
 
 
-def cover_center(img: Image.Image, tw: int, th: int) -> Image.Image:
+def fit_width_full(img: Image.Image, target_w: int) -> Image.Image:
+    """Escala la foto al ancho completo SIN recortar (mantiene toda la imagen)."""
     img = img.convert("RGB")
     iw, ih = img.size
-    scale = max(tw / iw, th / ih)
-    nw, nh = int(iw * scale), int(ih * scale)
-    img = img.resize((nw, nh), Image.Resampling.LANCZOS)
-    left = (nw - tw) // 2
-    top = max(0, (nh - th) // 2 - int(th * 0.04))  # leve sesgo arriba (caras)
-    return img.crop((left, top, left + tw, top + th))
+    nh = int(round(target_w * ih / iw))
+    return img.resize((target_w, nh), Image.Resampling.LANCZOS)
 
 
-def apply_edge_fade(photo: Image.Image) -> Image.Image:
-    """Degradé sutil a negro: fuerte abajo, leve en laterales y arriba."""
+def soft_bottom_fade(photo: Image.Image, fade_px: int) -> Image.Image:
+    """Degradé sutil solo en el borde inferior → se integra al negro del lienzo."""
     w, h = photo.size
-    base = Image.new("RGBA", (w, h), NEGRO)
-    photo_rgba = photo.convert("RGBA")
-
-    # máscara de opacidad de la foto (255 = foto visible)
+    fade_px = min(fade_px, h // 2)
+    rgba = photo.convert("RGBA")
     mask = Image.new("L", (w, h), 255)
     px = mask.load()
-
-    # fade inferior (últimos ~38% → negro integrado)
-    fade_h = int(h * 0.38)
-    for y in range(h - fade_h, h):
-        t = (y - (h - fade_h)) / fade_h
-        # curva suave
-        a = int(255 * (1 - t * t))
+    start = h - fade_px
+    for y in range(start, h):
+        t = (y - start) / max(1, fade_px - 1)
+        # curva suave: al final alpha→0
+        a = int(255 * (1 - t) ** 1.6)
         for x in range(w):
-            px[x, y] = min(px[x, y], a)
-
-    # fade lateral suave
-    side = int(w * 0.08)
-    for x in range(side):
-        t = 1 - (x / side)
-        a = int(255 * (1 - 0.55 * t * t))
-        for y in range(h):
-            px[x, y] = min(px[x, y], a)
-            px[w - 1 - x, y] = min(px[w - 1 - x, y], a)
-
-    # fade superior leve
-    top_f = int(h * 0.10)
-    for y in range(top_f):
-        t = 1 - (y / top_f)
-        a = int(255 * (1 - 0.35 * t * t))
-        for x in range(w):
-            px[x, y] = min(px[x, y], a)
-
-    mask = mask.filter(ImageFilter.GaussianBlur(radius=18))
-    return Image.composite(photo_rgba, base, mask)
+            px[x, y] = a
+    mask = mask.filter(ImageFilter.GaussianBlur(radius=max(2, fade_px // 18)))
+    black = Image.new("RGBA", (w, h), NEGRO)
+    return Image.composite(rgba, black, mask)
 
 
-def draw_text_block(canvas: Image.Image) -> None:
+def draw_text_in_black_zone(canvas: Image.Image, zone_top: int) -> None:
+    """Tipografía gruesa STLabs en la zona negra inferior."""
     draw = ImageDraw.Draw(canvas)
-    # tipografía gruesa y grande
-    f_big = font("Poppins-Bold.ttf", 78 * SCALE // 2)  # ~78 @1x → use 156 at 2x
-    f_big = font("Poppins-Bold.ttf", 72 * SCALE)
-    f_mid = font("Poppins-Bold.ttf", 58 * SCALE)
-    f_foot = font("IBMPlexMono-Medium.ttf", 26 * SCALE)
+    f_big = font("Poppins-Bold.ttf", 64 * SCALE)
+    f_mid = font("Poppins-Bold.ttf", 52 * SCALE)
+    f_foot = font("IBMPlexMono-Medium.ttf", 28 * SCALE)
 
     lines = DATA["copy"]["lineas"]
-    # primeras 3 líneas un poco más grandes (hook)
-    sizes = []
-    for i, line in enumerate(lines):
-        if i < 3:
-            sizes.append(f_big)
-        else:
-            sizes.append(f_mid)
+    fonts_line = [f_big if i < 3 else f_mid for i in range(len(lines))]
+    gap = 14 * SCALE
 
-    # medir bloque
-    gap = 10 * SCALE
-    heights = []
-    widths = []
-    for line, f in zip(lines, sizes):
+    heights, widths = [], []
+    for line, f in zip(lines, fonts_line):
         bbox = draw.textbbox((0, 0), line["texto"], font=f)
         widths.append(bbox[2] - bbox[0])
         heights.append(bbox[3] - bbox[1])
 
     block_h = sum(heights) + gap * (len(lines) - 1)
-    # anclar en zona inferior-media (sobre el degradé negro)
-    y = int(RH * 0.52)
-    # si se pasa, subir
-    if y + block_h > RH - 140 * SCALE:
-        y = RH - 140 * SCALE - block_h
+    foot_space = 110 * SCALE
+    zone_h = RH - zone_top - foot_space
+    y = zone_top + max(28 * SCALE, (zone_h - block_h) // 2)
 
-    for line, f, lh, lw in zip(lines, sizes, heights, widths):
+    for line, f, lh, lw in zip(lines, fonts_line, heights, widths):
         color = VERDE if line["color"] == "verde" else BLANCO
         x = (RW - lw) // 2
-        # sombra suave para legibilidad
-        draw.text((x + 3 * SCALE, y + 3 * SCALE), line["texto"], font=f, fill=(0, 0, 0, 180))
         draw.text((x, y), line["texto"], font=f, fill=color)
         y += lh + gap
 
-    # firma
     foot = DATA["firma"]
     fb = draw.textbbox((0, 0), foot, font=f_foot)
     fx = (RW - (fb[2] - fb[0])) // 2
-    draw.text((fx, RH - 90 * SCALE), foot, font=f_foot, fill=VERDE)
+    draw.text((fx, RH - 78 * SCALE), foot, font=f_foot, fill=VERDE)
 
 
 def main() -> Path:
     OUT.mkdir(parents=True, exist_ok=True)
-    photo_path = BUILD / DATA["foto"]
-    photo = Image.open(photo_path)
-    # foto casi full-bleed, centrada
-    covered = cover_center(photo, RW, RH)
-    framed = apply_edge_fade(covered)
+    photo = Image.open(BUILD / DATA["foto"])
+
+    # Foto completa al ancho del post (sin crop / sin zoom)
+    fitted = fit_width_full(photo, RW)
+    # Degradé sutil solo donde la foto toca el negro
+    faded = soft_bottom_fade(fitted, fade_px=int(90 * SCALE))
 
     canvas = Image.new("RGBA", (RW, RH), NEGRO)
-    canvas = Image.alpha_composite(canvas, framed)
-    draw_text_block(canvas)
+    # pegar arriba
+    canvas.paste(faded, (0, 0), faded)
+    photo_h = faded.size[1]
+    # zona de texto = todo lo negro debajo de la foto
+    draw_text_in_black_zone(canvas, zone_top=photo_h - int(40 * SCALE))
 
     final = canvas.convert("RGB")
     preview = final.resize((W, H), Image.Resampling.LANCZOS)
 
     out_hi = OUT / "STLabs-Post-Tiempo-Ellas.png"
     out_prev = OUT / "preview.png"
+    out_jpg = OUT / "STLabs-Post-Tiempo-Ellas.jpg"
     final.save(out_hi, "PNG", optimize=True)
     preview.save(out_prev, "PNG", optimize=True)
-    # también jpg liviano para chat
-    out_jpg = OUT / "STLabs-Post-Tiempo-Ellas.jpg"
-    preview.save(out_jpg, "JPEG", quality=92, optimize=True)
+    preview.save(out_jpg, "JPEG", quality=93, optimize=True)
 
-    (BUILD / "caption.txt").write_text(
-        "La meta de tener una empresa no era ser millonario.\n\n"
-        "Era tener tiempo para estar con ellas cuando me necesiten..\n"
-        "Sin tener que pedir permiso.\n\n"
-        "#familia #empresa #tiempo #stlabs\n",
-        encoding="utf-8",
-    )
-    (BUILD / "MANIFIESTO-FUENTES.md").write_text(
-        """# Manifiesto de fuentes — Post tiempo / ellas
-
-| Familia | Peso | Rol | Origen |
-|---|---|---|---|
-| Poppins | 700 | Frase display | `/workspace/fonts/Poppins-Bold.ttf` |
-| IBM Plex Mono | 500 | Firma | `/workspace/fonts/IBMPlexMono-Medium.ttf` |
-""",
-        encoding="utf-8",
-    )
+    print(f"foto={fitted.size[0]//SCALE}x{fitted.size[1]//SCALE}  canvas={W}x{H}")
     print("OK →", out_hi)
-    print("preview →", out_prev)
     return out_prev
 
 
