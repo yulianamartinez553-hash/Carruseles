@@ -1,5 +1,5 @@
 {
-  "ultimo_id": "2026-09-07-stack-lanzar-ia",
+  "ultimo_id": "2026-09-09-meta-familia",
   "carruseles": [
     {
       "id": "2026-07-01-demo-memoria-stlabs",
@@ -75,6 +75,30 @@
       "slides": 12,
       "fondo": "piedra_roca",
       "familia_visual": "before_after"
+    },
+    {
+      "id": "2026-09-09-meta-familia",
+      "fecha": "2026-09-09",
+      "titulo": "La meta de tener una empresa",
+      "slides": 1,
+      "fondo": "gradiente_profundo",
+      "familia_visual": "dossier_editorial"
+    },
+    {
+      "id": "2026-09-09-meta-familia",
+      "fecha": "2026-09-09",
+      "titulo": "La meta de tener una empresa",
+      "slides": 1,
+      "fondo": "gradiente_profundo",
+      "familia_visual": "dossier_editorial"
+    },
+    {
+      "id": "2026-09-09-meta-familia",
+      "fecha": "2026-09-09",
+      "titulo": "La meta de tener una empresa",
+      "slides": 1,
+      "fondo": "gradiente_profundo",
+      "familia_visual": "dossier_editorial"
     }
   ]
 }
