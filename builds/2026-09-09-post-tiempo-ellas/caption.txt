@@ -1,6 +1,13 @@
 La meta de tener una empresa no era ser millonario.
 
-Era tener tiempo para estar con ellas cuando me necesiten..
+Era tener tiempo para estar con ellas cuando me necesiten.
 Sin tener que pedir permiso.
 
-#familia #empresa #tiempo #stlabs
+Eso es lo que construyo cada día:
+un sistema que trabaja aunque yo no esté,
+para que el negocio no me robe las horas que importan.
+
+Si estás armando algo y sentís que el tiempo se te escapa,
+comentá TIEMPO y te cuento cómo lo ordenamos.
+
+#familia #tiempo #empresa #stlabs #revops
