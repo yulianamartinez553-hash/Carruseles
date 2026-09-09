@@ -1,0 +1,29 @@
+{
+  "id": "2026-09-09-post-tiempo-ellas",
+  "titulo": "La meta de tener una empresa",
+  "tipo": "publicacion",
+  "slides": 1,
+  "formato": "1080x1350",
+  "fondo": "negro_mineral",
+  "familia_visual": "manifiesto",
+  "origen": "original",
+  "keyword_portada": "TIEMPO",
+  "firma": "sebastian.stlabs.ar",
+  "paleta": {
+    "negro": "#0A0A0A",
+    "verde": "#00FFB2",
+    "blanco": "#F2F2F2"
+  },
+  "copy": {
+    "lineas": [
+      {"texto": "LA META DE", "color": "blanco"},
+      {"texto": "TENER UNA EMPRESA", "color": "verde"},
+      {"texto": "NO ERA SER MILLONARIO", "color": "blanco"},
+      {"texto": "ERA TENER TIEMPO", "color": "verde"},
+      {"texto": "PARA ESTAR CON ELLAS", "color": "blanco"},
+      {"texto": "CUANDO ME NECESITEN..", "color": "verde"},
+      {"texto": "SIN TENER QUE PEDIR PERMISO.", "color": "blanco"}
+    ]
+  },
+  "foto": "assets/familia.jpg"
+}
