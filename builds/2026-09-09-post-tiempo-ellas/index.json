@@ -16,13 +16,41 @@
   },
   "copy": {
     "lineas": [
-      {"texto": "LA META DE", "color": "blanco"},
-      {"texto": "TENER UNA EMPRESA", "color": "verde"},
-      {"texto": "NO ERA SER MILLONARIO", "color": "blanco"},
-      {"texto": "ERA TENER TIEMPO", "color": "verde"},
-      {"texto": "PARA ESTAR CON ELLAS", "color": "blanco"},
-      {"texto": "CUANDO ME NECESITEN..", "color": "verde"},
-      {"texto": "SIN TENER QUE PEDIR PERMISO.", "color": "blanco"}
+      {
+        "texto": "LA META DE",
+        "color": "blanco",
+        "peso": "chica"
+      },
+      {
+        "texto": "TENER UNA EMPRESA",
+        "color": "verde",
+        "peso": "grande"
+      },
+      {
+        "texto": "NO ERA SER MILLONARIO",
+        "color": "blanco",
+        "peso": "grande"
+      },
+      {
+        "texto": "ERA TENER TIEMPO",
+        "color": "verde",
+        "peso": "xl"
+      },
+      {
+        "texto": "PARA ESTAR CON ELLAS",
+        "color": "blanco",
+        "peso": "grande"
+      },
+      {
+        "texto": "CUANDO ME NECESITEN..",
+        "color": "verde",
+        "peso": "media"
+      },
+      {
+        "texto": "SIN TENER QUE PEDIR PERMISO.",
+        "color": "blanco",
+        "peso": "xl"
+      }
     ]
   },
   "foto": "assets/familia.jpg",

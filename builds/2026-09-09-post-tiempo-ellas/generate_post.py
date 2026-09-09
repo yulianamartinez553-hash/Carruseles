@@ -56,15 +56,30 @@ def soft_bottom_fade(photo: Image.Image, fade_px: int) -> Image.Image:
 
 
 def draw_text_in_black_zone(canvas: Image.Image, zone_top: int) -> None:
-    """Tipografía gruesa STLabs en la zona negra inferior."""
+    """Tipografía gruesa STLabs: tamaños variables para énfasis."""
     draw = ImageDraw.Draw(canvas)
-    f_big = font("Poppins-Bold.ttf", 64 * SCALE)
-    f_mid = font("Poppins-Bold.ttf", 52 * SCALE)
+    # chica < media < grande < xl (énfasis)
+    size_map = {
+        "chica": 40 * SCALE,
+        "media": 50 * SCALE,
+        "grande": 64 * SCALE,
+        "xl": 78 * SCALE,
+    }
+    gap_map = {
+        "chica": 10 * SCALE,
+        "media": 12 * SCALE,
+        "grande": 16 * SCALE,
+        "xl": 18 * SCALE,
+    }
     f_foot = font("IBMPlexMono-Medium.ttf", 28 * SCALE)
 
     lines = DATA["copy"]["lineas"]
-    fonts_line = [f_big if i < 3 else f_mid for i in range(len(lines))]
-    gap = 14 * SCALE
+    fonts_line = []
+    gaps = []
+    for line in lines:
+        peso = line.get("peso", "media")
+        fonts_line.append(font("Poppins-Bold.ttf", size_map.get(peso, 52 * SCALE)))
+        gaps.append(gap_map.get(peso, 12 * SCALE))
 
     heights, widths = [], []
     for line, f in zip(lines, fonts_line):
@@ -72,16 +87,16 @@ def draw_text_in_black_zone(canvas: Image.Image, zone_top: int) -> None:
         widths.append(bbox[2] - bbox[0])
         heights.append(bbox[3] - bbox[1])
 
-    block_h = sum(heights) + gap * (len(lines) - 1)
+    block_h = sum(heights) + sum(gaps[:-1])
     foot_space = 110 * SCALE
     zone_h = RH - zone_top - foot_space
-    y = zone_top + max(28 * SCALE, (zone_h - block_h) // 2)
+    y = zone_top + max(24 * SCALE, (zone_h - block_h) // 2)
 
-    for line, f, lh, lw in zip(lines, fonts_line, heights, widths):
+    for line, f, lh, lw, g in zip(lines, fonts_line, heights, widths, gaps):
         color = VERDE if line["color"] == "verde" else BLANCO
         x = (RW - lw) // 2
         draw.text((x, y), line["texto"], font=f, fill=color)
-        y += lh + gap
+        y += lh + g
 
     foot = DATA["firma"]
     fb = draw.textbbox((0, 0), foot, font=f_foot)
