@@ -26,7 +26,7 @@ PIP_W = 460
 PIP_H = 700
 PIP_X = 0
 PIP_Y = H - PIP_H  # pegado abajo
-FADE_L, FADE_R, FADE_T, FADE_B = 36, 110, 130, 48
+FADE_L, FADE_R, FADE_T, FADE_B = 48, 150, 160, 70
 
 TITLE = (
     "20 cosas que decirle a la IA\n"

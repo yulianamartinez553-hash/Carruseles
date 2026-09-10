@@ -2,7 +2,6 @@
 
 | Familia | Peso | Rol | Origen |
 |---|---|---|---|
-| Poppins | 700 | Título / manus.im | `/workspace/fonts/Poppins-Bold.ttf` |
-| Bebas Neue | 400 | Número 20 hero | `/workspace/fonts/BebasNeue-Regular.ttf` |
-| Barlow Condensed | 500 | Ítems | `/workspace/fonts/BarlowCondensed-Medium.ttf` |
+| Poppins | 700 | Título / ítems / manus.im | `/workspace/fonts/Poppins-Bold.ttf` |
+| Bebas Neue | 400 | Números | `/workspace/fonts/BebasNeue-Regular.ttf` |
 | IBM Plex Mono | 500–600 | Timer + firma | `/workspace/fonts/IBMPlexMono-*.ttf` |

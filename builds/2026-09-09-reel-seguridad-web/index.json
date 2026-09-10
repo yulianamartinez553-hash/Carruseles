@@ -4,8 +4,9 @@
   "tipo": "reel",
   "duracion_s": 28,
   "formato": "1080x1920",
-  "fondo": "video_sebastian",
-  "familia_visual": "manifiesto",
+  "fondo": "negro_mineral",
+  "familia_visual": "pip_manifiesto",
   "origen": "screenshot",
-  "keyword_portada": "MANUS"
+  "keyword_portada": "MANUS",
+  "layout": "fondo_negro_pip_inferior_izq_degrade"
 }
