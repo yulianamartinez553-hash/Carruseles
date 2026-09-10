@@ -1,8 +1,14 @@
-20 cosas que decirle a la IA que añada a tu web antes de lanzarla.
+Lanzar una web sin revisar seguridad es regalar accesos.
 
-Seguridad. Autenticación. Cabeceras. HTTPS.
-Y la número 20: manus.im
+Una clave API expuesta. Un secreto en Git. Una cookie sin protección.
+Eso no se nota el día del launch… se nota cuando ya es tarde.
 
-Comentá MANUS y te mando la guía.
+Antes de publicar, pedile a la IA que agregue esto:
+— ocultar claves y secretos
+— autenticación y cifrado
+— cabeceras, HTTPS y límites de API
+— y el chequeo 20: manus.im
+
+Comentá MANUS y te mando la guía completa.
 
 #seguridadweb #ia #lanzamiento #stlabs #manus
