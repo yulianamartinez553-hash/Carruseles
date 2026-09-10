@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Reel STLabs — fondo negro + Sebastián PIP inferior-izq con degradé."""
+"""Reel STLabs — video Sebastián full-bleed a color + tips de seguridad."""
 from __future__ import annotations
 
 import subprocess
 import sys
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFont, ImageFilter
+from PIL import Image, ImageDraw, ImageFont
 
 BUILD = Path(__file__).resolve().parent
 REPO = BUILD.parents[1]
@@ -15,23 +15,20 @@ FONTS_DIR = REPO / "fonts"
 SRC = Path("/tmp/reel-seb/sebastian_src.mp4")
 OUT_DIR = BUILD / "out"
 OVER_DIR = BUILD / "overlays"
-MASK_PATH = BUILD / "assets" / "pip_edge_mask.png"
 
 W, H = 1080, 1920
-DURATION = 28.0
+DURATION = 36.0
 FPS = 10
 
-# PIP: menos de la mitad del frame, inferior izquierda
-PIP_W = 460
-PIP_H = 700
-PIP_X = 0
-PIP_Y = H - PIP_H  # pegado abajo
-FADE_L, FADE_R, FADE_T, FADE_B = 48, 150, 160, 70
+# Sync con add_voice.py
+T0 = 2.40
+PER = 1.55
+T_FINAL = T0 + 19 * PER
 
 TITLE = (
     "20 cosas que decirle a la IA\n"
     "que añada a tu web antes de lanzarla\n"
-    "(en menos de 30 segundos)"
+    "(en menos de 40 segundos)"
 )
 
 ITEMS = [
@@ -59,7 +56,6 @@ ITEMS = [
 
 GREEN = (0, 255, 178, 255)
 WHITE = (242, 242, 242, 255)
-NEGRO = (10, 10, 10, 255)
 
 
 def fnt(name: str, size: int) -> ImageFont.FreeTypeFont:
@@ -74,67 +70,27 @@ def sh(cmd: list[str]) -> None:
     subprocess.run(cmd, check=True)
 
 
-def make_edge_mask() -> Path:
-    """Máscara con degradé en costados/arriba/abajo → integración al negro."""
-    MASK_PATH.parent.mkdir(parents=True, exist_ok=True)
-    mask = Image.new("L", (PIP_W, PIP_H), 0)
-    px = mask.load()
-    for y in range(PIP_H):
-        if y < FADE_T:
-            ty = y / FADE_T
-        elif y > PIP_H - 1 - FADE_B:
-            ty = (PIP_H - 1 - y) / FADE_B
-        else:
-            ty = 1.0
-        # curva suave
-        ty = ty * ty * (3 - 2 * ty)
-        for x in range(PIP_W):
-            if x < FADE_L:
-                tx = x / FADE_L
-            elif x > PIP_W - 1 - FADE_R:
-                tx = (PIP_W - 1 - x) / FADE_R
-            else:
-                tx = 1.0
-            tx = tx * tx * (3 - 2 * tx)
-            px[x, y] = int(255 * tx * ty)
-    mask = mask.filter(ImageFilter.GaussianBlur(radius=10))
-    mask.save(MASK_PATH)
-    return MASK_PATH
-
-
 def prepare_bg() -> Path:
-    """Fondo negro pleno + video Sebastián inferior-izq con degradé en bordes."""
+    """Video full-bleed a color (sin oscurecer / desaturar)."""
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    mask = make_edge_mask()
     raw = OUT_DIR / "bg_vertical.mp4"
     factor = DURATION / 18.1
-
-    # Fuente es 1920×1080 con rotación → forzar portrait 1080×1920 al escalar
-    # Escala para cubrir PIP, crop centrado al tamaño PIP, alphamerge + overlay
-    fc = (
-        f"color=c=0x0A0A0A:s={W}x{H}:d={DURATION}:r={FPS}[bg];"
-        f"[0:v]scale={PIP_W}:{PIP_H}:force_original_aspect_ratio=increase,"
-        f"crop={PIP_W}:{PIP_H},setpts=PTS*{factor:.6f},"
-        f"eq=brightness=-0.04:saturation=0.92,format=rgba[pip];"
-        f"[1:v]format=gray,scale={PIP_W}:{PIP_H}[mask];"
-        f"[pip][mask]alphamerge[pipa];"
-        f"[bg][pipa]overlay=x={PIP_X}:y={PIP_Y}:format=auto,format=yuv420p[vout]"
+    vf = (
+        f"scale=-2:{H},crop={W}:{H},"
+        f"setpts=PTS*{factor:.6f},"
+        f"drawbox=x=0:y=0:w={W}:h={H}:color=black@0.18:t=fill"
     )
     sh([
-        "ffmpeg", "-y",
-        "-i", str(SRC),
-        "-loop", "1", "-i", str(mask),
-        "-filter_complex", fc,
-        "-map", "[vout]",
-        "-an", "-r", str(FPS), "-t", str(DURATION),
-        "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "18",
+        "ffmpeg", "-y", "-i", str(SRC),
+        "-vf", vf, "-an", "-r", str(FPS), "-t", str(DURATION),
+        "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "17",
         str(raw),
     ])
     return raw
 
 
 def draw_timer(draw: ImageDraw.ImageDraw, t: float, font: ImageFont.FreeTypeFont) -> None:
-    remain = max(0.0, 30.0 - t)
+    remain = max(0.0, 40.0 - t)
     label = f"{int(remain // 60):02d}:{int(remain % 60):02d},{int((remain % 1) * 100):02d}"
     bbox = draw.textbbox((0, 0), label, font=font)
     tw, th = bbox[2] - bbox[0], bbox[3] - bbox[1]
@@ -178,7 +134,11 @@ def draw_items(
         draw.text((x0 + (bn[2] - bn[0]) + 24, y + 18), text, font=f_item, fill=WHITE)
 
 
-def draw_hero(draw: ImageDraw.ImageDraw, f_num: ImageFont.FreeTypeFont, f_txt: ImageFont.FreeTypeFont) -> None:
+def draw_hero(
+    draw: ImageDraw.ImageDraw,
+    f_num: ImageFont.FreeTypeFont,
+    f_txt: ImageFont.FreeTypeFont,
+) -> None:
     n, t = "20.", "manus.im"
     bn = draw.textbbox((0, 0), n, font=f_num)
     bt = draw.textbbox((0, 0), t, font=f_txt)
@@ -187,7 +147,10 @@ def draw_hero(draw: ImageDraw.ImageDraw, f_num: ImageFont.FreeTypeFont, f_txt: I
     y = H // 2 - 90
     draw.text((x0, y), n, font=f_num, fill=GREEN)
     draw.text((x0 + (bn[2] - bn[0]) + 22, y + 22), t, font=f_txt, fill=WHITE)
-    draw.rectangle([x0, y + (bn[3] - bn[1]) + 28, x0 + total_w, y + (bn[3] - bn[1]) + 36], fill=GREEN)
+    draw.rectangle(
+        [x0, y + (bn[3] - bn[1]) + 28, x0 + total_w, y + (bn[3] - bn[1]) + 36],
+        fill=GREEN,
+    )
 
 
 def make_overlay(t: float, fonts: dict) -> Image.Image:
@@ -202,23 +165,18 @@ def make_overlay(t: float, fonts: dict) -> Image.Image:
 
     draw_timer(draw, t, fonts["timer"])
 
-    t0, per = 1.15, 1.12
-    t_final = t0 + 19 * per
-
-    if t0 <= t < t_final:
-        visible = min(19, int((t - t0) / per) + 1)
+    if T0 <= t < T_FINAL:
+        visible = min(19, int((t - T0) / PER) + 1)
         draw_items(draw, visible, fonts["num"], fonts["item"], fonts["prog"])
-    elif t >= t_final:
-        img = Image.alpha_composite(img, Image.new("RGBA", (W, H), (10, 10, 10, 120)))
+    elif t >= T_FINAL:
+        img = Image.alpha_composite(img, Image.new("RGBA", (W, H), (10, 10, 10, 140)))
         draw = ImageDraw.Draw(img)
         draw_timer(draw, t, fonts["timer"])
         draw_hero(draw, fonts["hero_num"], fonts["hero_txt"])
 
-    # Firma abajo-derecha para no tapar el PIP
     foot = "sebastian.stlabs.ar"
     fb = draw.textbbox((0, 0), foot, font=fonts["foot"])
-    fw = fb[2] - fb[0]
-    draw.text((W - fw - 48, H - 90), foot, font=fonts["foot"], fill=GREEN)
+    draw.text(((W - (fb[2] - fb[0])) // 2, H - 120), foot, font=fonts["foot"], fill=GREEN)
     return img
 
 
@@ -230,7 +188,7 @@ def render_overlays() -> None:
         "num": fnt("BebasNeue-Regular.ttf", 120),
         "item": fnt("Poppins-Bold.ttf", 64),
         "prog": fnt("IBMPlexMono-Medium.ttf", 36),
-        "foot": fnt("IBMPlexMono-Medium.ttf", 36),
+        "foot": fnt("IBMPlexMono-Medium.ttf", 40),
         "hero_num": fnt("BebasNeue-Regular.ttf", 200),
         "hero_txt": fnt("Poppins-Bold.ttf", 128),
     }
@@ -257,10 +215,10 @@ def composite(bg: Path) -> Path:
         str(mute),
     ])
     sh(["cp", str(mute), str(out)])
-    for ss, name in [(1.5, "preview-01"), (6, "preview-06"), (14, "preview-14"), (24, "preview-24")]:
+    for ss, name in [(1.5, "preview-01"), (6, "preview-06"), (14, "preview-14"), (32, "preview-32")]:
         sh([
             "ffmpeg", "-y", "-ss", str(ss), "-i", str(mute),
-            "-vframes", "1", str(OUT_DIR / f"{name}.png"),
+            "-frames:v", "1", "-update", "1", str(OUT_DIR / f"{name}.png"),
         ])
     return mute
 
@@ -287,13 +245,13 @@ def write_meta() -> None:
         '  "id": "2026-09-09-reel-seguridad-web",\n'
         '  "titulo": "20 cosas de seguridad web antes de lanzar + manus.im",\n'
         '  "tipo": "reel",\n'
-        '  "duracion_s": 28,\n'
+        '  "duracion_s": 36,\n'
         '  "formato": "1080x1920",\n'
-        '  "fondo": "negro_mineral",\n'
-        '  "familia_visual": "pip_manifiesto",\n'
+        '  "fondo": "video_sebastian_color",\n'
+        '  "familia_visual": "manifiesto",\n'
         '  "origen": "screenshot",\n'
         '  "keyword_portada": "MANUS",\n'
-        '  "layout": "fondo_negro_pip_inferior_izq_degrade"\n'
+        '  "layout": "full_bleed_color"\n'
         "}\n",
         encoding="utf-8",
     )
