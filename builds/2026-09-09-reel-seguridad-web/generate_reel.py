@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Reel STLabs — 20 cosas de seguridad web + manus.im."""
+"""Reel STLabs — fondo negro + Sebastián PIP inferior-izq con degradé."""
 from __future__ import annotations
 
 import subprocess
 import sys
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 BUILD = Path(__file__).resolve().parent
 REPO = BUILD.parents[1]
@@ -15,10 +15,18 @@ FONTS_DIR = REPO / "fonts"
 SRC = Path("/tmp/reel-seb/sebastian_src.mp4")
 OUT_DIR = BUILD / "out"
 OVER_DIR = BUILD / "overlays"
+MASK_PATH = BUILD / "assets" / "pip_edge_mask.png"
 
 W, H = 1080, 1920
 DURATION = 28.0
-FPS = 10  # overlays a 10 fps (suficiente para texto secuencial)
+FPS = 10
+
+# PIP: menos de la mitad del frame, inferior izquierda
+PIP_W = 460
+PIP_H = 700
+PIP_X = 0
+PIP_Y = H - PIP_H  # pegado abajo
+FADE_L, FADE_R, FADE_T, FADE_B = 36, 110, 130, 48
 
 TITLE = (
     "20 cosas que decirle a la IA\n"
@@ -51,6 +59,7 @@ ITEMS = [
 
 GREEN = (0, 255, 178, 255)
 WHITE = (242, 242, 242, 255)
+NEGRO = (10, 10, 10, 255)
 
 
 def fnt(name: str, size: int) -> ImageFont.FreeTypeFont:
@@ -61,23 +70,63 @@ def fnt(name: str, size: int) -> ImageFont.FreeTypeFont:
 
 
 def sh(cmd: list[str]) -> None:
-    print("+", " ".join(map(str, cmd[:10])), "...")
+    print("+", " ".join(map(str, cmd[:12])), "...")
     subprocess.run(cmd, check=True)
 
 
+def make_edge_mask() -> Path:
+    """Máscara con degradé en costados/arriba/abajo → integración al negro."""
+    MASK_PATH.parent.mkdir(parents=True, exist_ok=True)
+    mask = Image.new("L", (PIP_W, PIP_H), 0)
+    px = mask.load()
+    for y in range(PIP_H):
+        if y < FADE_T:
+            ty = y / FADE_T
+        elif y > PIP_H - 1 - FADE_B:
+            ty = (PIP_H - 1 - y) / FADE_B
+        else:
+            ty = 1.0
+        # curva suave
+        ty = ty * ty * (3 - 2 * ty)
+        for x in range(PIP_W):
+            if x < FADE_L:
+                tx = x / FADE_L
+            elif x > PIP_W - 1 - FADE_R:
+                tx = (PIP_W - 1 - x) / FADE_R
+            else:
+                tx = 1.0
+            tx = tx * tx * (3 - 2 * tx)
+            px[x, y] = int(255 * tx * ty)
+    mask = mask.filter(ImageFilter.GaussianBlur(radius=10))
+    mask.save(MASK_PATH)
+    return MASK_PATH
+
+
 def prepare_bg() -> Path:
+    """Fondo negro pleno + video Sebastián inferior-izq con degradé en bordes."""
     OUT_DIR.mkdir(parents=True, exist_ok=True)
+    mask = make_edge_mask()
     raw = OUT_DIR / "bg_vertical.mp4"
     factor = DURATION / 18.1
-    vf = (
-        f"scale=-2:{H},crop={W}:{H},"
-        f"setpts=PTS*{factor:.6f},"
-        f"eq=brightness=-0.10:saturation=0.80,"
-        f"drawbox=x=0:y=0:w={W}:h={H}:color=black@0.40:t=fill"
+
+    # Fuente es 1920×1080 con rotación → forzar portrait 1080×1920 al escalar
+    # Escala para cubrir PIP, crop centrado al tamaño PIP, alphamerge + overlay
+    fc = (
+        f"color=c=0x0A0A0A:s={W}x{H}:d={DURATION}:r={FPS}[bg];"
+        f"[0:v]scale={PIP_W}:{PIP_H}:force_original_aspect_ratio=increase,"
+        f"crop={PIP_W}:{PIP_H},setpts=PTS*{factor:.6f},"
+        f"eq=brightness=-0.04:saturation=0.92,format=rgba[pip];"
+        f"[1:v]format=gray,scale={PIP_W}:{PIP_H}[mask];"
+        f"[pip][mask]alphamerge[pipa];"
+        f"[bg][pipa]overlay=x={PIP_X}:y={PIP_Y}:format=auto,format=yuv420p[vout]"
     )
     sh([
-        "ffmpeg", "-y", "-i", str(SRC),
-        "-vf", vf, "-an", "-r", str(FPS), "-t", str(DURATION),
+        "ffmpeg", "-y",
+        "-i", str(SRC),
+        "-loop", "1", "-i", str(mask),
+        "-filter_complex", fc,
+        "-map", "[vout]",
+        "-an", "-r", str(FPS), "-t", str(DURATION),
         "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "18",
         str(raw),
     ])
@@ -105,13 +154,11 @@ def draw_items(
     f_item: ImageFont.FreeTypeFont,
     f_prog: ImageFont.FreeTypeFont,
 ) -> None:
-    """Un tip grande a la vez (legible en móvil)."""
     if visible < 1:
         return
     i = min(visible, 19) - 1
     num = f"{i + 1}."
     text = ITEMS[i]
-    # progreso arriba del tip
     prog = f"{i + 1} / 20"
     pb = draw.textbbox((0, 0), prog, font=f_prog)
     draw.text(((W - (pb[2] - pb[0])) // 2, 430), prog, font=f_prog, fill=GREEN)
@@ -119,7 +166,6 @@ def draw_items(
     bn = draw.textbbox((0, 0), num, font=f_num)
     bt = draw.textbbox((0, 0), text, font=f_item)
     total_w = (bn[2] - bn[0]) + 24 + (bt[2] - bt[0])
-    # si no entra en una línea, tip debajo del número
     y = 560
     if total_w > W - 80:
         x_num = (W - (bn[2] - bn[0])) // 2
@@ -163,14 +209,16 @@ def make_overlay(t: float, fonts: dict) -> Image.Image:
         visible = min(19, int((t - t0) / per) + 1)
         draw_items(draw, visible, fonts["num"], fonts["item"], fonts["prog"])
     elif t >= t_final:
-        img = Image.alpha_composite(img, Image.new("RGBA", (W, H), (10, 10, 10, 170)))
+        img = Image.alpha_composite(img, Image.new("RGBA", (W, H), (10, 10, 10, 120)))
         draw = ImageDraw.Draw(img)
         draw_timer(draw, t, fonts["timer"])
         draw_hero(draw, fonts["hero_num"], fonts["hero_txt"])
 
+    # Firma abajo-derecha para no tapar el PIP
     foot = "sebastian.stlabs.ar"
     fb = draw.textbbox((0, 0), foot, font=fonts["foot"])
-    draw.text(((W - (fb[2] - fb[0])) // 2, H - 120), foot, font=fonts["foot"], fill=GREEN)
+    fw = fb[2] - fb[0]
+    draw.text((W - fw - 48, H - 90), foot, font=fonts["foot"], fill=GREEN)
     return img
 
 
@@ -182,7 +230,7 @@ def render_overlays() -> None:
         "num": fnt("BebasNeue-Regular.ttf", 120),
         "item": fnt("Poppins-Bold.ttf", 64),
         "prog": fnt("IBMPlexMono-Medium.ttf", 36),
-        "foot": fnt("IBMPlexMono-Medium.ttf", 40),
+        "foot": fnt("IBMPlexMono-Medium.ttf", 36),
         "hero_num": fnt("BebasNeue-Regular.ttf", 200),
         "hero_txt": fnt("Poppins-Bold.ttf", 128),
     }
@@ -194,6 +242,7 @@ def render_overlays() -> None:
 
 
 def composite(bg: Path) -> Path:
+    mute = OUT_DIR / "STLabs-Reel-Seguridad-Manus-MUTE.mp4"
     out = OUT_DIR / "STLabs-Reel-Seguridad-Manus.mp4"
     sh([
         "ffmpeg", "-y",
@@ -203,15 +252,17 @@ def composite(bg: Path) -> Path:
         "-filter_complex", "[0:v][1:v]overlay=0:0:format=auto,format=yuv420p",
         "-t", str(DURATION),
         "-c:v", "libx264", "-crf", "17", "-preset", "medium",
+        "-an",
         "-movflags", "+faststart",
-        str(out),
+        str(mute),
     ])
+    sh(["cp", str(mute), str(out)])
     for ss, name in [(1.5, "preview-01"), (6, "preview-06"), (14, "preview-14"), (24, "preview-24")]:
         sh([
-            "ffmpeg", "-y", "-ss", str(ss), "-i", str(out),
+            "ffmpeg", "-y", "-ss", str(ss), "-i", str(mute),
             "-vframes", "1", str(OUT_DIR / f"{name}.png"),
         ])
-    return out
+    return mute
 
 
 def write_meta() -> None:
@@ -226,24 +277,24 @@ def write_meta() -> None:
     (BUILD / "MANIFIESTO-FUENTES.md").write_text(
         "# Manifiesto de fuentes — Reel seguridad + manus.im\n\n"
         "| Familia | Peso | Rol | Origen |\n|---|---|---|---|\n"
-        "| Poppins | 700 | Título / manus.im | `/workspace/fonts/Poppins-Bold.ttf` |\n"
-        "| Bebas Neue | 400 | Número 20 hero | `/workspace/fonts/BebasNeue-Regular.ttf` |\n"
-        "| Barlow Condensed | 500 | Ítems | `/workspace/fonts/BarlowCondensed-Medium.ttf` |\n"
+        "| Poppins | 700 | Título / ítems / manus.im | `/workspace/fonts/Poppins-Bold.ttf` |\n"
+        "| Bebas Neue | 400 | Números | `/workspace/fonts/BebasNeue-Regular.ttf` |\n"
         "| IBM Plex Mono | 500–600 | Timer + firma | `/workspace/fonts/IBMPlexMono-*.ttf` |\n",
         encoding="utf-8",
     )
     (BUILD / "index.json").write_text(
-        '{\n'
+        "{\n"
         '  "id": "2026-09-09-reel-seguridad-web",\n'
         '  "titulo": "20 cosas de seguridad web antes de lanzar + manus.im",\n'
         '  "tipo": "reel",\n'
         '  "duracion_s": 28,\n'
         '  "formato": "1080x1920",\n'
-        '  "fondo": "video_sebastian",\n'
-        '  "familia_visual": "manifiesto",\n'
+        '  "fondo": "negro_mineral",\n'
+        '  "familia_visual": "pip_manifiesto",\n'
         '  "origen": "screenshot",\n'
-        '  "keyword_portada": "MANUS"\n'
-        '}\n',
+        '  "keyword_portada": "MANUS",\n'
+        '  "layout": "fondo_negro_pip_inferior_izq_degrade"\n'
+        "}\n",
         encoding="utf-8",
     )
 
