@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Narración masculina argentina (Tomás) — frases completas, sin cortes."""
+"""Narración Tomás AR — frases completas, timeline secuencial sin solapes."""
 from __future__ import annotations
 
 import asyncio
+import json
 import subprocess
 from pathlib import Path
 
@@ -16,21 +17,18 @@ VIDEO_BASE = OUT / "STLabs-Reel-Seguridad-Manus-MUTE.mp4"
 VIDEO_FALLBACK = OUT / "STLabs-Reel-Seguridad-Manus.mp4"
 VIDEO_OUT = OUT / "STLabs-Reel-Seguridad-Manus-VOZ.mp4"
 VIDEO_MAIN = OUT / "STLabs-Reel-Seguridad-Manus.mp4"
+TIMELINE = BUILD / "timeline.json"
 
-DURATION = 36.0
 VOICE = "es-AR-TomasNeural"
 PITCH = "-6Hz"
-
-T0 = 2.40
-PER = 1.55
-T_FINAL = T0 + 19 * PER
+GAP = 0.12
 
 INTRO = "Veinte chequeos de seguridad antes de lanzar tu web."
 TIPS = [
     "Ocultá claves API",
     "Eliminá secretos Git",
     "Clave pública DB",
-    "Seguridad row level",
+    "Seguridad row-level",
     "Cifrado de datos",
     "Forzá autenticación",
     "Restringí registros",
@@ -72,76 +70,88 @@ async def synth(text: str, path: Path, rate: str) -> None:
     await edge_tts.Communicate(text, VOICE, rate=rate, pitch=PITCH).save(str(path))
 
 
+def fade_only(src: Path, dst: Path, volume: float = 1.15) -> float:
+    """Copia el audio completo con fade suave al final. Sin cortes."""
+    d = probe_dur(src)
+    fade_st = max(0.05, d - 0.18)
+    sh([
+        "ffmpeg", "-y", "-i", str(src),
+        "-af", f"afade=t=out:st={fade_st:.3f}:d=0.18,volume={volume}",
+        "-ar", "24000", str(dst),
+    ])
+    return probe_dur(dst)
+
+
 def ensure_mute() -> Path:
     src = VIDEO_BASE if VIDEO_BASE.exists() else VIDEO_FALLBACK
     if not src.exists():
-        raise SystemExit("No hay video base mudo")
+        raise SystemExit("No hay video base mudo — corré generate_reel.py primero")
     if src != VIDEO_BASE:
         sh(["ffmpeg", "-y", "-i", str(src), "-c:v", "copy", "-an", str(VIDEO_BASE)])
     return VIDEO_BASE
 
 
-async def build_clips() -> list[tuple[float, Path]]:
+async def build_clips() -> tuple[list[tuple[float, Path]], dict]:
     AUDIO.mkdir(parents=True, exist_ok=True)
     clips: list[tuple[float, Path]] = []
+    tip_starts: list[float] = []
 
+    t = 0.15
     raw_intro = AUDIO / "intro_raw.mp3"
-    await synth(INTRO, raw_intro, rate="+0%")
+    await synth(INTRO, raw_intro, rate="+5%")
     intro = AUDIO / "intro.mp3"
-    d = probe_dur(raw_intro)
-    fade_st = max(0.05, d - 0.18)
-    sh([
-        "ffmpeg", "-y", "-i", str(raw_intro),
-        "-af", f"afade=t=out:st={fade_st:.3f}:d=0.18,volume=1.15",
-        "-ar", "24000", str(intro),
-    ])
-    clips.append((0.12, intro))
-    print(f"intro {probe_dur(intro):.2f}s")
+    d = fade_only(raw_intro, intro, 1.15)
+    clips.append((t, intro))
+    print(f"intro @{t:.2f} dur={d:.2f}s")
+    t += d + GAP
 
     for i, tip in enumerate(TIPS):
         raw = AUDIO / f"tip_{i+1:02d}_raw.mp3"
-        await synth(tip, raw, rate="+8%")
+        await synth(tip, raw, rate="+5%")
         clipped = AUDIO / f"tip_{i+1:02d}.mp3"
-        d = probe_dur(raw)
-        slot = PER - 0.08
-        if d > slot:
-            atempo = min(1.25, d / slot)
-            out_d = d / atempo
-            fade_st = max(0.05, out_d - 0.15)
-            af = f"atempo={atempo:.4f},afade=t=out:st={fade_st:.3f}:d=0.15,volume=1.2"
-        else:
-            fade_st = max(0.05, d - 0.15)
-            af = f"afade=t=out:st={fade_st:.3f}:d=0.15,volume=1.2"
-        sh([
-            "ffmpeg", "-y", "-i", str(raw),
-            "-af", af,
-            "-ar", "24000", str(clipped),
-        ])
-        start = T0 + i * PER
-        clips.append((start, clipped))
-        print(f"tip {i+1:02d} start={start:.2f} dur={probe_dur(clipped):.2f}s  «{tip}»")
+        d = fade_only(raw, clipped, 1.2)
+        tip_starts.append(t)
+        clips.append((t, clipped))
+        print(f"tip {i+1:02d} @{t:.2f} dur={d:.2f}s  «{tip}»")
+        t += d + GAP
 
+    t_final = t
     raw_final = AUDIO / "final_raw.mp3"
     await synth(FINAL, raw_final, rate="-2%")
     final = AUDIO / "final.mp3"
-    d = probe_dur(raw_final)
+    d = fade_only(raw_final, final, 1.15)
+    # fade un poco más largo en el cierre
     fade_st = max(0.05, d - 0.35)
     sh([
         "ffmpeg", "-y", "-i", str(raw_final),
         "-af", f"afade=t=out:st={fade_st:.3f}:d=0.35,volume=1.15",
         "-ar", "24000", str(final),
     ])
-    clips.append((T_FINAL + 0.15, final))
-    print(f"final start={T_FINAL + 0.15:.2f} dur={probe_dur(final):.2f}s")
-    return clips
+    d = probe_dur(final)
+    clips.append((t_final, final))
+    print(f"final @{t_final:.2f} dur={d:.2f}s")
+    duration = t_final + d + 0.35
+
+    meta = {
+        "duration": round(duration, 3),
+        "t0": round(tip_starts[0], 3),
+        "tip_starts": [round(x, 3) for x in tip_starts],
+        "t_final": round(t_final, 3),
+        "tips": TIPS,
+        "final": FINAL,
+        "intro": INTRO,
+    }
+    TIMELINE.write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
+    print("timeline →", TIMELINE, "duration", meta["duration"])
+    return clips, meta
 
 
-def mix_timeline(clips: list[tuple[float, Path]]) -> Path:
+def mix_timeline(clips: list[tuple[float, Path]], duration: float) -> Path:
     silent = AUDIO / "silent.wav"
     sh([
         "ffmpeg", "-y", "-f", "lavfi",
         "-i", "anullsrc=r=24000:cl=mono",
-        "-t", str(DURATION), str(silent),
+        "-t", str(duration), str(silent),
     ])
 
     inputs: list[str] = ["-i", str(silent)]
@@ -163,6 +173,30 @@ def mix_timeline(clips: list[tuple[float, Path]]) -> Path:
     return mixed
 
 
+def extend_mute(mute: Path, duration: float) -> Path:
+    """Si el video mudo es más corto que la narración, lo estira (último frame)."""
+    vdur = probe_dur(mute)
+    if abs(vdur - duration) < 0.15:
+        return mute
+    extended = OUT / "STLabs-Reel-Seguridad-Manus-MUTE-EXT.mp4"
+    # tpad o loop: freeze last frame
+    pad = max(0.0, duration - vdur)
+    if pad <= 0:
+        sh([
+            "ffmpeg", "-y", "-i", str(mute),
+            "-t", str(duration), "-c", "copy", str(extended),
+        ])
+    else:
+        sh([
+            "ffmpeg", "-y", "-i", str(mute),
+            "-vf", f"tpad=stop_mode=clone:stop_duration={pad:.3f}",
+            "-an", "-c:v", "libx264", "-crf", "17", "-pix_fmt", "yuv420p",
+            "-t", str(duration),
+            str(extended),
+        ])
+    return extended
+
+
 def mux(mute: Path, audio: Path) -> Path:
     sh([
         "ffmpeg", "-y",
@@ -180,16 +214,18 @@ def mux(mute: Path, audio: Path) -> Path:
 
 async def main() -> None:
     mute = ensure_mute()
-    clips = await build_clips()
-    print("clips", len(clips))
-    audio = mix_timeline(clips)
+    clips, meta = await build_clips()
+    duration = float(meta["duration"])
+    mute = extend_mute(mute, duration)
+    audio = mix_timeline(clips, duration)
     out = mux(mute, audio)
     sh([
         "ffprobe", "-v", "error",
-        "-show_entries", "stream=codec_type,codec_name",
-        "-of", "csv=p=0", str(out),
+        "-show_entries", "stream=codec_type,codec_name,duration",
+        "-of", "default=nw=1", str(out),
     ])
     print("DONE →", out)
+    print("Re-render overlays with: python3 generate_reel.py --from-timeline")
 
 
 if __name__ == "__main__":

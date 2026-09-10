@@ -3,6 +3,7 @@
 """Reel STLabs — video Sebastián full-bleed a color + tips de seguridad."""
 from __future__ import annotations
 
+import json
 import subprocess
 import sys
 from pathlib import Path
@@ -15,15 +16,18 @@ FONTS_DIR = REPO / "fonts"
 SRC = Path("/tmp/reel-seb/sebastian_src.mp4")
 OUT_DIR = BUILD / "out"
 OVER_DIR = BUILD / "overlays"
+TIMELINE = BUILD / "timeline.json"
 
 W, H = 1080, 1920
 DURATION = 36.0
 FPS = 10
+TIMER_BASE = 40.0
 
-# Sync con add_voice.py
+# Fallback sync (si no hay timeline.json)
 T0 = 2.40
 PER = 1.55
 T_FINAL = T0 + 19 * PER
+TIP_STARTS: list[float] = []
 
 TITLE = (
     "20 cosas que decirle a la IA\n"
@@ -89,8 +93,38 @@ def prepare_bg() -> Path:
     return raw
 
 
+def load_timeline() -> None:
+    """Ajusta duración y starts de tips desde timeline.json (add_voice.py)."""
+    global DURATION, T0, T_FINAL, TIP_STARTS, TIMER_BASE, PER
+    if not TIMELINE.exists():
+        TIP_STARTS = [T0 + i * PER for i in range(19)]
+        return
+    meta = json.loads(TIMELINE.read_text(encoding="utf-8"))
+    DURATION = float(meta["duration"])
+    TIP_STARTS = [float(x) for x in meta["tip_starts"]]
+    T0 = float(meta.get("t0", TIP_STARTS[0]))
+    T_FINAL = float(meta["t_final"])
+    TIMER_BASE = max(40.0, float(int(DURATION) + 1))
+    print(f"timeline: duration={DURATION:.2f}s tips={len(TIP_STARTS)} final@{T_FINAL:.2f}")
+
+
+def tip_index_at(t: float) -> int:
+    """Índice 1..19 del tip visible en t, o 0 / 20."""
+    if t < T0:
+        return 0
+    if t >= T_FINAL:
+        return 20
+    if not TIP_STARTS:
+        return min(19, int((t - T0) / PER) + 1)
+    idx = 0
+    for i, start in enumerate(TIP_STARTS):
+        if t >= start:
+            idx = i + 1
+    return idx
+
+
 def draw_timer(draw: ImageDraw.ImageDraw, t: float, font: ImageFont.FreeTypeFont) -> None:
-    remain = max(0.0, 40.0 - t)
+    remain = max(0.0, TIMER_BASE - t)
     label = f"{int(remain // 60):02d}:{int(remain % 60):02d},{int((remain % 1) * 100):02d}"
     bbox = draw.textbbox((0, 0), label, font=font)
     tw, th = bbox[2] - bbox[0], bbox[3] - bbox[1]
@@ -165,10 +199,10 @@ def make_overlay(t: float, fonts: dict) -> Image.Image:
 
     draw_timer(draw, t, fonts["timer"])
 
-    if T0 <= t < T_FINAL:
-        visible = min(19, int((t - T0) / PER) + 1)
-        draw_items(draw, visible, fonts["num"], fonts["item"], fonts["prog"])
-    elif t >= T_FINAL:
+    tip_i = tip_index_at(t)
+    if 1 <= tip_i <= 19:
+        draw_items(draw, tip_i, fonts["num"], fonts["item"], fonts["prog"])
+    elif tip_i >= 20:
         img = Image.alpha_composite(img, Image.new("RGBA", (W, H), (10, 10, 10, 140)))
         draw = ImageDraw.Draw(img)
         draw_timer(draw, t, fonts["timer"])
@@ -245,7 +279,7 @@ def write_meta() -> None:
         '  "id": "2026-09-09-reel-seguridad-web",\n'
         '  "titulo": "20 cosas de seguridad web antes de lanzar + manus.im",\n'
         '  "tipo": "reel",\n'
-        '  "duracion_s": 36,\n'
+        f'  "duracion_s": {int(round(DURATION))},\n'
         '  "formato": "1080x1920",\n'
         '  "fondo": "video_sebastian_color",\n'
         '  "familia_visual": "manifiesto",\n'
@@ -260,6 +294,7 @@ def write_meta() -> None:
 def main() -> None:
     if not SRC.exists():
         sys.exit(f"Falta video fuente: {SRC}")
+    load_timeline()
     write_meta()
     bg = prepare_bg()
     render_overlays()
