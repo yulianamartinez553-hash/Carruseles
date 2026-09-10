@@ -82,7 +82,7 @@ def prepare_bg() -> Path:
     vf = (
         f"scale=-2:{H},crop={W}:{H},"
         f"setpts=PTS*{factor:.6f},"
-        f"drawbox=x=0:y=0:w={W}:h={H}:color=black@0.18:t=fill"
+        f"drawbox=x=0:y=0:w={W}:h={H}:color=black@0.08:t=fill"
     )
     sh([
         "ffmpeg", "-y", "-i", str(SRC),
