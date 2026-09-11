@@ -55,7 +55,7 @@ ITEMS = [
     "Limitá API",
     "Cabeceras seguridad",
     "Forzá HTTPS",
-    "manus.im",
+    "sebastian.stlabs.ar",
 ]
 
 GREEN = (0, 255, 178, 255)
@@ -124,13 +124,13 @@ def tip_index_at(t: float) -> int:
 
 
 def tip_mode_at(t: float) -> str:
-    """'intro' | 'list' | 'hero' — tip 20 lista breve, luego hero manus."""
+    """'intro' | 'list' | 'hero' — tip 20 lista breve, luego hero firma."""
     tip_i = tip_index_at(t)
     if tip_i <= 0:
         return "intro"
     if tip_i < 20:
         return "list"
-    # Tip 20: 1.6s estilo lista (20/20 manus.im) → resto hero CTA
+    # Tip 20: 1.6s estilo lista (20/20) → resto hero CTA
     if t < T_FINAL + 1.6:
         return "list"
     return "hero"
@@ -187,22 +187,25 @@ def draw_hero(
     f_txt: ImageFont.FreeTypeFont,
     f_cta: ImageFont.FreeTypeFont,
 ) -> None:
-    n, t = "20.", "manus.im"
+    # Tip 20 = firma de marca (además del footer)
+    n, t = "20.", "sebastian.stlabs.ar"
     bn = draw.textbbox((0, 0), n, font=f_num)
     bt = draw.textbbox((0, 0), t, font=f_txt)
-    total_w = (bn[2] - bn[0]) + 22 + (bt[2] - bt[0])
-    x0 = (W - total_w) // 2
-    y = H // 2 - 140
-    draw.text((x0, y), n, font=f_num, fill=GREEN)
-    draw.text((x0 + (bn[2] - bn[0]) + 22, y + 22), t, font=f_txt, fill=WHITE)
-    draw.rectangle(
-        [x0, y + (bn[3] - bn[1]) + 28, x0 + total_w, y + (bn[3] - bn[1]) + 36],
-        fill=GREEN,
-    )
-    cta = "Comentá MANUS"
+    # Texto largo: número arriba, handle abajo centrado
+    y = H // 2 - 180
+    x_num = (W - (bn[2] - bn[0])) // 2
+    draw.text((x_num, y), n, font=f_num, fill=GREEN)
+    x_txt = (W - (bt[2] - bt[0])) // 2
+    y_txt = y + (bn[3] - bn[1]) + 10
+    draw.text((x_txt, y_txt), t, font=f_txt, fill=WHITE)
+    line_w = max(bn[2] - bn[0], bt[2] - bt[0])
+    x_line = (W - line_w) // 2
+    y_line = y_txt + (bt[3] - bt[1]) + 24
+    draw.rectangle([x_line, y_line, x_line + line_w, y_line + 8], fill=GREEN)
+    cta = "Seguime"
     cb = draw.textbbox((0, 0), cta, font=f_cta)
     draw.text(
-        ((W - (cb[2] - cb[0])) // 2, y + (bn[3] - bn[1]) + 70),
+        ((W - (cb[2] - cb[0])) // 2, y_line + 36),
         cta,
         font=f_cta,
         fill=GREEN,
@@ -253,7 +256,7 @@ def render_overlays() -> None:
         "prog": fnt("IBMPlexMono-Medium.ttf", 36),
         "foot": fnt("IBMPlexMono-Medium.ttf", 40),
         "hero_num": fnt("BebasNeue-Regular.ttf", 200),
-        "hero_txt": fnt("Poppins-Bold.ttf", 128),
+        "hero_txt": fnt("Poppins-Bold.ttf", 64),
         "cta": fnt("Poppins-Bold.ttf", 56),
     }
     n_frames = int(DURATION * FPS)
@@ -291,15 +294,15 @@ def write_meta() -> None:
     (BUILD / "caption.txt").write_text(
         "20 cosas que decirle a la IA que añada a tu web antes de lanzarla.\n\n"
         "Seguridad. Autenticación. Cabeceras. HTTPS.\n"
-        "Y la número 20: manus.im\n\n"
-        "Comentá MANUS y te mando la guía.\n\n"
-        "#seguridadweb #ia #lanzamiento #stlabs #manus\n",
+        "Y la número 20: sebastian.stlabs.ar\n\n"
+        "Seguime en sebastian.stlabs.ar\n\n"
+        "#seguridadweb #ia #lanzamiento #stlabs\n",
         encoding="utf-8",
     )
     (BUILD / "MANIFIESTO-FUENTES.md").write_text(
-        "# Manifiesto de fuentes — Reel seguridad + manus.im\n\n"
+        "# Manifiesto de fuentes — Reel seguridad + sebastian.stlabs.ar\n\n"
         "| Familia | Peso | Rol | Origen |\n|---|---|---|---|\n"
-        "| Poppins | 700 | Título / ítems / manus.im | `/workspace/fonts/Poppins-Bold.ttf` |\n"
+        "| Poppins | 700 | Título / ítems / tip 20 | `/workspace/fonts/Poppins-Bold.ttf` |\n"
         "| Bebas Neue | 400 | Números | `/workspace/fonts/BebasNeue-Regular.ttf` |\n"
         "| IBM Plex Mono | 500–600 | Timer + firma | `/workspace/fonts/IBMPlexMono-*.ttf` |\n",
         encoding="utf-8",
@@ -307,14 +310,14 @@ def write_meta() -> None:
     (BUILD / "index.json").write_text(
         "{\n"
         '  "id": "2026-09-09-reel-seguridad-web",\n'
-        '  "titulo": "20 cosas de seguridad web antes de lanzar + manus.im",\n'
+        '  "titulo": "20 cosas de seguridad web antes de lanzar + sebastian.stlabs.ar",\n'
         '  "tipo": "reel",\n'
         f'  "duracion_s": {int(round(DURATION))},\n'
         '  "formato": "1080x1920",\n'
         '  "fondo": "video_sebastian_color",\n'
         '  "familia_visual": "manifiesto",\n'
         '  "origen": "screenshot",\n'
-        '  "keyword_portada": "MANUS",\n'
+        '  "keyword_portada": "STLABS",\n'
         '  "layout": "full_bleed_color"\n'
         "}\n",
         encoding="utf-8",
