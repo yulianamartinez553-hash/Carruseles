@@ -1,0 +1,120 @@
+{
+  "id": "2026-09-08-stack-lanzar-ia",
+  "titulo": "El stack para lanzar aplicaciones con IA",
+  "slides": 12,
+  "fondo": "reticula_fina",
+  "familia_visual": "guia_editorial",
+  "origen": "screenshot",
+  "keyword_portada": "LANZAR",
+  "cta": "LANZAR",
+  "tools": [
+    {
+      "n": 1,
+      "name": "REDDIT",
+      "tag": "PARA ENCONTRAR EL DOLOR",
+      "logo": "logo-reddit.png",
+      "bullets": [
+        "gente real quejándose",
+        "buscá los subs de tu nicho",
+        "sus palabras son tu copy"
+      ],
+      "note": "empezá acá, no construyendo"
+    },
+    {
+      "n": 2,
+      "name": "TYPEFORM",
+      "tag": "PARA LA LISTA DE ESPERA",
+      "logo": "logo-typeform.png",
+      "bullets": [
+        "primero recolectá los emails",
+        "probá que lo quieren",
+        "toma diez minutos"
+      ],
+      "note": "una lista de espera es prueba, no esperanza"
+    },
+    {
+      "n": 3,
+      "name": "CLAUDE CODE",
+      "tag": "LA CONSTRUYE",
+      "logo": "logo-claude.png",
+      "bullets": [
+        "describís y construye",
+        "frontend y backend",
+        "sin equipo de desarrollo"
+      ],
+      "note": "construir ya es la parte fácil"
+    },
+    {
+      "n": 4,
+      "name": "VERCEL",
+      "tag": "LA PONE ONLINE",
+      "logo": "logo-vercel.png",
+      "bullets": [
+        "tu app queda online",
+        "gratis hasta que escales",
+        "desplegá en diez segundos"
+      ],
+      "note": "hacés push y ya está online"
+    },
+    {
+      "n": 5,
+      "name": "STRIPE",
+      "tag": "COBRA EL DINERO",
+      "logo": "logo-stripe.png",
+      "bullets": [
+        "cobrá desde el día uno",
+        "suscripciones resueltas",
+        "los pagos llegan solos"
+      ],
+      "note": "cobrá antes de sentirte listo"
+    },
+    {
+      "n": 6,
+      "name": "RESEND",
+      "tag": "LE ESCRIBE A LA LISTA",
+      "logo": "logo-resend.png",
+      "bullets": [
+        "calienta la lista de espera",
+        "el lanzamiento llega a la bandeja",
+        "la lista es tuya"
+      ],
+      "note": "el email le gana a cualquier algoritmo"
+    },
+    {
+      "n": 7,
+      "name": "LOOM",
+      "tag": "PARA LA DEMO",
+      "logo": "logo-loom.png",
+      "bullets": [
+        "grabá sesenta segundos",
+        "mostralo, no lo expliques",
+        "un link, sin edición"
+      ],
+      "note": "la gente compra lo que puede ver"
+    },
+    {
+      "n": 8,
+      "name": "META ADS",
+      "tag": "TRAE LA GENTE",
+      "logo": "logo-meta.png",
+      "bullets": [
+        "llegás a quien no te sigue",
+        "probás con poco presupuesto",
+        "el pago dice si sirve"
+      ],
+      "note": "la distribución se compra, no se espera"
+    },
+    {
+      "n": 9,
+      "name": "POSTHOG",
+      "tag": "MUESTRA LA VERDAD",
+      "logo": "logo-posthog.png",
+      "bullets": [
+        "qué hacen realmente",
+        "dónde abandonan",
+        "gratis por mucho tiempo"
+      ],
+      "note": "las opiniones terminan donde empiezan los datos"
+    }
+  ]
+}
