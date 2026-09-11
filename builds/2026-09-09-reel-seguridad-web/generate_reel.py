@@ -109,18 +109,31 @@ def load_timeline() -> None:
 
 
 def tip_index_at(t: float) -> int:
-    """Índice 1..19 del tip visible en t, o 0 / 20."""
+    """Índice 1..20 del tip visible en t, o 0 (intro)."""
     if t < T0:
         return 0
     if t >= T_FINAL:
         return 20
     if not TIP_STARTS:
-        return min(19, int((t - T0) / PER) + 1)
+        return min(20, int((t - T0) / PER) + 1)
     idx = 0
     for i, start in enumerate(TIP_STARTS):
         if t >= start:
             idx = i + 1
     return idx
+
+
+def tip_mode_at(t: float) -> str:
+    """'intro' | 'list' | 'hero' — tip 20 lista breve, luego hero manus."""
+    tip_i = tip_index_at(t)
+    if tip_i <= 0:
+        return "intro"
+    if tip_i < 20:
+        return "list"
+    # Tip 20: 1.6s estilo lista (20/20 manus.im) → resto hero CTA
+    if t < T_FINAL + 1.6:
+        return "list"
+    return "hero"
 
 
 def draw_timer(draw: ImageDraw.ImageDraw, t: float, font: ImageFont.FreeTypeFont) -> None:
@@ -146,7 +159,7 @@ def draw_items(
 ) -> None:
     if visible < 1:
         return
-    i = min(visible, 19) - 1
+    i = min(visible, 20) - 1
     num = f"{i + 1}."
     text = ITEMS[i]
     prog = f"{i + 1} / 20"
@@ -172,17 +185,26 @@ def draw_hero(
     draw: ImageDraw.ImageDraw,
     f_num: ImageFont.FreeTypeFont,
     f_txt: ImageFont.FreeTypeFont,
+    f_cta: ImageFont.FreeTypeFont,
 ) -> None:
     n, t = "20.", "manus.im"
     bn = draw.textbbox((0, 0), n, font=f_num)
     bt = draw.textbbox((0, 0), t, font=f_txt)
     total_w = (bn[2] - bn[0]) + 22 + (bt[2] - bt[0])
     x0 = (W - total_w) // 2
-    y = H // 2 - 90
+    y = H // 2 - 140
     draw.text((x0, y), n, font=f_num, fill=GREEN)
     draw.text((x0 + (bn[2] - bn[0]) + 22, y + 22), t, font=f_txt, fill=WHITE)
     draw.rectangle(
         [x0, y + (bn[3] - bn[1]) + 28, x0 + total_w, y + (bn[3] - bn[1]) + 36],
+        fill=GREEN,
+    )
+    cta = "Comentá MANUS"
+    cb = draw.textbbox((0, 0), cta, font=f_cta)
+    draw.text(
+        ((W - (cb[2] - cb[0])) // 2, y + (bn[3] - bn[1]) + 70),
+        cta,
+        font=f_cta,
         fill=GREEN,
     )
 
@@ -200,13 +222,20 @@ def make_overlay(t: float, fonts: dict) -> Image.Image:
     draw_timer(draw, t, fonts["timer"])
 
     tip_i = tip_index_at(t)
-    if 1 <= tip_i <= 19:
+    mode = tip_mode_at(t)
+    if mode == "list" and tip_i >= 1:
         draw_items(draw, tip_i, fonts["num"], fonts["item"], fonts["prog"])
-    elif tip_i >= 20:
+    elif mode == "hero":
         img = Image.alpha_composite(img, Image.new("RGBA", (W, H), (10, 10, 10, 140)))
         draw = ImageDraw.Draw(img)
+        # Redibujar título + timer sobre el velo
+        y2 = 72
+        for line in TITLE.split("\n"):
+            bbox = draw.textbbox((0, 0), line, font=fonts["title"])
+            draw.text(((W - (bbox[2] - bbox[0])) // 2, y2), line, font=fonts["title"], fill=WHITE)
+            y2 += bbox[3] - bbox[1] + 2
         draw_timer(draw, t, fonts["timer"])
-        draw_hero(draw, fonts["hero_num"], fonts["hero_txt"])
+        draw_hero(draw, fonts["hero_num"], fonts["hero_txt"], fonts["cta"])
 
     foot = "sebastian.stlabs.ar"
     fb = draw.textbbox((0, 0), foot, font=fonts["foot"])
@@ -225,6 +254,7 @@ def render_overlays() -> None:
         "foot": fnt("IBMPlexMono-Medium.ttf", 40),
         "hero_num": fnt("BebasNeue-Regular.ttf", 200),
         "hero_txt": fnt("Poppins-Bold.ttf", 128),
+        "cta": fnt("Poppins-Bold.ttf", 56),
     }
     n_frames = int(DURATION * FPS)
     for i in range(n_frames):

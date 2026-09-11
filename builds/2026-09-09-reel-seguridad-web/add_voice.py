@@ -45,7 +45,8 @@ TIPS = [
     "Cabeceras seguridad",
     "Forzá HTTPS",
 ]
-FINAL = "Y veinte: manus punto i eme. Comentá manus."
+# Pronunciación clara: "manus" (no deletrear .im — se confunde en TTS)
+FINAL = "Y veinte: manus. Comentá manus."
 
 
 def sh(cmd: list[str]) -> None:
@@ -130,7 +131,8 @@ async def build_clips() -> tuple[list[tuple[float, Path]], dict]:
     d = probe_dur(final)
     clips.append((t_final, final))
     print(f"final @{t_final:.2f} dur={d:.2f}s")
-    duration = t_final + d + 0.35
+    # Hold extra del tip 20 / CTA manus en pantalla
+    duration = t_final + d + 1.8
 
     meta = {
         "duration": round(duration, 3),

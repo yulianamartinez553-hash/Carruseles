@@ -1,5 +1,5 @@
 {
-  "duration": 50.9,
+  "duration": 51.702,
   "t0": 3.726,
   "tip_starts": [
     3.726,
@@ -44,6 +44,6 @@
     "Cabeceras seguridad",
     "Forzá HTTPS"
   ],
-  "final": "Y veinte: manus punto i eme. Comentá manus.",
+  "final": "Y veinte: manus. Comentá manus.",
   "intro": "Veinte chequeos de seguridad antes de lanzar tu web."
 }
