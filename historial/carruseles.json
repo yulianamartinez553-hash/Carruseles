@@ -42,6 +42,14 @@
       "slides": 1,
       "fondo": "reticula_fina",
       "familia_visual": "dossier_editorial"
+    },
+    {
+      "id": "2026-09-12-post-procesos-no-lineales",
+      "fecha": "2026-09-12",
+      "titulo": "Los procesos no son lineales",
+      "slides": 1,
+      "fondo": "reticula_fina",
+      "familia_visual": "dossier_editorial"
     }
   ]
 }
