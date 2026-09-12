@@ -1,5 +1,5 @@
 {
-  "ultimo_id": "2026-09-12-video-empezar-hoy",
+  "ultimo_id": "2026-09-12-post-empezar-hoy",
   "carruseles": [
     {
       "id": "2026-07-01-demo-memoria-stlabs",
@@ -34,6 +34,14 @@
       "slides": 1,
       "fondo": "lino_tela",
       "familia_visual": "before_after"
+    },
+    {
+      "id": "2026-09-12-post-empezar-hoy",
+      "fecha": "2026-09-12",
+      "titulo": "Dentro de un año desearás haber empezado hoy",
+      "slides": 2,
+      "fondo": "reticula_fina",
+      "familia_visual": "dossier_editorial"
     }
   ]
 }
