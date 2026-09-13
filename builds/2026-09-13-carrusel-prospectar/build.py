@@ -81,16 +81,8 @@ body{background:#111;}
 .stains{inset:0;z-index:2;pointer-events:none;}
 .stain{
   position:absolute;border-radius:50%;
-  background:radial-gradient(circle, rgba(200,255,235,.18) 0%, rgba(140,255,210,.10) 42%, rgba(0,255,178,0) 74%);
-  filter:blur(3px);
-}
-.stain.deep{
-  background:radial-gradient(circle, rgba(190,255,230,.20) 0%, rgba(120,255,205,.11) 44%, rgba(0,255,178,0) 76%);
-}
-.stain.plate{
-  border-radius:42% 58% 50% 50% / 45% 42% 58% 55%;
-  background:radial-gradient(ellipse at 40% 40%, rgba(195,255,232,.16) 0%, rgba(130,255,208,.09) 48%, rgba(0,255,178,0) 80%);
-  filter:blur(2.5px);
+  background:radial-gradient(circle, rgba(210,255,240,.12) 0%, rgba(160,255,220,.06) 45%, rgba(0,255,178,0) 76%);
+  filter:blur(4px);
 }
 .arcs{inset:0;z-index:2;pointer-events:none;}
 .arcs svg{width:100%;height:100%;}
@@ -152,12 +144,8 @@ body{background:#111;}
 
 
 def stain(x: int, y: int, w: int, h: int, deep: bool = False, plate: bool = False) -> str:
-    cls = "stain"
-    if plate:
-        cls += " plate"
-    elif deep:
-        cls += " deep"
-    return f'<div class="{cls}" style="left:{x}px;top:{y}px;width:{w}px;height:{h}px;"></div>'
+    # deep/plate eliminados: solo mancha clara sutil
+    return f'<div class="stain" style="left:{x}px;top:{y}px;width:{w}px;height:{h}px;"></div>'
 
 
 def arcs_svg(ox: int, oy: int, radii: list[int], opacity: float = 0.55) -> str:
@@ -191,7 +179,7 @@ def stipple_svg() -> str:
         dens = 1 - rad / R
         if dens < 0.05:
             continue
-        a = 0.06 + dens * 0.28
+        a = 0.04 + dens * 0.18
         s = 1.1 if dens > 0.45 else 0.85
         circles.append(
             f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{s}" fill="#00FFB2" fill-opacity="{a:.2f}"/>'
@@ -215,9 +203,8 @@ def slide(cls: str, stains: str, arcs: str, inner: str, extra: str = "") -> str:
 def build_html() -> Path:
     s1 = slide(
         "s1",
-        stain(700, -40, 520, 480)
-        + stain(40, 900, 420, 360)
-        + stain(480, 700, 300, 260, deep=True),
+        stain(720, -60, 400, 360)
+        + stain(40, 980, 340, 280),
         arcs_svg(920, 160, [90, 150, 220, 300], 0.5),
         """<div class="block">
           <div class="t">
@@ -232,9 +219,8 @@ def build_html() -> Path:
 
     s2 = slide(
         "s2",
-        stain(40, 300, 940, 560, plate=True)
-        + stain(600, 900, 400, 320)
-        + stain(-60, 80, 360, 300),
+        stain(700, 40, 360, 300)
+        + stain(-40, 1000, 340, 280),
         arcs_svg(60, 180, [140, 230, 340], 0.45),
         """<div class="block">
           <div class="t"><span class="w">Prospectar es hablar con</span><br>
@@ -247,9 +233,8 @@ def build_html() -> Path:
 
     s3 = slide(
         "s3",
-        stain(500, 100, 400, 340)
-        + stain(60, 700, 480, 360, deep=True)
-        + stain(700, 1000, 320, 280),
+        stain(700, 60, 360, 300)
+        + stain(40, 1000, 340, 280),
         arcs_svg(980, 1180, [120, 200, 300], 0.4),
         """<div class="block">
           <div class="t ink">Prospectar tiene <span class="g">criterio.</span></div>
@@ -262,9 +247,8 @@ def build_html() -> Path:
 
     s4 = slide(
         "s4",
-        stain(20, 280, 960, 520, plate=True)
-        + stain(700, 80, 360, 300)
-        + stain(200, 980, 500, 300),
+        stain(720, 40, 340, 280)
+        + stain(40, 1000, 360, 280),
         arcs_svg(40, 160, [120, 210, 320], 0.45),
         """<div class="block">
           <div class="t"><span class="w">Perder el tiempo se puede</span><br>
@@ -277,9 +261,8 @@ def build_html() -> Path:
 
     s5 = slide(
         "s5",
-        stain(100, 200, 400, 340)
-        + stain(620, 700, 420, 360, deep=True)
-        + stain(40, 1000, 360, 280),
+        stain(700, 80, 360, 300)
+        + stain(40, 1000, 340, 280),
         arcs_svg(540, 100, [160, 260, 380], 0.35),
         """<div class="block">
           <div class="t ink">Prospectar <span class="g">incomoda.</span></div>
@@ -291,9 +274,8 @@ def build_html() -> Path:
 
     s6 = slide(
         "s6",
-        stain(20, 320, 960, 540, plate=True)
-        + stain(700, 80, 380, 320)
-        + stain(100, 980, 480, 300),
+        stain(720, 40, 340, 280)
+        + stain(40, 1000, 360, 280),
         arcs_svg(1000, 200, [130, 220, 340], 0.45),
         """<div class="block">
           <div class="t"><span class="w">La diferencia está</span><br>
@@ -306,9 +288,8 @@ def build_html() -> Path:
 
     s7 = slide(
         "s7",
-        stain(200, 250, 680, 420)
-        + stain(40, 900, 400, 320, deep=True)
-        + stain(700, 80, 360, 280),
+        stain(700, 60, 360, 300)
+        + stain(40, 1000, 340, 280),
         arcs_svg(540, 1240, [150, 260, 400], 0.4),
         """<div class="block">
           <div class="t ink">Un pipeline lleno de<br>prospectos malos no es<br>una oportunidad.
@@ -321,9 +302,8 @@ def build_html() -> Path:
 
     s8 = slide(
         "s8",
-        stain(100, 240, 880, 560, plate=True)
-        + stain(40, 80, 360, 300)
-        + stain(700, 980, 400, 320),
+        stain(40, 60, 340, 280)
+        + stain(720, 1000, 340, 280),
         arcs_svg(180, 1120, [100, 170, 260], 0.55),
         """<div class="block">
           <div class="t w">Si esto te pegó,</div>

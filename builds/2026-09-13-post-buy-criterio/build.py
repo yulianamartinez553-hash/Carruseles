@@ -52,7 +52,7 @@ def stipple() -> str:
         dens = 1 - rad / R
         if dens < 0.06:
             continue
-        a = 0.06 + dens * 0.28
+        a = 0.04 + dens * 0.18
         s = 1.15 if dens > 0.45 else 0.85
         circles.append(
             f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{s}" fill="#00FFB2" fill-opacity="{a:.2f}"/>'
@@ -98,13 +98,8 @@ body{background:#111;}
 .stains{inset:0;z-index:2;pointer-events:none;}
 .stain{
   position:absolute;border-radius:50%;
-  background:radial-gradient(circle, rgba(200,255,235,.18) 0%, rgba(140,255,210,.10) 42%, transparent 74%);
-  filter:blur(3px);
-}
-.stain.plate{
-  border-radius:42% 58% 50% 50% / 48% 42% 58% 52%;
-  background:radial-gradient(ellipse at 40% 40%, rgba(195,255,232,.16) 0%, rgba(130,255,208,.09) 48%, transparent 80%);
-  filter:blur(2.5px);
+  background:radial-gradient(circle, rgba(210,255,240,.12) 0%, rgba(160,255,220,.06) 45%, transparent 76%);
+  filter:blur(4px);
 }
 .arcs{inset:0;z-index:2;pointer-events:none;}
 .arcs svg,.stipple{width:100%;height:100%;}
@@ -144,9 +139,8 @@ def build_html() -> Path:
 <body><div class="sheet">
 <section class="slide">
   <div class="stains">
-    <div class="stain plate" style="left:90px;top:360px;width:900px;height:520px;"></div>
-    <div class="stain" style="left:700px;top:-40px;width:480px;height:420px;"></div>
-    <div class="stain" style="left:-40px;top:980px;width:420px;height:360px;"></div>
+    <div class="stain" style="left:700px;top:-40px;width:380px;height:320px;"></div>
+    <div class="stain" style="left:-40px;top:1000px;width:360px;height:300px;"></div>
   </div>
   {arcs}
   {stipple()}
