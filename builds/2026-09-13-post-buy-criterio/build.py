@@ -52,7 +52,7 @@ def stipple() -> str:
         dens = 1 - rad / R
         if dens < 0.06:
             continue
-        a = 0.18 + dens * 0.7
+        a = 0.06 + dens * 0.28
         s = 1.15 if dens > 0.45 else 0.85
         circles.append(
             f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{s}" fill="#00FFB2" fill-opacity="{a:.2f}"/>'
@@ -98,11 +98,13 @@ body{background:#111;}
 .stains{inset:0;z-index:2;pointer-events:none;}
 .stain{
   position:absolute;border-radius:50%;
-  background:radial-gradient(circle, rgba(0,255,178,.5) 0%, rgba(0,200,140,.25) 42%, transparent 72%);
+  background:radial-gradient(circle, rgba(200,255,235,.18) 0%, rgba(140,255,210,.10) 42%, transparent 74%);
+  filter:blur(3px);
 }
 .stain.plate{
   border-radius:42% 58% 50% 50% / 48% 42% 58% 52%;
-  background:radial-gradient(ellipse at 40% 40%, rgba(0,48,38,.9) 0%, rgba(0,95,72,.72) 36%, rgba(0,160,120,.28) 62%, transparent 78%);
+  background:radial-gradient(ellipse at 40% 40%, rgba(195,255,232,.16) 0%, rgba(130,255,208,.09) 48%, transparent 80%);
+  filter:blur(2.5px);
 }
 .arcs{inset:0;z-index:2;pointer-events:none;}
 .arcs svg,.stipple{width:100%;height:100%;}
@@ -117,7 +119,7 @@ body{background:#111;}
   text-shadow:0 2px 0 rgba(0,0,0,.15);
 }
 .sub{
-  margin-top:44px;font-family:var(--sans);font-size:30px;line-height:1.35;color:#fff;
+  margin-top:44px;font-family:var(--sans);font-size:30px;line-height:1.35;color:var(--ink);
   max-width:820px;
 }
 .web{
