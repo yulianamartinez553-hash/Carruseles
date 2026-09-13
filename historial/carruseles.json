@@ -1,5 +1,5 @@
 {
-  "ultimo_id": "2026-09-13-carrusel-prospectar",
+  "ultimo_id": "2026-09-13-post-buy-criterio",
   "carruseles": [
     {
       "id": "2026-07-01-demo-memoria-stlabs",
@@ -58,6 +58,14 @@
       "slides": 8,
       "fondo": "papel_arroz_corrugado_manchas_verdes",
       "familia_visual": "editorial_didot_serif"
+    },
+    {
+      "id": "2026-09-13-post-buy-criterio",
+      "fecha": "2026-09-13",
+      "titulo": "Buy Post CRITERIO",
+      "slides": 1,
+      "fondo": "papel_arroz_manchas_verdes_buy",
+      "familia_visual": "cta_editorial_didot"
     }
   ]
 }
