@@ -138,11 +138,7 @@ def build_html() -> Path:
 <style>{font_faces()}{CSS}</style></head>
 <body><div class="sheet">
 <section class="slide">
-  <div class="stains"></div>
-    <div class="stain" style="left:-40px;top:1000px;width:360px;height:300px;"></div>
-  </div>
   {arcs}
-  
   <div class="content">
     <div class="kicker">Comentá</div>
     <div class="kw">CRITERIO.</div>
