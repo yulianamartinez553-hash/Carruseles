@@ -144,8 +144,7 @@ body{background:#111;}
 
 
 def stain(x: int, y: int, w: int, h: int, deep: bool = False, plate: bool = False) -> str:
-    # deep/plate eliminados: solo mancha clara sutil
-    return f'<div class="stain" style="left:{x}px;top:{y}px;width:{w}px;height:{h}px;"></div>'
+    return ""
 
 
 def arcs_svg(ox: int, oy: int, radii: list[int], opacity: float = 0.55) -> str:
@@ -168,26 +167,8 @@ def arcs_svg(ox: int, oy: int, radii: list[int], opacity: float = 0.55) -> str:
 
 
 def stipple_svg() -> str:
-    rng = random.Random(42)
-    circles = []
-    cx, cy, R = 860, 180, 240
-    for _ in range(3200):
-        ang = rng.random() * math.tau
-        rad = R * (rng.random() ** 0.5)
-        x = cx + rad * math.cos(ang)
-        y = cy + rad * math.sin(ang)
-        dens = 1 - rad / R
-        if dens < 0.05:
-            continue
-        a = 0.04 + dens * 0.18
-        s = 1.1 if dens > 0.45 else 0.85
-        circles.append(
-            f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{s}" fill="#00FFB2" fill-opacity="{a:.2f}"/>'
-        )
-    return (
-        f'<div class="stipple"><svg viewBox="0 0 1080 1350" width="1080" height="1350">'
-        f'{"".join(circles)}</svg></div>'
-    )
+    return ""
+
 
 
 def slide(cls: str, stains: str, arcs: str, inner: str, extra: str = "") -> str:
@@ -214,7 +195,6 @@ def build_html() -> Path:
           </div>
           <div class="sub b">Se ven igual desde afuera.<br>Por dentro no tienen nada en común.</div>
         </div>""",
-        stipple_svg(),
     )
 
     s2 = slide(
