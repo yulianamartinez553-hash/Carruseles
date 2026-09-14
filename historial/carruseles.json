@@ -1,5 +1,5 @@
 {
-  "ultimo_id": "2026-09-14-carrusel-disciplina-minima",
+  "ultimo_id": "2026-09-14-carrusel-intentos",
   "carruseles": [
     {
       "id": "2026-07-01-demo-memoria-stlabs",
@@ -36,126 +36,6 @@
       "familia_visual": "editorial_didot_serif"
     },
     {
-      "id": "2026-09-13-carrusel-prospectar",
-      "fecha": "2026-09-13",
-      "titulo": "Prospectar vs Perder el Tiempo",
-      "slides": 8,
-      "fondo": "papel_arroz_corrugado_manchas_verdes",
-      "familia_visual": "editorial_didot_serif"
-    },
-    {
-      "id": "2026-09-13-carrusel-prospectar",
-      "fecha": "2026-09-13",
-      "titulo": "Prospectar vs Perder el Tiempo",
-      "slides": 8,
-      "fondo": "papel_arroz_corrugado_manchas_verdes",
-      "familia_visual": "editorial_didot_serif"
-    },
-    {
-      "id": "2026-09-13-carrusel-prospectar",
-      "fecha": "2026-09-13",
-      "titulo": "Prospectar vs Perder el Tiempo",
-      "slides": 8,
-      "fondo": "papel_arroz_corrugado_manchas_verdes",
-      "familia_visual": "editorial_didot_serif"
-    },
-    {
-      "id": "2026-09-13-post-buy-criterio",
-      "fecha": "2026-09-13",
-      "titulo": "Buy Post CRITERIO",
-      "slides": 1,
-      "fondo": "papel_arroz_manchas_verdes_buy",
-      "familia_visual": "cta_editorial_didot"
-    },
-    {
-      "id": "2026-09-13-carrusel-prospectar",
-      "fecha": "2026-09-13",
-      "titulo": "Prospectar vs Perder el Tiempo",
-      "slides": 8,
-      "fondo": "papel_arroz_corrugado_manchas_verdes",
-      "familia_visual": "editorial_didot_serif"
-    },
-    {
-      "id": "2026-09-13-post-buy-criterio",
-      "fecha": "2026-09-13",
-      "titulo": "Buy Post CRITERIO",
-      "slides": 1,
-      "fondo": "papel_arroz_manchas_verdes_buy",
-      "familia_visual": "cta_editorial_didot"
-    },
-    {
-      "id": "2026-09-13-carrusel-prospectar",
-      "fecha": "2026-09-13",
-      "titulo": "Prospectar vs Perder el Tiempo",
-      "slides": 8,
-      "fondo": "papel_arroz_corrugado_manchas_verdes",
-      "familia_visual": "editorial_didot_serif"
-    },
-    {
-      "id": "2026-09-13-post-buy-criterio",
-      "fecha": "2026-09-13",
-      "titulo": "Buy Post CRITERIO",
-      "slides": 1,
-      "fondo": "papel_arroz_manchas_verdes_buy",
-      "familia_visual": "cta_editorial_didot"
-    },
-    {
-      "id": "2026-09-13-carrusel-prospectar",
-      "fecha": "2026-09-13",
-      "titulo": "Prospectar vs Perder el Tiempo",
-      "slides": 8,
-      "fondo": "papel_arroz_corrugado_manchas_verdes",
-      "familia_visual": "editorial_didot_serif"
-    },
-    {
-      "id": "2026-09-13-post-buy-criterio",
-      "fecha": "2026-09-13",
-      "titulo": "Buy Post CRITERIO",
-      "slides": 1,
-      "fondo": "papel_arroz_manchas_verdes_buy",
-      "familia_visual": "cta_editorial_didot"
-    },
-    {
-      "id": "2026-09-13-carrusel-prospectar",
-      "fecha": "2026-09-13",
-      "titulo": "Prospectar vs Perder el Tiempo",
-      "slides": 8,
-      "fondo": "papel_arroz_corrugado_manchas_verdes",
-      "familia_visual": "editorial_didot_serif"
-    },
-    {
-      "id": "2026-09-13-post-buy-criterio",
-      "fecha": "2026-09-13",
-      "titulo": "Buy Post CRITERIO",
-      "slides": 1,
-      "fondo": "papel_arroz_manchas_verdes_buy",
-      "familia_visual": "cta_editorial_didot"
-    },
-    {
-      "id": "2026-09-13-carrusel-prospectar",
-      "fecha": "2026-09-13",
-      "titulo": "Prospectar vs Perder el Tiempo",
-      "slides": 8,
-      "fondo": "papel_arroz_corrugado_manchas_verdes",
-      "familia_visual": "editorial_didot_serif"
-    },
-    {
-      "id": "2026-09-13-carrusel-prospectar",
-      "fecha": "2026-09-13",
-      "titulo": "Prospectar vs Perder el Tiempo",
-      "slides": 8,
-      "fondo": "papel_arroz_corrugado_manchas_verdes",
-      "familia_visual": "editorial_didot_serif"
-    },
-    {
-      "id": "2026-09-13-post-buy-criterio",
-      "fecha": "2026-09-13",
-      "titulo": "Buy Post CRITERIO",
-      "slides": 1,
-      "fondo": "papel_arroz_manchas_verdes_buy",
-      "familia_visual": "cta_editorial_didot"
-    },
-    {
       "id": "2026-09-13-post-buy-criterio",
       "fecha": "2026-09-13",
       "titulo": "Buy Post CRITERIO",
@@ -172,12 +52,12 @@
       "familia_visual": "infografia_serif_minima"
     },
     {
-      "id": "2026-09-14-carrusel-disciplina-minima",
+      "id": "2026-09-14-carrusel-intentos",
       "fecha": "2026-09-14",
-      "titulo": "Disciplina · Hábitos · Progreso",
-      "slides": 11,
-      "fondo": "blanco_minimal_editorial",
-      "familia_visual": "infografia_serif_minima"
+      "titulo": "Uno de todos esos intentos va a salir",
+      "slides": 2,
+      "fondo": "blanco",
+      "familia_visual": "comic_lineart_cta"
     }
   ]
 }
