@@ -9,5 +9,5 @@
 | Lora | italic | Acentos | pack STLabs | idem |
 
 ## Color
-- Verde marca oscurecido 2 tonos: `#00A372` (base marca `#00FFB2`)
+- Verde marca oscurecido 2 tonos: `#00FFB2` (base marca `#00FFB2`)
 - Fondo: blanco puro `#FFFFFF`

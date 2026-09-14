@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Carrusel 11 slides — clones de referencias motivacionales → STLabs.
-Fondo blanco. Verde marca 2 tonos más oscuro (#00A372) para contraste.
+Fondo blanco. Verde marca Sebastián #00FFB2.
 """
 from __future__ import annotations
 
@@ -15,9 +15,9 @@ from stlabs_kit import package, render  # noqa: E402
 BUILD = Path(__file__).resolve().parent
 FONTS = ROOT / "fonts"
 
-# Marca #00FFB2 → ~dos tonos más oscuros para contraste sobre blanco
-VERDE = "#007A56"
-VERDE_DEEP = "#005C40"
+# Verde marca STLabs (mismo tono de Sebastián)
+VERDE = "#00FFB2"
+VERDE_DEEP = "#00CC8E"
 INK = "#0A0A0A"
 PAPER = "#FFFFFF"
 HANDLE = "sebastian.stlabs.ar"
@@ -602,7 +602,7 @@ def main() -> None:
 | Lora | italic | Acentos | pack STLabs | idem |
 
 ## Color
-- Verde marca oscurecido 2 tonos: `{VERDE}` (base marca `#00FFB2`)
+- Verde marca Sebastián: `{VERDE}`
 - Fondo: blanco puro `{PAPER}`
 """,
         encoding="utf-8",
