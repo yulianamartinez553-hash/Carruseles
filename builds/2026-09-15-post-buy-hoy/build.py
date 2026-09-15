@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Buy post 4:5 motivacional — COMENTÁ HOY (arranque, no motivación)."""
+"""Buy post 4:5 motivacional — COMENTÁ HOY (fondo gym blur oscuro)."""
 from __future__ import annotations
 
 import base64
@@ -11,11 +11,12 @@ sys.path.insert(0, str(ROOT))
 from stlabs_kit import package, render  # noqa: E402
 
 BUILD = Path(__file__).resolve().parent
+ASSETS = BUILD / "assets"
 FONTS = ROOT / "fonts"
 
 VERDE = "#00FFB2"
-INK = "#0A0A0A"
-PAPER = "#FFFFFF"
+INK = "#F2F2F2"  # texto claro sobre fondo oscuro
+PAPER = "#0A0A0A"
 HANDLE = "sebastian.stlabs.ar"
 
 
@@ -44,7 +45,13 @@ def font_faces() -> str:
     return "".join(out)
 
 
-# Barras ascendentes (progreso) — distinto a onda/escalera del buy anterior
+def gym_bg_uri() -> str:
+    path = ASSETS / "gym-blur-dark.jpg"
+    if not path.exists():
+        raise FileNotFoundError(path)
+    return f"data:image/jpeg;base64,{b64(path)}"
+
+
 BARS = [
     (80, 220, 40),
     (160, 180, 80),
@@ -82,13 +89,15 @@ body{{background:#111;}}
   position:relative;width:1080px;height:1350px;overflow:hidden;
   background:var(--paper);color:var(--ink);
 }}
-/* Retícula fina — diferencia del buy DISCIPLINA (blanco liso) */
-.slide::before{{
-  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.55;
-  background-image:
-    linear-gradient(rgba(10,10,10,.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(10,10,10,.045) 1px, transparent 1px);
-  background-size:36px 36px;
+.bg{{
+  position:absolute;inset:0;z-index:0;width:100%;height:100%;
+  object-fit:cover;object-position:center;display:block;
+}}
+/* Velo suave — gym apenas visible */
+.veil{{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.12) 0%, rgba(0,0,0,.22) 55%, rgba(0,0,0,.38) 100%);
 }}
 .web{{
   position:absolute;left:0;right:0;bottom:70px;text-align:center;z-index:10;
@@ -103,12 +112,13 @@ body{{background:#111;}}
 .hook{{
   font-family:var(--pop);font-weight:700;font-size:42px;line-height:1.15;
   color:var(--ink);max-width:880px;margin-bottom:36px;
+  text-shadow:0 2px 18px rgba(0,0,0,.55);
 }}
 .hook em{{
   font-family:var(--serif);font-style:italic;font-weight:700;color:var(--verde);
   font-size:1.05em;
 }}
-.chart{{width:640px;height:280px;margin:8px 0 40px;}}
+.chart{{width:640px;height:280px;margin:8px 0 40px;filter:drop-shadow(0 4px 16px rgba(0,0,0,.4));}}
 .kicker{{
   font-family:var(--sans);font-weight:500;font-size:34px;letter-spacing:5px;
   text-transform:uppercase;color:var(--ink);
@@ -117,19 +127,23 @@ body{{background:#111;}}
   font-family:var(--disp);font-weight:400;
   font-size:160px;line-height:0.88;letter-spacing:2px;color:var(--verde);
   margin-top:10px;
+  text-shadow:0 4px 28px rgba(0,0,0,.45);
 }}
 .sub{{
   margin-top:32px;font-family:var(--sans);font-weight:400;font-size:36px;line-height:1.3;
-  color:var(--ink);max-width:820px;
+  color:rgba(242,242,242,.92);max-width:820px;
 }}
 """
 
 
 def build_html() -> Path:
+    bg = gym_bg_uri()
     html = f"""<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8">
 <style>{font_faces()}{CSS}</style></head>
 <body><div class="sheet">
 <section class="slide">
+  <img class="bg" src="{bg}" alt=""/>
+  <div class="veil"></div>
   <div class="wrap">
     <div class="hook">No esperes a tener ganas.<br>Las ganas llegan <em>después</em> de empezar.</div>
     <svg class="chart" viewBox="0 0 600 280" fill="none">{bars_svg()}</svg>
@@ -154,7 +168,7 @@ def main() -> None:
     print(f"PNGs: {len(pngs)}")
     meta = {
         "titulo": "Buy Post HOY",
-        "fondo": "reticula_fina",
+        "fondo": "gym_blur_oscuro",
         "familia_visual": "dossier_editorial",
         "origen": "original",
         "slides": 1,
@@ -188,6 +202,8 @@ Comentá HOY.
 | Barlow Condensed | 500 Medium | Kicker COMENTÁ | `/workspace/fonts/BarlowCondensed-Medium.ttf` | `@font-face` base64 |
 | Barlow Condensed | 400 Regular | Subtítulo CTA | `/workspace/fonts/BarlowCondensed-Regular.ttf` | `@font-face` base64 |
 | IBM Plex Mono | 400 Regular | Footer sebastian.stlabs.ar | `/workspace/fonts/IBMPlexMono-Regular.ttf` | `@font-face` base64 |
+
+**Fondo:** foto de gimnasio realista (`assets/gym-raw.jpg`) procesada a blur fuerte + oscurecido (`assets/gym-blur-dark.jpg`), con velo negro adicional en CSS.
 """,
         encoding="utf-8",
     )
