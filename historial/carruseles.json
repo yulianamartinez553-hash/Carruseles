@@ -74,6 +74,14 @@
       "slides": 1,
       "fondo": "gym_blur_claro",
       "familia_visual": "dossier_editorial"
+    },
+    {
+      "id": "2026-09-15-post-buy-hoy",
+      "fecha": "2026-09-15",
+      "titulo": "Post ganas / después de empezar",
+      "slides": 1,
+      "fondo": "gym_blur_claro",
+      "familia_visual": "dossier_editorial"
     }
   ]
 }

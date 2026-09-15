@@ -88,11 +88,16 @@ body{{background:#111;}}
   position:absolute;inset:0;z-index:0;width:100%;height:100%;
   object-fit:cover;object-position:center;display:block;
 }}
-/* Velo claro — fondo más blanco que negro, gym apenas atrás */
+/* Degradé a blanco puro — sin gris abajo; gym apenas en el centro */
 .veil{{
   position:absolute;inset:0;z-index:1;pointer-events:none;
   background:
-    linear-gradient(180deg, rgba(255,255,255,.42) 0%, rgba(255,255,255,.55) 50%, rgba(255,255,255,.68) 100%);
+    linear-gradient(180deg,
+      rgba(255,255,255,.55) 0%,
+      rgba(255,255,255,.25) 28%,
+      rgba(255,255,255,.35) 55%,
+      rgba(255,255,255,.85) 82%,
+      #ffffff 100%);
 }}
 .web{{
   position:absolute;left:0;right:0;bottom:70px;text-align:center;z-index:10;
